@@ -1,207 +1,141 @@
-# Style Guide - Colombia EdTech
+# Colombia EdTech - Style Guide
 
-## Design System Overview
+This document outlines the design system implementation for the Colombia EdTech website.
 
-Este proyecto utiliza un sistema de tokens de diseño centralizado que garantiza consistencia visual y facilita el mantenimiento.
+## Design Tokens System
 
-## Tokens de Diseño
+All design tokens are defined in `src/styles/tokens.css` using CSS custom properties. This approach allows for easy theming and consistent design across the entire application.
 
-### Colores
+### Color Palette
 
-Ubicación: `src/lib/tokens.ts` y `src/index.css`
+#### Brand Colors
+- `--color-primary-900`: #003889 (Navy Blue - Primary Dark)
+- `--color-primary-700`: #0B47CE (Royal Blue - Primary)
+- `--color-accent`: #F73C5C (Coral Red - Accent)
+- `--color-sand`: #F4E8DD (Sand - Secondary)
 
-#### Paleta Principal
+#### Grayscale
+- `--gray-900`: #111111 (Almost Black)
+- `--gray-700`: #3A3A3A (Dark Gray)
+- `--gray-500`: #7A7A7A (Medium Gray)
+- `--gray-300`: #D1D5DB (Light Gray)
+- `--gray-50`: #FAFAFA (Almost White)
+
+### Typography
+
+#### Font Families
+- `--font-ui`: Poppins (UI text, currently used for both UI and display)
+- `--font-display`: Poppins (Display headings, will be replaced with custom font)
+
+#### Fluid Typography Scale
+- `--fs-xs`: clamp(0.78rem, 0.73rem + 0.2vw, 0.84rem)
+- `--fs-sm`: clamp(0.9rem, 0.86rem + 0.2vw, 0.98rem)
+- `--fs-base`: clamp(1rem, 0.96rem + 0.25vw, 1.1rem)
+- `--fs-lg`: clamp(1.12rem, 1.06rem + 0.3vw, 1.28rem)
+- `--fs-xl`: clamp(1.35rem, 1.2rem + 0.8vw, 1.8rem)
+- `--fs-2xl`: clamp(1.7rem, 1.4rem + 1.4vw, 2.4rem)
+- `--fs-3xl`: clamp(2.1rem, 1.7rem + 2vw, 3rem)
+
+### Spacing Scale
+- `--space-1`: 8px
+- `--space-2`: 12px
+- `--space-3`: 16px
+- `--space-4`: 24px
+- `--space-5`: 32px
+- `--space-6`: 48px
+- `--space-7`: 64px
+- `--space-8`: 80px
+
+## Utility Classes
+
+Global utility classes are defined in `src/styles/utilities.css`:
+
+### Layout
+- `.container`: Max-width container with responsive padding
+- `.section`: Standard section padding (48px vertical)
+
+### Typography
+- `.prose`: Content styling for MDX/markdown content
+- Heading styles (h1-h4) with proper hierarchy
+
+### Components
+- `.card`: Standard card component with hover effects
+- `.btn`, `.btn-primary`, `.btn-secondary`, etc.: Button variants
+- `.badge`: Small label component
+- `.kpi`: Key Performance Indicator component
+- Grid utilities (`.grid-2`, `.grid-3`, `.grid-auto`)
+
+## Component Guidelines
+
+### Buttons
+Use the utility classes for consistent button styling:
 ```css
---primary-900: 213 100% 27%;  /* #003889 */
---primary-700: 225 85% 43%;   /* #0B47CE */
---accent: 350 91% 60%;        /* #F73C5C */
---sand: 28 50% 92%;           /* #F4E8DD */
+.btn-primary /* Blue primary button */
+.btn-secondary /* Sand secondary button */
+.btn-accent /* Coral accent button */
+.btn-outline /* Outlined button */
 ```
 
-#### Escala de Grises
-```css
---gray-900: 0 0% 7%;          /* #111111 */
---gray-700: 0 0% 23%;         /* #3A3A3A */
---gray-500: 0 0% 48%;         /* #7A7A7A */
---gray-300: 220 13% 82%;      /* #D1D5DB */
---gray-50: 0 0% 98%;          /* #FAFAFA */
-```
-
-### Uso de Colores
-
-❌ **INCORRECTO - No usar colores directos:**
-```tsx
-<div className="bg-blue-500 text-white">
-```
-
-✅ **CORRECTO - Usar tokens semánticos:**
-```tsx
-<div className="bg-primary text-primary-foreground">
-```
-
-### Tipografía
-
-- **UI**: System fonts (Inter fallback)
-- **Display**: System fonts (preparado para fuente personalizada)
-- **Escalas**: Definidas en `tokens.ts`
-
-### Espaciado
-
-Usar la escala definida en tokens:
-- `xs` (4px), `sm` (8px), `md` (12px), `lg` (16px)
-- `xl` (24px), `2xl` (32px), etc.
-
-## Componentes UI
-
-### Estructura de Archivos
-
-```
-src/components/ui/
-├── button.tsx          # Componente principal con variantes
-├── cta-button.tsx      # Botón especializado para CTAs
-├── section.tsx         # Contenedor de sección con grid
-├── logo-grid.tsx       # Grid de logos con placeholders
-├── kpi.tsx            # Componente para métricas
-└── ...
-```
-
-### Variantes de Botón
-
-```tsx
-// Variantes disponibles
-<Button variant="default">     // Primary
-<Button variant="cta">         // Call-to-action con gradiente
-<Button variant="hero">        // Para secciones hero
-<Button variant="brand">       // Gradiente de marca
-<Button variant="outline">     // Contorno
-<Button variant="ghost">       // Sin fondo
-```
-
-### Convención de Nombres
-
-1. **Componentes**: PascalCase (`MyComponent`)
-2. **Props**: camelCase (`isActive`)
-3. **CSS Variables**: kebab-case (`--primary-color`)
-4. **Archivos**: kebab-case (`my-component.tsx`)
-
-## Layout y Responsive
-
-### Section Component
-
-```tsx
-<Section className="py-16"> // Espaciado vertical estándar
-  <SectionHeader 
-    title="Título" 
-    subtitle="Subtítulo opcional"
-    description="Descripción opcional"
-    centered={true} // Centra el contenido
-  />
-  {/* Contenido */}
-</Section>
-```
-
-### Grid System
-
-- Container máximo: `max-w-7xl mx-auto`
-- Padding lateral: `px-4 sm:px-6 lg:px-8`
-- Grid responsive: `grid-cols-1 md:grid-cols-2 lg:grid-cols-3`
-
-## Accesibilidad
+### Cards
+Use the `.card` class for consistent card styling with hover effects.
 
 ### Focus States
-
-Todos los elementos interactivos deben tener estados de focus visibles:
-
-```tsx
-className="focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2"
+All interactive elements should use the focus ring utility:
+```css
+.focus-ring /* or use :focus-visible with --ring variable */
 ```
 
-### Semantic HTML
+## Changing Colors and Fonts
 
-- Usar landmarks: `<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`
-- `aria-current="page"` en links activos
-- `aria-label` en botones de iconos
-- `role` cuando sea necesario
+### To Change Brand Colors:
+1. Update the color values in `src/styles/tokens.css`
+2. Optionally update the HSL values in `src/index.css` for Tailwind integration
 
-### Navegación por Teclado
+### To Add Custom Display Font:
+1. Add font files to `public/fonts/`
+2. Update `src/lib/fonts.ts` with font-face definitions
+3. Update `--font-display` variable in `src/styles/tokens.css`
+4. Call font loading function in application
 
-- Tab order lógico
-- Skip links implementados
-- Menú móvil con focus trap
+### To Adjust Spacing:
+Update the `--space-*` variables in `src/styles/tokens.css`
 
-## Performance
+### To Modify Typography Scale:
+Adjust the `clamp()` values in the `--fs-*` variables for responsive typography
 
-### Lazy Loading
+## Responsive Design
 
-- Imágenes: usar `loading="lazy"`
-- Componentes: React.lazy cuando sea apropiado
+The design system includes responsive utilities:
+- Container padding adjusts on mobile
+- Section padding reduces on smaller screens
+- Grid layouts stack to single column on mobile
+- Typography scales fluidly with viewport width
 
-### Optimización
+## Accessibility
 
-- Usar `next/image` para imágenes optimizadas
-- Minificar assets
-- Comprimir imágenes (WebP/AVIF cuando sea posible)
+- All interactive elements have proper focus states
+- Color contrast meets WCAG guidelines
+- Focus rings use the `--ring` color (accent color)
+- Font sizes are accessible and scale appropriately
 
-## Ejemplos de Uso
+## Implementation Notes
 
-### Página Típica
+- Always use CSS variables instead of hardcoded values
+- Prefer utility classes over component-specific styles
+- Maintain the cascade: tokens → utilities → components → pages
+- Test color changes across light/dark modes
+- Ensure proper font fallbacks are maintained
 
-```tsx
-import { Section, SectionHeader } from "@/components/ui/section"
-import { CopySlot } from "@/components/content/copy-slot"
-import { Breadcrumbs } from "@/components/ui/breadcrumbs"
+## File Structure
 
-const MyPage = () => {
-  return (
-    <>
-      <Section className="py-8 bg-gray-50">
-        <Breadcrumbs items={[{ label: "Mi Página" }]} />
-      </Section>
-      
-      <Section className="py-16">
-        <SectionHeader
-          title="Título Principal"
-          subtitle="Subtítulo"
-          description="Descripción de la página"
-        />
-        <CopySlot file="mi-pagina.mdx" />
-      </Section>
-    </>
-  )
-}
+```
+src/
+├── styles/
+│   ├── tokens.css      # Design tokens and CSS variables
+│   └── utilities.css   # Global utility classes
+├── lib/
+│   └── fonts.ts        # Font configuration and loading
+└── index.css          # Tailwind integration and base styles
 ```
 
-### Card con KPI
-
-```tsx
-<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-  <KPI 
-    value="150+" 
-    label="Organizaciones"
-    description="Asociadas y aliadas"
-    variant="default"
-    size="md"
-  />
-</div>
-```
-
-## Best Practices
-
-1. **Consistencia**: Usar siempre los tokens del design system
-2. **Reutilización**: Crear variantes en lugar de estilos únicos
-3. **Accesibilidad**: Probar con lectores de pantalla
-4. **Performance**: Optimizar imágenes y assets
-5. **Semántica**: HTML correcto y landmarks apropiados
-6. **Responsive**: Mobile-first approach
-
-## Troubleshooting
-
-### Colores no se muestran
-- Verificar que los tokens estén en `index.css`
-- Confirmar formato HSL correcto
-- Revisar que Tailwind esté configurado correctamente
-
-### Componentes no se ven
-- Verificar imports correctos
-- Confirmar que los estilos se estén aplicando
-- Revisar la consola para errores de TypeScript
+This system ensures consistent styling across the application while making it easy to update the brand appearance globally.

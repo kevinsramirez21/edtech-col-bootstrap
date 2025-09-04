@@ -1,0 +1,84 @@
+/* Colombia EdTech Design System - Tokens */
+
+:root {
+  /* Brand Colors */
+  --color-primary-900: #003889;
+  --color-primary-700: #0B47CE;
+  --color-accent: #F73C5C;
+  --color-sand: #F4E8DD;
+  
+  /* Grays */
+  --gray-900: #111111;
+  --gray-700: #3A3A3A;
+  --gray-500: #7A7A7A;
+  --gray-300: #D1D5DB;
+  --gray-50: #FAFAFA;
+  
+  /* Semantic Colors */
+  --bg: #FFFFFF;
+  --surface: #FFFFFF;
+  --text: #111111;
+  --muted: #3A3A3A;
+  --border: #D1D5DB;
+  --ring: var(--color-accent);
+  
+  /* Typography */
+  --font-ui: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --font-display: var(--font-ui); /* Will be replaced with display font later */
+  
+  /* Fluid Typography Scale */
+  --fs-xs: clamp(0.78rem, 0.73rem + 0.2vw, 0.84rem);
+  --fs-sm: clamp(0.9rem, 0.86rem + 0.2vw, 0.98rem);
+  --fs-base: clamp(1rem, 0.96rem + 0.25vw, 1.1rem);
+  --fs-lg: clamp(1.12rem, 1.06rem + 0.3vw, 1.28rem);
+  --fs-xl: clamp(1.35rem, 1.2rem + 0.8vw, 1.8rem);
+  --fs-2xl: clamp(1.7rem, 1.4rem + 1.4vw, 2.4rem);
+  --fs-3xl: clamp(2.1rem, 1.7rem + 2vw, 3rem);
+  
+  /* Border Radius */
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(17, 17, 17, 0.06);
+  --shadow-md: 0 6px 24px rgba(17, 17, 17, 0.08);
+  --shadow-lg: 0 10px 25px rgba(17, 17, 17, 0.1);
+  
+  /* Spacing Scale */
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 80px;
+  
+  /* Transitions */
+  --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Styles */
+html,
+body {
+  font-family: var(--font-ui);
+  color: var(--text);
+  background: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus Ring Utility */
+.focus-ring {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Focus visible for interactive elements */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

@@ -22,24 +22,24 @@ const Index = () => {
   return (
     <>
       {/* Hero Section */}
-      <Section className="py-16 lg:py-24 bg-gradient-to-br from-primary-900 via-primary-700 to-accent-brand text-white">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <Section className="section py-16 lg:py-24" style={{ background: 'linear-gradient(135deg, var(--color-primary-900), var(--color-primary-700), var(--color-accent))' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-white">
           <div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6" style={{ fontFamily: 'var(--font-display)' }}>
               Transformamos la educación en Colombia
             </h1>
-            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl">
+            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl" style={{ fontSize: 'var(--fs-lg)' }}>
               Fortalecemos el ecosistema EdTech colombiano conectando organizaciones, 
               impulsando la investigación y desarrollando políticas públicas que 
               revolucionen la educación.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <CTAButton variant="hero" size="xl">
+              <button className="btn btn-secondary">
                 Conoce más <ArrowRight className="w-5 h-5" />
-              </CTAButton>
-              <CTAButton variant="accent" size="xl">
+              </button>
+              <button className="btn btn-accent">
                 Únete al movimiento
-              </CTAButton>
+              </button>
             </div>
           </div>
           <div className="hidden lg:block">
@@ -56,16 +56,16 @@ const Index = () => {
       </Section>
 
       {/* KPI Section */}
-      <Section className="py-16 bg-sand/30">
+      <Section className="section" style={{ background: 'var(--color-sand)' }}>
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--fs-2xl)' }}>
             Nuestro impacto en cifras
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600" style={{ fontSize: 'var(--fs-lg)', color: 'var(--muted)' }}>
             Resultados que demuestran nuestro compromiso con la transformación educativa
           </p>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid-2 md:grid-cols-4">
           {kpiData.map((kpi, index) => (
             <KPI
               key={index}
@@ -79,7 +79,7 @@ const Index = () => {
       </Section>
 
       {/* Copy Slot for Main Content */}
-      <Section className="py-16">
+      <Section className="section">
         <SectionHeader
           title="Quiénes Somos"
           subtitle="Nuestra misión"
@@ -89,7 +89,7 @@ const Index = () => {
       </Section>
 
       {/* Partners Section */}
-      <Section className="py-16 bg-gray-50">
+      <Section className="section bg-gray-50">
         <LogoGrid 
           partners={samplePartners}
           title="Organizaciones que confían en nosotros"
@@ -98,24 +98,24 @@ const Index = () => {
       </Section>
 
       {/* CTA Section */}
-      <Section className="py-16 bg-gradient-to-r from-primary-900 to-primary-700 text-white text-center">
+      <Section className="section text-white text-center" style={{ background: 'linear-gradient(135deg, var(--color-primary-900), var(--color-primary-700))' }}>
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--fs-2xl)' }}>
             ¿Listo para ser parte del cambio?
           </h2>
-          <p className="text-lg text-white/90 mb-8">
+          <p className="text-lg text-white/90 mb-8" style={{ fontSize: 'var(--fs-lg)' }}>
             Únete a la comunidad líder de EdTech en Colombia y ayuda a construir 
             el futuro de la educación.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <CTAButton variant="hero" size="xl">
+            <button className="btn btn-secondary">
               <Users className="w-5 h-5" />
               Asociarme
-            </CTAButton>
-            <CTAButton variant="accent" size="xl">
+            </button>
+            <button className="btn btn-accent">
               <Target className="w-5 h-5" />
               Explorar oportunidades
-            </CTAButton>
+            </button>
           </div>
         </div>
       </Section>

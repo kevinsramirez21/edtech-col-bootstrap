@@ -36,8 +36,15 @@ export function Navbar() {
   }, [location.pathname])
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
+    <header 
+      className="sticky top-0 z-50 w-full border-b"
+      style={{ 
+        borderColor: 'var(--border)',
+        background: 'color-mix(in srgb, var(--bg) 80%, transparent)',
+        backdropFilter: 'blur(8px)'
+      }}
+    >
+      <nav className="container" aria-label="Navegación principal">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">

@@ -18,44 +18,29 @@ export function KPI({
   size = 'md',
   className 
 }: KPIProps) {
-  const sizeClasses = {
-    sm: 'text-2xl sm:text-3xl',
-    md: 'text-3xl sm:text-4xl lg:text-5xl',
-    lg: 'text-4xl sm:text-5xl lg:text-6xl'
-  }
-
-  const variantClasses = {
-    default: 'text-primary-900',
-    accent: 'text-accent-brand',
-    sand: 'text-gray-900'
-  }
-
-  const backgroundClasses = {
-    default: 'bg-white',
-    accent: 'bg-accent-brand/5',
-    sand: 'bg-sand'
-  }
-
   return (
     <div className={cn(
-      "p-6 rounded-xl text-center transition-all duration-200 hover:shadow-lg",
-      backgroundClasses[variant],
+      "kpi text-center p-6 rounded-xl",
+      variant === 'accent' && "bg-accent-50",
+      variant === 'sand' && "bg-sand",
       className
     )}>
-      <div className={cn(
-        "font-bold mb-2 tabular-nums",
-        sizeClasses[size],
-        variantClasses[variant]
-      )}>
+      <div 
+        className="value"
+        style={{ 
+          fontSize: size === 'sm' ? 'var(--fs-xl)' : size === 'lg' ? 'var(--fs-3xl)' : 'var(--fs-2xl)',
+          color: variant === 'accent' ? 'var(--color-accent)' : 'var(--color-primary-900)'
+        }}
+      >
         {value}
       </div>
-      <div className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-1">
+      <div className="label">
         {label}
       </div>
       {description && (
-        <p className="text-xs text-gray-500">
+        <div className="description">
           {description}
-        </p>
+        </div>
       )}
     </div>
   )

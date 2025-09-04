@@ -15,12 +15,12 @@ export function Section({
   return (
     <Component
       className={cn(
-        "w-full px-4 sm:px-6 lg:px-8",
+        "section w-full px-4 sm:px-6 lg:px-8",
         className
       )}
       {...props}
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="container">
         {children}
       </div>
     </Component>
@@ -53,11 +53,11 @@ export function SectionHeader({
           {subtitle}
         </p>
       )}
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'var(--font-display)' }}>
         {title}
       </h1>
       {description && (
-        <p className="text-lg text-gray-500 max-w-3xl">
+        <p className="text-lg text-gray-500 max-w-3xl" style={{ fontSize: 'var(--fs-lg)', color: 'var(--muted)' }}>
           {description}
         </p>
       )}

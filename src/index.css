@@ -2,16 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Colombia EdTech Design System - All colors, gradients, fonts, etc defined here. 
-All colors MUST be HSL. Brand palette with semantic tokens.
-*/
+/* Colombia EdTech Design System - Tailwind integration with brand tokens */
 
 @layer base {
   :root {
-    /* Brand Colors */
+    /* Brand Colors - HSL values for Tailwind */
     --primary-900: 213 100% 27%;  /* #003889 */
     --primary-700: 225 85% 43%;   /* #0B47CE */
-    --accent: 350 91% 60%;        /* #F73C5C */
+    --accent-brand: 350 91% 60%;  /* #F73C5C */
     --sand: 28 50% 92%;           /* #F4E8DD */
     
     /* Grays */
@@ -21,8 +19,8 @@ All colors MUST be HSL. Brand palette with semantic tokens.
     --gray-300: 220 13% 82%;      /* #D1D5DB */
     --gray-50: 0 0% 98%;          /* #FAFAFA */
 
-    /* Semantic tokens */
-    --background: var(--gray-50);
+    /* Semantic tokens for Tailwind components */
+    --background: 0 0% 100%;
     --foreground: var(--gray-900);
 
     --card: 0 0% 100%;
@@ -40,7 +38,7 @@ All colors MUST be HSL. Brand palette with semantic tokens.
     --muted: var(--gray-300);
     --muted-foreground: var(--gray-500);
 
-    --accent-color: var(--accent);
+    --accent: var(--accent-brand);
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -48,38 +46,18 @@ All colors MUST be HSL. Brand palette with semantic tokens.
 
     --border: var(--gray-300);
     --input: var(--gray-300);
-    --ring: var(--primary-700);
+    --ring: var(--accent-brand);
 
-    --radius: 0.5rem;
-    
-    /* Custom gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary-900)), hsl(var(--primary-700)));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(350 91% 70%));
-    --gradient-sand: linear-gradient(180deg, hsl(var(--sand)), hsl(28 50% 88%));
-    
-    /* Shadows */
-    --shadow-card: 0 4px 6px -1px hsl(var(--gray-900) / 0.1), 0 2px 4px -1px hsl(var(--gray-900) / 0.06);
-    --shadow-lg: 0 10px 15px -3px hsl(var(--gray-900) / 0.1), 0 4px 6px -2px hsl(var(--gray-900) / 0.05);
-    --shadow-brand: 0 10px 25px -5px hsl(var(--primary-700) / 0.25);
-    
-    /* Transitions */
-    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 0.75rem;
 
+    /* Sidebar variables */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -102,7 +80,7 @@ All colors MUST be HSL. Brand palette with semantic tokens.
     --muted: var(--gray-700);
     --muted-foreground: var(--gray-300);
 
-    --accent-color: var(--accent);
+    --accent: var(--accent-brand);
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
@@ -110,7 +88,8 @@ All colors MUST be HSL. Brand palette with semantic tokens.
 
     --border: var(--gray-700);
     --input: var(--gray-700);
-    --ring: var(--primary-700);
+    --ring: var(--accent-brand);
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -128,6 +107,12 @@ All colors MUST be HSL. Brand palette with semantic tokens.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: var(--font-ui, "Poppins", system-ui, sans-serif);
+  }
+  
+  /* Ensure proper font loading */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display, var(--font-ui, "Poppins", system-ui, sans-serif));
   }
 }
