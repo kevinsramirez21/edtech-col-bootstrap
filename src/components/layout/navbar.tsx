@@ -1,28 +1,15 @@
 import * as React from "react"
 import { Link, useLocation } from "react-router-dom"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { CTAButton } from "@/components/ui/cta-button"
 import { ColombiaEdTechLogo } from "@/components/ui/placeholder-logo"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 
 const navItems = [
   { name: "Somos", href: "/somos" },
   { name: "Asociados", href: "/asociados" },
   { name: "Aliados", href: "/aliados" },
   { name: "Voluntariado", href: "/voluntariado" },
-]
-
-const ctaButtons = [
-  { name: "Asociarme", href: "/asociados#form" },
-  { name: "Proponer alianza", href: "/aliados#form" },
-  { name: "Aplicar a voluntariado", href: "/voluntariado#form" },
 ]
 
 export function Navbar() {

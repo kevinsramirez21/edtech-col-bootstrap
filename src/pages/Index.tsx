@@ -6,6 +6,8 @@ import { KPI } from "@/components/ui/kpi";
 import { LogoGrid } from "@/components/ui/logo-grid";
 import { Link } from "react-router-dom";
 import { ArrowRight, Users, Target, Lightbulb, Monitor, Edit, Code } from "lucide-react";
+import { ColombiaEdTechLogo } from "@/components/ui/placeholder-logo";
+import heroBackground from "@/assets/hero-background.jpg";
 
 const segmentationCards = [
   {
@@ -53,47 +55,33 @@ const Index = () => {
   return (
     <>
       {/* Hero Section */}
-      <Section className="section py-16 lg:py-24" style={{ background: 'var(--color-sand)' }}>
-        <div className="text-center max-w-4xl mx-auto">
+      <Section 
+        className="section py-16 lg:py-24 relative text-white overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 56, 137, 0.8), rgba(11, 71, 206, 0.8)), url(${heroBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="text-center max-w-4xl mx-auto relative z-10">
           <div className="mb-8">
-            <div className="w-32 h-16 mx-auto mb-8 bg-white rounded-lg shadow-sm flex items-center justify-center">
-              <div className="text-2xl font-bold">
-                <span style={{ color: 'var(--color-accent)' }}>ET</span>
-                <span style={{ color: 'var(--color-primary-700)' }}> Colombia EdTech.</span>
-              </div>
+            <div className="w-64 h-32 mx-auto mb-8 bg-white/10 backdrop-blur-sm rounded-lg shadow-sm flex items-center justify-center p-4">
+              <ColombiaEdTechLogo 
+                variant="text-only" 
+                colorScheme="white" 
+                size="xl"
+              />
             </div>
           </div>
           
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary-700)' }}>
-            ¿Sabías qué las <span style={{ color: 'var(--color-accent)' }}>EdTechs Colombianas</span> impactan a más de <span style={{ color: 'var(--color-primary-700)' }}>15M de personas en más de 25 países?</span> Aún así, no llegamos a las personas que más lo necesitan.
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-white">
+            ¿Sabías qué las <span className="text-[#F73C5C]">EdTechs Colombianas</span> impactan a más de <span className="text-white font-bold">15M de personas en más de 25 países?</span> Aún así, no llegamos a las personas que más lo necesitan.
           </h1>
           
-          <p className="text-lg mb-8 max-w-3xl mx-auto" style={{ fontSize: 'var(--fs-lg)', color: 'var(--muted)' }}>
+          <p className="text-lg mb-8 max-w-3xl mx-auto text-white/90 leading-relaxed">
             En Colombia EdTech promovemos la inversión, colaboración y crecimiento de todas las organizaciones que reconocen que juntos podemos construir un ecosistema educativo para todas las personas.
           </p>
-          
-          <div className="mb-8 w-full max-w-2xl mx-auto">
-            <p className="text-xl font-semibold mb-6" style={{ color: 'var(--color-primary-700)' }}>
-              QUIERO CONOCER CÓMO SER PARTE DE COLOMBIA EDTECH
-            </p>
-            <div className="grid gap-4">
-              <CTAButton size="lg" asChild className="w-full">
-                <Link to="/asociados">
-                  Asociarme como EdTech
-                </Link>
-              </CTAButton>
-              <CTAButton variant="accent" size="lg" asChild className="w-full">
-                <Link to="/aliados">
-                  Proponer alianza
-                </Link>
-              </CTAButton>
-              <CTAButton variant="accent" size="lg" asChild className="w-full">
-                <Link to="/voluntariado">
-                  Aplicar a voluntariado
-                </Link>
-              </CTAButton>
-            </div>
-          </div>
         </div>
       </Section>
 
@@ -182,28 +170,6 @@ const Index = () => {
           <p className="text-lg font-semibold mb-8" style={{ color: 'var(--color-primary-700)' }}>
             Juntos, transformamos el aprendizaje en una experiencia accesible, personalizada y relevante para todos.
           </p>
-          <div className="mb-8 w-full max-w-2xl mx-auto">
-            <p className="text-lg font-semibold mb-6" style={{ color: 'var(--color-primary-700)' }}>
-              Conoce cómo ser parte de esta revolución de la educación
-            </p>
-            <div className="grid gap-4">
-              <CTAButton size="lg" asChild className="w-full">
-                <Link to="/asociados">
-                  Asociarme como EdTech
-                </Link>
-              </CTAButton>
-              <CTAButton variant="accent" size="lg" asChild className="w-full">
-                <Link to="/aliados">
-                  Proponer alianza
-                </Link>
-              </CTAButton>
-              <CTAButton variant="accent" size="lg" asChild className="w-full">
-                <Link to="/voluntariado">
-                  Aplicar a voluntariado
-                </Link>
-              </CTAButton>
-            </div>
-          </div>
         </div>
       </Section>
     </>
