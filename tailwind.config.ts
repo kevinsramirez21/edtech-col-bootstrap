@@ -24,6 +24,21 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				
+				/* Brand colors */
+				'primary-900': 'hsl(var(--primary-900))',
+				'primary-700': 'hsl(var(--primary-700))',
+				'accent-brand': 'hsl(var(--accent))',
+				sand: 'hsl(var(--sand))',
+				
+				/* Gray scale */
+				'gray-900': 'hsl(var(--gray-900))',
+				'gray-700': 'hsl(var(--gray-700))',
+				'gray-500': 'hsl(var(--gray-500))',
+				'gray-300': 'hsl(var(--gray-300))',
+				'gray-50': 'hsl(var(--gray-50))',
+				
+				/* Semantic tokens */
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -41,7 +56,7 @@ export default {
 					foreground: 'hsl(var(--muted-foreground))'
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
+					DEFAULT: 'hsl(var(--accent-color))',
 					foreground: 'hsl(var(--accent-foreground))'
 				},
 				popover: {
