@@ -132,10 +132,10 @@ const Asociados = () => {
       </Section>
       
       {/* Hero */}
-      <Section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 text-white relative overflow-hidden">
+      <Section className="py-20 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden">
         {/* Background placeholder for conference image */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-black/30">
-          <div className="w-full h-full bg-gradient-to-br from-[hsl(var(--color-primary-900))] to-[hsl(var(--color-primary-700))]/80"></div>
+          <div className="w-full h-full bg-gradient-to-br from-[#003889] to-[#0B47CE]/80"></div>
         </div>
         <div className="relative z-10 container max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -145,7 +145,7 @@ const Asociados = () => {
               </h1>
               <p className="text-xl mb-8 leading-relaxed opacity-90">
                 Si eres una organización con o sin ánimo de lucro que está 
-                <strong className="text-[hsl(var(--color-accent))]"> TRANSFORMANDO</strong> la educación, 
+                <strong className="text-[#F73C5C]"> TRANSFORMANDO</strong> la educación, 
                 bienvenido al mundo de los asociados
               </p>
             </div>
@@ -171,10 +171,10 @@ const Asociados = () => {
                 Tenemos herramientas capaz de derribar las barreras que han limitado generaciones enteras, una herramienta para abrir puertas a un aprendizaje accesible, personalizado y relevante para todos, y esta herramienta es ...
               </p>
               <h2 className="text-4xl font-bold mb-4">
-                <span className="text-[hsl(var(--color-accent))]">La tecnología</span>
+                <span className="text-[#F73C5C]">La tecnología</span>
               </h2>
-              <p className="text-lg text-[hsl(var(--color-primary-700))] font-medium mb-6">
-                Pero la tecnología, por sí sola, <span className="text-[hsl(var(--color-accent))] font-bold">no es suficiente.</span>
+              <p className="text-lg text-[#0B47CE] font-medium mb-6">
+                Pero la tecnología, por sí sola, <span className="text-[#F73C5C] font-bold">no es suficiente.</span>
               </p>
             </div>
             <div className="relative">
@@ -190,10 +190,10 @@ const Asociados = () => {
 
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold mb-6">
-              <span className="text-[hsl(var(--color-accent))]">El verdadero cambio necesita unión, sinergia, comunidad</span>
+              <span className="text-[#F73C5C]">El verdadero cambio necesita unión, sinergia, comunidad</span>
             </h3>
-            <p className="text-lg text-[hsl(var(--color-primary-700))] max-w-3xl mx-auto">
-              Aquí es donde entras tú, entra tu organización, por que el éxito está garantizado cuando <span className="text-[hsl(var(--color-accent))] font-bold">trabajamos juntos</span>
+            <p className="text-lg text-[#0B47CE] max-w-3xl mx-auto">
+              Aquí es donde entras tú, entra tu organización, por que el éxito está garantizado cuando <span className="text-[#F73C5C] font-bold">trabajamos juntos</span>
             </p>
           </div>
 
@@ -210,7 +210,7 @@ const Asociados = () => {
       </Section>
 
       {/* CTA Section */}
-      <Section className="py-12 bg-[hsl(var(--color-sand))]">
+      <Section className="py-12 bg-[#F4E8DD]">
         <div className="container text-center">
           <CTAButton 
             size="lg"
@@ -229,7 +229,7 @@ const Asociados = () => {
       <Section className="py-16 bg-white">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            <span className="text-[hsl(var(--color-accent))]">Algunos testimonios de nuestros asociados</span>
+            <span className="text-[#F73C5C]">Algunos testimonios de nuestros asociados</span>
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -238,8 +238,8 @@ const Asociados = () => {
                 key={index}
                 className={`p-8 rounded-lg text-white ${
                   testimonio.color === 'blue' 
-                    ? 'bg-[hsl(var(--color-primary-700))]' 
-                    : 'bg-[hsl(var(--color-accent))]'
+                    ? 'bg-[#0B47CE]' 
+                    : 'bg-[#F73C5C]'
                 }`}
               >
                 <div className="flex items-center mb-4">
@@ -261,7 +261,7 @@ const Asociados = () => {
       </Section>
 
       {/* Problemas Reales */}
-      <Section className="py-16 bg-[hsl(var(--color-primary-700))] text-white">
+      <Section className="py-16 bg-[#0B47CE] text-white">
         <div className="container max-w-6xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Soluciones reales para problemas reales
@@ -301,7 +301,7 @@ const Asociados = () => {
       <Section className="py-16 bg-white">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            <span className="text-[hsl(var(--color-accent))]">¿Cómo podemos hacer para ayudarte?</span>
+            <span className="text-[#F73C5C]">¿Cómo podemos hacer para ayudarte?</span>
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -334,12 +334,12 @@ const Asociados = () => {
       </Section>
 
       {/* Precio */}
-      <Section className="py-16 bg-[hsl(var(--color-sand))]">
+      <Section className="py-16 bg-[#F4E8DD]">
         <div className="container text-center max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--color-primary-700))] mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0B47CE] mb-6">
             La mejor inversión costo-eficiente para una EdTech en Colombia
           </h2>
-          <p className="text-2xl font-bold text-[hsl(var(--color-accent))] mb-8">
+          <p className="text-2xl font-bold text-[#F73C5C] mb-8">
             Sólo pagas 1SMLV/ Año para pertenecer
           </p>
           <CTAButton 
@@ -353,14 +353,14 @@ const Asociados = () => {
             </Link>
           </CTAButton>
 
-          <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--color-primary-700))] mb-8">
-            ¿Qué requisitos debe cumplir tu organización para ser <span className="text-[hsl(var(--color-accent))]">Asociado?</span>
+          <h3 className="text-2xl md:text-3xl font-bold text-[#0B47CE] mb-8">
+            ¿Qué requisitos debe cumplir tu organización para ser <span className="text-[#F73C5C]">Asociado?</span>
           </h3>
           
           <div className="grid md:grid-cols-2 gap-6 text-left">
             {requirements.map((requirement, index) => (
               <div key={index} className="flex items-start space-x-3">
-                <CheckCircle className="w-6 h-6 text-[hsl(var(--color-primary-700))] mt-1 flex-shrink-0" />
+                <CheckCircle className="w-6 h-6 text-[#0B47CE] mt-1 flex-shrink-0" />
                 <p className="text-gray-800 text-base">{requirement}</p>
               </div>
             ))}
@@ -369,7 +369,7 @@ const Asociados = () => {
       </Section>
 
       {/* Why Associate Now */}
-      <Section className="py-16 bg-[hsl(var(--color-primary-700))] text-white">
+      <Section className="py-16 bg-[#0B47CE] text-white">
         <div className="container max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">¿Por que asociarte ahora?</h2>
           
@@ -418,7 +418,7 @@ const Asociados = () => {
             <h3 className="text-3xl font-bold mb-8">Bienvenido</h3>
             <CTAButton 
               size="lg"
-              className="bg-white text-[hsl(var(--color-primary-700))] hover:bg-gray-100"
+              className="bg-white text-[#0B47CE] hover:bg-gray-100"
               onClick={handleAssociateClick}
               asChild
             >
@@ -431,7 +431,7 @@ const Asociados = () => {
       </Section>
 
       {/* Formulario */}
-      <div id="form" className="py-16 bg-[hsl(var(--color-sand))]">
+      <div id="form" className="py-16 bg-[#F4E8DD]">
         <div className="container max-w-2xl mx-auto text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">¿Quieres asociarte?</h3>
           <p className="text-gray-600 mb-6">

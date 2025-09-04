@@ -102,10 +102,10 @@ const Aliados = () => {
       </Section>
       
       {/* Hero */}
-      <Section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 text-white relative overflow-hidden">
+      <Section className="py-20 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden">
         {/* Background placeholder for conference image */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-black/30">
-          <div className="w-full h-full bg-gradient-to-br from-[hsl(var(--color-primary-900))] to-[hsl(var(--color-primary-700))]/80"></div>
+          <div className="w-full h-full bg-gradient-to-br from-[#003889] to-[#0B47CE]/80"></div>
         </div>
         <div className="relative z-10 container max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -115,8 +115,8 @@ const Aliados = () => {
               </h1>
               <p className="text-xl mb-8 leading-relaxed opacity-90">
                 Si eres una entidad pública o privada que quiere 
-                <strong className="text-[hsl(var(--color-accent))]"> CONTRIBUIR</strong> para que las EdTech cumplan su misión, 
-                bienvenido al mundo de los <strong className="text-[hsl(var(--color-accent))]">ALIADOS</strong>
+                <strong className="text-[#F73C5C]"> CONTRIBUIR</strong> para que las EdTech cumplan su misión, 
+                bienvenido al mundo de los <strong className="text-[#F73C5C]">ALIADOS</strong>
               </p>
             </div>
             <div className="relative">
@@ -136,22 +136,22 @@ const Aliados = () => {
       <Section className="py-16 bg-white">
         <div className="container max-w-6xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            <span className="text-[hsl(var(--color-accent))]">¿Por que unirte como aliado a Colombia Edtech?</span>
+            <span className="text-[#F73C5C]">¿Por que unirte como aliado a Colombia Edtech?</span>
           </h2>
           
           <div className="max-w-4xl mx-auto mb-12">
-            <p className="text-lg text-[hsl(var(--color-primary-700))] mb-4">
-              Si estás buscando una manera de <span className="text-[hsl(var(--color-accent))] font-bold">dejar una huella real</span> y <span className="text-[hsl(var(--color-primary-700))]">aportar al cambio en la educación de Latinoamérica</span>, <span className="text-[hsl(var(--color-accent))] font-bold">esta es tu oportunidad.</span>
+            <p className="text-lg text-[#0B47CE] mb-4">
+              Si estás buscando una manera de <span className="text-[#F73C5C] font-bold">dejar una huella real</span> y <span className="text-[#0B47CE]">aportar al cambio en la educación de Latinoamérica</span>, <span className="text-[#F73C5C] font-bold">esta es tu oportunidad.</span>
             </p>
             
             <div className="bg-white border-2 border-gray-200 rounded-lg p-8 text-left">
               <div className="space-y-4">
                 <p className="text-lg">
-                  El mercado EdTech en América Latina <span className="text-[hsl(var(--color-primary-700))] font-bold">está experimentando un crecimiento significativo.</span> En 2023, <span className="text-[hsl(var(--color-primary-700))] font-bold">este mercado generó</span> <span className="text-[hsl(var(--color-accent))] font-bold">ingresos de aproximadamente 2,645 millones de dólares</span>, <span className="text-[hsl(var(--color-primary-700))]">y se espera que continúe creciendo a una tasa compuesta anual (CAGR)</span> <span className="text-[hsl(var(--color-primary-700))] font-bold">del 15.3% hasta alcanzar 7,156 millones de dólares en 2030.</span>
+                  El mercado EdTech en América Latina <span className="text-[#0B47CE] font-bold">está experimentando un crecimiento significativo.</span> En 2023, <span className="text-[#0B47CE] font-bold">este mercado generó</span> <span className="text-[#F73C5C] font-bold">ingresos de aproximadamente 2,645 millones de dólares</span>, <span className="text-[#0B47CE]">y se espera que continúe creciendo a una tasa compuesta anual (CAGR)</span> <span className="text-[#0B47CE] font-bold">del 15.3% hasta alcanzar 7,156 millones de dólares en 2030.</span>
                 </p>
                 
                 <p className="text-lg">
-                  Porque ser ALIADO no solo se trata de aportar dinero, recursos o contactos; se trata de <span className="text-[hsl(var(--color-accent))] font-bold">invertir en el futuro de miles de estudiantes, docentes, instituciones y emprendedores</span> <span className="text-[hsl(var(--color-primary-700))]">que están creando el futuro.</span>
+                  Porque ser ALIADO no solo se trata de aportar dinero, recursos o contactos; se trata de <span className="text-[#F73C5C] font-bold">invertir en el futuro de miles de estudiantes, docentes, instituciones y emprendedores</span> <span className="text-[#0B47CE]">que están creando el futuro.</span>
                 </p>
               </div>
             </div>
@@ -160,22 +160,22 @@ const Aliados = () => {
       </Section>
 
       {/* Beneficios */}
-      <Section className="py-16 bg-[hsl(var(--color-sand))]">
+      <Section className="py-16 bg-[#F4E8DD]">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            <span className="text-[hsl(var(--color-primary-700))]">¿Qué gana tu entidad siendo</span><br/>
-            <span className="text-[hsl(var(--color-primary-700))]">ALIADO</span> <span className="text-[hsl(var(--color-primary-700))]">de Colombia EdTech?</span>
+            <span className="text-[#0B47CE]">¿Qué gana tu entidad siendo</span><br/>
+            <span className="text-[#0B47CE]">ALIADO</span> <span className="text-[#0B47CE]">de Colombia EdTech?</span>
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {beneficios.map((beneficio, index) => (
               <div key={index} className="bg-white/80 backdrop-blur-sm rounded-lg p-8">
                 <div className="flex items-start space-x-4">
-                  <div className="w-16 h-16 bg-[hsl(var(--color-accent))] rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-[#F73C5C] rounded-full flex items-center justify-center flex-shrink-0">
                     <beneficio.icon className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-[hsl(var(--color-primary-700))] mb-3">
+                    <h3 className="text-xl font-bold text-[#0B47CE] mb-3">
                       {beneficio.title}
                     </h3>
                     <p className="text-gray-700 leading-relaxed">
@@ -190,7 +190,7 @@ const Aliados = () => {
       </Section>
 
       {/* Formas de aliarse */}
-      <Section className="py-16 bg-[hsl(var(--color-primary-700))] text-white">
+      <Section className="py-16 bg-[#0B47CE] text-white">
         <div className="container max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             ¿De qué formas te puedes ALIAR con Colombia EdTech?
@@ -200,7 +200,7 @@ const Aliados = () => {
             {formasAlianza.map((forma, index) => (
               <div key={index} className="text-left">
                 <div className="flex items-center mb-4">
-                  <div className="w-6 h-6 bg-[hsl(var(--color-accent))] rounded-full flex items-center justify-center mr-3">
+                  <div className="w-6 h-6 bg-[#F73C5C] rounded-full flex items-center justify-center mr-3">
                     <span className="text-white text-sm">✓</span>
                   </div>
                   <h3 className="text-xl font-bold">{forma.title}</h3>
@@ -225,7 +225,7 @@ const Aliados = () => {
           <div className="text-center mt-12">
             <CTAButton 
               size="lg"
-              className="bg-white text-[hsl(var(--color-primary-700))] hover:bg-gray-100"
+              className="bg-white text-[#0B47CE] hover:bg-gray-100"
               onClick={handleAllyContactClick}
               asChild
             >
@@ -238,7 +238,7 @@ const Aliados = () => {
       </Section>
 
       {/* Formulario */}
-      <div id="form" className="py-16 bg-[hsl(var(--color-sand))]">
+      <div id="form" className="py-16 bg-[#F4E8DD]">
         <div className="container max-w-2xl mx-auto text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">¿Quieres ser aliado?</h3>
           <p className="text-gray-600 mb-6">
