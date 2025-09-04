@@ -14,9 +14,28 @@ export function CTAButton({
   className, 
   variant = 'primary',
   size = 'lg',
+  asChild = false,
   ...props 
 }: CTAButtonProps) {
   const buttonVariant = variant === 'primary' ? 'brand' : variant === 'accent' ? 'cta' : 'hero'
+  
+  // When asChild is true, don't add extra elements that break React.Children.only
+  if (asChild) {
+    return (
+      <Button
+        variant={buttonVariant}
+        size={size}
+        className={cn(
+          "group relative overflow-hidden",
+          className
+        )}
+        asChild
+        {...props}
+      >
+        {children}
+      </Button>
+    )
+  }
   
   return (
     <Button
