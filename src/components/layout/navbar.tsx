@@ -19,7 +19,7 @@ const navItems = [
   { name: "Voluntariado", href: "/voluntariado" },
 ]
 
-const ctaOptions = [
+const ctaButtons = [
   { name: "Asociarme", href: "/asociados#form" },
   { name: "Proponer alianza", href: "/aliados#form" },
   { name: "Aplicar a voluntariado", href: "/voluntariado#form" },
@@ -53,7 +53,12 @@ export function Navbar() {
               className="flex items-center space-x-2 text-primary-900 hover:text-primary-700 transition-colors"
               aria-label="Colombia EdTech - Ir al inicio"
             >
-              <ColombiaEdTechLogo className="h-8 w-auto" />
+              <ColombiaEdTechLogo 
+                variant="text-only" 
+                colorScheme="blue" 
+                size="default"
+                className="h-8 w-auto" 
+              />
             </Link>
           </div>
 
@@ -76,25 +81,15 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex lg:items-center">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="brand" className="group">
-                  Ser parte
-                  <ChevronDown className="ml-1 w-4 h-4 transition-transform group-data-[state=open]:rotate-180" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                {ctaOptions.map((option) => (
-                  <DropdownMenuItem key={option.name} asChild>
-                    <Link to={option.href} className="w-full">
-                      {option.name}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+          {/* Desktop CTA Buttons */}
+          <div className="hidden lg:flex lg:items-center lg:space-x-2">
+            {ctaButtons.map((button) => (
+              <CTAButton key={button.name} variant="accent" size="default" asChild>
+                <Link to={button.href}>
+                  {button.name}
+                </Link>
+              </CTAButton>
+            ))}
           </div>
 
           {/* Mobile menu button */}
@@ -141,17 +136,17 @@ export function Navbar() {
             </div>
             <div className="border-t border-border/40 pt-4 space-y-2">
               <p className="px-3 text-sm font-medium text-gray-500 uppercase tracking-wider">
-                Ser parte
+                Únete a nosotros
               </p>
-              {ctaOptions.map((option) => (
-                <Link
-                  key={option.name}
-                  to={option.href}
-                  className="block px-3 py-2 rounded-md text-sm text-primary-700 hover:bg-primary-700/10 transition-colors focus:bg-primary-700/10 focus:outline-none focus:ring-2 focus:ring-primary-700"
-                >
-                  {option.name}
-                </Link>
-              ))}
+              <div className="grid gap-2 px-3">
+                {ctaButtons.map((button) => (
+                  <CTAButton key={button.name} variant="accent" size="default" asChild className="w-full justify-start">
+                    <Link to={button.href}>
+                      {button.name}
+                    </Link>
+                  </CTAButton>
+                ))}
+              </div>
             </div>
           </div>
         )}

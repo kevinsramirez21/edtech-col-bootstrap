@@ -53,7 +53,7 @@ const Index = () => {
   return (
     <>
       {/* Hero Section */}
-      <Section className="section py-16 lg:py-24 bg-gray-50">
+      <Section className="section py-16 lg:py-24" style={{ background: 'var(--color-sand)' }}>
         <div className="text-center max-w-4xl mx-auto">
           <div className="mb-8">
             <div className="w-32 h-16 mx-auto mb-8 bg-white rounded-lg shadow-sm flex items-center justify-center">
@@ -72,19 +72,33 @@ const Index = () => {
             En Colombia EdTech promovemos la inversión, colaboración y crecimiento de todas las organizaciones que reconocen que juntos podemos construir un ecosistema educativo para todas las personas.
           </p>
           
-          <div className="mb-8">
+          <div className="mb-8 w-full max-w-2xl mx-auto">
             <p className="text-xl font-semibold mb-6" style={{ color: 'var(--color-primary-700)' }}>
               QUIERO CONOCER CÓMO SER PARTE DE COLOMBIA EDTECH
             </p>
-            <button className="btn btn-primary px-8 py-3 text-lg font-semibold">
-              CONOCER MÁS
-            </button>
+            <div className="grid gap-4">
+              <CTAButton size="lg" asChild className="w-full">
+                <Link to="/asociados">
+                  Asociarme como EdTech
+                </Link>
+              </CTAButton>
+              <CTAButton variant="accent" size="lg" asChild className="w-full">
+                <Link to="/aliados">
+                  Proponer alianza
+                </Link>
+              </CTAButton>
+              <CTAButton variant="accent" size="lg" asChild className="w-full">
+                <Link to="/voluntariado">
+                  Aplicar a voluntariado
+                </Link>
+              </CTAButton>
+            </div>
           </div>
         </div>
       </Section>
 
       {/* Segmentation Section */}
-      <Section className="section bg-white">
+      <Section className="section" style={{ background: 'var(--color-sand)' }}>
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary-700)' }}>
             Ayudamos a crear un sistema educativo que forme estudiantes, docentes, instituciones y organizaciones para los retos de la nueva era
@@ -135,7 +149,7 @@ const Index = () => {
       </Section>
 
       {/* Why Change Section */}
-      <Section className="section bg-white">
+      <Section className="section" style={{ background: 'var(--color-sand)' }}>
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary-700)' }}>
             ¿Por qué seguir haciendo lo mismo si el mundo ya cambió?
@@ -168,14 +182,28 @@ const Index = () => {
           <p className="text-lg font-semibold mb-8" style={{ color: 'var(--color-primary-700)' }}>
             Juntos, transformamos el aprendizaje en una experiencia accesible, personalizada y relevante para todos.
           </p>
-          <div className="mb-6">
-            <p className="text-lg font-semibold mb-4" style={{ color: 'var(--color-primary-700)' }}>
+          <div className="mb-8 w-full max-w-2xl mx-auto">
+            <p className="text-lg font-semibold mb-6" style={{ color: 'var(--color-primary-700)' }}>
               Conoce cómo ser parte de esta revolución de la educación
             </p>
+            <div className="grid gap-4">
+              <CTAButton size="lg" asChild className="w-full">
+                <Link to="/asociados">
+                  Asociarme como EdTech
+                </Link>
+              </CTAButton>
+              <CTAButton variant="accent" size="lg" asChild className="w-full">
+                <Link to="/aliados">
+                  Proponer alianza
+                </Link>
+              </CTAButton>
+              <CTAButton variant="accent" size="lg" asChild className="w-full">
+                <Link to="/voluntariado">
+                  Aplicar a voluntariado
+                </Link>
+              </CTAButton>
+            </div>
           </div>
-          <button className="btn btn-primary px-8 py-3 text-lg font-semibold">
-            CONOCER MÁS
-          </button>
         </div>
       </Section>
     </>
