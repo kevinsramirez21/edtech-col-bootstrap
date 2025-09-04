@@ -100,6 +100,20 @@ export function trackCTA(action: string, label?: string) {
   }
 }
 
+// Default Open Graph helper
+export function getDefaultOpenGraph() {
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://colombiaedtech.org';
+  
+  return {
+    title: 'Colombia EdTech | Transformando la educación con tecnología',
+    description: 'Fortalecemos el ecosistema EdTech colombiano conectando organizaciones, impulsando la investigación y desarrollando políticas públicas',
+    image: `${baseUrl}/og-image.jpg`,
+    url: baseUrl,
+    siteName: 'Colombia EdTech',
+    type: 'website'
+  };
+}
+
 // Event tracking constants
 export const GA_EVENTS = {
   CTA_ASSOCIATE_CLICK: 'cta_associate_click',

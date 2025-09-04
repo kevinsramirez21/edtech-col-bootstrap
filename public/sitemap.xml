@@ -2,32 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://colombiaedtech.org/</loc>
-    <lastmod>2024-03-15</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-01-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://colombiaedtech.org/somos</loc>
-    <lastmod>2024-03-15</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2025-01-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://colombiaedtech.org/asociados</loc>
-    <lastmod>2024-03-15</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2025-01-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://colombiaedtech.org/aliados</loc>
-    <lastmod>2024-03-15</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2025-01-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://colombiaedtech.org/voluntariado</loc>
-    <lastmod>2024-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2025-01-24</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
