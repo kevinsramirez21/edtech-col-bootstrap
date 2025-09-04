@@ -17,10 +17,6 @@ const navItems = [
   { name: "Asociados", href: "/asociados" },
   { name: "Aliados", href: "/aliados" },
   { name: "Voluntariado", href: "/voluntariado" },
-  { name: "Investigación & PoPu", href: "/investigacion-politica-publica" },
-  { name: "Blog", href: "/blog" },
-  { name: "Eventos", href: "/eventos" },
-  { name: "Contacto", href: "/contacto" },
 ]
 
 const ctaOptions = [

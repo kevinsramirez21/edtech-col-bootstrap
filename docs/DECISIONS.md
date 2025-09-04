@@ -287,3 +287,33 @@ Las decisiones arquitectónicas se basaron en:
 5. **User Experience**: Experiencia fluida en todos los dispositivos
 
 Esta arquitectura balancea complejidad técnica con mantenibilidad, priorizando la experiencia del usuario y la eficiencia del desarrollo.
+
+## Reducción de Alcance MVP (Scoping)
+
+**Fecha:** 2024-03-15  
+**Decisión:** Se redujo el alcance inicial del MVP a solo 5 rutas activas:
+- `/` (Home)
+- `/somos`
+- `/asociados` 
+- `/aliados`
+- `/voluntariado`
+
+**Rutas deshabilitadas temporalmente:**
+- `/investigacion-politica-publica`
+- `/blog` y `/blog/[slug]`
+- `/eventos` y `/eventos/[slug]`
+- `/contacto`
+- `/legal`
+
+**Archivos afectados:**
+- Componentes de páginas eliminados de `src/App.tsx`
+- Enlaces removidos de navegación (`navbar.tsx`) y footer (`footer.tsx`)
+- Sitemap actualizado para reflejar solo rutas activas (`public/sitemap.xml`)
+
+**Para reactivar rutas más tarde:**
+1. Restaurar imports de páginas en `src/App.tsx`
+2. Añadir rutas correspondientes al routing JSX
+3. Actualizar navegación en `navbar.tsx` y `footer.tsx` 
+4. Regenerar sitemap con todas las rutas
+5. Verificar que todos los archivos MDX existan en `/content/copies/`
+6. Restaurar archivos de página desde `src/pages/_unused/` si se creó esa carpeta

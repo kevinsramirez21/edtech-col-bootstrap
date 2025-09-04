@@ -11,13 +11,6 @@ const quickLinks = [
   { name: "Voluntariado", href: "/voluntariado" },
 ]
 
-const resources = [
-  { name: "Investigación & PoPu", href: "/investigacion-politica-publica" },
-  { name: "Blog", href: "/blog" },
-  { name: "Eventos", href: "/eventos" },
-  { name: "Contacto", href: "/contacto" },
-]
-
 const socialLinks = [
   { name: "LinkedIn", href: "#", icon: Linkedin },
   { name: "Twitter", href: "#", icon: Twitter },
@@ -33,7 +26,7 @@ export function Footer() {
       </h2>
       
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           
           {/* Brand Section */}
           <div className="lg:col-span-2">
@@ -81,24 +74,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
-          <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-              Recursos
-            </h3>
-            <ul className="space-y-3">
-              {resources.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-gray-400 hover:text-white transition-colors focus:text-white focus:outline-none focus:ring-2 focus:ring-accent-brand rounded px-1 py-1"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
         {/* Newsletter Section */}
@@ -133,12 +108,6 @@ export function Footer() {
               <p className="text-gray-400 text-sm">
                 © {new Date().getFullYear()} Colombia EdTech. Todos los derechos reservados.
               </p>
-              <Link
-                to="/legal"
-                className="text-gray-400 hover:text-white text-sm transition-colors focus:text-white focus:outline-none focus:ring-2 focus:ring-accent-brand rounded px-1 py-1"
-              >
-                Aviso Legal
-              </Link>
             </div>
 
             {/* Social Links */}

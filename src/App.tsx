@@ -13,13 +13,6 @@ import Somos from "./pages/Somos";
 import Asociados from "./pages/Asociados";
 import Aliados from "./pages/Aliados";
 import Voluntariado from "./pages/Voluntariado";
-import InvestigacionPoliticaPublica from "./pages/InvestigacionPoliticaPublica";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import Eventos from "./pages/Eventos";
-import EventoDetail from "./pages/EventoDetail";
-import Contacto from "./pages/Contacto";
-import Legal from "./pages/Legal";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,13 +33,6 @@ const App = () => (
               <Route path="/asociados" element={<Asociados />} />
               <Route path="/aliados" element={<Aliados />} />
               <Route path="/voluntariado" element={<Voluntariado />} />
-              <Route path="/investigacion-politica-publica" element={<InvestigacionPoliticaPublica />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="/eventos" element={<Eventos />} />
-              <Route path="/eventos/:slug" element={<EventoDetail />} />
-              <Route path="/contacto" element={<Contacto />} />
-              <Route path="/legal" element={<Legal />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
