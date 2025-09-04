@@ -82,14 +82,8 @@ export function Navbar() {
           </div>
 
           {/* Desktop CTA Buttons */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-2">
-            {ctaButtons.map((button) => (
-              <CTAButton key={button.name} variant="accent" size="default" asChild>
-                <Link to={button.href}>
-                  {button.name}
-                </Link>
-              </CTAButton>
-            ))}
+          <div className="hidden lg:flex lg:items-center">
+            {/* Removed CTA buttons as requested */}
           </div>
 
           {/* Mobile menu button */}
@@ -117,7 +111,7 @@ export function Navbar() {
             id="mobile-menu"
             className="lg:hidden border-t border-border/40 py-4"
           >
-            <div className="space-y-2 pb-4">
+            <div className="space-y-2">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -133,20 +127,6 @@ export function Navbar() {
                   {item.name}
                 </Link>
               ))}
-            </div>
-            <div className="border-t border-border/40 pt-4 space-y-2">
-              <p className="px-3 text-sm font-medium text-gray-500 uppercase tracking-wider">
-                Únete a nosotros
-              </p>
-              <div className="grid gap-2 px-3">
-                {ctaButtons.map((button) => (
-                  <CTAButton key={button.name} variant="accent" size="default" asChild className="w-full justify-start">
-                    <Link to={button.href}>
-                      {button.name}
-                    </Link>
-                  </CTAButton>
-                ))}
-              </div>
             </div>
           </div>
         )}
