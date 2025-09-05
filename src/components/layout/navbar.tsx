@@ -1,9 +1,9 @@
 import * as React from "react"
 import { Link, useLocation } from "react-router-dom"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Users } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { ColombiaEdTechLogo } from "@/components/ui/placeholder-logo"
+import { OptimizedImage } from "@/components/ui/optimized-image"
 
 const navItems = [
   { name: "Somos", href: "/somos" },
@@ -23,54 +23,63 @@ export function Navbar() {
   }, [location.pathname])
 
   return (
-    <header 
-      className="sticky top-0 z-50 w-full border-b"
-      style={{ 
-        borderColor: 'var(--border)',
-        background: 'color-mix(in srgb, var(--bg) 80%, transparent)',
-        backdropFilter: 'blur(8px)'
-      }}
-    >
-      <nav className="container" aria-label="Navegación principal">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-gray-300/20 shadow-lg shadow-primary-900/5">
+      <nav className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
+        <div className="flex h-20 items-center justify-between">
+          {/* Logo Premium */}
           <div className="flex-shrink-0">
             <Link 
               to="/" 
-              className="flex items-center space-x-2 text-primary-900 hover:text-primary-700 transition-colors"
+              className="flex items-center space-x-3 group transition-all duration-300"
               aria-label="Colombia EdTech - Ir al inicio"
             >
-              <ColombiaEdTechLogo 
-                variant="text-only" 
-                colorScheme="blue" 
-                size="default"
-                className="h-8 w-auto" 
-              />
+              <div className="relative">
+                <OptimizedImage
+                  src="/images/logo-colombia-edtech.svg"
+                  alt="Colombia EdTech"
+                  fallback="/placeholder.svg"
+                  className="h-10 w-auto transition-all duration-300 group-hover:scale-105"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-700 to-accent-brand opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></div>
+              </div>
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-8">
+          {/* Desktop Navigation - Premium Layout */}
+          <div className="hidden lg:flex lg:items-center lg:space-x-1">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary-700 focus:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 rounded px-2 py-1",
+                  "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group",
                   isActive(item.href)
-                    ? "text-primary-900 border-b-2 border-primary-700"
-                    : "text-gray-700"
+                    ? "text-primary-900 bg-gradient-to-r from-primary-700/10 to-accent-brand/10 shadow-sm"
+                    : "text-gray-700 hover:text-primary-900 hover:bg-primary-700/5"
                 )}
                 aria-current={isActive(item.href) ? "page" : undefined}
               >
-                {item.name}
+                <span className="relative z-10">{item.name}</span>
+                {isActive(item.href) && (
+                  <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-primary-700 to-accent-brand rounded-full"></div>
+                )}
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary-700/0 to-accent-brand/0 group-hover:from-primary-700/5 group-hover:to-accent-brand/5 transition-all duration-300"></div>
               </Link>
             ))}
           </div>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden lg:flex lg:items-center">
-            {/* Removed CTA buttons as requested */}
+          {/* Desktop CTA Premium */}
+          <div className="hidden lg:flex lg:items-center lg:space-x-4">
+            <Button 
+              asChild
+              className="bg-gradient-to-r from-primary-700 to-primary-900 hover:from-primary-900 hover:to-primary-700 text-white font-semibold px-6 py-2 rounded-lg shadow-lg shadow-primary-700/25 hover:shadow-xl hover:shadow-primary-700/40 transition-all duration-300 hover:scale-105"
+            >
+              <Link to="/asociados" className="flex items-center space-x-2">
+                <Users className="w-4 h-4" />
+                <span>Únete al Gremio</span>
+              </Link>
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -92,28 +101,40 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Premium */}
         {isMobileMenuOpen && (
           <div 
             id="mobile-menu"
-            className="lg:hidden border-t border-border/40 py-4"
+            className="lg:hidden border-t border-gray-300/20 bg-white/95 backdrop-blur-md"
           >
-            <div className="space-y-2">
+            <div className="px-4 py-6 space-y-3">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
                   className={cn(
-                    "block px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-muted focus:bg-muted focus:outline-none focus:ring-2 focus:ring-primary-700",
+                    "block px-4 py-3 rounded-lg text-base font-semibold transition-all duration-300",
                     isActive(item.href)
-                      ? "text-primary-900 bg-primary-700/10"
-                      : "text-gray-700"
+                      ? "text-primary-900 bg-gradient-to-r from-primary-700/15 to-accent-brand/15 shadow-sm"
+                      : "text-gray-700 hover:text-primary-900 hover:bg-primary-700/10"
                   )}
                   aria-current={isActive(item.href) ? "page" : undefined}
                 >
                   {item.name}
                 </Link>
               ))}
+              
+              <div className="pt-4 border-t border-gray-300/20">
+                <Button 
+                  asChild
+                  className="w-full bg-gradient-to-r from-primary-700 to-primary-900 text-white font-semibold py-3 rounded-lg shadow-lg shadow-primary-700/25"
+                >
+                  <Link to="/asociados" className="flex items-center justify-center space-x-2">
+                    <Users className="w-4 h-4" />
+                    <span>Únete al Gremio</span>
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         )}
