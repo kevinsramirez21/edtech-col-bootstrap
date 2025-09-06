@@ -40,7 +40,7 @@ export function Navbar() {
                     src="/images/logo-colombia-edtech-blue.png"
                     alt="Colombia EdTech - Asociación de Organizaciones EdTech"
                     fallback="/placeholder.svg"
-                    className="h-12 w-auto transition-all duration-300 group-hover:scale-105"
+                    className="h-16 w-auto transition-all duration-300 group-hover:scale-105"
                     priority
                   />
                 </div>
