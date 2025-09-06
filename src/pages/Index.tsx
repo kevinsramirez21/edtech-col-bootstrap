@@ -264,7 +264,7 @@ const Index = () => {
       </Section>
 
       {/* Mission & Impact Section Premium */}
-      <Section className="py-32 bg-white relative overflow-hidden">
+      <Section className="py-20 relative overflow-hidden" style={{backgroundColor: '#f4e8dd'}}>
         {/* Background Decorations */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-40 right-20 w-80 h-80 bg-primary-700 rounded-full blur-3xl"></div>
@@ -272,18 +272,18 @@ const Index = () => {
         </div>
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 text-primary-700 leading-tight">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
               ¿Por qué seguir haciendo lo mismo si el mundo ya{" "}
               <span className="text-primary-700">
                 cambió?
               </span>
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-12 rounded-full"></div>
-            <p className="text-xl lg:text-2xl xl:text-3xl max-w-5xl mx-auto mb-12 text-primary-900 leading-relaxed font-medium">
+            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+            <p className="text-xl lg:text-2xl max-w-5xl mx-auto mb-8 text-primary-900 leading-relaxed font-medium">
               La educación tradicional no está a la altura de las necesidades actuales de estudiantes, docentes e instituciones.
             </p>
-            <p className="text-xl lg:text-2xl xl:text-3xl max-w-6xl mx-auto mb-16 text-primary-900 font-semibold">
+            <p className="text-xl lg:text-2xl max-w-6xl mx-auto mb-12 text-primary-900 font-semibold">
               Nuestro ecosistema <strong className="text-accent-brand">CONECTA</strong> a ONGs, universidades, colegios, startups, scaleups, empresas y big tech para:
             </p>
           </div>
@@ -292,7 +292,7 @@ const Index = () => {
             {missionCards.map((card, index) => (
               <div key={index} className="group animate-fade-in-up" style={{animationDelay: `${index * 200}ms`}}>
                 <Card className="p-10 text-center border-0 shadow-2xl shadow-primary-900/15 hover:shadow-3xl hover:shadow-primary-700/25 transition-all duration-700 hover:scale-105 bg-gradient-to-br from-white to-gray-50/30 h-full group-hover:-translate-y-2">
-                  <div className="w-24 h-24 mx-auto mb-10 rounded-3xl bg-gradient-to-br from-accent-brand to-primary-700 flex items-center justify-center shadow-2xl shadow-accent-brand/40 group-hover:shadow-3xl group-hover:shadow-accent-brand/50 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-24 h-24 mx-auto mb-10 rounded-3xl bg-primary-700 flex items-center justify-center shadow-2xl shadow-primary-700/40 group-hover:shadow-3xl group-hover:shadow-primary-700/50 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
                     <card.icon className="w-12 h-12 text-white" />
                   </div>
                   <h3 className="text-2xl lg:text-3xl font-bold mb-3 text-primary-700">
