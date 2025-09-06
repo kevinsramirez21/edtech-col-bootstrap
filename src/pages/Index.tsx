@@ -158,30 +158,6 @@ const Index = () => {
         </div>
       </Section>
 
-      {/* Impact Stats Section */}
-      <Section className="py-24 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-8 text-primary-900 leading-tight">
-              El Impacto de Colombia EdTech
-            </h2>
-            <div className="w-24 h-1 bg-primary-700 mx-auto mb-8 rounded-full"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 max-w-5xl mx-auto">
-            {impactStats.map((stat, index) => (
-              <div key={index} className="text-center group animate-fade-in-up" style={{animationDelay: `${index * 200}ms`}}>
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-700 flex items-center justify-center group-hover:bg-accent-brand transition-all duration-300 group-hover:scale-110 shadow-lg">
-                  <stat.icon className="w-10 h-10 text-white" />
-                </div>
-                <div className="text-4xl lg:text-5xl font-bold text-primary-900 mb-3">{stat.number}</div>
-                <div className="text-xl font-semibold text-primary-700 mb-2">{stat.label}</div>
-                <div className="text-lg text-primary-900/80 font-medium">{stat.description}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
 
       {/* Segmentation Section Premium */}
       <Section className="py-32 bg-white relative overflow-hidden">
@@ -193,9 +169,9 @@ const Index = () => {
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 text-primary-900 leading-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 text-primary-700 leading-tight">
               Ayudamos a crear un sistema educativo que forme estudiantes, docentes, instituciones y organizaciones para los{" "}
-              <span className="bg-gradient-to-r from-primary-700 to-accent-brand bg-clip-text text-transparent">
+              <span className="text-primary-700">
                 retos de la nueva era
               </span>
             </h2>
@@ -217,17 +193,7 @@ const Index = () => {
                       alt={`${card.title} - Únete a Colombia EdTech como ${card.title.toLowerCase()}`}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-85 group-hover:opacity-75 transition-opacity duration-500`}></div>
-                    
-                    {/* Floating Icon Premium */}
-                    <div className="absolute top-8 right-8 p-4 bg-white/25 backdrop-blur-md rounded-2xl shadow-xl group-hover:scale-110 transition-all duration-300">
-                      <card.icon className="w-8 h-8 text-white" />
-                    </div>
-
-                    {/* Card Number Badge */}
-                    <div className="absolute top-8 left-8 w-12 h-12 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary-900 font-bold text-lg shadow-xl">
-                      {index + 1}
-                    </div>
+                    <div className="absolute inset-0 bg-primary-900/30 transition-opacity duration-500"></div>
                   </div>
                   
                   <CardContent className="p-10 text-center relative bg-gradient-to-br from-white to-gray-50/30">
@@ -244,7 +210,7 @@ const Index = () => {
                     </p>
                     <Button 
                       asChild
-                      className={`w-full bg-gradient-to-r ${card.gradient} hover:shadow-2xl hover:shadow-primary-700/40 text-white font-bold py-4 px-8 rounded-xl transition-all duration-500 hover:scale-105 text-lg group`}
+                      className="w-full bg-primary-900 hover:bg-primary-700 hover:shadow-2xl hover:shadow-primary-700/40 text-white font-bold py-4 px-8 rounded-xl transition-all duration-500 hover:scale-105 text-lg group"
                     >
                       <Link to={card.href} className="flex items-center justify-center space-x-3">
                         <span>{card.cta}</span>
@@ -274,7 +240,7 @@ const Index = () => {
           <div className="text-center">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 leading-tight animate-fade-in-up">
               Imagina un mundo donde todas las personas encuentran{" "}
-              <span className="bg-gradient-to-r from-accent-brand via-white to-accent-brand bg-clip-text text-transparent animate-gradient-x">
+              <span className="text-accent-brand">
                 propósito
               </span>{" "}
               en lo que hacen
@@ -305,9 +271,9 @@ const Index = () => {
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 text-primary-900 leading-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 text-primary-700 leading-tight">
               ¿Por qué seguir haciendo lo mismo si el mundo ya{" "}
-              <span className="bg-gradient-to-r from-accent-brand to-primary-700 bg-clip-text text-transparent">
+              <span className="text-primary-700">
                 cambió?
               </span>
             </h2>
