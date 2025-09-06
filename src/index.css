@@ -21,22 +21,22 @@
 
     /* Semantic tokens for Tailwind components */
     --background: 0 0% 100%;
-    --foreground: var(--gray-900);
+    --foreground: var(--primary-900);
 
     --card: 0 0% 100%;
-    --card-foreground: var(--gray-900);
+    --card-foreground: var(--primary-900);
 
     --popover: 0 0% 100%;
-    --popover-foreground: var(--gray-900);
+    --popover-foreground: var(--primary-900);
 
     --primary: var(--primary-700);
     --primary-foreground: 0 0% 100%;
 
     --secondary: var(--sand);
-    --secondary-foreground: var(--gray-900);
+    --secondary-foreground: var(--primary-900);
 
     --muted: var(--gray-300);
-    --muted-foreground: var(--gray-500);
+    --muted-foreground: var(--primary-900);
 
     --accent: var(--accent-brand);
     --accent-foreground: 0 0% 100%;

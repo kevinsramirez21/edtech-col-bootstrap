@@ -7,13 +7,13 @@ import { KPI } from "@/components/ui/kpi";
 import { LogoGrid } from "@/components/ui/logo-grid";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { Link } from "react-router-dom";
-import { ArrowRight, Users, Target, Lightbulb, Monitor, Edit, Code, Zap, Globe, Heart } from "lucide-react";
-import { ColombiaEdTechLogo } from "@/components/ui/placeholder-logo";
+import { ArrowRight, Users, Target, Lightbulb, Monitor, Edit, Code, Zap, Globe, Heart, Star, BookOpen, Rocket } from "lucide-react";
 
 const segmentationCards = [
   {
     title: "EdTechs",
-    description: "Si eres una organización con ánimo o sin ánimo de lucro que está TRANSFORMANDO la educación",
+    subtitle: "(Asociadas)",
+    description: "Si eres una organización con ánimo o sin ánimo de lucro que está TRANSFORMANDO la educación con tecnología",
     cta: "ÚNETE",
     href: "/asociados",
     image: "/images/edtechs-card.jpg",
@@ -22,6 +22,7 @@ const segmentationCards = [
   },
   {
     title: "Aliados", 
+    subtitle: "(Gobierno / Privados / Universidades / Cajas)",
     description: "Si eres una entidad pública o privada que quiere CONTRIBUIR para que las EdTech cumplan su misión",
     cta: "ÚNETE",
     href: "/aliados",
@@ -30,8 +31,9 @@ const segmentationCards = [
     gradient: "from-accent-brand to-primary-700"
   },
   {
-    title: "Voluntarios",
-    description: "Si eres experto, profesional o estudiante y quieres DONAR tu tiempo y talento en esta revolución",
+    title: "Voluntariado",
+    subtitle: "",
+    description: "Si eres experta/o, profesional o estudiante y quieres DONAR tu tiempo y talento en esta revolución",
     cta: "ÚNETE", 
     href: "/voluntariado",
     image: "/images/voluntarios-card.jpg",
@@ -43,18 +45,42 @@ const segmentationCards = [
 const missionCards = [
   {
     icon: Monitor,
-    title: "Transformar la educación con Tecnología",
-    description: "Impulsar soluciones tecnológicas que revolucionen el aprendizaje"
+    title: "Transformar",
+    subtitle: "la educación con Tecnología",
+    description: "Impulsar soluciones tecnológicas que revolucionen el aprendizaje y hagan la educación más accesible para todos."
   },
   {
     icon: Edit,
-    title: "Incidir en el diseño institucional de la educación regulada", 
-    description: "Influir en políticas educativas para crear un mejor sistema"
+    title: "Incidir", 
+    subtitle: "en el diseño institucional de la educación regulada",
+    description: "Influir en políticas educativas para crear un sistema más efectivo y adaptado a las necesidades actuales."
   },
   {
     icon: Code,
-    title: "Promover políticas públicas, Sandbox, y proyectos con el Estado",
-    description: "Colaborar con el gobierno en iniciativas de transformación educativa"
+    title: "Promover",
+    subtitle: "políticas públicas, sandbox y proyectos con el Estado",
+    description: "Colaborar estratégicamente con el gobierno en iniciativas que transformen la educación nacional."
+  }
+];
+
+const impactStats = [
+  {
+    icon: Users,
+    number: "15M+",
+    label: "Personas Impactadas",
+    description: "en toda Latinoamérica"
+  },
+  {
+    icon: Globe,
+    number: "25+",
+    label: "Países Alcanzados",
+    description: "con presencia EdTech colombiana"
+  },
+  {
+    icon: Rocket,
+    number: "70+",
+    label: "EdTechs Asociadas",
+    description: "transformando la educación"
   }
 ];
 
@@ -63,121 +89,168 @@ const Index = () => {
     <>
       {/* Hero Section Premium */}
       <Section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Optimized Component */}
+        {/* Background Image with Multiple Overlays */}
         <div className="absolute inset-0 z-0">
           <OptimizedImage
-            src="/images/hero-bg.jpg"
-            alt="Colombia EdTech - Transformando la educación con tecnología"
+            src="/images/hero-bg.JPG"
+            alt="Colombia EdTech - Transformando la educación con tecnología en Latinoamérica"
             className="w-full h-full object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-700/85 to-primary-900/95"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-900/50 to-transparent"></div>
+          {/* Gradient Overlays for Premium Effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/95 via-primary-700/90 to-primary-900/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-900/30 via-transparent to-accent-brand/20"></div>
         </div>
 
-        {/* Floating Elements */}
+        {/* Floating Elements Premium */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-20 h-20 bg-accent-brand/20 rounded-full blur-xl animate-pulse"></div>
-          <div className="absolute bottom-32 right-16 w-32 h-32 bg-primary-700/30 rounded-full blur-2xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-accent-brand/15 rounded-full blur-lg animate-pulse delay-500"></div>
+          <div className="absolute top-20 left-10 w-32 h-32 bg-accent-brand/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-32 right-16 w-40 h-40 bg-primary-700/30 rounded-full blur-3xl animate-float animation-delay-1000"></div>
+          <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-accent-brand/15 rounded-full blur-2xl animate-float animation-delay-500"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-28 h-28 bg-white/10 rounded-full blur-2xl animate-float animation-delay-2000"></div>
         </div>
 
-        <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
-          {/* Logo Premium Display */}
-          <div className="mb-12">
-            <div className="inline-flex p-8 bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl shadow-primary-900/30 border border-white/20">
-              <ColombiaEdTechLogo 
-                variant="text-only" 
-                colorScheme="white" 
-                size="xl"
-                className="h-16 w-auto"
+        <div className="relative z-10 text-center max-w-7xl mx-auto px-6">
+          {/* Logo Integration Premium */}
+          <div className="mb-16 animate-fade-in-up">
+            <div className="inline-flex p-10 bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl shadow-primary-900/40 border border-white/20 group hover:bg-white/15 transition-all duration-500">
+              <OptimizedImage
+                src="/images/logo-horizontal-blue-bg.png"
+                alt="Colombia EdTech - Asociación Líder de EdTechs en Latinoamérica"
+                className="h-16 sm:h-20 w-auto transition-transform duration-500 group-hover:scale-105"
+                priority
               />
             </div>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-tight text-white">
-            ¿Sabías que las <span className="text-accent-brand bg-gradient-to-r from-accent-brand to-white bg-clip-text text-transparent font-extrabold">EdTechs Colombianas</span> impactan a más de <span className="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent font-extrabold">15M de personas</span> en más de <span className="text-accent-brand font-extrabold">25 países?</span>
+          {/* Hero Typography Premium */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 leading-tight text-white animate-fade-in-up animation-delay-200">
+            ¿Sabías que las <span className="bg-gradient-to-r from-accent-brand via-white to-accent-brand bg-clip-text text-transparent font-extrabold animate-gradient-x">EdTechs colombianas</span> impactan a más de{" "}
+            <span className="bg-gradient-to-r from-white via-accent-brand to-white bg-clip-text text-transparent font-extrabold">15 millones de personas</span>{" "}
+            en más de <span className="text-accent-brand font-extrabold">25 países?</span>
           </h1>
           
-          <p className="text-xl lg:text-2xl mb-12 max-w-4xl mx-auto text-white/90 leading-relaxed font-medium">
-            Aún así, <strong className="text-accent-brand">no llegamos a las personas que más lo necesitan.</strong>
+          <p className="text-xl lg:text-2xl xl:text-3xl mb-12 max-w-5xl mx-auto text-white/90 leading-relaxed font-medium animate-fade-in-up animation-delay-400">
+            Aún así, <strong className="text-accent-brand">no llegamos a quienes más lo necesitan.</strong>
           </p>
 
-          <div className="mb-12">
-            <p className="text-lg lg:text-xl max-w-4xl mx-auto text-white/80 leading-relaxed">
-              En Colombia EdTech promovemos la <strong className="text-white">inversión, colaboración y crecimiento</strong> de todas las organizaciones que reconocen que juntos podemos construir un ecosistema educativo para todas las personas.
+          <div className="mb-16 animate-fade-in-up animation-delay-600">
+            <p className="text-lg lg:text-xl xl:text-2xl max-w-5xl mx-auto text-white/85 leading-relaxed font-medium">
+              En <strong className="text-white">Colombia EdTech</strong> promovemos la{" "}
+              <strong className="text-accent-brand">inversión, colaboración y crecimiento</strong>{" "}
+              de todas las organizaciones que reconocen que{" "}
+              <strong className="text-white">juntos</strong> podemos construir un ecosistema educativo para todas las personas.
             </p>
           </div>
 
-          {/* CTA Premium */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          {/* CTA Section Premium */}
+          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center animate-fade-in-up animation-delay-800">
             <Button 
               asChild
-              className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-8 py-4 rounded-xl shadow-2xl shadow-accent-brand/30 hover:shadow-accent-brand/50 transition-all duration-300 hover:scale-105 text-lg"
+              className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-10 py-5 rounded-2xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-110 text-lg lg:text-xl group"
             >
-              <Link to="/asociados" className="flex items-center space-x-3">
-                <Users className="w-6 h-6" />
-                <span>Únete al Ecosistema</span>
-                <ArrowRight className="w-5 h-5" />
+              <Link to="/asociados" className="flex items-center space-x-4">
+                <Users className="w-7 h-7 group-hover:rotate-12 transition-transform duration-300" />
+                <span>Quiero conocer cómo ser parte de Colombia EdTech</span>
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
             
             <Button 
               asChild
               variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 hover:border-white/50 font-semibold px-8 py-4 rounded-xl backdrop-blur-sm transition-all duration-300 hover:scale-105 text-lg"
+              className="border-2 border-white/40 text-white hover:bg-white/15 hover:border-white/60 font-semibold px-10 py-5 rounded-2xl backdrop-blur-sm transition-all duration-500 hover:scale-110 text-lg lg:text-xl"
             >
-              <Link to="/somos">Conoce Nuestra Misión</Link>
+              <Link to="/somos" className="flex items-center space-x-3">
+                <BookOpen className="w-6 h-6" />
+                <span>Conoce Nuestra Misión</span>
+              </Link>
             </Button>
+          </div>
+
+          {/* Impact Stats */}
+          <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-1000">
+            {impactStats.map((stat, index) => (
+              <div key={index} className="text-center group">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
+                  <stat.icon className="w-8 h-8 text-white" />
+                </div>
+                <div className="text-3xl lg:text-4xl font-bold text-white mb-2">{stat.number}</div>
+                <div className="text-lg font-semibold text-accent-brand mb-1">{stat.label}</div>
+                <div className="text-sm text-white/80">{stat.description}</div>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
 
       {/* Segmentation Section Premium */}
-      <Section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-primary-900 leading-tight">
-              Ayudamos a crear un sistema educativo que forme estudiantes, docentes, instituciones y organizaciones para los <span className="bg-gradient-to-r from-primary-700 to-accent-brand bg-clip-text text-transparent">retos de la nueva era</span>
+      <Section className="py-32 bg-white relative overflow-hidden">
+        {/* Background Decorations */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-primary-700 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent-brand rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 text-primary-900 leading-tight">
+              Ayudamos a crear un sistema educativo que forme estudiantes, docentes, instituciones y organizaciones para los{" "}
+              <span className="bg-gradient-to-r from-primary-700 to-accent-brand bg-clip-text text-transparent">
+                retos de la nueva era
+              </span>
             </h2>
-            <p className="text-xl lg:text-2xl max-w-4xl mx-auto text-gray-700 leading-relaxed">
-              Para <strong className="text-primary-900">SUMAR</strong> en esta revolución de la educación tenemos <strong className="text-accent-brand">3 caminos diferentes:</strong>
+            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-12 rounded-full"></div>
+            <p className="text-xl lg:text-2xl xl:text-3xl max-w-5xl mx-auto text-primary-900 leading-relaxed font-medium">
+              Para <strong className="text-primary-700">SUMAR</strong> a esta revolución de la educación, tienes{" "}
+              <strong className="text-accent-brand">3 caminos</strong>:
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
             {segmentationCards.map((card, index) => (
-              <div key={index} className="group relative">
-                <Card className="overflow-hidden border-0 shadow-xl shadow-gray-900/10 hover:shadow-2xl hover:shadow-primary-700/20 transition-all duration-500 hover:scale-105 bg-white">
-                  {/* Image with Gradient Overlay */}
-                  <div className="relative aspect-video overflow-hidden">
+              <div key={index} className="group relative animate-fade-in-up" style={{animationDelay: `${index * 200}ms`}}>
+                <Card className="overflow-hidden border-0 shadow-2xl shadow-primary-900/15 hover:shadow-3xl hover:shadow-primary-700/25 transition-all duration-700 hover:scale-105 bg-white relative group-hover:-translate-y-2">
+                  {/* Image with Premium Gradient Overlay */}
+                  <div className="relative aspect-[3/2] overflow-hidden">
                     <OptimizedImage 
                       src={card.image} 
-                      alt={`${card.title} - Colombia EdTech`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      alt={`${card.title} - Únete a Colombia EdTech como ${card.title.toLowerCase()}`}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-80 group-hover:opacity-70 transition-opacity duration-300`}></div>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-85 group-hover:opacity-75 transition-opacity duration-500`}></div>
                     
-                    {/* Floating Icon */}
-                    <div className="absolute top-6 right-6 p-3 bg-white/20 backdrop-blur-sm rounded-full">
-                      <card.icon className="w-6 h-6 text-white" />
+                    {/* Floating Icon Premium */}
+                    <div className="absolute top-8 right-8 p-4 bg-white/25 backdrop-blur-md rounded-2xl shadow-xl group-hover:scale-110 transition-all duration-300">
+                      <card.icon className="w-8 h-8 text-white" />
+                    </div>
+
+                    {/* Card Number Badge */}
+                    <div className="absolute top-8 left-8 w-12 h-12 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary-900 font-bold text-lg shadow-xl">
+                      {index + 1}
                     </div>
                   </div>
                   
-                  <CardContent className="p-8 text-center relative">
-                    <h3 className="text-2xl lg:text-3xl font-bold mb-6 text-primary-900">
+                  <CardContent className="p-10 text-center relative bg-gradient-to-br from-white to-gray-50/30">
+                    <h3 className="text-2xl lg:text-3xl xl:text-4xl font-bold mb-3 text-primary-700">
                       {card.title}
                     </h3>
-                    <p className="text-lg mb-8 leading-relaxed text-gray-700">
+                    {card.subtitle && (
+                      <p className="text-lg font-semibold text-primary-900 mb-6 opacity-80">
+                        {card.subtitle}
+                      </p>
+                    )}
+                    <p className="text-lg lg:text-xl mb-10 leading-relaxed text-primary-900 font-medium">
                       {card.description}
                     </p>
                     <Button 
                       asChild
-                      className={`w-full bg-gradient-to-r ${card.gradient} hover:shadow-lg hover:shadow-primary-700/30 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105`}
+                      className={`w-full bg-gradient-to-r ${card.gradient} hover:shadow-2xl hover:shadow-primary-700/40 text-white font-bold py-4 px-8 rounded-xl transition-all duration-500 hover:scale-105 text-lg group`}
                     >
-                      <Link to={card.href} className="flex items-center justify-center space-x-2">
+                      <Link to={card.href} className="flex items-center justify-center space-x-3">
                         <span>{card.cta}</span>
-                        <ArrowRight className="w-5 h-5" />
+                        <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
                       </Link>
                     </Button>
                   </CardContent>
@@ -188,61 +261,81 @@ const Index = () => {
         </div>
       </Section>
 
-      {/* Mission Section Premium */}
-      <Section className="py-24 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full opacity-20">
-            <div className="w-full h-full bg-gradient-to-br from-white/5 via-transparent to-white/5"></div>
+      {/* Inspirational Vision Section Premium */}
+      <Section className="py-32 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden">
+        {/* Premium Background Effects */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="w-full h-full bg-gradient-to-br from-white/10 via-transparent to-accent-brand/10"></div>
           </div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(247,60,92,0.1),transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(11,71,206,0.15),transparent_70%)]"></div>
         </div>
         
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-              Imagina un mundo donde todos sean <span className="bg-gradient-to-r from-accent-brand to-white bg-clip-text text-transparent">felices y tengan propósito</span> en lo que hacen
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 leading-tight animate-fade-in-up">
+              Imagina un mundo donde todas las personas encuentran{" "}
+              <span className="bg-gradient-to-r from-accent-brand via-white to-accent-brand bg-clip-text text-transparent animate-gradient-x">
+                propósito
+              </span>{" "}
+              en lo que hacen
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl lg:text-2xl max-w-5xl mx-auto text-white/90 leading-relaxed mb-8">
-              La educación impulsada por la tecnología nos permitirá llegar a eso
+            <div className="w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-12 rounded-full animate-fade-in-up animation-delay-200"></div>
+            <p className="text-xl lg:text-2xl xl:text-3xl max-w-6xl mx-auto text-white/90 leading-relaxed mb-12 font-medium animate-fade-in-up animation-delay-400">
+              La educación impulsada por la tecnología nos acerca a ese futuro.
             </p>
-            <p className="text-2xl lg:text-3xl max-w-4xl mx-auto font-bold">
-              Esa es nuestra misión: <span className="text-accent-brand">CONSTRUIR</span> una educación que inspire, motive y transforme.
-            </p>
-            <p className="text-xl lg:text-2xl mt-6 text-white/80">
-              Porque <strong className="text-accent-brand">nadie debería quedar atrás.</strong>
-            </p>
+            <div className="max-w-5xl mx-auto animate-fade-in-up animation-delay-600">
+              <p className="text-2xl lg:text-3xl xl:text-4xl font-bold mb-8 leading-tight">
+                Nuestra misión: <span className="text-accent-brand">CONSTRUIR</span> una educación que inspire, motive y transforme.
+              </p>
+              <p className="text-xl lg:text-2xl text-white/85 font-medium">
+                Porque <strong className="text-accent-brand">nadie</strong> debería quedar atrás.
+              </p>
+            </div>
           </div>
         </div>
       </Section>
 
-      {/* Why Change Section Premium */}
-      <Section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-primary-900 leading-tight">
-              ¿Por qué seguir haciendo lo mismo si el mundo ya <span className="bg-gradient-to-r from-accent-brand to-primary-700 bg-clip-text text-transparent">cambió?</span>
+      {/* Mission & Impact Section Premium */}
+      <Section className="py-32 bg-white relative overflow-hidden">
+        {/* Background Decorations */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-40 right-20 w-80 h-80 bg-primary-700 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-40 left-20 w-80 h-80 bg-accent-brand rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 text-primary-900 leading-tight">
+              ¿Por qué seguir haciendo lo mismo si el mundo ya{" "}
+              <span className="bg-gradient-to-r from-accent-brand to-primary-700 bg-clip-text text-transparent">
+                cambió?
+              </span>
             </h2>
-            <p className="text-xl lg:text-2xl max-w-4xl mx-auto mb-8 text-gray-700 leading-relaxed">
-              La educación tradicional no está a la altura de las necesidades de estudiantes, docentes e instituciones actuales.
+            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-12 rounded-full"></div>
+            <p className="text-xl lg:text-2xl xl:text-3xl max-w-5xl mx-auto mb-12 text-primary-900 leading-relaxed font-medium">
+              La educación tradicional no está a la altura de las necesidades actuales de estudiantes, docentes e instituciones.
             </p>
-            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl lg:text-2xl max-w-5xl mx-auto mb-12 text-primary-900 font-semibold">
-              Nuestro ecosistema <strong className="text-accent-brand">CONECTA</strong> a ONGs, Universidades, Colegios, Startups, Scale Ups, empresas tradicionales, Bigtech, que buscan:
+            <p className="text-xl lg:text-2xl xl:text-3xl max-w-6xl mx-auto mb-16 text-primary-900 font-semibold">
+              Nuestro ecosistema <strong className="text-accent-brand">CONECTA</strong> a ONGs, universidades, colegios, startups, scaleups, empresas y big tech para:
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+          <div className="grid lg:grid-cols-3 gap-12 max-w-7xl mx-auto mb-20">
             {missionCards.map((card, index) => (
-              <div key={index} className="group">
-                <Card className="p-8 text-center border-0 shadow-xl shadow-gray-900/10 hover:shadow-2xl hover:shadow-primary-700/20 transition-all duration-500 hover:scale-105 bg-white h-full">
-                  <div className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-accent-brand to-primary-700 flex items-center justify-center shadow-lg shadow-accent-brand/30 group-hover:shadow-xl group-hover:shadow-accent-brand/40 transition-all duration-300 group-hover:scale-110">
-                    <card.icon className="w-10 h-10 text-white" />
+              <div key={index} className="group animate-fade-in-up" style={{animationDelay: `${index * 200}ms`}}>
+                <Card className="p-10 text-center border-0 shadow-2xl shadow-primary-900/15 hover:shadow-3xl hover:shadow-primary-700/25 transition-all duration-700 hover:scale-105 bg-gradient-to-br from-white to-gray-50/30 h-full group-hover:-translate-y-2">
+                  <div className="w-24 h-24 mx-auto mb-10 rounded-3xl bg-gradient-to-br from-accent-brand to-primary-700 flex items-center justify-center shadow-2xl shadow-accent-brand/40 group-hover:shadow-3xl group-hover:shadow-accent-brand/50 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    <card.icon className="w-12 h-12 text-white" />
                   </div>
-                  <h3 className="text-xl lg:text-2xl font-bold mb-6 text-primary-900 leading-tight">
+                  <h3 className="text-2xl lg:text-3xl font-bold mb-3 text-primary-700">
                     {card.title}
                   </h3>
-                  <p className="text-lg text-gray-700 leading-relaxed">
+                  <h4 className="text-xl lg:text-2xl font-semibold mb-8 text-primary-900 leading-tight">
+                    {card.subtitle}
+                  </h4>
+                  <p className="text-lg lg:text-xl text-primary-900 leading-relaxed font-medium">
                     {card.description}
                   </p>
                 </Card>
@@ -250,11 +343,23 @@ const Index = () => {
             ))}
           </div>
           
-          <div className="text-center">
-            <div className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-primary-700/10 to-accent-brand/10 rounded-2xl border border-primary-700/20">
-              <p className="text-2xl lg:text-3xl font-bold text-primary-900 leading-relaxed">
-                Juntos, transformamos el aprendizaje en una experiencia <span className="text-accent-brand">accesible, personalizada y relevante</span> para todos.
+          <div className="text-center animate-fade-in-up animation-delay-800">
+            <div className="max-w-6xl mx-auto p-12 bg-gradient-to-r from-primary-700/10 via-accent-brand/5 to-primary-700/10 rounded-3xl border border-primary-700/20 shadow-2xl shadow-primary-900/10">
+              <p className="text-2xl lg:text-3xl xl:text-4xl font-bold text-primary-900 leading-relaxed mb-8">
+                Juntas/os, convertimos el aprendizaje en una experiencia{" "}
+                <span className="text-accent-brand">accesible, personalizada y relevante</span>{" "}
+                para todas las personas.
               </p>
+              <Button 
+                asChild
+                className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-10 py-4 rounded-xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-110 text-lg group"
+              >
+                <Link to="/asociados" className="flex items-center space-x-3">
+                  <Users className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
+                  <span>Quiero conocer cómo ser parte de Colombia EdTech</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </Button>
             </div>
           </div>
         </div>

@@ -34,13 +34,27 @@ export function Navbar() {
               aria-label="Colombia EdTech - Ir al inicio"
             >
               <div className="relative">
-                <OptimizedImage
-                  src="/images/logo-colombia-edtech.svg"
-                  alt="Colombia EdTech"
-                  fallback="/placeholder.svg"
-                  className="h-10 w-auto transition-all duration-300 group-hover:scale-105"
-                  priority
-                />
+                {/* Desktop Logo */}
+                <div className="hidden sm:block">
+                  <OptimizedImage
+                    src="/images/logo-horizontal-blue-bg.png"
+                    alt="Colombia EdTech - Asociación de Organizaciones EdTech"
+                    fallback="/placeholder.svg"
+                    className="h-12 w-auto transition-all duration-300 group-hover:scale-105"
+                    priority
+                  />
+                </div>
+                
+                {/* Mobile Logo */}
+                <div className="block sm:hidden">
+                  <OptimizedImage
+                    src="/images/isotipo-blue.png"
+                    alt="Colombia EdTech"
+                    fallback="/placeholder.svg"
+                    className="h-10 w-auto transition-all duration-300 group-hover:scale-105"
+                    priority
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-700 to-accent-brand opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></div>
               </div>
             </Link>
@@ -56,7 +70,7 @@ export function Navbar() {
                   "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group",
                   isActive(item.href)
                     ? "text-primary-900 bg-gradient-to-r from-primary-700/10 to-accent-brand/10 shadow-sm"
-                    : "text-gray-700 hover:text-primary-900 hover:bg-primary-700/5"
+                    : "text-primary-900 hover:text-primary-700 hover:bg-primary-700/5"
                 )}
                 aria-current={isActive(item.href) ? "page" : undefined}
               >
@@ -116,7 +130,7 @@ export function Navbar() {
                     "block px-4 py-3 rounded-lg text-base font-semibold transition-all duration-300",
                     isActive(item.href)
                       ? "text-primary-900 bg-gradient-to-r from-primary-700/15 to-accent-brand/15 shadow-sm"
-                      : "text-gray-700 hover:text-primary-900 hover:bg-primary-700/10"
+                      : "text-primary-900 hover:text-primary-700 hover:bg-primary-700/10"
                   )}
                   aria-current={isActive(item.href) ? "page" : undefined}
                 >
