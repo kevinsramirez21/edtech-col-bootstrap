@@ -37,7 +37,7 @@ export function Navbar() {
                 {/* Desktop Logo */}
                 <div className="hidden sm:block">
                   <OptimizedImage
-                    src="/images/logo-horizontal-blue-bg.png"
+                    src="/images/logo-colombia-edtech-blue.png"
                     alt="Colombia EdTech - Asociación de Organizaciones EdTech"
                     fallback="/placeholder.svg"
                     className="h-12 w-auto transition-all duration-300 group-hover:scale-105"

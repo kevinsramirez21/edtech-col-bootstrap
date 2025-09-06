@@ -97,10 +97,8 @@ const Index = () => {
             className="w-full h-full object-cover"
             priority
           />
-          {/* Gradient Overlays for Premium Effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/95 via-primary-700/90 to-primary-900/95"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-transparent to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-900/30 via-transparent to-accent-brand/20"></div>
+          {/* Dark Overlay for Better Text Contrast */}
+          <div className="absolute inset-0 bg-primary-900/75"></div>
         </div>
 
         {/* Floating Elements Premium */}
@@ -112,22 +110,10 @@ const Index = () => {
         </div>
 
         <div className="relative z-10 text-center max-w-7xl mx-auto px-6">
-          {/* Logo Integration Premium */}
-          <div className="mb-16 animate-fade-in-up">
-            <div className="inline-flex p-10 bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl shadow-primary-900/40 border border-white/20 group hover:bg-white/15 transition-all duration-500">
-              <OptimizedImage
-                src="/images/logo-horizontal-blue-bg.png"
-                alt="Colombia EdTech - Asociación Líder de EdTechs en Latinoamérica"
-                className="h-16 sm:h-20 w-auto transition-transform duration-500 group-hover:scale-105"
-                priority
-              />
-            </div>
-          </div>
-          
-          {/* Hero Typography Premium */}
+          {/* Hero Typography */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 leading-tight text-white animate-fade-in-up animation-delay-200">
-            ¿Sabías que las <span className="bg-gradient-to-r from-accent-brand via-white to-accent-brand bg-clip-text text-transparent font-extrabold animate-gradient-x">EdTechs colombianas</span> impactan a más de{" "}
-            <span className="bg-gradient-to-r from-white via-accent-brand to-white bg-clip-text text-transparent font-extrabold">15 millones de personas</span>{" "}
+            ¿Sabías que las <span className="text-accent-brand font-extrabold">EdTechs colombianas</span> impactan a más de{" "}
+            <span className="text-accent-brand font-extrabold">15 millones de personas</span>{" "}
             en más de <span className="text-accent-brand font-extrabold">25 países?</span>
           </h1>
           
@@ -160,7 +146,7 @@ const Index = () => {
             <Button 
               asChild
               variant="outline"
-              className="border-2 border-white/40 text-white hover:bg-white/15 hover:border-white/60 font-semibold px-10 py-5 rounded-2xl backdrop-blur-sm transition-all duration-500 hover:scale-110 text-lg lg:text-xl"
+              className="border-2 border-primary-700 text-primary-700 bg-white hover:bg-primary-700 hover:text-white font-semibold px-10 py-5 rounded-2xl transition-all duration-500 hover:scale-110 text-lg lg:text-xl"
             >
               <Link to="/somos" className="flex items-center space-x-3">
                 <BookOpen className="w-6 h-6" />
@@ -169,16 +155,28 @@ const Index = () => {
             </Button>
           </div>
 
-          {/* Impact Stats */}
-          <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-1000">
+        </div>
+      </Section>
+
+      {/* Impact Stats Section */}
+      <Section className="py-24 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-8 text-primary-900 leading-tight">
+              El Impacto de Colombia EdTech
+            </h2>
+            <div className="w-24 h-1 bg-primary-700 mx-auto mb-8 rounded-full"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 max-w-5xl mx-auto">
             {impactStats.map((stat, index) => (
-              <div key={index} className="text-center group">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
-                  <stat.icon className="w-8 h-8 text-white" />
+              <div key={index} className="text-center group animate-fade-in-up" style={{animationDelay: `${index * 200}ms`}}>
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-700 flex items-center justify-center group-hover:bg-accent-brand transition-all duration-300 group-hover:scale-110 shadow-lg">
+                  <stat.icon className="w-10 h-10 text-white" />
                 </div>
-                <div className="text-3xl lg:text-4xl font-bold text-white mb-2">{stat.number}</div>
-                <div className="text-lg font-semibold text-accent-brand mb-1">{stat.label}</div>
-                <div className="text-sm text-white/80">{stat.description}</div>
+                <div className="text-4xl lg:text-5xl font-bold text-primary-900 mb-3">{stat.number}</div>
+                <div className="text-xl font-semibold text-primary-700 mb-2">{stat.label}</div>
+                <div className="text-lg text-primary-900/80 font-medium">{stat.description}</div>
               </div>
             ))}
           </div>
