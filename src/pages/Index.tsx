@@ -98,7 +98,7 @@ const Index = () => {
             priority
           />
           {/* Dark Overlay for Better Text Contrast */}
-          <div className="absolute inset-0 bg-primary-900/55"></div>
+          <div className="absolute inset-0 bg-primary-900/85"></div>
         </div>
 
         {/* Floating Elements Premium */}
