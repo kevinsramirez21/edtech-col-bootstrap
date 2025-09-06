@@ -160,7 +160,7 @@ const Index = () => {
 
 
       {/* Segmentation Section Premium */}
-      <Section className="py-32 bg-white relative overflow-hidden">
+      <Section className="py-20 relative overflow-hidden" style={{backgroundColor: '#f4e8dd'}}>
         {/* Background Decorations */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-20 w-96 h-96 bg-primary-700 rounded-full blur-3xl"></div>
@@ -168,25 +168,25 @@ const Index = () => {
         </div>
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 text-primary-700 leading-tight">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
               Ayudamos a crear un sistema educativo que forme estudiantes, docentes, instituciones y organizaciones para los{" "}
               <span className="text-primary-700">
                 retos de la nueva era
               </span>
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-12 rounded-full"></div>
-            <p className="text-xl lg:text-2xl xl:text-3xl max-w-5xl mx-auto text-primary-900 leading-relaxed font-medium">
+            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+            <p className="text-xl lg:text-2xl max-w-4xl mx-auto text-primary-900 leading-relaxed font-medium">
               Para <strong className="text-primary-700">SUMAR</strong> a esta revolución de la educación, tienes{" "}
               <strong className="text-accent-brand">3 caminos</strong>:
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {segmentationCards.map((card, index) => (
-              <div key={index} className="group relative animate-fade-in-up" style={{animationDelay: `${index * 200}ms`}}>
-                <Card className="overflow-hidden border-0 shadow-2xl shadow-primary-900/15 hover:shadow-3xl hover:shadow-primary-700/25 transition-all duration-700 hover:scale-105 bg-white relative group-hover:-translate-y-2">
-                  {/* Image with Premium Gradient Overlay */}
+              <div key={index} className="group relative animate-fade-in-up h-full" style={{animationDelay: `${index * 200}ms`}}>
+                <Card className="overflow-hidden border-0 shadow-2xl shadow-primary-900/15 hover:shadow-3xl hover:shadow-primary-700/25 transition-all duration-700 hover:scale-105 bg-white relative group-hover:-translate-y-2 h-full flex flex-col">
+                  {/* Image with Subtle Overlay */}
                   <div className="relative aspect-[3/2] overflow-hidden">
                     <OptimizedImage 
                       src={card.image} 
@@ -196,18 +196,20 @@ const Index = () => {
                     <div className="absolute inset-0 bg-primary-900/30 transition-opacity duration-500"></div>
                   </div>
                   
-                  <CardContent className="p-10 text-center relative bg-gradient-to-br from-white to-gray-50/30">
-                    <h3 className="text-2xl lg:text-3xl xl:text-4xl font-bold mb-3 text-primary-700">
-                      {card.title}
-                    </h3>
-                    {card.subtitle && (
-                      <p className="text-lg font-semibold text-primary-900 mb-6 opacity-80">
-                        {card.subtitle}
+                  <CardContent className="p-8 text-center relative bg-white flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-2xl lg:text-3xl font-bold mb-3 text-primary-700">
+                        {card.title}
+                      </h3>
+                      {card.subtitle && (
+                        <p className="text-lg font-semibold text-primary-900 mb-4 opacity-80">
+                          {card.subtitle}
+                        </p>
+                      )}
+                      <p className="text-lg mb-8 leading-relaxed text-primary-900 font-medium">
+                        {card.description}
                       </p>
-                    )}
-                    <p className="text-lg lg:text-xl mb-10 leading-relaxed text-primary-900 font-medium">
-                      {card.description}
-                    </p>
+                    </div>
                     <Button 
                       asChild
                       className="w-full bg-primary-900 hover:bg-primary-700 hover:shadow-2xl hover:shadow-primary-700/40 text-white font-bold py-4 px-8 rounded-xl transition-all duration-500 hover:scale-105 text-lg group"
