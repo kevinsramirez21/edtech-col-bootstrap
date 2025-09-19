@@ -5,10 +5,13 @@ import { CTAButton } from "@/components/ui/cta-button";
 import { Timeline } from "@/components/ui/timeline";
 import { LeadershipCard } from "@/components/ui/leadership-card";
 import { ImpactMetrics } from "@/components/ui/impact-metrics";
+import { AnimatedStats } from "@/components/ui/animated-stats";
+import { CredibilityBadges } from "@/components/ui/credibility-badges";
 import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd } from "@/lib/seo";
 import { Link } from "react-router-dom";
-import { ArrowRight, Lightbulb, Users, Globe, Building2, BookOpen, Handshake, Target, Heart } from "lucide-react";
+import { ArrowRight, Lightbulb, Users, Globe, Building2, BookOpen, Handshake, Target, Heart, ChevronDown } from "lucide-react";
+import heroLeadershipMeeting from "@/assets/hero-leadership-meeting.jpg";
 
 const Somos = () => {
   const meta = generatePageMeta({
@@ -125,23 +128,95 @@ const Somos = () => {
         </script>
       </Helmet>
 
-      {/* HERO IMPACTANTE - FONDO AZUL */}
-      <Section className="py-20 relative overflow-hidden bg-primary-700">
-        <div className="relative z-10 text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6" style={{ fontFamily: 'var(--font-display)' }}>
-            Lideramos la revolución EdTech en Colombia
-          </h1>
-          
-          <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-white/90">
-            De una idea en 2020 a transformar la educación de +15M personas
-          </p>
-          
-          <CTAButton size="lg" className="bg-accent hover:bg-accent-600">
-            Conoce nuestra historia
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </CTAButton>
+      {/* HERO DE LIDERAZGO - EXPERIENCIA FULLSCREEN */}
+      <section 
+        className="min-h-[80vh] relative overflow-hidden flex items-center justify-center"
+        style={{
+          backgroundImage: `url(${heroLeadershipMeeting})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        {/* Overlay elegante */}
+        <div className="absolute inset-0 bg-primary-900/60 backdrop-blur-[1px]"></div>
+        
+        {/* Contenido principal */}
+        <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="mb-12 space-y-6">
+            <h1 
+              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Somos la voz que lidera la<br />
+              <span className="text-accent">transformación educativa</span><br />
+              en Colombia
+            </h1>
+            
+            <p 
+              className="text-xl md:text-2xl lg:text-3xl mb-6 text-white/95 max-w-5xl mx-auto leading-relaxed"
+              style={{ animationDelay: '0.3s' }}
+            >
+              <span className="font-semibold text-accent">90+</span> organizaciones EdTech unidas. 
+              <span className="font-semibold text-accent"> +15M</span> personas impactadas.
+              <br className="hidden md:block" />
+              Una sola misión: <span className="font-semibold">revolucionar la educación.</span>
+            </p>
+            
+            <p 
+              className="text-lg md:text-xl text-white/80 max-w-4xl mx-auto mb-12"
+              style={{ animationDelay: '0.6s' }}
+            >
+              Conoce a los líderes que están escribiendo el futuro de la educación en Latinoamérica
+            </p>
+          </div>
+
+          {/* Estadísticas Animadas */}
+          <div className="mb-12" style={{ animationDelay: '0.9s' }}>
+            <AnimatedStats 
+              stats={[
+                { value: "90+", label: "EdTechs Asociadas" },
+                { value: "15M+", label: "Personas Impactadas" },
+                { value: "25+", label: "Países Alcanzados" },
+                { value: "5", label: "Años Liderando" }
+              ]}
+            />
+          </div>
+
+          {/* CTAs Estratégicos */}
+          <div 
+            className="flex flex-col sm:flex-row gap-6 justify-center mb-12"
+            style={{ animationDelay: '1.2s' }}
+          >
+            <CTAButton 
+              size="xl" 
+              variant="accent" 
+              className="text-lg px-8 py-4 bg-accent hover:bg-accent-600 shadow-2xl"
+            >
+              Conoce nuestro impacto
+              <ArrowRight className="ml-2 w-6 h-6" />
+            </CTAButton>
+            <CTAButton 
+              size="xl" 
+              className="text-lg px-8 py-4 bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-900 shadow-2xl"
+            >
+              Únete al liderazgo
+              <Users className="ml-2 w-6 h-6" />
+            </CTAButton>
+          </div>
+
+          {/* Badges de Credibilidad */}
+          <CredibilityBadges className="mb-8" />
         </div>
-      </Section>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 animate-bounce">
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-sm">Descubre más</span>
+            <ChevronDown className="w-6 h-6" />
+          </div>
+        </div>
+      </section>
 
       {/* TIMELINE HISTORIA - FONDO SAND */}
       <Section className="py-16 bg-sand">
