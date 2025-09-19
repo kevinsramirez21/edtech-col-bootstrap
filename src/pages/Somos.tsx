@@ -1,69 +1,107 @@
-import { Section, SectionHeader } from "@/components/ui/section";
-import { CopySlot } from "@/components/content/copy-slot";
-import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { LogoGrid } from "@/components/ui/logo-grid";
 import { CTAButton } from "@/components/ui/cta-button";
+import { Timeline } from "@/components/ui/timeline";
+import { LeadershipCard } from "@/components/ui/leadership-card";
+import { ImpactMetrics } from "@/components/ui/impact-metrics";
 import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd } from "@/lib/seo";
 import { Link } from "react-router-dom";
-import { ArrowRight, Lightbulb, Users, Globe, Award, Handshake, Building2, BookOpen } from "lucide-react";
+import { ArrowRight, Lightbulb, Users, Globe, Building2, BookOpen, Handshake, Target, Heart } from "lucide-react";
 
 const Somos = () => {
   const meta = generatePageMeta({
-    title: "Quiénes Somos",
-    description: "La revolución de la educación ha comenzado. Conoce la misión, visión y valores de Colombia EdTech en la transformación educativa"
+    title: "Lideramos la revolución EdTech en Colombia - Quiénes Somos",
+    description: "De una idea en 2020 a transformar la educación de +15M personas. Conoce la historia, liderazgo y crecimiento de Colombia EdTech como la asociación líder del ecosistema educativo."
   });
 
   const breadcrumbLd = generateBreadcrumbJsonLd([
     { name: "Somos", item: `${window.location.origin}/somos` }
   ]);
 
+  const timelineData = [
+    {
+      year: "2020",
+      title: "Antecedentes",
+      description: "Nace el ecosistema EdTech en un grupo de WhatsApp. Para ese momento nunca se había escuchado la palabra en Colombia."
+    },
+    {
+      year: "2022", 
+      title: "La unión",
+      description: "Finalizando el año se constituye Colombia EdTech, una asociación de organizaciones que buscan innovación y/o tecnología para cambiar y mejorar la educación."
+    },
+    {
+      year: "2024",
+      title: "El inicio",
+      description: "En marzo llegamos a 40 organizaciones y conformamos la Junta directiva. En agosto contratamos a nuestro Presidente Ejecutivo."
+    },
+    {
+      year: "2025",
+      title: "Actualizado",
+      description: "Llegamos a 90 asociados y más de 50 voluntarios, múltiples proyectos y varios acuerdos de entendimiento.",
+      highlight: true
+    }
+  ];
+
+  const liderazgo = [
+    {
+      name: "Andrés Méndez",
+      position: "Presidente Ejecutivo",
+      bio: "Líder visionario con más de 15 años de experiencia en transformación digital educativa. Ha dirigido iniciativas que han impactado a millones de estudiantes en Latinoamérica."
+    },
+    {
+      name: "Kevin Ramírez",
+      position: "Vicepresidencia de Operaciones",
+      bio: "Experto en operaciones y gestión de ecosistemas EdTech. Especialista en desarrollo organizacional y optimización de procesos."
+    },
+    {
+      name: "Sofía Orjuela", 
+      position: "Vicepresidencia de Alianzas",
+      bio: "Estratega de alianzas con experiencia en desarrollo de partnerships institucionales y corporativos a nivel regional."
+    },
+    {
+      name: "Valentina Villalobos",
+      position: "Chief of Staff",
+      bio: "Coordinadora ejecutiva especializada en gestión estratégica y articulación de iniciativas de alto impacto."
+    },
+    {
+      name: "Sara Moreno",
+      position: "Lead de Alianzas Universitarias", 
+      bio: "Especialista en relaciones académicas y desarrollo de programas universitarios para el fortalecimiento del ecosistema EdTech."
+    }
+  ];
+
   const valores = [
     {
       icon: Lightbulb,
       title: "Innovación",
-      description: "La tecnología está presente en todas las áreas de nuestra vida; adaptarnos a sus beneficios, y crear sobre ella mejorará significativamente la calidad de vida de profesores, estudiantes e instituciones educativas."
+      description: "Impulsamos soluciones que revolucionan el aprendizaje"
     },
     {
       icon: Handshake,
-      title: "Colaboración", 
-      description: "La tecnología está presente en todas las áreas de nuestra vida; adaptarnos a sus beneficios, y crear sobre ella mejorará significativamente la calidad de vida de profesores, estudiantes e instituciones educativas."
+      title: "Colaboración",
+      description: "Creemos en el poder del ecosistema conectado"
     },
     {
-      icon: Globe,
-      title: "Accesibilidad",
-      description: "La tecnología está presente en todas las áreas de nuestra vida; adaptarnos a sus beneficios, y crear sobre ella mejorará significativamente la calidad de vida de profesores, estudiantes e instituciones educativas."
-    },
-    {
-      icon: Users,
-      title: "Impacto Social",
-      description: "Contribuimos al mejoramiento de la calidad y a la maximización de la cobertura y calidad educativa del país, identificando y fortaleciendo las edtech en Colombia."
+      icon: Heart,
+      title: "Impacto",
+      description: "Medimos nuestro éxito en vidas transformadas"
     }
   ];
 
   const asociados = [
     "Universidad EAFIT", "Cymetria", "Coschool", "Hypercubus", "CGSO",
     "EduLabs", "Geek Girls LATAM", "Laboratoria", "Mangus Academy", "Mind Hub",
-    "TOMI", "Buen Data", "RDC", "Naska Digital", "Núcleo Software"
+    "TOMI", "Buen Data", "RDC", "Naska Digital", "Núcleo Software",
+    "Platzi", "Blackboard", "Microsoft", "Google for Education", "Pearson"
   ];
 
-  const medios = [
-    "Blu Radio", "TIC", "Forbes", "Portafolio"
-  ];
-
-  const impactStats = [
-    { value: "+29.550", label: "Instituciones", icon: Building2 },
-    { value: "40.000", label: "Docentes", icon: BookOpen },
-    { value: "+4.8M", label: "Personas", icon: Users },
-    { value: "15.000", label: "Empresas", icon: Building2 }
-  ];
-
-  const additionalStats = [
-    { value: "38.2%", label: "De nuestros asociados llegan a 5-6 países" },
-    { value: "72.2%", label: "De nuestras EdTechs asociadas comenzó con recursos propios" },
-    { value: "79.62%", label: "De los founders de nuestras EdTech tienen un título de postgrado" },
-    { value: "2/3", label: "De los founders de nuestras EdTech tienen un título de postgrado" }
+  const impactMetrics = [
+    { value: "90+", label: "Asociados transformando la educación", icon: Building2 },
+    { value: "+15M", label: "Personas impactadas en Latinoamérica", icon: Users },
+    { value: "50+", label: "Voluntarios comprometidos", icon: Users },
+    { value: "+25", label: "Países con presencia EdTech colombiana", icon: Globe }
   ];
 
   return (
@@ -87,201 +125,141 @@ const Somos = () => {
         </script>
       </Helmet>
 
-      <Section className="py-8 bg-gray-50">
-        <Breadcrumbs 
-          items={[
-            { label: "Somos" }
-          ]} 
-        />
-      </Section>
-      
-      {/* Hero Section with Background Image */}
-      <Section className="py-20 relative overflow-hidden">
-        {/* Background Image Placeholder */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30">
-          <div className="w-full h-full bg-gray-400 flex items-center justify-center">
-            <div className="text-white text-center">
-              <div className="text-sm opacity-75 mb-2">Hero Background Image</div>
-              <div className="text-xs opacity-50">Presentation/Conference Photo</div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="relative z-10 max-w-4xl text-white">
-          <div className="mb-8">
-            <div className="w-32 h-16 bg-white rounded-lg shadow-md flex items-center justify-center mb-8">
-              <div className="text-lg font-bold">
-                <span style={{ color: 'var(--color-accent)' }}>ET</span>
-                <span style={{ color: 'var(--color-primary-700)' }}> Colombia EdTech.</span>
-              </div>
-            </div>
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl font-bold mb-8" style={{ fontFamily: 'var(--font-display)' }}>
-            La evolución de la educación ha comenzado
+      {/* HERO IMPACTANTE - FONDO AZUL */}
+      <Section className="py-20 relative overflow-hidden bg-primary-700">
+        <div className="relative z-10 text-center text-white">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6" style={{ fontFamily: 'var(--font-display)' }}>
+            Lideramos la revolución EdTech en Colombia
           </h1>
           
-          <div className="space-y-6 text-lg max-w-3xl">
-            <p>
-              Sabemos que la educación es el motor de transformación social y económico que nuestro país y el mundo necesitan.
-            </p>
-            <p>
-              Conectamos a startups, scaleups, empresas tradicionales, universidades, colegios, ONG, Bigtech, el estado y la comunidad: todos unidos por un objetivo común, dispuestos a revolucionar desde la raíz la manera en que se enseña y aprende.
-            </p>
-          </div>
+          <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-white/90">
+            De una idea en 2020 a transformar la educación de +15M personas
+          </p>
+          
+          <CTAButton size="lg" className="bg-accent hover:bg-accent-600">
+            Conoce nuestra historia
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </CTAButton>
         </div>
       </Section>
 
-      {/* Asociados Section */}
-      <Section className="section bg-white">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary-700)' }}>
-            Nuestros asociados están transformando la educación en Colombia y el Mundo
+      {/* TIMELINE HISTORIA - FONDO SAND */}
+      <Section className="py-16 bg-sand">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
+            Nuestra historia
           </h2>
+          <p className="text-lg text-primary-600 max-w-3xl mx-auto">
+            El crecimiento que nos ha llevado a liderar el ecosistema EdTech colombiano
+          </p>
+        </div>
+        
+        <div className="max-w-4xl mx-auto">
+          <Timeline items={timelineData} />
+        </div>
+      </Section>
+
+      {/* LIDERAZGO - FONDO AZUL */}
+      <Section className="py-16 bg-primary-700">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+            El equipo que lidera la transformación
+          </h2>
+          <p className="text-lg text-white/80 max-w-3xl mx-auto">
+            Conoce a los líderes que impulsan la revolución educativa en Colombia
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {liderazgo.map((leader, index) => (
+            <LeadershipCard
+              key={index}
+              name={leader.name}
+              position={leader.position}
+              bio={leader.bio}
+            />
+          ))}
+        </div>
+        
+        <div className="text-center">
+          <CTAButton size="lg" className="bg-accent hover:bg-accent-600">
+            Únete a nuestro equipo de voluntarios
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </CTAButton>
+        </div>
+      </Section>
+
+      {/* IMPACTO - FONDO SAND */}
+      <Section className="py-16 bg-sand">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
+            El impacto que generamos juntos
+          </h2>
+          <p className="text-lg text-primary-600 max-w-3xl mx-auto">
+            Nuestros números reflejan el crecimiento y transformación del ecosistema EdTech
+          </p>
+        </div>
+        
+        <div className="bg-primary-700 rounded-2xl p-12">
+          <ImpactMetrics 
+            metrics={impactMetrics}
+          />
+        </div>
+      </Section>
+
+      {/* ASOCIADOS - FONDO BLANCO */}
+      <Section className="py-16 bg-white">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
+            Quienes forman parte de la revolución
+          </h2>
+          <p className="text-lg text-primary-600 max-w-3xl mx-auto">
+            Más de 90 organizaciones comprometidas con transformar la educación
+          </p>
         </div>
         
         <div className="mb-8">
           <LogoGrid 
-            partners={asociados.slice(0, 10)}
-            className="mt-8"
+            partners={asociados.slice(0, 12)}
+            columns={4}
+            className="mb-8"
           />
         </div>
         
-        <div className="text-center">
-          <button className="btn btn-outline px-6 py-2 text-sm">
-            Ver todos los asociados
-          </button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <CTAButton size="lg" className="bg-primary-700 hover:bg-primary-800">
+            Junta Directiva
+          </CTAButton>
+          <CTAButton size="lg" variant="accent" asChild>
+            <Link to="/asociados">
+              Todos nuestros asociados
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
+          </CTAButton>
         </div>
       </Section>
 
-      {/* Mission Section */}
-      <Section className="section bg-gray-50">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary-700)' }}>
-            Tenemos un norte claro para dejar huella y cambiar el mundo desde la educación gracias a la tecnología.
+      {/* VALORES - FONDO AZUL */}
+      <Section className="py-16 bg-primary-700">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+            Los valores que nos mueven
           </h2>
-          
-          <div className="mt-8">
-            <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-accent)' }}>
-              ¿Cómo lo hacemos?
-            </h3>
-            <p className="text-lg max-w-4xl mx-auto" style={{ color: 'var(--color-primary-700)' }}>
-              Tejiendo lazos de colaboración entre organizaciones con ánimo y sin ánimo de lucro que trabajan por la educación, impulsando soluciones innovadoras que impacten a millones de personas.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Clear Mission Section - Blue Background */}
-      <Section className="section text-white" style={{ background: 'var(--color-primary-700)' }}>
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="flex items-center mb-6">
-              <div className="w-8 h-8 rounded-full flex items-center justify-center mr-4" style={{ backgroundColor: 'var(--color-accent)' }}>
-                <span className="text-white font-bold">✓</span>
-              </div>
-              <h2 className="text-3xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>
-                Nuestra misión es clara
-              </h2>
-            </div>
-            
-            <div className="space-y-6 text-lg">
-              <p>
-                <strong>Transformar la calidad, inclusión y accesibilidad de la educación en Colombia y Latinoamérica.</strong>
-              </p>
-              <p>
-                No se trata solo de enseñar, sino de abrir caminos hacia un aprendizaje significativo que conecte estudiantes, docentes e instituciones con las oportunidades del mundo moderno.
-              </p>
-            </div>
-            
-            <div className="mt-8">
-              <div className="flex items-center mb-4">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mr-4" style={{ backgroundColor: 'var(--color-accent)' }}>
-                  <span className="text-white font-bold">✓</span>
-                </div>
-                <h3 className="text-2xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>
-                  ¿Cómo lo hacemos?
-                </h3>
-              </div>
-              <p className="text-lg">
-                Tejiendo lazos de colaboración entre organizaciones con ánimo y sin ánimo de lucro que trabajan por la educación, impulsando soluciones innovadoras que impacten a millones de personas.
-              </p>
-            </div>
-          </div>
-          
-          <div className="bg-white/10 rounded-lg aspect-video flex items-center justify-center">
-            <div className="text-center text-white/60">
-              <div className="text-sm mb-2">Mission Image Placeholder</div>
-              <div className="text-xs">Conference/Event Photo</div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Vision 2030 Section - Coral Background */}
-      <Section className="section text-white" style={{ background: 'var(--color-accent)' }}>
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="bg-white/10 rounded-lg aspect-video flex items-center justify-center">
-            <div className="text-center text-white/60">
-              <div className="text-sm mb-2">Vision Image Placeholder</div>
-              <div className="text-xs">Conference/Event Photo</div>
-            </div>
-          </div>
-          
-          <div>
-            <div className="flex items-center mb-6">
-              <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center mr-4">
-                <span className="text-accent font-bold">✓</span>
-              </div>
-              <h2 className="text-3xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>
-                Nuestro horizonte es ambicioso.
-              </h2>
-            </div>
-            
-            <div className="space-y-6 text-lg">
-              <p>
-                Para <strong>2030</strong>, seremos líderes en Latinoamérica en la creación de un ecosistema EdTech ético, dinámico y colaborativo que transforme el aprendizaje, impulse la globalización y priorice la personalización educativa.
-              </p>
-              <p>
-                Queremos un modelo donde <strong>aprender sea tan natural como respirar, y enseñar sea la puerta hacia un futuro lleno de progreso y equidad.</strong>
-              </p>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Media Section */}
-      <Section className="section bg-white">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary-700)' }}>
-            Nos has visto en
-          </h2>
+          <p className="text-lg text-white/80 max-w-3xl mx-auto">
+            Nuestros principios fundamentales que guían cada decisión y acción
+          </p>
         </div>
         
-        <LogoGrid 
-          partners={medios}
-          className="mt-8"
-        />
-      </Section>
-
-      {/* Values Section */}
-      <Section className="section bg-gray-50">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary-700)' }}>
-            Estos son los valores que nos mueven en Colombia EdTech
-          </h2>
-        </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {valores.map((valor, index) => (
-            <Card key={index} className="p-6 text-center bg-sand/30 border-0">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--color-accent)' }}>
+            <Card key={index} className="p-8 text-center bg-white/10 border-white/20 backdrop-blur-sm">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
                 <valor.icon className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary-700)' }}>
+              <h3 className="text-xl font-bold mb-4 text-white">
                 {valor.title}
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--color-primary-700)' }}>
+              <p className="text-white/80 leading-relaxed">
                 {valor.description}
               </p>
             </Card>
@@ -289,66 +267,31 @@ const Somos = () => {
         </div>
       </Section>
 
-      {/* Impact Section */}
-      <Section className="section text-white" style={{ background: 'var(--color-primary-700)' }}>
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: 'var(--font-display)' }}>
-            El impacto de nuestro trabajo
-          </h2>
-          <p className="text-xl">Nuestros asociados impactan a</p>
-        </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {impactStats.map((stat, index) => (
-            <div key={index} className="text-center p-6 rounded-lg border-2 border-white/20">
-              <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-white flex items-center justify-center">
-                <stat.icon className="w-6 h-6" style={{ color: 'var(--color-primary-700)' }} />
-              </div>
-              <div className="text-3xl font-bold mb-2">{stat.value}</div>
-              <div className="text-lg">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {additionalStats.map((stat, index) => (
-            <div key={index} className="text-center p-6 rounded-lg border-2 border-white/20">
-              <div className="text-2xl font-bold mb-2">{stat.value}</div>
-              <div className="text-sm">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Final CTA Section */}
-      <Section className="section bg-sand/30">
-        <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary-700)' }}>
-            Somos la revolución de la educación
+      {/* CTA FINAL - FONDO SAND */}
+      <Section className="py-20 bg-sand text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-primary-700">
+            Sé parte de la historia que estamos escribiendo
           </h2>
           
-          <div className="mb-8 bg-white/60 rounded-lg aspect-video max-w-4xl mx-auto flex items-center justify-center">
-            <div className="text-center text-gray-500">
-              <div className="text-lg mb-2">Event Image Placeholder</div>
-              <div className="text-sm">Conference/Presentation Photo</div>
-            </div>
-          </div>
+          <p className="text-lg text-primary-600 mb-12 max-w-3xl mx-auto">
+            Únete a la comunidad de líderes que están transformando el futuro de la educación en Colombia y Latinoamérica
+          </p>
           
-          <div className="mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary-700)' }}>
-              Únete a Colombia EdTech
-            </h3>
-            <p className="text-lg max-w-4xl mx-auto mb-8" style={{ color: 'var(--muted)' }}>
-              Hoy todos somos Colombia EdTech. Unidos, construiremos una educación que no solo inspire y transforme, sino que lidere el cambio que el mundo necesita, una generación a la vez.
-            </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <CTAButton size="xl" asChild>
+              <Link to="/asociados">
+                Quiero ser asociado
+                <ArrowRight className="ml-2 w-6 h-6" />
+              </Link>
+            </CTAButton>
+            <CTAButton size="xl" variant="accent" asChild>
+              <Link to="/voluntariado">
+                Quiero ser voluntario
+                <Users className="ml-2 w-6 h-6" />
+              </Link>
+            </CTAButton>
           </div>
-          
-          <CTAButton size="lg" asChild>
-            <Link to="/asociados">
-              Quiero ser parte de Colombia EdTech
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </CTAButton>
         </div>
       </Section>
     </>
