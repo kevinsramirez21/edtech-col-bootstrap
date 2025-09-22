@@ -14,6 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
+      asociados: {
+        Row: {
+          correo_contacto: string | null
+          created_at: string
+          descripcion: string | null
+          estado: Database["public"]["Enums"]["membership_status"]
+          fecha_fundacion: string | null
+          fecha_ingreso: string
+          id: string
+          linkedin: string | null
+          logo_url: string | null
+          nombre_empresa: string
+          pagina_web: string | null
+          segmento: Database["public"]["Enums"]["company_segment"] | null
+          servicios: string[] | null
+          tamano_empresa: Database["public"]["Enums"]["company_size"] | null
+          telefono: string | null
+          tipo_membresia: string | null
+          twitter: string | null
+          ubicacion: string | null
+          updated_at: string
+        }
+        Insert: {
+          correo_contacto?: string | null
+          created_at?: string
+          descripcion?: string | null
+          estado?: Database["public"]["Enums"]["membership_status"]
+          fecha_fundacion?: string | null
+          fecha_ingreso?: string
+          id?: string
+          linkedin?: string | null
+          logo_url?: string | null
+          nombre_empresa: string
+          pagina_web?: string | null
+          segmento?: Database["public"]["Enums"]["company_segment"] | null
+          servicios?: string[] | null
+          tamano_empresa?: Database["public"]["Enums"]["company_size"] | null
+          telefono?: string | null
+          tipo_membresia?: string | null
+          twitter?: string | null
+          ubicacion?: string | null
+          updated_at?: string
+        }
+        Update: {
+          correo_contacto?: string | null
+          created_at?: string
+          descripcion?: string | null
+          estado?: Database["public"]["Enums"]["membership_status"]
+          fecha_fundacion?: string | null
+          fecha_ingreso?: string
+          id?: string
+          linkedin?: string | null
+          logo_url?: string | null
+          nombre_empresa?: string
+          pagina_web?: string | null
+          segmento?: Database["public"]["Enums"]["company_segment"] | null
+          servicios?: string[] | null
+          tamano_empresa?: Database["public"]["Enums"]["company_size"] | null
+          telefono?: string | null
+          tipo_membresia?: string | null
+          twitter?: string | null
+          ubicacion?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -93,6 +159,16 @@ export type Database = {
     }
     Enums: {
       app_role: "visitante" | "administrador" | "asociado"
+      company_segment:
+        | "educacion_basica"
+        | "educacion_superior"
+        | "capacitacion_empresarial"
+        | "educacion_continua"
+        | "edtech_tools"
+        | "infrastructure"
+        | "other"
+      company_size: "startup" | "pequena" | "mediana" | "grande"
+      membership_status: "activo" | "inactivo" | "pendiente"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -221,6 +297,17 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["visitante", "administrador", "asociado"],
+      company_segment: [
+        "educacion_basica",
+        "educacion_superior",
+        "capacitacion_empresarial",
+        "educacion_continua",
+        "edtech_tools",
+        "infrastructure",
+        "other",
+      ],
+      company_size: ["startup", "pequena", "mediana", "grande"],
+      membership_status: ["activo", "inactivo", "pendiente"],
     },
   },
 } as const

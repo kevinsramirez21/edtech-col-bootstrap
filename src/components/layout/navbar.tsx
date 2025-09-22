@@ -20,8 +20,8 @@ const navItems = [
     name: "Asociados", 
     isDropdown: true,
     items: [
-      { name: "Conoce los Beneficios", href: "/asociados/beneficios" },
-      { name: "Conoce los Asociados", href: "/asociados" },
+      { name: "Conoce los Beneficios", href: "/asociados" },
+      { name: "Conoce los Asociados", href: "/asociados/directorio" },
     ]
   },
   { name: "Aliados", href: "/aliados" },

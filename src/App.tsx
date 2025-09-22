@@ -13,6 +13,7 @@ import { AuthProvider } from "@/hooks/use-auth";
 import Index from "./pages/Index";
 import Somos from "./pages/Somos";
 import Asociados from "./pages/Asociados";
+import AssociatesDirectory from "./pages/AssociatesDirectory";
 import Aliados from "./pages/Aliados";
 import Voluntariado from "./pages/Voluntariado";
 import Auth from "./pages/Auth";
@@ -36,6 +37,7 @@ const App = () => (
                   <Route path="/" element={<Index />} />
                   <Route path="/somos" element={<Somos />} />
                   <Route path="/asociados" element={<Asociados />} />
+                  <Route path="/asociados/directorio" element={<AssociatesDirectory />} />
                   <Route path="/aliados" element={<Aliados />} />
                   <Route path="/voluntariado" element={<Voluntariado />} />
                   <Route path="/auth" element={<Auth />} />
