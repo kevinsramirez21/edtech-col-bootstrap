@@ -7,13 +7,11 @@ import { OptimizedImage } from "@/components/ui/optimized-image"
 import { UserMenu } from "@/components/ui/user-menu"
 import { useAuth } from "@/hooks/use-auth"
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 const navItems = [
   { name: "Inicio", href: "/" },
@@ -89,67 +87,58 @@ export function Navbar() {
           </div>
 
           {/* Desktop Navigation - Premium Layout */}
-          <div className="hidden lg:flex lg:items-center">
-            <NavigationMenu>
-              <NavigationMenuList className="space-x-1">
-                {navItems.map((item) => (
-                  <NavigationMenuItem key={item.name}>
-                    {item.isDropdown ? (
-                      <>
-                        <NavigationMenuTrigger className={cn(
-                          "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group bg-transparent",
+          <div className="hidden lg:flex lg:items-center lg:space-x-1">
+            {navItems.map((item) => (
+              <div key={item.name}>
+                {item.isDropdown ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        className={cn(
+                          "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group",
                           "text-primary-900 hover:text-primary-700 hover:bg-primary-700/5"
-                        )}>
-                          <span className="flex items-center space-x-1">
-                            <span>{item.name}</span>
-                            <ChevronDown className="w-3 h-3" />
-                          </span>
-                        </NavigationMenuTrigger>
-                        <NavigationMenuContent className="min-w-[200px] bg-white/95 backdrop-blur-md border border-gray-300/20 shadow-lg rounded-lg p-2">
-                          <div className="space-y-1">
-                            {item.items?.map((subItem) => (
-                              <NavigationMenuLink
-                                key={subItem.name}
-                                asChild
-                              >
-                                <Link
-                                  to={subItem.href}
-                                  className={cn(
-                                    "block px-3 py-2 text-sm font-medium rounded-md transition-all duration-200",
-                                    "text-primary-900 hover:text-primary-700 hover:bg-primary-700/10"
-                                  )}
-                                >
-                                  {subItem.name}
-                                </Link>
-                              </NavigationMenuLink>
-                            ))}
-                          </div>
-                        </NavigationMenuContent>
-                      </>
-                    ) : (
-                      <NavigationMenuLink asChild>
-                        <Link
-                          to={item.href}
-                          className={cn(
-                            "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group",
-                            isActive(item.href)
-                              ? "text-primary-900 bg-gradient-to-r from-primary-700/10 to-accent-brand/10 shadow-sm"
-                              : "text-primary-900 hover:text-primary-700 hover:bg-primary-700/5"
-                          )}
-                          aria-current={isActive(item.href) ? "page" : undefined}
-                        >
-                          <span className="relative z-10">{item.name}</span>
-                          {isActive(item.href) && (
-                            <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-primary-700 to-accent-brand rounded-full"></div>
-                          )}
-                          <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary-700/0 to-accent-brand/0 group-hover:from-primary-700/5 group-hover:to-accent-brand/5 transition-all duration-300"></div>
-                        </Link>
-                      </NavigationMenuLink>
+                        )}
+                      >
+                        <span className="flex items-center space-x-1">
+                          <span>{item.name}</span>
+                          <ChevronDown className="w-3 h-3" />
+                        </span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="min-w-[200px] bg-white border border-gray-200 shadow-lg rounded-lg">
+                      {item.items?.map((subItem) => (
+                        <DropdownMenuItem key={subItem.name} asChild>
+                          <Link
+                            to={subItem.href}
+                            className="block px-3 py-2 text-sm font-medium text-primary-900 hover:text-primary-700 hover:bg-primary-700/10 cursor-pointer"
+                          >
+                            {subItem.name}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className={cn(
+                      "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group",
+                      isActive(item.href)
+                        ? "text-primary-900 bg-gradient-to-r from-primary-700/10 to-accent-brand/10 shadow-sm"
+                        : "text-primary-900 hover:text-primary-700 hover:bg-primary-700/5"
                     )}
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                  >
+                    <span className="relative z-10">{item.name}</span>
+                    {isActive(item.href) && (
+                      <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-primary-700 to-accent-brand rounded-full"></div>
+                    )}
+                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary-700/0 to-accent-brand/0 group-hover:from-primary-700/5 group-hover:to-accent-brand/5 transition-all duration-300"></div>
+                  </Link>
+                )}
+              </div>
+            ))}
           </div>
 
           {/* Desktop Auth/User Menu */}
