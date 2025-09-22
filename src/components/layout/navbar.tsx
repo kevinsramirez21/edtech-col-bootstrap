@@ -1,16 +1,41 @@
 import * as React from "react"
 import { Link, useLocation } from "react-router-dom"
-import { Menu, X, Users, LogIn } from "lucide-react"
+import { Menu, X, Users, LogIn, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import { UserMenu } from "@/components/ui/user-menu"
 import { useAuth } from "@/hooks/use-auth"
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu"
 
 const navItems = [
+  { name: "Inicio", href: "/" },
   { name: "Somos", href: "/somos" },
-  { name: "Asociados", href: "/asociados" },
+  { 
+    name: "Asociados", 
+    isDropdown: true,
+    items: [
+      { name: "Conoce los Beneficios", href: "/asociados/beneficios" },
+      { name: "Conoce los Asociados", href: "/asociados" },
+    ]
+  },
   { name: "Aliados", href: "/aliados" },
+  { 
+    name: "Mundo Edtech", 
+    isDropdown: true,
+    items: [
+      { name: "Panorama", href: "/mundo-edtech/panorama" },
+      { name: "Eventos", href: "/eventos" },
+      { name: "Noticias", href: "/mundo-edtech/noticias" },
+    ]
+  },
   { name: "Voluntariado", href: "/voluntariado" },
 ]
 
@@ -64,26 +89,67 @@ export function Navbar() {
           </div>
 
           {/* Desktop Navigation - Premium Layout */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={cn(
-                  "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group",
-                  isActive(item.href)
-                    ? "text-primary-900 bg-gradient-to-r from-primary-700/10 to-accent-brand/10 shadow-sm"
-                    : "text-primary-900 hover:text-primary-700 hover:bg-primary-700/5"
-                )}
-                aria-current={isActive(item.href) ? "page" : undefined}
-              >
-                <span className="relative z-10">{item.name}</span>
-                {isActive(item.href) && (
-                  <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-primary-700 to-accent-brand rounded-full"></div>
-                )}
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary-700/0 to-accent-brand/0 group-hover:from-primary-700/5 group-hover:to-accent-brand/5 transition-all duration-300"></div>
-              </Link>
-            ))}
+          <div className="hidden lg:flex lg:items-center">
+            <NavigationMenu>
+              <NavigationMenuList className="space-x-1">
+                {navItems.map((item) => (
+                  <NavigationMenuItem key={item.name}>
+                    {item.isDropdown ? (
+                      <>
+                        <NavigationMenuTrigger className={cn(
+                          "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group bg-transparent",
+                          "text-primary-900 hover:text-primary-700 hover:bg-primary-700/5"
+                        )}>
+                          <span className="flex items-center space-x-1">
+                            <span>{item.name}</span>
+                            <ChevronDown className="w-3 h-3" />
+                          </span>
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent className="min-w-[200px] bg-white/95 backdrop-blur-md border border-gray-300/20 shadow-lg rounded-lg p-2">
+                          <div className="space-y-1">
+                            {item.items?.map((subItem) => (
+                              <NavigationMenuLink
+                                key={subItem.name}
+                                asChild
+                              >
+                                <Link
+                                  to={subItem.href}
+                                  className={cn(
+                                    "block px-3 py-2 text-sm font-medium rounded-md transition-all duration-200",
+                                    "text-primary-900 hover:text-primary-700 hover:bg-primary-700/10"
+                                  )}
+                                >
+                                  {subItem.name}
+                                </Link>
+                              </NavigationMenuLink>
+                            ))}
+                          </div>
+                        </NavigationMenuContent>
+                      </>
+                    ) : (
+                      <NavigationMenuLink asChild>
+                        <Link
+                          to={item.href}
+                          className={cn(
+                            "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group",
+                            isActive(item.href)
+                              ? "text-primary-900 bg-gradient-to-r from-primary-700/10 to-accent-brand/10 shadow-sm"
+                              : "text-primary-900 hover:text-primary-700 hover:bg-primary-700/5"
+                          )}
+                          aria-current={isActive(item.href) ? "page" : undefined}
+                        >
+                          <span className="relative z-10">{item.name}</span>
+                          {isActive(item.href) && (
+                            <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-primary-700 to-accent-brand rounded-full"></div>
+                          )}
+                          <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary-700/0 to-accent-brand/0 group-hover:from-primary-700/5 group-hover:to-accent-brand/5 transition-all duration-300"></div>
+                        </Link>
+                      </NavigationMenuLink>
+                    )}
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
 
           {/* Desktop Auth/User Menu */}
@@ -144,19 +210,45 @@ export function Navbar() {
           >
             <div className="px-4 py-6 space-y-3">
               {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={cn(
-                    "block px-4 py-3 rounded-lg text-base font-semibold transition-all duration-300",
-                    isActive(item.href)
-                      ? "text-primary-900 bg-gradient-to-r from-primary-700/15 to-accent-brand/15 shadow-sm"
-                      : "text-primary-900 hover:text-primary-700 hover:bg-primary-700/10"
+                <div key={item.name}>
+                  {item.isDropdown ? (
+                    <div className="space-y-2">
+                      <div className="px-4 py-2 text-base font-semibold text-primary-900 border-b border-gray-300/20">
+                        {item.name}
+                      </div>
+                      <div className="pl-4 space-y-2">
+                        {item.items?.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            to={subItem.href}
+                            className={cn(
+                              "block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300",
+                              isActive(subItem.href)
+                                ? "text-primary-900 bg-gradient-to-r from-primary-700/15 to-accent-brand/15 shadow-sm"
+                                : "text-primary-800 hover:text-primary-700 hover:bg-primary-700/10"
+                            )}
+                            aria-current={isActive(subItem.href) ? "page" : undefined}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className={cn(
+                        "block px-4 py-3 rounded-lg text-base font-semibold transition-all duration-300",
+                        isActive(item.href)
+                          ? "text-primary-900 bg-gradient-to-r from-primary-700/15 to-accent-brand/15 shadow-sm"
+                          : "text-primary-900 hover:text-primary-700 hover:bg-primary-700/10"
+                      )}
+                      aria-current={isActive(item.href) ? "page" : undefined}
+                    >
+                      {item.name}
+                    </Link>
                   )}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                >
-                  {item.name}
-                </Link>
+                </div>
               ))}
               
               <div className="pt-4 border-t border-gray-300/20">
