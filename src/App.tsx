@@ -17,6 +17,7 @@ import AssociatesDirectory from "./pages/AssociatesDirectory";
 import Aliados from "./pages/Aliados";
 import Voluntariado from "./pages/Voluntariado";
 import Auth from "./pages/Auth";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
                   <Route path="/aliados" element={<Aliados />} />
                   <Route path="/voluntariado" element={<Voluntariado />} />
                   <Route path="/auth" element={<Auth />} />
+                  <Route path="/admin" element={<Admin />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

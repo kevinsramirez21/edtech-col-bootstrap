@@ -1,11 +1,12 @@
 import * as React from "react"
 import { Link, useLocation } from "react-router-dom"
-import { Menu, X, Users, LogIn, ChevronDown } from "lucide-react"
+import { Menu, X, Users, LogIn, ChevronDown, Settings } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import { UserMenu } from "@/components/ui/user-menu"
 import { useAuth } from "@/hooks/use-auth"
+import { useAdmin } from "@/hooks/use-admin"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -41,6 +42,7 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
   const location = useLocation()
   const { user, loading } = useAuth()
+  const { isAdmin } = useAdmin()
 
   const isActive = (href: string) => location.pathname === href
 
@@ -145,7 +147,22 @@ export function Navbar() {
           <div className="hidden lg:flex lg:items-center lg:space-x-4">
             {!loading && (
               user ? (
-                <UserMenu />
+                <div className="flex items-center space-x-4">
+                  {isAdmin && (
+                    <Button 
+                      asChild
+                      size="sm"
+                      variant="outline"
+                      className="border-primary-700 text-primary-700 hover:bg-primary-700 hover:text-white font-semibold"
+                    >
+                      <Link to="/admin" className="flex items-center space-x-2">
+                        <Settings className="w-4 h-4" />
+                        <span>Admin</span>
+                      </Link>
+                    </Button>
+                  )}
+                  <UserMenu />
+                </div>
               ) : (
                 <>
                   <Button 
@@ -243,12 +260,27 @@ export function Navbar() {
               <div className="pt-4 border-t border-gray-300/20">
                 {!loading && (
                   user ? (
-                    <div className="flex items-center space-x-3 p-3 bg-primary-50 rounded-lg">
-                      <UserMenu />
-                      <div className="flex-1">
-                        <p className="text-sm font-medium text-primary-900">
-                          {user.email}
-                        </p>
+                    <div className="space-y-3">
+                      {isAdmin && (
+                        <Button 
+                          asChild
+                          size="sm"
+                          variant="outline"
+                          className="w-full border-primary-700 text-primary-700 hover:bg-primary-700 hover:text-white font-semibold py-3 rounded-lg"
+                        >
+                          <Link to="/admin" className="flex items-center justify-center space-x-2">
+                            <Settings className="w-4 h-4" />
+                            <span>Panel Admin</span>
+                          </Link>
+                        </Button>
+                      )}
+                      <div className="flex items-center space-x-3 p-3 bg-primary-50 rounded-lg">
+                        <UserMenu />
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-primary-900">
+                            {user.email}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   ) : (
