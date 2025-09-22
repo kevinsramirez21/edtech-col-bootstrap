@@ -6,8 +6,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { KPI } from "@/components/ui/kpi";
 import { LogoGrid } from "@/components/ui/logo-grid";
 import { OptimizedImage } from "@/components/ui/optimized-image";
+import { useAuth } from "@/hooks/use-auth";
 import { Link } from "react-router-dom";
-import { ArrowRight, Users, Target, Lightbulb, Monitor, Edit, Code, Zap, Globe, Heart, Star, BookOpen, Rocket } from "lucide-react";
+import { ArrowRight, Users, Target, Lightbulb, Monitor, Edit, Code, Zap, Globe, Heart, Star, BookOpen, Rocket, LogIn } from "lucide-react";
 
 const segmentationCards = [
   {
@@ -85,6 +86,8 @@ const impactStats = [
 ];
 
 const Index = () => {
+  const { user, profile, loading } = useAuth();
+
   return (
     <>
       {/* Hero Section Premium */}
@@ -130,8 +133,35 @@ const Index = () => {
             </p>
           </div>
 
+          {/* User Welcome Message */}
+          {!loading && user && (
+            <div className="text-center mb-8 animate-fade-in-up animation-delay-600">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 max-w-md mx-auto">
+                <p className="text-white text-lg">
+                  ¡Hola, {profile?.first_name || user.email?.split('@')[0] || 'EdTecher'}! 👋
+                </p>
+                <p className="text-white/80 text-sm mt-2">
+                  Bienvenido de vuelta a Colombia EdTech
+                </p>
+              </div>
+            </div>
+          )}
+
           {/* CTA Section Premium */}
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center animate-fade-in-up animation-delay-800">
+            {!loading && !user && (
+              <Button 
+                asChild
+                variant="outline"
+                className="border-2 border-white text-white bg-white/10 backdrop-blur-md hover:bg-white hover:text-primary-700 font-semibold px-8 py-4 rounded-2xl transition-all duration-500 hover:scale-110 text-base lg:text-lg group"
+              >
+                <Link to="/auth" className="flex items-center space-x-3">
+                  <LogIn className="w-5 h-5" />
+                  <span>Iniciar Sesión</span>
+                </Link>
+              </Button>
+            )}
+            
             <Button 
               asChild
               className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-10 py-5 rounded-2xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-110 text-lg lg:text-xl group"

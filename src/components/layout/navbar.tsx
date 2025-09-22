@@ -1,9 +1,11 @@
 import * as React from "react"
 import { Link, useLocation } from "react-router-dom"
-import { Menu, X, Users } from "lucide-react"
+import { Menu, X, Users, LogIn } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { OptimizedImage } from "@/components/ui/optimized-image"
+import { UserMenu } from "@/components/ui/user-menu"
+import { useAuth } from "@/hooks/use-auth"
 
 const navItems = [
   { name: "Somos", href: "/somos" },
@@ -15,6 +17,7 @@ const navItems = [
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
   const location = useLocation()
+  const { user, loading } = useAuth()
 
   const isActive = (href: string) => location.pathname === href
 
@@ -83,17 +86,35 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Desktop CTA Premium */}
+          {/* Desktop Auth/User Menu */}
           <div className="hidden lg:flex lg:items-center lg:space-x-4">
-            <Button 
-              asChild
-              className="bg-gradient-to-r from-primary-700 to-primary-900 hover:from-primary-900 hover:to-primary-700 text-white font-semibold px-6 py-2 rounded-lg shadow-lg shadow-primary-700/25 hover:shadow-xl hover:shadow-primary-700/40 transition-all duration-300 hover:scale-105"
-            >
-              <Link to="/asociados" className="flex items-center space-x-2">
-                <Users className="w-4 h-4" />
-                <span>Únete al Gremio</span>
-              </Link>
-            </Button>
+            {!loading && (
+              user ? (
+                <UserMenu />
+              ) : (
+                <>
+                  <Button 
+                    asChild
+                    variant="outline"
+                    className="border-primary-700 text-primary-700 hover:bg-primary-700 hover:text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300"
+                  >
+                    <Link to="/auth" className="flex items-center space-x-2">
+                      <LogIn className="w-4 h-4" />
+                      <span>Iniciar Sesión</span>
+                    </Link>
+                  </Button>
+                  <Button 
+                    asChild
+                    className="bg-gradient-to-r from-primary-700 to-primary-900 hover:from-primary-900 hover:to-primary-700 text-white font-semibold px-6 py-2 rounded-lg shadow-lg shadow-primary-700/25 hover:shadow-xl hover:shadow-primary-700/40 transition-all duration-300 hover:scale-105"
+                  >
+                    <Link to="/asociados" className="flex items-center space-x-2">
+                      <Users className="w-4 h-4" />
+                      <span>Únete al Gremio</span>
+                    </Link>
+                  </Button>
+                </>
+              )
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -139,15 +160,40 @@ export function Navbar() {
               ))}
               
               <div className="pt-4 border-t border-gray-300/20">
-                <Button 
-                  asChild
-                  className="w-full bg-gradient-to-r from-primary-700 to-primary-900 text-white font-semibold py-3 rounded-lg shadow-lg shadow-primary-700/25"
-                >
-                  <Link to="/asociados" className="flex items-center justify-center space-x-2">
-                    <Users className="w-4 h-4" />
-                    <span>Únete al Gremio</span>
-                  </Link>
-                </Button>
+                {!loading && (
+                  user ? (
+                    <div className="flex items-center space-x-3 p-3 bg-primary-50 rounded-lg">
+                      <UserMenu />
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-primary-900">
+                          {user.email}
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      <Button 
+                        asChild
+                        variant="outline"
+                        className="w-full border-primary-700 text-primary-700 hover:bg-primary-700 hover:text-white font-semibold py-3 rounded-lg"
+                      >
+                        <Link to="/auth" className="flex items-center justify-center space-x-2">
+                          <LogIn className="w-4 h-4" />
+                          <span>Iniciar Sesión</span>
+                        </Link>
+                      </Button>
+                      <Button 
+                        asChild
+                        className="w-full bg-gradient-to-r from-primary-700 to-primary-900 text-white font-semibold py-3 rounded-lg shadow-lg shadow-primary-700/25"
+                      >
+                        <Link to="/asociados" className="flex items-center justify-center space-x-2">
+                          <Users className="w-4 h-4" />
+                          <span>Únete al Gremio</span>
+                        </Link>
+                      </Button>
+                    </div>
+                  )
+                )}
               </div>
             </div>
           </div>
