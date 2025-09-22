@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useToast } from "@/hooks/use-toast"
+import { AssociateModal } from "./associate-modal"
+import { Associate } from "@/types/associate"
 import {
   Table,
   TableBody,
@@ -25,23 +27,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-
-interface Associate {
-  id: string
-  nombre_empresa: string
-  descripcion?: string
-  pagina_web?: string
-  segmento?: string
-  servicios?: string[]
-  correo_contacto?: string
-  logo_url?: string
-  ubicacion?: string
-  tamano_empresa?: string
-  estado: string
-  fecha_ingreso: string
-  tipo_membresia?: string
-  created_at: string
-}
 
 const segmentLabels: Record<string, string> = {
   educacion_basica: "Educación Básica",
@@ -69,6 +54,9 @@ export function AssociatesAdmin() {
   const [associates, setAssociates] = useState<Associate[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [editingAssociate, setEditingAssociate] = useState<Associate | null>(null)
+  const [submitting, setSubmitting] = useState(false)
   const { toast } = useToast()
 
   // Fetch all associates (including inactive ones for admin)
@@ -99,7 +87,94 @@ export function AssociatesAdmin() {
     fetchAssociates()
   }, [])
 
-  // Toggle associate status
+  // Create new associate
+  const createAssociate = async (data: any) => {
+    try {
+      setSubmitting(true)
+      const { error } = await supabase
+        .from('asociados')
+        .insert([data])
+
+      if (error) throw error
+
+      await fetchAssociates()
+      setModalOpen(false)
+      
+      toast({
+        title: "Asociado creado",
+        description: "El asociado ha sido creado correctamente",
+      })
+    } catch (err) {
+      console.error('Error creating associate:', err)
+      toast({
+        title: "Error",
+        description: "No se pudo crear el asociado",
+        variant: "destructive"
+      })
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  // Update existing associate
+  const updateAssociate = async (data: any) => {
+    if (!editingAssociate) return
+
+    try {
+      setSubmitting(true)
+      const { error } = await supabase
+        .from('asociados')
+        .update(data)
+        .eq('id', editingAssociate.id)
+
+      if (error) throw error
+
+      await fetchAssociates()
+      setModalOpen(false)
+      setEditingAssociate(null)
+      
+      toast({
+        title: "Asociado actualizado",
+        description: "El asociado ha sido actualizado correctamente",
+      })
+    } catch (err) {
+      console.error('Error updating associate:', err)
+      toast({
+        title: "Error",
+        description: "No se pudo actualizar el asociado",
+        variant: "destructive"
+      })
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  // Handle form submission (create or update)
+  const handleSubmit = async (data: any) => {
+    if (editingAssociate) {
+      await updateAssociate(data)
+    } else {
+      await createAssociate(data)
+    }
+  }
+
+  // Open modal for adding new associate
+  const handleAddNew = () => {
+    setEditingAssociate(null)
+    setModalOpen(true)
+  }
+
+  // Open modal for editing associate
+  const handleEdit = (associate: Associate) => {
+    setEditingAssociate(associate)
+    setModalOpen(true)
+  }
+
+  // Close modal and reset state
+  const handleCloseModal = () => {
+    setModalOpen(false)
+    setEditingAssociate(null)
+  }
   const toggleAssociateStatus = async (id: string, currentStatus: string) => {
     const newStatus = currentStatus === 'activo' ? 'inactivo' : 'activo'
     
@@ -190,7 +265,7 @@ export function AssociatesAdmin() {
             <Building2 className="w-5 h-5" />
             Gestión de Asociados
           </CardTitle>
-          <Button className="gap-2">
+          <Button onClick={handleAddNew} className="gap-2">
             <Plus className="w-4 h-4" />
             Agregar Asociado
           </Button>
@@ -280,7 +355,12 @@ export function AssociatesAdmin() {
                           )}
                         </Button>
                         
-                        <Button size="sm" variant="outline" className="gap-1">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => handleEdit(associate)}
+                          className="gap-1"
+                        >
                           <Pencil className="w-3 h-3" />
                           Editar
                         </Button>
@@ -319,6 +399,15 @@ export function AssociatesAdmin() {
             </Table>
           </div>
         )}
+
+        {/* Associate Modal */}
+        <AssociateModal
+          isOpen={modalOpen}
+          onClose={handleCloseModal}
+          onSubmit={handleSubmit}
+          associate={editingAssociate}
+          isLoading={submitting}
+        />
       </CardContent>
     </Card>
   )
