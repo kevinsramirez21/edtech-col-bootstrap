@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { User, LogOut, Settings, Shield, Building } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -16,11 +17,16 @@ import { useAuth } from '@/hooks/use-auth';
 export function UserMenu() {
   const { user, profile, role, signOut } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSignOut = async () => {
     setIsLoading(true);
     await signOut();
     setIsLoading(false);
+  };
+
+  const handleAdminClick = () => {
+    navigate('/admin');
   };
 
   if (!user) return null;
@@ -107,7 +113,7 @@ export function UserMenu() {
         </DropdownMenuItem>
         
         {role === 'administrador' && (
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={handleAdminClick}>
             <Shield className="mr-2 h-4 w-4" />
             <span>Panel Admin</span>
           </DropdownMenuItem>
