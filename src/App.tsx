@@ -19,6 +19,11 @@ import Voluntariado from "./pages/Voluntariado";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+import Blog from "./pages/Blog";
+import Eventos from "./pages/Eventos";
+import Legal from "./pages/Legal";
+import Panorama from "./pages/Panorama";
+import Noticias from "./pages/Noticias";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +48,11 @@ const App = () => (
                   <Route path="/voluntariado" element={<Voluntariado />} />
                   <Route path="/auth" element={<Auth />} />
                   <Route path="/admin" element={<Admin />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/eventos" element={<Eventos />} />
+                  <Route path="/legal" element={<Legal />} />
+                  <Route path="/mundo-edtech/panorama" element={<Panorama />} />
+                  <Route path="/mundo-edtech/noticias" element={<Noticias />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
