@@ -9,97 +9,78 @@ import { OptimizedImage } from "@/components/ui/optimized-image";
 import { useAuth } from "@/hooks/use-auth";
 import { Link } from "react-router-dom";
 import { ArrowRight, Users, Target, Lightbulb, Monitor, Edit, Code, Zap, Globe, Heart, Star, BookOpen, Rocket, LogIn } from "lucide-react";
-
-const segmentationCards = [
-  {
-    title: "EdTechs",
-    subtitle: "(Asociadas)",
-    description: "Si eres una organización con ánimo o sin ánimo de lucro que está TRANSFORMANDO la educación con tecnología",
-    cta: "ÚNETE",
-    href: "/asociados",
-    image: "/images/edtechs-card.jpg",
-    icon: Zap,
-    gradient: "from-primary-700 to-primary-900"
-  },
-  {
-    title: "Aliados", 
-    subtitle: "(Gobierno / Privados / Universidades / Cajas)",
-    description: "Si eres una entidad pública o privada que quiere CONTRIBUIR para que las EdTech cumplan su misión",
-    cta: "ÚNETE",
-    href: "/aliados",
-    image: "/images/aliados-card.jpg",
-    icon: Globe,
-    gradient: "from-accent-brand to-primary-700"
-  },
-  {
-    title: "Voluntariado",
-    subtitle: "",
-    description: "Si eres experta/o, profesional o estudiante y quieres DONAR tu tiempo y talento en esta revolución",
-    cta: "ÚNETE", 
-    href: "/voluntariado",
-    image: "/images/voluntarios-card.jpg",
-    icon: Heart,
-    gradient: "from-primary-900 to-accent-brand"
-  }
-];
-
-const missionCards = [
-  {
-    icon: Monitor,
-    title: "Transformar",
-    subtitle: "la educación con Tecnología",
-    description: "Impulsar soluciones tecnológicas que revolucionen el aprendizaje y hagan la educación más accesible para todos."
-  },
-  {
-    icon: Edit,
-    title: "Incidir", 
-    subtitle: "en el diseño institucional de la educación regulada",
-    description: "Influir en políticas educativas para crear un sistema más efectivo y adaptado a las necesidades actuales."
-  },
-  {
-    icon: Code,
-    title: "Promover",
-    subtitle: "políticas públicas, sandbox y proyectos con el Estado",
-    description: "Colaborar estratégicamente con el gobierno en iniciativas que transformen la educación nacional."
-  }
-];
-
-const impactStats = [
-  {
-    icon: Users,
-    number: "15M+",
-    label: "Personas Impactadas",
-    description: "en toda Latinoamérica"
-  },
-  {
-    icon: Globe,
-    number: "25+",
-    label: "Países Alcanzados",
-    description: "con presencia EdTech colombiana"
-  },
-  {
-    icon: Rocket,
-    number: "70+",
-    label: "EdTechs Asociadas",
-    description: "transformando la educación"
-  }
-];
-
+const segmentationCards = [{
+  title: "EdTechs",
+  subtitle: "(Asociadas)",
+  description: "Si eres una organización con ánimo o sin ánimo de lucro que está TRANSFORMANDO la educación con tecnología",
+  cta: "ÚNETE",
+  href: "/asociados",
+  image: "/images/edtechs-card.jpg",
+  icon: Zap,
+  gradient: "from-primary-700 to-primary-900"
+}, {
+  title: "Aliados",
+  subtitle: "(Gobierno / Privados / Universidades / Cajas)",
+  description: "Si eres una entidad pública o privada que quiere CONTRIBUIR para que las EdTech cumplan su misión",
+  cta: "ÚNETE",
+  href: "/aliados",
+  image: "/images/aliados-card.jpg",
+  icon: Globe,
+  gradient: "from-accent-brand to-primary-700"
+}, {
+  title: "Voluntariado",
+  subtitle: "",
+  description: "Si eres experta/o, profesional o estudiante y quieres DONAR tu tiempo y talento en esta revolución",
+  cta: "ÚNETE",
+  href: "/voluntariado",
+  image: "/images/voluntarios-card.jpg",
+  icon: Heart,
+  gradient: "from-primary-900 to-accent-brand"
+}];
+const missionCards = [{
+  icon: Monitor,
+  title: "Transformar",
+  subtitle: "la educación con Tecnología",
+  description: "Impulsar soluciones tecnológicas que revolucionen el aprendizaje y hagan la educación más accesible para todos."
+}, {
+  icon: Edit,
+  title: "Incidir",
+  subtitle: "en el diseño institucional de la educación regulada",
+  description: "Influir en políticas educativas para crear un sistema más efectivo y adaptado a las necesidades actuales."
+}, {
+  icon: Code,
+  title: "Promover",
+  subtitle: "políticas públicas, sandbox y proyectos con el Estado",
+  description: "Colaborar estratégicamente con el gobierno en iniciativas que transformen la educación nacional."
+}];
+const impactStats = [{
+  icon: Users,
+  number: "15M+",
+  label: "Personas Impactadas",
+  description: "en toda Latinoamérica"
+}, {
+  icon: Globe,
+  number: "25+",
+  label: "Países Alcanzados",
+  description: "con presencia EdTech colombiana"
+}, {
+  icon: Rocket,
+  number: "70+",
+  label: "EdTechs Asociadas",
+  description: "transformando la educación"
+}];
 const Index = () => {
-  const { user, profile, loading } = useAuth();
-
-  return (
-    <>
+  const {
+    user,
+    profile,
+    loading
+  } = useAuth();
+  return <>
       {/* Hero Section Premium */}
       <Section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image with Multiple Overlays */}
         <div className="absolute inset-0 z-0">
-          <OptimizedImage
-            src="/images/hero-bg.JPG"
-            alt="Colombia EdTech - Transformando la educación con tecnología en Latinoamérica"
-            className="w-full h-full object-cover"
-            priority
-          />
+          <OptimizedImage src="/images/hero-bg.JPG" alt="Colombia EdTech - Transformando la educación con tecnología en Latinoamérica" className="w-full h-full object-cover" priority />
           {/* Dark Overlay for Better Text Contrast */}
           <div className="absolute inset-0 bg-primary-900/85"></div>
         </div>
@@ -134,8 +115,7 @@ const Index = () => {
           </div>
 
           {/* User Welcome Message */}
-          {!loading && user && (
-            <div className="text-center mb-8 animate-fade-in-up animation-delay-600">
+          {!loading && user && <div className="text-center mb-8 animate-fade-in-up animation-delay-600">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 max-w-md mx-auto">
                 <p className="text-white text-lg">
                   ¡Hola, {profile?.first_name || user.email?.split('@')[0] || 'EdTecher'}! 👋
@@ -144,28 +124,15 @@ const Index = () => {
                   Bienvenido de vuelta a Colombia EdTech
                 </p>
               </div>
-            </div>
-          )}
+            </div>}
 
           {/* CTA Section Premium */}
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center animate-fade-in-up animation-delay-800">
-            {!loading && !user && (
-              <Button 
-                asChild
-                variant="outline"
-                className="border-2 border-white text-white bg-white/10 backdrop-blur-md hover:bg-white hover:text-primary-700 font-semibold px-8 py-4 rounded-2xl transition-all duration-500 hover:scale-110 text-base lg:text-lg group"
-              >
-                <Link to="/auth" className="flex items-center space-x-3">
-                  <LogIn className="w-5 h-5" />
-                  <span>Iniciar Sesión</span>
-                </Link>
-              </Button>
-            )}
+            {!loading && !user && <Button asChild variant="outline" className="border-2 border-white text-white bg-white/10 backdrop-blur-md hover:bg-white hover:text-primary-700 font-semibold px-8 py-4 rounded-2xl transition-all duration-500 hover:scale-110 text-base lg:text-lg group">
+                
+              </Button>}
             
-            <Button 
-              asChild
-              className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-10 py-5 rounded-2xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-110 text-lg lg:text-xl group"
-            >
+            <Button asChild className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-10 py-5 rounded-2xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-110 text-lg lg:text-xl group">
               <Link to="/asociados" className="flex items-center space-x-4">
                 <Users className="w-7 h-7 group-hover:rotate-12 transition-transform duration-300" />
                 <span>Quiero conocer cómo ser parte de Colombia EdTech</span>
@@ -173,11 +140,7 @@ const Index = () => {
               </Link>
             </Button>
             
-            <Button 
-              asChild
-              variant="outline"
-              className="border-2 border-primary-700 text-primary-700 bg-white hover:bg-primary-700 hover:text-white font-semibold px-10 py-5 rounded-2xl transition-all duration-500 hover:scale-110 text-lg lg:text-xl"
-            >
+            <Button asChild variant="outline" className="border-2 border-primary-700 text-primary-700 bg-white hover:bg-primary-700 hover:text-white font-semibold px-10 py-5 rounded-2xl transition-all duration-500 hover:scale-110 text-lg lg:text-xl">
               <Link to="/somos" className="flex items-center space-x-3">
                 <BookOpen className="w-6 h-6" />
                 <span>Conoce Nuestra Misión</span>
@@ -190,7 +153,9 @@ const Index = () => {
 
 
       {/* Segmentation Section Premium */}
-      <Section className="py-20 relative overflow-hidden" style={{backgroundColor: '#f4e8dd'}}>
+      <Section className="py-20 relative overflow-hidden" style={{
+      backgroundColor: '#f4e8dd'
+    }}>
         {/* Background Decorations */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-20 w-96 h-96 bg-primary-700 rounded-full blur-3xl"></div>
@@ -213,16 +178,13 @@ const Index = () => {
           </div>
           
           <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {segmentationCards.map((card, index) => (
-              <div key={index} className="group relative animate-fade-in-up h-full" style={{animationDelay: `${index * 200}ms`}}>
+            {segmentationCards.map((card, index) => <div key={index} className="group relative animate-fade-in-up h-full" style={{
+            animationDelay: `${index * 200}ms`
+          }}>
                 <Card className="overflow-hidden border-0 shadow-2xl shadow-primary-900/15 hover:shadow-3xl hover:shadow-primary-700/25 transition-all duration-700 hover:scale-105 bg-white relative group-hover:-translate-y-2 h-full flex flex-col">
                   {/* Image with Subtle Overlay */}
                   <div className="relative aspect-[3/2] overflow-hidden">
-                    <OptimizedImage 
-                      src={card.image} 
-                      alt={`${card.title} - Únete a Colombia EdTech como ${card.title.toLowerCase()}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
+                    <OptimizedImage src={card.image} alt={`${card.title} - Únete a Colombia EdTech como ${card.title.toLowerCase()}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-primary-900/30 transition-opacity duration-500"></div>
                   </div>
                   
@@ -231,19 +193,14 @@ const Index = () => {
                       <h3 className="text-2xl lg:text-3xl font-bold mb-3 text-primary-700">
                         {card.title}
                       </h3>
-                      {card.subtitle && (
-                        <p className="text-lg font-semibold text-primary-900 mb-4 opacity-80">
+                      {card.subtitle && <p className="text-lg font-semibold text-primary-900 mb-4 opacity-80">
                           {card.subtitle}
-                        </p>
-                      )}
+                        </p>}
                       <p className="text-lg mb-8 leading-relaxed text-primary-900 font-medium">
                         {card.description}
                       </p>
                     </div>
-                    <Button 
-                      asChild
-                      className="w-full bg-primary-900 hover:bg-primary-700 hover:shadow-2xl hover:shadow-primary-700/40 text-white font-bold py-4 px-8 rounded-xl transition-all duration-500 hover:scale-105 text-lg group"
-                    >
+                    <Button asChild className="w-full bg-primary-900 hover:bg-primary-700 hover:shadow-2xl hover:shadow-primary-700/40 text-white font-bold py-4 px-8 rounded-xl transition-all duration-500 hover:scale-105 text-lg group">
                       <Link to={card.href} className="flex items-center justify-center space-x-3">
                         <span>{card.cta}</span>
                         <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
@@ -251,8 +208,7 @@ const Index = () => {
                     </Button>
                   </CardContent>
                 </Card>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </Section>
@@ -294,7 +250,9 @@ const Index = () => {
       </Section>
 
       {/* Mission & Impact Section Premium */}
-      <Section className="py-20 relative overflow-hidden" style={{backgroundColor: '#f4e8dd'}}>
+      <Section className="py-20 relative overflow-hidden" style={{
+      backgroundColor: '#f4e8dd'
+    }}>
         {/* Background Decorations */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-40 right-20 w-80 h-80 bg-primary-700 rounded-full blur-3xl"></div>
@@ -319,8 +277,9 @@ const Index = () => {
           </div>
           
           <div className="grid lg:grid-cols-3 gap-12 max-w-7xl mx-auto mb-20">
-            {missionCards.map((card, index) => (
-              <div key={index} className="group animate-fade-in-up" style={{animationDelay: `${index * 200}ms`}}>
+            {missionCards.map((card, index) => <div key={index} className="group animate-fade-in-up" style={{
+            animationDelay: `${index * 200}ms`
+          }}>
                 <Card className="p-10 text-center border-0 shadow-2xl shadow-primary-900/15 hover:shadow-3xl hover:shadow-primary-700/25 transition-all duration-700 hover:scale-105 bg-gradient-to-br from-white to-gray-50/30 h-full group-hover:-translate-y-2">
                   <div className="w-24 h-24 mx-auto mb-10 rounded-3xl bg-primary-700 flex items-center justify-center shadow-2xl shadow-primary-700/40 group-hover:shadow-3xl group-hover:shadow-primary-700/50 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
                     <card.icon className="w-12 h-12 text-white" />
@@ -335,8 +294,7 @@ const Index = () => {
                     {card.description}
                   </p>
                 </Card>
-              </div>
-            ))}
+              </div>)}
           </div>
           
           <div className="text-center animate-fade-in-up animation-delay-800">
@@ -346,10 +304,7 @@ const Index = () => {
                 <span className="text-accent-brand">accesible, personalizada y relevante</span>{" "}
                 para todas las personas.
               </p>
-              <Button 
-                asChild
-                className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-10 py-4 rounded-xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-110 text-lg group"
-              >
+              <Button asChild className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-10 py-4 rounded-xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-110 text-lg group">
                 <Link to="/asociados" className="flex items-center space-x-3">
                   <Users className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
                   <span>Quiero conocer cómo ser parte de Colombia EdTech</span>
@@ -360,8 +315,6 @@ const Index = () => {
           </div>
         </div>
       </Section>
-    </>
-  );
+    </>;
 };
-
 export default Index;
