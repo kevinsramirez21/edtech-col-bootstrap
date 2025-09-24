@@ -128,86 +128,102 @@ const Somos = () => {
         </script>
       </Helmet>
 
-      {/* HEADER OPTIMIZADO Y DINÁMICO */}
-      <section className="min-h-[50vh] lg:min-h-[60vh] bg-sand relative overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      {/* HERO IMPACTANTE */}
+      <section className="min-h-[70vh] lg:min-h-[80vh] bg-primary-900 relative overflow-hidden flex items-center">
+        {/* Elementos decorativos de fondo */}
+        <div className="absolute top-10 right-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-24 h-24 bg-sand/20 rounded-full blur-2xl"></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* Layout Grid Principal */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[40vh] lg:min-h-[50vh]">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
-            {/* COLUMNA IZQUIERDA - CONTENIDO */}
-            <div className="space-y-8 lg:pr-8">
+            {/* COLUMNA IZQUIERDA - CONTENIDO CENTRADO */}
+            <div className="text-center lg:text-left space-y-8 lg:pr-8">
               {/* Título Principal */}
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <h1 
-                  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-700 leading-tight"
+                  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight animate-fade-in"
                   style={{ fontFamily: 'var(--font-display)' }}
                 >
                   Somos Colombia EdTech
                 </h1>
                 
-                <h2 className="text-xl md:text-2xl lg:text-3xl text-primary-600 font-medium leading-relaxed">
+                <h2 
+                  className="text-xl md:text-2xl lg:text-3xl text-white font-medium leading-relaxed"
+                  style={{ animationDelay: '0.2s' }}
+                >
                   Cinco años liderando la transformación educativa de Colombia
                 </h2>
               </div>
               
-              {/* Intro Breve */}
-              <p className="text-lg md:text-xl text-primary-600 leading-relaxed max-w-2xl">
+              {/* Descripción */}
+              <p 
+                className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+                style={{ animationDelay: '0.4s' }}
+              >
                 Desde un grupo de WhatsApp hasta convertirnos en la voz más influyente del sector EdTech en el país
               </p>
               
-              {/* Credibilidad Sutil */}
-              <div className="flex items-center gap-2 text-sm text-primary-500">
+              {/* Credibilidad */}
+              <div 
+                className="flex items-center justify-center lg:justify-start gap-2 text-sand"
+                style={{ animationDelay: '0.6s' }}
+              >
                 <div className="w-2 h-2 bg-accent rounded-full"></div>
-                <span>Reconocidos por MinEducación y MinTIC</span>
+                <span className="font-medium">Reconocidos por MinEducación y MinTIC</span>
               </div>
               
-              {/* Navegación Interna */}
-              <div className="pt-6">
-                <p className="text-sm text-primary-500 mb-3 font-medium">Ir a:</p>
-                <nav className="flex flex-wrap gap-4">
-                  <a href="#historia" className="text-primary-600 hover:text-accent transition-colors duration-200 text-sm font-medium border-b border-transparent hover:border-accent pb-1">
-                    Historia
-                  </a>
-                  <a href="#liderazgo" className="text-primary-600 hover:text-accent transition-colors duration-200 text-sm font-medium border-b border-transparent hover:border-accent pb-1">
-                    Liderazgo
-                  </a>
-                  <a href="#impacto" className="text-primary-600 hover:text-accent transition-colors duration-200 text-sm font-medium border-b border-transparent hover:border-accent pb-1">
-                    Impacto
-                  </a>
-                  <a href="#asociados" className="text-primary-600 hover:text-accent transition-colors duration-200 text-sm font-medium border-b border-transparent hover:border-accent pb-1">
-                    Asociados
-                  </a>
-                </nav>
+              {/* CTA Principal */}
+              <div 
+                className="pt-8"
+                style={{ animationDelay: '0.8s' }}
+              >
+                <button
+                  onClick={() => {
+                    document.getElementById('historia')?.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }}
+                  className="bg-accent hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-accent/30"
+                >
+                  Conoce nuestra historia
+                  <ArrowRight className="ml-2 w-6 h-6 inline-block" />
+                </button>
               </div>
             </div>
             
-            {/* COLUMNA DERECHA - IMAGEN */}
-            <div className="relative order-first lg:order-last">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
+            {/* COLUMNA DERECHA - IMAGEN OPTIMIZADA */}
+            <div 
+              className="relative order-first lg:order-last"
+              style={{ animationDelay: '1s' }}
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
                 <img 
                   src={heroLeadershipMeeting}
                   alt="Equipo de liderazgo de Colombia EdTech en reunión estratégica"
-                  className="w-full h-[300px] md:h-[400px] lg:h-[450px] object-cover"
+                  className="w-full h-[350px] md:h-[450px] lg:h-[500px] object-cover"
                 />
                 {/* Overlay sutil */}
-                <div className="absolute inset-0 bg-primary-700/10"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-900/30 to-transparent"></div>
                 
-                {/* Badge flotante */}
-                <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
-                  <p className="text-sm font-semibold text-primary-700">Liderazgo EdTech</p>
-                  <p className="text-xs text-primary-500">Colombia 2024</p>
+                {/* Badge flotante optimizado */}
+                <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm rounded-xl px-6 py-3 shadow-xl">
+                  <p className="text-sm font-bold text-primary-700">Liderazgo EdTech</p>
+                  <p className="text-xs text-primary-500 font-medium">Colombia 2024</p>
                 </div>
               </div>
               
-              {/* Elemento decorativo */}
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-xl"></div>
-              <div className="absolute -top-4 -left-4 w-16 h-16 bg-primary-200/30 rounded-full blur-lg"></div>
+              {/* Elementos decorativos optimizados */}
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl"></div>
+              <div className="absolute -top-6 -left-6 w-20 h-20 bg-sand/30 rounded-full blur-lg"></div>
             </div>
           </div>
         </div>
         
         {/* Separador visual hacia la siguiente sección */}
-        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-b from-transparent to-white/20"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-b from-transparent to-sand/20"></div>
       </section>
 
       {/* TIMELINE HISTORIA - FONDO SAND */}
