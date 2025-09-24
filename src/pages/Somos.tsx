@@ -128,20 +128,32 @@ const Somos = () => {
         </script>
       </Helmet>
 
-      {/* HEADER SIMPLE Y LIMPIO */}
-      <section className="py-16 bg-sand">
+      {/* HEADER PROMINENTE */}
+      <section className="py-24 md:py-32 lg:py-40 bg-sand relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-700"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Somos Colombia EdTech
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-primary-600 max-w-4xl mx-auto leading-relaxed">
-            La historia de cómo nos convertimos en la voz de la educación en Colombia
-          </p>
+          <div className="max-w-6xl mx-auto">
+            <h1 
+              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 text-primary-700 leading-tight"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Somos Colombia EdTech
+            </h1>
+            
+            <p className="text-2xl md:text-3xl lg:text-4xl text-primary-600 max-w-5xl mx-auto leading-relaxed font-medium mb-16">
+              La historia de cómo nos convertimos en la voz de la educación en Colombia
+            </p>
+            
+            {/* Separador visual elegante */}
+            <div className="flex items-center justify-center mb-8">
+              <div className="h-px bg-primary-300 flex-1 max-w-xs"></div>
+              <div className="mx-6 w-3 h-3 bg-accent rounded-full"></div>
+              <div className="h-px bg-primary-300 flex-1 max-w-xs"></div>
+            </div>
+          </div>
         </div>
+        
+        {/* Gradiente sutil hacia la siguiente sección */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-sand"></div>
       </section>
 
       {/* TIMELINE HISTORIA - FONDO SAND */}
