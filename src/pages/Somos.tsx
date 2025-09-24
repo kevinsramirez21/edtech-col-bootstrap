@@ -139,7 +139,7 @@ const Somos = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
             {/* COLUMNA IZQUIERDA - CONTENIDO CENTRADO */}
-            <div className="text-center lg:text-left space-y-8 lg:pr-8">
+            <div className="text-center space-y-8 lg:pr-8">
               {/* Título Principal */}
               <div className="space-y-6">
                 <h1 
@@ -159,25 +159,16 @@ const Somos = () => {
               
               {/* Descripción */}
               <p 
-                className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+                className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto"
                 style={{ animationDelay: '0.4s' }}
               >
                 Desde un grupo de WhatsApp hasta convertirnos en la voz más influyente del sector EdTech en el país
               </p>
               
-              {/* Credibilidad */}
-              <div 
-                className="flex items-center justify-center lg:justify-start gap-2 text-sand"
-                style={{ animationDelay: '0.6s' }}
-              >
-                <div className="w-2 h-2 bg-accent rounded-full"></div>
-                <span className="font-medium">Reconocidos por MinEducación y MinTIC</span>
-              </div>
-              
               {/* CTA Principal */}
               <div 
                 className="pt-8"
-                style={{ animationDelay: '0.8s' }}
+                style={{ animationDelay: '0.6s' }}
               >
                 <button
                   onClick={() => {
