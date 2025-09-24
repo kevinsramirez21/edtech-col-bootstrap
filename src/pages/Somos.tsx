@@ -128,36 +128,90 @@ const Somos = () => {
         </script>
       </Helmet>
 
-      {/* HEADER PROMINENTE */}
-      <section className="py-24 md:py-32 lg:py-40 bg-sand relative">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-6xl mx-auto">
-            <h1 
-              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 text-primary-700 leading-tight"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              Somos Colombia EdTech
-            </h1>
+      {/* HEADER OPTIMIZADO Y DINÁMICO */}
+      <section className="min-h-[50vh] lg:min-h-[60vh] bg-sand relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+          {/* Layout Grid Principal */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[40vh] lg:min-h-[50vh]">
             
-            <p className="text-2xl md:text-3xl lg:text-4xl text-primary-600 max-w-5xl mx-auto leading-relaxed font-medium mb-16">
-              La historia de cómo nos convertimos en la voz de la educación en Colombia
-            </p>
+            {/* COLUMNA IZQUIERDA - CONTENIDO */}
+            <div className="space-y-8 lg:pr-8">
+              {/* Título Principal */}
+              <div className="space-y-4">
+                <h1 
+                  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-700 leading-tight"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  Somos Colombia EdTech
+                </h1>
+                
+                <h2 className="text-xl md:text-2xl lg:text-3xl text-primary-600 font-medium leading-relaxed">
+                  Cinco años liderando la transformación educativa de Colombia
+                </h2>
+              </div>
+              
+              {/* Intro Breve */}
+              <p className="text-lg md:text-xl text-primary-600 leading-relaxed max-w-2xl">
+                Desde un grupo de WhatsApp hasta convertirnos en la voz más influyente del sector EdTech en el país
+              </p>
+              
+              {/* Credibilidad Sutil */}
+              <div className="flex items-center gap-2 text-sm text-primary-500">
+                <div className="w-2 h-2 bg-accent rounded-full"></div>
+                <span>Reconocidos por MinEducación y MinTIC</span>
+              </div>
+              
+              {/* Navegación Interna */}
+              <div className="pt-6">
+                <p className="text-sm text-primary-500 mb-3 font-medium">Ir a:</p>
+                <nav className="flex flex-wrap gap-4">
+                  <a href="#historia" className="text-primary-600 hover:text-accent transition-colors duration-200 text-sm font-medium border-b border-transparent hover:border-accent pb-1">
+                    Historia
+                  </a>
+                  <a href="#liderazgo" className="text-primary-600 hover:text-accent transition-colors duration-200 text-sm font-medium border-b border-transparent hover:border-accent pb-1">
+                    Liderazgo
+                  </a>
+                  <a href="#impacto" className="text-primary-600 hover:text-accent transition-colors duration-200 text-sm font-medium border-b border-transparent hover:border-accent pb-1">
+                    Impacto
+                  </a>
+                  <a href="#asociados" className="text-primary-600 hover:text-accent transition-colors duration-200 text-sm font-medium border-b border-transparent hover:border-accent pb-1">
+                    Asociados
+                  </a>
+                </nav>
+              </div>
+            </div>
             
-            {/* Separador visual elegante */}
-            <div className="flex items-center justify-center mb-8">
-              <div className="h-px bg-primary-300 flex-1 max-w-xs"></div>
-              <div className="mx-6 w-3 h-3 bg-accent rounded-full"></div>
-              <div className="h-px bg-primary-300 flex-1 max-w-xs"></div>
+            {/* COLUMNA DERECHA - IMAGEN */}
+            <div className="relative order-first lg:order-last">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
+                <img 
+                  src={heroLeadershipMeeting}
+                  alt="Equipo de liderazgo de Colombia EdTech en reunión estratégica"
+                  className="w-full h-[300px] md:h-[400px] lg:h-[450px] object-cover"
+                />
+                {/* Overlay sutil */}
+                <div className="absolute inset-0 bg-primary-700/10"></div>
+                
+                {/* Badge flotante */}
+                <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
+                  <p className="text-sm font-semibold text-primary-700">Liderazgo EdTech</p>
+                  <p className="text-xs text-primary-500">Colombia 2024</p>
+                </div>
+              </div>
+              
+              {/* Elemento decorativo */}
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-xl"></div>
+              <div className="absolute -top-4 -left-4 w-16 h-16 bg-primary-200/30 rounded-full blur-lg"></div>
             </div>
           </div>
         </div>
         
-        {/* Gradiente sutil hacia la siguiente sección */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-sand"></div>
+        {/* Separador visual hacia la siguiente sección */}
+        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-b from-transparent to-white/20"></div>
       </section>
 
       {/* TIMELINE HISTORIA - FONDO SAND */}
-      <Section className="py-16 bg-sand">
+      <Section id="historia" className="py-16 bg-sand">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
             Nuestra historia
@@ -173,7 +227,7 @@ const Somos = () => {
       </Section>
 
       {/* LIDERAZGO - FONDO AZUL */}
-      <Section className="py-16 bg-primary-700">
+      <Section id="liderazgo" className="py-16 bg-primary-700">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
             El equipo que lidera la transformación
@@ -203,7 +257,7 @@ const Somos = () => {
       </Section>
 
       {/* IMPACTO - FONDO SAND */}
-      <Section className="py-16 bg-sand">
+      <Section id="impacto" className="py-16 bg-sand">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
             El impacto que generamos juntos
@@ -221,7 +275,7 @@ const Somos = () => {
       </Section>
 
       {/* ASOCIADOS - FONDO BLANCO */}
-      <Section className="py-16 bg-white">
+      <Section id="asociados" className="py-16 bg-white">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
             Quienes forman parte de la revolución
