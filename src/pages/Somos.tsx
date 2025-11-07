@@ -341,6 +341,84 @@ const Somos = () => {
         </div>
       </Section>
 
+      {/* IMPACTO - FONDO BLANCO */}
+      <Section className="py-16 bg-white">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
+            El impacto de nuestro trabajo
+          </h2>
+        </div>
+        
+        {/* Estadísticas principales */}
+        <div className="grid md:grid-cols-4 gap-6 mb-12">
+          <Card className="p-8 text-center bg-primary-700 border-primary-800">
+            <div className="text-5xl font-bold text-white mb-3">
+              29.550
+            </div>
+            <p className="text-lg text-white/90 font-medium">
+              Instituciones
+            </p>
+          </Card>
+          
+          <Card className="p-8 text-center bg-primary-700 border-primary-800">
+            <div className="text-5xl font-bold text-white mb-3">
+              40.000
+            </div>
+            <p className="text-lg text-white/90 font-medium">
+              Docentes
+            </p>
+          </Card>
+          
+          <Card className="p-8 text-center bg-primary-700 border-primary-800">
+            <div className="text-5xl font-bold text-white mb-3">
+              4.8M
+            </div>
+            <p className="text-lg text-white/90 font-medium">
+              Personas
+            </p>
+          </Card>
+          
+          <Card className="p-8 text-center bg-primary-700 border-primary-800">
+            <div className="text-5xl font-bold text-white mb-3">
+              15.000
+            </div>
+            <p className="text-lg text-white/90 font-medium">
+              Empresas
+            </p>
+          </Card>
+        </div>
+        
+        {/* Estadísticas adicionales */}
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <Card className="p-8 text-center bg-sand border-primary-200">
+            <div className="text-4xl font-bold text-accent mb-3">
+              38.2%
+            </div>
+            <p className="text-base text-primary-700 leading-relaxed">
+              De nuestros asociados llegan a 5-6 países
+            </p>
+          </Card>
+          
+          <Card className="p-8 text-center bg-sand border-primary-200">
+            <div className="text-4xl font-bold text-accent mb-3">
+              72.2%
+            </div>
+            <p className="text-base text-primary-700 leading-relaxed">
+              De nuestras EdTechs asociadas comenzó con recursos propios
+            </p>
+          </Card>
+          
+          <Card className="p-8 text-center bg-sand border-primary-200">
+            <div className="text-4xl font-bold text-accent mb-3">
+              79.62%
+            </div>
+            <p className="text-base text-primary-700 leading-relaxed">
+              De los founders de nuestras EdTech tienen un título de postgrado
+            </p>
+          </Card>
+        </div>
+      </Section>
+
       {/* TIMELINE HISTORIA - FONDO SAND */}
       <Section id="historia" className="py-16 bg-sand">
         <div className="text-center mb-16">
