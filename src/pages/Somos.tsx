@@ -513,30 +513,22 @@ const Somos = () => {
       </Section>
 
       {/* CTA FINAL - FONDO SAND */}
-      <Section className="py-20 bg-sand text-center">
+      <Section className="py-20 bg-primary-700 text-center">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-primary-700">
-            Sé parte de la historia que estamos escribiendo
+          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
+            Hoy todos somos Colombia EdTech
           </h2>
           
-          <p className="text-lg text-primary-600 mb-12 max-w-3xl mx-auto">
-            Únete a la comunidad de líderes que están transformando el futuro de la educación en Colombia y Latinoamérica
+          <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+            ¡Bienvenidos! Unidos, construiremos una educación que no solo inspire y transforme, sino que lidere el cambio que el mundo necesita, una generación a la vez.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <CTAButton size="xl" asChild>
-              <Link to="/asociados">
-                Quiero ser asociado
-                <ArrowRight className="ml-2 w-6 h-6" />
-              </Link>
-            </CTAButton>
-            <CTAButton size="xl" variant="accent" asChild>
-              <Link to="/voluntariado">
-                Quiero ser voluntario
-                <Users className="ml-2 w-6 h-6" />
-              </Link>
-            </CTAButton>
-          </div>
+          <CTAButton size="xl" variant="accent" asChild>
+            <Link to="/asociados">
+              Quiero ser parte de Colombia EdTech
+              <ArrowRight className="ml-2 w-6 h-6" />
+            </Link>
+          </CTAButton>
         </div>
       </Section>
     </>
