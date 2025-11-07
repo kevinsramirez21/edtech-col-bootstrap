@@ -99,6 +99,10 @@ const Somos = () => {
     "MIND HUB", "RDC blu"
   ];
 
+  const medios = [
+    "TIC radio", "NÚCLEO", "naska digital", "SOFTWARE", "Forbes", "Portafolio"
+  ];
+
   const impactMetrics = [
     { value: "90+", label: "Asociados transformando la educación", icon: Building2 },
     { value: "+15M", label: "Personas impactadas en Latinoamérica", icon: Users },
@@ -231,6 +235,22 @@ const Somos = () => {
             </Link>
           </CTAButton>
         </div>
+      </Section>
+
+      {/* NOS HAN VISTO EN - FONDO SAND */}
+      <Section className="py-16 bg-sand">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
+            Nos has visto en
+          </h2>
+        </div>
+        
+        <LogoGrid 
+          partners={medios}
+          columns={6}
+          title=""
+          className="max-w-5xl mx-auto"
+        />
       </Section>
 
       {/* TIMELINE HISTORIA - FONDO SAND */}
