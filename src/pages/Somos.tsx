@@ -282,6 +282,65 @@ const Somos = () => {
         </div>
       </Section>
 
+      {/* VALORES - FONDO SAND */}
+      <Section className="py-16 bg-sand">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
+            Estos son los valores que nos mueven en Colombia EdTech
+          </h2>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <Card className="p-8 bg-white border-primary-200">
+            <div className="w-16 h-16 mb-6 rounded-full bg-primary-700 flex items-center justify-center">
+              <Lightbulb className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold mb-4 text-primary-700">
+              Innovación
+            </h3>
+            <p className="text-lg text-primary-600 leading-relaxed">
+              La tecnología está presente en todas las áreas de nuestra vida, adaptarnos a sus beneficios, y crear sobre ella, mejorará significativamente la calidad de vida de profesores, estudiantes e instituciones educativas.
+            </p>
+          </Card>
+          
+          <Card className="p-8 bg-white border-primary-200">
+            <div className="w-16 h-16 mb-6 rounded-full bg-primary-700 flex items-center justify-center">
+              <Handshake className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold mb-4 text-primary-700">
+              Colaboración
+            </h3>
+            <p className="text-lg text-primary-600 leading-relaxed">
+              Tejemos una red de alianzas estratégicas entre organizaciones, instituciones y profesionales comprometidos con transformar la educación a través de la innovación y el trabajo conjunto.
+            </p>
+          </Card>
+          
+          <Card className="p-8 bg-white border-primary-200">
+            <div className="w-16 h-16 mb-6 rounded-full bg-primary-700 flex items-center justify-center">
+              <Globe className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold mb-4 text-primary-700">
+              Accesibilidad
+            </h3>
+            <p className="text-lg text-primary-600 leading-relaxed">
+              Trabajamos para democratizar el acceso a una educación de calidad, eliminando barreras tecnológicas y económicas que limitan las oportunidades de aprendizaje en Colombia y Latinoamérica.
+            </p>
+          </Card>
+          
+          <Card className="p-8 bg-white border-primary-200">
+            <div className="w-16 h-16 mb-6 rounded-full bg-accent flex items-center justify-center">
+              <Target className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold mb-4 text-primary-700">
+              Impacto Social
+            </h3>
+            <p className="text-lg text-primary-600 leading-relaxed">
+              Contribuimos al mejoramiento de la calidad y a la maximización de la cobertura y calidad educativa del país, identificando y fortaleciendo las edtech en Colombia.
+            </p>
+          </Card>
+        </div>
+      </Section>
+
       {/* TIMELINE HISTORIA - FONDO SAND */}
       <Section id="historia" className="py-16 bg-sand">
         <div className="text-center mb-16">
