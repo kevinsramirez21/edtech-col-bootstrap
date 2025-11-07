@@ -94,10 +94,9 @@ const Somos = () => {
   ];
 
   const asociados = [
-    "Universidad EAFIT", "Cymetria", "Coschool", "Hypercubus", "CGSO",
-    "EduLabs", "Geek Girls LATAM", "Laboratoria", "Mangus Academy", "Mind Hub",
-    "TOMI", "Buen Data", "RDC", "Naska Digital", "Núcleo Software",
-    "Platzi", "Blackboard", "Microsoft", "Google for Education", "Pearson"
+    "UNIVERSIDAD EAFIT", "cymetria", "coschool", "JULABS", "GGL Geek Girls LatAm", 
+    "TOMi", "Buen Data", "HYPERCUBUS", "Laboratoria", "mangus", 
+    "MIND HUB", "RDC blu"
   ];
 
   const impactMetrics = [
@@ -146,24 +145,16 @@ const Somos = () => {
                   className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight animate-fade-in"
                   style={{ fontFamily: 'var(--font-display)' }}
                 >
-                  Somos Colombia EdTech
+                  La evolución de la educación ha comenzado
                 </h1>
                 
                 <h2 
-                  className="text-xl md:text-2xl lg:text-3xl text-white font-medium leading-relaxed"
+                  className="text-xl md:text-2xl lg:text-3xl text-white/90 font-medium leading-relaxed max-w-4xl mx-auto"
                   style={{ animationDelay: '0.2s' }}
                 >
-                  Cinco años liderando la transformación educativa de Colombia
+                  Conectamos a startups, scaleups, empresas tradicionales, universidades, colegios, ONG, Bigtech, el estado y la comunidad todos unidos por un objetivo común, dispuestos a revolucionar desde la raíz la manera en que se enseña y aprende.
                 </h2>
               </div>
-              
-              {/* Descripción */}
-              <p 
-                className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto"
-                style={{ animationDelay: '0.4s' }}
-              >
-                Desde un grupo de WhatsApp hasta convertirnos en la voz más influyente del sector EdTech en el país
-              </p>
               
               {/* CTA Principal */}
               <div 
@@ -216,6 +207,31 @@ const Somos = () => {
         {/* Separador visual hacia la siguiente sección */}
         <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-b from-transparent to-sand/20"></div>
       </section>
+
+      {/* ASOCIADOS - DESPUÉS DEL HERO */}
+      <Section id="asociados" className="py-16 bg-white">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
+            Nuestros asociados están transformando la educación en Colombia y el Mundo
+          </h2>
+        </div>
+        
+        <LogoGrid 
+          partners={asociados}
+          columns={4}
+          title=""
+          className="mb-12"
+        />
+        
+        <div className="flex justify-center">
+          <CTAButton size="lg" variant="accent" asChild>
+            <Link to="/asociados">
+              Ver todos nuestros asociados
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
+          </CTAButton>
+        </div>
+      </Section>
 
       {/* TIMELINE HISTORIA - FONDO SAND */}
       <Section id="historia" className="py-16 bg-sand">
@@ -281,37 +297,6 @@ const Somos = () => {
         </div>
       </Section>
 
-      {/* ASOCIADOS - FONDO BLANCO */}
-      <Section id="asociados" className="py-16 bg-white">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
-            Quienes forman parte de la revolución
-          </h2>
-          <p className="text-lg text-primary-600 max-w-3xl mx-auto">
-            Más de 90 organizaciones comprometidas con transformar la educación
-          </p>
-        </div>
-        
-        <div className="mb-8">
-          <LogoGrid 
-            partners={asociados.slice(0, 12)}
-            columns={4}
-            className="mb-8"
-          />
-        </div>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <CTAButton size="lg" className="bg-primary-700 hover:bg-primary-800">
-            Junta Directiva
-          </CTAButton>
-          <CTAButton size="lg" variant="accent" asChild>
-            <Link to="/asociados">
-              Todos nuestros asociados
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </CTAButton>
-        </div>
-      </Section>
 
       {/* VALORES - FONDO AZUL */}
       <Section className="py-16 bg-primary-700">
