@@ -282,8 +282,20 @@ const Somos = () => {
         </div>
       </Section>
 
-      {/* VALORES - FONDO SAND */}
+      {/* VISIÓN 2030 - FONDO SAND */}
       <Section className="py-16 bg-sand">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-primary-700">
+            Visión 2030
+          </h2>
+          <p className="text-xl md:text-2xl text-primary-600 leading-relaxed">
+            Nuestro horizonte es ambicioso. Para 2030, seremos líderes en Latinoamérica en la creación de un ecosistema EdTech ético, dinámico y colaborativo que transforme el aprendizaje, impulse la globalización y priorice la personalización educativa.
+          </p>
+        </div>
+      </Section>
+
+      {/* VALORES - FONDO BLANCO */}
+      <Section className="py-16 bg-white">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
             Estos son los valores que nos mueven en Colombia EdTech
