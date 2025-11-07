@@ -253,6 +253,35 @@ const Somos = () => {
         />
       </Section>
 
+      {/* NORTE Y MISIÓN - FONDO BLANCO */}
+      <Section className="py-16 bg-white">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700 max-w-5xl mx-auto leading-tight">
+            Tenemos un norte claro para dejar huella y cambiar el mundo desde la educación gracias a la tecnología
+          </h2>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <Card className="p-8 bg-sand border-primary-200">
+            <h3 className="text-2xl font-bold mb-4 text-primary-700">
+              ¿Cómo lo hacemos?
+            </h3>
+            <p className="text-lg text-primary-600 leading-relaxed">
+              Tejiendo lazos de colaboración entre organizaciones con ánimo y sin ánimo de lucro que trabajan por la educación, impulsando soluciones innovadoras que impacten a millones de personas.
+            </p>
+          </Card>
+          
+          <Card className="p-8 bg-primary-700 border-primary-800">
+            <h3 className="text-2xl font-bold mb-4 text-white">
+              Nuestra misión es clara
+            </h3>
+            <p className="text-lg text-white/90 leading-relaxed">
+              Transformar la calidad, inclusión y accesibilidad de la educación en Colombia y Latinoamérica.
+            </p>
+          </Card>
+        </div>
+      </Section>
+
       {/* TIMELINE HISTORIA - FONDO SAND */}
       <Section id="historia" className="py-16 bg-sand">
         <div className="text-center mb-16">
