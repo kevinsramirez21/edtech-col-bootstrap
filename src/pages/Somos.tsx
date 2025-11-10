@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Lightbulb, Users, Globe, Building2, BookOpen, Handshake, Target, Heart, ChevronDown, CheckCircle } from "lucide-react";
 import juntaDirectiva2024 from "@/assets/junta-directiva-2024.jpg";
 import eventoColombiaEdtech from "@/assets/evento-colombia-edtech-hq.jpg";
+import eventoVision2030 from "@/assets/evento-vision-2030.jpg";
 const Somos = () => {
   const meta = generatePageMeta({
     title: "Lideramos la revolución EdTech en Colombia - Quiénes Somos",
@@ -258,6 +259,39 @@ const Somos = () => {
               alt="Evento Colombia EdTech - Formando líderes que transforman el país" 
               className="absolute inset-0 w-full h-full object-cover"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* VISIÓN 2030 */}
+      <section className="relative overflow-hidden">
+        <div className="grid lg:grid-cols-2 min-h-[700px] lg:min-h-[80vh]">
+          {/* Columna izquierda - Imagen */}
+          <div className="relative h-[400px] lg:h-auto order-last lg:order-first">
+            <img 
+              src={eventoVision2030} 
+              alt="Evento Colombia EdTech - Visión 2030" 
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Columna derecha - Contenido */}
+          <div className="bg-accent text-white p-8 md:p-12 lg:p-20 flex flex-col justify-center">
+            <div className="space-y-10 max-w-2xl">
+              {/* Visión */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-8 h-8 text-white flex-shrink-0" />
+                  <h2 className="text-3xl md:text-4xl font-bold font-funnel">Nuestro horizonte es ambicioso.</h2>
+                </div>
+                <p className="text-lg md:text-xl leading-relaxed">
+                  Para 2030, seremos líderes en Latinoamérica en la creación de un ecosistema EdTech ético, dinámico y colaborativo que transforme el aprendizaje, impulse la globalización y priorice la personalización educativa.
+                </p>
+                <p className="text-lg md:text-xl leading-relaxed">
+                  Queremos un modelo donde aprender sea tan natural como respirar, y enseñar sea la puerta hacia un futuro lleno de progreso y equidad.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
