@@ -183,7 +183,7 @@ const Somos = () => {
       </section>
 
       {/* JUNTA DIRECTIVA - DESPUÉS DEL HERO */}
-      <Section id="junta-directiva" className="py-16 bg-sand">
+      <Section id="junta-directiva" className="py-16 bg-white">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700 font-funnel">
             Conoce nuestra Junta Directiva
