@@ -18,6 +18,8 @@ const logoMap: Record<string, string> = {
   "ticmas": "/images/logos/ticmas.png",
   "educación estrella": "/images/logos/educacion-estrella.png",
   "revive": "/images/logos/revive.png",
+  "blu radio": "/images/logos/blu-radio.png",
+  "mintic": "/images/logos/mintic.png",
 }
 
 function LogoPlaceholder({ name }: { name: string }) {
