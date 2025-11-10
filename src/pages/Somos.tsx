@@ -211,7 +211,7 @@ const Somos = () => {
           </h2>
         </div>
         
-        <LogoGrid partners={medios} columns={6} title="" className="max-w-5xl mx-auto" />
+        <LogoGrid partners={medios} columns={5} title="" className="max-w-5xl mx-auto" />
       </Section>
 
       {/* NORTE Y MISIÓN - FONDO BLANCO */}
