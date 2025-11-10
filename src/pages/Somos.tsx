@@ -304,7 +304,7 @@ const Somos = () => {
           </h2>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           <Card className="p-8 bg-sand/50 border-primary-200 text-center">
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
               <Lightbulb className="w-10 h-10 text-white" />
@@ -312,7 +312,7 @@ const Somos = () => {
             <h3 className="text-xl font-bold mb-4 text-primary-700">
               Innovación
             </h3>
-            <p className="text-base text-primary-700 leading-relaxed">
+            <p className="text-base text-primary-900 leading-relaxed">
               La tecnología está presente en todas las áreas de nuestra vida, adaptarnos a sus beneficios, y crear sobre ella, mejorará significativamente la calidad de vida de profesores, estudiantes e instituciones educativas.
             </p>
           </Card>
@@ -324,7 +324,7 @@ const Somos = () => {
             <h3 className="text-xl font-bold mb-4 text-primary-700">
               Colaboración
             </h3>
-            <p className="text-base text-primary-700 leading-relaxed">
+            <p className="text-base text-primary-900 leading-relaxed">
               Tejemos una red de alianzas estratégicas entre organizaciones, instituciones y profesionales comprometidos con transformar la educación a través de la innovación y el trabajo conjunto.
             </p>
           </Card>
@@ -336,7 +336,7 @@ const Somos = () => {
             <h3 className="text-xl font-bold mb-4 text-primary-700">
               Accesibilidad
             </h3>
-            <p className="text-base text-primary-700 leading-relaxed">
+            <p className="text-base text-primary-900 leading-relaxed">
               Trabajamos para democratizar el acceso a una educación de calidad, eliminando barreras tecnológicas y económicas que limitan las oportunidades de aprendizaje en Colombia y Latinoamérica.
             </p>
           </Card>
@@ -348,7 +348,7 @@ const Somos = () => {
             <h3 className="text-xl font-bold mb-4 text-primary-700">
               Impacto Social
             </h3>
-            <p className="text-base text-primary-700 leading-relaxed">
+            <p className="text-base text-primary-900 leading-relaxed">
               Contribuimos al mejoramiento de la calidad y a la maximización de la cobertura y calidad educativa del país, identificando y fortaleciendo las edtech en Colombia.
             </p>
           </Card>
