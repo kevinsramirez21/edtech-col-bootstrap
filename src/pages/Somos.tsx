@@ -38,6 +38,11 @@ const Somos = () => {
     title: "Actualizado",
     description: "Llegamos a 90 asociados y más de 50 voluntarios, múltiples proyectos y varios acuerdos de entendimiento.",
     highlight: true
+  }, {
+    year: "2030",
+    title: "Nuestra visión",
+    description: "Nuestro horizonte es ambicioso. Para 2030, seremos líderes en Latinoamérica en la creación de un ecosistema EdTech ético, dinámico y colaborativo que transforme el aprendizaje, impulse la globalización y priorice la personalización educativa.",
+    highlight: true
   }];
   const liderazgo = [{
     name: "Andrés Méndez",
@@ -225,18 +230,6 @@ const Somos = () => {
           
           <p className="text-xl md:text-2xl text-primary-900 leading-relaxed">
             Tejiendo lazos de colaboración entre organizaciones con ánimo y sin ánimo de lucro que trabajan por la educación, impulsando soluciones innovadoras que impacten a millones de personas.
-          </p>
-        </div>
-      </Section>
-
-      {/* VISIÓN 2030 - FONDO SAND */}
-      <Section className="py-16 bg-sand">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-primary-700">
-            Visión 2030
-          </h2>
-          <p className="text-xl md:text-2xl text-primary-600 leading-relaxed">
-            Nuestro horizonte es ambicioso. Para 2030, seremos líderes en Latinoamérica en la creación de un ecosistema EdTech ético, dinámico y colaborativo que transforme el aprendizaje, impulse la globalización y priorice la personalización educativa.
           </p>
         </div>
       </Section>
