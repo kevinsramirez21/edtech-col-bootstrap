@@ -12,7 +12,7 @@ import { generatePageMeta, generateBreadcrumbJsonLd } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, Lightbulb, Users, Globe, Building2, BookOpen, Handshake, Target, Heart, ChevronDown, CheckCircle } from "lucide-react";
 import juntaDirectiva2024 from "@/assets/junta-directiva-2024.jpg";
-import eventoColombiaEdtech from "@/assets/evento-colombia-edtech-wide.jpg";
+import eventoColombiaEdtech from "@/assets/evento-colombia-edtech-hq.jpg";
 const Somos = () => {
   const meta = generatePageMeta({
     title: "Lideramos la revolución EdTech en Colombia - Quiénes Somos",
