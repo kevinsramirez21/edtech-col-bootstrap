@@ -3,6 +3,12 @@ import { Mail, MapPin, Phone, Linkedin, Twitter, Instagram, Youtube } from "luci
 import { ColombiaEdTechLogo } from "@/components/ui/placeholder-logo"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+import { supabase } from "@/integrations/supabase/client"
+import { useToast } from "@/hooks/use-toast"
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form"
 
 const quickLinks = [
   { name: "Somos", href: "/somos" },
@@ -18,7 +24,54 @@ const socialLinks = [
   { name: "YouTube", href: "#", icon: Youtube },
 ]
 
+const newsletterSchema = z.object({
+  email: z.string().email("Por favor ingresa un email válido")
+})
+
+type NewsletterForm = z.infer<typeof newsletterSchema>
+
 export function Footer() {
+  const { toast } = useToast()
+  const form = useForm<NewsletterForm>({
+    resolver: zodResolver(newsletterSchema),
+    defaultValues: {
+      email: ""
+    }
+  })
+
+  const onSubmit = async (data: NewsletterForm) => {
+    try {
+      const { error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert([{ email: data.email }])
+
+      if (error) {
+        if (error.code === '23505') {
+          toast({
+            title: "Ya estás suscrito",
+            description: "Este email ya está registrado en nuestra newsletter.",
+            variant: "destructive"
+          })
+        } else {
+          throw error
+        }
+        return
+      }
+
+      toast({
+        title: "¡Suscripción exitosa!",
+        description: "Recibirás nuestras actualizaciones en tu email."
+      })
+      form.reset()
+    } catch (error) {
+      console.error("Error subscribing:", error)
+      toast({
+        title: "Error",
+        description: "No se pudo completar la suscripción. Intenta de nuevo.",
+        variant: "destructive"
+      })
+    }
+  }
   return (
     <footer className="bg-primary-900 text-white relative overflow-hidden" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -109,19 +162,34 @@ export function Footer() {
               <p className="text-white/90 text-lg mb-6 leading-relaxed">
                 Únete a +500 líderes EdTech que reciben nuestras actualizaciones
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Input
-                  type="email"
-                  placeholder="tu@email.com"
-                  className="flex-1 bg-white border-0 text-primary-900 placeholder:text-primary-900/60 focus:ring-2 focus:ring-accent-brand h-12 text-lg rounded-xl"
-                  aria-label="Dirección de correo electrónico"
-                />
-                <Button 
-                  className="bg-accent-brand hover:bg-accent-brand/90 text-white font-bold px-8 py-3 h-12 rounded-xl text-lg whitespace-nowrap transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-                >
-                  Suscribirse
-                </Button>
-              </div>
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-4">
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem className="flex-1">
+                        <FormControl>
+                          <Input
+                            type="email"
+                            placeholder="tu@email.com"
+                            className="bg-white border-0 text-primary-900 placeholder:text-primary-900/60 focus:ring-2 focus:ring-accent-brand h-12 text-lg rounded-xl"
+                            aria-label="Dirección de correo electrónico"
+                            {...field}
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                  <Button 
+                    type="submit"
+                    disabled={form.formState.isSubmitting}
+                    className="bg-accent-brand hover:bg-accent-brand/90 text-white font-bold px-8 py-3 h-12 rounded-xl text-lg whitespace-nowrap transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50"
+                  >
+                    {form.formState.isSubmitting ? "Enviando..." : "Suscribirse"}
+                  </Button>
+                </form>
+              </Form>
             </div>
 
           </div>
