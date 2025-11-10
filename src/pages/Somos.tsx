@@ -477,44 +477,74 @@ const Somos = () => {
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4">
-          {/* Línea horizontal central */}
-          <div className="absolute top-16 left-0 right-0 h-1 bg-primary-200 hidden lg:block"></div>
-          
           {/* Timeline items */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4 relative">
+          <div className="hidden lg:block">
+            {/* Línea horizontal central */}
+            <div className="absolute left-0 right-0 h-1 bg-primary-300 top-1/2 transform -translate-y-1/2"></div>
+            
+            <div className="grid grid-cols-5 gap-6 relative" style={{ minHeight: '600px' }}>
+              {timelineData.map((item, index) => (
+                <div 
+                  key={index} 
+                  className="relative animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {/* Contenedor superior o inferior */}
+                  <div className={`absolute left-0 right-0 ${index % 2 === 0 ? 'bottom-1/2 pb-12' : 'top-1/2 pt-12'}`}>
+                    {/* Tarjeta */}
+                    <Card 
+                      className={`p-6 ${item.highlight ? 'bg-primary-700 text-white border-primary-700 shadow-xl' : 'bg-white border-primary-100 shadow-md'} hover:shadow-xl transition-all hover:-translate-y-1`}
+                    >
+                      <div className="space-y-3">
+                        <div className={`inline-flex items-center justify-center w-14 h-14 rounded-full ${item.highlight ? 'bg-accent' : 'bg-primary-100'}`}>
+                          <span className={`text-xl font-bold ${item.highlight ? 'text-white' : 'text-primary-700'}`} style={{ fontFamily: 'var(--font-display)' }}>
+                            {item.year}
+                          </span>
+                        </div>
+                        <h3 className={`text-lg font-bold ${item.highlight ? 'text-white' : 'text-primary-900'}`} style={{ fontFamily: 'var(--font-display)' }}>
+                          {item.title}
+                        </h3>
+                        <p className={`text-sm leading-relaxed ${item.highlight ? 'text-white/90' : 'text-primary-600'}`}>
+                          {item.description}
+                        </p>
+                      </div>
+                    </Card>
+                    
+                    {/* Línea vertical conectora */}
+                    <div className={`absolute left-1/2 transform -translate-x-1/2 w-0.5 ${item.highlight ? 'bg-accent' : 'bg-primary-300'} ${index % 2 === 0 ? 'bottom-0 h-12' : 'top-0 h-12'}`}></div>
+                  </div>
+                  
+                  {/* Punto en la línea central */}
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+                    <div className={`w-5 h-5 rounded-full ${item.highlight ? 'bg-accent' : 'bg-primary-700'} border-4 border-sand shadow-lg`}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Vista móvil y tablet */}
+          <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-6">
             {timelineData.map((item, index) => (
-              <div 
-                key={index} 
-                className="relative animate-fade-in"
+              <Card 
+                key={index}
+                className={`p-6 ${item.highlight ? 'bg-primary-700 text-white border-primary-700 shadow-xl' : 'bg-white border-primary-100 shadow-md'} animate-fade-in`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Punto en la línea */}
-                <div className="hidden lg:flex absolute top-16 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-                  <div className={`w-6 h-6 rounded-full border-4 ${item.highlight ? 'bg-accent border-accent' : 'bg-primary-700 border-primary-700'} shadow-lg`}></div>
-                </div>
-                
-                {/* Línea vertical conectora */}
-                <div className={`hidden lg:block absolute top-16 left-1/2 transform -translate-x-1/2 w-0.5 ${item.highlight ? 'bg-accent' : 'bg-primary-300'} ${index % 2 === 0 ? 'h-8 -top-8' : 'h-8 top-20'}`}></div>
-                
-                {/* Tarjeta */}
-                <Card 
-                  className={`p-6 ${item.highlight ? 'bg-primary-700 text-white border-primary-700 shadow-xl' : 'bg-white border-primary-100 shadow-md'} hover:shadow-xl transition-all hover:-translate-y-1 ${index % 2 === 0 ? 'lg:mb-32' : 'lg:mt-32'}`}
-                >
-                  <div className="space-y-3">
-                    <div className={`inline-flex items-center justify-center w-14 h-14 rounded-full ${item.highlight ? 'bg-accent' : 'bg-primary-100'}`}>
-                      <span className={`text-xl font-bold ${item.highlight ? 'text-white' : 'text-primary-700'}`} style={{ fontFamily: 'var(--font-display)' }}>
-                        {item.year}
-                      </span>
-                    </div>
-                    <h3 className={`text-lg font-bold ${item.highlight ? 'text-white' : 'text-primary-900'}`} style={{ fontFamily: 'var(--font-display)' }}>
-                      {item.title}
-                    </h3>
-                    <p className={`text-sm leading-relaxed ${item.highlight ? 'text-white/90' : 'text-primary-600'}`}>
-                      {item.description}
-                    </p>
+                <div className="space-y-3">
+                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-full ${item.highlight ? 'bg-accent' : 'bg-primary-100'}`}>
+                    <span className={`text-xl font-bold ${item.highlight ? 'text-white' : 'text-primary-700'}`} style={{ fontFamily: 'var(--font-display)' }}>
+                      {item.year}
+                    </span>
                   </div>
-                </Card>
-              </div>
+                  <h3 className={`text-lg font-bold ${item.highlight ? 'text-white' : 'text-primary-900'}`} style={{ fontFamily: 'var(--font-display)' }}>
+                    {item.title}
+                  </h3>
+                  <p className={`text-sm leading-relaxed ${item.highlight ? 'text-white/90' : 'text-primary-600'}`}>
+                    {item.description}
+                  </p>
+                </div>
+              </Card>
             ))}
           </div>
         </div>
