@@ -210,12 +210,15 @@ const Somos = () => {
         <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-b from-transparent to-sand/20"></div>
       </section>
 
-      {/* ASOCIADOS - DESPUÉS DEL HERO */}
-      <Section id="asociados" className="py-16 bg-white">
+      {/* JUNTA DIRECTIVA - DESPUÉS DEL HERO */}
+      <Section id="junta-directiva" className="py-16 bg-sand">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
-            Nuestros asociados están transformando la educación en Colombia y el Mundo
+            Conoce nuestra Junta Directiva
           </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Líderes comprometidos con la transformación educativa en Colombia
+          </p>
         </div>
         
         <LogoGrid 
