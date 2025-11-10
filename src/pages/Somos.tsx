@@ -355,78 +355,118 @@ const Somos = () => {
         </div>
       </Section>
 
-      {/* IMPACTO - FONDO BLANCO */}
-      <Section className="py-16 bg-white">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
+      {/* IMPACTO - FONDO AZUL */}
+      <Section className="py-16 bg-primary-700">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white font-funnel">
             El impacto de nuestro trabajo
           </h2>
+          <p className="text-xl text-white/90">
+            Nuestros asociados impactan a
+          </p>
         </div>
         
-        {/* Estadísticas principales */}
-        <div className="grid md:grid-cols-4 gap-6 mb-12">
-          <Card className="p-8 text-center bg-primary-700 border-primary-800">
-            <div className="text-5xl font-bold text-white mb-3">
-              29.550
+        {/* Estadísticas principales con iconos */}
+        <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-5xl mx-auto">
+          <Card className="p-6 bg-transparent border-2 border-white/30 hover:border-white/50 transition-all">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                  +29.550
+                </div>
+                <p className="text-xl text-white/90 font-medium">
+                  Instituciones
+                </p>
+              </div>
+              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                <Building2 className="w-8 h-8 text-accent" />
+              </div>
             </div>
-            <p className="text-lg text-white/90 font-medium">
-              Instituciones
-            </p>
           </Card>
           
-          <Card className="p-8 text-center bg-primary-700 border-primary-800">
-            <div className="text-5xl font-bold text-white mb-3">
-              40.000
+          <Card className="p-6 bg-transparent border-2 border-white/30 hover:border-white/50 transition-all">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                  40.000
+                </div>
+                <p className="text-xl text-white/90 font-medium">
+                  Docentes
+                </p>
+              </div>
+              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                <BookOpen className="w-8 h-8 text-accent" />
+              </div>
             </div>
-            <p className="text-lg text-white/90 font-medium">
-              Docentes
-            </p>
           </Card>
           
-          <Card className="p-8 text-center bg-primary-700 border-primary-800">
-            <div className="text-5xl font-bold text-white mb-3">
-              4.8M
+          <Card className="p-6 bg-transparent border-2 border-white/30 hover:border-white/50 transition-all">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                  +4.8M
+                </div>
+                <p className="text-xl text-white/90 font-medium">
+                  Personas
+                </p>
+              </div>
+              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                <Users className="w-8 h-8 text-accent" />
+              </div>
             </div>
-            <p className="text-lg text-white/90 font-medium">
-              Personas
-            </p>
           </Card>
           
-          <Card className="p-8 text-center bg-primary-700 border-primary-800">
-            <div className="text-5xl font-bold text-white mb-3">
-              15.000
+          <Card className="p-6 bg-transparent border-2 border-white/30 hover:border-white/50 transition-all">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                  15.000
+                </div>
+                <p className="text-xl text-white/90 font-medium">
+                  Empresas
+                </p>
+              </div>
+              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                <Target className="w-8 h-8 text-accent" />
+              </div>
             </div>
-            <p className="text-lg text-white/90 font-medium">
-              Empresas
-            </p>
           </Card>
         </div>
         
         {/* Estadísticas adicionales */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <Card className="p-8 text-center bg-sand border-primary-200">
-            <div className="text-4xl font-bold text-accent mb-3">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <Card className="p-8 text-center bg-primary-900/50 border-2 border-white/20">
+            <div className="text-5xl font-bold text-white mb-3">
               38.2%
             </div>
-            <p className="text-base text-primary-700 leading-relaxed">
+            <p className="text-base text-white/90 leading-relaxed">
               De nuestros asociados llegan a 5-6 países
             </p>
           </Card>
           
-          <Card className="p-8 text-center bg-sand border-primary-200">
-            <div className="text-4xl font-bold text-accent mb-3">
+          <Card className="p-8 text-center bg-primary-900/50 border-2 border-white/20">
+            <div className="text-5xl font-bold text-white mb-3">
               72.2%
             </div>
-            <p className="text-base text-primary-700 leading-relaxed">
+            <p className="text-base text-white/90 leading-relaxed">
               De nuestras EdTechs asociadas comenzó con recursos propios
             </p>
           </Card>
           
-          <Card className="p-8 text-center bg-sand border-primary-200">
-            <div className="text-4xl font-bold text-accent mb-3">
+          <Card className="p-8 text-center bg-primary-900/50 border-2 border-white/20">
+            <div className="text-5xl font-bold text-white mb-3">
               79.62%
             </div>
-            <p className="text-base text-primary-700 leading-relaxed">
+            <p className="text-base text-white/90 leading-relaxed">
+              De los founders de nuestras EdTech tienen un título de postgrado
+            </p>
+          </Card>
+          
+          <Card className="p-8 text-center bg-primary-900/50 border-2 border-white/20">
+            <div className="text-5xl font-bold text-white mb-3">
+              2/3
+            </div>
+            <p className="text-base text-white/90 leading-relaxed">
               De los founders de nuestras EdTech tienen un título de postgrado
             </p>
           </Card>
