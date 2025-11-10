@@ -233,7 +233,7 @@ const Somos = () => {
                 <p className="text-lg md:text-xl leading-relaxed">
                   Transformar la calidad, inclusión y accesibilidad de la educación en Colombia y Latinoamérica.
                 </p>
-                <p className="text-base md:text-lg leading-relaxed text-white/90">
+                <p className="text-lg md:text-xl leading-relaxed">
                   No se trata solo de enseñar, sino de abrir caminos hacia un aprendizaje significativo que conecte estudiantes, docentes e instituciones con las oportunidades del mundo moderno.
                 </p>
               </div>
