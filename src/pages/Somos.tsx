@@ -94,7 +94,7 @@ const Somos = () => {
   ];
 
   const asociados = [
-    "mangus", "GGL Geek Girls LatAm", "coschool", "HYPERCUBUS", "Laboratoria", "ticmas"
+    "mangus", "GGL Geek Girls LatAm", "coschool", "HYPERCUBUS", "Laboratoria", "ticmas", "educación estrella", "revive"
   ];
 
   const medios = [
@@ -220,7 +220,7 @@ const Somos = () => {
         
         <LogoGrid 
           partners={asociados}
-          columns={3}
+          columns={4}
           title=""
           className="mb-12"
         />
