@@ -462,7 +462,9 @@ const Somos = () => {
       {/* TIMELINE HISTORIA - FONDO SAND */}
       <Section id="historia" className="py-20 bg-sand">
         <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700" style={{ fontFamily: 'var(--font-display)' }}>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700" style={{
+          fontFamily: 'var(--font-display)'
+        }}>
             Nuestra historia
           </h2>
           <p className="text-lg text-primary-900 max-w-3xl mx-auto">
@@ -477,12 +479,9 @@ const Somos = () => {
 
             {/* Items */}
             <div className="space-y-8">
-              {timelineData.map((item, index) => (
-                <div
-                  key={index}
-                  className="relative flex gap-4 sm:gap-6 pl-12 sm:pl-16 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+              {timelineData.map((item, index) => <div key={index} className="relative flex gap-4 sm:gap-6 pl-12 sm:pl-16 animate-fade-in" style={{
+              animationDelay: `${index * 0.1}s`
+            }}>
                   {/* Punto */}
                   <div className="absolute left-0 sm:left-0 top-2">
                     <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full ring-4 bg-accent ring-accent/20 shadow"></div>
@@ -494,45 +493,23 @@ const Somos = () => {
                       <span className="text-sm font-semibold text-white/90">{item.year}</span>
                       <span className="w-2 h-2 rounded-full bg-accent/70"></span>
                     </div>
-                    <h3
-                      className="mt-1 text-xl font-bold text-white"
-                      style={{ fontFamily: 'var(--font-display)' }}
-                    >
+                    <h3 className="mt-1 text-xl font-bold text-white" style={{
+                  fontFamily: 'var(--font-display)'
+                }}>
                       {item.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/90">
                       {item.description}
                     </p>
                   </Card>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </div>
       </Section>
 
       {/* LIDERAZGO - FONDO AZUL */}
-      <Section id="liderazgo" className="py-16 bg-primary-700">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-            El equipo que lidera la transformación
-          </h2>
-          <p className="text-lg text-white/80 max-w-3xl mx-auto">
-            Conoce a los líderes que impulsan la revolución educativa en Colombia
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {liderazgo.map((leader, index) => <LeadershipCard key={index} name={leader.name} position={leader.position} bio={leader.bio} />)}
-        </div>
-        
-        <div className="text-center">
-          <CTAButton size="lg" className="bg-accent hover:bg-accent-600">
-            Únete a nuestro equipo de voluntarios
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </CTAButton>
-        </div>
-      </Section>
+      
 
       {/* IMPACTO - FONDO SAND */}
       
