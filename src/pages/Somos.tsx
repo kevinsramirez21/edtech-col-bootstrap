@@ -10,8 +10,9 @@ import { CredibilityBadges } from "@/components/ui/credibility-badges";
 import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd } from "@/lib/seo";
 import { Link } from "react-router-dom";
-import { ArrowRight, Lightbulb, Users, Globe, Building2, BookOpen, Handshake, Target, Heart, ChevronDown } from "lucide-react";
+import { ArrowRight, Lightbulb, Users, Globe, Building2, BookOpen, Handshake, Target, Heart, ChevronDown, CheckCircle } from "lucide-react";
 import juntaDirectiva2024 from "@/assets/junta-directiva-2024.jpg";
+import eventoColombiaEdtech from "@/assets/evento-colombia-edtech.jpg";
 const Somos = () => {
   const meta = generatePageMeta({
     title: "Lideramos la revolución EdTech en Colombia - Quiénes Somos",
@@ -217,22 +218,49 @@ const Somos = () => {
         <LogoGrid partners={medios} columns={5} title="" className="max-w-5xl mx-auto" />
       </Section>
 
-      {/* NORTE Y MISIÓN - FONDO SAND */}
-      <Section className="py-16 bg-sand">
-        <div className="text-center max-w-5xl mx-auto space-y-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-700 leading-tight">
-            Tenemos un norte claro para dejar huella y cambiar el mundo desde la educación gracias a la tecnología.
-          </h2>
-          
-          <h3 className="text-3xl md:text-4xl font-bold text-accent">
-            ¿Cómo lo hacemos?
-          </h3>
-          
-          <p className="text-xl md:text-2xl text-primary-900 leading-relaxed">
-            Tejiendo lazos de colaboración entre organizaciones con ánimo y sin ánimo de lucro que trabajan por la educación, impulsando soluciones innovadoras que impacten a millones de personas.
-          </p>
+      {/* MISIÓN Y CÓMO LO HACEMOS */}
+      <section className="relative overflow-hidden">
+        <div className="grid lg:grid-cols-2 min-h-[600px]">
+          {/* Columna izquierda - Contenido */}
+          <div className="bg-primary-700 text-white p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+            <div className="space-y-8 max-w-2xl">
+              {/* Misión */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-8 h-8 text-accent flex-shrink-0" />
+                  <h2 className="text-3xl md:text-4xl font-bold">Nuestra misión es clara</h2>
+                </div>
+                <p className="text-lg md:text-xl leading-relaxed">
+                  Transformar la calidad, inclusión y accesibilidad de la educación en Colombia y Latinoamérica.
+                </p>
+                <p className="text-base md:text-lg leading-relaxed text-white/90">
+                  No se trata solo de enseñar, sino de abrir caminos hacia un aprendizaje significativo que conecte estudiantes, docentes e instituciones con las oportunidades del mundo moderno.
+                </p>
+              </div>
+
+              {/* Cómo lo hacemos */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-8 h-8 text-accent flex-shrink-0" />
+                  <h3 className="text-3xl md:text-4xl font-bold">¿Cómo lo hacemos?</h3>
+                </div>
+                <p className="text-lg md:text-xl leading-relaxed">
+                  Tejiendo lazos de colaboración entre organizaciones con ánimo y sin ánimo de lucro que trabajan por la educación, impulsando soluciones innovadoras que impacten a millones de personas.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Columna derecha - Imagen */}
+          <div className="relative h-[400px] lg:h-auto">
+            <img 
+              src={eventoColombiaEdtech} 
+              alt="Evento Colombia EdTech - Formando líderes del país" 
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* VALORES - FONDO BLANCO */}
       <Section className="py-16 bg-white">
