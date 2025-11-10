@@ -204,7 +204,7 @@ const Somos = () => {
       </Section>
 
       {/* NOS HAN VISTO EN - FONDO SAND */}
-      <Section className="py-16 bg-sand">
+      <Section className="py-16 bg-white">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
             Nos has visto en
