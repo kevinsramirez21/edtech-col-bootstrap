@@ -193,7 +193,7 @@ const Somos = () => {
         
         <LogoGrid partners={asociados} columns={4} title="" className="mb-12" />
         
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-20">
           <CTAButton size="lg" variant="accent" asChild>
             <Link to="/asociados">
               Ver todos nuestros asociados
@@ -201,12 +201,10 @@ const Somos = () => {
             </Link>
           </CTAButton>
         </div>
-      </Section>
 
-      {/* NOS HAN VISTO EN - FONDO SAND */}
-      <Section className="py-16 bg-white">
+        {/* NOS HAN VISTO EN - MISMA SECCIÓN */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700 font-funnel">
             Nos has visto en
           </h2>
         </div>
