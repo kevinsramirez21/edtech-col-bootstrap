@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, Lightbulb, Users, Globe, Building2, BookOpen, Handshake, Target, Heart, ChevronDown } from "lucide-react";
-import heroLeadershipMeeting from "@/assets/hero-leadership-meeting.jpg";
+import juntaDirectiva2024 from "@/assets/junta-directiva-2024.jpg";
 
 const Somos = () => {
   const meta = generatePageMeta({
@@ -187,8 +187,8 @@ const Somos = () => {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
                 <img 
-                  src={heroLeadershipMeeting}
-                  alt="Equipo de liderazgo de Colombia EdTech en reunión estratégica"
+                  src={juntaDirectiva2024}
+                  alt="Junta Directiva de Colombia EdTech 2024"
                   className="w-full h-[350px] md:h-[450px] lg:h-[500px] object-cover"
                 />
                 {/* Overlay sutil */}
@@ -196,8 +196,8 @@ const Somos = () => {
                 
                 {/* Badge flotante optimizado */}
                 <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm rounded-xl px-6 py-3 shadow-xl">
-                  <p className="text-sm font-bold text-primary-700">Liderazgo EdTech</p>
-                  <p className="text-xs text-primary-500 font-medium">Colombia 2024</p>
+                  <p className="text-sm font-bold text-primary-700">Junta Directiva</p>
+                  <p className="text-xs text-primary-500 font-medium">2024</p>
                 </div>
               </div>
               
