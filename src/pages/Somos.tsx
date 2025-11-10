@@ -74,7 +74,7 @@ const Somos = () => {
     description: "Medimos nuestro éxito en vidas transformadas"
   }];
   const asociados = ["mangus", "GGL Geek Girls LatAm", "coschool", "HYPERCUBUS", "Laboratoria", "ticmas", "educación estrella", "revive"];
-  const medios = ["TIC radio", "NÚCLEO", "naska digital", "SOFTWARE", "Forbes", "Portafolio"];
+  const medios = ["Blu radio", "mintic", "Forbes", "Portafolio", "Infobae"];
   const impactMetrics = [{
     value: "90+",
     label: "Asociados transformando la educación",
