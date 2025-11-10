@@ -21,6 +21,7 @@ const logoMap: Record<string, string> = {
   "blu radio": "/images/logos/blu-radio.png",
   "mintic": "/images/logos/mintic.png",
   "forbes": "/images/logos/forbes.png",
+  "portafolio": "/images/logos/portafolio.png",
 }
 
 function LogoPlaceholder({ name }: { name: string }) {
