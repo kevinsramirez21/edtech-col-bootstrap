@@ -20,7 +20,7 @@ function LogoPlaceholder({ name }: { name: string }) {
   // If we have a real logo, use it
   if (logoPath) {
     return (
-      <div className="flex items-center justify-center h-16 w-32 p-4 bg-white rounded-lg border border-gray-200 transition-all duration-200 hover:border-primary-700 hover:shadow-md">
+      <div className="flex items-center justify-center h-24 w-40 p-2 bg-white rounded-lg border border-gray-100 transition-all duration-200 hover:border-primary-500 hover:shadow-lg">
         <img 
           src={logoPath} 
           alt={`Logo de ${name}`}
@@ -34,9 +34,9 @@ function LogoPlaceholder({ name }: { name: string }) {
   const initials = name.split(' ').map(word => word.charAt(0)).join('').slice(0, 2).toUpperCase()
   
   return (
-    <div className="flex items-center justify-center h-16 w-32 bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 transition-all duration-200 hover:border-primary-700 hover:bg-primary-700/5">
+    <div className="flex items-center justify-center h-24 w-40 bg-gray-50 rounded-lg border border-gray-200 transition-all duration-200 hover:border-primary-700 hover:bg-primary-50">
       <div className="text-center">
-        <div className="text-xl font-bold text-gray-400 mb-1">{initials}</div>
+        <div className="text-2xl font-bold text-gray-600 mb-1">{initials}</div>
         <div className="text-xs text-gray-500 truncate px-2 max-w-full">{name}</div>
       </div>
     </div>
