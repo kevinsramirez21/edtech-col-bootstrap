@@ -223,7 +223,7 @@ const Somos = () => {
             ¿Cómo lo hacemos?
           </h3>
           
-          <p className="text-xl md:text-2xl text-primary-700 leading-relaxed">
+          <p className="text-xl md:text-2xl text-primary-900 leading-relaxed">
             Tejiendo lazos de colaboración entre organizaciones con ánimo y sin ánimo de lucro que trabajan por la educación, impulsando soluciones innovadoras que impacten a millones de personas.
           </p>
         </div>
