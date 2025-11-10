@@ -12,7 +12,7 @@ import { generatePageMeta, generateBreadcrumbJsonLd } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, Lightbulb, Users, Globe, Building2, BookOpen, Handshake, Target, Heart, ChevronDown, CheckCircle } from "lucide-react";
 import juntaDirectiva2024 from "@/assets/junta-directiva-2024.jpg";
-import eventoColombiaEdtech from "@/assets/evento-colombia-edtech.jpg";
+import eventoColombiaEdtech from "@/assets/evento-colombia-edtech-wide.jpg";
 const Somos = () => {
   const meta = generatePageMeta({
     title: "Lideramos la revolución EdTech en Colombia - Quiénes Somos",
@@ -220,15 +220,15 @@ const Somos = () => {
 
       {/* MISIÓN Y CÓMO LO HACEMOS */}
       <section className="relative overflow-hidden">
-        <div className="grid lg:grid-cols-2 min-h-[600px]">
+        <div className="grid lg:grid-cols-2 min-h-[700px] lg:min-h-[80vh]">
           {/* Columna izquierda - Contenido */}
-          <div className="bg-primary-700 text-white p-8 md:p-12 lg:p-16 flex flex-col justify-center">
-            <div className="space-y-8 max-w-2xl">
+          <div className="bg-primary-700 text-white p-8 md:p-12 lg:p-20 flex flex-col justify-center">
+            <div className="space-y-10 max-w-2xl">
               {/* Misión */}
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-8 h-8 text-accent flex-shrink-0" />
-                  <h2 className="text-3xl md:text-4xl font-bold">Nuestra misión es clara</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold font-funnel">Nuestra misión es clara</h2>
                 </div>
                 <p className="text-lg md:text-xl leading-relaxed">
                   Transformar la calidad, inclusión y accesibilidad de la educación en Colombia y Latinoamérica.
@@ -242,7 +242,7 @@ const Somos = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-8 h-8 text-accent flex-shrink-0" />
-                  <h3 className="text-3xl md:text-4xl font-bold">¿Cómo lo hacemos?</h3>
+                  <h3 className="text-3xl md:text-4xl font-bold font-funnel">¿Cómo lo hacemos?</h3>
                 </div>
                 <p className="text-lg md:text-xl leading-relaxed">
                   Tejiendo lazos de colaboración entre organizaciones con ánimo y sin ánimo de lucro que trabajan por la educación, impulsando soluciones innovadoras que impacten a millones de personas.
@@ -255,7 +255,7 @@ const Somos = () => {
           <div className="relative h-[400px] lg:h-auto">
             <img 
               src={eventoColombiaEdtech} 
-              alt="Evento Colombia EdTech - Formando líderes del país" 
+              alt="Evento Colombia EdTech - Formando líderes que transforman el país" 
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
