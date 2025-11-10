@@ -8,7 +8,28 @@ interface LogoGridProps {
   columns?: 3 | 4 | 5 | 6
 }
 
+// Mapping of partner names to their logo paths
+const logoMap: Record<string, string> = {
+  "mangus": "/images/logos/mangus.png",
+}
+
 function LogoPlaceholder({ name }: { name: string }) {
+  const logoPath = logoMap[name.toLowerCase()]
+  
+  // If we have a real logo, use it
+  if (logoPath) {
+    return (
+      <div className="flex items-center justify-center h-16 w-32 p-4 bg-white rounded-lg border border-gray-200 transition-all duration-200 hover:border-primary-700 hover:shadow-md">
+        <img 
+          src={logoPath} 
+          alt={`Logo de ${name}`}
+          className="max-h-full max-w-full object-contain"
+        />
+      </div>
+    )
+  }
+  
+  // Fallback to placeholder
   const initials = name.split(' ').map(word => word.charAt(0)).join('').slice(0, 2).toUpperCase()
   
   return (
