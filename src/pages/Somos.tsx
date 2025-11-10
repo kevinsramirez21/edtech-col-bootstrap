@@ -12,104 +12,87 @@ import { generatePageMeta, generateBreadcrumbJsonLd } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, Lightbulb, Users, Globe, Building2, BookOpen, Handshake, Target, Heart, ChevronDown } from "lucide-react";
 import juntaDirectiva2024 from "@/assets/junta-directiva-2024.jpg";
-
 const Somos = () => {
   const meta = generatePageMeta({
     title: "Lideramos la revolución EdTech en Colombia - Quiénes Somos",
     description: "De una idea en 2020 a transformar la educación de +15M personas. Conoce la historia, liderazgo y crecimiento de Colombia EdTech como la asociación líder del ecosistema educativo."
   });
-
-  const breadcrumbLd = generateBreadcrumbJsonLd([
-    { name: "Somos", item: `${window.location.origin}/somos` }
-  ]);
-
-  const timelineData = [
-    {
-      year: "2020",
-      title: "Antecedentes",
-      description: "Nace el ecosistema EdTech en un grupo de WhatsApp. Para ese momento nunca se había escuchado la palabra en Colombia."
-    },
-    {
-      year: "2022", 
-      title: "La unión",
-      description: "Finalizando el año se constituye Colombia EdTech, una asociación de organizaciones que buscan innovación y/o tecnología para cambiar y mejorar la educación."
-    },
-    {
-      year: "2024",
-      title: "El inicio",
-      description: "En marzo llegamos a 40 organizaciones y conformamos la Junta directiva. En agosto contratamos a nuestro Presidente Ejecutivo."
-    },
-    {
-      year: "2025",
-      title: "Actualizado",
-      description: "Llegamos a 90 asociados y más de 50 voluntarios, múltiples proyectos y varios acuerdos de entendimiento.",
-      highlight: true
-    }
-  ];
-
-  const liderazgo = [
-    {
-      name: "Andrés Méndez",
-      position: "Presidente Ejecutivo",
-      bio: "Líder visionario con más de 15 años de experiencia en transformación digital educativa. Ha dirigido iniciativas que han impactado a millones de estudiantes en Latinoamérica."
-    },
-    {
-      name: "Kevin Ramírez",
-      position: "Vicepresidencia de Operaciones",
-      bio: "Experto en operaciones y gestión de ecosistemas EdTech. Especialista en desarrollo organizacional y optimización de procesos."
-    },
-    {
-      name: "Sofía Orjuela", 
-      position: "Vicepresidencia de Alianzas",
-      bio: "Estratega de alianzas con experiencia en desarrollo de partnerships institucionales y corporativos a nivel regional."
-    },
-    {
-      name: "Valentina Villalobos",
-      position: "Chief of Staff",
-      bio: "Coordinadora ejecutiva especializada en gestión estratégica y articulación de iniciativas de alto impacto."
-    },
-    {
-      name: "Sara Moreno",
-      position: "Lead de Alianzas Universitarias", 
-      bio: "Especialista en relaciones académicas y desarrollo de programas universitarios para el fortalecimiento del ecosistema EdTech."
-    }
-  ];
-
-  const valores = [
-    {
-      icon: Lightbulb,
-      title: "Innovación",
-      description: "Impulsamos soluciones que revolucionan el aprendizaje"
-    },
-    {
-      icon: Handshake,
-      title: "Colaboración",
-      description: "Creemos en el poder del ecosistema conectado"
-    },
-    {
-      icon: Heart,
-      title: "Impacto",
-      description: "Medimos nuestro éxito en vidas transformadas"
-    }
-  ];
-
-  const asociados = [
-    "mangus", "GGL Geek Girls LatAm", "coschool", "HYPERCUBUS", "Laboratoria", "ticmas", "educación estrella", "revive"
-  ];
-
-  const medios = [
-    "TIC radio", "NÚCLEO", "naska digital", "SOFTWARE", "Forbes", "Portafolio"
-  ];
-
-  const impactMetrics = [
-    { value: "90+", label: "Asociados transformando la educación", icon: Building2 },
-    { value: "+15M", label: "Personas impactadas en Latinoamérica", icon: Users },
-    { value: "50+", label: "Voluntarios comprometidos", icon: Users },
-    { value: "+25", label: "Países con presencia EdTech colombiana", icon: Globe }
-  ];
-
-  return (
-    <>
+  const breadcrumbLd = generateBreadcrumbJsonLd([{
+    name: "Somos",
+    item: `${window.location.origin}/somos`
+  }]);
+  const timelineData = [{
+    year: "2020",
+    title: "Antecedentes",
+    description: "Nace el ecosistema EdTech en un grupo de WhatsApp. Para ese momento nunca se había escuchado la palabra en Colombia."
+  }, {
+    year: "2022",
+    title: "La unión",
+    description: "Finalizando el año se constituye Colombia EdTech, una asociación de organizaciones que buscan innovación y/o tecnología para cambiar y mejorar la educación."
+  }, {
+    year: "2024",
+    title: "El inicio",
+    description: "En marzo llegamos a 40 organizaciones y conformamos la Junta directiva. En agosto contratamos a nuestro Presidente Ejecutivo."
+  }, {
+    year: "2025",
+    title: "Actualizado",
+    description: "Llegamos a 90 asociados y más de 50 voluntarios, múltiples proyectos y varios acuerdos de entendimiento.",
+    highlight: true
+  }];
+  const liderazgo = [{
+    name: "Andrés Méndez",
+    position: "Presidente Ejecutivo",
+    bio: "Líder visionario con más de 15 años de experiencia en transformación digital educativa. Ha dirigido iniciativas que han impactado a millones de estudiantes en Latinoamérica."
+  }, {
+    name: "Kevin Ramírez",
+    position: "Vicepresidencia de Operaciones",
+    bio: "Experto en operaciones y gestión de ecosistemas EdTech. Especialista en desarrollo organizacional y optimización de procesos."
+  }, {
+    name: "Sofía Orjuela",
+    position: "Vicepresidencia de Alianzas",
+    bio: "Estratega de alianzas con experiencia en desarrollo de partnerships institucionales y corporativos a nivel regional."
+  }, {
+    name: "Valentina Villalobos",
+    position: "Chief of Staff",
+    bio: "Coordinadora ejecutiva especializada en gestión estratégica y articulación de iniciativas de alto impacto."
+  }, {
+    name: "Sara Moreno",
+    position: "Lead de Alianzas Universitarias",
+    bio: "Especialista en relaciones académicas y desarrollo de programas universitarios para el fortalecimiento del ecosistema EdTech."
+  }];
+  const valores = [{
+    icon: Lightbulb,
+    title: "Innovación",
+    description: "Impulsamos soluciones que revolucionan el aprendizaje"
+  }, {
+    icon: Handshake,
+    title: "Colaboración",
+    description: "Creemos en el poder del ecosistema conectado"
+  }, {
+    icon: Heart,
+    title: "Impacto",
+    description: "Medimos nuestro éxito en vidas transformadas"
+  }];
+  const asociados = ["mangus", "GGL Geek Girls LatAm", "coschool", "HYPERCUBUS", "Laboratoria", "ticmas", "educación estrella", "revive"];
+  const medios = ["TIC radio", "NÚCLEO", "naska digital", "SOFTWARE", "Forbes", "Portafolio"];
+  const impactMetrics = [{
+    value: "90+",
+    label: "Asociados transformando la educación",
+    icon: Building2
+  }, {
+    value: "+15M",
+    label: "Personas impactadas en Latinoamérica",
+    icon: Users
+  }, {
+    value: "50+",
+    label: "Voluntarios comprometidos",
+    icon: Users
+  }, {
+    value: "+25",
+    label: "Países con presencia EdTech colombiana",
+    icon: Globe
+  }];
+  return <>
       <Helmet>
         <title>{meta.title}</title>
         <meta name="description" content={meta.description} />
@@ -143,35 +126,29 @@ const Somos = () => {
             <div className="text-center space-y-8 lg:pr-8">
               {/* Título Principal */}
             <div className="space-y-5">
-                <h1 
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight animate-fade-in"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight animate-fade-in" style={{
+                fontFamily: 'var(--font-display)'
+              }}>
                   La evolución de la educación ha comenzado
                 </h1>
                 
-                <h2 
-                  className="text-lg md:text-xl lg:text-2xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto"
-                  style={{ animationDelay: '0.2s' }}
-                >
+                <h2 className="text-lg md:text-xl lg:text-2xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto" style={{
+                animationDelay: '0.2s'
+              }}>
                   Conectamos a startups, scaleups, empresas tradicionales, universidades, colegios, ONG, Bigtech, el estado y la comunidad todos unidos por un objetivo común, dispuestos a revolucionar desde la raíz la manera en que se enseña y aprende.
                 </h2>
               </div>
               
               {/* CTA Principal */}
-              <div 
-                className="pt-8"
-                style={{ animationDelay: '0.6s' }}
-              >
-                <button
-                  onClick={() => {
-                    document.getElementById('historia')?.scrollIntoView({ 
-                      behavior: 'smooth',
-                      block: 'start'
-                    });
-                  }}
-                  className="bg-accent hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-accent/30"
-                >
+              <div className="pt-8" style={{
+              animationDelay: '0.6s'
+            }}>
+                <button onClick={() => {
+                document.getElementById('historia')?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }} className="bg-accent hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-accent/30">
                   Conoce nuestra historia
                   <ArrowRight className="ml-2 w-6 h-6 inline-block" />
                 </button>
@@ -179,16 +156,11 @@ const Somos = () => {
             </div>
             
             {/* COLUMNA DERECHA - IMAGEN OPTIMIZADA */}
-            <div 
-              className="relative order-first lg:order-last"
-              style={{ animationDelay: '1s' }}
-            >
+            <div className="relative order-first lg:order-last" style={{
+            animationDelay: '1s'
+          }}>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                <img 
-                  src={juntaDirectiva2024}
-                  alt="Junta Directiva de Colombia EdTech 2024"
-                  className="w-full h-[350px] md:h-[450px] lg:h-[500px] object-cover"
-                />
+                <img src={juntaDirectiva2024} alt="Junta Directiva de Colombia EdTech 2024" className="w-full h-[350px] md:h-[450px] lg:h-[500px] object-cover" />
                 {/* Overlay sutil */}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-900/30 to-transparent"></div>
                 
@@ -216,17 +188,10 @@ const Somos = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
             Conoce nuestra Junta Directiva
           </h2>
-          <p className="text-lg text-primary-600 max-w-2xl mx-auto">
-            Líderes comprometidos con la transformación educativa en Colombia
-          </p>
+          <p className="text-lg text-primary-600 max-w-2xl mx-auto">Líderes comprometidos con la transformación educativa en Colombia y latinoamérica</p>
         </div>
         
-        <LogoGrid 
-          partners={asociados}
-          columns={4}
-          title=""
-          className="mb-12"
-        />
+        <LogoGrid partners={asociados} columns={4} title="" className="mb-12" />
         
         <div className="flex justify-center">
           <CTAButton size="lg" variant="accent" asChild>
@@ -246,12 +211,7 @@ const Somos = () => {
           </h2>
         </div>
         
-        <LogoGrid 
-          partners={medios}
-          columns={6}
-          title=""
-          className="max-w-5xl mx-auto"
-        />
+        <LogoGrid partners={medios} columns={6} title="" className="max-w-5xl mx-auto" />
       </Section>
 
       {/* NORTE Y MISIÓN - FONDO BLANCO */}
@@ -460,14 +420,7 @@ const Somos = () => {
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {liderazgo.map((leader, index) => (
-            <LeadershipCard
-              key={index}
-              name={leader.name}
-              position={leader.position}
-              bio={leader.bio}
-            />
-          ))}
+          {liderazgo.map((leader, index) => <LeadershipCard key={index} name={leader.name} position={leader.position} bio={leader.bio} />)}
         </div>
         
         <div className="text-center">
@@ -490,9 +443,7 @@ const Somos = () => {
         </div>
         
         <div className="bg-primary-700 rounded-2xl p-12">
-          <ImpactMetrics 
-            metrics={impactMetrics}
-          />
+          <ImpactMetrics metrics={impactMetrics} />
         </div>
       </Section>
 
@@ -509,8 +460,7 @@ const Somos = () => {
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {valores.map((valor, index) => (
-            <Card key={index} className="p-8 text-center bg-white/10 border-white/20 backdrop-blur-sm">
+          {valores.map((valor, index) => <Card key={index} className="p-8 text-center bg-white/10 border-white/20 backdrop-blur-sm">
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
                 <valor.icon className="w-8 h-8 text-white" />
               </div>
@@ -520,8 +470,7 @@ const Somos = () => {
               <p className="text-white/80 leading-relaxed">
                 {valor.description}
               </p>
-            </Card>
-          ))}
+            </Card>)}
         </div>
       </Section>
 
@@ -544,8 +493,6 @@ const Somos = () => {
           </CTAButton>
         </div>
       </Section>
-    </>
-  );
+    </>;
 };
-
 export default Somos;
