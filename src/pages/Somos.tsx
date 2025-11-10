@@ -220,7 +220,7 @@ const Somos = () => {
         
         <LogoGrid 
           partners={asociados}
-          columns={4}
+          columns={3}
           title=""
           className="mb-12"
         />
