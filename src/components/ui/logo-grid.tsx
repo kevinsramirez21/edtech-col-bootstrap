@@ -12,6 +12,7 @@ interface LogoGridProps {
 const logoMap: Record<string, string> = {
   "mangus": "/images/logos/mangus.png",
   "ggl geek girls latam": "/images/logos/geek-girls-latam.png",
+  "coschool": "/images/logos/coschool.png",
 }
 
 function LogoPlaceholder({ name }: { name: string }) {
