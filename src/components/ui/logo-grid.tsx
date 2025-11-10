@@ -17,6 +17,7 @@ const logoMap: Record<string, string> = {
   "laboratoria": "/images/logos/laboratoria.png",
   "ticmas": "/images/logos/ticmas.png",
   "educación estrella": "/images/logos/educacion-estrella.png",
+  "revive": "/images/logos/revive.png",
 }
 
 function LogoPlaceholder({ name }: { name: string }) {
