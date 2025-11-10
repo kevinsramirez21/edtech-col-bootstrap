@@ -216,7 +216,7 @@ const Somos = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
             Conoce nuestra Junta Directiva
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-primary-600 max-w-2xl mx-auto">
             Líderes comprometidos con la transformación educativa en Colombia
           </p>
         </div>
