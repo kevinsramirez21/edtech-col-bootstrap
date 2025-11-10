@@ -11,6 +11,7 @@ interface LogoGridProps {
 // Mapping of partner names to their logo paths
 const logoMap: Record<string, string> = {
   "mangus": "/images/logos/mangus.png",
+  "ggl geek girls latam": "/images/logos/geek-girls-latam.png",
 }
 
 function LogoPlaceholder({ name }: { name: string }) {
