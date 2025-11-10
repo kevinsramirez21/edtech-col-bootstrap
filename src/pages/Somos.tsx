@@ -94,9 +94,7 @@ const Somos = () => {
   ];
 
   const asociados = [
-    "UNIVERSIDAD EAFIT", "cymetria", "coschool", "JULABS", "GGL Geek Girls LatAm", 
-    "TOMi", "Buen Data", "HYPERCUBUS", "Laboratoria", "mangus", 
-    "MIND HUB", "RDC blu"
+    "mangus", "GGL Geek Girls LatAm", "coschool", "HYPERCUBUS", "Laboratoria", "ticmas"
   ];
 
   const medios = [
