@@ -30,7 +30,7 @@ function LogoPlaceholder({ name }: { name: string }) {
         <img 
           src={logoPath} 
           alt={`Logo de ${name}`}
-          className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+          className="max-h-full max-w-full object-contain"
         />
       </div>
     )
