@@ -38,13 +38,7 @@ const Somos = () => {
   }, {
     year: "2025",
     title: "Actualizado",
-    description: "Llegamos a 90 asociados y más de 50 voluntarios, múltiples proyectos y varios acuerdos de entendimiento.",
-    highlight: true
-  }, {
-    year: "2030",
-    title: "Nuestra visión",
-    description: "Nuestro horizonte es ambicioso. Para 2030, seremos líderes en Latinoamérica en la creación de un ecosistema EdTech ético, dinámico y colaborativo que transforme el aprendizaje, impulse la globalización y priorice la personalización educativa.",
-    highlight: true
+    description: "Llegamos a 90 asociados y más de 50 voluntarios, múltiples proyectos y varios acuerdos de entendimiento."
   }];
   const liderazgo = [{
     name: "Andrés Méndez",
@@ -491,26 +485,22 @@ const Somos = () => {
                 >
                   {/* Punto */}
                   <div className="absolute left-0 sm:left-0 top-2">
-                    <div
-                      className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full ring-4 ${item.highlight ? 'bg-accent ring-accent/20' : 'bg-primary-700 ring-primary-100'} shadow`}
-                    ></div>
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full ring-4 bg-accent ring-accent/20 shadow"></div>
                   </div>
 
                   {/* Tarjeta */}
-                  <Card
-                    className={`flex-1 p-5 sm:p-6 ${item.highlight ? 'bg-primary-700 text-white border-primary-700 shadow-xl' : 'bg-white border-primary-100 shadow-md'} hover:shadow-lg transition-shadow`}
-                  >
+                  <Card className="flex-1 p-5 sm:p-6 bg-primary-700 text-white border-primary-700 shadow-xl hover:shadow-lg transition-shadow">
                     <div className="flex items-center gap-3">
-                      <span className={`text-sm font-semibold ${item.highlight ? 'text-white/90' : 'text-primary-600'}`}>{item.year}</span>
+                      <span className="text-sm font-semibold text-white/90">{item.year}</span>
                       <span className="w-2 h-2 rounded-full bg-accent/70"></span>
                     </div>
                     <h3
-                      className={`mt-1 text-xl font-bold ${item.highlight ? 'text-white' : 'text-primary-900'}`}
+                      className="mt-1 text-xl font-bold text-white"
                       style={{ fontFamily: 'var(--font-display)' }}
                     >
                       {item.title}
                     </h3>
-                    <p className={`mt-2 text-sm leading-relaxed ${item.highlight ? 'text-white/90' : 'text-primary-700'}`}>
+                    <p className="mt-2 text-sm leading-relaxed text-white/90">
                       {item.description}
                     </p>
                   </Card>
