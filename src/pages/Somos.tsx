@@ -144,16 +144,16 @@ const Somos = () => {
             {/* COLUMNA IZQUIERDA - CONTENIDO CENTRADO */}
             <div className="text-center space-y-8 lg:pr-8">
               {/* Título Principal */}
-              <div className="space-y-6">
+            <div className="space-y-4">
                 <h1 
-                  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight animate-fade-in"
+                  className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-fade-in"
                   style={{ fontFamily: 'var(--font-display)' }}
                 >
                   La evolución de la educación ha comenzado
                 </h1>
                 
                 <h2 
-                  className="text-xl md:text-2xl lg:text-3xl text-white/90 font-medium leading-relaxed max-w-4xl mx-auto"
+                  className="text-base md:text-lg lg:text-xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto"
                   style={{ animationDelay: '0.2s' }}
                 >
                   Conectamos a startups, scaleups, empresas tradicionales, universidades, colegios, ONG, Bigtech, el estado y la comunidad todos unidos por un objetivo común, dispuestos a revolucionar desde la raíz la manera en que se enseña y aprende.
