@@ -254,11 +254,7 @@ const Somos = () => {
 
           {/* Columna derecha - Imagen */}
           <div className="relative h-[400px] lg:h-auto">
-            <img 
-              src={eventoColombiaEdtech} 
-              alt="Evento Colombia EdTech - Formando líderes que transforman el país" 
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+            <img src={eventoColombiaEdtech} alt="Evento Colombia EdTech - Formando líderes que transforman el país" className="absolute inset-0 w-full h-full object-cover" />
           </div>
         </div>
       </section>
@@ -268,11 +264,7 @@ const Somos = () => {
         <div className="grid lg:grid-cols-2 min-h-[700px] lg:min-h-[80vh]">
           {/* Columna izquierda - Imagen */}
           <div className="relative h-[400px] lg:h-auto order-last lg:order-first">
-            <img 
-              src={eventoVision2030} 
-              alt="Evento Colombia EdTech - Visión 2030" 
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+            <img src={eventoVision2030} alt="Evento Colombia EdTech - Visión 2030" className="absolute inset-0 w-full h-full object-cover" />
           </div>
 
           {/* Columna derecha - Contenido */}
@@ -513,47 +505,11 @@ const Somos = () => {
       </Section>
 
       {/* IMPACTO - FONDO SAND */}
-      <Section id="impacto" className="py-16 bg-sand">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
-            El impacto que generamos juntos
-          </h2>
-          <p className="text-lg text-primary-600 max-w-3xl mx-auto">
-            Nuestros números reflejan el crecimiento y transformación del ecosistema EdTech
-          </p>
-        </div>
-        
-        <div className="bg-primary-700 rounded-2xl p-12">
-          <ImpactMetrics metrics={impactMetrics} />
-        </div>
-      </Section>
+      
 
 
       {/* VALORES - FONDO AZUL */}
-      <Section className="py-16 bg-primary-700">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-            Los valores que nos mueven
-          </h2>
-          <p className="text-lg text-white/80 max-w-3xl mx-auto">
-            Nuestros principios fundamentales que guían cada decisión y acción
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {valores.map((valor, index) => <Card key={index} className="p-8 text-center bg-white/10 border-white/20 backdrop-blur-sm">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
-                <valor.icon className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-white">
-                {valor.title}
-              </h3>
-              <p className="text-white/80 leading-relaxed">
-                {valor.description}
-              </p>
-            </Card>)}
-        </div>
-      </Section>
+      
 
       {/* CTA FINAL - FONDO SAND */}
       <Section className="py-20 bg-primary-700 text-center">
