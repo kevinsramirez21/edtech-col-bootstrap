@@ -466,9 +466,9 @@ const Somos = () => {
       </Section>
 
       {/* TIMELINE HISTORIA - FONDO SAND */}
-      <Section id="historia" className="py-16 bg-sand">
+      <Section id="historia" className="py-20 bg-sand">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700" style={{ fontFamily: 'var(--font-display)' }}>
             Nuestra historia
           </h2>
           <p className="text-lg text-primary-600 max-w-3xl mx-auto">
@@ -476,8 +476,27 @@ const Somos = () => {
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto">
-          <Timeline items={timelineData} />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {timelineData.map((item, index) => (
+            <Card 
+              key={index} 
+              className={`p-8 ${item.highlight ? 'bg-primary-700 text-white border-primary-700' : 'bg-white border-primary-100'} hover:shadow-lg transition-shadow`}
+            >
+              <div className="space-y-4">
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full ${item.highlight ? 'bg-accent' : 'bg-primary-100'} mb-2`}>
+                  <span className={`text-2xl font-bold ${item.highlight ? 'text-white' : 'text-primary-700'}`} style={{ fontFamily: 'var(--font-display)' }}>
+                    {item.year}
+                  </span>
+                </div>
+                <h3 className={`text-xl font-bold ${item.highlight ? 'text-white' : 'text-primary-900'}`} style={{ fontFamily: 'var(--font-display)' }}>
+                  {item.title}
+                </h3>
+                <p className={`text-sm leading-relaxed ${item.highlight ? 'text-white/90' : 'text-primary-600'}`}>
+                  {item.description}
+                </p>
+              </div>
+            </Card>
+          ))}
         </div>
       </Section>
 
