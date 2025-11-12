@@ -134,9 +134,9 @@ const Asociados = () => {
             alt="Evento Colombia EdTech" 
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/95 via-[#0B47CE]/85 to-[#003889]/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/96 via-[#0B47CE]/88 to-[#003889]/70"></div>
         </div>
-        <div className="relative z-10 container max-w-7xl mx-auto h-full flex items-center">
+        <div className="relative z-10 container max-w-7xl mx-auto h-full flex items-center pt-20 md:pt-24">
           <div className="max-w-4xl animate-fade-in">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight drop-shadow-2xl">
               Asociados
@@ -149,7 +149,7 @@ const Asociados = () => {
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <CTAButton 
                 size="lg"
-                className="btn-primary text-lg px-8 py-6 hover-scale"
+                className="btn-primary text-lg px-8 py-6 hover-scale shadow-2xl"
                 onClick={handleAssociateClick}
                 asChild
               >
@@ -160,7 +160,7 @@ const Asociados = () => {
               <Button 
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-6 bg-white/10 border-white/30 hover:bg-white/20 backdrop-blur-sm hover-scale text-white"
+                className="text-lg px-8 py-6 bg-white/95 border-white hover:bg-white backdrop-blur-sm hover-scale text-[#0B47CE] font-bold shadow-xl hover:shadow-2xl"
                 asChild
               >
                 <Link to="#beneficios">
