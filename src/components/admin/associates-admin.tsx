@@ -57,6 +57,8 @@ export function AssociatesAdmin() {
   const [modalOpen, setModalOpen] = useState(false)
   const [editingAssociate, setEditingAssociate] = useState<Associate | null>(null)
   const [submitting, setSubmitting] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [filterStatus, setFilterStatus] = useState<string>('all')
   const { toast } = useToast()
 
   // Fetch all associates (including inactive ones for admin)
@@ -171,10 +173,21 @@ export function AssociatesAdmin() {
   }
 
   // Close modal and reset state
-  const handleCloseModal = () => {
+  const closeModal = () => {
     setModalOpen(false)
     setEditingAssociate(null)
   }
+
+  // Filter associates based on search and status
+  const filteredAssociates = React.useMemo(() => {
+    return associates.filter(associate => {
+      const matchesSearch = associate.nombre_empresa.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           associate.descripcion?.toLowerCase().includes(searchTerm.toLowerCase())
+      const matchesStatus = filterStatus === 'all' || associate.estado === filterStatus
+      
+      return matchesSearch && matchesStatus
+    })
+  }, [associates, searchTerm, filterStatus])
   const toggleAssociateStatus = async (id: string, currentStatus: string) => {
     const newStatus = currentStatus === 'activo' ? 'inactivo' : 'activo'
     
@@ -258,40 +271,70 @@ export function AssociatesAdmin() {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2">
-            <Building2 className="w-5 h-5" />
+    <Card className="shadow-lg">
+      <CardHeader className="bg-gradient-to-r from-[#003889] to-[#0B47CE] text-white">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <CardTitle className="flex items-center gap-2 text-2xl">
+            <Building2 className="w-6 h-6" />
             Gestión de Asociados
+            <Badge variant="secondary" className="ml-2 bg-white/20 text-white">
+              {filteredAssociates.length}
+            </Badge>
           </CardTitle>
-          <Button onClick={handleAddNew} className="gap-2">
+          <Button onClick={handleAddNew} className="gap-2 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white">
             <Plus className="w-4 h-4" />
             Agregar Asociado
           </Button>
         </div>
+        
+        {/* Search and Filter Bar */}
+        <div className="flex flex-col md:flex-row gap-4 mt-4">
+          <div className="relative flex-1">
+            <input
+              type="text"
+              placeholder="Buscar por nombre o descripción..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-4 py-2 rounded-lg border-0 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-[#F73C5C]"
+            />
+          </div>
+          <select
+            value={filterStatus}
+            onChange={(e) => setFilterStatus(e.target.value)}
+            className="px-4 py-2 rounded-lg border-0 text-gray-900 focus:ring-2 focus:ring-[#F73C5C] md:w-48"
+          >
+            <option value="all">Todos los estados</option>
+            <option value="activo">Activos</option>
+            <option value="inactivo">Inactivos</option>
+            <option value="pendiente">Pendientes</option>
+          </select>
+        </div>
       </CardHeader>
-      <CardContent>
-        {associates.length === 0 ? (
-          <div className="text-center py-8">
-            <Building2 className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-            <p className="text-gray-600">No hay asociados registrados</p>
+      <CardContent className="p-6">
+        {filteredAssociates.length === 0 ? (
+          <div className="text-center py-12">
+            <Building2 className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+            <p className="text-gray-600 text-lg">
+              {searchTerm || filterStatus !== 'all' 
+                ? 'No se encontraron asociados con los filtros aplicados'
+                : 'No hay asociados registrados'}
+            </p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
-                <TableRow>
-                  <TableHead>Empresa</TableHead>
-                  <TableHead>Segmento</TableHead>
-                  <TableHead>Estado</TableHead>
-                  <TableHead>Fecha Ingreso</TableHead>
-                  <TableHead>Servicios</TableHead>
-                  <TableHead className="text-right">Acciones</TableHead>
+                <TableRow className="bg-gray-50">
+                  <TableHead className="font-bold">Empresa</TableHead>
+                  <TableHead className="font-bold">Segmento</TableHead>
+                  <TableHead className="font-bold">Estado</TableHead>
+                  <TableHead className="font-bold">Fecha Ingreso</TableHead>
+                  <TableHead className="font-bold">Servicios</TableHead>
+                  <TableHead className="text-right font-bold">Acciones</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {associates.map((associate) => (
+                {filteredAssociates.map((associate) => (
                   <TableRow key={associate.id}>
                     <TableCell>
                       <div>
@@ -403,7 +446,7 @@ export function AssociatesAdmin() {
         {/* Associate Modal */}
         <AssociateModal
           isOpen={modalOpen}
-          onClose={handleCloseModal}
+          onClose={closeModal}
           onSubmit={handleSubmit}
           associate={editingAssociate}
           isLoading={submitting}

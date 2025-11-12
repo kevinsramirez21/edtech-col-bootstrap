@@ -1,10 +1,14 @@
 import { Helmet } from "react-helmet-async"
 import { useState, useEffect, useMemo } from "react"
-import { Users, Building2, Loader2 } from "lucide-react"
+import { Users, Building2, Loader2, Settings, Grid3x3, List } from "lucide-react"
 import { supabase } from "@/integrations/supabase/client"
 import { AssociateCard } from "@/components/ui/associate-card"
 import { AssociatesFilters } from "@/components/ui/associates-filters"
 import { Section } from "@/components/ui/section"
+import { Button } from "@/components/ui/button"
+import { useAdmin } from "@/hooks/use-admin"
+import { Link } from "react-router-dom"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 interface Associate {
   id: string
@@ -31,6 +35,8 @@ export default function AssociatesDirectory() {
   const [associates, setAssociates] = useState<Associate[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const { isAdmin } = useAdmin()
   const [filters, setFilters] = useState<FiltersState>({
     search: "",
     segmento: "",
@@ -161,52 +167,75 @@ export default function AssociatesDirectory() {
         <meta name="keywords" content="EdTech Colombia, asociados, empresas educación, tecnología educativa" />
       </Helmet>
 
-      <main className="min-h-screen bg-gray-50">
+      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         {/* Hero Section */}
-        <Section className="bg-gradient-to-br from-primary-50 via-white to-accent-50 pt-16 pb-12">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-900 mb-6">
-              Conoce Nuestros <span className="text-primary-700">Asociados</span>
+        <Section className="bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white pt-24 pb-16 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#F73C5C] rounded-full blur-3xl"></div>
+          </div>
+          
+          <div className="relative z-10 text-center max-w-5xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+              <Users className="w-5 h-5" />
+              <span className="text-sm font-semibold">Ecosistema EdTech Colombia</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              Conoce Nuestros <span className="text-[#F73C5C]">Asociados</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
               Descubre las empresas EdTech que están transformando la educación en Colombia. 
               Conecta con líderes en tecnología educativa y encuentra los servicios que necesitas.
             </p>
             
+            {isAdmin && (
+              <Button 
+                asChild
+                size="lg"
+                className="bg-white text-[#0B47CE] hover:bg-white/90 font-semibold"
+              >
+                <Link to="/admin" className="flex items-center gap-2">
+                  <Settings className="w-5 h-5" />
+                  Panel de Administración
+                </Link>
+              </Button>
+            )}
+            
             {/* KPIs */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 text-center shadow-sm">
-                <div className="flex items-center justify-center mb-2">
-                  <Users className="w-6 h-6 text-primary-700" />
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 text-center border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="flex items-center justify-center mb-3">
+                  <Users className="w-8 h-8 text-[#F73C5C]" />
                 </div>
-                <div className="text-3xl font-bold text-primary-900 mb-1">
+                <div className="text-5xl font-bold mb-2">
                   {totalAssociates}
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-white/80 font-medium">
                   Asociados Activos
                 </div>
               </div>
               
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 text-center shadow-sm">
-                <div className="flex items-center justify-center mb-2">
-                  <Building2 className="w-6 h-6 text-primary-700" />
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 text-center border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="flex items-center justify-center mb-3">
+                  <Building2 className="w-8 h-8 text-[#F73C5C]" />
                 </div>
-                <div className="text-3xl font-bold text-primary-900 mb-1">
+                <div className="text-5xl font-bold mb-2">
                   {availableServices.length}
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-white/80 font-medium">
                   Servicios Diferentes
                 </div>
               </div>
               
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 text-center shadow-sm">
-                <div className="flex items-center justify-center mb-2">
-                  <Building2 className="w-6 h-6 text-primary-700" />
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 text-center border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="flex items-center justify-center mb-3">
+                  <Building2 className="w-8 h-8 text-[#F73C5C]" />
                 </div>
-                <div className="text-3xl font-bold text-primary-900 mb-1">
+                <div className="text-5xl font-bold mb-2">
                   {Object.keys(segmentCounts).length}
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-white/80 font-medium">
                   Segmentos EdTech
                 </div>
               </div>
@@ -215,61 +244,87 @@ export default function AssociatesDirectory() {
         </Section>
 
         {/* Filters and Results */}
-        <Section className="py-12">
+        <Section className="py-16">
           <div className="space-y-8">
             {/* Filters */}
-            <AssociatesFilters
-              filters={filters}
-              onFiltersChange={setFilters}
-              availableServices={availableServices}
-              className="bg-white rounded-lg p-6 shadow-sm border"
-            />
-
-            {/* Results Summary */}
-            <div className="flex items-center justify-between text-sm text-gray-600">
-              <p>
-                Mostrando <span className="font-semibold text-primary-900">{filteredAssociates.length}</span> de{' '}
-                <span className="font-semibold text-primary-900">{totalAssociates}</span> asociados
-              </p>
-              {filters.search || filters.segmento || filters.tamano || filters.servicios.length > 0 && (
-                <p className="text-primary-700">
-                  {filteredAssociates.length === 0 ? 
-                    "No se encontraron resultados con los filtros actuales" :
-                    "Resultados filtrados"
-                  }
-                </p>
-              )}
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+              <AssociatesFilters
+                filters={filters}
+                onFiltersChange={setFilters}
+                availableServices={availableServices}
+              />
             </div>
 
-            {/* Associates Grid */}
+            {/* Results Summary and View Toggle */}
+            <div className="flex items-center justify-between">
+              <div className="text-sm text-gray-600">
+                <p>
+                  Mostrando <span className="font-bold text-[#0B47CE]">{filteredAssociates.length}</span> de{' '}
+                  <span className="font-bold text-[#0B47CE]">{totalAssociates}</span> asociados
+                </p>
+                {filters.search || filters.segmento || filters.tamano || filters.servicios.length > 0 ? (
+                  <p className="text-[#F73C5C] mt-1">
+                    {filteredAssociates.length === 0 ? 
+                      "No se encontraron resultados con los filtros actuales" :
+                      "Resultados filtrados"
+                    }
+                  </p>
+                ) : null}
+              </div>
+              
+              <div className="flex gap-2">
+                <Button
+                  variant={viewMode === 'grid' ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setViewMode('grid')}
+                  className={viewMode === 'grid' ? 'bg-[#0B47CE]' : ''}
+                >
+                  <Grid3x3 className="w-4 h-4" />
+                </Button>
+                <Button
+                  variant={viewMode === 'list' ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setViewMode('list')}
+                  className={viewMode === 'list' ? 'bg-[#0B47CE]' : ''}
+                >
+                  <List className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Associates Grid/List */}
             {filteredAssociates.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className={viewMode === 'grid' 
+                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                : "flex flex-col gap-4"
+              }>
                 {filteredAssociates.map(associate => (
                   <AssociateCard 
                     key={associate.id} 
                     associate={associate}
+                    className={viewMode === 'list' ? 'hover:shadow-xl' : ''}
                   />
                 ))}
               </div>
             ) : (
-              <div className="text-center py-16">
-                <Building2 className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <div className="text-center py-20 bg-white rounded-xl border-2 border-dashed border-gray-200">
+                <Building2 className="w-20 h-20 mx-auto mb-6 text-gray-300" />
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   No se encontraron asociados
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-600 mb-8 max-w-md mx-auto">
                   {filters.search || filters.segmento || filters.tamano || filters.servicios.length > 0 ? 
                     "Intenta ajustar los filtros para encontrar más resultados" :
                     "No hay asociados disponibles en este momento"
                   }
                 </p>
                 {(filters.search || filters.segmento || filters.tamano || filters.servicios.length > 0) && (
-                  <button
+                  <Button
                     onClick={() => setFilters({ search: "", segmento: "", tamano: "", servicios: [] })}
-                    className="text-primary-700 hover:text-primary-800 font-medium"
+                    className="bg-[#0B47CE] hover:bg-[#003889]"
                   >
                     Limpiar filtros
-                  </button>
+                  </Button>
                 )}
               </div>
             )}
