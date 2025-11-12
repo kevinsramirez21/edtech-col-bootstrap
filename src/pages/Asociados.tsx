@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd, trackCTA, GA_EVENTS } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, Network, Award, BookOpen, Users, Target, TrendingUp, Users2, Globe, Building2, GraduationCap, CheckCircle } from "lucide-react";
+import eventoAsociadosImg from "@/assets/evento-asociados-panel.png";
 
 const Asociados = () => {
   const meta = generatePageMeta({
@@ -124,32 +125,26 @@ const Asociados = () => {
       </Helmet>
       
       {/* Hero */}
-      <Section className="py-20 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden">
-        {/* Background placeholder for conference image */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-black/30">
-          <div className="w-full h-full bg-gradient-to-br from-[#003889] to-[#0B47CE]/80"></div>
+      <Section className="py-32 md:py-48 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[600px] md:min-h-[700px]">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img 
+            src={eventoAsociadosImg} 
+            alt="Evento Colombia EdTech" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/90 via-[#0B47CE]/80 to-[#003889]/70"></div>
         </div>
-        <div className="relative z-10 container max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Asociados
-              </h1>
-              <p className="text-xl mb-8 leading-relaxed opacity-90">
-                Si eres una organización con o sin ánimo de lucro que está 
-                <strong className="text-[#F73C5C]"> TRANSFORMANDO</strong> la educación, 
-                bienvenido al mundo de los asociados
-              </p>
-            </div>
-            <div className="relative">
-              {/* Placeholder for conference image */}
-              <div className="aspect-video bg-gray-300 rounded-lg border-4 border-dashed border-gray-400 flex items-center justify-center">
-                <span className="text-gray-600 text-center">
-                  Conference Image<br/>
-                  <small>Placeholder</small>
-                </span>
-              </div>
-            </div>
+        <div className="relative z-10 container max-w-5xl mx-auto">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight drop-shadow-2xl">
+              Asociados
+            </h1>
+            <p className="text-2xl md:text-3xl mb-8 leading-relaxed drop-shadow-lg">
+              Si eres una organización con o sin ánimo de lucro que está 
+              <strong className="text-[#F73C5C]"> TRANSFORMANDO</strong> la educación, 
+              bienvenido al mundo de los asociados
+            </p>
           </div>
         </div>
       </Section>
