@@ -391,11 +391,11 @@ const Asociados = () => {
       
 
       {/* Formulario */}
-      <div id="form" className="py-16 bg-[#F4E8DD]">
+      <div id="form" className="py-16 bg-[#0B47CE]">
         <div className="container max-w-3xl mx-auto">
           <div className="text-center mb-8">
-            <h3 className="text-3xl md:text-4xl font-bold text-[#0B47CE] mb-4 font-funnel">¿Quieres asociarte?</h3>
-            <p className="text-[#003889] text-lg">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-funnel">¿Quieres asociarte?</h3>
+            <p className="text-white/90 text-lg">
               Completa el formulario y nos pondremos en contacto contigo
             </p>
           </div>
@@ -410,7 +410,7 @@ const Asociados = () => {
                     <FormItem>
                       <FormLabel className="text-[#003889]">Nombre de la organización *</FormLabel>
                       <FormControl>
-                        <Input placeholder="Ej: EdTech Colombia SAS" {...field} />
+                        <Input placeholder="Ej: EdTech Colombia SAS" className="placeholder:text-muted-foreground/50" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -451,7 +451,7 @@ const Asociados = () => {
                       <FormItem>
                         <FormLabel className="text-[#003889]">Nombre de contacto *</FormLabel>
                         <FormControl>
-                          <Input placeholder="Ej: María González" {...field} />
+                          <Input placeholder="Ej: María González" className="placeholder:text-muted-foreground/50" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -465,7 +465,7 @@ const Asociados = () => {
                       <FormItem>
                         <FormLabel className="text-[#003889]">Cargo *</FormLabel>
                         <FormControl>
-                          <Input placeholder="Ej: Directora" {...field} />
+                          <Input placeholder="Ej: Directora" className="placeholder:text-muted-foreground/50" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -481,7 +481,7 @@ const Asociados = () => {
                       <FormItem>
                         <FormLabel className="text-[#003889]">Teléfono *</FormLabel>
                         <FormControl>
-                          <Input placeholder="Ej: +57 300 123 4567" {...field} />
+                          <Input placeholder="Ej: +57 300 123 4567" className="placeholder:text-muted-foreground/50" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -495,7 +495,7 @@ const Asociados = () => {
                       <FormItem>
                         <FormLabel className="text-[#003889]">Correo electrónico *</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="contacto@ejemplo.com" {...field} />
+                          <Input type="email" placeholder="contacto@ejemplo.com" className="placeholder:text-muted-foreground/50" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -510,7 +510,7 @@ const Asociados = () => {
                     <FormItem>
                       <FormLabel className="text-[#003889]">Sitio web o redes sociales</FormLabel>
                       <FormControl>
-                        <Input placeholder="https://ejemplo.com" {...field} />
+                        <Input placeholder="https://ejemplo.com" className="placeholder:text-muted-foreground/50" {...field} />
                       </FormControl>
                       <FormDescription className="text-sm">
                         Opcional: Puedes incluir tu sitio web, LinkedIn, o redes sociales
@@ -529,7 +529,7 @@ const Asociados = () => {
                       <FormControl>
                         <Textarea 
                           placeholder="Describe qué hace tu organización, su misión y su impacto..."
-                          className="min-h-[120px]"
+                          className="min-h-[120px] placeholder:text-muted-foreground/50"
                           {...field}
                         />
                       </FormControl>
@@ -547,7 +547,7 @@ const Asociados = () => {
                       <FormControl>
                         <Textarea 
                           placeholder="Cuéntanos tu motivación e interés para unirte a Colombia EdTech..."
-                          className="min-h-[120px]"
+                          className="min-h-[120px] placeholder:text-muted-foreground/50"
                           {...field}
                         />
                       </FormControl>
