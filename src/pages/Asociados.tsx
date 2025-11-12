@@ -134,7 +134,7 @@ const Asociados = () => {
             alt="Evento Colombia EdTech" 
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/70 via-[#0B47CE]/55 to-[#003889]/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
         </div>
         <div className="relative z-10 container max-w-7xl mx-auto h-full flex items-center pt-20 md:pt-24">
           <div className="max-w-4xl animate-fade-in">
