@@ -301,7 +301,7 @@ const Asociados = () => {
           <div className="grid md:grid-cols-2 gap-6 text-left">
             {requirements.map((requirement, index) => <div key={index} className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-[#0B47CE] mt-1 flex-shrink-0" />
-                <p className="text-gray-800 text-base">{requirement}</p>
+                <p className="text-[#003889] text-base">{requirement}</p>
               </div>)}
           </div>
         </div>
