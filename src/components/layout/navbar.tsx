@@ -40,6 +40,7 @@ const navItems = [
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+  const [isScrolled, setIsScrolled] = React.useState(false)
   const location = useLocation()
   const { user, loading } = useAuth()
   const { isAdmin } = useAdmin()
@@ -50,10 +51,23 @@ export function Navbar() {
     setIsMobileMenuOpen(false)
   }, [location.pathname])
 
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-gray-300/20 shadow-lg shadow-primary-900/5">
-      <nav className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
-        <div className="flex h-20 items-center justify-between">
+    <header className={cn(
+      "sticky top-0 z-50 w-full backdrop-blur-md border-b transition-all duration-300",
+      isScrolled 
+        ? "bg-[#F73C5C] border-[#F73C5C]/30 shadow-xl shadow-[#F73C5C]/20 h-16" 
+        : "bg-[#F73C5C] border-[#F73C5C]/20 shadow-lg shadow-[#F73C5C]/10 h-20"
+    )}>
+      <nav className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full" aria-label="Navegación principal">
+        <div className="flex h-full items-center justify-between">
           {/* Logo Premium */}
           <div className="flex-shrink-0">
             <Link 
@@ -65,10 +79,13 @@ export function Navbar() {
                 {/* Desktop Logo */}
                 <div className="hidden sm:block">
                   <OptimizedImage
-                    src="/images/logo-colombia-edtech-blue.png"
+                    src="/images/logo-horizontal-beige-pg.png"
                     alt="Colombia EdTech - Asociación de Organizaciones EdTech"
                     fallback="/placeholder.svg"
-                    className="h-16 w-auto transition-all duration-300 group-hover:scale-105"
+                    className={cn(
+                      "w-auto transition-all duration-300 group-hover:scale-105",
+                      isScrolled ? "h-12" : "h-16"
+                    )}
                     priority
                   />
                 </div>
@@ -76,14 +93,17 @@ export function Navbar() {
                 {/* Mobile Logo */}
                 <div className="block sm:hidden">
                   <OptimizedImage
-                    src="/images/isotipo-blue.png"
+                    src="/images/isotipo-red-bg.png"
                     alt="Colombia EdTech"
                     fallback="/placeholder.svg"
-                    className="h-10 w-auto transition-all duration-300 group-hover:scale-105"
+                    className={cn(
+                      "w-auto transition-all duration-300 group-hover:scale-105",
+                      isScrolled ? "h-8" : "h-10"
+                    )}
                     priority
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-700 to-accent-brand opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/20 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
               </div>
             </Link>
           </div>
@@ -99,7 +119,7 @@ export function Navbar() {
                         variant="ghost"
                         className={cn(
                           "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group",
-                          "text-primary-900 hover:text-primary-700 hover:bg-primary-700/5"
+                          "text-white hover:text-white/90 hover:bg-white/10"
                         )}
                       >
                         <span className="flex items-center space-x-1">
@@ -127,16 +147,16 @@ export function Navbar() {
                     className={cn(
                       "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group",
                       isActive(item.href)
-                        ? "text-primary-900 bg-gradient-to-r from-primary-700/10 to-accent-brand/10 shadow-sm"
-                        : "text-primary-900 hover:text-primary-700 hover:bg-primary-700/5"
+                        ? "text-white bg-white/20 shadow-sm"
+                        : "text-white hover:text-white/90 hover:bg-white/10"
                     )}
                     aria-current={isActive(item.href) ? "page" : undefined}
                   >
                     <span className="relative z-10">{item.name}</span>
                     {isActive(item.href) && (
-                      <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-primary-700 to-accent-brand rounded-full"></div>
+                      <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-white rounded-full"></div>
                     )}
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary-700/0 to-accent-brand/0 group-hover:from-primary-700/5 group-hover:to-accent-brand/5 transition-all duration-300"></div>
+                    <div className="absolute inset-0 rounded-lg bg-white/0 group-hover:bg-white/5 transition-all duration-300"></div>
                   </Link>
                 )}
               </div>
@@ -153,7 +173,7 @@ export function Navbar() {
                       asChild
                       size="sm"
                       variant="outline"
-                      className="border-primary-700 text-primary-700 hover:bg-primary-700 hover:text-white font-semibold"
+                      className="border-white text-white hover:bg-white hover:text-[#F73C5C] font-semibold"
                     >
                       <Link to="/admin" className="flex items-center space-x-2">
                         <Settings className="w-4 h-4" />
@@ -168,7 +188,7 @@ export function Navbar() {
                   <Button 
                     asChild
                     variant="outline"
-                    className="border-primary-700 text-primary-700 hover:bg-primary-700 hover:text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300"
+                    className="border-white text-white hover:bg-white hover:text-[#F73C5C] font-semibold px-4 py-2 rounded-lg transition-all duration-300"
                   >
                     <Link to="/auth" className="flex items-center space-x-2">
                       <LogIn className="w-4 h-4" />
@@ -177,7 +197,7 @@ export function Navbar() {
                   </Button>
                   <Button 
                     asChild
-                    className="bg-gradient-to-r from-primary-700 to-primary-900 hover:from-primary-900 hover:to-primary-700 text-white font-semibold px-6 py-2 rounded-lg shadow-lg shadow-primary-700/25 hover:shadow-xl hover:shadow-primary-700/40 transition-all duration-300 hover:scale-105"
+                    className="bg-white text-[#F73C5C] hover:bg-white/90 font-semibold px-6 py-2 rounded-lg shadow-lg shadow-black/25 hover:shadow-xl hover:shadow-black/40 transition-all duration-300 hover:scale-105"
                   >
                     <Link to="/asociados" className="flex items-center space-x-2">
                       <Users className="w-4 h-4" />
@@ -198,6 +218,7 @@ export function Navbar() {
               aria-controls="mobile-menu"
               aria-expanded={isMobileMenuOpen}
               aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+              className="text-white hover:bg-white/10"
             >
               {isMobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -212,14 +233,14 @@ export function Navbar() {
         {isMobileMenuOpen && (
           <div 
             id="mobile-menu"
-            className="lg:hidden border-t border-gray-300/20 bg-white/95 backdrop-blur-md"
+            className="lg:hidden border-t border-white/20 bg-[#F73C5C] backdrop-blur-md"
           >
             <div className="px-4 py-6 space-y-3">
               {navItems.map((item) => (
                 <div key={item.name}>
                   {item.isDropdown ? (
                     <div className="space-y-2">
-                      <div className="px-4 py-2 text-base font-semibold text-primary-900 border-b border-gray-300/20">
+                      <div className="px-4 py-2 text-base font-semibold text-white border-b border-white/20">
                         {item.name}
                       </div>
                       <div className="pl-4 space-y-2">
@@ -230,8 +251,8 @@ export function Navbar() {
                             className={cn(
                               "block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300",
                               isActive(subItem.href)
-                                ? "text-primary-900 bg-gradient-to-r from-primary-700/15 to-accent-brand/15 shadow-sm"
-                                : "text-primary-800 hover:text-primary-700 hover:bg-primary-700/10"
+                                ? "text-white bg-white/20 shadow-sm"
+                                : "text-white/90 hover:text-white hover:bg-white/10"
                             )}
                             aria-current={isActive(subItem.href) ? "page" : undefined}
                           >
@@ -246,8 +267,8 @@ export function Navbar() {
                       className={cn(
                         "block px-4 py-3 rounded-lg text-base font-semibold transition-all duration-300",
                         isActive(item.href)
-                          ? "text-primary-900 bg-gradient-to-r from-primary-700/15 to-accent-brand/15 shadow-sm"
-                          : "text-primary-900 hover:text-primary-700 hover:bg-primary-700/10"
+                          ? "text-white bg-white/20 shadow-sm"
+                          : "text-white hover:text-white/90 hover:bg-white/10"
                       )}
                       aria-current={isActive(item.href) ? "page" : undefined}
                     >
@@ -257,7 +278,7 @@ export function Navbar() {
                 </div>
               ))}
               
-              <div className="pt-4 border-t border-gray-300/20">
+              <div className="pt-4 border-t border-white/20">
                 {!loading && (
                   user ? (
                     <div className="space-y-3">
@@ -266,7 +287,7 @@ export function Navbar() {
                           asChild
                           size="sm"
                           variant="outline"
-                          className="w-full border-primary-700 text-primary-700 hover:bg-primary-700 hover:text-white font-semibold py-3 rounded-lg"
+                          className="w-full border-white text-white hover:bg-white hover:text-[#F73C5C] font-semibold py-3 rounded-lg"
                         >
                           <Link to="/admin" className="flex items-center justify-center space-x-2">
                             <Settings className="w-4 h-4" />
@@ -274,10 +295,10 @@ export function Navbar() {
                           </Link>
                         </Button>
                       )}
-                      <div className="flex items-center space-x-3 p-3 bg-primary-50 rounded-lg">
+                      <div className="flex items-center space-x-3 p-3 bg-white/10 rounded-lg">
                         <UserMenu />
                         <div className="flex-1">
-                          <p className="text-sm font-medium text-primary-900">
+                          <p className="text-sm font-medium text-white">
                             {user.email}
                           </p>
                         </div>
@@ -288,7 +309,7 @@ export function Navbar() {
                       <Button 
                         asChild
                         variant="outline"
-                        className="w-full border-primary-700 text-primary-700 hover:bg-primary-700 hover:text-white font-semibold py-3 rounded-lg"
+                        className="w-full border-white text-white hover:bg-white hover:text-[#F73C5C] font-semibold py-3 rounded-lg"
                       >
                         <Link to="/auth" className="flex items-center justify-center space-x-2">
                           <LogIn className="w-4 h-4" />
@@ -297,7 +318,7 @@ export function Navbar() {
                       </Button>
                       <Button 
                         asChild
-                        className="w-full bg-gradient-to-r from-primary-700 to-primary-900 text-white font-semibold py-3 rounded-lg shadow-lg shadow-primary-700/25"
+                        className="w-full bg-white text-[#F73C5C] hover:bg-white/90 font-semibold py-3 rounded-lg shadow-lg shadow-black/25"
                       >
                         <Link to="/asociados" className="flex items-center justify-center space-x-2">
                           <Users className="w-4 h-4" />
