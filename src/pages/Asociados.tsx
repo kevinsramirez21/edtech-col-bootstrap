@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { CopySlot } from "@/components/content/copy-slot";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
@@ -8,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd, trackCTA, GA_EVENTS } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, Network, Award, BookOpen, Users, Target, TrendingUp, Users2, Globe, Building2, GraduationCap, CheckCircle } from "lucide-react";
-import eventoAsociadosImg from "@/assets/evento-asociados-panel.png";
+import eventoAsociadosImg from "@/assets/evento-colombia-edtech-presentacion.jpg";
 
 const Asociados = () => {
   const meta = generatePageMeta({
@@ -125,26 +126,48 @@ const Asociados = () => {
       </Helmet>
       
       {/* Hero */}
-      <Section className="py-32 md:py-48 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[600px] md:min-h-[700px]">
+      <Section className="py-24 md:py-40 lg:py-52 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[85vh]">
         {/* Background image */}
         <div className="absolute inset-0">
           <img 
             src={eventoAsociadosImg} 
             alt="Evento Colombia EdTech" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/90 via-[#0B47CE]/80 to-[#003889]/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/95 via-[#0B47CE]/85 to-[#003889]/60"></div>
         </div>
-        <div className="relative z-10 container max-w-5xl mx-auto">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight drop-shadow-2xl">
+        <div className="relative z-10 container max-w-7xl mx-auto h-full flex items-center">
+          <div className="max-w-4xl animate-fade-in">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight drop-shadow-2xl">
               Asociados
             </h1>
-            <p className="text-2xl md:text-3xl mb-8 leading-relaxed drop-shadow-lg">
+            <p className="text-xl md:text-2xl lg:text-3xl mb-10 leading-relaxed drop-shadow-lg max-w-3xl">
               Si eres una organización con o sin ánimo de lucro que está 
               <strong className="text-[#F73C5C]"> TRANSFORMANDO</strong> la educación, 
               bienvenido al mundo de los asociados
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <CTAButton 
+                size="lg"
+                className="btn-primary text-lg px-8 py-6 hover-scale"
+                onClick={handleAssociateClick}
+                asChild
+              >
+                <Link to="/asociados#form">
+                  Únete ahora <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </CTAButton>
+              <Button 
+                size="lg"
+                variant="outline"
+                className="text-lg px-8 py-6 bg-white/10 border-white/30 hover:bg-white/20 backdrop-blur-sm hover-scale text-white"
+                asChild
+              >
+                <Link to="#beneficios">
+                  Conoce los beneficios
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </Section>
@@ -285,7 +308,7 @@ const Asociados = () => {
       </Section>
 
       {/* Beneficios */}
-      <Section className="py-16 bg-white">
+      <Section id="beneficios" className="py-16 bg-white">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             <span className="text-[#F73C5C]">¿Cómo podemos hacer para ayudarte?</span>
