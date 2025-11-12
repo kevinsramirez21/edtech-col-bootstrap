@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useToast } from "@/hooks/use-toast"
 import { AssociateModal } from "./associate-modal"
+import { ImportAssociatesButton } from "./import-associates-button"
 import { Associate } from "@/types/associate"
 import {
   Table,
@@ -281,10 +282,13 @@ export function AssociatesAdmin() {
               {filteredAssociates.length}
             </Badge>
           </CardTitle>
-          <Button onClick={handleAddNew} className="gap-2 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white">
-            <Plus className="w-4 h-4" />
-            Agregar Asociado
-          </Button>
+          <div className="flex gap-2">
+            <ImportAssociatesButton />
+            <Button onClick={handleAddNew} className="gap-2 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white">
+              <Plus className="w-4 h-4" />
+              Agregar Asociado
+            </Button>
+          </div>
         </div>
         
         {/* Search and Filter Bar */}
