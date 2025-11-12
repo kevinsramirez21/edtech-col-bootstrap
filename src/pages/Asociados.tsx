@@ -50,7 +50,7 @@ const Asociados = () => {
   }, {
     icon: GraduationCap,
     title: "Formación y consultoría basada en tus necesidades",
-    description: "Podrás capacitarte con talleres y programas en vivo y grabados enfocados en temas como: gestión de inversión, ventas, modelo de negocio, toma de decisiones, gestión de equipos, internacionalización, marketing, comunicación. Todos liderados por expertos y referentes del mercado actual."
+    description: "Capacítate con expertos en temas clave (equipos, ventas, internacionalización y más) ajustados a las demandas reales de tu organización."
   }];
   const testimonios = [{
     name: "Angela Andrade",
