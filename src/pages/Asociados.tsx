@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd, trackCTA, GA_EVENTS } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, Network, Award, BookOpen, Users, Target, TrendingUp, Users2, Globe, Building2, GraduationCap, CheckCircle } from "lucide-react";
-import eventoAsociadosImg from "@/assets/evento-colombia-edtech-presentacion.jpg";
+import eventoAsociadosImg from "@/assets/evento-colombia-edtech-presentacion-v2.jpg";
 
 const Asociados = () => {
   const meta = generatePageMeta({
