@@ -179,7 +179,7 @@ const Asociados = () => {
           {/* First Row - Image Left, Text Right */}
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-24 relative">
             {/* Horizontal bar from left */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 h-12 w-32 bg-gradient-to-r from-[#F73C5C] via-[#8B3A8B] to-transparent -ml-8"></div>
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 h-16 w-64 bg-gradient-to-r from-[#F73C5C] via-[#8B3A8B] to-transparent -ml-32 lg:-ml-48"></div>
             
             <div className="relative z-10">
               {/* Placeholder for Colombia EdTech stage image */}
@@ -206,7 +206,7 @@ const Asociados = () => {
           {/* Second Row - Text Left, Image Right */}
           <div className="grid lg:grid-cols-2 gap-16 items-center relative">
             {/* Horizontal bar from right */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 h-12 w-32 bg-gradient-to-l from-[#8B3A8B] via-[#F73C5C] to-transparent -mr-8"></div>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 h-16 w-64 bg-gradient-to-l from-[#8B3A8B] via-[#F73C5C] to-transparent -mr-32 lg:-mr-48"></div>
             
             <div className="relative z-10">
               <h3 className="text-4xl font-bold mb-8 leading-tight">
