@@ -15,109 +15,80 @@ import eventoAudienciaImg from "@/assets/asamblea-evento-audiencia.jpg";
 import angelaAndradeImg from "@/assets/testimonios/angela-andrade-v2.png";
 import santiagoCarrilloImg from "@/assets/testimonios/santiago-carrillo.png";
 import oscarIvanImg from "@/assets/testimonios/oscar-ivan-rodriguez.png";
-
 const Asociados = () => {
   const meta = generatePageMeta({
     title: "Asociados",
     description: "Si eres una organización que transforma la educación con tecnología, únete a Colombia EdTech. Red de contactos, visibilidad y articulación con el Estado"
   });
-
-  const breadcrumbLd = generateBreadcrumbJsonLd([
-    { name: "Asociados", item: `${window.location.origin}/asociados` }
-  ]);
-
+  const breadcrumbLd = generateBreadcrumbJsonLd([{
+    name: "Asociados",
+    item: `${window.location.origin}/asociados`
+  }]);
   const handleAssociateClick = () => {
     trackCTA(GA_EVENTS.CTA_ASSOCIATE_CLICK, 'asociados_cta');
   };
-
-  const beneficios = [
-    {
-      icon: Network,
-      title: "Red de Contactos estratégica",
-      description: "Podrás conectar con líderes del sector, posibles aliados y oportunidades de negocio a nivel nacional e internacional. Un pase directo a la comunidad de fundadores de Ed Tech, networking y grupos focales"
-    },
-    {
-      icon: Award,
-      title: "Visibilidad y respaldo de una marca de confianza", 
-      description: "Podrás participar en eventos, publicaciones y plataformas que amplifican tu impacto. Recuerda que en el mundo actual, no se vende el mejor, sino el más conocido. Y tener un aval de una marca de valor te abre puertas ante usuarios, donantes e inversionistas"
-    },
-    {
-      icon: Building2,
-      title: "Articulación con el estado",
-      description: "Podrás conectar con líderes del sector, posibles aliados y oportunidades de negocio a nivel nacional e internacional. Un pase directo a la comunidad de fundadores de Ed Tech, networking y grupos focales"
-    },
-    {
-      icon: Users,
-      title: "Participación en proyectos colaborativos",
-      description: "Podrás aliarte con otros asociados para crear soluciones innovadoras que cambien vidas, presentar proyectos, abrir mercados y todo aprovechando sus fortalezas y acelerando su crecimiento."
-    },
-    {
-      icon: BookOpen,
-      title: "Biblioteca de recursos relevantes y actualizados.",
-      description: "Podrás tener acceso a estudios, investigaciones e informes actualizados sobre el sector con sus insights y mapeo anual"
-    },
-    {
-      icon: GraduationCap,
-      title: "Formación y consultoría basada en tus necesidades",
-      description: "Podrás capacitarte con talleres y programas en vivo y grabados enfocados en temas como: gestión de inversión, ventas, modelo de negocio, toma de decisiones, gestión de equipos, internacionalización, marketing, comunicación. Todos liderados por expertos y referentes del mercado actual."
-    }
-  ];
-
-  const testimonios = [
-    {
-      name: "Angela Andrade",
-      role: "Managing Director | Scala Higher Education",
-      quote: "Nos dieron la mirada que nos faltaba para crear lared Latinoamericana de Universidades Católicas.",
-      color: "blue",
-      image: angelaAndradeImg
-    },
-    {
-      name: "Santiago Carrillo",
-      role: "CEO Ada School",
-      quote: "Colombia EdTech predica con el ejemplo, inspirando a otros a través de la acción. La voluntad del equipo de compartir experiencias y aprendizajes empresariales valiosos ha demostrado ser invaluable.",
-      color: "red",
-      image: santiagoCarrilloImg
-    },
-    {
-      name: "Valeria Velandia",
-      role: "Estrategia | Innovate Learning",
-      quote: "Nos ayudaron a crear nuestra ruta para escalar el equipo y construir capacidades empresariales. Por ende mi negocio ha crecido",
-      color: "blue"
-    },
-    {
-      name: "Oscar Ivan Rodriguez",
-      role: "CEO y Co-founder | InnovaHub",
-      quote: "Ser aliado de Colombia Ed Tech me ha ayudado a ver aspectos fundamentales de la planeación estratégica y el trabajo en equipo, siempre desde una lógica muy aterrizada y propia del mundo Startup",
-      color: "red",
-      image: oscarIvanImg
-    }
-  ];
-
-  const statistics = [
-    {
-      percentage: "30%",
-      description: "De las EdTechs están en proceso de quiebra o pivot en Colombia"
-    },
-    {
-      percentage: "27.8%",
-      description: "De las EdTechs logró apoyo externo",
-      label: "Poca financiación disponible"
-    },
-    {
-      percentage: "35%",
-      description: "De las EdTechs nunca pasó por un proceso de aceleración"
-    }
-  ];
-
-  const requirements = [
-    "Estar Comprometido con la educación del país",
-    "Operar con o sin ánimo de lucro en sectores relacionados con educación, tecnología o innovación.",
-    "Compartir los valores de colaboración, impacto social y accesibilidad que definen a Colombia EdTech.",
-    "Tener interés en contribuir activamente al fortalecimiento del ecosistema EdTech de Colombia y Latinoamérica"
-  ];
-
-  return (
-    <>
+  const beneficios = [{
+    icon: Network,
+    title: "Red de Contactos estratégica",
+    description: "Podrás conectar con líderes del sector, posibles aliados y oportunidades de negocio a nivel nacional e internacional. Un pase directo a la comunidad de fundadores de Ed Tech, networking y grupos focales"
+  }, {
+    icon: Award,
+    title: "Visibilidad y respaldo de una marca de confianza",
+    description: "Podrás participar en eventos, publicaciones y plataformas que amplifican tu impacto. Recuerda que en el mundo actual, no se vende el mejor, sino el más conocido. Y tener un aval de una marca de valor te abre puertas ante usuarios, donantes e inversionistas"
+  }, {
+    icon: Building2,
+    title: "Articulación con el estado",
+    description: "Podrás conectar con líderes del sector, posibles aliados y oportunidades de negocio a nivel nacional e internacional. Un pase directo a la comunidad de fundadores de Ed Tech, networking y grupos focales"
+  }, {
+    icon: Users,
+    title: "Participación en proyectos colaborativos",
+    description: "Podrás aliarte con otros asociados para crear soluciones innovadoras que cambien vidas, presentar proyectos, abrir mercados y todo aprovechando sus fortalezas y acelerando su crecimiento."
+  }, {
+    icon: BookOpen,
+    title: "Biblioteca de recursos relevantes y actualizados.",
+    description: "Podrás tener acceso a estudios, investigaciones e informes actualizados sobre el sector con sus insights y mapeo anual"
+  }, {
+    icon: GraduationCap,
+    title: "Formación y consultoría basada en tus necesidades",
+    description: "Podrás capacitarte con talleres y programas en vivo y grabados enfocados en temas como: gestión de inversión, ventas, modelo de negocio, toma de decisiones, gestión de equipos, internacionalización, marketing, comunicación. Todos liderados por expertos y referentes del mercado actual."
+  }];
+  const testimonios = [{
+    name: "Angela Andrade",
+    role: "Managing Director | Scala Higher Education",
+    quote: "Nos dieron la mirada que nos faltaba para crear lared Latinoamericana de Universidades Católicas.",
+    color: "blue",
+    image: angelaAndradeImg
+  }, {
+    name: "Santiago Carrillo",
+    role: "CEO Ada School",
+    quote: "Colombia EdTech predica con el ejemplo, inspirando a otros a través de la acción. La voluntad del equipo de compartir experiencias y aprendizajes empresariales valiosos ha demostrado ser invaluable.",
+    color: "red",
+    image: santiagoCarrilloImg
+  }, {
+    name: "Valeria Velandia",
+    role: "Estrategia | Innovate Learning",
+    quote: "Nos ayudaron a crear nuestra ruta para escalar el equipo y construir capacidades empresariales. Por ende mi negocio ha crecido",
+    color: "blue"
+  }, {
+    name: "Oscar Ivan Rodriguez",
+    role: "CEO y Co-founder | InnovaHub",
+    quote: "Ser aliado de Colombia Ed Tech me ha ayudado a ver aspectos fundamentales de la planeación estratégica y el trabajo en equipo, siempre desde una lógica muy aterrizada y propia del mundo Startup",
+    color: "red",
+    image: oscarIvanImg
+  }];
+  const statistics = [{
+    percentage: "30%",
+    description: "De las EdTechs están en proceso de quiebra o pivot en Colombia"
+  }, {
+    percentage: "27.8%",
+    description: "De las EdTechs logró apoyo externo",
+    label: "Poca financiación disponible"
+  }, {
+    percentage: "35%",
+    description: "De las EdTechs nunca pasó por un proceso de aceleración"
+  }];
+  const requirements = ["Estar Comprometido con la educación del país", "Operar con o sin ánimo de lucro en sectores relacionados con educación, tecnología o innovación.", "Compartir los valores de colaboración, impacto social y accesibilidad que definen a Colombia EdTech.", "Tener interés en contribuir activamente al fortalecimiento del ecosistema EdTech de Colombia y Latinoamérica"];
+  return <>
       <Helmet>
         <title>{meta.title}</title>
         <meta name="description" content={meta.description} />
@@ -137,11 +108,7 @@ const Asociados = () => {
       <Section className="py-24 md:py-40 lg:py-52 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[85vh]">
         {/* Background image */}
         <div className="absolute inset-0">
-          <img 
-            src={eventoAsociadosImg} 
-            alt="Evento Colombia EdTech" 
-            className="w-full h-full object-cover object-center"
-          />
+          <img src={eventoAsociadosImg} alt="Evento Colombia EdTech" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
         </div>
         <div className="relative z-10 container max-w-7xl mx-auto h-full flex items-center pt-20 md:pt-24">
@@ -154,23 +121,15 @@ const Asociados = () => {
               <strong className="text-[#F73C5C]"> TRANSFORMANDO</strong> la educación, 
               bienvenido al mundo de los asociados
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <Button 
-                size="lg"
-                className="text-lg px-8 py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300"
-                onClick={handleAssociateClick}
-                asChild
-              >
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{
+            animationDelay: '0.2s'
+          }}>
+              <Button size="lg" className="text-lg px-8 py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300" onClick={handleAssociateClick} asChild>
                 <Link to="/asociados#form">
                   Únete ahora <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button 
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6 bg-white/95 border-white hover:bg-white backdrop-blur-sm hover-scale text-[#0B47CE] font-bold shadow-xl hover:shadow-2xl"
-                asChild
-              >
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-white/95 border-white hover:bg-white backdrop-blur-sm hover-scale text-[#0B47CE] font-bold shadow-xl hover:shadow-2xl" asChild>
                 <Link to="#beneficios">
                   Conoce los beneficios
                 </Link>
@@ -190,11 +149,7 @@ const Asociados = () => {
             <div className="absolute left-0 top-1/2 -translate-y-1/2 h-16 w-64 bg-gradient-to-r from-[#F73C5C] via-[#8B3A8B] to-transparent -ml-32 lg:-ml-48"></div>
             
             <div className="relative z-10">
-              <img 
-                src={eventoPonenteImg} 
-                alt="Evento Colombia EdTech - Ponente en escenario" 
-                className="aspect-video rounded-lg shadow-xl object-cover w-full"
-              />
+              <img src={eventoPonenteImg} alt="Evento Colombia EdTech - Ponente en escenario" className="aspect-video rounded-lg shadow-xl object-cover w-full" />
             </div>
             <div className="relative z-10">
               <p className="text-lg text-[#0B47CE] mb-6 leading-relaxed">
@@ -223,11 +178,7 @@ const Asociados = () => {
               </p>
             </div>
             <div className="relative z-10">
-              <img 
-                src={eventoAudienciaImg} 
-                alt="Evento Colombia EdTech - Audiencia comprometida" 
-                className="aspect-[4/3] rounded-lg shadow-xl object-cover w-full"
-              />
+              <img src={eventoAudienciaImg} alt="Evento Colombia EdTech - Audiencia comprometida" className="aspect-[4/3] rounded-lg shadow-xl object-cover w-full" />
             </div>
           </div>
         </div>
@@ -236,12 +187,7 @@ const Asociados = () => {
       {/* CTA Section */}
       <Section className="py-12 bg-[#F4E8DD]">
         <div className="container text-center">
-          <CTAButton 
-            size="lg"
-            className="btn-primary"
-            onClick={handleAssociateClick}
-            asChild
-          >
+          <CTAButton size="lg" className="btn-primary" onClick={handleAssociateClick} asChild>
             <Link to="/asociados#form">
               Quiero ser asociado de Colombia EdTech
             </Link>
@@ -257,27 +203,11 @@ const Asociados = () => {
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {testimonios.map((testimonio, index) => (
-              <div 
-                key={index}
-                className={`p-8 rounded-lg text-white ${
-                  testimonio.color === 'blue' 
-                    ? 'bg-[#0B47CE]' 
-                    : 'bg-[#F73C5C]'
-                }`}
-              >
+            {testimonios.map((testimonio, index) => <div key={index} className={`p-8 rounded-lg text-white ${testimonio.color === 'blue' ? 'bg-[#0B47CE]' : 'bg-[#F73C5C]'}`}>
                 <div className="flex items-center mb-4">
-                  {testimonio.image ? (
-                    <img 
-                      src={testimonio.image} 
-                      alt={testimonio.name}
-                      className="w-16 h-16 rounded-full object-cover mr-4"
-                    />
-                  ) : (
-                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                  {testimonio.image ? <img src={testimonio.image} alt={testimonio.name} className="w-16 h-16 rounded-full object-cover mr-4" /> : <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
                       <div className="w-12 h-12 bg-white/40 rounded-full"></div>
-                    </div>
-                  )}
+                    </div>}
                   <div>
                     <h4 className="font-bold text-lg">{testimonio.name}</h4>
                     <p className="text-sm opacity-90">{testimonio.role}</p>
@@ -286,8 +216,7 @@ const Asociados = () => {
                 <p className="text-base leading-relaxed">
                   {testimonio.quote}
                 </p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </Section>
@@ -301,13 +230,11 @@ const Asociados = () => {
           <h3 className="text-2xl md:text-3xl mb-16">Lo sabemos ...</h3>
           
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {statistics.slice(0, 2).map((stat, index) => (
-              <div key={index} className="bg-white/15 rounded-xl p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+            {statistics.slice(0, 2).map((stat, index) => <div key={index} className="bg-white/15 rounded-xl p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
                 <div className="text-5xl md:text-6xl font-bold mb-4">{stat.percentage}</div>
                 <div className="text-base md:text-lg mb-3">{stat.label}</div>
                 <div className="text-lg md:text-xl">{stat.description}</div>
-              </div>
-            ))}
+              </div>)}
             <div className="bg-white/15 rounded-xl p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
               <div className="text-5xl md:text-6xl font-bold mb-4">{statistics[2].percentage}</div>
               <div className="text-lg md:text-xl">{statistics[2].description}</div>
@@ -338,29 +265,16 @@ const Asociados = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {beneficios.map((beneficio, index) => {
-              const bgImages = [
-                'bg-gradient-to-br from-blue-900 to-blue-700',
-                'bg-gradient-to-br from-red-600 to-pink-600', 
-                'bg-gradient-to-br from-purple-900 to-purple-700',
-                'bg-gradient-to-br from-green-800 to-green-600',
-                'bg-gradient-to-br from-orange-700 to-yellow-600',
-                'bg-gradient-to-br from-indigo-900 to-purple-800'
-              ];
-              
-              return (
-                <div 
-                  key={index} 
-                  className={`${bgImages[index]} text-white p-8 rounded-lg relative overflow-hidden`}
-                >
+            const bgImages = ['bg-gradient-to-br from-blue-900 to-blue-700', 'bg-gradient-to-br from-red-600 to-pink-600', 'bg-gradient-to-br from-purple-900 to-purple-700', 'bg-gradient-to-br from-green-800 to-green-600', 'bg-gradient-to-br from-orange-700 to-yellow-600', 'bg-gradient-to-br from-indigo-900 to-purple-800'];
+            return <div key={index} className={`${bgImages[index]} text-white p-8 rounded-lg relative overflow-hidden`}>
                   {/* Background placeholder for images */}
                   <div className="absolute inset-0 bg-black/20"></div>
                   <div className="relative z-10">
                     <h3 className="text-xl font-bold mb-4 leading-tight">{beneficio.title}</h3>
                     <p className="text-base leading-relaxed text-white">{beneficio.description}</p>
                   </div>
-                </div>
-              );
-            })}
+                </div>;
+          })}
           </div>
         </div>
       </Section>
@@ -374,12 +288,7 @@ const Asociados = () => {
           <p className="text-2xl font-bold text-[#F73C5C] mb-8">
             Sólo pagas 1SMLV/ Año para pertenecer
           </p>
-          <CTAButton 
-            size="lg"
-            className="btn-primary mb-12"
-            onClick={handleAssociateClick}
-            asChild
-          >
+          <CTAButton size="lg" className="btn-primary mb-12" onClick={handleAssociateClick} asChild>
             <Link to="/asociados#form">
               Regístrate para ser asociado hoy
             </Link>
@@ -390,77 +299,16 @@ const Asociados = () => {
           </h3>
           
           <div className="grid md:grid-cols-2 gap-6 text-left">
-            {requirements.map((requirement, index) => (
-              <div key={index} className="flex items-start space-x-3">
+            {requirements.map((requirement, index) => <div key={index} className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-[#0B47CE] mt-1 flex-shrink-0" />
                 <p className="text-gray-800 text-base">{requirement}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </Section>
 
       {/* Why Associate Now */}
-      <Section className="py-16 bg-[#0B47CE] text-white">
-        <div className="container max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">¿Por que asociarte ahora?</h2>
-          
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-lg mb-6 leading-relaxed">
-                El mundo está cambiando rápido, y la tecnología educativa está marcando el camino. Pero si queremos que ese cambio sea profundo y sostenible, necesitamos hacerlo juntos
-              </p>
-              <p className="text-lg mb-6 leading-relaxed">
-                Juntos, creamos conexiones estratégicas, compartimos buenas prácticas y construimos soluciones reales para los desafíos más urgentes del sector educativo.
-              </p>
-              <p className="text-lg mb-6 leading-relaxed">
-                Tú puedes ser parte de esta red, donde no solo estás contribuyendo al desarrollo del país, sino también encontrando aliados que te ayudan a avanzar en tu propio propósito. Donde la innovación deja de ser una idea lejana y se convierte en algo tangible, en proyectos que benefician a millones de personas.
-              </p>
-              <p className="text-lg mb-6 leading-relaxed">
-                Nosotros creemos profundamente en la fuerza de actuar juntos.
-              </p>
-              <p className="text-lg mb-6 leading-relaxed">
-                En Colombia EdTech no creemos en las soluciones individuales ni en los cambios pequeños. Creemos en una revolución educativa que solo puede ocurrir si unimos talentos, recursos y voluntades.
-              </p>
-            </div>
-            
-            <div className="space-y-6">
-              <div className="aspect-video bg-white/10 rounded-lg border-4 border-dashed border-white/30 flex items-center justify-center">
-                <span className="text-white/70 text-center">
-                  Community Group Photo<br/>
-                  <small>Placeholder</small>
-                </span>
-              </div>
-              
-              <div className="grid grid-cols-3 gap-4">
-                <div className="aspect-square bg-white/10 rounded-lg border-4 border-dashed border-white/30 flex items-center justify-center">
-                  <span className="text-white/70 text-xs text-center">Speaker 1</span>
-                </div>
-                <div className="aspect-square bg-white/10 rounded-lg border-4 border-dashed border-white/30 flex items-center justify-center">
-                  <span className="text-white/70 text-xs text-center">Speaker 2</span>
-                </div>
-                <div className="aspect-square bg-white/10 rounded-lg border-4 border-dashed border-white/30 flex items-center justify-center">
-                  <span className="text-white/70 text-xs text-center">Speaker 3</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="text-center mt-12">
-            <h3 className="text-3xl font-bold mb-8">Bienvenido</h3>
-            <CTAButton 
-              size="lg"
-              className="bg-white text-[#0B47CE] hover:bg-gray-100"
-              onClick={handleAssociateClick}
-              asChild
-            >
-              <Link to="/asociados#form">
-                Regístrate para ser asociado hoy
-              </Link>
-            </CTAButton>
-          </div>
-        </div>
-      </Section>
+      
 
       {/* Formulario */}
       <div id="form" className="py-16 bg-[#F4E8DD]">
@@ -476,8 +324,6 @@ const Asociados = () => {
           </div>
         </div>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default Asociados;
