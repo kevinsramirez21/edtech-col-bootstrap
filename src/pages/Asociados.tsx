@@ -101,7 +101,7 @@ const Asociados = () => {
     {
       percentage: "27.8%",
       description: "De las EdTechs logró apoyo externo",
-      label: "Existe poca financiación, sólo"
+      label: "Poca financiación disponible"
     },
     {
       percentage: "35%",
