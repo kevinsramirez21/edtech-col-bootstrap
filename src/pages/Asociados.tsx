@@ -38,7 +38,7 @@ const Asociados = () => {
   }, {
     icon: Building2,
     title: "Articulación con el estado",
-    description: "Facilitamos el vínculo con entidades gubernamentales para impulsar proyectos educativos innovadores, promover alianzas estratégicas y participar activamente en iniciativas públicas que transforman el sector EdTech en Colombia y Latinoamérica."
+    description: "Facilitamos el vínculo con entidades gubernamentales para impulsar proyectos educativos disruptivos y participar en iniciativas públicas transformadoras."
   }, {
     icon: Users,
     title: "Participación en proyectos colaborativos",
