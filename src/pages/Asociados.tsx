@@ -12,7 +12,9 @@ import { ArrowRight, Network, Award, BookOpen, Users, Target, TrendingUp, Users2
 import eventoAsociadosImg from "@/assets/evento-edtech-fondo.jpg";
 import eventoPonenteImg from "@/assets/asamblea-evento-ponente.jpg";
 import eventoAudienciaImg from "@/assets/asamblea-evento-audiencia.jpg";
-import angelaAndradeImg from "@/assets/testimonios/angela-andrade.png";
+import angelaAndradeImg from "@/assets/testimonios/angela-andrade-v2.png";
+import santiagoCarrilloImg from "@/assets/testimonios/santiago-carrillo.png";
+import oscarIvanImg from "@/assets/testimonios/oscar-ivan-rodriguez.png";
 
 const Asociados = () => {
   const meta = generatePageMeta({
@@ -73,7 +75,8 @@ const Asociados = () => {
       name: "Santiago Carrillo",
       role: "CEO Ada School",
       quote: "Colombia EdTech predica con el ejemplo, inspirando a otros a través de la acción. Su voluntad de compartir ideas de su trayectoria empresarial, incluida su experiencia en Y Combinator, ha demostrado ser invaluable.",
-      color: "red"
+      color: "red",
+      image: santiagoCarrilloImg
     },
     {
       name: "Valeria Velandia",
@@ -85,7 +88,8 @@ const Asociados = () => {
       name: "Oscar Ivan Rodriguez",
       role: "CEO y Co-founder | InnovaHub",
       quote: "Ser aliado de Colombia Ed Tech me ha ayudado a ver aspectos fundamentales de la planeación estratégica y el trabajo en equipo, siempre desde una lógica muy aterrizada y propia del mundo Startup",
-      color: "red"
+      color: "red",
+      image: oscarIvanImg
     }
   ];
 
