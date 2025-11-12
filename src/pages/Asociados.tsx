@@ -38,7 +38,7 @@ const Asociados = () => {
   }, {
     icon: Building2,
     title: "Articulación con el estado",
-    description: "Podrás conectar con líderes del sector, posibles aliados y oportunidades de negocio a nivel nacional e internacional. Un pase directo a la comunidad de fundadores de Ed Tech, networking y grupos focales"
+    description: "Facilitamos el vínculo con entidades gubernamentales para impulsar proyectos educativos innovadores, promover alianzas estratégicas y participar activamente en iniciativas públicas que transforman el sector EdTech en Colombia y Latinoamérica."
   }, {
     icon: Users,
     title: "Participación en proyectos colaborativos",
