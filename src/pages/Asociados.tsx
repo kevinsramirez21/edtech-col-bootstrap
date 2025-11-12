@@ -425,7 +425,7 @@ const Asociados = () => {
                       <FormLabel className="text-[#003889]">Tipo de organización *</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger>
+                          <SelectTrigger className="[&>span]:text-[#003889]">
                             <SelectValue placeholder="Selecciona una opción" />
                           </SelectTrigger>
                         </FormControl>
@@ -435,6 +435,10 @@ const Asociados = () => {
                           <SelectItem value="startup">Startup</SelectItem>
                           <SelectItem value="ong">ONG</SelectItem>
                           <SelectItem value="empresa_educativa">Empresa educativa</SelectItem>
+                          <SelectItem value="colegio">Colegio</SelectItem>
+                          <SelectItem value="caja_compensacion">Caja de compensación</SelectItem>
+                          <SelectItem value="universidad">Universidad</SelectItem>
+                          <SelectItem value="red_instituciones">Red de instituciones</SelectItem>
                           <SelectItem value="otro">Otro</SelectItem>
                         </SelectContent>
                       </Select>
