@@ -174,14 +174,14 @@ const Asociados = () => {
 
       {/* Technology & Union Section */}
       <Section className="py-20 bg-[#F4E8DD] relative overflow-hidden">
-        {/* Decorative bars */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-b from-[#F73C5C] to-[#8B3A8B]"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-b from-[#8B3A8B] to-[#F73C5C]"></div>
         
         <div className="container max-w-7xl mx-auto px-8 lg:px-16">
           {/* First Row - Image Left, Text Right */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-            <div className="relative">
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24 relative">
+            {/* Horizontal bar from left */}
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 h-12 w-32 bg-gradient-to-r from-[#F73C5C] via-[#8B3A8B] to-transparent -ml-8"></div>
+            
+            <div className="relative z-10">
               {/* Placeholder for Colombia EdTech stage image */}
               <div className="aspect-video bg-gray-300 rounded-lg shadow-xl border-4 border-dashed border-gray-400 flex items-center justify-center">
                 <span className="text-gray-600 text-center">
@@ -190,7 +190,7 @@ const Asociados = () => {
                 </span>
               </div>
             </div>
-            <div>
+            <div className="relative z-10">
               <p className="text-lg text-[#0B47CE] mb-6 leading-relaxed">
                 Tenemos herramientas capaz de derribar las barreras que han limitado generaciones enteras, una herramienta para abrir puertas a un aprendizaje accesible, personalizado y relevante para todos, y esta herramienta es ...
               </p>
@@ -204,8 +204,11 @@ const Asociados = () => {
           </div>
 
           {/* Second Row - Text Left, Image Right */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
+          <div className="grid lg:grid-cols-2 gap-16 items-center relative">
+            {/* Horizontal bar from right */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 h-12 w-32 bg-gradient-to-l from-[#8B3A8B] via-[#F73C5C] to-transparent -mr-8"></div>
+            
+            <div className="relative z-10">
               <h3 className="text-4xl font-bold mb-8 leading-tight">
                 <span className="text-[#F73C5C]">El verdadero cambio necesita unión, sinergia, comunidad</span>
               </h3>
@@ -213,7 +216,7 @@ const Asociados = () => {
                 Aquí es donde entras tú, entra tu organización, por que el éxito está garantizado cuando <span className="text-[#F73C5C] font-bold">trabajamos juntos</span>
               </p>
             </div>
-            <div className="relative">
+            <div className="relative z-10">
               {/* Placeholder for Google office image */}
               <div className="aspect-[4/3] bg-gray-300 rounded-lg shadow-xl border-4 border-dashed border-gray-400 flex items-center justify-center">
                 <span className="text-gray-600 text-center">
