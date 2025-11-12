@@ -16,6 +16,8 @@ export type Database = {
     Tables: {
       asociados: {
         Row: {
+          acepta_uso_datos: boolean | null
+          cargo_contacto: string | null
           correo_contacto: string | null
           created_at: string
           descripcion: string | null
@@ -25,6 +27,8 @@ export type Database = {
           id: string
           linkedin: string | null
           logo_url: string | null
+          motivo_asociarse: string | null
+          nombre_contacto: string | null
           nombre_empresa: string
           pagina_web: string | null
           segmento: Database["public"]["Enums"]["company_segment"] | null
@@ -32,11 +36,14 @@ export type Database = {
           tamano_empresa: Database["public"]["Enums"]["company_size"] | null
           telefono: string | null
           tipo_membresia: string | null
+          tipo_organizacion: string | null
           twitter: string | null
           ubicacion: string | null
           updated_at: string
         }
         Insert: {
+          acepta_uso_datos?: boolean | null
+          cargo_contacto?: string | null
           correo_contacto?: string | null
           created_at?: string
           descripcion?: string | null
@@ -46,6 +53,8 @@ export type Database = {
           id?: string
           linkedin?: string | null
           logo_url?: string | null
+          motivo_asociarse?: string | null
+          nombre_contacto?: string | null
           nombre_empresa: string
           pagina_web?: string | null
           segmento?: Database["public"]["Enums"]["company_segment"] | null
@@ -53,11 +62,14 @@ export type Database = {
           tamano_empresa?: Database["public"]["Enums"]["company_size"] | null
           telefono?: string | null
           tipo_membresia?: string | null
+          tipo_organizacion?: string | null
           twitter?: string | null
           ubicacion?: string | null
           updated_at?: string
         }
         Update: {
+          acepta_uso_datos?: boolean | null
+          cargo_contacto?: string | null
           correo_contacto?: string | null
           created_at?: string
           descripcion?: string | null
@@ -67,6 +79,8 @@ export type Database = {
           id?: string
           linkedin?: string | null
           logo_url?: string | null
+          motivo_asociarse?: string | null
+          nombre_contacto?: string | null
           nombre_empresa?: string
           pagina_web?: string | null
           segmento?: Database["public"]["Enums"]["company_segment"] | null
@@ -74,6 +88,7 @@ export type Database = {
           tamano_empresa?: Database["public"]["Enums"]["company_size"] | null
           telefono?: string | null
           tipo_membresia?: string | null
+          tipo_organizacion?: string | null
           twitter?: string | null
           ubicacion?: string | null
           updated_at?: string

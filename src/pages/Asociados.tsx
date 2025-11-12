@@ -9,13 +9,93 @@ import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd, trackCTA, GA_EVENTS } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, Network, Award, BookOpen, Users, Target, TrendingUp, Users2, Globe, Building2, GraduationCap, CheckCircle } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 import eventoAsociadosImg from "@/assets/evento-edtech-fondo.jpg";
 import eventoPonenteImg from "@/assets/asamblea-evento-ponente.jpg";
 import eventoAudienciaImg from "@/assets/asamblea-evento-audiencia.jpg";
 import angelaAndradeImg from "@/assets/testimonios/angela-andrade-v2.png";
 import santiagoCarrilloImg from "@/assets/testimonios/santiago-carrillo.png";
 import oscarIvanImg from "@/assets/testimonios/oscar-ivan-rodriguez.png";
+
+const formSchema = z.object({
+  nombre_empresa: z.string().trim().min(2, "El nombre debe tener al menos 2 caracteres").max(200, "El nombre es muy largo"),
+  tipo_organizacion: z.string().min(1, "Por favor selecciona el tipo de organización"),
+  nombre_contacto: z.string().trim().min(2, "El nombre debe tener al menos 2 caracteres").max(100, "El nombre es muy largo"),
+  cargo_contacto: z.string().trim().min(2, "El cargo debe tener al menos 2 caracteres").max(100, "El cargo es muy largo"),
+  telefono: z.string().trim().min(7, "Teléfono inválido").max(20, "Teléfono inválido"),
+  correo_contacto: z.string().trim().email("Correo electrónico inválido").max(255, "Correo muy largo"),
+  pagina_web: z.string().trim().url("URL inválida").or(z.literal("")).optional(),
+  descripcion: z.string().trim().min(20, "Por favor describe tu organización (mínimo 20 caracteres)").max(1000, "La descripción es muy larga"),
+  motivo_asociarse: z.string().trim().min(20, "Por favor explica tu motivación (mínimo 20 caracteres)").max(1000, "El texto es muy largo"),
+  acepta_uso_datos: z.boolean().refine((val) => val === true, "Debes aceptar el uso de datos para continuar")
+});
+
 const Asociados = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      nombre_empresa: "",
+      tipo_organizacion: "",
+      nombre_contacto: "",
+      cargo_contacto: "",
+      telefono: "",
+      correo_contacto: "",
+      pagina_web: "",
+      descripcion: "",
+      motivo_asociarse: "",
+      acepta_uso_datos: false
+    }
+  });
+
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase.from("asociados").insert([{
+        nombre_empresa: values.nombre_empresa,
+        tipo_organizacion: values.tipo_organizacion,
+        nombre_contacto: values.nombre_contacto,
+        cargo_contacto: values.cargo_contacto,
+        telefono: values.telefono,
+        correo_contacto: values.correo_contacto,
+        pagina_web: values.pagina_web || null,
+        descripcion: values.descripcion,
+        motivo_asociarse: values.motivo_asociarse,
+        acepta_uso_datos: values.acepta_uso_datos,
+        estado: "activo"
+      }]);
+
+      if (error) throw error;
+
+      toast({
+        title: "¡Solicitud enviada!",
+        description: "Gracias por tu interés. Nos pondremos en contacto pronto.",
+      });
+
+      form.reset();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Error",
+        description: "Hubo un problema al enviar tu solicitud. Por favor intenta de nuevo.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const meta = generatePageMeta({
     title: "Asociados",
     description: "Si eres una organización que transforma la educación con tecnología, únete a Colombia EdTech. Red de contactos, visibilidad y articulación con el Estado"
@@ -312,15 +392,201 @@ const Asociados = () => {
 
       {/* Formulario */}
       <div id="form" className="py-16 bg-[#F4E8DD]">
-        <div className="container max-w-2xl mx-auto text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">¿Quieres asociarte?</h3>
-          <p className="text-gray-600 mb-6">
-            Formulario de asociación próximamente disponible
-          </p>
-          <div className="bg-white p-8 rounded-lg shadow-sm">
-            <p className="text-gray-500 italic">
-              Mientras tanto, contáctanos a info@colombiaedtech.org
+        <div className="container max-w-3xl mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-3xl md:text-4xl font-bold text-[#0B47CE] mb-4 font-funnel">¿Quieres asociarte?</h3>
+            <p className="text-[#003889] text-lg">
+              Completa el formulario y nos pondremos en contacto contigo
             </p>
+          </div>
+          
+          <div className="bg-white p-8 md:p-10 rounded-lg shadow-lg">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="nombre_empresa"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[#003889]">Nombre de la organización *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Ej: EdTech Colombia SAS" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="tipo_organizacion"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[#003889]">Tipo de organización *</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Selecciona una opción" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="con_animo_lucro">Con ánimo de lucro</SelectItem>
+                          <SelectItem value="sin_animo_lucro">Sin ánimo de lucro</SelectItem>
+                          <SelectItem value="startup">Startup</SelectItem>
+                          <SelectItem value="ong">ONG</SelectItem>
+                          <SelectItem value="empresa_educativa">Empresa educativa</SelectItem>
+                          <SelectItem value="otro">Otro</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="nombre_contacto"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-[#003889]">Nombre de contacto *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Ej: María González" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="cargo_contacto"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-[#003889]">Cargo *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Ej: Directora" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="telefono"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-[#003889]">Teléfono *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Ej: +57 300 123 4567" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="correo_contacto"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-[#003889]">Correo electrónico *</FormLabel>
+                        <FormControl>
+                          <Input type="email" placeholder="contacto@ejemplo.com" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <FormField
+                  control={form.control}
+                  name="pagina_web"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[#003889]">Sitio web o redes sociales</FormLabel>
+                      <FormControl>
+                        <Input placeholder="https://ejemplo.com" {...field} />
+                      </FormControl>
+                      <FormDescription className="text-sm">
+                        Opcional: Puedes incluir tu sitio web, LinkedIn, o redes sociales
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="descripcion"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[#003889]">Descripción de tu organización *</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Describe qué hace tu organización, su misión y su impacto..."
+                          className="min-h-[120px]"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="motivo_asociarse"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[#003889]">¿Por qué quieres asociarte? *</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Cuéntanos tu motivación e interés para unirte a Colombia EdTech..."
+                          className="min-h-[120px]"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="acepta_uso_datos"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 bg-gray-50">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel className="text-[#003889] font-normal">
+                          Autorizo el uso de mis datos personales y de mi organización para fines de gestión de la asociación y comunicación relacionada con Colombia EdTech. *
+                        </FormLabel>
+                        <FormMessage />
+                      </div>
+                    </FormItem>
+                  )}
+                />
+
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  className="w-full bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold text-lg py-6"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Enviando..." : "Enviar solicitud"}
+                </Button>
+              </form>
+            </Form>
           </div>
         </div>
       </div>
