@@ -74,7 +74,7 @@ const Asociados = () => {
     {
       name: "Santiago Carrillo",
       role: "CEO Ada School",
-      quote: "Colombia EdTech predica con el ejemplo, inspirando a otros a través de la acción. Su voluntad de compartir ideas de su trayectoria empresarial, incluida su experiencia en Y Combinator, ha demostrado ser invaluable.",
+      quote: "Colombia EdTech predica con el ejemplo, inspirando a otros a través de la acción. La voluntad del equipo de compartir experiencias y aprendizajes empresariales valiosos ha demostrado ser invaluable.",
       color: "red",
       image: santiagoCarrilloImg
     },
