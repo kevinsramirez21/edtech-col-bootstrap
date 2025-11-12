@@ -246,7 +246,7 @@ const Asociados = () => {
       {/* Testimonios */}
       <Section className="py-16 bg-white">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 font-funnel">
             <span className="text-[#F73C5C]">Algunos testimonios de nuestros asociados</span>
           </h2>
           
