@@ -10,6 +10,8 @@ import { generatePageMeta, generateBreadcrumbJsonLd, trackCTA, GA_EVENTS } from 
 import { Link } from "react-router-dom";
 import { ArrowRight, Network, Award, BookOpen, Users, Target, TrendingUp, Users2, Globe, Building2, GraduationCap, CheckCircle } from "lucide-react";
 import eventoAsociadosImg from "@/assets/evento-edtech-fondo.jpg";
+import eventoPonenteImg from "@/assets/asamblea-evento-ponente.jpg";
+import eventoAudienciaImg from "@/assets/asamblea-evento-audiencia.jpg";
 
 const Asociados = () => {
   const meta = generatePageMeta({
@@ -182,13 +184,11 @@ const Asociados = () => {
             <div className="absolute left-0 top-1/2 -translate-y-1/2 h-16 w-64 bg-gradient-to-r from-[#F73C5C] via-[#8B3A8B] to-transparent -ml-32 lg:-ml-48"></div>
             
             <div className="relative z-10">
-              {/* Placeholder for Colombia EdTech stage image */}
-              <div className="aspect-video bg-gray-300 rounded-lg shadow-xl border-4 border-dashed border-gray-400 flex items-center justify-center">
-                <span className="text-gray-600 text-center">
-                  Colombia EdTech Stage<br/>
-                  <small>Placeholder</small>
-                </span>
-              </div>
+              <img 
+                src={eventoPonenteImg} 
+                alt="Evento Colombia EdTech - Ponente en escenario" 
+                className="aspect-video rounded-lg shadow-xl object-cover w-full"
+              />
             </div>
             <div className="relative z-10">
               <p className="text-lg text-[#0B47CE] mb-6 leading-relaxed">
@@ -217,13 +217,11 @@ const Asociados = () => {
               </p>
             </div>
             <div className="relative z-10">
-              {/* Placeholder for Google office image */}
-              <div className="aspect-[4/3] bg-gray-300 rounded-lg shadow-xl border-4 border-dashed border-gray-400 flex items-center justify-center">
-                <span className="text-gray-600 text-center">
-                  Google Office Community Image<br/>
-                  <small>Placeholder</small>
-                </span>
-              </div>
+              <img 
+                src={eventoAudienciaImg} 
+                alt="Evento Colombia EdTech - Audiencia comprometida" 
+                className="aspect-[4/3] rounded-lg shadow-xl object-cover w-full"
+              />
             </div>
           </div>
         </div>
