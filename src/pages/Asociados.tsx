@@ -194,7 +194,7 @@ const Asociados = () => {
               <p className="text-lg text-[#0B47CE] mb-6 leading-relaxed">
                 Tenemos herramientas capaz de derribar las barreras que han limitado generaciones enteras, una herramienta para abrir puertas a un aprendizaje accesible, personalizado y relevante para todos, y esta herramienta es ...
               </p>
-              <h2 className="text-5xl font-bold mb-6">
+              <h2 className="text-5xl font-bold mb-6" style={{ fontFamily: 'var(--font-display)' }}>
                 <span className="text-[#F73C5C]">La tecnología</span>
               </h2>
               <p className="text-xl text-[#0B47CE] font-medium">
@@ -209,7 +209,7 @@ const Asociados = () => {
             <div className="absolute right-0 top-1/2 -translate-y-1/2 h-16 w-64 bg-gradient-to-l from-[#8B3A8B] via-[#F73C5C] to-transparent -mr-32 lg:-mr-48"></div>
             
             <div className="relative z-10">
-              <h3 className="text-4xl font-bold mb-8 leading-tight">
+              <h3 className="text-4xl font-bold mb-8 leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
                 <span className="text-[#F73C5C]">El verdadero cambio necesita unión, sinergia, comunidad</span>
               </h3>
               <p className="text-xl text-[#0B47CE]">
