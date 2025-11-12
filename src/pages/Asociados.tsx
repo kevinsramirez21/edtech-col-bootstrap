@@ -34,7 +34,7 @@ const Asociados = () => {
   }, {
     icon: Award,
     title: "Visibilidad y respaldo de una marca de confianza",
-    description: "Podrás participar en eventos, publicaciones y plataformas que amplifican tu impacto. Recuerda que en el mundo actual, no se vende el mejor, sino el más conocido. Y tener un aval de una marca de valor te abre puertas ante usuarios, donantes e inversionistas"
+    description: "Destaca tu organización en eventos y medios de alto alcance, potenciando tu impacto y reputación ante usuarios, donantes e inversionistas."
   }, {
     icon: Building2,
     title: "Articulación con el estado",
