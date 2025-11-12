@@ -330,10 +330,10 @@ const Asociados = () => {
       </Section>
 
       {/* Beneficios */}
-      <Section id="beneficios" className="py-16 bg-white">
+      <Section id="beneficios" className="py-16 bg-[#F4E8DD]">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            <span className="text-[#F73C5C]">¿Cómo podemos hacer para ayudarte?</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 font-funnel">
+            <span className="text-[#F73C5C]">¿Qué podemos hacer para ayudarte?</span>
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -356,7 +356,7 @@ const Asociados = () => {
                   <div className="absolute inset-0 bg-black/20"></div>
                   <div className="relative z-10">
                     <h3 className="text-xl font-bold mb-4 leading-tight">{beneficio.title}</h3>
-                    <p className="text-sm leading-relaxed opacity-90">{beneficio.description}</p>
+                    <p className="text-base leading-relaxed text-white">{beneficio.description}</p>
                   </div>
                 </div>
               );
