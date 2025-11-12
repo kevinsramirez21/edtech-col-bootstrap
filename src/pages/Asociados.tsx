@@ -147,16 +147,16 @@ const Asociados = () => {
               bienvenido al mundo de los asociados
             </p>
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <CTAButton 
+              <Button 
                 size="lg"
-                className="btn-primary text-lg px-8 py-6 hover-scale shadow-2xl"
+                className="text-lg px-8 py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300"
                 onClick={handleAssociateClick}
                 asChild
               >
                 <Link to="/asociados#form">
                   Únete ahora <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
-              </CTAButton>
+              </Button>
               <Button 
                 size="lg"
                 variant="outline"
