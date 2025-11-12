@@ -293,35 +293,35 @@ const Asociados = () => {
       </Section>
 
       {/* Problemas Reales */}
-      <Section className="py-16 bg-[#0B47CE] text-white">
-        <div className="container max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <Section className="py-20 md:py-28 bg-[#0B47CE] text-white">
+        <div className="container max-w-7xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-funnel">
             Soluciones reales para problemas reales
           </h2>
-          <h3 className="text-2xl mb-12 opacity-90">Lo sabemos ...</h3>
+          <h3 className="text-2xl md:text-3xl mb-16">Lo sabemos ...</h3>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             {statistics.slice(0, 2).map((stat, index) => (
-              <div key={index} className="bg-white/10 rounded-lg p-6 border-2 border-white/20">
-                <div className="text-4xl font-bold mb-2">{stat.percentage}</div>
-                <div className="text-sm mb-2 opacity-80">{stat.label}</div>
-                <div className="text-base">{stat.description}</div>
+              <div key={index} className="bg-white/15 rounded-xl p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+                <div className="text-5xl md:text-6xl font-bold mb-4">{stat.percentage}</div>
+                <div className="text-base md:text-lg mb-3">{stat.label}</div>
+                <div className="text-lg md:text-xl">{stat.description}</div>
               </div>
             ))}
-            <div className="bg-white/10 rounded-lg p-6 border-2 border-white/20">
-              <div className="text-4xl font-bold mb-2">{statistics[2].percentage}</div>
-              <div className="text-base">{statistics[2].description}</div>
+            <div className="bg-white/15 rounded-xl p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+              <div className="text-5xl md:text-6xl font-bold mb-4">{statistics[2].percentage}</div>
+              <div className="text-lg md:text-xl">{statistics[2].description}</div>
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 text-left">
-            <div className="bg-white/10 rounded-lg p-6">
-              <p className="text-base leading-relaxed">
+            <div className="bg-white/15 rounded-xl p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+              <p className="text-lg md:text-xl leading-relaxed">
                 Hay una ausencia de formación especializada en BTC, BTG, y BTBTC enfocado en EdTech
               </p>
             </div>
-            <div className="bg-white/10 rounded-lg p-6">
-              <p className="text-base leading-relaxed">
+            <div className="bg-white/15 rounded-xl p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+              <p className="text-lg md:text-xl leading-relaxed">
                 El gobierno es lento en las licitaciones educativas, y le sector B2C enfrenta cambios en la capacidad de pago
               </p>
             </div>
