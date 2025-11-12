@@ -12,6 +12,7 @@ import { ArrowRight, Network, Award, BookOpen, Users, Target, TrendingUp, Users2
 import eventoAsociadosImg from "@/assets/evento-edtech-fondo.jpg";
 import eventoPonenteImg from "@/assets/asamblea-evento-ponente.jpg";
 import eventoAudienciaImg from "@/assets/asamblea-evento-audiencia.jpg";
+import angelaAndradeImg from "@/assets/testimonios/angela-andrade.png";
 
 const Asociados = () => {
   const meta = generatePageMeta({
@@ -65,7 +66,8 @@ const Asociados = () => {
       name: "Angela Andrade",
       role: "Managing Director | Scala Higher Education",
       quote: "Nos dieron la mirada que nos faltaba para crear lared Latinoamericana de Universidades Católicas.",
-      color: "blue"
+      color: "blue",
+      image: angelaAndradeImg
     },
     {
       name: "Santiago Carrillo",
@@ -261,9 +263,17 @@ const Asociados = () => {
                 }`}
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
-                    <div className="w-12 h-12 bg-white/40 rounded-full"></div>
-                  </div>
+                  {testimonio.image ? (
+                    <img 
+                      src={testimonio.image} 
+                      alt={testimonio.name}
+                      className="w-16 h-16 rounded-full object-cover mr-4"
+                    />
+                  ) : (
+                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                      <div className="w-12 h-12 bg-white/40 rounded-full"></div>
+                    </div>
+                  )}
                   <div>
                     <h4 className="font-bold text-lg">{testimonio.name}</h4>
                     <p className="text-sm opacity-90">{testimonio.role}</p>
