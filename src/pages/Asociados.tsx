@@ -122,14 +122,6 @@ const Asociados = () => {
           {JSON.stringify(breadcrumbLd)}
         </script>
       </Helmet>
-
-      <Section className="py-8 bg-gray-50">
-        <Breadcrumbs 
-          items={[
-            { label: "Asociados" }
-          ]} 
-        />
-      </Section>
       
       {/* Hero */}
       <Section className="py-20 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden">
