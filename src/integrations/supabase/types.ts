@@ -17,6 +17,7 @@ export type Database = {
       asociados: {
         Row: {
           acepta_uso_datos: boolean | null
+          calificacion_colombia_edtech: number | null
           cargo_contacto: string | null
           correo_contacto: string | null
           created_at: string
@@ -43,6 +44,7 @@ export type Database = {
         }
         Insert: {
           acepta_uso_datos?: boolean | null
+          calificacion_colombia_edtech?: number | null
           cargo_contacto?: string | null
           correo_contacto?: string | null
           created_at?: string
@@ -69,6 +71,7 @@ export type Database = {
         }
         Update: {
           acepta_uso_datos?: boolean | null
+          calificacion_colombia_edtech?: number | null
           cargo_contacto?: string | null
           correo_contacto?: string | null
           created_at?: string

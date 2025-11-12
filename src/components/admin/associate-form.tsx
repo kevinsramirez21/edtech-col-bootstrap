@@ -47,12 +47,13 @@ const associateSchema = z.object({
   telefono: z.string().optional(),
   linkedin: z.string().url("Debe ser una URL válida").optional().or(z.literal("")),
   twitter: z.string().url("Debe ser una URL válida").optional().or(z.literal("")),
+  calificacion_colombia_edtech: z.number().min(1).max(5).optional(),
 })
 
 type AssociateFormData = z.infer<typeof associateSchema>
 
 interface AssociateFormProps {
-  initialData?: Partial<AssociateFormData & { servicios?: string[] }>
+  initialData?: Partial<AssociateFormData & { servicios?: string[], calificacion_colombia_edtech?: number }>
   onSubmit: (data: AssociateFormData & { servicios: string[] }) => Promise<void>
   onCancel: () => void
   isLoading: boolean
@@ -101,6 +102,7 @@ export function AssociateForm({ initialData, onSubmit, onCancel, isLoading }: As
       telefono: initialData?.telefono || "",
       linkedin: initialData?.linkedin || "",
       twitter: initialData?.twitter || "",
+      calificacion_colombia_edtech: initialData?.calificacion_colombia_edtech,
     }
   })
 
@@ -326,6 +328,34 @@ export function AssociateForm({ initialData, onSubmit, onCancel, isLoading }: As
                 <FormControl>
                   <Input placeholder="https://twitter.com/empresa" {...field} />
                 </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="calificacion_colombia_edtech"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Calificación Colombia EdTech</FormLabel>
+                <Select 
+                  onValueChange={(value) => field.onChange(value ? Number(value) : undefined)} 
+                  value={field.value?.toString()}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecciona calificación (1-5 estrellas)" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="1">⭐ 1 estrella</SelectItem>
+                    <SelectItem value="2">⭐⭐ 2 estrellas</SelectItem>
+                    <SelectItem value="3">⭐⭐⭐ 3 estrellas</SelectItem>
+                    <SelectItem value="4">⭐⭐⭐⭐ 4 estrellas</SelectItem>
+                    <SelectItem value="5">⭐⭐⭐⭐⭐ 5 estrellas</SelectItem>
+                  </SelectContent>
+                </Select>
                 <FormMessage />
               </FormItem>
             )}

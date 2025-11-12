@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link } from "react-router-dom"
-import { Globe, Mail, MapPin, Building2, ExternalLink } from "lucide-react"
+import { Globe, Mail, MapPin, Building2, ExternalLink, Star } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -19,6 +19,7 @@ interface Associate {
   ubicacion?: string
   tamano_empresa?: string
   tipo_membresia?: string
+  calificacion_colombia_edtech?: number
 }
 
 interface AssociateCardProps {
@@ -44,6 +45,27 @@ const sizeLabels: Record<string, string> = {
 }
 
 export function AssociateCard({ associate, className }: AssociateCardProps) {
+  const renderStars = (rating?: number) => {
+    if (!rating) return null
+    
+    return (
+      <div className="flex items-center gap-1">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <Star
+            key={star}
+            className={cn(
+              "w-4 h-4",
+              star <= rating 
+                ? "fill-yellow-400 text-yellow-400" 
+                : "fill-gray-200 text-gray-200"
+            )}
+          />
+        ))}
+        <span className="text-xs text-gray-600 ml-1">({rating}/5)</span>
+      </div>
+    )
+  }
+
   return (
     <Card className={cn("group h-full transition-all duration-300 hover:shadow-lg hover:shadow-primary-700/10 hover:-translate-y-1", className)}>
       <CardHeader className="pb-4">
@@ -64,6 +86,11 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
             <CardTitle className="text-lg font-bold text-primary-900 group-hover:text-primary-700 transition-colors line-clamp-2">
               {associate.nombre_empresa}
             </CardTitle>
+            {associate.calificacion_colombia_edtech && (
+              <div className="mt-2 mb-2">
+                {renderStars(associate.calificacion_colombia_edtech)}
+              </div>
+            )}
             <div className="flex flex-wrap gap-2 mt-2">
               {associate.segmento && (
                 <Badge variant="secondary" className="text-xs">

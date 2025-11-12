@@ -16,6 +16,7 @@ export interface Associate {
   telefono?: string
   linkedin?: string
   twitter?: string
+  calificacion_colombia_edtech?: number
   created_at: string
   updated_at?: string
 }
@@ -36,4 +37,5 @@ export interface CreateAssociateData {
   telefono?: string
   linkedin?: string
   twitter?: string
+  calificacion_colombia_edtech?: number
 }
