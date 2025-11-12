@@ -46,7 +46,7 @@ const Asociados = () => {
   }, {
     icon: BookOpen,
     title: "Biblioteca de recursos relevantes y actualizados.",
-    description: "Podrás tener acceso a estudios, investigaciones e informes actualizados sobre el sector con sus insights y mapeo anual"
+    description: "Disfruta acceso a estudios, informes y datos estratégicos del sector, manteniéndote siempre a la vanguardia de la innovación EdTech."
   }, {
     icon: GraduationCap,
     title: "Formación y consultoría basada en tus necesidades",
