@@ -42,7 +42,7 @@ const Asociados = () => {
   }, {
     icon: Users,
     title: "Participación en proyectos colaborativos",
-    description: "Podrás aliarte con otros asociados para crear soluciones innovadoras que cambien vidas, presentar proyectos, abrir mercados y todo aprovechando sus fortalezas y acelerando su crecimiento."
+    description: "Impulsa soluciones junto a otros asociados, presentando proyectos conjuntos y aprovechando fortalezas compartidas para lograr resultados reales."
   }, {
     icon: BookOpen,
     title: "Biblioteca de recursos relevantes y actualizados.",
