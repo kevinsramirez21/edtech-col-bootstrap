@@ -30,7 +30,7 @@ const Asociados = () => {
   const beneficios = [{
     icon: Network,
     title: "Red de Contactos estratégica",
-    description: "Podrás conectar con líderes del sector, posibles aliados y oportunidades de negocio a nivel nacional e internacional. Un pase directo a la comunidad de fundadores de Ed Tech, networking y grupos focales"
+    description: "Accede a una comunidad de líderes y aliados, generando oportunidades de negocio, colaboración y crecimiento en el sector EdTech."
   }, {
     icon: Award,
     title: "Visibilidad y respaldo de una marca de confianza",
