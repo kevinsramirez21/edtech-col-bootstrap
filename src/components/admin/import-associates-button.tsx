@@ -80,31 +80,35 @@ export function ImportAssociatesButton() {
   const { toast } = useToast()
 
   const handleImport = async () => {
-    if (!confirm('¿Está seguro de que desea importar 70 asociados? Esta acción no se puede deshacer.')) {
+    if (!confirm('¿Está seguro de que desea importar/actualizar 70 asociados con sus calificaciones?')) {
       return
     }
 
     setIsLoading(true)
 
     try {
+      // Usar upsert para actualizar los existentes o insertar nuevos
       const { error } = await supabase
         .from('asociados')
-        .insert(associatesData.map(associate => ({
+        .upsert(associatesData.map(associate => ({
           ...associate,
           estado: 'activo' as const,
           acepta_uso_datos: true,
           fecha_ingreso: new Date().toISOString().split('T')[0],
           calificacion_colombia_edtech: associate.calificacion_colombia_edtech || 4
-        })))
+        })), {
+          onConflict: 'nombre_empresa',
+          ignoreDuplicates: false
+        })
 
       if (error) throw error
 
       toast({
         title: "Importación exitosa",
-        description: `Se han importado ${associatesData.length} asociados correctamente.`,
+        description: `Se han importado/actualizado ${associatesData.length} asociados correctamente con sus calificaciones.`,
       })
 
-      // Reload the page to show the new associates
+      // Reload the page to show the updated associates
       setTimeout(() => {
         window.location.reload()
       }, 1000)
@@ -130,12 +134,12 @@ export function ImportAssociatesButton() {
       {isLoading ? (
         <>
           <Loader2 className="h-4 w-4 animate-spin" />
-          Importando...
+          Actualizando...
         </>
       ) : (
         <>
           <Upload className="h-4 w-4" />
-          Importar 70 Asociados
+          Actualizar 70 Asociados con Calificaciones
         </>
       )}
     </Button>
