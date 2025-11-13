@@ -338,7 +338,7 @@ export function AssociateForm({ initialData, onSubmit, onCancel, isLoading }: As
             name="calificacion_colombia_edtech"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Calificación Colombia EdTech</FormLabel>
+                <FormLabel>Calidad Certificada Colombia EdTech</FormLabel>
                 <Select 
                   onValueChange={(value) => field.onChange(value ? Number(value) : undefined)} 
                   value={field.value?.toString()}

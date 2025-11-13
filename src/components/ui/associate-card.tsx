@@ -49,19 +49,24 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
     if (!rating) return null
     
     return (
-      <div className="flex items-center gap-1">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <Star
-            key={star}
-            className={cn(
-              "w-4 h-4",
-              star <= rating 
-                ? "fill-yellow-400 text-yellow-400" 
-                : "fill-gray-200 text-gray-200"
-            )}
-          />
-        ))}
-        <span className="text-xs text-gray-600 ml-1">({rating}/5)</span>
+      <div className="space-y-1">
+        <div className="flex items-center gap-1">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <Star
+              key={star}
+              className={cn(
+                "w-4 h-4",
+                star <= rating 
+                  ? "fill-yellow-400 text-yellow-400" 
+                  : "fill-gray-200 text-gray-200"
+              )}
+            />
+          ))}
+          <span className="text-xs font-semibold text-gray-700 ml-1">{rating}/5</span>
+        </div>
+        <p className="text-xs text-primary-700 font-medium">
+          Calidad Certificada Colombia EdTech
+        </p>
       </div>
     )
   }
