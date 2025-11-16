@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd, trackCTA, GA_EVENTS } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp, Award, Heart, Network, Globe, Users, DollarSign, Gift, Zap, Megaphone, HandHeart, Eye, CreditCard } from "lucide-react";
+import eventoColombiaEdtech from "@/assets/evento-colombia-edtech-presentacion-v2.jpg";
 const Aliados = () => {
   const meta = generatePageMeta({
     title: "Aliados",
@@ -76,34 +77,40 @@ const Aliados = () => {
         </script>
       </Helmet>
 
-      
-      
       {/* Hero */}
-      <Section className="py-20 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden">
-        {/* Background placeholder for conference image */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-black/30">
-          <div className="w-full h-full bg-gradient-to-br from-[#003889] to-[#0B47CE]/80"></div>
+      <Section className="py-24 md:py-40 lg:py-52 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[85vh]">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img 
+            src={eventoColombiaEdtech} 
+            alt="Evento Colombia EdTech - Aliados" 
+            className="w-full h-full object-cover object-center" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
         </div>
-        <div className="relative z-10 container max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Aliados
-              </h1>
-              <p className="text-xl mb-8 leading-relaxed opacity-90">
-                Si eres una entidad pública o privada que quiere 
-                <strong className="text-[#F73C5C]"> CONTRIBUIR</strong> para que las EdTech cumplan su misión, 
-                bienvenido al mundo de los <strong className="text-[#F73C5C]">ALIADOS</strong>
-              </p>
-            </div>
-            <div className="relative">
-              {/* Placeholder for conference image */}
-              <div className="aspect-video bg-gray-300 rounded-lg border-4 border-dashed border-gray-400 flex items-center justify-center">
-                <span className="text-gray-600 text-center">
-                  Conference Image<br />
-                  <small>Placeholder</small>
-                </span>
-              </div>
+        <div className="relative z-10 container max-w-7xl mx-auto h-full flex items-center pt-20 md:pt-24">
+          <div className="max-w-4xl animate-fade-in">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight drop-shadow-2xl">
+              Aliados
+            </h1>
+            <p className="text-xl md:text-2xl lg:text-3xl mb-10 leading-relaxed drop-shadow-lg max-w-3xl">
+              Si eres una entidad pública o privada que quiere 
+              <strong className="text-[#F73C5C]"> CONTRIBUIR</strong> para que las EdTech cumplan su misión, 
+              bienvenido al mundo de los <strong className="text-[#F73C5C]">ALIADOS</strong>
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{
+              animationDelay: '0.2s'
+            }}>
+              <CTAButton 
+                size="lg" 
+                className="text-lg px-8 py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300" 
+                onClick={handleAllyContactClick}
+                asChild
+              >
+                <Link to="/aliados#form">
+                  Únete como aliado <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </CTAButton>
             </div>
           </div>
         </div>
