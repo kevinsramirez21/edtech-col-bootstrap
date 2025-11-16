@@ -161,7 +161,7 @@ const Aliados = () => {
                     <h3 className="text-xl font-bold text-[#0B47CE] mb-3">
                       {beneficio.title}
                     </h3>
-                    <p className="text-gray-700 leading-relaxed">
+                    <p className="text-[#0B47CE] leading-relaxed">
                       {beneficio.description}
                     </p>
                   </div>
