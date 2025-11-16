@@ -21,8 +21,6 @@ const formSchema = z.object({
   ciudad: z.string().trim().min(2, "La ciudad debe tener al menos 2 caracteres").max(100, "La ciudad es muy larga"),
   correo_contacto: z.string().trim().email("Correo electrónico inválido").max(255, "Correo muy largo"),
   telefono: z.string().trim().min(7, "Teléfono inválido").max(20, "Teléfono inválido"),
-  motivo_interes: z.string().trim().min(20, "Por favor explica tu motivación (mínimo 20 caracteres)").max(1000, "El texto es muy largo"),
-  objetivo_alianza: z.string().trim().min(20, "Por favor explica qué esperas lograr (mínimo 20 caracteres)").max(1000, "El texto es muy largo"),
   formas_alianza: z.array(z.string()).min(1, "Por favor selecciona al menos una forma de alianza"),
   beneficios_esperados: z.array(z.string()).min(1, "Por favor selecciona al menos un beneficio esperado"),
   acepta_tratamiento_datos: z.boolean().refine((val) => val === true, "Debes aceptar el tratamiento de datos para continuar"),
@@ -58,8 +56,6 @@ export function AllyApplicationForm() {
       ciudad: "",
       correo_contacto: "",
       telefono: "",
-      motivo_interes: "",
-      objetivo_alianza: "",
       formas_alianza: [],
       beneficios_esperados: [],
       acepta_tratamiento_datos: false,
@@ -79,8 +75,8 @@ export function AllyApplicationForm() {
         ciudad: values.ciudad,
         correo_contacto: values.correo_contacto,
         telefono: values.telefono,
-        motivo_interes: values.motivo_interes,
-        objetivo_alianza: values.objetivo_alianza,
+        motivo_interes: "",
+        objetivo_alianza: "",
         formas_alianza: values.formas_alianza,
         otras_formas_alianza: null,
         beneficios_esperados: values.beneficios_esperados,
@@ -243,49 +239,6 @@ export function AllyApplicationForm() {
               )}
             />
           </div>
-        </div>
-
-        {/* Motivo de interés/Objetivo */}
-        <div className="space-y-6 bg-white border-2 border-[#0B47CE]/20 p-6 rounded-lg">
-          <h4 className="text-xl font-bold text-[#0B47CE] border-b-2 border-[#F73C5C] pb-2">
-            Motivo de interés y objetivo
-          </h4>
-
-          <FormField
-            control={form.control}
-            name="motivo_interes"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-[#0B47CE] font-semibold">¿Por qué quieres ser aliado de Colombia EdTech? *</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="Ej: Buscamos apoyar la transformación digital educativa en Colombia..."
-                    className="min-h-[100px] placeholder:opacity-50"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="objetivo_alianza"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-[#0B47CE] font-semibold">¿Qué esperas lograr con esta alianza? *</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="Ej: Fortalecer la conexión con EdTechs y generar impacto social..."
-                    className="min-h-[100px] placeholder:opacity-50"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
         </div>
 
         {/* Formas de alianza */}
