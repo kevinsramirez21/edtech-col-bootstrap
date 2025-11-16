@@ -161,6 +161,75 @@ export type Database = {
         }
         Relationships: []
       }
+      solicitudes_aliados: {
+        Row: {
+          acepta_comunicaciones: boolean
+          acepta_tratamiento_datos: boolean
+          beneficios_esperados: string[]
+          cargo_representante: string
+          ciudad: string
+          correo_contacto: string
+          created_at: string
+          estado: string
+          explicaciones_adicionales: string | null
+          formas_alianza: string[]
+          id: string
+          motivo_interes: string
+          nombre_entidad: string
+          objetivo_alianza: string
+          otras_formas_alianza: string | null
+          pais: string
+          representante: string
+          telefono: string
+          tipo_entidad: string
+          updated_at: string
+        }
+        Insert: {
+          acepta_comunicaciones?: boolean
+          acepta_tratamiento_datos?: boolean
+          beneficios_esperados: string[]
+          cargo_representante: string
+          ciudad: string
+          correo_contacto: string
+          created_at?: string
+          estado?: string
+          explicaciones_adicionales?: string | null
+          formas_alianza: string[]
+          id?: string
+          motivo_interes: string
+          nombre_entidad: string
+          objetivo_alianza: string
+          otras_formas_alianza?: string | null
+          pais: string
+          representante: string
+          telefono: string
+          tipo_entidad: string
+          updated_at?: string
+        }
+        Update: {
+          acepta_comunicaciones?: boolean
+          acepta_tratamiento_datos?: boolean
+          beneficios_esperados?: string[]
+          cargo_representante?: string
+          ciudad?: string
+          correo_contacto?: string
+          created_at?: string
+          estado?: string
+          explicaciones_adicionales?: string | null
+          formas_alianza?: string[]
+          id?: string
+          motivo_interes?: string
+          nombre_entidad?: string
+          objetivo_alianza?: string
+          otras_formas_alianza?: string | null
+          pais?: string
+          representante?: string
+          telefono?: string
+          tipo_entidad?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp, Award, Heart, Network, Globe, Users, DollarSign, Gift, Zap, Megaphone, HandHeart, Eye, CreditCard } from "lucide-react";
 import eventoAliadosPresentacion from "@/assets/evento-aliados-presentacion.jpg";
 import eventoCapacitacionAliados from "@/assets/evento-capacitacion-aliados.jpg";
+import { AllyApplicationForm } from "@/components/forms/ally-application-form";
 const Aliados = () => {
   const meta = generatePageMeta({
     title: "Aliados",
@@ -213,16 +214,13 @@ const Aliados = () => {
 
       {/* Formulario */}
       <div id="form" className="py-16 bg-[#F4E8DD]">
-        <div className="container max-w-2xl mx-auto text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">¿Quieres ser aliado?</h3>
-          <p className="text-gray-600 mb-6">
-            Formulario de contacto próximamente disponible
+        <div className="container max-w-4xl mx-auto">
+          <h3 className="text-3xl font-bold text-[#0B47CE] mb-4 text-center">¿Quieres ser aliado?</h3>
+          <p className="text-[#0B47CE] mb-8 text-center max-w-2xl mx-auto">
+            Completa el siguiente formulario y nos pondremos en contacto contigo para explorar cómo podemos trabajar juntos
           </p>
-          <div className="bg-white p-8 rounded-lg shadow-sm">
-            <p className="text-gray-500 italic">
-              Mientras tanto, contáctanos a info@colombiaedtech.org
-            </p>
-          </div>
+          
+          <AllyApplicationForm />
         </div>
       </div>
     </>;
