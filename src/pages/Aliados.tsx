@@ -130,12 +130,12 @@ const Aliados = () => {
             
             <div className="bg-white border-2 border-gray-200 rounded-lg p-8 text-left">
               <div className="space-y-4">
-                <p className="text-lg">
-                  El mercado EdTech en América Latina <span className="text-[#0B47CE] font-bold">está experimentando un crecimiento significativo.</span> En 2023, <span className="text-[#0B47CE] font-bold">este mercado generó</span> <span className="text-[#F73C5C] font-bold">ingresos de aproximadamente 2,645 millones de dólares</span>, <span className="text-[#0B47CE]">y se espera que continúe creciendo a una tasa compuesta anual (CAGR)</span> <span className="text-[#0B47CE] font-bold">del 15.3% hasta alcanzar 7,156 millones de dólares en 2030.</span>
+                <p className="text-lg text-[#0B47CE]">
+                  El mercado EdTech en América Latina <span className="text-[#F73C5C] font-bold">está experimentando un crecimiento significativo.</span> En 2023, <span className="text-[#F73C5C] font-bold">este mercado generó ingresos de aproximadamente 2,645 millones de dólares</span>, y se espera que continúe creciendo a una tasa compuesta anual (CAGR) <span className="text-[#F73C5C] font-bold">del 15.3% hasta alcanzar 7,156 millones de dólares en 2030.</span>
                 </p>
                 
-                <p className="text-lg">
-                  Porque ser ALIADO no solo se trata de aportar dinero, recursos o contactos; se trata de <span className="text-[#F73C5C] font-bold">invertir en el futuro de miles de estudiantes, docentes, instituciones y emprendedores</span> <span className="text-[#0B47CE]">que están creando el futuro.</span>
+                <p className="text-lg text-[#0B47CE]">
+                  Porque ser ALIADO no solo se trata de aportar dinero, recursos o contactos; se trata de <span className="text-[#F73C5C] font-bold">invertir en el futuro de miles de estudiantes, docentes, instituciones y emprendedores</span> que están creando el futuro.
                 </p>
               </div>
             </div>
