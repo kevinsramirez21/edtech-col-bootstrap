@@ -8,6 +8,7 @@ import { generatePageMeta, generateBreadcrumbJsonLd, trackCTA, GA_EVENTS } from 
 import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp, Award, Heart, Network, Globe, Users, DollarSign, Gift, Zap, Megaphone, HandHeart, Eye, CreditCard } from "lucide-react";
 import eventoAliadosPresentacion from "@/assets/evento-aliados-presentacion.jpg";
+import eventoCapacitacionAliados from "@/assets/evento-capacitacion-aliados.jpg";
 const Aliados = () => {
   const meta = generatePageMeta({
     title: "Aliados",
@@ -192,18 +193,16 @@ const Aliados = () => {
               </div>)}
           </div>
 
-          <div className="relative">
-            {/* Placeholder for conference/training image */}
-            <div className="aspect-[16/9] bg-white/10 rounded-lg border-4 border-dashed border-white/30 flex items-center justify-center">
-              <span className="text-white/70 text-center">
-                Training Conference Image<br />
-                <small>Placeholder</small>
-              </span>
-            </div>
+          <div className="relative mb-12">
+            <img 
+              src={eventoCapacitacionAliados} 
+              alt="Evento de capacitación Colombia EdTech" 
+              className="w-full aspect-[16/9] object-cover rounded-lg shadow-2xl"
+            />
           </div>
 
-          <div className="text-center mt-12">
-            <CTAButton size="lg" className="bg-white text-[#0B47CE] hover:bg-gray-100" onClick={handleAllyContactClick} asChild>
+          <div className="text-center">
+            <CTAButton size="lg" className="bg-[#F73C5C] text-white hover:bg-[#F73C5C]/90" onClick={handleAllyContactClick} asChild>
               <Link to="/aliados#form">
                 Regístrate para ser aliado hoy
               </Link>
