@@ -203,7 +203,7 @@ const Aliados = () => {
           </div>
 
           <div className="text-center">
-            <CTAButton size="lg" className="bg-[#F73C5C] text-white hover:bg-[#F73C5C]/90" onClick={handleAllyContactClick} asChild>
+            <CTAButton size="lg" className="bg-[#F73C5C] text-white hover:bg-[#F73C5C]/90 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F73C5C]/30" onClick={handleAllyContactClick} asChild>
               <Link to="/aliados#form">
                 Regístrate para ser aliado hoy
               </Link>
