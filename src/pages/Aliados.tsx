@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd, trackCTA, GA_EVENTS } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp, Award, Heart, Network, Globe, Users, DollarSign, Gift, Zap, Megaphone, HandHeart, Eye, CreditCard } from "lucide-react";
-import eventoColombiaEdtech from "@/assets/evento-colombia-edtech-presentacion-v2.jpg";
+import eventoAliadosPresentacion from "@/assets/evento-aliados-presentacion.jpg";
 const Aliados = () => {
   const meta = generatePageMeta({
     title: "Aliados",
@@ -82,7 +82,7 @@ const Aliados = () => {
         {/* Background image */}
         <div className="absolute inset-0">
           <img 
-            src={eventoColombiaEdtech} 
+            src={eventoAliadosPresentacion} 
             alt="Evento Colombia EdTech - Aliados" 
             className="w-full h-full object-cover object-center" 
           />
