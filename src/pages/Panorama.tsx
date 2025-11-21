@@ -381,88 +381,95 @@ const Panorama = () => {
               </p>
               
               <div className="grid md:grid-cols-2 gap-6">
-                <Card className="p-6 bg-sand/30 border-primary-200">
+                <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white font-bold">1</span>
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <span className="text-white font-bold text-lg">1</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-primary-700 mb-2">Menos colegios privados</h4>
-                      <p className="text-primary-900">Mayor presión sobre la calidad de la educación pública</p>
+                      <h4 className="text-lg font-bold text-primary-700 mb-3">Menos colegios privados</h4>
+                      <p className="text-base text-primary-900 leading-relaxed">Mayor presión sobre la calidad de la educación pública</p>
                     </div>
                   </div>
                 </Card>
                 
-                <Card className="p-6 bg-sand/30 border-primary-200">
+                <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white font-bold">2</span>
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <span className="text-white font-bold text-lg">2</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-primary-700 mb-2">Aprendizajes fundamentales en riesgo</h4>
-                      <p className="text-primary-900">Más del 50% de estudiantes sin competencias básicas de lectura y matemáticas</p>
+                      <h4 className="text-lg font-bold text-primary-700 mb-3">Aprendizajes fundamentales en riesgo</h4>
+                      <p className="text-base text-primary-900 leading-relaxed">Más del 50% de estudiantes sin competencias básicas de lectura y matemáticas</p>
                     </div>
                   </div>
                 </Card>
                 
-                <Card className="p-6 bg-sand/30 border-primary-200">
+                <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white font-bold">3</span>
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <span className="text-white font-bold text-lg">3</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-primary-700 mb-2">Tecnología solo para lo indispensable</h4>
-                      <p className="text-primary-900">Con niños pequeños - enfoque en desarrollo humano primero</p>
+                      <h4 className="text-lg font-bold text-primary-700 mb-3">Tecnología solo para lo indispensable</h4>
+                      <p className="text-base text-primary-900 leading-relaxed">Con niños pequeños - enfoque en desarrollo humano primero</p>
                     </div>
                   </div>
                 </Card>
                 
-                <Card className="p-6 bg-sand/30 border-primary-200">
+                <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white font-bold">4</span>
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <span className="text-white font-bold text-lg">4</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-primary-700 mb-2">Más habilidades laborales</h4>
-                      <p className="text-primary-900">Integradas al graduarse del colegio</p>
+                      <h4 className="text-lg font-bold text-primary-700 mb-3">Más habilidades laborales</h4>
+                      <p className="text-base text-primary-900 leading-relaxed">Integradas al graduarse del colegio</p>
                     </div>
                   </div>
                 </Card>
                 
-                <Card className="p-6 bg-sand/30 border-primary-200">
+                <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white font-bold">5</span>
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <span className="text-white font-bold text-lg">5</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-primary-700 mb-2">Integración salud-educación</h4>
-                      <p className="text-primary-900">Para decisiones pedagógicas basadas en desarrollo integral</p>
+                      <h4 className="text-lg font-bold text-primary-700 mb-3">Integración salud-educación</h4>
+                      <p className="text-base text-primary-900 leading-relaxed">Para decisiones pedagógicas basadas en desarrollo integral</p>
                     </div>
                   </div>
                 </Card>
                 
-                <Card className="p-6 bg-sand/30 border-primary-200">
+                <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white font-bold">6</span>
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <span className="text-white font-bold text-lg">6</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-primary-700 mb-2">Más superpoderes para profesores</h4>
-                      <p className="text-primary-900">Herramientas avanzadas de enseñanza potenciadas por IA</p>
+                      <h4 className="text-lg font-bold text-primary-700 mb-3">Más superpoderes para profesores</h4>
+                      <p className="text-base text-primary-900 leading-relaxed">Herramientas avanzadas de enseñanza potenciadas por IA</p>
                     </div>
                   </div>
                 </Card>
               </div>
             </div>
             
-            <Card className="p-10 bg-red-50 border-2 border-red-200">
-              <h3 className="text-2xl font-bold text-red-900 mb-4">La Brecha Digital Docente</h3>
-              <p className="text-lg text-primary-900 mb-4">
-                <strong className="text-red-600">Menos del 40%</strong> de docentes en América Latina se siente preparado para integrar tecnología en sus prácticas pedagógicas (UNESCO).
-              </p>
-              <p className="text-base text-primary-900">
-                El BID identifica una <strong>"brecha de competencias digitales docentes"</strong> que limita el aprovechamiento de herramientas EdTech incluso cuando hay acceso a infraestructura. Esta brecha es más crítica que la brecha de acceso tecnológico.
-              </p>
+            <Card className="p-10 bg-gradient-to-br from-red-50 to-white border-0 shadow-2xl">
+              <div className="flex items-start gap-6">
+                <div className="w-20 h-20 rounded-2xl bg-red-600 flex items-center justify-center flex-shrink-0 shadow-xl">
+                  <span className="text-4xl">⚠️</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-red-900 mb-4">La Brecha Digital Docente</h3>
+                  <p className="text-lg text-primary-900 mb-4 leading-relaxed">
+                    <strong className="text-red-600">Menos del 40%</strong> de docentes en América Latina se siente preparado para integrar tecnología en sus prácticas pedagógicas (UNESCO).
+                  </p>
+                  <p className="text-base text-primary-900 leading-relaxed">
+                    El BID identifica una <strong>"brecha de competencias digitales docentes"</strong> que limita el aprovechamiento de herramientas EdTech incluso cuando hay acceso a infraestructura. Esta brecha es más crítica que la brecha de acceso tecnológico.
+                  </p>
+                </div>
+              </div>
             </Card>
           </div>
         </div>
@@ -636,42 +643,84 @@ const Panorama = () => {
             <h3 className="text-2xl font-bold text-primary-700 mb-8 text-center">Nuevos Segmentos Emergentes</h3>
             
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="p-8 bg-sand/30 border-primary-200">
-                <div className="text-4xl mb-4">👥</div>
-                <h4 className="text-xl font-bold text-primary-700 mb-4">Los Ninis</h4>
-                <p className="text-sm text-primary-900 mb-4 italic">Investigación José Manuel Restrepo</p>
-                <p className="text-base text-primary-900 mb-4">Jóvenes que ni estudian ni trabajan - segmento en crecimiento</p>
-                <p className="text-sm font-semibold text-accent mb-2">Necesidades:</p>
-                <ul className="space-y-2 text-sm text-primary-900">
-                  <li>• Orientación vocacional efectiva</li>
-                  <li>• Formación práctica inmediata</li>
-                  <li>• Acompañamiento psicosocial</li>
-                </ul>
+              <Card className="p-10 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-700 to-accent flex items-center justify-center shadow-xl">
+                  <span className="text-4xl">👥</span>
+                </div>
+                <h4 className="text-xl font-bold text-primary-700 mb-3 text-center">Los Ninis</h4>
+                <p className="text-sm text-accent mb-4 text-center italic">Investigación José Manuel Restrepo</p>
+                <p className="text-base text-primary-900 mb-6 text-center leading-relaxed">Jóvenes que ni estudian ni trabajan - segmento en crecimiento</p>
+                <div className="border-t-2 border-sand pt-6">
+                  <p className="text-sm font-bold text-primary-700 mb-3 text-center">Necesidades Críticas:</p>
+                  <ul className="space-y-2 text-sm text-primary-900">
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>Orientación vocacional efectiva</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>Formación práctica inmediata</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>Acompañamiento psicosocial</span>
+                    </li>
+                  </ul>
+                </div>
               </Card>
               
-              <Card className="p-8 bg-sand/30 border-primary-200">
-                <div className="text-4xl mb-4">👴</div>
-                <h4 className="text-xl font-bold text-primary-700 mb-4">Silver Economy</h4>
-                <p className="text-base text-primary-900 mb-4">Población mayor de 60 años - segmento ignorado y en expansión</p>
-                <p className="text-sm font-semibold text-accent mb-2">Necesidades:</p>
-                <ul className="space-y-2 text-sm text-primary-900">
-                  <li>• Aprendizaje continuo</li>
-                  <li>• Actualización tecnológica</li>
-                  <li>• Propósito post-jubilación</li>
-                </ul>
+              <Card className="p-10 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-700 to-accent flex items-center justify-center shadow-xl">
+                  <span className="text-4xl">👴</span>
+                </div>
+                <h4 className="text-xl font-bold text-primary-700 mb-6 text-center">Silver Economy</h4>
+                <p className="text-base text-primary-900 mb-6 text-center leading-relaxed">Población mayor de 60 años - segmento ignorado y en expansión</p>
+                <div className="border-t-2 border-sand pt-6">
+                  <p className="text-sm font-bold text-primary-700 mb-3 text-center">Necesidades Críticas:</p>
+                  <ul className="space-y-2 text-sm text-primary-900">
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>Aprendizaje continuo</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>Actualización tecnológica</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>Propósito post-jubilación</span>
+                    </li>
+                  </ul>
+                </div>
               </Card>
               
-              <Card className="p-8 bg-sand/30 border-primary-200">
-                <div className="text-4xl mb-4">📱</div>
-                <h4 className="text-xl font-bold text-primary-700 mb-4">Creadores de Contenido</h4>
-                <p className="text-base text-primary-900 mb-4">OnlyFans, YouTubers, TikTokers - nueva economía creativa</p>
-                <p className="text-sm font-semibold text-accent mb-2">Necesidades:</p>
-                <ul className="space-y-2 text-sm text-primary-900">
-                  <li>• Formación en business</li>
-                  <li>• Manejo tributario</li>
-                  <li>• Branding personal</li>
-                  <li>• Diversificación de ingresos</li>
-                </ul>
+              <Card className="p-10 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-700 to-accent flex items-center justify-center shadow-xl">
+                  <span className="text-4xl">📱</span>
+                </div>
+                <h4 className="text-xl font-bold text-primary-700 mb-6 text-center">Creadores de Contenido</h4>
+                <p className="text-base text-primary-900 mb-6 text-center leading-relaxed">OnlyFans, YouTubers, TikTokers - nueva economía creativa</p>
+                <div className="border-t-2 border-sand pt-6">
+                  <p className="text-sm font-bold text-primary-700 mb-3 text-center">Necesidades Críticas:</p>
+                  <ul className="space-y-2 text-sm text-primary-900">
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>Formación en business</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>Manejo tributario</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>Branding personal</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>Diversificación de ingresos</span>
+                    </li>
+                  </ul>
+                </div>
               </Card>
             </div>
             
@@ -820,28 +869,28 @@ const Panorama = () => {
             </p>
             
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="p-8 text-center bg-white border-2 border-primary-200">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-700 flex items-center justify-center">
-                  <span className="text-3xl">1</span>
+              <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary-700 to-primary-900 flex items-center justify-center shadow-2xl">
+                  <span className="text-white font-bold text-3xl">1</span>
                 </div>
-                <h3 className="text-xl font-bold text-primary-700 mb-4">Donantes + Gobiernos</h3>
-                <p className="text-primary-900">Reducir riesgo inicial y probar concepto</p>
+                <h3 className="text-2xl font-bold text-primary-700 mb-4">Donantes + Gobiernos</h3>
+                <p className="text-base text-primary-900 leading-relaxed">Reducir riesgo inicial y probar concepto</p>
               </Card>
               
-              <Card className="p-8 text-center bg-white border-2 border-primary-200">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent flex items-center justify-center">
-                  <span className="text-3xl">2</span>
+              <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center shadow-2xl">
+                  <span className="text-white font-bold text-3xl">2</span>
                 </div>
-                <h3 className="text-xl font-bold text-primary-700 mb-4">Pilotos Medibles</h3>
-                <p className="text-primary-900">Demostrar impacto con datos duros</p>
+                <h3 className="text-2xl font-bold text-primary-700 mb-4">Pilotos Medibles</h3>
+                <p className="text-base text-primary-900 leading-relaxed">Demostrar impacto con datos duros</p>
               </Card>
               
-              <Card className="p-8 text-center bg-white border-2 border-primary-200">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-700 flex items-center justify-center">
-                  <span className="text-3xl">3</span>
+              <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary-700 to-primary-900 flex items-center justify-center shadow-2xl">
+                  <span className="text-white font-bold text-3xl">3</span>
                 </div>
-                <h3 className="text-xl font-bold text-primary-700 mb-4">Escalamiento Contractual</h3>
-                <p className="text-primary-900">Crecimiento sostenible con contratación pública</p>
+                <h3 className="text-2xl font-bold text-primary-700 mb-4">Escalamiento Contractual</h3>
+                <p className="text-base text-primary-900 leading-relaxed">Crecimiento sostenible con contratación pública</p>
               </Card>
             </div>
             
