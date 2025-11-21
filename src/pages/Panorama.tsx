@@ -634,7 +634,6 @@ const Panorama = () => {
                   <span className="text-4xl">👥</span>
                 </div>
                 <h4 className="text-xl font-bold text-primary-700 mb-3 text-center">Los Ninis</h4>
-                <p className="text-sm text-accent mb-4 text-center italic">Investigación José Manuel Restrepo</p>
                 <p className="text-base text-primary-900 mb-6 text-center leading-relaxed">Jóvenes que ni estudian ni trabajan - segmento en crecimiento</p>
                 <div className="border-t-2 border-sand pt-6">
                   <p className="text-sm font-bold text-primary-700 mb-3 text-center">Necesidades Críticas:</p>
