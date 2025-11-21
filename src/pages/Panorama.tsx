@@ -368,12 +368,102 @@ const Panorama = () => {
         <div className="container max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
-              Cambios en K-12
+              Cambios Sistémicos en K-12
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
           </div>
-          <div className="prose prose-lg max-w-5xl mx-auto">
-            <CopySlot file="panorama.mdx" />
+          
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold text-primary-700 mb-6">Transformaciones en Curso</h3>
+              <p className="text-lg text-primary-900 mb-8 leading-relaxed">
+                El sistema K-12 está experimentando cambios fundamentales que están redefiniendo la educación básica y media:
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="p-6 bg-sand/30 border-primary-200">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white font-bold">1</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-primary-700 mb-2">Menos colegios privados</h4>
+                      <p className="text-primary-900">Mayor presión sobre la calidad de la educación pública</p>
+                    </div>
+                  </div>
+                </Card>
+                
+                <Card className="p-6 bg-sand/30 border-primary-200">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white font-bold">2</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-primary-700 mb-2">Aprendizajes fundamentales en riesgo</h4>
+                      <p className="text-primary-900">Más del 50% de estudiantes sin competencias básicas de lectura y matemáticas</p>
+                    </div>
+                  </div>
+                </Card>
+                
+                <Card className="p-6 bg-sand/30 border-primary-200">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white font-bold">3</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-primary-700 mb-2">Tecnología solo para lo indispensable</h4>
+                      <p className="text-primary-900">Con niños pequeños - enfoque en desarrollo humano primero</p>
+                    </div>
+                  </div>
+                </Card>
+                
+                <Card className="p-6 bg-sand/30 border-primary-200">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white font-bold">4</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-primary-700 mb-2">Más habilidades laborales</h4>
+                      <p className="text-primary-900">Integradas al graduarse del colegio</p>
+                    </div>
+                  </div>
+                </Card>
+                
+                <Card className="p-6 bg-sand/30 border-primary-200">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white font-bold">5</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-primary-700 mb-2">Integración salud-educación</h4>
+                      <p className="text-primary-900">Para decisiones pedagógicas basadas en desarrollo integral</p>
+                    </div>
+                  </div>
+                </Card>
+                
+                <Card className="p-6 bg-sand/30 border-primary-200">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white font-bold">6</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-primary-700 mb-2">Más superpoderes para profesores</h4>
+                      <p className="text-primary-900">Herramientas avanzadas de enseñanza potenciadas por IA</p>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            </div>
+            
+            <Card className="p-10 bg-red-50 border-2 border-red-200">
+              <h3 className="text-2xl font-bold text-red-900 mb-4">La Brecha Digital Docente</h3>
+              <p className="text-lg text-primary-900 mb-4">
+                <strong className="text-red-600">Menos del 40%</strong> de docentes en América Latina se siente preparado para integrar tecnología en sus prácticas pedagógicas (UNESCO).
+              </p>
+              <p className="text-base text-primary-900">
+                El BID identifica una <strong>"brecha de competencias digitales docentes"</strong> que limita el aprovechamiento de herramientas EdTech incluso cuando hay acceso a infraestructura. Esta brecha es más crítica que la brecha de acceso tecnológico.
+              </p>
+            </Card>
           </div>
         </div>
       </Section>
@@ -383,12 +473,53 @@ const Panorama = () => {
         <div className="container max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
-              Educación Superior
+              Cambios en Educación Superior
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-8 rounded-full"></div>
           </div>
-          <div className="prose prose-lg prose-invert max-w-5xl mx-auto text-white/90">
-            <CopySlot file="panorama.mdx" />
+          
+          <div className="max-w-5xl mx-auto">
+            <p className="text-xl text-white/90 mb-12 text-center leading-relaxed">
+              La educación superior está experimentando su transformación más profunda desde su creación
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <Card className="p-8 bg-white/10 backdrop-blur-sm border-white/20">
+                <div className="text-4xl mb-4">🔄</div>
+                <h3 className="text-2xl font-bold mb-4 text-white">Hiperpersonalización</h3>
+                <ul className="space-y-3 text-white/90">
+                  <li>• Tutores virtuales con IA que conocen a cada estudiante</li>
+                  <li>• Adaptación de contenido y ritmo en tiempo real</li>
+                  <li>• Rutas personalizadas según objetivos y capacidades</li>
+                </ul>
+              </Card>
+              
+              <Card className="p-8 bg-white/10 backdrop-blur-sm border-white/20">
+                <div className="text-4xl mb-4">💡</div>
+                <h3 className="text-2xl font-bold mb-4 text-white">Nuevos Modelos</h3>
+                <ul className="space-y-3 text-white/90">
+                  <li>• <strong>Técnicos y Lifelong Learning</strong>: Educación continua como norma</li>
+                  <li>• <strong>Universidades Corporativas</strong>: Hacku, Sistel, Laboratoria</li>
+                  <li>• <strong>Micro-credentials</strong>: Certificaciones específicas</li>
+                </ul>
+              </Card>
+              
+              <Card className="p-8 bg-white/10 backdrop-blur-sm border-white/20">
+                <div className="text-4xl mb-4">🌐</div>
+                <h3 className="text-2xl font-bold mb-4 text-white">Operación Global</h3>
+                <ul className="space-y-3 text-white/90">
+                  <li>• Education as a Service</li>
+                  <li>• Colaboración con OPMs, VCs EdTech, Big Tech</li>
+                  <li>• <strong>73%</strong> de EdTechs colombianas operan en 2-10 países</li>
+                </ul>
+              </Card>
+            </div>
+            
+            <Card className="p-8 bg-accent/20 border-accent/40">
+              <p className="text-xl text-white font-semibold text-center">
+                El diploma universitario tradicional está siendo complementado (y en algunos casos reemplazado) por portfolios de competencias verificables
+              </p>
+            </Card>
           </div>
         </div>
       </Section>
@@ -398,12 +529,81 @@ const Panorama = () => {
         <div className="container max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
-              ROI en EdTech
+              Educación = ROI (o Muerte)
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+            <p className="text-xl text-primary-900 max-w-3xl mx-auto">
+              La educación ya no es un gasto - es una inversión con retorno medible
+            </p>
           </div>
-          <div className="prose prose-lg max-w-5xl mx-auto">
-            <CopySlot file="panorama.mdx" />
+          
+          <div className="max-w-6xl mx-auto">
+            <Card className="p-10 bg-gradient-to-br from-green-50 to-white border-2 border-green-200 mb-12">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold text-primary-700 mb-4">Customer Education: El Nuevo Paradigma</h3>
+                <p className="text-xl text-primary-900 mb-6">
+                  <strong className="text-green-600">86%</strong> de las empresas confirman que sus estrategias de Customer Education son <strong>rentables y generan retorno medible</strong>
+                </p>
+                <div className="inline-block bg-green-600 text-white px-8 py-4 rounded-xl">
+                  <div className="text-5xl font-bold mb-2">372%</div>
+                  <div className="text-lg">ROI Comprobado</div>
+                  <div className="text-sm opacity-90">Forrester TEI Model, 2024</div>
+                </div>
+              </div>
+            </Card>
+            
+            <h3 className="text-2xl font-bold text-primary-700 mb-8 text-center">Impacto Medible de Programas de Educación al Cliente</h3>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="p-6 bg-white border-2 border-green-200">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-lg font-semibold text-primary-700">📈 Adopción de producto</span>
+                  <span className="text-3xl font-bold text-green-600">+38.3%</span>
+                </div>
+              </Card>
+              
+              <Card className="p-6 bg-white border-2 border-green-200">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-lg font-semibold text-primary-700">⭐ Engagement de usuarios</span>
+                  <span className="text-3xl font-bold text-green-600">+30.7%</span>
+                </div>
+              </Card>
+              
+              <Card className="p-6 bg-white border-2 border-green-200">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-lg font-semibold text-primary-700">😊 Satisfacción del cliente</span>
+                  <span className="text-3xl font-bold text-green-600">+26.2%</span>
+                </div>
+              </Card>
+              
+              <Card className="p-6 bg-white border-2 border-green-200">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-lg font-semibold text-primary-700">💎 Valor de vida (LTV)</span>
+                  <span className="text-3xl font-bold text-green-600">+34.6%</span>
+                </div>
+              </Card>
+              
+              <Card className="p-6 bg-white border-2 border-blue-200">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-lg font-semibold text-primary-700">⏱️ Ciclo de ventas</span>
+                  <span className="text-3xl font-bold text-blue-600">-8.1%</span>
+                </div>
+              </Card>
+              
+              <Card className="p-6 bg-white border-2 border-blue-200">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-lg font-semibold text-primary-700">🎫 Tickets de soporte</span>
+                  <span className="text-3xl font-bold text-blue-600">-15.5%</span>
+                </div>
+              </Card>
+              
+              <Card className="p-6 bg-white border-2 border-blue-200 md:col-span-2">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-lg font-semibold text-primary-700">💵 Costos de soporte</span>
+                  <span className="text-3xl font-bold text-blue-600">-7.2%</span>
+                </div>
+              </Card>
+            </div>
           </div>
         </div>
       </Section>
@@ -417,8 +617,104 @@ const Panorama = () => {
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
           </div>
-          <div className="prose prose-lg max-w-5xl mx-auto">
-            <CopySlot file="panorama.mdx" />
+          
+          <div className="max-w-6xl mx-auto">
+            <Card className="p-10 bg-gradient-to-br from-sand to-white border-2 border-primary-200 mb-12">
+              <h3 className="text-2xl font-bold text-primary-700 mb-6 flex items-center gap-3">
+                <span className="text-3xl">🌾</span> El Agro - Oportunidad Masiva
+              </h3>
+              <p className="text-lg text-primary-900 mb-4">
+                <strong>Fundación Bancolombia</strong> identifica un vacío educativo estructural en zonas rurales:
+              </p>
+              <ul className="space-y-3 text-base text-primary-900">
+                <li>• Déficit crítico de <strong>topógrafos</strong> para ganadería sostenible</li>
+                <li>• Necesidad urgente de competencias transversales: manejo de datos, agrotech</li>
+                <li>• Oportunidad de emprendimiento rural con tecnología</li>
+              </ul>
+            </Card>
+            
+            <h3 className="text-2xl font-bold text-primary-700 mb-8 text-center">Nuevos Segmentos Emergentes</h3>
+            
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <Card className="p-8 bg-sand/30 border-primary-200">
+                <div className="text-4xl mb-4">👥</div>
+                <h4 className="text-xl font-bold text-primary-700 mb-4">Los Ninis</h4>
+                <p className="text-sm text-primary-900 mb-4 italic">Investigación José Manuel Restrepo</p>
+                <p className="text-base text-primary-900 mb-4">Jóvenes que ni estudian ni trabajan - segmento en crecimiento</p>
+                <p className="text-sm font-semibold text-accent mb-2">Necesidades:</p>
+                <ul className="space-y-2 text-sm text-primary-900">
+                  <li>• Orientación vocacional efectiva</li>
+                  <li>• Formación práctica inmediata</li>
+                  <li>• Acompañamiento psicosocial</li>
+                </ul>
+              </Card>
+              
+              <Card className="p-8 bg-sand/30 border-primary-200">
+                <div className="text-4xl mb-4">👴</div>
+                <h4 className="text-xl font-bold text-primary-700 mb-4">Silver Economy</h4>
+                <p className="text-base text-primary-900 mb-4">Población mayor de 60 años - segmento ignorado y en expansión</p>
+                <p className="text-sm font-semibold text-accent mb-2">Necesidades:</p>
+                <ul className="space-y-2 text-sm text-primary-900">
+                  <li>• Aprendizaje continuo</li>
+                  <li>• Actualización tecnológica</li>
+                  <li>• Propósito post-jubilación</li>
+                </ul>
+              </Card>
+              
+              <Card className="p-8 bg-sand/30 border-primary-200">
+                <div className="text-4xl mb-4">📱</div>
+                <h4 className="text-xl font-bold text-primary-700 mb-4">Creadores de Contenido</h4>
+                <p className="text-base text-primary-900 mb-4">OnlyFans, YouTubers, TikTokers - nueva economía creativa</p>
+                <p className="text-sm font-semibold text-accent mb-2">Necesidades:</p>
+                <ul className="space-y-2 text-sm text-primary-900">
+                  <li>• Formación en business</li>
+                  <li>• Manejo tributario</li>
+                  <li>• Branding personal</li>
+                  <li>• Diversificación de ingresos</li>
+                </ul>
+              </Card>
+            </div>
+            
+            <Card className="p-10 bg-gradient-to-br from-accent/10 to-white border-2 border-accent/30">
+              <h3 className="text-2xl font-bold text-primary-700 mb-6 text-center">
+                Las Cuatro Necesidades Críticas de los Jóvenes Colombianos
+              </h3>
+              <p className="text-center text-sm text-primary-900 mb-8 italic">Investigación profunda de Educación Estrella</p>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl">🔍</span>
+                  <div>
+                    <h4 className="font-bold text-primary-700 mb-2">"No sé qué estudiar"</h4>
+                    <p className="text-primary-900">Falta crítica de orientación vocacional real</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl">💰</span>
+                  <div>
+                    <h4 className="font-bold text-primary-700 mb-2">"No tengo el dinero suficiente"</h4>
+                    <p className="text-primary-900">Barreras económicas estructurales</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl">🤔</span>
+                  <div>
+                    <h4 className="font-bold text-primary-700 mb-2">"No sé si es el camino correcto"</h4>
+                    <p className="text-primary-900">Incertidumbre paralizante sobre el futuro</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl">😔</span>
+                  <div>
+                    <h4 className="font-bold text-primary-700 mb-2">"Me siento solo"</h4>
+                    <p className="text-primary-900">Necesidad fundamental de acompañamiento y comunidad</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </Section>
@@ -431,9 +727,76 @@ const Panorama = () => {
               El Cambio de Discurso
             </h2>
             <div className="w-32 h-1 bg-white mx-auto mb-8 rounded-full"></div>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              De "Enseñamos X" a "Usamos Datos e IA para Transformar Vidas"
+            </p>
           </div>
-          <div className="prose prose-lg prose-invert max-w-5xl mx-auto text-white/90">
-            <CopySlot file="panorama.mdx" />
+          
+          <div className="max-w-5xl mx-auto">
+            <Card className="p-10 bg-white/10 backdrop-blur-sm border-white/20 mb-12">
+              <h3 className="text-2xl font-bold text-white mb-6">El Nuevo Posicionamiento de EdTechs Exitosas</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl">📊</span>
+                  <div>
+                    <h4 className="font-bold text-white mb-2">Personalización Real</h4>
+                    <p className="text-white/90">Basada en datos de comportamiento de aprendizaje</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl">✅</span>
+                  <div>
+                    <h4 className="font-bold text-white mb-2">Evaluación Continua</h4>
+                    <p className="text-white/90">No punitiva sino orientadora y formativa</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl">📈</span>
+                  <div>
+                    <h4 className="font-bold text-white mb-2">Reportes en Tiempo Real</h4>
+                    <p className="text-white/90">Para estudiantes, docentes y empleadores</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl">🤖</span>
+                  <div>
+                    <h4 className="font-bold text-white mb-2">IA como Co-piloto</h4>
+                    <p className="text-white/90">Augmentando capacidades humanas</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+            
+            <Card className="p-10 bg-white/10 backdrop-blur-sm border-white/20">
+              <h3 className="text-2xl font-bold text-white mb-6">La Descentralización de Títulos y Credenciales</h3>
+              <p className="text-lg text-white/90 mb-6">
+                El monopolio universitario del credencialismo está terminando:
+              </p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="bg-white/10 p-4 rounded-lg">
+                  <h4 className="font-bold text-white mb-2">🏅 Badges Digitales</h4>
+                  <p className="text-sm text-white/90">Con evidencia de competencias específicas</p>
+                </div>
+                
+                <div className="bg-white/10 p-4 rounded-lg">
+                  <h4 className="font-bold text-white mb-2">📜 Microcredenciales</h4>
+                  <p className="text-sm text-white/90">Apilables y reconocidas por industria</p>
+                </div>
+                
+                <div className="bg-white/10 p-4 rounded-lg">
+                  <h4 className="font-bold text-white mb-2">💼 Portfolios de Competencias</h4>
+                  <p className="text-sm text-white/90">Verificables en tiempo real</p>
+                </div>
+                
+                <div className="bg-white/10 p-4 rounded-lg">
+                  <h4 className="font-bold text-white mb-2">⛓️ Blockchain</h4>
+                  <p className="text-sm text-white/90">Certificación inmutable y global</p>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </Section>
@@ -443,12 +806,62 @@ const Panorama = () => {
         <div className="container max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
-              Financiamiento
+              Financiamiento: Blended Finance
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+            <p className="text-xl text-primary-900 max-w-3xl mx-auto">
+              Nueva puerta de entrada al sector público
+            </p>
           </div>
-          <div className="prose prose-lg max-w-5xl mx-auto">
-            <CopySlot file="panorama.mdx" />
+          
+          <div className="max-w-5xl mx-auto">
+            <p className="text-lg text-primary-900 mb-12 text-center leading-relaxed">
+              El modelo de <strong className="text-primary-700">financiamiento mixto</strong> (blended finance) se consolida como estrategia exitosa para EdTechs que quieren trabajar con gobiernos
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <Card className="p-8 text-center bg-white border-2 border-primary-200">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-700 flex items-center justify-center">
+                  <span className="text-3xl">1</span>
+                </div>
+                <h3 className="text-xl font-bold text-primary-700 mb-4">Donantes + Gobiernos</h3>
+                <p className="text-primary-900">Reducir riesgo inicial y probar concepto</p>
+              </Card>
+              
+              <Card className="p-8 text-center bg-white border-2 border-primary-200">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent flex items-center justify-center">
+                  <span className="text-3xl">2</span>
+                </div>
+                <h3 className="text-xl font-bold text-primary-700 mb-4">Pilotos Medibles</h3>
+                <p className="text-primary-900">Demostrar impacto con datos duros</p>
+              </Card>
+              
+              <Card className="p-8 text-center bg-white border-2 border-primary-200">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-700 flex items-center justify-center">
+                  <span className="text-3xl">3</span>
+                </div>
+                <h3 className="text-xl font-bold text-primary-700 mb-4">Escalamiento Contractual</h3>
+                <p className="text-primary-900">Crecimiento sostenible con contratación pública</p>
+              </Card>
+            </div>
+            
+            <Card className="p-10 bg-gradient-to-br from-primary-700 to-primary-900 text-white">
+              <h3 className="text-2xl font-bold mb-6 text-center">Beneficios del Modelo</h3>
+              <ul className="space-y-4 text-lg">
+                <li className="flex items-start gap-3">
+                  <span className="text-accent text-2xl">✓</span>
+                  <span>Entrar al sector público sin procesos de licitación tradicionales</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-accent text-2xl">✓</span>
+                  <span>Demostrar valor antes de compromiso total del gobierno</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-accent text-2xl">✓</span>
+                  <span>Escalar con evidencia sólida de impacto</span>
+                </li>
+              </ul>
+            </Card>
           </div>
         </div>
       </Section>
@@ -461,22 +874,139 @@ const Panorama = () => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(11,71,206,0.15),transparent_70%)]"></div>
         </div>
         
-        <div className="container max-w-7xl mx-auto text-center relative z-10">
-          <div className="mb-16">
+        <div className="container max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
               El Futuro es Ahora
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-12 rounded-full"></div>
           </div>
-          <div className="prose prose-lg prose-invert max-w-5xl mx-auto text-white/90 mb-12">
-            <CopySlot file="panorama.mdx" />
+          
+          <div className="max-w-5xl mx-auto mb-12">
+            <Card className="p-10 bg-white/10 backdrop-blur-sm border-white/20 mb-12">
+              <h3 className="text-2xl font-bold text-white mb-8 text-center">Los Cinco Principios de la Neoeducación</h3>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold">1</span>
+                  </div>
+                  <p className="text-lg text-white/90 pt-1">
+                    <strong className="text-white">La evaluación va primero</strong>, y es subjetiva y adaptada a cada persona
+                  </p>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold">2</span>
+                  </div>
+                  <p className="text-lg text-white/90 pt-1">
+                    El <strong className="text-white">método ya no es lineal</strong> → Es experimental, iterativo y adaptativo
+                  </p>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold">3</span>
+                  </div>
+                  <p className="text-lg text-white/90 pt-1">
+                    <strong className="text-white">Habilidades blandas = Power Skills</strong> - son competencias críticas, no complementarias
+                  </p>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold">4</span>
+                  </div>
+                  <p className="text-lg text-white/90 pt-1">
+                    Todos tendremos un <strong className="text-white">GPT "segundo cerebro"</strong> - la IA será extensión cognitiva
+                  </p>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold">5</span>
+                  </div>
+                  <p className="text-lg text-white/90 pt-1">
+                    Los <strong className="text-white">títulos están descentralizados</strong> - valor en competencias demostrables, no en diplomas
+                  </p>
+                </div>
+              </div>
+            </Card>
+            
+            <Card className="p-10 bg-accent/20 backdrop-blur-sm border-accent/40 mb-12">
+              <h3 className="text-2xl font-bold text-white mb-6 text-center">La Nueva Ecuación del Empleo</h3>
+              
+              <div className="mb-8">
+                <p className="text-white/90 mb-4 text-center">❌ El modelo viejo (que ya no funciona):</p>
+                <div className="bg-white/10 p-6 rounded-lg">
+                  <p className="text-lg text-white text-center font-mono">
+                    Estudiamos → Nos graduamos → Buscamos empleo → <span className="text-red-300">Fracaso/Frustración</span>
+                  </p>
+                </div>
+              </div>
+              
+              <div>
+                <p className="text-white/90 mb-4 text-center">✅ El nuevo modelo (que está emergiendo):</p>
+                <div className="bg-white/10 p-6 rounded-lg">
+                  <p className="text-lg text-white mb-4 font-mono">
+                    Ingresamos a la educación → <strong>Nos enfrentamos al mercado MIENTRAS estudiamos</strong> →
+                  </p>
+                  <p className="text-lg text-white mb-4 font-mono">
+                    Nos graduamos con experiencia → <span className="text-green-300">Empleabilidad aumentada por:</span>
+                  </p>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex items-center gap-2">
+                      <span className="text-green-300">✓</span> Modelos mentales empresariales
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-green-300">✓</span> Power Skills probadas
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-green-300">✓</span> Business Acumen desarrollado
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-green-300">✓</span> Capacidades digitales avanzadas
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
+            
+            <div className="text-center">
+              <Card className="p-10 bg-white/10 backdrop-blur-sm border-white/20 mb-8">
+                <h3 className="text-3xl font-bold text-white mb-6">"Las soluciones ya existen - ahora necesitamos unidad y escala"</h3>
+                <p className="text-xl text-white/90 mb-6">
+                  No podemos esperar que los gobiernos cambien las lógicas de la educación desde arriba. Con un mercado de <strong className="text-accent">$10 trillones USD</strong> para 2030, el sector privado, las organizaciones sin fines de lucro, y las alianzas público-privadas están <strong className="text-accent">transformando la educación HOY</strong>.
+                </p>
+                
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-white/10 p-6 rounded-lg">
+                    <p className="text-lg text-white">⚡ El conocimiento se duplica cada <strong>2 años</strong></p>
+                  </div>
+                  <div className="bg-white/10 p-6 rounded-lg">
+                    <p className="text-lg text-white">⚡ 50% de habilidades obsoletas en <strong>5 años</strong></p>
+                  </div>
+                  <div className="bg-white/10 p-6 rounded-lg">
+                    <p className="text-lg text-white">⚡ La brecha educación-empleo <strong>se amplía</strong> cada día</p>
+                  </div>
+                  <div className="bg-white/10 p-6 rounded-lg">
+                    <p className="text-lg text-white">⚡ Los estudiantes ya buscan <strong>alternativas</strong></p>
+                  </div>
+                </div>
+                
+                <p className="text-2xl font-bold text-accent mb-8">
+                  El futuro de la educación no es una promesa lejana. El futuro es ahora.
+                </p>
+              </Card>
+              
+              <Button size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold px-10 py-6 rounded-xl shadow-2xl hover:shadow-accent/40 transition-all duration-500 hover:scale-110 text-lg" asChild>
+                <Link to="/asociados" className="flex items-center space-x-3">
+                  <span>Sé Parte del Cambio</span>
+                  <ArrowRight className="w-6 h-6" />
+                </Link>
+              </Button>
+            </div>
           </div>
-          <Button size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold px-10 py-6 rounded-xl shadow-2xl hover:shadow-accent/40 transition-all duration-500 hover:scale-110 text-lg" asChild>
-            <Link to="/asociados" className="flex items-center space-x-3">
-              <span>Sé Parte del Cambio</span>
-              <ArrowRight className="w-6 h-6" />
-            </Link>
-          </Button>
         </div>
       </Section>
 
