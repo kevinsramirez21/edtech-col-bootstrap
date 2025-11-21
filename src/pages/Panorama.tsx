@@ -121,28 +121,28 @@ const Panorama = () => {
             <h3 className="text-2xl font-bold mb-8 text-primary-700 text-center">Aceleración del Conocimiento</h3>
             <div className="space-y-6">
               <div className="flex items-center gap-6">
-                <Badge variant="outline" className="min-w-[100px] text-lg py-2 border-2 border-primary-700">1900</Badge>
+                <Badge variant="outline" className="min-w-[100px] text-center text-lg py-2 border-2 border-primary-700">1900</Badge>
                 <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
                   <div className="h-4 bg-primary-900 rounded-full transition-all duration-1000" style={{ width: '10%' }}></div>
                 </div>
                 <span className="text-base text-primary-900 font-medium min-w-[200px]">Cada siglo</span>
               </div>
               <div className="flex items-center gap-6">
-                <Badge variant="outline" className="min-w-[100px] text-lg py-2 border-2 border-primary-700">1945</Badge>
+                <Badge variant="outline" className="min-w-[100px] text-center text-lg py-2 border-2 border-primary-700">1945</Badge>
                 <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
                   <div className="h-4 bg-primary-700 rounded-full transition-all duration-1000" style={{ width: '30%' }}></div>
                 </div>
                 <span className="text-base text-primary-900 font-medium min-w-[200px]">Cada 25 años</span>
               </div>
               <div className="flex items-center gap-6">
-                <Badge variant="outline" className="min-w-[100px] text-lg py-2 border-2 border-accent">1982</Badge>
+                <Badge variant="outline" className="min-w-[100px] text-center text-lg py-2 border-2 border-accent">1982</Badge>
                 <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
                   <div className="h-4 bg-accent rounded-full transition-all duration-1000" style={{ width: '60%' }}></div>
                 </div>
                 <span className="text-base text-primary-900 font-medium min-w-[200px]">Cada 8 años</span>
               </div>
               <div className="flex items-center gap-6">
-                <Badge variant="outline" className="min-w-[100px] text-lg py-2 border-2 border-accent">2025</Badge>
+                <Badge variant="outline" className="min-w-[100px] text-center text-lg py-2 border-2 border-accent">2025</Badge>
                 <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
                   <div className="h-4 bg-accent rounded-full transition-all duration-1000" style={{ width: '100%' }}></div>
                 </div>
