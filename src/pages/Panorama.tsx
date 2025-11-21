@@ -1010,7 +1010,7 @@ const Panorama = () => {
               <Card className="p-10 bg-white/10 backdrop-blur-sm border-white/20 mb-8">
                 <h3 className="text-3xl font-bold text-white mb-6">"Las soluciones ya existen - ahora necesitamos unidad y escala"</h3>
                 <p className="text-xl text-white/90 mb-6">
-                  No podemos esperar que los gobiernos cambien las lógicas de la educación desde arriba. Con un mercado de <strong className="text-accent-brand drop-shadow-lg">$10 trillones USD</strong> para 2030, el sector privado, las organizaciones sin fines de lucro, y las alianzas público-privadas están <strong className="text-accent-brand drop-shadow-lg">transformando la educación HOY</strong>.
+                  No podemos esperar que los gobiernos cambien las lógicas de la educación desde arriba. Con un mercado de <strong className="text-white">$10 trillones USD</strong> para 2030, el sector privado, las organizaciones sin fines de lucro, y las alianzas público-privadas están <strong className="text-white">transformando la educación HOY</strong>.
                 </p>
                 
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -1028,7 +1028,7 @@ const Panorama = () => {
                   </div>
                 </div>
                 
-                <p className="text-2xl font-bold text-accent-brand drop-shadow-lg mb-8">
+                <p className="text-2xl font-bold text-white mb-8">
                   El futuro de la educación no es una promesa lejana. El futuro es ahora.
                 </p>
               </Card>
