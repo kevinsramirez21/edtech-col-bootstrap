@@ -1,5 +1,6 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
+import { LucideIcon } from "lucide-react"
 
 interface KPIProps {
   value: string | number
@@ -7,6 +8,7 @@ interface KPIProps {
   description?: string
   variant?: 'default' | 'accent' | 'sand'
   size?: 'sm' | 'md' | 'lg'
+  icon?: LucideIcon
   className?: string
 }
 
@@ -16,6 +18,7 @@ export function KPI({
   description, 
   variant = 'default',
   size = 'md',
+  icon: Icon,
   className 
 }: KPIProps) {
   return (
@@ -25,6 +28,11 @@ export function KPI({
       variant === 'sand' && "bg-sand",
       className
     )}>
+      {Icon && (
+        <div className="flex justify-center mb-3">
+          <Icon className="w-8 h-8" style={{ color: variant === 'accent' ? 'var(--color-accent)' : 'var(--color-primary-900)' }} />
+        </div>
+      )}
       <div 
         className="value"
         style={{ 
