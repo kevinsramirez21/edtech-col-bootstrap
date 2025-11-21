@@ -251,7 +251,7 @@ const Panorama = () => {
           
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
-              <Sparkles className="w-16 h-16 text-accent mb-6 mx-auto" />
+              <Sparkles className="w-16 h-16 text-accent-brand mb-6 mx-auto drop-shadow-lg" />
               <h3 className="text-2xl font-bold mb-6 text-white">Apuestas Pedagógicas</h3>
               <ul className="space-y-3 text-base text-white/90 text-left">
                 <li>• Evaluación primero y subjetiva</li>
@@ -261,7 +261,7 @@ const Panorama = () => {
             </Card>
             
             <Card className="p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
-              <GraduationCap className="w-16 h-16 text-accent mb-6 mx-auto" />
+              <GraduationCap className="w-16 h-16 text-accent-brand mb-6 mx-auto drop-shadow-lg" />
               <h3 className="text-2xl font-bold mb-6 text-white">Experiencia 360</h3>
               <ul className="space-y-3 text-base text-white/90 text-left">
                 <li>• Tech-enabled (habilitador, no reemplazo)</li>
@@ -271,7 +271,7 @@ const Panorama = () => {
             </Card>
             
             <Card className="p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
-              <Target className="w-16 h-16 text-accent mb-6 mx-auto" />
+              <Target className="w-16 h-16 text-accent-brand mb-6 mx-auto drop-shadow-lg" />
               <h3 className="text-2xl font-bold mb-6 text-white">Tesis de Industria</h3>
               <ul className="space-y-3 text-base text-white/90 text-left">
                 <li>• Nicho Técnico (Platzi)</li>
