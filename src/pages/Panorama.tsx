@@ -1,923 +1,532 @@
-import { Section, SectionHeader } from "@/components/ui/section";
+import { Section } from "@/components/ui/section";
 import { CopySlot } from "@/components/content/copy-slot";
-import { Breadcrumbs } from "@/components/ui/breadcrumbs";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { KPI } from "@/components/ui/kpi";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { TrendingUp, TrendingDown, Users, Brain, Briefcase, GraduationCap, Sparkles, Globe, Target, DollarSign } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { 
+  TrendingUp, 
+  Users, 
+  GraduationCap, 
+  Briefcase, 
+  Globe, 
+  DollarSign,
+  Target,
+  Lightbulb,
+  Brain,
+  Rocket,
+  BookOpen,
+  Award,
+  BarChart3,
+  ArrowRight,
+  TrendingDown,
+  Sparkles
+} from "lucide-react";
+import { Helmet } from "react-helmet-async";
+import { generatePageMeta } from "@/lib/seo";
 
 const Panorama = () => {
+  const meta = generatePageMeta({
+    title: "Panorama del Futuro de la Educación",
+    description: "Explorando las tendencias, desafíos y oportunidades que están redefiniendo el aprendizaje en el siglo XXI"
+  });
+
   return (
     <>
-      <Section className="py-8 bg-sand">
-        <Breadcrumbs 
-          items={[
-            { label: "Mundo EdTech", href: "/mundo-edtech" },
-            { label: "Panorama" }
-          ]} 
-        />
-      </Section>
-      
-      {/* Hero Intro */}
-      <Section className="py-16 bg-gradient-to-b from-sand to-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <CopySlot file="panorama.mdx" />
+      <Helmet>
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <meta property="og:title" content={meta.ogTitle} />
+        <meta property="og:description" content={meta.ogDescription} />
+      </Helmet>
+
+      {/* Hero Section */}
+      <Section className="py-24 md:py-32 lg:py-40 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden min-h-[70vh] flex items-center">
+        {/* Background Effects */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-accent-brand rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-sand rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container mx-auto relative z-10">
+          <div className="text-center max-w-5xl mx-auto animate-fade-in">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-tight drop-shadow-2xl">
+              Panorama del Futuro de la Educación
+            </h1>
+            <p className="text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto text-white/90 leading-relaxed mb-12 font-medium">
+              Explorando las tendencias, desafíos y oportunidades que están redefiniendo 
+              el aprendizaje en el siglo XXI
+            </p>
+            <Button size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold px-10 py-6 rounded-xl shadow-2xl hover:shadow-accent/40 transition-all duration-500 hover:scale-110 text-lg" asChild>
+              <Link to="/asociados" className="flex items-center space-x-3">
+                <span>Únete a la Transformación</span>
+                <ArrowRight className="w-6 h-6" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </Section>
 
       {/* Contexto Global */}
-      <Section className="py-16">
-        <SectionHeader
-          title="El Contexto Global"
-          subtitle="Transformación sin precedentes"
-          centered
-        />
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <KPI
-            value="2 años"
-            label="Duplicación del Conocimiento"
-            description="El conocimiento ahora se duplica cada 2 años"
-            variant="accent"
-            icon={Brain}
-          />
-          <KPI
-            value="$10T"
-            label="Mercado Global 2030"
-            description="Gasto global en educación"
-            variant="default"
-            icon={DollarSign}
-          />
-          <KPI
-            value="50%"
-            label="Habilidades Obsoletas"
-            description="En menos de 5 años (WEF)"
-            variant="sand"
-            icon={TrendingDown}
-          />
-          <KPI
-            value="73%"
-            label="Operación Global"
-            description="EdTechs colombianas en 2-10 países"
-            variant="accent"
-            icon={Globe}
-          />
-        </div>
+      <Section className="py-20 bg-sand">
+        <div className="container max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+              Contexto Global
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+          </div>
 
-        <div className="prose max-w-4xl mx-auto mb-16">
-          <CopySlot file="panorama.mdx" />
-        </div>
+          {/* KPIs principales */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
+                <Brain className="w-10 h-10 text-white" />
+              </div>
+              <div className="text-5xl font-bold mb-4 text-accent">2 años</div>
+              <div className="text-lg font-semibold mb-2 text-primary-700">Duplicación del Conocimiento</div>
+              <div className="text-sm text-primary-900">El conocimiento se duplica ahora</div>
+            </Card>
+            
+            <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-700 flex items-center justify-center">
+                <DollarSign className="w-10 h-10 text-white" />
+              </div>
+              <div className="text-5xl font-bold mb-4 text-primary-700">$10T</div>
+              <div className="text-lg font-semibold mb-2 text-primary-700">Mercado Global 2030</div>
+              <div className="text-sm text-primary-900">Gasto global en educación</div>
+            </Card>
+            
+            <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
+                <TrendingDown className="w-10 h-10 text-white" />
+              </div>
+              <div className="text-5xl font-bold mb-4 text-accent">50%</div>
+              <div className="text-lg font-semibold mb-2 text-primary-700">Habilidades Obsoletas</div>
+              <div className="text-sm text-primary-900">En menos de 5 años (WEF)</div>
+            </Card>
+            
+            <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-700 flex items-center justify-center">
+                <Globe className="w-10 h-10 text-white" />
+              </div>
+              <div className="text-5xl font-bold mb-4 text-primary-700">73%</div>
+              <div className="text-lg font-semibold mb-2 text-primary-700">Operación Global</div>
+              <div className="text-sm text-primary-900">EdTechs colombianas en 2-10 países</div>
+            </Card>
+          </div>
 
-        {/* Línea del Tiempo de Aceleración */}
-        <Card className="mb-16">
-          <CardHeader>
-            <h3 className="text-2xl font-bold text-gray-900">Aceleración del Conocimiento</h3>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <Badge variant="outline" className="min-w-[80px]">1900</Badge>
-                <div className="flex-1 h-2 bg-gray-200 rounded-full">
-                  <div className="h-2 bg-primary-900 rounded-full" style={{ width: '10%' }}></div>
+          {/* Timeline de aceleración */}
+          <Card className="p-10 bg-white border-0 shadow-xl">
+            <h3 className="text-2xl font-bold mb-8 text-primary-700 text-center">Aceleración del Conocimiento</h3>
+            <div className="space-y-6">
+              <div className="flex items-center gap-6">
+                <Badge variant="outline" className="min-w-[100px] text-lg py-2 border-2 border-primary-700">1900</Badge>
+                <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-4 bg-primary-900 rounded-full transition-all duration-1000" style={{ width: '10%' }}></div>
                 </div>
-                <span className="text-sm text-gray-600 min-w-[200px]">Cada siglo</span>
+                <span className="text-base text-primary-900 font-medium min-w-[200px]">Cada siglo</span>
               </div>
-              <div className="flex items-center gap-4">
-                <Badge variant="outline" className="min-w-[80px]">1945</Badge>
-                <div className="flex-1 h-2 bg-gray-200 rounded-full">
-                  <div className="h-2 bg-primary-700 rounded-full" style={{ width: '30%' }}></div>
+              <div className="flex items-center gap-6">
+                <Badge variant="outline" className="min-w-[100px] text-lg py-2 border-2 border-primary-700">1945</Badge>
+                <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-4 bg-primary-700 rounded-full transition-all duration-1000" style={{ width: '30%' }}></div>
                 </div>
-                <span className="text-sm text-gray-600 min-w-[200px]">Cada 25 años (Computadora)</span>
+                <span className="text-base text-primary-900 font-medium min-w-[200px]">Cada 25 años</span>
               </div>
-              <div className="flex items-center gap-4">
-                <Badge variant="outline" className="min-w-[80px]">1982</Badge>
-                <div className="flex-1 h-2 bg-gray-200 rounded-full">
-                  <div className="h-2 bg-accent-brand rounded-full" style={{ width: '60%' }}></div>
+              <div className="flex items-center gap-6">
+                <Badge variant="outline" className="min-w-[100px] text-lg py-2 border-2 border-accent">1982</Badge>
+                <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-4 bg-accent rounded-full transition-all duration-1000" style={{ width: '60%' }}></div>
                 </div>
-                <span className="text-sm text-gray-600 min-w-[200px]">Cada 8 años (Internet)</span>
+                <span className="text-base text-primary-900 font-medium min-w-[200px]">Cada 8 años</span>
               </div>
-              <div className="flex items-center gap-4">
-                <Badge variant="outline" className="min-w-[80px]">2025</Badge>
-                <div className="flex-1 h-2 bg-gray-200 rounded-full">
-                  <div className="h-2 bg-[#F73C5C] rounded-full" style={{ width: '100%' }}></div>
+              <div className="flex items-center gap-6">
+                <Badge variant="outline" className="min-w-[100px] text-lg py-2 border-2 border-accent">2025</Badge>
+                <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-4 bg-accent rounded-full transition-all duration-1000" style={{ width: '100%' }}></div>
                 </div>
-                <span className="text-sm text-gray-600 min-w-[200px]">Cada 2 años (IA y Cuántica)</span>
+                <span className="text-base text-primary-900 font-medium min-w-[200px]">Cada 2 años</span>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </Card>
+        </div>
       </Section>
 
       {/* Tendencias Clave */}
-      <Section className="py-16 bg-sand">
-        <SectionHeader
-          title="Tendencias Clave en EdTech"
-          subtitle="Evolución de modelos de negocio"
-          centered
-        />
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <Card>
-            <CardContent className="pt-6 text-center">
-              <div className="text-4xl font-bold text-[#F73C5C] mb-2">+59%</div>
-              <div className="text-lg font-semibold mb-1">Gamificación</div>
-              <div className="text-sm text-gray-600">10.24% → 16.32%</div>
-              <TrendingUp className="w-6 h-6 text-green-600 mx-auto mt-2" />
-            </CardContent>
-          </Card>
+      <Section className="py-20 bg-white">
+        <div className="container max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+              Tendencias Clave en EdTech
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+          </div>
           
-          <Card>
-            <CardContent className="pt-6 text-center">
-              <div className="text-4xl font-bold text-[#F73C5C] mb-2">+58%</div>
-              <div className="text-lg font-semibold mb-1">Tutores Inteligentes</div>
-              <div className="text-sm text-gray-600">7.0% → 11.05%</div>
-              <TrendingUp className="w-6 h-6 text-green-600 mx-auto mt-2" />
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardContent className="pt-6 text-center">
-              <div className="text-4xl font-bold text-[#F73C5C] mb-2">+39%</div>
-              <div className="text-lg font-semibold mb-1">Personalización</div>
-              <div className="text-sm text-gray-600">18.9% → 26.32%</div>
-              <TrendingUp className="w-6 h-6 text-green-600 mx-auto mt-2" />
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardContent className="pt-6 text-center">
-              <div className="text-4xl font-bold text-[#F73C5C] mb-2">+4%</div>
-              <div className="text-lg font-semibold mb-1">Aprendizaje Colaborativo</div>
-              <div className="text-sm text-gray-600">15.75% → 16.32%</div>
-              <TrendingUp className="w-6 h-6 text-green-600 mx-auto mt-2" />
-            </CardContent>
-          </Card>
-        </div>
+          {/* Crecimiento de modelos */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <Card className="p-8 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="text-5xl font-bold text-accent mb-3">+59%</div>
+              <div className="text-xl font-semibold mb-2 text-primary-700">Gamificación</div>
+              <div className="text-sm text-primary-900 mb-4">10.24% → 16.32%</div>
+              <TrendingUp className="w-8 h-8 text-green-600 mx-auto" />
+            </Card>
+            
+            <Card className="p-8 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="text-5xl font-bold text-accent mb-3">+58%</div>
+              <div className="text-xl font-semibold mb-2 text-primary-700">Tutores Inteligentes</div>
+              <div className="text-sm text-primary-900 mb-4">7.0% → 11.05%</div>
+              <TrendingUp className="w-8 h-8 text-green-600 mx-auto" />
+            </Card>
+            
+            <Card className="p-8 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="text-5xl font-bold text-accent mb-3">+39%</div>
+              <div className="text-xl font-semibold mb-2 text-primary-700">Personalización</div>
+              <div className="text-sm text-primary-900 mb-4">18.9% → 26.32%</div>
+              <TrendingUp className="w-8 h-8 text-green-600 mx-auto" />
+            </Card>
+            
+            <Card className="p-8 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="text-5xl font-bold text-accent mb-3">+4%</div>
+              <div className="text-xl font-semibold mb-2 text-primary-700">Aprendizaje Colaborativo</div>
+              <div className="text-sm text-primary-900 mb-4">15.75% → 16.32%</div>
+              <TrendingUp className="w-8 h-8 text-green-600 mx-auto" />
+            </Card>
+          </div>
 
-        {/* Los 5 Clusters */}
-        <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Los Cinco Clusters del Ecosistema EdTech</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Global Giants</h4>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 text-sm mb-2">Pearson, Google</p>
-              <p className="text-gray-700">Gigantes con productos gratuitos y alianzas industriales</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Regional Rising</h4>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 text-sm mb-2">Platzi, Comfandi</p>
-              <p className="text-gray-700">Colaboración regional y credencialización</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Education-as-Usual</h4>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 text-sm mb-2">Universidad tradicional</p>
-              <p className="text-gray-700">Universidad pública tradicional y MOOCs</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Peer to Peer</h4>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 text-sm mb-2">OER, Blockchain</p>
-              <p className="text-gray-700">Aprendizaje entre pares descentralizado</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Robo Revolution</h4>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 text-sm mb-2">IA, Smart Classrooms</p>
-              <p className="text-gray-700">Personalización masiva mediante IA</p>
-            </CardContent>
-          </Card>
+          {/* Los 5 Clusters */}
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-primary-700">Los Cinco Clusters del Ecosistema EdTech</h3>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <h4 className="text-xl font-bold mb-4 text-primary-700">Global Giants</h4>
+              <p className="text-sm text-accent mb-3 font-semibold">Pearson, Google</p>
+              <p className="text-base text-primary-900 leading-relaxed">Gigantes con productos gratuitos y alianzas industriales</p>
+            </Card>
+            
+            <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <h4 className="text-xl font-bold mb-4 text-primary-700">Regional Rising</h4>
+              <p className="text-sm text-accent mb-3 font-semibold">Platzi, Comfandi</p>
+              <p className="text-base text-primary-900 leading-relaxed">Colaboración regional y credencialización</p>
+            </Card>
+            
+            <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <h4 className="text-xl font-bold mb-4 text-primary-700">Education-as-Usual</h4>
+              <p className="text-sm text-accent mb-3 font-semibold">Universidad tradicional</p>
+              <p className="text-base text-primary-900 leading-relaxed">Universidad pública tradicional y MOOCs</p>
+            </Card>
+            
+            <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <h4 className="text-xl font-bold mb-4 text-primary-700">Peer to Peer</h4>
+              <p className="text-sm text-accent mb-3 font-semibold">OER, Blockchain</p>
+              <p className="text-base text-primary-900 leading-relaxed">Aprendizaje entre pares descentralizado</p>
+            </Card>
+            
+            <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <h4 className="text-xl font-bold mb-4 text-primary-700">Robo Revolution</h4>
+              <p className="text-sm text-accent mb-3 font-semibold">IA, Smart Classrooms</p>
+              <p className="text-base text-primary-900 leading-relaxed">Personalización masiva mediante IA</p>
+            </Card>
+          </div>
         </div>
       </Section>
 
       {/* Neoeducación */}
-      <Section className="py-16">
-        <SectionHeader
-          title="La Nueva Educación: Neoeducación"
-          subtitle="Un cambio paradigmático"
-          centered
-        />
-        
-        <div className="max-w-4xl mx-auto mb-12">
-          <CopySlot file="panorama.mdx" />
+      <Section className="py-20 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(247,60,92,0.1),transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(11,71,206,0.15),transparent_70%)]"></div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card>
-            <CardHeader>
-              <Sparkles className="w-8 h-8 text-[#F73C5C] mb-2" />
-              <h4 className="text-lg font-semibold">Apuestas Pedagógicas</h4>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-gray-700">
+        
+        <div className="container max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+              Neoeducación
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-12 rounded-full"></div>
+            <p className="text-xl md:text-2xl max-w-4xl mx-auto text-white/90">Un cambio paradigmático en la forma de aprender y enseñar</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
+              <Sparkles className="w-16 h-16 text-accent mb-6 mx-auto" />
+              <h3 className="text-2xl font-bold mb-6 text-white">Apuestas Pedagógicas</h3>
+              <ul className="space-y-3 text-base text-white/90 text-left">
                 <li>• Evaluación primero y subjetiva</li>
                 <li>• Métodos experimentales y adaptativos</li>
                 <li>• Power Skills (no habilidades blandas)</li>
               </ul>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <GraduationCap className="w-8 h-8 text-[#F73C5C] mb-2" />
-              <h4 className="text-lg font-semibold">Experiencia 360</h4>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-gray-700">
+            </Card>
+            
+            <Card className="p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
+              <GraduationCap className="w-16 h-16 text-accent mb-6 mx-auto" />
+              <h3 className="text-2xl font-bold mb-6 text-white">Experiencia 360</h3>
+              <ul className="space-y-3 text-base text-white/90 text-left">
                 <li>• Tech-enabled (habilitador, no reemplazo)</li>
                 <li>• Data-oriented (decisiones basadas en datos)</li>
                 <li>• Personalización continua</li>
               </ul>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <Target className="w-8 h-8 text-[#F73C5C] mb-2" />
-              <h4 className="text-lg font-semibold">Tesis de Industria</h4>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-gray-700">
+            </Card>
+            
+            <Card className="p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
+              <Target className="w-16 h-16 text-accent mb-6 mx-auto" />
+              <h3 className="text-2xl font-bold mb-6 text-white">Tesis de Industria</h3>
+              <ul className="space-y-3 text-base text-white/90 text-left">
                 <li>• Nicho Técnico (Platzi)</li>
                 <li>• Nicho Geográfico (Mangus)</li>
                 <li>• Nicho Industrial (Revive)</li>
               </ul>
-            </CardContent>
-          </Card>
+            </Card>
+          </div>
         </div>
       </Section>
 
       {/* Mercado Laboral */}
-      <Section className="py-16 bg-sand">
-        <SectionHeader
-          title="El Mercado Laboral en Transformación"
-          subtitle="La crisis de competencias"
-          centered
-        />
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <Card className="bg-red-50 border-red-200">
-            <CardContent className="pt-6 text-center">
-              <div className="text-4xl font-bold text-red-600 mb-2">50%</div>
-              <div className="text-sm text-gray-700">Habilidades obsoletas en 5 años (WEF)</div>
-            </CardContent>
-          </Card>
+      <Section className="py-20 bg-sand">
+        <div className="container max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+              Mercado Laboral en Transformación
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+            <p className="text-xl text-primary-900 max-w-3xl mx-auto">La crisis de competencias que está transformando el mundo del trabajo</p>
+          </div>
           
-          <Card className="bg-orange-50 border-orange-200">
-            <CardContent className="pt-6 text-center">
-              <div className="text-4xl font-bold text-orange-600 mb-2">29%</div>
-              <div className="text-sm text-gray-700">Programas alineados al mercado (McKinsey)</div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-yellow-50 border-yellow-200">
-            <CardContent className="pt-6 text-center">
-              <div className="text-4xl font-bold text-yellow-700 mb-2">60%</div>
-              <div className="text-sm text-gray-700">Estudiantes buscan alternativas fuera de la U tradicional</div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-red-50 border-red-200">
-            <CardContent className="pt-6 text-center">
-              <div className="text-4xl font-bold text-red-600 mb-2">49%</div>
-              <div className="text-sm text-gray-700">Empresas sin competencias adecuadas (LinkedIn)</div>
-            </CardContent>
-          </Card>
-        </div>
+          {/* Estadísticas de crisis */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <Card className="p-8 text-center bg-red-50 border-2 border-red-200">
+              <div className="text-5xl font-bold text-red-600 mb-4">50%</div>
+              <div className="text-base text-primary-900 font-medium">Habilidades obsoletas en 5 años (WEF)</div>
+            </Card>
+            
+            <Card className="p-8 text-center bg-orange-50 border-2 border-orange-200">
+              <div className="text-5xl font-bold text-orange-600 mb-4">29%</div>
+              <div className="text-base text-primary-900 font-medium">Programas alineados al mercado (McKinsey)</div>
+            </Card>
+            
+            <Card className="p-8 text-center bg-yellow-50 border-2 border-yellow-200">
+              <div className="text-5xl font-bold text-yellow-700 mb-4">60%</div>
+              <div className="text-base text-primary-900 font-medium">Estudiantes buscan alternativas fuera de la U tradicional</div>
+            </Card>
+            
+            <Card className="p-8 text-center bg-red-50 border-2 border-red-200">
+              <div className="text-5xl font-bold text-red-600 mb-4">49%</div>
+              <div className="text-base text-primary-900 font-medium">Empresas sin competencias adecuadas (LinkedIn)</div>
+            </Card>
+          </div>
 
-        <div className="max-w-4xl mx-auto">
-          <CopySlot file="panorama.mdx" />
-        </div>
-
-        {/* Top 10 Competencias Faltantes */}
-        <Card className="mt-12">
-          <CardHeader>
-            <h3 className="text-xl font-bold text-gray-900">Top 10 Competencias Faltantes</h3>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <Badge>1</Badge>
-                  <span className="text-sm">Business Strategy</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Badge>2</Badge>
-                  <span className="text-sm">Strategic Planning</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Badge>3</Badge>
-                  <span className="text-sm">Sales Management</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Badge>4</Badge>
-                  <span className="text-sm">Project Planning</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Badge>5</Badge>
-                  <span className="text-sm">Operations Management</span>
-                </div>
+          {/* Competencias faltantes */}
+          <Card className="p-10 bg-white border-0 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold mb-8 text-primary-700 text-center">Top 10 Competencias Faltantes</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                {['Business Strategy', 'Strategic Planning', 'Sales Management', 'Project Planning', 'Operations Management'].map((skill, i) => (
+                  <div key={i} className="flex items-center gap-4">
+                    <Badge className="bg-accent text-white text-lg py-2 px-4">{i + 1}</Badge>
+                    <span className="text-base text-primary-900 font-medium">{skill}</span>
+                  </div>
+                ))}
               </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <Badge>6</Badge>
-                  <span className="text-sm">Marketing Strategy</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Badge>7</Badge>
-                  <span className="text-sm">Management</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Badge>8</Badge>
-                  <span className="text-sm">Business Development</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Badge>9</Badge>
-                  <span className="text-sm">Negotiation</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Badge>10</Badge>
-                  <span className="text-sm">Team Leadership</span>
-                </div>
+              <div className="space-y-4">
+                {['Marketing Strategy', 'Management', 'Business Development', 'Negotiation', 'Team Leadership'].map((skill, i) => (
+                  <div key={i} className="flex items-center gap-4">
+                    <Badge className="bg-accent text-white text-lg py-2 px-4">{i + 6}</Badge>
+                    <span className="text-base text-primary-900 font-medium">{skill}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </Card>
 
-        {/* Contracción por Automatización */}
-        <Card className="mt-12 bg-red-50 border-red-200">
-          <CardHeader>
-            <h3 className="text-xl font-bold text-red-900">Contracción del Mercado "White-Collar" por IA</h3>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-semibold">Banking & Finance</span>
-                <div className="flex items-center gap-2">
-                  <div className="w-48 h-3 bg-gray-200 rounded-full">
-                    <div className="h-3 bg-red-600 rounded-full" style={{ width: '94.2%' }}></div>
+          {/* Contracción por IA */}
+          <Card className="p-10 bg-red-50 border-2 border-red-200">
+            <h3 className="text-2xl font-bold mb-8 text-red-900 text-center">Contracción del Mercado "White-Collar" por IA</h3>
+            <div className="space-y-6 max-w-4xl mx-auto">
+              {[
+                { sector: 'Banking & Finance', percentage: 94.2 },
+                { sector: 'Scientific R&D', percentage: 80.1 },
+                { sector: 'Software Development', percentage: 52.5 },
+                { sector: 'Mathematics', percentage: 49.8 }
+              ].map((item, i) => (
+                <div key={i} className="flex items-center justify-between gap-6">
+                  <span className="text-base font-semibold text-primary-900 min-w-[180px]">{item.sector}</span>
+                  <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-4 bg-red-600 rounded-full" style={{ width: `${item.percentage}%` }}></div>
                   </div>
-                  <span className="text-red-600 font-bold min-w-[60px]">-94.2%</span>
+                  <span className="text-red-600 font-bold text-lg min-w-[80px] text-right">-{item.percentage}%</span>
                 </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-semibold">Scientific R&D</span>
-                <div className="flex items-center gap-2">
-                  <div className="w-48 h-3 bg-gray-200 rounded-full">
-                    <div className="h-3 bg-red-600 rounded-full" style={{ width: '80.1%' }}></div>
-                  </div>
-                  <span className="text-red-600 font-bold min-w-[60px]">-80.1%</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-semibold">Software Development</span>
-                <div className="flex items-center gap-2">
-                  <div className="w-48 h-3 bg-gray-200 rounded-full">
-                    <div className="h-3 bg-red-600 rounded-full" style={{ width: '52.5%' }}></div>
-                  </div>
-                  <span className="text-red-600 font-bold min-w-[60px]">-52.5%</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-semibold">Mathematics</span>
-                <div className="flex items-center gap-2">
-                  <div className="w-48 h-3 bg-gray-200 rounded-full">
-                    <div className="h-3 bg-red-600 rounded-full" style={{ width: '49.8%' }}></div>
-                  </div>
-                  <span className="text-red-600 font-bold min-w-[60px]">-49.8%</span>
-                </div>
-              </div>
+              ))}
             </div>
-          </CardContent>
-        </Card>
+          </Card>
+        </div>
       </Section>
 
-      {/* Cambios en K-12 */}
-      <Section className="py-16">
-        <SectionHeader
-          title="Cambios Sistémicos en K-12"
-          subtitle="Transformaciones en curso"
-          centered
-        />
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Menos colegios privados</h4>
-              <p className="text-sm text-gray-600">Mayor presión sobre calidad pública</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Aprendizajes fundamentales en riesgo</h4>
-              <p className="text-sm text-gray-600">50%+ sin competencias básicas</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Tecnología solo lo indispensable</h4>
-              <p className="text-sm text-gray-600">Con niños pequeños</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Más habilidades laborales</h4>
-              <p className="text-sm text-gray-600">Al graduarse del colegio</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Integración salud-educación</h4>
-              <p className="text-sm text-gray-600">Para decisiones pedagógicas</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Superpoderes para profesores</h4>
-              <p className="text-sm text-gray-600">Herramientas avanzadas de enseñanza</p>
-            </CardContent>
-          </Card>
+      {/* K-12 */}
+      <Section className="py-20 bg-white">
+        <div className="container max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+              Cambios en K-12
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+          </div>
+          <div className="prose prose-lg max-w-5xl mx-auto">
+            <CopySlot file="panorama.mdx" />
+          </div>
         </div>
-
-        <Card className="mt-12 bg-yellow-50 border-yellow-200">
-          <CardContent className="pt-6">
-            <p className="text-center text-gray-800">
-              <span className="font-bold text-yellow-900">Menos del 40%</span> de docentes en América Latina se siente preparado para integrar tecnología en sus prácticas pedagógicas (UNESCO)
-            </p>
-          </CardContent>
-        </Card>
       </Section>
 
       {/* Educación Superior */}
-      <Section className="py-16 bg-sand">
-        <SectionHeader
-          title="Cambios en Educación Superior"
-          subtitle="Nuevas dinámicas"
-          centered
-        />
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Hiperpersonalización</h4>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li>• Tutores virtuales</li>
-                <li>• Adaptación en tiempo real</li>
-                <li>• Rutas personalizadas de aprendizaje</li>
-              </ul>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Los Nuevos Negocios</h4>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li>• Técnicos y Lifelong Learning</li>
-                <li>• Universidades Corporativas</li>
-                <li>• Hacku, Sistel, Laboratoria</li>
-              </ul>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Operación Global</h4>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li>• Education as a Service</li>
-                <li>• Colaboración con OPMs / VC</li>
-                <li>• 73% opera en 2-10 países</li>
-              </ul>
-            </CardContent>
-          </Card>
+      <Section className="py-20 bg-primary-700 text-white">
+        <div className="container max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+              Educación Superior
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-8 rounded-full"></div>
+          </div>
+          <div className="prose prose-lg prose-invert max-w-5xl mx-auto text-white/90">
+            <CopySlot file="panorama.mdx" />
+          </div>
         </div>
       </Section>
 
       {/* ROI */}
-      <Section className="py-16">
-        <SectionHeader
-          title="Educación = ROI (o Muerte)"
-          subtitle="Customer Education: El Nuevo Paradigma"
-          centered
-        />
-        
-        <div className="text-center mb-12">
-          <div className="text-6xl font-bold text-[#F73C5C] mb-4">372%</div>
-          <p className="text-xl text-gray-700">ROI Comprobado (Forrester TEI Model, 2024)</p>
-          <p className="text-gray-600 mt-2">86% de empresas confirman rentabilidad en Customer Education</p>
+      <Section className="py-20 bg-sand">
+        <div className="container max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+              ROI en EdTech
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+          </div>
+          <div className="prose prose-lg max-w-5xl mx-auto">
+            <CopySlot file="panorama.mdx" />
+          </div>
         </div>
-
-        <Card>
-          <CardHeader>
-            <h3 className="text-xl font-bold text-gray-900 text-center">Impacto Medible de Programas de Educación al Cliente</h3>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                  <span className="font-semibold">📈 Adopción</span>
-                  <span className="text-green-600 font-bold">+38.3%</span>
-                </div>
-                <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                  <span className="font-semibold">⭐ Engagement</span>
-                  <span className="text-green-600 font-bold">+30.7%</span>
-                </div>
-                <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                  <span className="font-semibold">😊 Satisfacción</span>
-                  <span className="text-green-600 font-bold">+26.2%</span>
-                </div>
-                <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                  <span className="font-semibold">💎 LTV</span>
-                  <span className="text-green-600 font-bold">+34.6%</span>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                  <span className="font-semibold">⏱️ Ciclo de ventas</span>
-                  <span className="text-blue-600 font-bold">-8.1%</span>
-                </div>
-                <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                  <span className="font-semibold">🎫 Tickets de soporte</span>
-                  <span className="text-blue-600 font-bold">-15.5%</span>
-                </div>
-                <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                  <span className="font-semibold">💵 Costos de soporte</span>
-                  <span className="text-blue-600 font-bold">-7.2%</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
       </Section>
 
-      {/* Perspectivas Colombia */}
-      <Section className="py-16 bg-sand">
-        <SectionHeader
-          title="Perspectivas para Colombia"
-          subtitle="Oportunidades específicas"
-          centered
-        />
-        
-        <div className="max-w-4xl mx-auto mb-12">
-          <CopySlot file="panorama.mdx" />
+      {/* Colombia */}
+      <Section className="py-20 bg-white">
+        <div className="container max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+              Perspectivas para Colombia
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+          </div>
+          <div className="prose prose-lg max-w-5xl mx-auto">
+            <CopySlot file="panorama.mdx" />
+          </div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">El Agro</h4>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li>• Vacío educativo en zonas rurales</li>
-                <li>• Déficit de topógrafos para ganadería sostenible</li>
-                <li>• Competencias transversales: datos, agrotech</li>
-              </ul>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Los Ninis</h4>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li>• Jóvenes que ni estudian ni trabajan</li>
-                <li>• Necesitan orientación vocacional</li>
-                <li>• Formación práctica y acompañamiento</li>
-              </ul>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Silver Economy</h4>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li>• Población mayor de 60 años</li>
-                <li>• Aprendizaje continuo</li>
-                <li>• Actualización tecnológica</li>
-              </ul>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Creadores de Contenido</h4>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li>• YouTubers, TikTokers, OnlyFans</li>
-                <li>• Formación en business e impuestos</li>
-                <li>• Branding personal</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-
-        <Card className="bg-primary-50 border-primary-200">
-          <CardHeader>
-            <h3 className="text-xl font-bold text-primary-900 text-center">Las Tres Necesidades de los Jóvenes</h3>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="text-center p-4">
-                <div className="text-3xl mb-2">🔍</div>
-                <p className="font-semibold text-sm">"No sé qué estudiar"</p>
-                <p className="text-xs text-gray-600 mt-1">Falta de orientación vocacional</p>
-              </div>
-              <div className="text-center p-4">
-                <div className="text-3xl mb-2">💰</div>
-                <p className="font-semibold text-sm">"No tengo dinero suficiente"</p>
-                <p className="text-xs text-gray-600 mt-1">Barreras económicas</p>
-              </div>
-              <div className="text-center p-4">
-                <div className="text-3xl mb-2">🤔</div>
-                <p className="font-semibold text-sm">"No sé si es correcto"</p>
-                <p className="text-xs text-gray-600 mt-1">Incertidumbre sobre el futuro</p>
-              </div>
-              <div className="text-center p-4">
-                <div className="text-3xl mb-2">😔</div>
-                <p className="font-semibold text-sm">"Me siento solo"</p>
-                <p className="text-xs text-gray-600 mt-1">Necesidad de acompañamiento</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
       </Section>
 
-      {/* El Cambio de Discurso */}
-      <Section className="py-16">
-        <SectionHeader
-          title="El Cambio de Discurso"
-          subtitle='De "Enseñamos X" a "Usamos Datos e IA"'
-          centered
-        />
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Nuevo Posicionamiento EdTech</h4>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li>• Personalización basada en datos</li>
-                <li>• Evaluación continua y formativa</li>
-                <li>• Reportes de progreso en tiempo real</li>
-                <li>• IA como co-piloto educativo</li>
-              </ul>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <h4 className="text-lg font-semibold">Descentralización de Títulos</h4>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li>• Badges digitales</li>
-                <li>• Microcredenciales</li>
-                <li>• Portfolios de competencias</li>
-                <li>• Blockchain para certificación</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card>
-            <CardHeader>
-              <Target className="w-8 h-8 text-[#F73C5C] mb-2" />
-              <h4 className="text-lg font-semibold">Nicho Técnico</h4>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-gray-600 mb-2">Ejemplo: Platzi</p>
-              <ul className="space-y-1 text-sm text-gray-700">
-                <li>• Habilidades digitales específicas</li>
-                <li>• Rutas de aprendizaje claras</li>
-                <li>• Comunidad especializada</li>
-              </ul>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <Globe className="w-8 h-8 text-[#F73C5C] mb-2" />
-              <h4 className="text-lg font-semibold">Nicho Geográfico</h4>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-gray-600 mb-2">Ejemplo: Mangus Academy</p>
-              <ul className="space-y-1 text-sm text-gray-700">
-                <li>• Soluciones adaptadas localmente</li>
-                <li>• Contenido regionalizado</li>
-                <li>• Contexto cultural específico</li>
-              </ul>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <Briefcase className="w-8 h-8 text-[#F73C5C] mb-2" />
-              <h4 className="text-lg font-semibold">Nicho Industrial</h4>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-gray-600 mb-2">Ejemplo: Revive</p>
-              <ul className="space-y-1 text-sm text-gray-700">
-                <li>• Sectores específicos (salud, etc.)</li>
-                <li>• Formación ultraespecializada</li>
-                <li>• Propuestas para públicos concretos</li>
-              </ul>
-            </CardContent>
-          </Card>
+      {/* Cambio de Discurso */}
+      <Section className="py-20 bg-accent text-white">
+        <div className="container max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+              El Cambio de Discurso
+            </h2>
+            <div className="w-32 h-1 bg-white mx-auto mb-8 rounded-full"></div>
+          </div>
+          <div className="prose prose-lg prose-invert max-w-5xl mx-auto text-white/90">
+            <CopySlot file="panorama.mdx" />
+          </div>
         </div>
       </Section>
 
       {/* Financiamiento */}
-      <Section className="py-16 bg-sand">
-        <SectionHeader
-          title="Financiamiento: Blended Finance"
-          subtitle="Nueva puerta de entrada al sector público"
-          centered
-        />
-        
-        <Card>
-          <CardContent className="pt-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div>
-                <div className="text-4xl mb-3">💰</div>
-                <h4 className="font-semibold mb-2">Donantes + Gobiernos</h4>
-                <p className="text-sm text-gray-600">Reducir riesgo inicial</p>
-              </div>
-              <div>
-                <div className="text-4xl mb-3">📊</div>
-                <h4 className="font-semibold mb-2">Pilotos Medibles</h4>
-                <p className="text-sm text-gray-600">Demostrar impacto</p>
-              </div>
-              <div>
-                <div className="text-4xl mb-3">📈</div>
-                <h4 className="font-semibold mb-2">Escalamiento Contractual</h4>
-                <p className="text-sm text-gray-600">Crecimiento sostenible</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+      <Section className="py-20 bg-sand">
+        <div className="container max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+              Financiamiento
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+          </div>
+          <div className="prose prose-lg max-w-5xl mx-auto">
+            <CopySlot file="panorama.mdx" />
+          </div>
+        </div>
       </Section>
 
       {/* El Futuro es Ahora */}
-      <Section className="py-16 bg-gradient-to-b from-primary-900 to-primary-700 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">El Futuro es Ahora</h2>
-          
-          <div className="prose prose-invert max-w-none mb-12">
+      <Section className="py-20 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(247,60,92,0.1),transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(11,71,206,0.15),transparent_70%)]"></div>
+        </div>
+        
+        <div className="container max-w-7xl mx-auto text-center relative z-10">
+          <div className="mb-16">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+              El Futuro es Ahora
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-12 rounded-full"></div>
+          </div>
+          <div className="prose prose-lg prose-invert max-w-5xl mx-auto text-white/90 mb-12">
             <CopySlot file="panorama.mdx" />
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <Card className="bg-white/10 border-white/20">
-              <CardContent className="pt-6">
-                <h4 className="font-semibold mb-3 text-white">Principios de la Neoeducación</h4>
-                <ul className="space-y-2 text-sm text-left text-white/90">
-                  <li>• La evaluación va primero (y es subjetiva)</li>
-                  <li>• El método ya no es lineal (experimental y adaptativo)</li>
-                  <li>• Habilidades blandas = Power Skills</li>
-                  <li>• Todos tendremos un GPT "segundo cerebro"</li>
-                  <li>• Los títulos están descentralizados</li>
-                </ul>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-white/10 border-white/20">
-              <CardContent className="pt-6">
-                <h4 className="font-semibold mb-3 text-white">La Nueva Ecuación</h4>
-                <div className="text-left space-y-4 text-sm text-white/90">
-                  <div>
-                    <p className="font-semibold text-red-300">❌ Modelo Viejo:</p>
-                    <p>Estudiamos → Graduamos → Desempleo</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-green-300">✅ Modelo Nuevo:</p>
-                    <p>Estrellarse con el mercado → Graduarse con:</p>
-                    <ul className="mt-2 space-y-1 ml-4">
-                      <li>• Modelos mentales</li>
-                      <li>• Power Skills</li>
-                      <li>• Business Acumen</li>
-                      <li>• Digital Capacities</li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          <Button size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold px-10 py-6 rounded-xl shadow-2xl hover:shadow-accent/40 transition-all duration-500 hover:scale-110 text-lg" asChild>
+            <Link to="/asociados" className="flex items-center space-x-3">
+              <span>Sé Parte del Cambio</span>
+              <ArrowRight className="w-6 h-6" />
+            </Link>
+          </Button>
         </div>
       </Section>
 
       {/* Datos de Impacto */}
-      <Section className="py-16">
-        <SectionHeader
-          title="Datos de Impacto: Colombia EdTech"
-          subtitle="Nuestro ecosistema"
-          centered
-        />
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <KPI
-            value="+12M"
-            label="Personas Impactadas"
-            description="En 50+ países"
-            variant="accent"
-            icon={Users}
-          />
-          <KPI
-            value="90+"
-            label="Organizaciones EdTech"
-            description="Asociadas"
-            variant="default"
-            icon={Briefcase}
-          />
-          <KPI
-            value="45+"
-            label="Voluntarios Activos"
-            description="Transformando la educación"
-            variant="sand"
-            icon={Users}
-          />
-          <KPI
-            value="73%"
-            label="Operación Internacional"
-            description="En 2-10 países"
-            variant="accent"
-            icon={Globe}
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="bg-green-50 border-green-200">
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl mb-2">✅</div>
-              <div className="text-2xl font-bold text-green-700 mb-1">3</div>
-              <p className="text-sm text-gray-700">Buy-outs exitosos</p>
-            </CardContent>
-          </Card>
+      <Section className="py-20 bg-white">
+        <div className="container max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+              Datos de Impacto Global
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+          </div>
           
-          <Card className="bg-blue-50 border-blue-200">
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl mb-2">✅</div>
-              <div className="text-2xl font-bold text-blue-700 mb-1">2</div>
-              <p className="text-sm text-gray-700">Compras de empresas (EdTech & FoodTech)</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-orange-50 border-orange-200">
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl mb-2">📊</div>
-              <div className="text-2xl font-bold text-orange-700 mb-1">4</div>
-              <p className="text-sm text-gray-700">Fracasos documentados (aprendizajes valiosos)</p>
-            </CardContent>
-          </Card>
-        </div>
-      </Section>
-
-      {/* Conclusión */}
-      <Section className="py-16 bg-sand">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Unidad</h2>
-          <p className="text-2xl text-[#F73C5C] font-semibold mb-6">"Ya están las soluciones"</p>
-          <p className="text-lg text-gray-700 mb-8">
-            No esperemos que los gobiernos cambien las lógicas de la educación. Con un mercado de <span className="font-bold">$10 trillones</span> para 2030, el sector privado, las organizaciones sin fines de lucro, y las alianzas público-privadas están <span className="font-bold">transformando la educación HOY</span>.
-          </p>
-          <p className="text-xl font-semibold text-gray-900">
-            El futuro de la educación no es una promesa lejana. <span className="text-[#F73C5C]">El futuro es ahora.</span>
-          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <Card className="p-10 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
+                <DollarSign className="w-10 h-10 text-white" />
+              </div>
+              <div className="text-4xl md:text-5xl font-bold mb-4 text-accent">$341B</div>
+              <div className="text-lg font-semibold mb-2 text-primary-700">Mercado EdTech Global</div>
+              <div className="text-sm text-primary-900">proyección 2025</div>
+            </Card>
+            
+            <Card className="p-10 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-700 flex items-center justify-center">
+                <Users className="w-10 h-10 text-white" />
+              </div>
+              <div className="text-4xl md:text-5xl font-bold mb-4 text-primary-700">700M</div>
+              <div className="text-lg font-semibold mb-2 text-primary-700">Usuarios de EdTech</div>
+              <div className="text-sm text-primary-900">en el mundo</div>
+            </Card>
+            
+            <Card className="p-10 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
+                <TrendingUp className="w-10 h-10 text-white" />
+              </div>
+              <div className="text-4xl md:text-5xl font-bold mb-4 text-accent">16.3%</div>
+              <div className="text-lg font-semibold mb-2 text-primary-700">Crecimiento anual</div>
+              <div className="text-sm text-primary-900">del sector</div>
+            </Card>
+            
+            <Card className="p-10 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-700 flex items-center justify-center">
+                <Award className="w-10 h-10 text-white" />
+              </div>
+              <div className="text-4xl md:text-5xl font-bold mb-4 text-primary-700">85%</div>
+              <div className="text-lg font-semibold mb-2 text-primary-700">Instituciones adoptando</div>
+              <div className="text-sm text-primary-900">tecnología educativa</div>
+            </Card>
+          </div>
         </div>
       </Section>
     </>
