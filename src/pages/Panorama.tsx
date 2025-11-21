@@ -684,7 +684,7 @@ const Panorama = () => {
                   <span className="text-4xl">📱</span>
                 </div>
                 <h4 className="text-xl font-bold text-primary-700 mb-6 text-center">Creadores de Contenido</h4>
-                <p className="text-base text-primary-900 mb-6 text-center leading-relaxed">OnlyFans, YouTubers, TikTokers - nueva economía creativa</p>
+                <p className="text-base text-primary-900 mb-6 text-center leading-relaxed">YouTubers, TikTokers - nueva economía creativa</p>
                 <div className="border-t-2 border-sand pt-6">
                   <p className="text-sm font-bold text-primary-700 mb-3 text-center">Necesidades Críticas:</p>
                   <ul className="space-y-2 text-sm text-primary-900">
