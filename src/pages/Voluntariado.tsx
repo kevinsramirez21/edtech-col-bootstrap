@@ -3,10 +3,13 @@ import { CopySlot } from "@/components/content/copy-slot";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Card, CardContent } from "@/components/ui/card";
 import { CTAButton } from "@/components/ui/cta-button";
+import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd, trackCTA, GA_EVENTS } from "@/lib/seo";
 import { Link } from "react-router-dom";
-import { ArrowRight, Heart, Users, BookOpen, Award, UserCheck, Target, CheckCircle, Lightbulb, Handshake } from "lucide-react";
+import { ArrowRight, Heart, Users, BookOpen, Award, UserCheck, Target, CheckCircle, Lightbulb, Handshake, Sparkles } from "lucide-react";
+import eventoColombiaEdtech from "@/assets/evento-colombia-edtech-wide.jpg";
+import eventoVision2030 from "@/assets/evento-vision-2030-hq.jpg";
 
 const Voluntariado = () => {
   const meta = generatePageMeta({
@@ -49,7 +52,7 @@ const Voluntariado = () => {
     {
       icon: UserCheck,
       title: "Certificación de conocimientos",
-      description: "Si demuestras habilidades destacadas, recibirás una certificación adicional por tus logros."
+      description: "Si demuestras habilidades destacadas, recibirás una certificación adicional por tus logos."
     },
     {
       icon: Target,
@@ -88,89 +91,95 @@ const Voluntariado = () => {
           {JSON.stringify(breadcrumbLd)}
         </script>
       </Helmet>
-
-      <Section className="py-8 bg-gray-50">
-        <Breadcrumbs 
-          items={[
-            { label: "Voluntariado" }
-          ]} 
-        />
-      </Section>
       
       {/* Hero */}
-      <Section className="py-20 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden">
-        {/* Background placeholder for volunteer/community image */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-black/30">
-          <div className="w-full h-full bg-gradient-to-br from-[#003889] to-[#0B47CE]/80"></div>
+      <Section className="py-24 md:py-40 lg:py-52 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[85vh]">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img 
+            src={eventoColombiaEdtech} 
+            alt="Evento Colombia EdTech" 
+            className="w-full h-full object-cover object-center" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
         </div>
-        <div className="relative z-10 container max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Voluntariado
-              </h1>
-              <p className="text-xl mb-6 leading-relaxed opacity-90">
-                Si eres experto, profesional o estudiante y quieres 
-                <strong className="text-[#F73C5C]"> donar tu tiempo y talento</strong> en esta revolución de la educación, 
-                bienvenido al mundo de los <strong className="text-[#F73C5C]">VOLUNTARIOS</strong>
-              </p>
-              <p className="text-lg mb-8 opacity-80">
-                Aquí podrás conectar tus <strong>intereses profesionales</strong> con un <strong>propósito profundo</strong>: 
-                mejorar el sistema educativo de Colombia y el mundo.
-              </p>
-            </div>
-            <div className="relative">
-              {/* Placeholder for volunteer/community image */}
-              <div className="aspect-video bg-gray-300 rounded-lg border-4 border-dashed border-gray-400 flex items-center justify-center">
-                <span className="text-gray-600 text-center">
-                  Volunteer Community Image<br/>
-                  <small>Placeholder</small>
-                </span>
-              </div>
+        <div className="relative z-10 container max-w-7xl mx-auto h-full flex items-center pt-20 md:pt-24">
+          <div className="max-w-4xl animate-fade-in">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight drop-shadow-2xl">
+              Voluntariado
+            </h1>
+            <p className="text-xl md:text-2xl lg:text-3xl mb-10 leading-relaxed drop-shadow-lg max-w-3xl">
+              Si eres experto, profesional o estudiante y quieres 
+              <strong className="text-[#F73C5C]"> donar tu tiempo y talento</strong> en esta revolución de la educación, 
+              bienvenido al mundo de los <strong className="text-[#F73C5C]">VOLUNTARIOS</strong>
+            </p>
+            <p className="text-lg md:text-xl mb-10 opacity-90 drop-shadow-lg max-w-3xl">
+              Aquí podrás conectar tus <strong>intereses profesionales</strong> con un <strong>propósito profundo</strong>: 
+              mejorar el sistema educativo de Colombia y el mundo.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <Button 
+                size="lg" 
+                className="text-lg px-8 py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300"
+                onClick={handleVolunteerApplyClick}
+                asChild
+              >
+                <Link to="/voluntariado#form">
+                  Quiero ser voluntario/a <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="text-lg px-8 py-6 bg-white/95 border-white hover:bg-white backdrop-blur-sm hover-scale text-[#0B47CE] font-bold shadow-xl hover:shadow-2xl"
+                asChild
+              >
+                <Link to="#beneficios">
+                  Conoce los beneficios
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
       </Section>
 
       {/* Motivaciones */}
-      <Section className="py-16 bg-white">
+      <Section className="py-20 bg-white">
         <div className="container max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 font-funnel">
             <span className="text-[#F73C5C]">Si estás aquí es porque sientes que…</span>
           </h2>
           
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-12">
             <div>
-              <ul className="space-y-4 text-lg text-gray-700">
+              <ul className="space-y-6 text-lg text-[#0B47CE]">
                 {motivaciones.map((motivacion, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="text-[#F73C5C] font-bold mr-3 text-xl">•</span>
-                    {motivacion}
+                    <CheckCircle className="w-6 h-6 text-[#F73C5C] mr-4 flex-shrink-0 mt-1" />
+                    <span>{motivacion}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="relative">
-              {/* Placeholder for motivation/purpose image */}
-              <div className="aspect-[4/3] bg-gray-300 rounded-lg border-4 border-dashed border-gray-400 flex items-center justify-center">
-                <span className="text-gray-600 text-center">
-                  Purpose/Motivation Image<br/>
-                  <small>Placeholder</small>
-                </span>
-              </div>
+              <img 
+                src={eventoVision2030} 
+                alt="Colombia EdTech - Visión 2030" 
+                className="aspect-[4/3] rounded-lg shadow-xl object-cover w-full"
+              />
             </div>
           </div>
 
-          <div className="text-center bg-[#F4E8DD] p-8 rounded-lg">
+          <div className="text-center bg-[#F4E8DD] p-10 md:p-12 rounded-xl">
             <div className="flex items-center justify-center mb-6">
-              <Lightbulb className="w-12 h-12 text-[#0B47CE] mr-4" />
-              <h3 className="text-2xl font-bold text-[#0B47CE]">¡Bienvenido/a!</h3>
+              <Sparkles className="w-12 h-12 text-[#F73C5C] mr-4" />
+              <h3 className="text-3xl md:text-4xl font-bold text-[#0B47CE] font-funnel">¡Bienvenido/a!</h3>
             </div>
-            <p className="text-lg text-gray-700 mb-6">
+            <p className="text-xl text-[#0B47CE] mb-6 max-w-3xl mx-auto">
               Hay un lugar esperando por ti en nuestros <strong>grupos de voluntariado</strong>.
             </p>
-            <p className="text-lg text-gray-700 mb-8">
-              <strong className="text-[#0B47CE]">Colombia EdTech</strong> integra tecnología innovadora y une a todos los actores del ecosistema 
+            <p className="text-lg text-[#0B47CE] max-w-3xl mx-auto">
+              <strong className="text-[#F73C5C]">Colombia EdTech</strong> integra tecnología innovadora y une a todos los actores del ecosistema 
               para construir una <strong>educación de calidad, accesible y personalizable</strong>.
             </p>
           </div>
@@ -178,23 +187,23 @@ const Voluntariado = () => {
       </Section>
 
       {/* Beneficios */}
-      <Section className="py-16 bg-[#F4E8DD]">
+      <Section id="beneficios" className="py-20 bg-[#F4E8DD]">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
-            <span className="text-[#0B47CE]">Beneficios de ser</span> <span className="text-[#F73C5C]">voluntario/a</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 font-funnel">
+            <span className="text-[#0B47CE]">Beneficios de ser</span><br className="md:hidden" /> <span className="text-[#F73C5C]">voluntario/a</span>
           </h2>
-          <p className="text-lg text-center text-gray-700 mb-12 max-w-3xl mx-auto">
+          <p className="text-xl text-center text-[#0B47CE] mb-16 max-w-3xl mx-auto">
             Todo lo que recibes por donar tu tiempo y talento
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {beneficios.map((beneficio, index) => (
-              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-lg p-6 h-full">
-                <div className="w-12 h-12 bg-[#F73C5C] rounded-full flex items-center justify-center mb-4">
-                  <beneficio.icon className="w-6 h-6 text-white" />
+              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-lg p-8 hover:shadow-xl transition-all duration-300">
+                <div className="w-16 h-16 bg-[#F73C5C] rounded-full flex items-center justify-center mb-6">
+                  <beneficio.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-bold text-[#0B47CE] mb-3">{beneficio.title}</h3>
-                <p className="text-gray-700">{beneficio.description}</p>
+                <h3 className="text-xl font-bold text-[#0B47CE] mb-4">{beneficio.title}</h3>
+                <p className="text-[#0B47CE] leading-relaxed">{beneficio.description}</p>
               </div>
             ))}
           </div>
@@ -202,35 +211,22 @@ const Voluntariado = () => {
       </Section>
 
       {/* Propósito */}
-      <Section className="py-16 bg-[#0B47CE] text-white">
+      <Section className="py-20 bg-[#0B47CE] text-white">
         <div className="container max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Propósito</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 font-funnel">Propósito</h2>
           
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-xl mb-8 leading-relaxed">
-                La vida no se trata solo de lo que <strong>conseguimos</strong>, sino de lo que <strong>podemos dar</strong>.
-              </p>
-              <p className="text-lg mb-8 opacity-90">
-                A través del voluntariado, contribuyes a una <strong>causa más grande</strong> que tú: encuentras propósito y alineas 
-                tus conocimientos, habilidades y pasión con <strong>impacto social real</strong>.
-              </p>
-            </div>
-            <div className="relative">
-              {/* Placeholder for purpose/impact image */}
-              <div className="aspect-video bg-white/10 rounded-lg border-4 border-dashed border-white/30 flex items-center justify-center">
-                <span className="text-white/70 text-center">
-                  Purpose Impact Image<br/>
-                  <small>Placeholder</small>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
+          <div className="text-center max-w-4xl mx-auto">
+            <p className="text-2xl md:text-3xl mb-8 leading-relaxed">
+              La vida no se trata solo de lo que <strong>conseguimos</strong>, sino de lo que <strong>podemos dar</strong>.
+            </p>
+            <p className="text-xl mb-12 opacity-90 leading-relaxed">
+              A través del voluntariado, contribuyes a una <strong>causa más grande</strong> que tú: encuentras propósito y alineas 
+              tus conocimientos, habilidades y pasión con <strong>impacto social real</strong>.
+            </p>
+            
             <CTAButton 
               size="lg"
-              className="bg-white text-[#0B47CE] hover:bg-gray-100"
+              className="bg-white text-[#0B47CE] hover:bg-gray-100 text-lg px-8 py-6 font-bold shadow-2xl"
               onClick={handleVolunteerApplyClick}
               asChild
             >
@@ -243,43 +239,43 @@ const Voluntariado = () => {
       </Section>
 
       {/* Requisitos */}
-      <Section className="py-16 bg-white">
-        <div className="container max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+      <Section className="py-20 bg-white">
+        <div className="container max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 font-funnel">
             <span className="text-[#0B47CE]">Requisitos y</span> <span className="text-[#F73C5C]">compromisos</span>
           </h2>
           
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
-            <div className="bg-white border-2 border-gray-200 p-8 rounded-lg">
-              <div className="flex items-center mb-6">
-                <CheckCircle className="w-8 h-8 text-[#0B47CE] mr-3" />
-                <h3 className="text-xl font-bold text-[#0B47CE]">Es muy simple. Respóndete:</h3>
+            <div className="bg-white border-2 border-[#0B47CE]/20 p-10 rounded-xl shadow-lg">
+              <div className="flex items-center mb-8">
+                <CheckCircle className="w-10 h-10 text-[#0B47CE] mr-4" />
+                <h3 className="text-2xl font-bold text-[#0B47CE] font-funnel">Es muy simple. Respóndete:</h3>
               </div>
-              <ul className="space-y-3">
+              <ul className="space-y-4 mb-8">
                 {requisitos.map((requisito, index) => (
-                  <li key={index} className="flex items-start text-base text-gray-700">
-                    <span className="text-[#F73C5C] font-bold mr-3 mt-1">•</span>
+                  <li key={index} className="flex items-start text-lg text-[#0B47CE]">
+                    <span className="text-[#F73C5C] font-bold mr-3 mt-1 text-xl">•</span>
                     {requisito}
                   </li>
                 ))}
               </ul>
-              <div className="bg-[#F4E8DD] p-6 rounded-lg mt-6">
-                <p className="text-lg text-[#0B47CE] font-semibold">
+              <div className="bg-[#F4E8DD] p-8 rounded-lg">
+                <p className="text-xl text-[#0B47CE] font-semibold">
                   Si respondiste <strong>SÍ</strong> a todo, ¡<strong>bienvenido/a</strong>! 
                   Tienes lo necesario para ser <strong>voluntario/a</strong> en Colombia EdTech.
                 </p>
               </div>
             </div>
             
-            <div className="bg-white border-2 border-[#F73C5C] p-8 rounded-lg">
-              <div className="flex items-center mb-6">
-                <Handshake className="w-8 h-8 text-[#F73C5C] mr-3" />
-                <h3 className="text-xl font-bold text-[#F73C5C]">Tu compromiso principal</h3>
+            <div className="bg-white border-2 border-[#F73C5C] p-10 rounded-xl shadow-lg">
+              <div className="flex items-center mb-8">
+                <Handshake className="w-10 h-10 text-[#F73C5C] mr-4" />
+                <h3 className="text-2xl font-bold text-[#F73C5C] font-funnel">Tu compromiso principal</h3>
               </div>
-              <p className="text-lg text-gray-700 mb-6">
+              <p className="text-xl text-[#0B47CE] mb-8">
                 Es cumplir con los <strong>tiempos y responsabilidades</strong> acordadas.
               </p>
-              <p className="text-lg text-gray-700 mb-8">
+              <p className="text-xl text-[#0B47CE] mb-8">
                 Este es un <strong>pacto de confianza y respeto</strong>, donde cada voluntario/a entrega lo mejor de sí, 
                 asegurando que la <strong>transformación educativa</strong> que buscamos sea real y efectiva.
               </p>
@@ -289,7 +285,7 @@ const Voluntariado = () => {
           <div className="text-center">
             <CTAButton 
               size="lg"
-              className="btn-primary"
+              className="btn-primary text-lg px-8 py-6"
               onClick={handleVolunteerApplyClick}
               asChild
             >
@@ -302,40 +298,46 @@ const Voluntariado = () => {
       </Section>
 
       {/* Cierre */}
-      <Section className="py-20 bg-gradient-to-br from-[#003889] to-[#F73C5C] text-white">
+      <Section className="py-24 md:py-32 bg-gradient-to-br from-[#003889] via-[#8B3A8B] to-[#F73C5C] text-white">
         <div className="container max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Querido/a voluntario/a</h2>
-          <p className="text-xl mb-6 opacity-90 leading-relaxed">
+          <h2 className="text-4xl md:text-5xl font-bold mb-10 font-funnel drop-shadow-lg">Querido/a voluntario/a</h2>
+          <p className="text-2xl md:text-3xl mb-8 leading-relaxed drop-shadow-md">
             Tu <strong>tiempo</strong> y tu <strong>talento</strong> tienen un propósito <strong>enorme</strong>, más allá de lo que imaginas.
           </p>
-          <p className="text-lg mb-8 opacity-80">
+          <p className="text-xl mb-10 opacity-90 drop-shadow-md leading-relaxed">
             Más que un voluntariado, es la oportunidad de <strong>dejar tu legado</strong> en la educación de Colombia y Latinoamérica.
           </p>
-          <p className="text-2xl font-bold mb-8">¡Nos vemos dentro!</p>
+          <p className="text-3xl font-bold mb-12 drop-shadow-lg">¡Nos vemos dentro!</p>
           <CTAButton 
             size="lg"
-            className="bg-white text-[#0B47CE] hover:bg-gray-100"
+            className="bg-white text-[#0B47CE] hover:bg-gray-100 text-lg px-8 py-6 font-bold shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)] transition-all duration-300"
             onClick={handleVolunteerApplyClick}
             asChild
           >
             <Link to="/voluntariado#form">
-              ¡HECHO! SERÉ VOLUNTARIO/A
+              ¡HECHO! SERÉ VOLUNTARIO/A <Heart className="ml-2 h-5 w-5" />
             </Link>
           </CTAButton>
         </div>
       </Section>
 
       {/* Formulario */}
-      <div id="form" className="py-16 bg-[#F4E8DD]">
+      <div id="form" className="py-20 bg-[#F4E8DD]">
         <div className="container max-w-2xl mx-auto text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">¿Quieres ser voluntario/a?</h3>
-          <p className="text-gray-600 mb-6">
+          <h3 className="text-3xl md:text-4xl font-bold text-[#0B47CE] mb-6 font-funnel">¿Quieres ser voluntario/a?</h3>
+          <p className="text-xl text-[#0B47CE] mb-10">
             Formulario de aplicación próximamente disponible
           </p>
-          <div className="bg-white p-8 rounded-lg shadow-sm">
-            <p className="text-gray-500 italic">
-              Mientras tanto, contáctanos a voluntariado@colombiaedtech.org
+          <div className="bg-white p-10 rounded-xl shadow-lg">
+            <p className="text-lg text-[#0B47CE] mb-4">
+              Mientras tanto, contáctanos a:
             </p>
+            <a 
+              href="mailto:voluntariado@colombiaedtech.org" 
+              className="text-2xl font-bold text-[#F73C5C] hover:text-[#F73C5C]/80 transition-colors"
+            >
+              voluntariado@colombiaedtech.org
+            </a>
           </div>
         </div>
       </div>
