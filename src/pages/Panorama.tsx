@@ -154,7 +154,7 @@ const Panorama = () => {
       </Section>
 
       {/* Tendencias Clave */}
-      <Section className="py-20 bg-white">
+      <Section className="py-20 bg-sand">
         <div className="container max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
