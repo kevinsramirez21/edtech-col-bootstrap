@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd, trackCTA, GA_EVENTS } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, Heart, Users, BookOpen, Award, UserCheck, Target, CheckCircle, Lightbulb, Handshake, Sparkles } from "lucide-react";
-import eventoColombiaEdtech from "@/assets/evento-colombia-edtech-wide.jpg";
+import eventoVoluntariosAsamblea from "@/assets/evento-voluntarios-asamblea.jpg";
 import eventoVision2030 from "@/assets/evento-vision-2030-hq.jpg";
 
 const Voluntariado = () => {
@@ -97,8 +97,8 @@ const Voluntariado = () => {
         {/* Background image */}
         <div className="absolute inset-0">
           <img 
-            src={eventoColombiaEdtech} 
-            alt="Evento Colombia EdTech" 
+            src={eventoVoluntariosAsamblea} 
+            alt="Evento Colombia EdTech - Voluntarios" 
             className="w-full h-full object-cover object-center" 
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
