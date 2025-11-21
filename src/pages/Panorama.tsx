@@ -626,20 +626,6 @@ const Panorama = () => {
           </div>
           
           <div className="max-w-6xl mx-auto">
-            <Card className="p-10 bg-gradient-to-br from-sand to-white border-2 border-primary-200 mb-12">
-              <h3 className="text-2xl font-bold text-primary-700 mb-6 flex items-center gap-3">
-                <span className="text-3xl">🌾</span> El Agro - Oportunidad Masiva
-              </h3>
-              <p className="text-lg text-primary-900 mb-4">
-                <strong>Fundación Bancolombia</strong> identifica un vacío educativo estructural en zonas rurales:
-              </p>
-              <ul className="space-y-3 text-base text-primary-900">
-                <li>• Déficit crítico de <strong>topógrafos</strong> para ganadería sostenible</li>
-                <li>• Necesidad urgente de competencias transversales: manejo de datos, agrotech</li>
-                <li>• Oportunidad de emprendimiento rural con tecnología</li>
-              </ul>
-            </Card>
-            
             <h3 className="text-2xl font-bold text-primary-700 mb-8 text-center">Nuevos Segmentos Emergentes</h3>
             
             <div className="grid md:grid-cols-3 gap-8 mb-12">
