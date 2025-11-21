@@ -630,7 +630,7 @@ const Panorama = () => {
             
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <Card className="p-10 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-700 to-accent flex items-center justify-center shadow-xl">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-sand border-2 border-accent-brand/20 flex items-center justify-center shadow-lg">
                   <span className="text-4xl">👥</span>
                 </div>
                 <h4 className="text-xl font-bold text-primary-700 mb-3 text-center">Los Ninis</h4>
@@ -656,7 +656,7 @@ const Panorama = () => {
               </Card>
               
               <Card className="p-10 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-700 to-accent flex items-center justify-center shadow-xl">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-sand border-2 border-accent-brand/20 flex items-center justify-center shadow-lg">
                   <span className="text-4xl">👴</span>
                 </div>
                 <h4 className="text-xl font-bold text-primary-700 mb-6 text-center">Silver Economy</h4>
@@ -681,7 +681,7 @@ const Panorama = () => {
               </Card>
               
               <Card className="p-10 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-700 to-accent flex items-center justify-center shadow-xl">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-sand border-2 border-accent-brand/20 flex items-center justify-center shadow-lg">
                   <span className="text-4xl">📱</span>
                 </div>
                 <h4 className="text-xl font-bold text-primary-700 mb-6 text-center">Creadores de Contenido</h4>
