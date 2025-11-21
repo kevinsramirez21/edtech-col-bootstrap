@@ -562,52 +562,52 @@ const Panorama = () => {
             <h3 className="text-2xl font-bold text-primary-700 mb-8 text-center">Impacto Medible de Programas de Educación al Cliente</h3>
             
             <div className="grid md:grid-cols-2 gap-6">
-              <Card className="p-6 bg-white border-2 border-accent-brand/30">
+              <Card className="p-6 bg-white border-2 border-primary-700/30">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-lg font-semibold text-primary-700">📈 Adopción de producto</span>
-                  <span className="text-3xl font-bold text-accent-brand">+38.3%</span>
+                  <span className="text-3xl font-bold text-primary-700">+38.3%</span>
                 </div>
               </Card>
               
-              <Card className="p-6 bg-white border-2 border-accent-brand/30">
+              <Card className="p-6 bg-white border-2 border-primary-700/30">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-lg font-semibold text-primary-700">⭐ Engagement de usuarios</span>
-                  <span className="text-3xl font-bold text-accent-brand">+30.7%</span>
+                  <span className="text-3xl font-bold text-primary-700">+30.7%</span>
                 </div>
               </Card>
               
-              <Card className="p-6 bg-white border-2 border-accent-brand/30">
+              <Card className="p-6 bg-white border-2 border-primary-700/30">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-lg font-semibold text-primary-700">😊 Satisfacción del cliente</span>
-                  <span className="text-3xl font-bold text-accent-brand">+26.2%</span>
+                  <span className="text-3xl font-bold text-primary-700">+26.2%</span>
+                </div>
+              </Card>
+              
+              <Card className="p-6 bg-white border-2 border-primary-700/30">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-lg font-semibold text-primary-700">💎 Valor de vida (LTV)</span>
+                  <span className="text-3xl font-bold text-primary-700">+34.6%</span>
                 </div>
               </Card>
               
               <Card className="p-6 bg-white border-2 border-accent-brand/30">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-lg font-semibold text-primary-700">💎 Valor de vida (LTV)</span>
-                  <span className="text-3xl font-bold text-accent-brand">+34.6%</span>
-                </div>
-              </Card>
-              
-              <Card className="p-6 bg-white border-2 border-primary-700/30">
-                <div className="flex items-center justify-between mb-2">
                   <span className="text-lg font-semibold text-primary-700">⏱️ Ciclo de ventas</span>
-                  <span className="text-3xl font-bold text-primary-700">-8.1%</span>
+                  <span className="text-3xl font-bold text-accent-brand">-8.1%</span>
                 </div>
               </Card>
               
-              <Card className="p-6 bg-white border-2 border-primary-700/30">
+              <Card className="p-6 bg-white border-2 border-accent-brand/30">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-lg font-semibold text-primary-700">🎫 Tickets de soporte</span>
-                  <span className="text-3xl font-bold text-primary-700">-15.5%</span>
+                  <span className="text-3xl font-bold text-accent-brand">-15.5%</span>
                 </div>
               </Card>
               
-              <Card className="p-6 bg-white border-2 border-primary-700/30 md:col-span-2">
+              <Card className="p-6 bg-white border-2 border-accent-brand/30 md:col-span-2">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-lg font-semibold text-primary-700">💵 Costos de soporte</span>
-                  <span className="text-3xl font-bold text-primary-700">-7.2%</span>
+                  <span className="text-3xl font-bold text-accent-brand">-7.2%</span>
                 </div>
               </Card>
             </div>
