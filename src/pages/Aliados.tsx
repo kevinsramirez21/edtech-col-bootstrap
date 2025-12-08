@@ -80,7 +80,7 @@ const Aliados = () => {
       </Helmet>
 
       {/* Hero */}
-      <Section className="py-24 md:py-40 lg:py-52 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[85vh]">
+      <Section className="py-12 sm:py-16 md:py-24 lg:py-32 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[60vh] sm:min-h-[70vh] lg:min-h-[85vh]">
         {/* Background image */}
         <div className="absolute inset-0">
           <img 
@@ -90,12 +90,12 @@ const Aliados = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
         </div>
-        <div className="relative z-10 container max-w-7xl mx-auto h-full flex items-center pt-20 md:pt-24">
+        <div className="relative z-10 container max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center pt-12 sm:pt-16 md:pt-20 lg:pt-24">
           <div className="max-w-4xl animate-fade-in">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight drop-shadow-2xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight drop-shadow-2xl">
               Aliados
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl mb-10 leading-relaxed drop-shadow-lg max-w-3xl">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 sm:mb-8 lg:mb-10 leading-relaxed drop-shadow-lg max-w-3xl">
               Si eres una entidad pública o privada que quiere 
               <strong className="text-[#F73C5C]"> CONTRIBUIR</strong> para que las EdTech cumplan su misión, 
               bienvenido al mundo de los <strong className="text-[#F73C5C]">ALIADOS</strong>
@@ -105,12 +105,12 @@ const Aliados = () => {
             }}>
               <CTAButton 
                 size="lg" 
-                className="text-lg px-8 py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300" 
+                className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-5 lg:py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300 w-full sm:w-auto" 
                 onClick={handleAllyContactClick}
                 asChild
               >
                 <Link to="/aliados#form">
-                  Únete como aliado <ArrowRight className="ml-2 h-5 w-5" />
+                  Únete como aliado <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Link>
               </CTAButton>
             </div>
@@ -119,9 +119,9 @@ const Aliados = () => {
       </Section>
 
       {/* ¿Por qué unirte? */}
-      <Section className="py-16 bg-white">
-        <div className="container max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <Section className="py-10 sm:py-12 lg:py-16 bg-white">
+        <div className="container max-w-6xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
             <span className="text-[#F73C5C]">¿Por que unirte como aliado a Colombia Edtech?</span>
           </h2>
           
@@ -146,24 +146,24 @@ const Aliados = () => {
       </Section>
 
       {/* Beneficios */}
-      <Section className="py-16 bg-[#F4E8DD]">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+      <Section className="py-10 sm:py-12 lg:py-16 bg-[#F4E8DD]">
+        <div className="container px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 lg:mb-12">
             <span className="text-[#0B47CE]">¿Qué gana tu entidad siendo</span><br />
             <span className="text-[#0B47CE]">ALIADO</span> <span className="text-[#0B47CE]">de Colombia EdTech?</span>
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {beneficios.map((beneficio, index) => <div key={index} className="bg-white/80 backdrop-blur-sm rounded-lg p-8">
-                <div className="flex items-start space-x-4">
-                  <div className="w-16 h-16 bg-[#F73C5C] rounded-full flex items-center justify-center flex-shrink-0">
-                    <beneficio.icon className="w-8 h-8 text-white" />
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
+            {beneficios.map((beneficio, index) => <div key={index} className="bg-white/80 backdrop-blur-sm rounded-lg p-4 sm:p-6 lg:p-8">
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-[#F73C5C] rounded-full flex items-center justify-center flex-shrink-0">
+                    <beneficio.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-[#0B47CE] mb-3">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-[#0B47CE] mb-2 sm:mb-3">
                       {beneficio.title}
                     </h3>
-                    <p className="text-[#0B47CE] leading-relaxed">
+                    <p className="text-sm sm:text-base text-[#0B47CE] leading-relaxed">
                       {beneficio.description}
                     </p>
                   </div>
@@ -174,21 +174,21 @@ const Aliados = () => {
       </Section>
 
       {/* Formas de aliarse */}
-      <Section className="py-16 bg-[#0B47CE] text-white">
-        <div className="container max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+      <Section className="py-10 sm:py-12 lg:py-16 bg-[#0B47CE] text-white">
+        <div className="container max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 lg:mb-12">
             ¿De qué formas te puedes ALIAR con Colombia EdTech?
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-10 lg:mb-12">
             {formasAlianza.map((forma, index) => <div key={index} className="text-left">
-                <div className="flex items-center mb-4">
-                  <div className="w-6 h-6 bg-[#F73C5C] rounded-full flex items-center justify-center mr-3">
-                    <span className="text-white text-sm">✓</span>
+                <div className="flex items-center mb-3 sm:mb-4">
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#F73C5C] rounded-full flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0">
+                    <span className="text-white text-xs sm:text-sm">✓</span>
                   </div>
-                  <h3 className="text-xl font-bold">{forma.title}</h3>
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold">{forma.title}</h3>
                 </div>
-                <p className="text-base leading-relaxed opacity-90 ml-9">
+                <p className="text-sm sm:text-base leading-relaxed opacity-90 ml-7 sm:ml-9">
                   {forma.description}
                 </p>
               </div>)}
