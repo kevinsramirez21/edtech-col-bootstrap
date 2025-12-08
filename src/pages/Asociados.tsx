@@ -331,33 +331,33 @@ const Asociados = () => {
       </Section>
 
       {/* Problemas Reales */}
-      <Section className="py-12 sm:py-16 lg:py-28 bg-[#0B47CE] text-white">
+      <Section className="py-8 sm:py-12 md:py-16 lg:py-28 bg-[#0B47CE] text-white">
         <div className="container max-w-7xl mx-auto text-center px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 font-funnel">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 font-funnel">
             Soluciones reales para problemas reales
           </h2>
-          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-12 lg:mb-16">Lo sabemos ...</h3>
+          <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-4 sm:mb-8 md:mb-12 lg:mb-16">Lo sabemos ...</h3>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 lg:mb-16">
-            {statistics.slice(0, 2).map((stat, index) => <div key={index} className="bg-white/15 rounded-xl p-5 sm:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
-                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4">{stat.percentage}</div>
-                <div className="text-sm sm:text-base md:text-lg mb-2 sm:mb-3">{stat.label}</div>
-                <div className="text-base sm:text-lg md:text-xl">{stat.description}</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-4 sm:mb-8 md:mb-12 lg:mb-16">
+            {statistics.slice(0, 2).map((stat, index) => <div key={index} className="bg-white/15 rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-1 sm:mb-2 md:mb-4">{stat.percentage}</div>
+                <div className="text-xs sm:text-sm md:text-base mb-1 sm:mb-2 md:mb-3">{stat.label}</div>
+                <div className="text-sm sm:text-base md:text-lg lg:text-xl">{stat.description}</div>
               </div>)}
-            <div className="bg-white/15 rounded-xl p-5 sm:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300 sm:col-span-2 lg:col-span-1">
-              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4">{statistics[2].percentage}</div>
-              <div className="text-base sm:text-lg md:text-xl">{statistics[2].description}</div>
+            <div className="bg-white/15 rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300 sm:col-span-2 lg:col-span-1">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-1 sm:mb-2 md:mb-4">{statistics[2].percentage}</div>
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl">{statistics[2].description}</div>
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 text-left">
-            <div className="bg-white/15 rounded-xl p-5 sm:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
-              <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-left">
+            <div className="bg-white/15 rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
                 Hay una ausencia de formación especializada en BTC, BTG, y BTBTC enfocado en EdTech
               </p>
             </div>
-            <div className="bg-white/15 rounded-xl p-5 sm:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
-              <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+            <div className="bg-white/15 rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
                 El gobierno es lento en las licitaciones educativas, y le sector B2C enfrenta cambios en la capacidad de pago
               </p>
             </div>
