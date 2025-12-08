@@ -61,55 +61,33 @@ export function Navbar() {
 
   return (
     <header className={cn(
-      "sticky top-0 z-50 w-full backdrop-blur-md border-b transition-all duration-300",
-      "pt-[env(safe-area-inset-top)]",
+      "sticky top-0 z-50 w-full backdrop-blur-md border-b transition-all duration-300 safe-top",
       isScrolled 
         ? "bg-[#F73C5C] border-[#F73C5C]/30 shadow-xl shadow-[#F73C5C]/20" 
         : "bg-[#F73C5C] border-[#F73C5C]/20 shadow-lg shadow-[#F73C5C]/10"
     )}>
       <nav className={cn(
-        "container max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 transition-all duration-300",
-        isScrolled ? "h-14 sm:h-16" : "h-16 sm:h-20"
+        "container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300",
+        isScrolled ? "h-16" : "h-16 sm:h-20"
       )} aria-label="Navegación principal">
-        <div className="flex h-full items-center justify-between">
-          {/* Logo Premium */}
-          <div className="flex-shrink-0">
-            <Link 
-              to="/" 
-              className="flex items-center space-x-3 group transition-all duration-300"
-              aria-label="Colombia EdTech - Ir al inicio"
-            >
-              <div className="relative flex items-center">
-                {/* Desktop Logo */}
-                <div className="hidden sm:block">
-                  <OptimizedImage
-                    src="/images/isotipo-azul-transparent.png"
-                    alt="Colombia EdTech - Asociación de Organizaciones EdTech"
-                    fallback="/placeholder.svg"
-                    className={cn(
-                      "w-auto object-contain transition-all duration-300 group-hover:scale-105",
-                      isScrolled ? "h-12" : "h-16"
-                    )}
-                    priority
-                  />
-                </div>
-                
-                {/* Mobile Logo */}
-                <div className="block sm:hidden">
-                  <OptimizedImage
-                    src="/images/isotipo-azul-transparent.png"
-                    alt="Colombia EdTech"
-                    fallback="/placeholder.svg"
-                    className={cn(
-                      "w-auto object-contain transition-all duration-300 group-hover:scale-105",
-                      isScrolled ? "h-8" : "h-10"
-                    )}
-                    priority
-                  />
-                </div>
-              </div>
-            </Link>
-          </div>
+        <div className="flex h-full items-center justify-between gap-3">
+          {/* Logo */}
+          <Link 
+            to="/" 
+            className="flex items-center flex-shrink-0 group transition-all duration-300"
+            aria-label="Colombia EdTech - Ir al inicio"
+          >
+            <OptimizedImage
+              src="/images/isotipo-azul-transparent.png"
+              alt="Colombia EdTech"
+              fallback="/placeholder.svg"
+              className={cn(
+                "w-auto object-contain transition-all duration-300 group-hover:scale-105",
+                isScrolled ? "h-10 sm:h-12" : "h-11 sm:h-16"
+              )}
+              priority
+            />
+          </Link>
 
           {/* Desktop Navigation - Premium Layout */}
           <div className="hidden lg:flex lg:items-center lg:space-x-1">
@@ -212,23 +190,21 @@ export function Navbar() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-controls="mobile-menu"
-              aria-expanded={isMobileMenuOpen}
-              aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
-              className="text-white hover:bg-white/10"
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-controls="mobile-menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            className="lg:hidden text-white hover:bg-white/10 min-w-[44px] min-h-[44px]"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </Button>
         </div>
 
         {/* Mobile Navigation Premium */}
