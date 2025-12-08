@@ -104,13 +104,15 @@ serve(async (req) => {
       fieldInstructions.push("1. LinkedIn de la empresa (URL completa del perfil de empresa en linkedin.com/company/...)");
     }
     if (fieldsToEnrich.includes("logo_url")) {
-      fieldInstructions.push(`2. Logo de la empresa - IMPORTANTE:
-   - Busca el logo en el sitio web oficial de la empresa
-   - Busca la etiqueta og:image en el HTML del sitio
-   - Busca en el favicon o logo del header
-   - Busca en LinkedIn o Crunchbase el logo de la empresa
-   - La URL debe ser directa a una imagen (.png, .jpg, .svg, .webp)
-   - NO uses URLs de favicon.ico pequeños`);
+      fieldInstructions.push(`2. Logo de la empresa - MUY IMPORTANTE:
+   - PRIORIDAD 1: Busca el logo en el sitio web oficial de la empresa (og:image, /logo.png, /images/logo.svg, etc.)
+   - PRIORIDAD 2: Busca logos en CDNs públicos como Clearbit (https://logo.clearbit.com/dominio.com)
+   - PRIORIDAD 3: Solo si no hay otra opción, busca en directorios como Crunchbase
+   - La URL debe ser PERMANENTE y directa a una imagen (.png, .jpg, .svg, .webp)
+   - NUNCA uses URLs de LinkedIn/media.licdn.com (expiran rápidamente)
+   - NUNCA uses URLs con parámetros de expiración (?e=, ?expires=, etc.)
+   - NO uses URLs de favicon.ico (son muy pequeños)
+   - Si solo encuentras URLs temporales, marca confianza como "baja"`);
     }
     if (fieldsToEnrich.includes("servicios")) {
       fieldInstructions.push("3. Servicios principales que ofrece (lista de 3-5 servicios relacionados con educación/tecnología)");
@@ -146,9 +148,9 @@ IMPORTANTE: Solo reporta información que puedas verificar. Si no encuentras alg
       toolProperties.logo_url = {
         type: "object",
         properties: {
-          url: { type: "string", description: "URL directa a la imagen del logo (debe terminar en .png, .jpg, .svg o .webp, NO favicon.ico)" },
-          confianza: { type: "string", enum: ["alta", "media", "baja"] },
-          fuente: { type: "string", description: "Donde se encontró el logo (ej: 'og:image del sitio web', 'logo en header', 'perfil de LinkedIn')" }
+          url: { type: "string", description: "URL PERMANENTE directa a la imagen del logo. NUNCA uses URLs de media.licdn.com (LinkedIn) porque expiran. Usa URLs del sitio oficial o Clearbit (https://logo.clearbit.com/dominio.com). Debe terminar en .png, .jpg, .svg o .webp" },
+          confianza: { type: "string", enum: ["alta", "media", "baja"], description: "Marca 'baja' si la URL es temporal o de LinkedIn" },
+          fuente: { type: "string", description: "Indica si es del sitio oficial, Clearbit, u otra fuente. Si es temporal, indícalo explícitamente." }
         },
         required: ["confianza", "fuente"]
       };
@@ -188,13 +190,16 @@ CONTEXTO IMPORTANTE:
 - Busca específicamente perfiles de empresas relacionadas con: educación, e-learning, capacitación digital, plataformas educativas, LMS, gamificación educativa, contenidos digitales de aprendizaje, tutorías online, etc.
 - Si encuentras varias empresas con el mismo nombre, SIEMPRE prioriza la que tenga relación con el sector educativo/EdTech en Colombia.
 
-REGLAS PARA LOGOS:
-- Prioriza logos del sitio web oficial (og:image, logo en header, assets)
-- Busca en LinkedIn de la empresa el logo del perfil
-- La URL debe apuntar directamente a un archivo de imagen (.png, .jpg, .svg, .webp)
-- NO uses URLs de favicon.ico (son muy pequeños)
+REGLAS CRÍTICAS PARA LOGOS:
+- PRIORIDAD 1: Logo del sitio web oficial de la empresa (og:image, /logo.png, /assets/logo.svg, header del sitio)
+- PRIORIDAD 2: Clearbit Logo API (https://logo.clearbit.com/dominio.com) - URLs permanentes
+- PRIORIDAD 3: Logos en directorios públicos como Crunchbase (solo si tienen URLs permanentes)
+- NUNCA uses URLs de LinkedIn (media.licdn.com) - estas expiran y dejan de funcionar
+- NUNCA uses URLs con parámetros de expiración (?e=, ?expires=, ?v=beta, etc.)
+- La URL debe ser PERMANENTE y apuntar directamente a un archivo de imagen (.png, .jpg, .svg, .webp)
+- NO uses URLs de favicon.ico (son muy pequeños, menos de 64x64px)
 - NO uses URLs de páginas HTML, solo de imágenes
-- Verifica que la URL sea accesible públicamente
+- Si solo encuentras URLs temporales (como las de LinkedIn), indica confianza "baja" y explica en la fuente que es temporal
 
 REGLAS GENERALES:
 - Solo reporta datos que puedas confirmar con certeza
