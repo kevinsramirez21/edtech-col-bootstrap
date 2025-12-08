@@ -249,31 +249,31 @@ const Panorama = () => {
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-white/90">Un cambio paradigmático en la forma de aprender y enseñar</p>
           </div>
           
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            <Card className="p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
               <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-accent-brand mb-3 sm:mb-4 md:mb-6 mx-auto drop-shadow-lg" />
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-white">Apuestas Pedagógicas</h3>
-              <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90 text-left">
+              <ul className="flex-grow space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90 text-left">
                 <li>• Evaluación primero y subjetiva</li>
                 <li>• Métodos experimentales y adaptativos</li>
                 <li>• Power Skills (no habilidades blandas)</li>
               </ul>
             </Card>
             
-            <Card className="p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
+            <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
               <GraduationCap className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-accent-brand mb-3 sm:mb-4 md:mb-6 mx-auto drop-shadow-lg" />
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-white">Experiencia 360</h3>
-              <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90 text-left">
+              <ul className="flex-grow space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90 text-left">
                 <li>• Tech-enabled (habilitador, no reemplazo)</li>
                 <li>• Data-oriented (decisiones basadas en datos)</li>
                 <li>• Personalización continua</li>
               </ul>
             </Card>
             
-            <Card className="p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500 sm:col-span-2 md:col-span-1">
+            <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500 sm:col-span-2 md:col-span-1">
               <Target className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-accent-brand mb-3 sm:mb-4 md:mb-6 mx-auto drop-shadow-lg" />
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-white">Tesis de Industria</h3>
-              <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90 text-left">
+              <ul className="flex-grow space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90 text-left">
                 <li>• Nicho Técnico (Platzi)</li>
                 <li>• Nicho Geográfico (Mangus)</li>
                 <li>• Nicho Industrial (Revive)</li>
@@ -476,25 +476,25 @@ const Panorama = () => {
       </Section>
 
       {/* Educación Superior */}
-      <Section className="py-20 bg-primary-700 text-white">
-        <div className="container max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+      <Section className="py-10 sm:py-14 md:py-20 bg-primary-700 text-white">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight">
               Cambios en Educación Superior
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-8 rounded-full"></div>
+            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
           </div>
           
           <div className="max-w-5xl mx-auto">
-            <p className="text-xl text-white/90 mb-12 text-center leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 md:mb-12 text-center leading-relaxed">
               La educación superior está experimentando su transformación más profunda desde su creación
             </p>
             
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="p-8 bg-white/10 backdrop-blur-sm border-white/20">
-                <div className="text-4xl mb-4">🔄</div>
-                <h3 className="text-2xl font-bold mb-4 text-white">Hiperpersonalización</h3>
-                <ul className="space-y-3 text-white/90">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-12">
+              <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 bg-white/10 backdrop-blur-sm border-white/20">
+                <div className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 md:mb-4">🔄</div>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white">Hiperpersonalización</h3>
+                <ul className="flex-grow space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90">
                   <li>• Tutores virtuales con IA que conocen a cada estudiante</li>
                   <li>• Adaptación de contenido y ritmo en tiempo real</li>
                   <li>• Rutas personalizadas según objetivos y capacidades</li>
@@ -598,16 +598,16 @@ const Panorama = () => {
               </Card>
               
               <Card className="p-6 bg-white border-2 border-accent-brand/30">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-lg font-semibold text-primary-700">🎫 Tickets de soporte</span>
-                  <span className="text-3xl font-bold text-accent-brand">-15.5%</span>
+                <div className="flex items-center justify-between mb-1 sm:mb-2">
+                  <span className="text-sm sm:text-base md:text-lg font-semibold text-primary-700">🎫 Tickets de soporte</span>
+                  <span className="text-xl sm:text-2xl md:text-3xl font-bold text-accent-brand">-15.5%</span>
                 </div>
               </Card>
               
-              <Card className="p-6 bg-white border-2 border-accent-brand/30 md:col-span-2">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-lg font-semibold text-primary-700">💵 Costos de soporte</span>
-                  <span className="text-3xl font-bold text-accent-brand">-7.2%</span>
+              <Card className="h-full p-4 sm:p-5 md:p-6 bg-white border-2 border-accent-brand/30 sm:col-span-2">
+                <div className="flex items-center justify-between mb-1 sm:mb-2">
+                  <span className="text-sm sm:text-base md:text-lg font-semibold text-primary-700">💵 Costos de soporte</span>
+                  <span className="text-xl sm:text-2xl md:text-3xl font-bold text-accent-brand">-7.2%</span>
                 </div>
               </Card>
             </div>
@@ -616,92 +616,92 @@ const Panorama = () => {
       </Section>
 
       {/* Colombia */}
-      <Section className="py-20 bg-white">
-        <div className="container max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+      <Section className="py-10 sm:py-14 md:py-20 bg-white">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
               Perspectivas para Colombia
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
           </div>
           
           <div className="max-w-6xl mx-auto">
-            <h3 className="text-2xl font-bold text-primary-700 mb-8 text-center">Nuevos Segmentos Emergentes</h3>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary-700 mb-4 sm:mb-6 md:mb-8 text-center">Nuevos Segmentos Emergentes</h3>
             
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="p-10 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-sand border-2 border-accent-brand/20 flex items-center justify-center shadow-lg">
-                  <span className="text-4xl">👥</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-12">
+              <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-xl sm:rounded-2xl bg-sand border-2 border-accent-brand/20 flex items-center justify-center shadow-lg">
+                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">👥</span>
                 </div>
-                <h4 className="text-xl font-bold text-primary-700 mb-3 text-center">Los Ninis</h4>
-                <p className="text-base text-primary-900 mb-6 text-center leading-relaxed">Jóvenes que ni estudian ni trabajan - segmento en crecimiento</p>
-                <div className="border-t-2 border-sand pt-6">
-                  <p className="text-sm font-bold text-primary-700 mb-3 text-center">Necesidades Críticas:</p>
-                  <ul className="space-y-2 text-sm text-primary-900">
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
+                <h4 className="text-base sm:text-lg md:text-xl font-bold text-primary-700 mb-2 sm:mb-3 text-center">Los Ninis</h4>
+                <p className="text-xs sm:text-sm md:text-base text-primary-900 mb-3 sm:mb-4 md:mb-6 text-center leading-relaxed">Jóvenes que ni estudian ni trabajan - segmento en crecimiento</p>
+                <div className="flex-grow border-t-2 border-sand pt-3 sm:pt-4 md:pt-6">
+                  <p className="text-xs sm:text-sm font-bold text-primary-700 mb-2 sm:mb-3 text-center">Necesidades Críticas:</p>
+                  <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-primary-900">
+                    <li className="flex items-start gap-1 sm:gap-2">
+                      <span className="text-accent mt-0.5 sm:mt-1">•</span>
                       <span>Orientación vocacional efectiva</span>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
+                    <li className="flex items-start gap-1 sm:gap-2">
+                      <span className="text-accent mt-0.5 sm:mt-1">•</span>
                       <span>Formación práctica inmediata</span>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
+                    <li className="flex items-start gap-1 sm:gap-2">
+                      <span className="text-accent mt-0.5 sm:mt-1">•</span>
                       <span>Acompañamiento psicosocial</span>
                     </li>
                   </ul>
                 </div>
               </Card>
               
-              <Card className="p-10 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-sand border-2 border-accent-brand/20 flex items-center justify-center shadow-lg">
-                  <span className="text-4xl">👴</span>
+              <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-xl sm:rounded-2xl bg-sand border-2 border-accent-brand/20 flex items-center justify-center shadow-lg">
+                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">👴</span>
                 </div>
-                <h4 className="text-xl font-bold text-primary-700 mb-6 text-center">Silver Economy</h4>
-                <p className="text-base text-primary-900 mb-6 text-center leading-relaxed">Población mayor de 60 años - segmento ignorado y en expansión</p>
-                <div className="border-t-2 border-sand pt-6">
-                  <p className="text-sm font-bold text-primary-700 mb-3 text-center">Necesidades Críticas:</p>
-                  <ul className="space-y-2 text-sm text-primary-900">
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
+                <h4 className="text-base sm:text-lg md:text-xl font-bold text-primary-700 mb-2 sm:mb-3 text-center">Silver Economy</h4>
+                <p className="text-xs sm:text-sm md:text-base text-primary-900 mb-3 sm:mb-4 md:mb-6 text-center leading-relaxed">Población mayor de 60 años - segmento ignorado y en expansión</p>
+                <div className="flex-grow border-t-2 border-sand pt-3 sm:pt-4 md:pt-6">
+                  <p className="text-xs sm:text-sm font-bold text-primary-700 mb-2 sm:mb-3 text-center">Necesidades Críticas:</p>
+                  <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-primary-900">
+                    <li className="flex items-start gap-1 sm:gap-2">
+                      <span className="text-accent mt-0.5 sm:mt-1">•</span>
                       <span>Aprendizaje continuo</span>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
+                    <li className="flex items-start gap-1 sm:gap-2">
+                      <span className="text-accent mt-0.5 sm:mt-1">•</span>
                       <span>Actualización tecnológica</span>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
+                    <li className="flex items-start gap-1 sm:gap-2">
+                      <span className="text-accent mt-0.5 sm:mt-1">•</span>
                       <span>Propósito post-jubilación</span>
                     </li>
                   </ul>
                 </div>
               </Card>
               
-              <Card className="p-10 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-sand border-2 border-accent-brand/20 flex items-center justify-center shadow-lg">
-                  <span className="text-4xl">📱</span>
+              <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 sm:col-span-2 md:col-span-1">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-xl sm:rounded-2xl bg-sand border-2 border-accent-brand/20 flex items-center justify-center shadow-lg">
+                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">📱</span>
                 </div>
-                <h4 className="text-xl font-bold text-primary-700 mb-6 text-center">Creadores de Contenido</h4>
-                <p className="text-base text-primary-900 mb-6 text-center leading-relaxed">YouTubers, TikTokers - nueva economía creativa</p>
-                <div className="border-t-2 border-sand pt-6">
-                  <p className="text-sm font-bold text-primary-700 mb-3 text-center">Necesidades Críticas:</p>
-                  <ul className="space-y-2 text-sm text-primary-900">
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
+                <h4 className="text-base sm:text-lg md:text-xl font-bold text-primary-700 mb-2 sm:mb-3 text-center">Creadores de Contenido</h4>
+                <p className="text-xs sm:text-sm md:text-base text-primary-900 mb-3 sm:mb-4 md:mb-6 text-center leading-relaxed">YouTubers, TikTokers - nueva economía creativa</p>
+                <div className="flex-grow border-t-2 border-sand pt-3 sm:pt-4 md:pt-6">
+                  <p className="text-xs sm:text-sm font-bold text-primary-700 mb-2 sm:mb-3 text-center">Necesidades Críticas:</p>
+                  <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-primary-900">
+                    <li className="flex items-start gap-1 sm:gap-2">
+                      <span className="text-accent mt-0.5 sm:mt-1">•</span>
                       <span>Formación en business</span>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
+                    <li className="flex items-start gap-1 sm:gap-2">
+                      <span className="text-accent mt-0.5 sm:mt-1">•</span>
                       <span>Manejo tributario</span>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
+                    <li className="flex items-start gap-1 sm:gap-2">
+                      <span className="text-accent mt-0.5 sm:mt-1">•</span>
                       <span>Branding personal</span>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
+                    <li className="flex items-start gap-1 sm:gap-2">
+                      <span className="text-accent mt-0.5 sm:mt-1">•</span>
                       <span>Diversificación de ingresos</span>
                     </li>
                   </ul>
@@ -709,42 +709,42 @@ const Panorama = () => {
               </Card>
             </div>
             
-            <Card className="p-10 bg-gradient-to-br from-accent/10 to-white border-2 border-accent/30">
-              <h3 className="text-2xl font-bold text-primary-700 mb-6 text-center">
+            <Card className="p-5 sm:p-6 md:p-8 lg:p-10 bg-gradient-to-br from-accent/10 to-white border-2 border-accent/30">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary-700 mb-3 sm:mb-4 md:mb-6 text-center">
                 Las Cuatro Necesidades Críticas de los Jóvenes Colombianos
               </h3>
-              <p className="text-center text-sm text-primary-900 mb-8 italic">Investigación profunda de Educación Estrella</p>
+              <p className="text-center text-xs sm:text-sm text-primary-900 mb-4 sm:mb-6 md:mb-8 italic">Investigación profunda de Educación Estrella</p>
               
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="flex items-start gap-4">
-                  <span className="text-3xl">🔍</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-xl sm:text-2xl md:text-3xl">🔍</span>
                   <div>
-                    <h4 className="font-bold text-primary-700 mb-2">"No sé qué estudiar"</h4>
-                    <p className="text-primary-900">Falta crítica de orientación vocacional real</p>
+                    <h4 className="text-sm sm:text-base font-bold text-primary-700 mb-1 sm:mb-2">"No sé qué estudiar"</h4>
+                    <p className="text-xs sm:text-sm md:text-base text-primary-900">Falta crítica de orientación vocacional real</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <span className="text-3xl">💰</span>
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-xl sm:text-2xl md:text-3xl">💰</span>
                   <div>
-                    <h4 className="font-bold text-primary-700 mb-2">"No tengo el dinero suficiente"</h4>
-                    <p className="text-primary-900">Barreras económicas estructurales</p>
+                    <h4 className="text-sm sm:text-base font-bold text-primary-700 mb-1 sm:mb-2">"No tengo el dinero suficiente"</h4>
+                    <p className="text-xs sm:text-sm md:text-base text-primary-900">Barreras económicas estructurales</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <span className="text-3xl">🤔</span>
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-xl sm:text-2xl md:text-3xl">🤔</span>
                   <div>
-                    <h4 className="font-bold text-primary-700 mb-2">"No sé si es el camino correcto"</h4>
-                    <p className="text-primary-900">Incertidumbre paralizante sobre el futuro</p>
+                    <h4 className="text-sm sm:text-base font-bold text-primary-700 mb-1 sm:mb-2">"No sé si es el camino correcto"</h4>
+                    <p className="text-xs sm:text-sm md:text-base text-primary-900">Incertidumbre paralizante sobre el futuro</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <span className="text-3xl">😔</span>
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-xl sm:text-2xl md:text-3xl">😔</span>
                   <div>
-                    <h4 className="font-bold text-primary-700 mb-2">"Me siento solo"</h4>
-                    <p className="text-primary-900">Necesidad fundamental de acompañamiento y comunidad</p>
+                    <h4 className="text-sm sm:text-base font-bold text-primary-700 mb-1 sm:mb-2">"Me siento solo"</h4>
+                    <p className="text-xs sm:text-sm md:text-base text-primary-900">Necesidad fundamental de acompañamiento y comunidad</p>
                   </div>
                 </div>
               </div>
@@ -754,80 +754,80 @@ const Panorama = () => {
       </Section>
 
       {/* Cambio de Discurso */}
-      <Section className="py-20 bg-accent text-white">
-        <div className="container max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+      <Section className="py-10 sm:py-14 md:py-20 bg-accent text-white">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight">
               El Cambio de Discurso
             </h2>
-            <div className="w-32 h-1 bg-white mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+            <div className="w-20 sm:w-24 md:w-32 h-1 bg-white mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
+            <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
               De "Enseñamos X" a "Usamos Datos e IA para Transformar Vidas"
             </p>
           </div>
           
           <div className="max-w-5xl mx-auto">
-            <Card className="p-10 bg-white/10 backdrop-blur-sm border-white/20 mb-12">
-              <h3 className="text-2xl font-bold text-white mb-6">El Nuevo Posicionamiento de EdTechs Exitosas</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="flex items-start gap-4">
-                  <span className="text-3xl">📊</span>
+            <Card className="p-5 sm:p-6 md:p-8 lg:p-10 bg-white/10 backdrop-blur-sm border-white/20 mb-6 sm:mb-8 md:mb-12">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4 md:mb-6">El Nuevo Posicionamiento de EdTechs Exitosas</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-xl sm:text-2xl md:text-3xl">📊</span>
                   <div>
-                    <h4 className="font-bold text-white mb-2">Personalización Real</h4>
-                    <p className="text-white/90">Basada en datos de comportamiento de aprendizaje</p>
+                    <h4 className="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Personalización Real</h4>
+                    <p className="text-xs sm:text-sm md:text-base text-white/90">Basada en datos de comportamiento de aprendizaje</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <span className="text-3xl">✅</span>
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-xl sm:text-2xl md:text-3xl">✅</span>
                   <div>
-                    <h4 className="font-bold text-white mb-2">Evaluación Continua</h4>
-                    <p className="text-white/90">No punitiva sino orientadora y formativa</p>
+                    <h4 className="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Evaluación Continua</h4>
+                    <p className="text-xs sm:text-sm md:text-base text-white/90">No punitiva sino orientadora y formativa</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <span className="text-3xl">📈</span>
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-xl sm:text-2xl md:text-3xl">📈</span>
                   <div>
-                    <h4 className="font-bold text-white mb-2">Reportes en Tiempo Real</h4>
-                    <p className="text-white/90">Para estudiantes, docentes y empleadores</p>
+                    <h4 className="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Reportes en Tiempo Real</h4>
+                    <p className="text-xs sm:text-sm md:text-base text-white/90">Para estudiantes, docentes y empleadores</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <span className="text-3xl">🤖</span>
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-xl sm:text-2xl md:text-3xl">🤖</span>
                   <div>
-                    <h4 className="font-bold text-white mb-2">IA como Co-piloto</h4>
-                    <p className="text-white/90">Augmentando capacidades humanas</p>
+                    <h4 className="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">IA como Co-piloto</h4>
+                    <p className="text-xs sm:text-sm md:text-base text-white/90">Augmentando capacidades humanas</p>
                   </div>
                 </div>
               </div>
             </Card>
             
-            <Card className="p-10 bg-white/10 backdrop-blur-sm border-white/20">
-              <h3 className="text-2xl font-bold text-white mb-6">La Descentralización de Títulos y Credenciales</h3>
-              <p className="text-lg text-white/90 mb-6">
+            <Card className="p-5 sm:p-6 md:p-8 lg:p-10 bg-white/10 backdrop-blur-sm border-white/20">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4 md:mb-6">La Descentralización de Títulos y Credenciales</h3>
+              <p className="text-sm sm:text-base md:text-lg text-white/90 mb-3 sm:mb-4 md:mb-6">
                 El monopolio universitario del credencialismo está terminando:
               </p>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-white/10 p-4 rounded-lg">
-                  <h4 className="font-bold text-white mb-2">🏅 Badges Digitales</h4>
-                  <p className="text-sm text-white/90">Con evidencia de competencias específicas</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="bg-white/10 p-3 sm:p-4 rounded-lg">
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">🏅 Badges Digitales</h4>
+                  <p className="text-xs sm:text-sm text-white/90">Con evidencia de competencias específicas</p>
                 </div>
                 
-                <div className="bg-white/10 p-4 rounded-lg">
-                  <h4 className="font-bold text-white mb-2">📜 Microcredenciales</h4>
-                  <p className="text-sm text-white/90">Apilables y reconocidas por industria</p>
+                <div className="bg-white/10 p-3 sm:p-4 rounded-lg">
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">📜 Microcredenciales</h4>
+                  <p className="text-xs sm:text-sm text-white/90">Apilables y reconocidas por industria</p>
                 </div>
                 
-                <div className="bg-white/10 p-4 rounded-lg">
-                  <h4 className="font-bold text-white mb-2">💼 Portfolios de Competencias</h4>
-                  <p className="text-sm text-white/90">Verificables en tiempo real</p>
+                <div className="bg-white/10 p-3 sm:p-4 rounded-lg">
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">💼 Portfolios de Competencias</h4>
+                  <p className="text-xs sm:text-sm text-white/90">Verificables en tiempo real</p>
                 </div>
                 
-                <div className="bg-white/10 p-4 rounded-lg">
-                  <h4 className="font-bold text-white mb-2">⛓️ Blockchain</h4>
-                  <p className="text-sm text-white/90">Certificación inmutable y global</p>
+                <div className="bg-white/10 p-3 sm:p-4 rounded-lg">
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">⛓️ Blockchain</h4>
+                  <p className="text-xs sm:text-sm text-white/90">Certificación inmutable y global</p>
                 </div>
               </div>
             </Card>
@@ -836,62 +836,62 @@ const Panorama = () => {
       </Section>
 
       {/* Financiamiento */}
-      <Section className="py-20 bg-sand">
-        <div className="container max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
               Financiamiento: Blended Finance
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl text-primary-900 max-w-3xl mx-auto">
+            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
+            <p className="text-base sm:text-lg md:text-xl text-primary-900 max-w-3xl mx-auto">
               Nueva puerta de entrada al sector público
             </p>
           </div>
           
           <div className="max-w-5xl mx-auto">
-            <p className="text-lg text-primary-900 mb-12 text-center leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-primary-900 mb-6 sm:mb-8 md:mb-12 text-center leading-relaxed">
               El modelo de <strong className="text-primary-700">financiamiento mixto</strong> (blended finance) se consolida como estrategia exitosa para EdTechs que quieren trabajar con gobiernos
             </p>
             
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary-700 to-primary-900 flex items-center justify-center shadow-2xl">
-                  <span className="text-white font-bold text-3xl">1</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-12">
+              <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-gradient-to-br from-primary-700 to-primary-900 flex items-center justify-center shadow-2xl">
+                  <span className="text-white font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">1</span>
                 </div>
-                <h3 className="text-2xl font-bold text-primary-700 mb-4">Donantes + Gobiernos</h3>
-                <p className="text-base text-primary-900 leading-relaxed">Reducir riesgo inicial y probar concepto</p>
+                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary-700 mb-2 sm:mb-3 md:mb-4">Donantes + Gobiernos</h3>
+                <p className="flex-grow text-xs sm:text-sm md:text-base text-primary-900 leading-relaxed">Reducir riesgo inicial y probar concepto</p>
               </Card>
               
-              <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center shadow-2xl">
-                  <span className="text-white font-bold text-3xl">2</span>
+              <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center shadow-2xl">
+                  <span className="text-white font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">2</span>
                 </div>
-                <h3 className="text-2xl font-bold text-primary-700 mb-4">Pilotos Medibles</h3>
-                <p className="text-base text-primary-900 leading-relaxed">Demostrar impacto con datos duros</p>
+                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary-700 mb-2 sm:mb-3 md:mb-4">Pilotos Medibles</h3>
+                <p className="flex-grow text-xs sm:text-sm md:text-base text-primary-900 leading-relaxed">Demostrar impacto con datos duros</p>
               </Card>
               
-              <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary-700 to-primary-900 flex items-center justify-center shadow-2xl">
-                  <span className="text-white font-bold text-3xl">3</span>
+              <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 sm:col-span-2 md:col-span-1">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-gradient-to-br from-primary-700 to-primary-900 flex items-center justify-center shadow-2xl">
+                  <span className="text-white font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">3</span>
                 </div>
-                <h3 className="text-2xl font-bold text-primary-700 mb-4">Escalamiento Contractual</h3>
-                <p className="text-base text-primary-900 leading-relaxed">Crecimiento sostenible con contratación pública</p>
+                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary-700 mb-2 sm:mb-3 md:mb-4">Escalamiento Contractual</h3>
+                <p className="flex-grow text-xs sm:text-sm md:text-base text-primary-900 leading-relaxed">Crecimiento sostenible con contratación pública</p>
               </Card>
             </div>
             
-            <Card className="p-10 bg-gradient-to-br from-primary-700 to-primary-900 text-white">
-              <h3 className="text-2xl font-bold mb-6 text-center">Beneficios del Modelo</h3>
-              <ul className="space-y-4 text-lg">
-                <li className="flex items-start gap-3">
-                  <span className="text-accent text-2xl">✓</span>
+            <Card className="p-5 sm:p-6 md:p-8 lg:p-10 bg-gradient-to-br from-primary-700 to-primary-900 text-white">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-center">Beneficios del Modelo</h3>
+              <ul className="space-y-2 sm:space-y-3 md:space-y-4 text-sm sm:text-base md:text-lg">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <span className="text-accent text-lg sm:text-xl md:text-2xl">✓</span>
                   <span>Entrar al sector público sin procesos de licitación tradicionales</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent text-2xl">✓</span>
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <span className="text-accent text-lg sm:text-xl md:text-2xl">✓</span>
                   <span>Demostrar valor antes de compromiso total del gobierno</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent text-2xl">✓</span>
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <span className="text-accent text-lg sm:text-xl md:text-2xl">✓</span>
                   <span>Escalar con evidencia sólida de impacto</span>
                 </li>
               </ul>
@@ -901,104 +901,104 @@ const Panorama = () => {
       </Section>
 
       {/* El Futuro es Ahora */}
-      <Section className="py-20 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden">
+      <Section className="py-10 sm:py-14 md:py-20 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(247,60,92,0.1),transparent_70%)]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(11,71,206,0.15),transparent_70%)]"></div>
         </div>
         
-        <div className="container max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+        <div className="container max-w-7xl mx-auto relative z-10 px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight">
               El Futuro es Ahora
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-12 rounded-full"></div>
+            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-6 sm:mb-8 md:mb-12 rounded-full"></div>
           </div>
           
-          <div className="max-w-5xl mx-auto mb-12">
-            <Card className="p-10 bg-white/10 backdrop-blur-sm border-white/20 mb-12">
-              <h3 className="text-2xl font-bold text-white mb-8 text-center">Los Cinco Principios de la Neoeducación</h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">1</span>
+          <div className="max-w-5xl mx-auto mb-6 sm:mb-8 md:mb-12">
+            <Card className="p-5 sm:p-6 md:p-8 lg:p-10 bg-white/10 backdrop-blur-sm border-white/20 mb-6 sm:mb-8 md:mb-12">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-4 sm:mb-6 md:mb-8 text-center">Los Cinco Principios de la Neoeducación</h3>
+              <div className="space-y-3 sm:space-y-4 md:space-y-6">
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-sm sm:text-base">1</span>
                   </div>
-                  <p className="text-lg text-white/90 pt-1">
+                  <p className="text-sm sm:text-base md:text-lg text-white/90 pt-0.5 sm:pt-1">
                     <strong className="text-white">La evaluación va primero</strong>, y es subjetiva y adaptada a cada persona
                   </p>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">2</span>
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-sm sm:text-base">2</span>
                   </div>
-                  <p className="text-lg text-white/90 pt-1">
+                  <p className="text-sm sm:text-base md:text-lg text-white/90 pt-0.5 sm:pt-1">
                     El <strong className="text-white">método ya no es lineal</strong> → Es experimental, iterativo y adaptativo
                   </p>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">3</span>
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-sm sm:text-base">3</span>
                   </div>
-                  <p className="text-lg text-white/90 pt-1">
+                  <p className="text-sm sm:text-base md:text-lg text-white/90 pt-0.5 sm:pt-1">
                     <strong className="text-white">Habilidades blandas = Power Skills</strong> - son competencias críticas, no complementarias
                   </p>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">4</span>
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-sm sm:text-base">4</span>
                   </div>
-                  <p className="text-lg text-white/90 pt-1">
+                  <p className="text-sm sm:text-base md:text-lg text-white/90 pt-0.5 sm:pt-1">
                     Todos tendremos un <strong className="text-white">GPT "segundo cerebro"</strong> - la IA será extensión cognitiva
                   </p>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">5</span>
+                <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-sm sm:text-base">5</span>
                   </div>
-                  <p className="text-lg text-white/90 pt-1">
+                  <p className="text-sm sm:text-base md:text-lg text-white/90 pt-0.5 sm:pt-1">
                     Los <strong className="text-white">títulos están descentralizados</strong> - valor en competencias demostrables, no en diplomas
                   </p>
                 </div>
               </div>
             </Card>
             
-            <Card className="p-10 bg-accent/20 backdrop-blur-sm border-accent/40 mb-12">
-              <h3 className="text-2xl font-bold text-white mb-6 text-center">La Nueva Ecuación del Empleo</h3>
+            <Card className="p-5 sm:p-6 md:p-8 lg:p-10 bg-accent/20 backdrop-blur-sm border-accent/40 mb-6 sm:mb-8 md:mb-12">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4 md:mb-6 text-center">La Nueva Ecuación del Empleo</h3>
               
-              <div className="mb-8">
-                <p className="text-white/90 mb-4 text-center">❌ El modelo viejo (que ya no funciona):</p>
-                <div className="bg-white/10 p-6 rounded-lg">
-                  <p className="text-lg text-white text-center font-mono">
+              <div className="mb-4 sm:mb-6 md:mb-8">
+                <p className="text-sm sm:text-base text-white/90 mb-2 sm:mb-3 md:mb-4 text-center">❌ El modelo viejo (que ya no funciona):</p>
+                <div className="bg-white/10 p-3 sm:p-4 md:p-6 rounded-lg">
+                  <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white text-center font-mono">
                     Estudiamos → Nos graduamos → Buscamos empleo → <span className="text-red-300">Fracaso/Frustración</span>
                   </p>
                 </div>
               </div>
               
               <div>
-                <p className="text-white/90 mb-4 text-center">✅ El nuevo modelo (que está emergiendo):</p>
-                <div className="bg-white/10 p-6 rounded-lg">
-                  <p className="text-lg text-white mb-4 font-mono">
+                <p className="text-sm sm:text-base text-white/90 mb-2 sm:mb-3 md:mb-4 text-center">✅ El nuevo modelo (que está emergiendo):</p>
+                <div className="bg-white/10 p-3 sm:p-4 md:p-6 rounded-lg">
+                  <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white mb-2 sm:mb-3 md:mb-4 font-mono">
                     Ingresamos a la educación → <strong>Nos enfrentamos al mercado MIENTRAS estudiamos</strong> →
                   </p>
-                  <p className="text-lg text-white mb-4 font-mono">
+                  <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white mb-2 sm:mb-3 md:mb-4 font-mono">
                     Nos graduamos con experiencia → <span className="text-green-300">Empleabilidad aumentada por:</span>
                   </p>
-                  <ul className="space-y-2 text-white/90">
-                    <li className="flex items-center gap-2">
+                  <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm md:text-base text-white/90">
+                    <li className="flex items-center gap-1 sm:gap-2">
                       <span className="text-green-300">✓</span> Modelos mentales empresariales
                     </li>
-                    <li className="flex items-center gap-2">
+                    <li className="flex items-center gap-1 sm:gap-2">
                       <span className="text-green-300">✓</span> Power Skills probadas
                     </li>
-                    <li className="flex items-center gap-2">
+                    <li className="flex items-center gap-1 sm:gap-2">
                       <span className="text-green-300">✓</span> Business Acumen desarrollado
                     </li>
-                    <li className="flex items-center gap-2">
+                    <li className="flex items-center gap-1 sm:gap-2">
                       <span className="text-green-300">✓</span> Capacidades digitales avanzadas
                     </li>
                   </ul>
@@ -1007,36 +1007,36 @@ const Panorama = () => {
             </Card>
             
             <div className="text-center">
-              <Card className="p-10 bg-white/10 backdrop-blur-sm border-white/20 mb-8">
-                <h3 className="text-3xl font-bold text-white mb-6">"Las soluciones ya existen - ahora necesitamos unidad y escala"</h3>
-                <p className="text-xl text-white/90 mb-6">
+              <Card className="p-5 sm:p-6 md:p-8 lg:p-10 bg-white/10 backdrop-blur-sm border-white/20 mb-4 sm:mb-6 md:mb-8">
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4 md:mb-6">"Las soluciones ya existen - ahora necesitamos unidad y escala"</h3>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 mb-3 sm:mb-4 md:mb-6">
                   No podemos esperar que los gobiernos cambien las lógicas de la educación desde arriba. Con un mercado de <strong className="text-white">$10 trillones USD</strong> para 2030, el sector privado, las organizaciones sin fines de lucro, y las alianzas público-privadas están <strong className="text-white">transformando la educación HOY</strong>.
                 </p>
                 
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-white/10 p-6 rounded-lg">
-                    <p className="text-lg text-white">⚡ El conocimiento se duplica cada <strong>2 años</strong></p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
+                  <div className="bg-white/10 p-3 sm:p-4 md:p-6 rounded-lg">
+                    <p className="text-sm sm:text-base md:text-lg text-white">⚡ El conocimiento se duplica cada <strong>2 años</strong></p>
                   </div>
-                  <div className="bg-white/10 p-6 rounded-lg">
-                    <p className="text-lg text-white">⚡ 50% de habilidades obsoletas en <strong>5 años</strong></p>
+                  <div className="bg-white/10 p-3 sm:p-4 md:p-6 rounded-lg">
+                    <p className="text-sm sm:text-base md:text-lg text-white">⚡ 50% de habilidades obsoletas en <strong>5 años</strong></p>
                   </div>
-                  <div className="bg-white/10 p-6 rounded-lg">
-                    <p className="text-lg text-white">⚡ La brecha educación-empleo <strong>se amplía</strong> cada día</p>
+                  <div className="bg-white/10 p-3 sm:p-4 md:p-6 rounded-lg">
+                    <p className="text-sm sm:text-base md:text-lg text-white">⚡ La brecha educación-empleo <strong>se amplía</strong> cada día</p>
                   </div>
-                  <div className="bg-white/10 p-6 rounded-lg">
-                    <p className="text-lg text-white">⚡ Los estudiantes ya buscan <strong>alternativas</strong></p>
+                  <div className="bg-white/10 p-3 sm:p-4 md:p-6 rounded-lg">
+                    <p className="text-sm sm:text-base md:text-lg text-white">⚡ Los estudiantes ya buscan <strong>alternativas</strong></p>
                   </div>
                 </div>
                 
-                <p className="text-2xl font-bold text-white mb-8">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-4 sm:mb-6 md:mb-8">
                   El futuro de la educación no es una promesa lejana. El futuro es ahora.
                 </p>
               </Card>
               
-              <Button size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold px-10 py-6 rounded-xl shadow-2xl hover:shadow-accent/40 transition-all duration-500 hover:scale-110 text-lg" asChild>
-                <Link to="/asociados" className="flex items-center space-x-3">
+              <Button size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-xl shadow-2xl hover:shadow-accent/40 transition-all duration-500 hover:scale-105 md:hover:scale-110 text-sm sm:text-base md:text-lg" asChild>
+                <Link to="/asociados" className="flex items-center space-x-2 sm:space-x-3">
                   <span>Sé Parte del Cambio</span>
-                  <ArrowRight className="w-6 h-6" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                 </Link>
               </Button>
             </div>
@@ -1045,50 +1045,50 @@ const Panorama = () => {
       </Section>
 
       {/* Datos de Impacto */}
-      <Section className="py-20 bg-white">
-        <div className="container max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+      <Section className="py-10 sm:py-14 md:py-20 bg-white">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
               Datos de Impacto Global
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="p-10 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
-                <DollarSign className="w-10 h-10 text-white" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+            <Card className="h-full flex flex-col p-4 sm:p-6 md:p-8 lg:p-10 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-accent flex items-center justify-center">
+                <DollarSign className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" />
               </div>
-              <div className="text-4xl md:text-5xl font-bold mb-4 text-accent">$341B</div>
-              <div className="text-lg font-semibold mb-2 text-primary-700">Mercado EdTech Global</div>
-              <div className="text-sm text-primary-900">proyección 2025</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 text-accent">$341B</div>
+              <div className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold mb-1 sm:mb-2 text-primary-700">Mercado EdTech Global</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-primary-900">proyección 2025</div>
             </Card>
             
-            <Card className="p-10 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-700 flex items-center justify-center">
-                <Users className="w-10 h-10 text-white" />
+            <Card className="h-full flex flex-col p-4 sm:p-6 md:p-8 lg:p-10 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-primary-700 flex items-center justify-center">
+                <Users className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" />
               </div>
-              <div className="text-4xl md:text-5xl font-bold mb-4 text-primary-700">700M</div>
-              <div className="text-lg font-semibold mb-2 text-primary-700">Usuarios de EdTech</div>
-              <div className="text-sm text-primary-900">en el mundo</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 text-primary-700">700M</div>
+              <div className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold mb-1 sm:mb-2 text-primary-700">Usuarios de EdTech</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-primary-900">en el mundo</div>
             </Card>
             
-            <Card className="p-10 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
-                <TrendingUp className="w-10 h-10 text-white" />
+            <Card className="h-full flex flex-col p-4 sm:p-6 md:p-8 lg:p-10 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-accent flex items-center justify-center">
+                <TrendingUp className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" />
               </div>
-              <div className="text-4xl md:text-5xl font-bold mb-4 text-accent">16.3%</div>
-              <div className="text-lg font-semibold mb-2 text-primary-700">Crecimiento anual</div>
-              <div className="text-sm text-primary-900">del sector</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 text-accent">16.3%</div>
+              <div className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold mb-1 sm:mb-2 text-primary-700">Crecimiento anual</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-primary-900">del sector</div>
             </Card>
             
-            <Card className="p-10 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-700 flex items-center justify-center">
-                <Award className="w-10 h-10 text-white" />
+            <Card className="h-full flex flex-col p-4 sm:p-6 md:p-8 lg:p-10 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-primary-700 flex items-center justify-center">
+                <Award className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" />
               </div>
-              <div className="text-4xl md:text-5xl font-bold mb-4 text-primary-700">85%</div>
-              <div className="text-lg font-semibold mb-2 text-primary-700">Instituciones adoptando</div>
-              <div className="text-sm text-primary-900">tecnología educativa</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 text-primary-700">85%</div>
+              <div className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold mb-1 sm:mb-2 text-primary-700">Instituciones adoptando</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-primary-900">tecnología educativa</div>
             </Card>
           </div>
         </div>
