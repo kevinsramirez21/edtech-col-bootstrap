@@ -283,7 +283,7 @@ export function Navbar() {
                       <Button 
                         asChild
                         variant="outline"
-                        className="w-full border-white text-white hover:bg-white hover:text-[#F73C5C] font-semibold py-3 rounded-lg"
+                        className="w-full border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#F73C5C] font-semibold py-3 rounded-lg"
                       >
                         <Link to="/auth" className="flex items-center justify-center space-x-2">
                           <LogIn className="w-4 h-4" />
