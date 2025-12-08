@@ -200,9 +200,9 @@ const Somos = () => {
           <p className="text-base sm:text-lg text-primary-900 max-w-2xl mx-auto">Líderes comprometidos con la transformación educativa en Colombia y latinoamérica</p>
         </div>
         
-        <LogoGrid partners={asociados} columns={4} title="" className="mb-12" />
+        <LogoGrid partners={asociados} columns={4} title="" className="mb-8 sm:mb-12" />
         
-        <div className="flex justify-center mb-20">
+        <div className="flex justify-center mb-12 sm:mb-16 lg:mb-20 px-4">
           <CTAButton size="lg" variant="accent" asChild>
             <Link to="/asociados">
               Ver todos nuestros asociados
@@ -212,8 +212,8 @@ const Somos = () => {
         </div>
 
         {/* NOS HAN VISTO EN - MISMA SECCIÓN */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700 font-funnel">
+        <div className="text-center mb-8 sm:mb-12 px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-primary-700 font-funnel">
             Nos has visto en
           </h2>
         </div>
@@ -223,31 +223,31 @@ const Somos = () => {
 
       {/* MISIÓN Y CÓMO LO HACEMOS */}
       <section className="relative overflow-hidden">
-        <div className="grid lg:grid-cols-2 min-h-[700px] lg:min-h-[80vh]">
+        <div className="grid lg:grid-cols-2 min-h-[500px] sm:min-h-[600px] lg:min-h-[80vh]">
           {/* Columna izquierda - Contenido */}
-          <div className="bg-primary-700 text-white p-8 md:p-12 lg:p-20 flex flex-col justify-center">
-            <div className="space-y-10 max-w-2xl">
+          <div className="bg-primary-700 text-white p-6 sm:p-8 md:p-12 lg:p-20 flex flex-col justify-center">
+            <div className="space-y-6 sm:space-y-8 lg:space-y-10 max-w-2xl">
               {/* Misión */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-8 h-8 text-accent flex-shrink-0" />
-                  <h2 className="text-3xl md:text-4xl font-bold font-funnel">Nuestra misión es clara</h2>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-accent flex-shrink-0" />
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-funnel">Nuestra misión es clara</h2>
                 </div>
-                <p className="text-lg md:text-xl leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl leading-relaxed">
                   Transformar la calidad, inclusión y accesibilidad de la educación en Colombia y Latinoamérica.
                 </p>
-                <p className="text-lg md:text-xl leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl leading-relaxed">
                   No se trata solo de enseñar, sino de abrir caminos hacia un aprendizaje significativo que conecte estudiantes, docentes e instituciones con las oportunidades del mundo moderno.
                 </p>
               </div>
 
               {/* Cómo lo hacemos */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-8 h-8 text-accent flex-shrink-0" />
-                  <h3 className="text-3xl md:text-4xl font-bold font-funnel">¿Cómo lo hacemos?</h3>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-accent flex-shrink-0" />
+                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-funnel">¿Cómo lo hacemos?</h3>
                 </div>
-                <p className="text-lg md:text-xl leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl leading-relaxed">
                   Tejiendo lazos de colaboración entre organizaciones con ánimo y sin ánimo de lucro que trabajan por la educación, impulsando soluciones innovadoras que impacten a millones de personas.
                 </p>
               </div>
@@ -255,7 +255,7 @@ const Somos = () => {
           </div>
 
           {/* Columna derecha - Imagen */}
-          <div className="relative h-[400px] lg:h-auto">
+          <div className="relative h-[250px] sm:h-[300px] lg:h-auto">
             <OptimizedImage 
               src={eventoColombiaEdtech} 
               alt="Evento Colombia EdTech - Formando líderes que transforman el país" 
@@ -267,9 +267,9 @@ const Somos = () => {
 
       {/* VISIÓN 2030 */}
       <section className="relative overflow-hidden">
-        <div className="grid lg:grid-cols-2 min-h-[700px] lg:min-h-[80vh]">
+        <div className="grid lg:grid-cols-2 min-h-[500px] sm:min-h-[600px] lg:min-h-[80vh]">
           {/* Columna izquierda - Imagen */}
-          <div className="relative h-[400px] lg:h-auto order-last lg:order-first">
+          <div className="relative h-[250px] sm:h-[300px] lg:h-auto order-last lg:order-first">
             <OptimizedImage 
               src={eventoVision2030} 
               alt="Evento Colombia EdTech - Visión 2030" 
@@ -278,18 +278,18 @@ const Somos = () => {
           </div>
 
           {/* Columna derecha - Contenido */}
-          <div className="bg-accent text-white p-8 md:p-12 lg:p-20 flex flex-col justify-center">
-            <div className="space-y-10 max-w-2xl">
+          <div className="bg-accent text-white p-6 sm:p-8 md:p-12 lg:p-20 flex flex-col justify-center">
+            <div className="space-y-6 sm:space-y-8 lg:space-y-10 max-w-2xl">
               {/* Visión */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-8 h-8 text-white flex-shrink-0" />
-                  <h2 className="text-3xl md:text-4xl font-bold font-funnel">Nuestro horizonte es ambicioso.</h2>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-white flex-shrink-0" />
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-funnel">Nuestro horizonte es ambicioso.</h2>
                 </div>
-                <p className="text-lg md:text-xl leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl leading-relaxed">
                   Para 2030, seremos líderes en Latinoamérica en la creación de un ecosistema EdTech ético, dinámico y colaborativo que transforme el aprendizaje, impulse la globalización y priorice la personalización educativa.
                 </p>
-                <p className="text-lg md:text-xl leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl leading-relaxed">
                   Queremos un modelo donde aprender sea tan natural como respirar, y enseñar sea la puerta hacia un futuro lleno de progreso y equidad.
                 </p>
               </div>
@@ -358,117 +358,117 @@ const Somos = () => {
       </Section>
 
       {/* IMPACTO - FONDO AZUL */}
-      <Section className="py-16 bg-primary-700">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white font-funnel">
+      <Section className="py-12 sm:py-16 bg-primary-700">
+        <div className="text-center mb-8 sm:mb-12 px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-white font-funnel">
             El impacto de nuestro trabajo
           </h2>
-          <p className="text-xl text-white/90">
+          <p className="text-lg sm:text-xl text-white/90">
             Nuestros asociados impactan a
           </p>
         </div>
         
         {/* Estadísticas principales con iconos */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-5xl mx-auto">
-          <Card className="p-6 bg-transparent border-2 border-white/30 hover:border-white/50 transition-all">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12 max-w-5xl mx-auto px-4">
+          <Card className="p-4 sm:p-6 bg-transparent border-2 border-white/30 hover:border-white/50 transition-all">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2">
                   +29.550
                 </div>
-                <p className="text-xl text-white/90 font-medium">
+                <p className="text-base sm:text-lg lg:text-xl text-white/90 font-medium">
                   Instituciones
                 </p>
               </div>
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0">
-                <Building2 className="w-8 h-8 text-accent" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                <Building2 className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-accent" />
               </div>
             </div>
           </Card>
           
-          <Card className="p-6 bg-transparent border-2 border-white/30 hover:border-white/50 transition-all">
+          <Card className="p-4 sm:p-6 bg-transparent border-2 border-white/30 hover:border-white/50 transition-all">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2">
                   40.000
                 </div>
-                <p className="text-xl text-white/90 font-medium">
+                <p className="text-base sm:text-lg lg:text-xl text-white/90 font-medium">
                   Docentes
                 </p>
               </div>
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0">
-                <BookOpen className="w-8 h-8 text-accent" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                <BookOpen className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-accent" />
               </div>
             </div>
           </Card>
           
-          <Card className="p-6 bg-transparent border-2 border-white/30 hover:border-white/50 transition-all">
+          <Card className="p-4 sm:p-6 bg-transparent border-2 border-white/30 hover:border-white/50 transition-all">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2">
                   +4.8M
                 </div>
-                <p className="text-xl text-white/90 font-medium">
+                <p className="text-base sm:text-lg lg:text-xl text-white/90 font-medium">
                   Personas
                 </p>
               </div>
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0">
-                <Users className="w-8 h-8 text-accent" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                <Users className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-accent" />
               </div>
             </div>
           </Card>
           
-          <Card className="p-6 bg-transparent border-2 border-white/30 hover:border-white/50 transition-all">
+          <Card className="p-4 sm:p-6 bg-transparent border-2 border-white/30 hover:border-white/50 transition-all">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2">
                   15.000
                 </div>
-                <p className="text-xl text-white/90 font-medium">
+                <p className="text-base sm:text-lg lg:text-xl text-white/90 font-medium">
                   Empresas
                 </p>
               </div>
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0">
-                <Target className="w-8 h-8 text-accent" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                <Target className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-accent" />
               </div>
             </div>
           </Card>
         </div>
         
         {/* Estadísticas adicionales */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          <Card className="p-8 text-center bg-primary-900/50 border-2 border-white/20">
-            <div className="text-5xl font-bold text-white mb-3">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 max-w-7xl mx-auto px-4">
+          <Card className="p-4 sm:p-6 lg:p-8 text-center bg-primary-900/50 border-2 border-white/20">
+            <div className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-2 sm:mb-3">
               38.2%
             </div>
-            <p className="text-base text-white/90 leading-relaxed">
+            <p className="text-xs sm:text-sm lg:text-base text-white/90 leading-relaxed">
               De nuestros asociados llegan a 5-6 países
             </p>
           </Card>
           
-          <Card className="p-8 text-center bg-primary-900/50 border-2 border-white/20">
-            <div className="text-5xl font-bold text-white mb-3">
+          <Card className="p-4 sm:p-6 lg:p-8 text-center bg-primary-900/50 border-2 border-white/20">
+            <div className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-2 sm:mb-3">
               72.2%
             </div>
-            <p className="text-base text-white/90 leading-relaxed">
+            <p className="text-xs sm:text-sm lg:text-base text-white/90 leading-relaxed">
               De nuestras EdTechs asociadas comenzó con recursos propios
             </p>
           </Card>
           
-          <Card className="p-8 text-center bg-primary-900/50 border-2 border-white/20">
-            <div className="text-5xl font-bold text-white mb-3">
+          <Card className="p-4 sm:p-6 lg:p-8 text-center bg-primary-900/50 border-2 border-white/20">
+            <div className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-2 sm:mb-3">
               79.62%
             </div>
-            <p className="text-base text-white/90 leading-relaxed">
+            <p className="text-xs sm:text-sm lg:text-base text-white/90 leading-relaxed">
               De los founders de nuestras EdTech tienen un título de postgrado
             </p>
           </Card>
           
-          <Card className="p-8 text-center bg-primary-900/50 border-2 border-white/20">
-            <div className="text-5xl font-bold text-white mb-3">
+          <Card className="p-4 sm:p-6 lg:p-8 text-center bg-primary-900/50 border-2 border-white/20">
+            <div className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-2 sm:mb-3">
               2/3
             </div>
-            <p className="text-base text-white/90 leading-relaxed">
+            <p className="text-xs sm:text-sm lg:text-base text-white/90 leading-relaxed">
               De los founders de nuestras EdTech tienen un título de postgrado
             </p>
           </Card>
@@ -476,25 +476,25 @@ const Somos = () => {
       </Section>
 
       {/* TIMELINE HISTORIA - FONDO SAND */}
-      <Section id="historia" className="py-20 bg-sand">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700" style={{
+      <Section id="historia" className="py-12 sm:py-16 lg:py-20 bg-sand">
+        <div className="text-center mb-10 sm:mb-16 lg:mb-20 px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-primary-700" style={{
           fontFamily: 'var(--font-display)'
         }}>
             Nuestra historia
           </h2>
-          <p className="text-lg text-primary-900 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-primary-900 max-w-3xl mx-auto">
             El crecimiento que nos ha llevado a liderar el ecosistema EdTech colombiano
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto px-2 sm:px-4">
+        <div className="max-w-4xl mx-auto px-4">
           <div className="relative">
             {/* Línea vertical */}
             <div className="absolute left-5 sm:left-6 top-0 bottom-0 w-0.5 bg-primary-200"></div>
 
             {/* Items */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {timelineData.map((item, index) => <div key={index} className="relative flex gap-4 sm:gap-6 pl-12 sm:pl-16 animate-fade-in" style={{
               animationDelay: `${index * 0.1}s`
             }}>
@@ -504,17 +504,17 @@ const Somos = () => {
                   </div>
 
                   {/* Tarjeta */}
-                  <Card className="flex-1 p-5 sm:p-6 bg-primary-700 text-white border-primary-700 shadow-xl hover:shadow-lg transition-shadow">
-                    <div className="flex items-center gap-3">
-                      <span className="text-sm font-semibold text-white/90">{item.year}</span>
-                      <span className="w-2 h-2 rounded-full bg-accent/70"></span>
+                  <Card className="flex-1 p-4 sm:p-5 lg:p-6 bg-primary-700 text-white border-primary-700 shadow-xl hover:shadow-lg transition-shadow">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <span className="text-xs sm:text-sm font-semibold text-white/90">{item.year}</span>
+                      <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent/70"></span>
                     </div>
-                    <h3 className="mt-1 text-xl font-bold text-white" style={{
+                    <h3 className="mt-1 text-lg sm:text-xl font-bold text-white" style={{
                   fontFamily: 'var(--font-display)'
                 }}>
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/90">
+                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-white/90">
                       {item.description}
                     </p>
                   </Card>
@@ -534,21 +534,21 @@ const Somos = () => {
       {/* VALORES - FONDO AZUL */}
       
 
-      {/* CTA FINAL - FONDO SAND */}
-      <Section className="py-20 bg-primary-700 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
+      {/* CTA FINAL - FONDO AZUL */}
+      <Section className="py-12 sm:py-16 lg:py-20 bg-primary-700 text-center">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-white">
             Hoy todos somos Colombia EdTech
           </h2>
           
-          <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-white/90 mb-8 sm:mb-10 lg:mb-12 max-w-3xl mx-auto leading-relaxed">
             ¡Bienvenidos! Unidos, construiremos una educación que no solo inspire y transforme, sino que lidere el cambio que el mundo necesita, una generación a la vez.
           </p>
           
-          <CTAButton size="xl" variant="accent" asChild>
+          <CTAButton size="lg" variant="accent" asChild className="text-sm sm:text-base">
             <Link to="/asociados">
               Quiero ser parte de Colombia EdTech
-              <ArrowRight className="ml-2 w-6 h-6" />
+              <ArrowRight className="ml-2 w-5 h-5 sm:w-6 sm:h-6" />
             </Link>
           </CTAButton>
         </div>
