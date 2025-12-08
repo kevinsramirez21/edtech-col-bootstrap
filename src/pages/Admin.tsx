@@ -1,7 +1,10 @@
 import { Helmet } from "react-helmet-async"
-import { Users, Building2, Settings, BarChart3 } from "lucide-react"
+import { Users, Building2, Settings, BarChart3, Handshake, Mail } from "lucide-react"
 import { AdminLayout } from "@/components/admin/admin-layout"
 import { AssociatesAdmin } from "@/components/admin/associates-admin"
+import { VolunteersAdmin } from "@/components/admin/volunteers-admin"
+import { AlliesAdmin } from "@/components/admin/allies-admin"
+import { NewsletterAdmin } from "@/components/admin/newsletter-admin"
 import { Section } from "@/components/ui/section"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -40,22 +43,30 @@ export default function Admin() {
         {/* Dashboard Content */}
         <Section className="py-8">
           <Tabs defaultValue="associates" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:grid-cols-none lg:inline-flex">
+            <TabsList className="grid w-full grid-cols-3 lg:w-auto lg:grid-cols-none lg:inline-flex">
               <TabsTrigger value="associates" className="gap-2">
                 <Building2 className="w-4 h-4" />
-                Asociados
+                <span className="hidden sm:inline">Asociados</span>
               </TabsTrigger>
-              <TabsTrigger value="users" className="gap-2">
+              <TabsTrigger value="volunteers" className="gap-2">
                 <Users className="w-4 h-4" />
-                Usuarios
+                <span className="hidden sm:inline">Voluntarios</span>
+              </TabsTrigger>
+              <TabsTrigger value="allies" className="gap-2">
+                <Handshake className="w-4 h-4" />
+                <span className="hidden sm:inline">Aliados</span>
+              </TabsTrigger>
+              <TabsTrigger value="newsletter" className="gap-2">
+                <Mail className="w-4 h-4" />
+                <span className="hidden sm:inline">Newsletter</span>
               </TabsTrigger>
               <TabsTrigger value="analytics" className="gap-2">
                 <BarChart3 className="w-4 h-4" />
-                Analíticas
+                <span className="hidden sm:inline">Analíticas</span>
               </TabsTrigger>
               <TabsTrigger value="settings" className="gap-2">
                 <Settings className="w-4 h-4" />
-                Configuración
+                <span className="hidden sm:inline">Configuración</span>
               </TabsTrigger>
             </TabsList>
 
@@ -63,23 +74,16 @@ export default function Admin() {
               <AssociatesAdmin />
             </TabsContent>
 
-            <TabsContent value="users" className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Users className="w-5 h-5" />
-                    Gestión de Usuarios
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-center py-8">
-                    <Users className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-                    <p className="text-gray-600">
-                      Gestión de usuarios próximamente
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+            <TabsContent value="volunteers" className="space-y-6">
+              <VolunteersAdmin />
+            </TabsContent>
+
+            <TabsContent value="allies" className="space-y-6">
+              <AlliesAdmin />
+            </TabsContent>
+
+            <TabsContent value="newsletter" className="space-y-6">
+              <NewsletterAdmin />
             </TabsContent>
 
             <TabsContent value="analytics" className="space-y-6">
