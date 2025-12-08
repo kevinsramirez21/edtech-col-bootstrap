@@ -468,7 +468,7 @@ export default function AssociatesDirectory() {
 
               {/* Results Grid */}
               {filteredAssociates.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {filteredAssociates.map((associate) => (
                     <AssociateCard
                       key={associate.id}
