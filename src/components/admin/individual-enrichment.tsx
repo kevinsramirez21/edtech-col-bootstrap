@@ -25,7 +25,8 @@ import {
   Pencil,
   Plus,
   Globe,
-  Sparkles
+  Sparkles,
+  Building
 } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
@@ -52,7 +53,16 @@ interface Associate {
   linkedin: string | null;
   logo_url: string | null;
   servicios: string[] | null;
+  tipo_organizacion: string | null;
 }
+
+const ORGANIZATION_TYPES = [
+  "K12 (Colegios)",
+  "Educación Superior",
+  "Educación para la Vida",
+  "Cajas de Compensación",
+  "Universidades"
+] as const;
 
 interface EnrichmentOption {
   valor: string;
@@ -70,10 +80,11 @@ interface FieldStatus {
   linkedin: "empty" | "has_data" | "approved" | "broken";
   logo_url: "empty" | "has_data" | "approved" | "broken";
   servicios: "empty" | "has_data" | "approved";
+  tipo_organizacion: "empty" | "has_data" | "approved";
 }
 
-type FieldType = "linkedin" | "logo_url" | "servicios" | "pagina_web";
-type FilterType = "all" | "missing_logo" | "missing_linkedin" | "missing_servicios" | "missing_web";
+type FieldType = "linkedin" | "logo_url" | "servicios" | "pagina_web" | "tipo_organizacion";
+type FilterType = "all" | "missing_logo" | "missing_linkedin" | "missing_servicios" | "missing_web" | "missing_tipo";
 
 export function IndividualEnrichment() {
   const queryClient = useQueryClient();
@@ -97,7 +108,7 @@ export function IndividualEnrichment() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("asociados")
-        .select("id, nombre_empresa, pagina_web, linkedin, logo_url, servicios")
+        .select("id, nombre_empresa, pagina_web, linkedin, logo_url, servicios, tipo_organizacion")
         .eq("estado", "activo")
         .order("nombre_empresa");
 
@@ -137,6 +148,7 @@ export function IndividualEnrichment() {
     if (filter === "missing_linkedin") return !a.linkedin;
     if (filter === "missing_servicios") return !a.servicios || a.servicios.length === 0;
     if (filter === "missing_web") return !a.pagina_web;
+    if (filter === "missing_tipo") return !a.tipo_organizacion;
     return true;
   }) || [];
 
@@ -194,6 +206,8 @@ export function IndividualEnrichment() {
                 associate.logo_url ? "has_data" : "empty",
       servicios: approved.has("servicios") ? "approved" : 
                  (associate.servicios && associate.servicios.length > 0) ? "has_data" : "empty",
+      tipo_organizacion: approved.has("tipo_organizacion") ? "approved" : 
+                 associate.tipo_organizacion ? "has_data" : "empty",
     };
   };
 
@@ -394,7 +408,7 @@ export function IndividualEnrichment() {
     setSuggestions(new Map());
     searchMutation.mutate({ 
       associateId: selectedAssociate.id, 
-      fields: ["linkedin", "logo_url", "servicios"] 
+      fields: ["linkedin", "logo_url", "servicios", "tipo_organizacion"] 
     });
   };
 
@@ -410,6 +424,8 @@ export function IndividualEnrichment() {
       setManualValue(selectedAssociate.linkedin || "");
     } else if (field === "pagina_web") {
       setManualValue(selectedAssociate.pagina_web || "");
+    } else if (field === "tipo_organizacion") {
+      setManualValue(selectedAssociate.tipo_organizacion || "");
     } else if (field === "servicios") {
       setManualServicios(selectedAssociate.servicios || []);
       setNewServicio("");
@@ -501,6 +517,7 @@ export function IndividualEnrichment() {
       logo_url: "Logo",
       servicios: "Servicios",
       pagina_web: "Página Web",
+      tipo_organizacion: "Tipo de Organización",
     };
     return labels[campo] || campo;
   };
@@ -515,6 +532,8 @@ export function IndividualEnrichment() {
         return <Briefcase className="h-4 w-4" />;
       case "pagina_web":
         return <Globe className="h-4 w-4" />;
+      case "tipo_organizacion":
+        return <Building className="h-4 w-4" />;
       default:
         return null;
     }
@@ -673,6 +692,7 @@ export function IndividualEnrichment() {
                 <SelectItem value="missing_logo">Sin logo / Logo roto</SelectItem>
                 <SelectItem value="missing_linkedin">Sin LinkedIn</SelectItem>
                 <SelectItem value="missing_servicios">Sin servicios</SelectItem>
+                <SelectItem value="missing_tipo">Sin tipo de organización</SelectItem>
               </SelectContent>
             </Select>
           </CardHeader>
@@ -707,6 +727,7 @@ export function IndividualEnrichment() {
                       <FieldStatusIcon status={status.logo_url} />
                       <FieldStatusIcon status={status.linkedin} />
                       <FieldStatusIcon status={status.servicios} />
+                      <FieldStatusIcon status={status.tipo_organizacion} />
                     </div>
                   </div>
                 );
@@ -983,8 +1004,53 @@ export function IndividualEnrichment() {
                       >
                         <Pencil className="h-3.5 w-3.5" />
                       </Button>
+                  </div>
+
+                  {/* Tipo de Organización */}
+                  <div className="group relative flex items-center gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center">
+                      <Building className="h-6 w-6 text-orange-600" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="font-semibold text-foreground">Tipo de Organización</span>
+                      </div>
+                      {selectedAssociate.tipo_organizacion ? (
+                        <Badge className="bg-orange-500/15 text-orange-700 border-orange-500/30">
+                          {selectedAssociate.tipo_organizacion}
+                        </Badge>
+                      ) : (
+                        <p className="text-sm text-muted-foreground/60 italic">No clasificado</p>
+                      )}
+                    </div>
+                    <div className="flex gap-1.5 flex-shrink-0">
+                      <Button 
+                        variant="default" 
+                        size="sm"
+                        onClick={() => handleSearch("tipo_organizacion")}
+                        disabled={searchMutation.isPending}
+                        className="shadow-sm"
+                      >
+                        {searchingField === "tipo_organizacion" ? (
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                        ) : (
+                          <>
+                            <Search className="h-3.5 w-3.5 mr-1.5" />
+                            Buscar
+                          </>
+                        )}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => openManualEdit("tipo_organizacion")}
+                        className="h-9 w-9"
+                      >
+                        <Pencil className="h-3.5 w-3.5" />
+                      </Button>
                     </div>
                   </div>
+                </div>
                 </div>
 
                 {/* Search all button */}
@@ -1022,6 +1088,7 @@ export function IndividualEnrichment() {
                       {renderSuggestionCard("logo_url")}
                       {renderSuggestionCard("linkedin")}
                       {renderSuggestionCard("servicios")}
+                      {renderSuggestionCard("tipo_organizacion")}
                     </div>
 
                     <Button 
@@ -1121,6 +1188,26 @@ export function IndividualEnrichment() {
                     Abrir enlace
                   </a>
                 )}
+              </div>
+            )}
+
+            {manualEditField === "tipo_organizacion" && (
+              <div className="space-y-3">
+                <Label>Selecciona el tipo de organización</Label>
+                <div className="grid gap-2">
+                  {ORGANIZATION_TYPES.map((tipo) => (
+                    <Button
+                      key={tipo}
+                      type="button"
+                      variant={manualValue === tipo ? "default" : "outline"}
+                      className="justify-start h-auto py-3 px-4"
+                      onClick={() => setManualValue(tipo)}
+                    >
+                      <Building className="h-4 w-4 mr-2 flex-shrink-0" />
+                      {tipo}
+                    </Button>
+                  ))}
+                </div>
               </div>
             )}
 
