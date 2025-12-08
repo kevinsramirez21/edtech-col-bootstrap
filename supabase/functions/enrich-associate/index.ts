@@ -14,7 +14,17 @@ interface AssociateData {
   linkedin: string | null;
   logo_url: string | null;
   servicios: string[] | null;
+  tipo_organizacion: string | null;
 }
+
+// Organization type categories
+const ORGANIZATION_TYPES = [
+  "K12 (Colegios)",
+  "Educación Superior",
+  "Educación para la Vida",
+  "Cajas de Compensación",
+  "Universidades"
+] as const;
 
 interface EnrichmentOption {
   valor: string;
@@ -254,7 +264,7 @@ serve(async (req) => {
     // Get associate data
     const { data: associate, error: fetchError } = await supabase
       .from("asociados")
-      .select("id, nombre_empresa, pagina_web, descripcion, linkedin, logo_url, servicios")
+      .select("id, nombre_empresa, pagina_web, descripcion, linkedin, logo_url, servicios, tipo_organizacion")
       .eq("id", asociado_id)
       .single();
 
@@ -280,12 +290,13 @@ serve(async (req) => {
     if (associate.linkedin) fieldsWithData.add("linkedin");
     if (associate.logo_url) fieldsWithData.add("logo_url");
     if (associate.servicios && associate.servicios.length > 0) fieldsWithData.add("servicios");
+    if (associate.tipo_organizacion) fieldsWithData.add("tipo_organizacion");
 
     // Combine completed fields with fields that already have data
     const skipFields = new Set([...completedFields, ...fieldsWithData]);
 
     // Determine which fields to enrich
-    const allFields = ["linkedin", "logo_url", "servicios"];
+    const allFields = ["linkedin", "logo_url", "servicios", "tipo_organizacion"];
     
     let fieldsToEnrich: string[];
     
@@ -356,6 +367,14 @@ serve(async (req) => {
       if (fieldsToEnrich.includes("servicios")) {
         fieldInstructions.push("3. Servicios principales que ofrece (lista de 3-5 servicios relacionados con educación/tecnología)");
       }
+      if (fieldsToEnrich.includes("tipo_organizacion")) {
+        fieldInstructions.push(`4. Tipo de organización - DEBE ser exactamente UNA de estas categorías:
+   - "K12 (Colegios)": empresas que sirven a colegios, educación primaria y secundaria
+   - "Educación Superior": empresas enfocadas en educación universitaria o técnica superior
+   - "Educación para la Vida": empresas de formación continua, cursos online, upskilling, capacitación profesional
+   - "Cajas de Compensación": cajas de compensación familiar
+   - "Universidades": instituciones universitarias directamente`);
+      }
 
       const prompt = `Investiga la empresa EdTech colombiana "${associate.nombre_empresa}".
 ${associate.pagina_web ? `Sitio web oficial: ${associate.pagina_web}` : "No tiene sitio web registrado."}
@@ -407,6 +426,23 @@ IMPORTANTE: Solo reporta información que puedas verificar. Si no encuentras alg
           required: ["confianza", "fuente"]
         };
         requiredFields.push("servicios");
+      }
+
+      if (fieldsToEnrich.includes("tipo_organizacion")) {
+        toolProperties.tipo_organizacion = {
+          type: "object",
+          properties: {
+            categoria: { 
+              type: "string", 
+              enum: ["K12 (Colegios)", "Educación Superior", "Educación para la Vida", "Cajas de Compensación", "Universidades"],
+              description: "Categoría del tipo de organización"
+            },
+            confianza: { type: "string", enum: ["alta", "media", "baja"] },
+            fuente: { type: "string", description: "Donde se encontró esta información" }
+          },
+          required: ["categoria", "confianza", "fuente"]
+        };
+        requiredFields.push("tipo_organizacion");
       }
 
       // Call Lovable AI with tool calling for structured output
@@ -514,6 +550,18 @@ Para servicios, extrae los principales relacionados con educación/EdTech.`
               valor: JSON.stringify(companyInfo.servicios.lista),
               confianza: companyInfo.servicios.confianza,
               fuente: companyInfo.servicios.fuente
+            }]
+          });
+        }
+
+        // Tipo de Organización
+        if (companyInfo.tipo_organizacion?.categoria) {
+          enrichments.push({
+            campo: "tipo_organizacion",
+            opciones: [{
+              valor: companyInfo.tipo_organizacion.categoria,
+              confianza: companyInfo.tipo_organizacion.confianza,
+              fuente: companyInfo.tipo_organizacion.fuente
             }]
           });
         }
