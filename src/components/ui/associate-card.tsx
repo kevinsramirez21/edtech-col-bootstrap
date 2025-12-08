@@ -1,12 +1,11 @@
 import * as React from "react"
-import { Globe, MapPin, Building2, ExternalLink, Star, Linkedin, Twitter } from "lucide-react"
+import { Globe, MapPin, Building2, ExternalLink, Star, Linkedin, Twitter, Mail } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import { cn } from "@/lib/utils"
 
-// Public-safe associate interface (no sensitive contact info like email, phone, contact name)
 interface Associate {
   id: string
   nombre_empresa: string
@@ -14,6 +13,7 @@ interface Associate {
   pagina_web?: string
   segmento?: string
   servicios?: string[]
+  correo_contacto?: string
   logo_url?: string
   ubicacion?: string
   tamano_empresa?: string
@@ -150,9 +150,21 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
               <span className="truncate">{associate.ubicacion}</span>
             </div>
           )}
+          
+          {associate.correo_contacto && (
+            <div className="flex items-center gap-2">
+              <Mail className="w-4 h-4 text-gray-400" />
+              <a 
+                href={`mailto:${associate.correo_contacto}`}
+                className="truncate hover:text-primary-700 transition-colors"
+              >
+                {associate.correo_contacto}
+              </a>
+            </div>
+          )}
         </div>
 
-        <div className="flex gap-2 pt-2">
+        <div className="flex flex-wrap gap-2 pt-2">
           {associate.pagina_web && (
             <Button 
               size="sm" 
@@ -173,6 +185,22 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
             </Button>
           )}
           
+          {associate.correo_contacto && (
+            <Button 
+              size="sm" 
+              className="bg-primary-700 hover:bg-primary-800"
+              asChild
+            >
+              <a 
+                href={`mailto:${associate.correo_contacto}`}
+                className="flex items-center gap-2"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Contactar</span>
+              </a>
+            </Button>
+          )}
+          
           {associate.linkedin && (
             <Button 
               size="sm" 
@@ -183,7 +211,6 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
                 href={associate.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-2"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
@@ -200,7 +227,6 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
                 href={associate.twitter} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-2"
               >
                 <Twitter className="w-4 h-4" />
               </a>
