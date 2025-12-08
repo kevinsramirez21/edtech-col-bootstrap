@@ -18,6 +18,7 @@ const quickLinks = [
   { name: "Aliados", href: "/aliados" },
   { name: "Voluntariado", href: "/voluntariado" },
   { name: "Eventos", href: "/eventos" },
+  { name: "Noticias", href: "/mundo-edtech/noticias" },
 ]
 
 const socialLinks = [

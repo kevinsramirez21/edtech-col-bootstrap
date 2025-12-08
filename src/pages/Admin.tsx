@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react"
 import { Helmet } from "react-helmet-async"
-import { Users, Building2, Settings, BarChart3, Handshake, Mail, LogOut, Shield, TrendingUp, Clock, Sparkles } from "lucide-react"
+import { Users, Building2, Settings, BarChart3, Handshake, Mail, LogOut, Shield, TrendingUp, Clock, Sparkles, Newspaper } from "lucide-react"
 import { AdminLayout } from "@/components/admin/admin-layout"
 import { AssociatesAdmin } from "@/components/admin/associates-admin"
 import { VolunteersAdmin } from "@/components/admin/volunteers-admin"
 import { AlliesAdmin } from "@/components/admin/allies-admin"
 import { NewsletterAdmin } from "@/components/admin/newsletter-admin"
 import { EnrichmentAdmin } from "@/components/admin/enrichment-admin"
+import { NoticiasAdmin } from "@/components/admin/noticias-admin"
 import { Section } from "@/components/ui/section"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -232,6 +233,13 @@ export default function Admin() {
                 <span className="hidden sm:inline">Enriquecimiento IA</span>
               </TabsTrigger>
               <TabsTrigger 
+                value="noticias" 
+                className="gap-2 px-4 py-2.5 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#003889] data-[state=active]:to-[#0B47CE] data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200"
+              >
+                <Newspaper className="w-4 h-4" />
+                <span className="hidden sm:inline">Noticias</span>
+              </TabsTrigger>
+              <TabsTrigger 
                 value="analytics" 
                 className="gap-2 px-4 py-2.5 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#003889] data-[state=active]:to-[#0B47CE] data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200"
               >
@@ -265,6 +273,10 @@ export default function Admin() {
 
             <TabsContent value="enrichment" className="space-y-6">
               <EnrichmentAdmin />
+            </TabsContent>
+
+            <TabsContent value="noticias" className="space-y-6">
+              <NoticiasAdmin />
             </TabsContent>
 
             <TabsContent value="analytics" className="space-y-6">

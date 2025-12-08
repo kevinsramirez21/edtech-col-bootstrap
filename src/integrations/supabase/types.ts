@@ -172,6 +172,63 @@ export type Database = {
         }
         Relationships: []
       }
+      noticias: {
+        Row: {
+          autor: string | null
+          categoria: string
+          contenido: string | null
+          created_at: string
+          destacada: boolean
+          es_externo: boolean
+          estado: string
+          extracto: string | null
+          fecha_publicacion: string | null
+          fuente: string | null
+          id: string
+          imagen_portada: string | null
+          slug: string
+          titulo: string
+          updated_at: string
+          url_externa: string | null
+        }
+        Insert: {
+          autor?: string | null
+          categoria?: string
+          contenido?: string | null
+          created_at?: string
+          destacada?: boolean
+          es_externo?: boolean
+          estado?: string
+          extracto?: string | null
+          fecha_publicacion?: string | null
+          fuente?: string | null
+          id?: string
+          imagen_portada?: string | null
+          slug: string
+          titulo: string
+          updated_at?: string
+          url_externa?: string | null
+        }
+        Update: {
+          autor?: string | null
+          categoria?: string
+          contenido?: string | null
+          created_at?: string
+          destacada?: boolean
+          es_externo?: boolean
+          estado?: string
+          extracto?: string | null
+          fecha_publicacion?: string | null
+          fuente?: string | null
+          id?: string
+          imagen_portada?: string | null
+          slug?: string
+          titulo?: string
+          updated_at?: string
+          url_externa?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
