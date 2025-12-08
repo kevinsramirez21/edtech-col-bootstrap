@@ -75,16 +75,16 @@ export function Navbar() {
               className="flex items-center space-x-3 group transition-all duration-300"
               aria-label="Colombia EdTech - Ir al inicio"
             >
-              <div className="relative">
+              <div className="relative flex items-center">
                 {/* Desktop Logo */}
                 <div className="hidden sm:block">
                   <OptimizedImage
-                    src="/images/logo-horizontal-transparent.png"
+                    src="/images/logo-principal-transparent.png"
                     alt="Colombia EdTech - Asociación de Organizaciones EdTech"
                     fallback="/placeholder.svg"
                     className={cn(
-                      "w-auto transition-all duration-300 group-hover:scale-105",
-                      isScrolled ? "h-12" : "h-16"
+                      "w-auto object-contain transition-all duration-300 group-hover:scale-105",
+                      isScrolled ? "h-10" : "h-12"
                     )}
                     priority
                   />
@@ -93,12 +93,12 @@ export function Navbar() {
                 {/* Mobile Logo */}
                 <div className="block sm:hidden">
                   <OptimizedImage
-                    src="/images/isotipo-transparent.png"
+                    src="/images/logo-principal-transparent.png"
                     alt="Colombia EdTech"
                     fallback="/placeholder.svg"
                     className={cn(
-                      "w-auto transition-all duration-300 group-hover:scale-105",
-                      isScrolled ? "h-8" : "h-10"
+                      "w-auto object-contain transition-all duration-300 group-hover:scale-105",
+                      isScrolled ? "h-7" : "h-9"
                     )}
                     priority
                   />
