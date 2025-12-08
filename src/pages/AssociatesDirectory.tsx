@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async"
 import { useState, useEffect, useMemo } from "react"
-import { Users, Building2, Loader2, Settings, ChevronDown, ChevronUp, X, Filter } from "lucide-react"
+import { Users, Building2, Loader2, Settings, ChevronDown, ChevronUp, X, Filter, Search } from "lucide-react"
 import { supabase } from "@/integrations/supabase/client"
 import { AssociateCard } from "@/components/ui/associate-card"
 import { Button } from "@/components/ui/button"
@@ -41,30 +41,20 @@ interface Associate {
   twitter?: string
   fecha_ingreso?: string
   calificacion_colombia_edtech?: number
+  tipo_organizacion?: string
 }
 
 interface FiltersState {
   search: string
-  segmentos: string[]
-  tamanos: string[]
-  servicios: string[]
+  tiposOrganizacion: string[]
 }
 
-const segmentOptions = [
-  { value: "educacion_basica", label: "Educación Básica" },
-  { value: "educacion_superior", label: "Educación Superior" },
-  { value: "capacitacion_empresarial", label: "Capacitación Empresarial" },
-  { value: "educacion_continua", label: "Educación Continua" },
-  { value: "edtech_tools", label: "Herramientas EdTech" },
-  { value: "infrastructure", label: "Infraestructura" },
-  { value: "other", label: "Otros" }
-]
-
-const sizeOptions = [
-  { value: "startup", label: "Startup" },
-  { value: "pequena", label: "Pequeña" },
-  { value: "mediana", label: "Mediana" },
-  { value: "grande", label: "Grande" }
+const ORGANIZATION_TYPES = [
+  "K12 (Colegios)",
+  "Educación Superior",
+  "Educación para la Vida",
+  "Cajas de Compensación",
+  "Universidades"
 ]
 
 export default function AssociatesDirectory() {
@@ -72,16 +62,12 @@ export default function AssociatesDirectory() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState<string>('name-asc')
-  const [segmentosExpanded, setSegmentosExpanded] = useState(true)
-  const [tamanosExpanded, setTamanosExpanded] = useState(true)
-  const [serviciosExpanded, setServiciosExpanded] = useState(true)
+  const [tiposExpanded, setTiposExpanded] = useState(true)
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const { isAdmin } = useAdmin()
   const [filters, setFilters] = useState<FiltersState>({
     search: "",
-    segmentos: [],
-    tamanos: [],
-    servicios: []
+    tiposOrganizacion: []
   })
 
   // Fetch associates from Supabase
@@ -91,7 +77,7 @@ export default function AssociatesDirectory() {
         setLoading(true)
         const { data, error } = await supabase
           .from('asociados')
-          .select('id, nombre_empresa, descripcion, pagina_web, logo_url, segmento, tamano_empresa, servicios, ubicacion, linkedin, twitter, fecha_ingreso, calificacion_colombia_edtech, correo_contacto')
+          .select('id, nombre_empresa, descripcion, pagina_web, logo_url, segmento, tamano_empresa, servicios, ubicacion, linkedin, twitter, fecha_ingreso, calificacion_colombia_edtech, correo_contacto, tipo_organizacion')
           .eq('estado', 'activo')
           .order('nombre_empresa', { ascending: true })
 
@@ -108,41 +94,24 @@ export default function AssociatesDirectory() {
     fetchAssociates()
   }, [])
 
-  // Get all unique services for filtering
-  const availableServices = useMemo(() => {
-    const services = new Set<string>()
-    associates.forEach(associate => {
-      associate.servicios?.forEach(service => services.add(service))
-    })
-    return Array.from(services).sort()
-  }, [associates])
+  // Parse tipo_organizacion which can be a JSON array string or a single value
+  const parseOrganizationTypes = (tipoOrg: string | undefined): string[] => {
+    if (!tipoOrg) return []
+    try {
+      const parsed = JSON.parse(tipoOrg)
+      return Array.isArray(parsed) ? parsed : [tipoOrg]
+    } catch {
+      return [tipoOrg]
+    }
+  }
 
-  // Get counts for each filter option
-  const segmentCounts = useMemo(() => {
+  // Get counts for each organization type
+  const typeCounts = useMemo(() => {
     const counts: Record<string, number> = {}
     associates.forEach(associate => {
-      if (associate.segmento) {
-        counts[associate.segmento] = (counts[associate.segmento] || 0) + 1
-      }
-    })
-    return counts
-  }, [associates])
-
-  const sizeCounts = useMemo(() => {
-    const counts: Record<string, number> = {}
-    associates.forEach(associate => {
-      if (associate.tamano_empresa) {
-        counts[associate.tamano_empresa] = (counts[associate.tamano_empresa] || 0) + 1
-      }
-    })
-    return counts
-  }, [associates])
-
-  const serviceCounts = useMemo(() => {
-    const counts: Record<string, number> = {}
-    associates.forEach(associate => {
-      associate.servicios?.forEach(service => {
-        counts[service] = (counts[service] || 0) + 1
+      const types = parseOrganizationTypes(associate.tipo_organizacion)
+      types.forEach(type => {
+        counts[type] = (counts[type] || 0) + 1
       })
     })
     return counts
@@ -159,26 +128,13 @@ export default function AssociatesDirectory() {
         if (!matchesName && !matchesDescription) return false
       }
 
-      // Segment filter (multi-select)
-      if (filters.segmentos.length > 0) {
-        if (!associate.segmento || !filters.segmentos.includes(associate.segmento)) {
-          return false
-        }
-      }
-
-      // Size filter (multi-select)
-      if (filters.tamanos.length > 0) {
-        if (!associate.tamano_empresa || !filters.tamanos.includes(associate.tamano_empresa)) {
-          return false
-        }
-      }
-
-      // Services filter
-      if (filters.servicios.length > 0) {
-        const hasMatchingService = filters.servicios.some(service => 
-          associate.servicios?.includes(service)
+      // Organization type filter (multi-select)
+      if (filters.tiposOrganizacion.length > 0) {
+        const associateTypes = parseOrganizationTypes(associate.tipo_organizacion)
+        const hasMatchingType = filters.tiposOrganizacion.some(type => 
+          associateTypes.includes(type)
         )
-        if (!hasMatchingService) return false
+        if (!hasMatchingType) return false
       }
 
       return true
@@ -203,45 +159,25 @@ export default function AssociatesDirectory() {
   }, [associates, filters, sortBy])
 
   // Handle filter changes
-  const handleSegmentoToggle = (segmento: string) => {
+  const handleTipoToggle = (tipo: string) => {
     setFilters(prev => ({
       ...prev,
-      segmentos: prev.segmentos.includes(segmento)
-        ? prev.segmentos.filter(s => s !== segmento)
-        : [...prev.segmentos, segmento]
-    }))
-  }
-
-  const handleTamanoToggle = (tamano: string) => {
-    setFilters(prev => ({
-      ...prev,
-      tamanos: prev.tamanos.includes(tamano)
-        ? prev.tamanos.filter(t => t !== tamano)
-        : [...prev.tamanos, tamano]
-    }))
-  }
-
-  const handleServicioToggle = (servicio: string) => {
-    setFilters(prev => ({
-      ...prev,
-      servicios: prev.servicios.includes(servicio)
-        ? prev.servicios.filter(s => s !== servicio)
-        : [...prev.servicios, servicio]
+      tiposOrganizacion: prev.tiposOrganizacion.includes(tipo)
+        ? prev.tiposOrganizacion.filter(t => t !== tipo)
+        : [...prev.tiposOrganizacion, tipo]
     }))
   }
 
   const resetFilters = () => {
     setFilters({
       search: "",
-      segmentos: [],
-      tamanos: [],
-      servicios: []
+      tiposOrganizacion: []
     })
   }
 
-  const hasActiveFilters = filters.search || filters.segmentos.length > 0 || filters.tamanos.length > 0 || filters.servicios.length > 0
+  const hasActiveFilters = filters.search || filters.tiposOrganizacion.length > 0
   const totalAssociates = associates.length
-  const activeFiltersCount = filters.segmentos.length + filters.tamanos.length + filters.servicios.length
+  const activeFiltersCount = filters.tiposOrganizacion.length
 
   if (loading) {
     return (
@@ -282,6 +218,54 @@ export default function AssociatesDirectory() {
       </>
     )
   }
+
+  // Filter section component for reuse
+  const FilterSection = ({ isMobile = false }: { isMobile?: boolean }) => (
+    <div className="space-y-4">
+      {/* Organization Type Filter */}
+      <div className={isMobile ? "border-b pb-4" : ""}>
+        <button
+          onClick={() => setTiposExpanded(!tiposExpanded)}
+          className="flex items-center justify-between w-full text-left mb-3"
+        >
+          <h3 className="font-semibold text-primary-900">Tipo de Organización</h3>
+          {tiposExpanded ? (
+            <ChevronUp className="w-4 h-4 text-primary-700" />
+          ) : (
+            <ChevronDown className="w-4 h-4 text-primary-700" />
+          )}
+        </button>
+        {tiposExpanded && (
+          <div className="space-y-3">
+            {ORGANIZATION_TYPES.map(tipo => (
+              <div key={tipo} className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id={`${isMobile ? 'mobile-' : ''}tipo-${tipo}`}
+                    checked={filters.tiposOrganizacion.includes(tipo)}
+                    onCheckedChange={() => handleTipoToggle(tipo)}
+                  />
+                  <Label 
+                    htmlFor={`${isMobile ? 'mobile-' : ''}tipo-${tipo}`}
+                    className="text-sm cursor-pointer text-primary-900/80"
+                  >
+                    {tipo}
+                  </Label>
+                </div>
+                {typeCounts[tipo] ? (
+                  <span className="text-xs text-primary-700/60">
+                    ({typeCounts[tipo]})
+                  </span>
+                ) : (
+                  <span className="text-xs text-primary-700/40">(0)</span>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  )
 
   return (
     <>
@@ -332,7 +316,7 @@ export default function AssociatesDirectory() {
                 <Button variant="outline" className="w-full justify-between">
                   <span className="flex items-center gap-2">
                     <Filter className="w-4 h-4" />
-                    Filtros
+                    Filtrar por tipo
                   </span>
                   {activeFiltersCount > 0 && (
                     <Badge variant="secondary" className="bg-[#0B47CE] text-white">
@@ -361,131 +345,8 @@ export default function AssociatesDirectory() {
                   </SheetTitle>
                 </SheetHeader>
                 
-                <div className="mt-6 space-y-6">
-                  {/* Segmentos Filter - Mobile */}
-                  <div className="border-b pb-4">
-                    <button
-                      onClick={() => setSegmentosExpanded(!segmentosExpanded)}
-                      className="flex items-center justify-between w-full text-left mb-3"
-                    >
-                      <h3 className="font-semibold text-primary-900">Segmentos</h3>
-                      {segmentosExpanded ? (
-                        <ChevronUp className="w-4 h-4 text-primary-700" />
-                      ) : (
-                        <ChevronDown className="w-4 h-4 text-primary-700" />
-                      )}
-                    </button>
-                    {segmentosExpanded && (
-                      <div className="space-y-3">
-                        {segmentOptions.map(option => (
-                          <div key={option.value} className="flex items-center justify-between">
-                            <div className="flex items-center space-x-2">
-                              <Checkbox
-                                id={`mobile-segmento-${option.value}`}
-                                checked={filters.segmentos.includes(option.value)}
-                                onCheckedChange={() => handleSegmentoToggle(option.value)}
-                              />
-                              <Label 
-                                htmlFor={`mobile-segmento-${option.value}`}
-                                className="text-sm cursor-pointer text-primary-900/80"
-                              >
-                                {option.label}
-                              </Label>
-                            </div>
-                            {segmentCounts[option.value] && (
-                              <span className="text-xs text-primary-700/60">
-                                ({segmentCounts[option.value]})
-                              </span>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Tamaño Filter - Mobile */}
-                  <div className="border-b pb-4">
-                    <button
-                      onClick={() => setTamanosExpanded(!tamanosExpanded)}
-                      className="flex items-center justify-between w-full text-left mb-3"
-                    >
-                      <h3 className="font-semibold text-primary-900">Tamaño</h3>
-                      {tamanosExpanded ? (
-                        <ChevronUp className="w-4 h-4 text-primary-700" />
-                      ) : (
-                        <ChevronDown className="w-4 h-4 text-primary-700" />
-                      )}
-                    </button>
-                    {tamanosExpanded && (
-                      <div className="space-y-3">
-                        {sizeOptions.map(option => (
-                          <div key={option.value} className="flex items-center justify-between">
-                            <div className="flex items-center space-x-2">
-                              <Checkbox
-                                id={`mobile-tamano-${option.value}`}
-                                checked={filters.tamanos.includes(option.value)}
-                                onCheckedChange={() => handleTamanoToggle(option.value)}
-                              />
-                              <Label 
-                                htmlFor={`mobile-tamano-${option.value}`}
-                                className="text-sm cursor-pointer text-primary-900/80"
-                              >
-                                {option.label}
-                              </Label>
-                            </div>
-                            {sizeCounts[option.value] && (
-                              <span className="text-xs text-primary-700/60">
-                                ({sizeCounts[option.value]})
-                              </span>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Servicios Filter - Mobile */}
-                  {availableServices.length > 0 && (
-                    <div>
-                      <button
-                        onClick={() => setServiciosExpanded(!serviciosExpanded)}
-                        className="flex items-center justify-between w-full text-left mb-3"
-                      >
-                        <h3 className="font-semibold text-primary-900">Servicios</h3>
-                        {serviciosExpanded ? (
-                          <ChevronUp className="w-4 h-4 text-primary-700" />
-                        ) : (
-                          <ChevronDown className="w-4 h-4 text-primary-700" />
-                        )}
-                      </button>
-                      {serviciosExpanded && (
-                        <div className="space-y-3 max-h-64 overflow-y-auto">
-                          {availableServices.map(service => (
-                            <div key={service} className="flex items-center justify-between">
-                              <div className="flex items-center space-x-2">
-                                <Checkbox
-                                  id={`mobile-servicio-${service}`}
-                                  checked={filters.servicios.includes(service)}
-                                  onCheckedChange={() => handleServicioToggle(service)}
-                                />
-                                <Label 
-                                  htmlFor={`mobile-servicio-${service}`}
-                                  className="text-sm cursor-pointer text-primary-900/80"
-                                >
-                                  {service}
-                                </Label>
-                              </div>
-                              {serviceCounts[service] && (
-                                <span className="text-xs text-primary-700/60">
-                                  ({serviceCounts[service]})
-                                </span>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  )}
+                <div className="mt-6">
+                  <FilterSection isMobile />
                 </div>
 
                 <div className="mt-6 pt-4 border-t">
@@ -520,130 +381,20 @@ export default function AssociatesDirectory() {
                     )}
                   </div>
 
-                  {/* Segmentos Filter */}
-                  <div className="border-t pt-4">
-                    <button
-                      onClick={() => setSegmentosExpanded(!segmentosExpanded)}
-                      className="flex items-center justify-between w-full text-left mb-3"
-                    >
-                      <h3 className="font-semibold text-primary-900">Segmentos</h3>
-                      {segmentosExpanded ? (
-                        <ChevronUp className="w-4 h-4 text-primary-700" />
-                      ) : (
-                        <ChevronDown className="w-4 h-4 text-primary-700" />
-                      )}
-                    </button>
-                    {segmentosExpanded && (
-                      <div className="space-y-2">
-                        {segmentOptions.map(option => (
-                          <div key={option.value} className="flex items-center justify-between">
-                            <div className="flex items-center space-x-2">
-                              <Checkbox
-                                id={`segmento-${option.value}`}
-                                checked={filters.segmentos.includes(option.value)}
-                                onCheckedChange={() => handleSegmentoToggle(option.value)}
-                              />
-                              <Label 
-                                htmlFor={`segmento-${option.value}`}
-                                className="text-sm cursor-pointer text-primary-900/80"
-                              >
-                                {option.label}
-                              </Label>
-                            </div>
-                            {segmentCounts[option.value] && (
-                              <span className="text-xs text-primary-700/60">
-                                ({segmentCounts[option.value]})
-                              </span>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <FilterSection />
+                </div>
 
-                  {/* Tamaño Filter */}
-                  <div className="border-t pt-4 mt-4">
-                    <button
-                      onClick={() => setTamanosExpanded(!tamanosExpanded)}
-                      className="flex items-center justify-between w-full text-left mb-3"
-                    >
-                      <h3 className="font-semibold text-primary-900">Tamaño</h3>
-                      {tamanosExpanded ? (
-                        <ChevronUp className="w-4 h-4 text-primary-700" />
-                      ) : (
-                        <ChevronDown className="w-4 h-4 text-primary-700" />
-                      )}
-                    </button>
-                    {tamanosExpanded && (
-                      <div className="space-y-2">
-                        {sizeOptions.map(option => (
-                          <div key={option.value} className="flex items-center justify-between">
-                            <div className="flex items-center space-x-2">
-                              <Checkbox
-                                id={`tamano-${option.value}`}
-                                checked={filters.tamanos.includes(option.value)}
-                                onCheckedChange={() => handleTamanoToggle(option.value)}
-                              />
-                              <Label 
-                                htmlFor={`tamano-${option.value}`}
-                                className="text-sm cursor-pointer text-primary-900/80"
-                              >
-                                {option.label}
-                              </Label>
-                            </div>
-                            {sizeCounts[option.value] && (
-                              <span className="text-xs text-primary-700/60">
-                                ({sizeCounts[option.value]})
-                              </span>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Servicios Filter */}
-                  {availableServices.length > 0 && (
-                    <div className="border-t pt-4 mt-4">
-                      <button
-                        onClick={() => setServiciosExpanded(!serviciosExpanded)}
-                        className="flex items-center justify-between w-full text-left mb-3"
-                      >
-                        <h3 className="font-semibold text-primary-900">Servicios</h3>
-                        {serviciosExpanded ? (
-                          <ChevronUp className="w-4 h-4 text-primary-700" />
-                        ) : (
-                          <ChevronDown className="w-4 h-4 text-primary-700" />
-                        )}
-                      </button>
-                      {serviciosExpanded && (
-                        <div className="space-y-2 max-h-64 overflow-y-auto">
-                          {availableServices.map(service => (
-                            <div key={service} className="flex items-center justify-between">
-                              <div className="flex items-center space-x-2">
-                                <Checkbox
-                                  id={`servicio-${service}`}
-                                  checked={filters.servicios.includes(service)}
-                                  onCheckedChange={() => handleServicioToggle(service)}
-                                />
-                                <Label 
-                                  htmlFor={`servicio-${service}`}
-                                  className="text-sm cursor-pointer text-primary-900/80"
-                                >
-                                  {service}
-                                </Label>
-                              </div>
-                              {serviceCounts[service] && (
-                                <span className="text-xs text-primary-700/60">
-                                  ({serviceCounts[service]})
-                                </span>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                {/* Stats Card */}
+                <div className="bg-white rounded-lg shadow-sm border p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-[#0B47CE]/10 flex items-center justify-center">
+                      <Users className="w-5 h-5 text-[#0B47CE]" />
                     </div>
-                  )}
+                    <div>
+                      <p className="text-2xl font-bold text-primary-900">{totalAssociates}</p>
+                      <p className="text-sm text-primary-900/60">Asociados activos</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </aside>
@@ -652,73 +403,53 @@ export default function AssociatesDirectory() {
             <div className="flex-1 min-w-0">
               {/* Search and Sort Bar */}
               <div className="bg-white rounded-lg shadow-sm border p-4 mb-6">
-                <div className="flex flex-col md:flex-row gap-4">
-                  <div className="flex-1">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  {/* Search */}
+                  <div className="relative flex-1">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                     <Input
                       type="text"
                       placeholder="Buscar por nombre o descripción..."
                       value={filters.search}
                       onChange={(e) => setFilters(prev => ({ ...prev, search: e.target.value }))}
-                      className="w-full"
+                      className="pl-10"
                     />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-primary-900/70 whitespace-nowrap">Ordenar por:</span>
-                    <Select value={sortBy} onValueChange={setSortBy}>
-                      <SelectTrigger className="w-[180px]">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="name-asc">Nombre (A-Z)</SelectItem>
-                        <SelectItem value="name-desc">Nombre (Z-A)</SelectItem>
-                        <SelectItem value="recent">Más recientes</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+                  
+                  {/* Sort */}
+                  <Select value={sortBy} onValueChange={setSortBy}>
+                    <SelectTrigger className="w-full sm:w-[180px]">
+                      <SelectValue placeholder="Ordenar por" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="name-asc">Nombre (A-Z)</SelectItem>
+                      <SelectItem value="name-desc">Nombre (Z-A)</SelectItem>
+                      <SelectItem value="recent">Más recientes</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 {/* Active Filters Display */}
                 {hasActiveFilters && (
-                  <div className="flex flex-wrap gap-2 mt-4">
+                  <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t">
                     {filters.search && (
-                      <Badge variant="secondary" className="gap-1 bg-[#0B47CE]/10 text-[#0B47CE]">
+                      <Badge variant="secondary" className="gap-1 bg-gray-100">
                         Búsqueda: "{filters.search}"
                         <button
                           onClick={() => setFilters(prev => ({ ...prev, search: "" }))}
-                          className="hover:bg-[#0B47CE]/20 rounded-full p-0.5"
+                          className="ml-1 hover:bg-gray-300 rounded-full p-0.5"
                         >
                           <X className="w-3 h-3" />
                         </button>
                       </Badge>
                     )}
-                    {filters.segmentos.map(seg => (
-                      <Badge key={seg} variant="secondary" className="gap-1 bg-[#0B47CE]/10 text-[#0B47CE]">
-                        {segmentOptions.find(s => s.value === seg)?.label}
+                    
+                    {filters.tiposOrganizacion.map(tipo => (
+                      <Badge key={tipo} variant="secondary" className="gap-1 bg-[#0B47CE]/10 text-[#0B47CE]">
+                        {tipo}
                         <button
-                          onClick={() => handleSegmentoToggle(seg)}
-                          className="hover:bg-[#0B47CE]/20 rounded-full p-0.5"
-                        >
-                          <X className="w-3 h-3" />
-                        </button>
-                      </Badge>
-                    ))}
-                    {filters.tamanos.map(tam => (
-                      <Badge key={tam} variant="secondary" className="gap-1 bg-[#0B47CE]/10 text-[#0B47CE]">
-                        {sizeOptions.find(s => s.value === tam)?.label}
-                        <button
-                          onClick={() => handleTamanoToggle(tam)}
-                          className="hover:bg-[#0B47CE]/20 rounded-full p-0.5"
-                        >
-                          <X className="w-3 h-3" />
-                        </button>
-                      </Badge>
-                    ))}
-                    {filters.servicios.map(serv => (
-                      <Badge key={serv} variant="secondary" className="gap-1 bg-[#0B47CE]/10 text-[#0B47CE]">
-                        {serv}
-                        <button
-                          onClick={() => handleServicioToggle(serv)}
-                          className="hover:bg-[#0B47CE]/20 rounded-full p-0.5"
+                          onClick={() => handleTipoToggle(tipo)}
+                          className="ml-1 hover:bg-[#0B47CE]/20 rounded-full p-0.5"
                         >
                           <X className="w-3 h-3" />
                         </button>
@@ -729,40 +460,49 @@ export default function AssociatesDirectory() {
               </div>
 
               {/* Results Count */}
-              <div className="text-sm text-primary-900/70 mb-4">
-                Mostrando <span className="font-bold text-[#0B47CE]">{filteredAssociates.length}</span> de{' '}
-                <span className="font-bold text-[#0B47CE]">{totalAssociates}</span> asociados
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-sm text-primary-900/60">
+                  Mostrando <span className="font-semibold text-primary-900">{filteredAssociates.length}</span> de {totalAssociates} asociados
+                </p>
               </div>
 
-              {/* Associates Grid */}
+              {/* Results Grid */}
               {filteredAssociates.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-4 sm:gap-6">
-                  {filteredAssociates.map(associate => (
-                    <AssociateCard 
-                      key={associate.id} 
-                      associate={associate}
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+                  {filteredAssociates.map((associate) => (
+                    <AssociateCard
+                      key={associate.id}
+                      associate={{
+                        id: associate.id,
+                        nombre_empresa: associate.nombre_empresa,
+                        descripcion: associate.descripcion,
+                        logo_url: associate.logo_url,
+                        segmento: associate.segmento,
+                        ubicacion: associate.ubicacion,
+                        pagina_web: associate.pagina_web,
+                        linkedin: associate.linkedin,
+                        twitter: associate.twitter,
+                        servicios: associate.servicios,
+                        tamano_empresa: associate.tamano_empresa,
+                        calificacion_colombia_edtech: associate.calificacion_colombia_edtech,
+                        correo_contacto: associate.correo_contacto,
+                      }}
                     />
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-20 bg-white rounded-xl border-2 border-dashed border-primary-200">
-                  <Building2 className="w-20 h-20 mx-auto mb-6 text-primary-300" />
-                  <h3 className="text-2xl font-bold text-primary-900 mb-3">
+                <div className="text-center py-16 bg-white rounded-lg border">
+                  <Building2 className="w-16 h-16 mx-auto mb-4 text-primary-700/30" />
+                  <h3 className="text-xl font-semibold text-primary-900 mb-2">
                     No se encontraron asociados
                   </h3>
-                  <p className="text-primary-900/70 mb-8 max-w-md mx-auto">
-                    {hasActiveFilters 
-                      ? "Intenta ajustar los filtros para encontrar más resultados" 
-                      : "No hay asociados disponibles en este momento"}
+                  <p className="text-primary-900/60 mb-6 max-w-md mx-auto">
+                    No hay asociados que coincidan con los filtros seleccionados. 
+                    Intenta ajustar tus criterios de búsqueda.
                   </p>
-                  {hasActiveFilters && (
-                    <Button
-                      onClick={resetFilters}
-                      className="bg-[#0B47CE] hover:bg-[#003889]"
-                    >
-                      Limpiar filtros
-                    </Button>
-                  )}
+                  <Button onClick={resetFilters} variant="outline">
+                    Limpiar filtros
+                  </Button>
                 </div>
               )}
             </div>
