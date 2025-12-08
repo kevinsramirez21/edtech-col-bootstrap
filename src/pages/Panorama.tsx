@@ -250,30 +250,30 @@ const Panorama = () => {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
-              <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-accent-brand mb-3 sm:mb-4 md:mb-6 mx-auto drop-shadow-lg" />
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-white">Apuestas Pedagógicas</h3>
-              <ul className="flex-grow space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90 text-left">
+            <Card className="h-full flex flex-col p-4 sm:p-5 md:p-6 lg:p-8 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
+              <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-accent-brand mb-2 sm:mb-3 md:mb-4 mx-auto drop-shadow-lg" />
+              <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white">Apuestas Pedagógicas</h3>
+              <ul className="flex-grow space-y-1.5 sm:space-y-2 md:space-y-3 text-[11px] sm:text-xs md:text-sm lg:text-base text-white/90 text-left">
                 <li>• Evaluación primero y subjetiva</li>
-                <li>• Métodos experimentales y adaptativos</li>
-                <li>• Power Skills (no habilidades blandas)</li>
+                <li>• Métodos experimentales</li>
+                <li>• Power Skills</li>
               </ul>
             </Card>
             
-            <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
-              <GraduationCap className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-accent-brand mb-3 sm:mb-4 md:mb-6 mx-auto drop-shadow-lg" />
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-white">Experiencia 360</h3>
-              <ul className="flex-grow space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90 text-left">
-                <li>• Tech-enabled (habilitador, no reemplazo)</li>
-                <li>• Data-oriented (decisiones basadas en datos)</li>
+            <Card className="h-full flex flex-col p-4 sm:p-5 md:p-6 lg:p-8 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
+              <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-accent-brand mb-2 sm:mb-3 md:mb-4 mx-auto drop-shadow-lg" />
+              <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white">Experiencia 360</h3>
+              <ul className="flex-grow space-y-1.5 sm:space-y-2 md:space-y-3 text-[11px] sm:text-xs md:text-sm lg:text-base text-white/90 text-left">
+                <li>• Tech-enabled</li>
+                <li>• Data-oriented</li>
                 <li>• Personalización continua</li>
               </ul>
             </Card>
             
-            <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500 sm:col-span-2 md:col-span-1">
-              <Target className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-accent-brand mb-3 sm:mb-4 md:mb-6 mx-auto drop-shadow-lg" />
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-white">Tesis de Industria</h3>
-              <ul className="flex-grow space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90 text-left">
+            <Card className="h-full flex flex-col p-4 sm:p-5 md:p-6 lg:p-8 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500 sm:col-span-2 md:col-span-1">
+              <Target className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-accent-brand mb-2 sm:mb-3 md:mb-4 mx-auto drop-shadow-lg" />
+              <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white">Tesis de Industria</h3>
+              <ul className="flex-grow space-y-1.5 sm:space-y-2 md:space-y-3 text-[11px] sm:text-xs md:text-sm lg:text-base text-white/90 text-left">
                 <li>• Nicho Técnico (Platzi)</li>
                 <li>• Nicho Geográfico (Mangus)</li>
                 <li>• Nicho Industrial (Revive)</li>
