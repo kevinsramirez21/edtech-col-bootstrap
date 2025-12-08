@@ -188,7 +188,7 @@ const Asociados = () => {
       </Helmet>
       
       {/* Hero */}
-      <Section className="py-24 md:py-40 lg:py-52 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[85vh]">
+      <Section className="py-16 sm:py-20 md:py-28 lg:py-36 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[70vh] sm:min-h-[75vh] lg:min-h-[85vh]">
         {/* Background image */}
         <div className="absolute inset-0">
           <OptimizedImage 
@@ -199,28 +199,27 @@ const Asociados = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
         </div>
-        <div className="relative z-10 container max-w-7xl mx-auto h-full flex items-center pt-20 md:pt-24">
+        <div className="relative z-10 container max-w-7xl mx-auto px-4 h-full flex items-center pt-16 sm:pt-20 md:pt-24">
           <div className="max-w-4xl animate-fade-in">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight drop-shadow-2xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight drop-shadow-2xl">
               Asociados
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl mb-10 leading-relaxed drop-shadow-lg max-w-3xl">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 sm:mb-8 md:mb-10 leading-relaxed drop-shadow-lg max-w-3xl">
               Si eres una organización con o sin ánimo de lucro que está 
               <strong className="text-[#F73C5C]"> TRANSFORMANDO</strong> la educación, 
               bienvenido al mundo de los asociados
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in" style={{
             animationDelay: '0.2s'
           }}>
-              <Button size="lg" className="text-lg px-8 py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300" onClick={handleAssociateClick} asChild>
-                <Link to="/asociados#form">
-                  Únete ahora <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+              <Button size="lg" className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300" onClick={() => {
+                handleAssociateClick();
+                document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
+              }}>
+                Únete ahora <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-white/95 border-white hover:bg-white backdrop-blur-sm hover-scale text-[#0B47CE] font-bold shadow-xl hover:shadow-2xl" asChild>
-                <Link to="#beneficios">
-                  Conoce los beneficios
-                </Link>
+              <Button size="lg" variant="outline" className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 bg-white/95 border-white hover:bg-white backdrop-blur-sm hover-scale text-[#0B47CE] font-bold shadow-xl hover:shadow-2xl" onClick={() => document.getElementById('beneficios')?.scrollIntoView({ behavior: 'smooth' })}>
+                Conoce los beneficios
               </Button>
             </div>
           </div>
@@ -283,12 +282,13 @@ const Asociados = () => {
       </Section>
 
       {/* CTA Section */}
-      <Section className="py-12 bg-[#F4E8DD]">
-        <div className="container text-center">
-          <CTAButton size="lg" className="btn-primary" onClick={handleAssociateClick} asChild>
-            <Link to="/asociados#form">
-              Quiero ser asociado de Colombia EdTech
-            </Link>
+      <Section className="py-8 sm:py-12 bg-[#F4E8DD]">
+        <div className="container text-center px-4">
+          <CTAButton size="lg" className="btn-primary" onClick={() => {
+            handleAssociateClick();
+            document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
+          }}>
+            Quiero ser asociado de Colombia EdTech
           </CTAButton>
         </div>
       </Section>
@@ -366,21 +366,21 @@ const Asociados = () => {
       </Section>
 
       {/* Beneficios */}
-      <Section id="beneficios" className="py-16 bg-[#F4E8DD]">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 font-funnel">
+      <Section id="beneficios" className="py-12 sm:py-16 bg-[#F4E8DD]">
+        <div className="container px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 font-funnel">
             <span className="text-[#F73C5C]">¿Qué podemos hacer para ayudarte?</span>
           </h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {beneficios.map((beneficio, index) => {
             const bgImages = ['bg-gradient-to-br from-blue-900 to-blue-700', 'bg-gradient-to-br from-red-600 to-pink-600', 'bg-gradient-to-br from-purple-900 to-purple-700', 'bg-gradient-to-br from-green-800 to-green-600', 'bg-gradient-to-br from-orange-700 to-yellow-600', 'bg-gradient-to-br from-indigo-900 to-purple-800'];
-            return <div key={index} className={`${bgImages[index]} text-white p-8 rounded-lg relative overflow-hidden`}>
+            return <div key={index} className={`${bgImages[index]} text-white p-5 sm:p-6 lg:p-8 rounded-lg relative overflow-hidden`}>
                   {/* Background placeholder for images */}
                   <div className="absolute inset-0 bg-black/20"></div>
                   <div className="relative z-10">
-                    <h3 className="text-xl font-bold mb-4 leading-tight">{beneficio.title}</h3>
-                    <p className="text-base leading-relaxed text-white">{beneficio.description}</p>
+                    <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 leading-tight">{beneficio.title}</h3>
+                    <p className="text-sm sm:text-base leading-relaxed text-white">{beneficio.description}</p>
                   </div>
                 </div>;
           })}
@@ -389,28 +389,29 @@ const Asociados = () => {
       </Section>
 
       {/* Precio */}
-      <Section className="py-16 bg-[#F4E8DD]">
-        <div className="container text-center max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0B47CE] mb-6">
+      <Section className="py-12 sm:py-16 bg-[#F4E8DD]">
+        <div className="container text-center max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B47CE] mb-4 sm:mb-6">
             La mejor inversión costo-eficiente para una EdTech en Colombia
           </h2>
-          <p className="text-2xl font-bold text-[#F73C5C] mb-8">
+          <p className="text-xl sm:text-2xl font-bold text-[#F73C5C] mb-6 sm:mb-8">
             Sólo pagas 1SMLV/ Año para pertenecer
           </p>
-          <CTAButton size="lg" className="btn-primary mb-12" onClick={handleAssociateClick} asChild>
-            <Link to="/asociados#form">
-              Regístrate para ser asociado hoy
-            </Link>
+          <CTAButton size="lg" className="btn-primary mb-8 sm:mb-12" onClick={() => {
+            handleAssociateClick();
+            document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
+          }}>
+            Regístrate para ser asociado hoy
           </CTAButton>
 
-          <h3 className="text-2xl md:text-3xl font-bold text-[#0B47CE] mb-8">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0B47CE] mb-6 sm:mb-8">
             ¿Qué requisitos debe cumplir tu organización para ser <span className="text-[#F73C5C]">Asociado?</span>
           </h3>
           
-          <div className="grid md:grid-cols-2 gap-6 text-left">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 text-left">
             {requirements.map((requirement, index) => <div key={index} className="flex items-start space-x-3">
-                <CheckCircle className="w-6 h-6 text-[#0B47CE] mt-1 flex-shrink-0" />
-                <p className="text-[#003889] text-base">{requirement}</p>
+                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-[#0B47CE] mt-0.5 sm:mt-1 flex-shrink-0" />
+                <p className="text-sm sm:text-base text-[#003889]">{requirement}</p>
               </div>)}
           </div>
         </div>
@@ -420,16 +421,16 @@ const Asociados = () => {
       
 
       {/* Formulario */}
-      <div id="form" className="py-16 bg-[#0B47CE]">
-        <div className="container max-w-3xl mx-auto">
-          <div className="text-center mb-8">
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-funnel">¿Quieres asociarte?</h3>
-            <p className="text-white/90 text-lg">
+      <div id="form" className="py-12 sm:py-16 bg-[#0B47CE]">
+        <div className="container max-w-3xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-6 sm:mb-8">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 font-funnel">¿Quieres asociarte?</h3>
+            <p className="text-white/90 text-base sm:text-lg">
               Completa el formulario y nos pondremos en contacto contigo
             </p>
           </div>
           
-          <div className="bg-white p-8 md:p-10 rounded-lg shadow-lg">
+          <div className="bg-white p-5 sm:p-8 md:p-10 rounded-lg shadow-lg">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField

@@ -102,18 +102,18 @@ export default function Noticias() {
             />
           </Section>
 
-          <Section className="pb-12 pt-4">
-            <div className="max-w-4xl">
-              <div className="flex items-center gap-3 mb-4">
-                <Newspaper className="w-8 h-8 text-accent-brand" />
-                <Badge variant="secondary" className="bg-white/10 text-white border-0">
+          <Section className="pb-8 sm:pb-10 md:pb-12 pt-4">
+            <div className="max-w-4xl px-4 sm:px-0">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <Newspaper className="w-6 h-6 sm:w-8 sm:h-8 text-accent-brand" />
+                <Badge variant="secondary" className="bg-white/10 text-white border-0 text-xs sm:text-sm">
                   Actualidad EdTech
                 </Badge>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4">
                 Noticias del Sector
               </h1>
-              <p className="text-xl text-white/80 max-w-2xl">
+              <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl">
                 Las últimas novedades del ecosistema EdTech en Colombia y el mundo. 
                 Inversiones, políticas públicas, innovación y más.
               </p>
@@ -122,8 +122,8 @@ export default function Noticias() {
         </div>
 
         {/* Search & Filters */}
-        <Section className="py-6 border-b border-border sticky top-0 bg-background/95 backdrop-blur-sm z-40">
-          <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+        <Section className="py-4 sm:py-6 border-b border-border sticky top-0 bg-background/95 backdrop-blur-sm z-40">
+          <div className="flex flex-col gap-4 items-start md:items-center md:flex-row md:justify-between px-4 sm:px-0">
             {/* Search */}
             <div className="relative w-full md:w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -137,12 +137,12 @@ export default function Noticias() {
             </div>
 
             {/* Categories */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 overflow-x-auto pb-2 sm:pb-0 w-full md:w-auto -mx-1 px-1">
               {CATEGORIES.map((category) => (
                 <Badge
                   key={category}
                   variant={selectedCategory === category ? "default" : "outline"}
-                  className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+                  className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors text-xs sm:text-sm whitespace-nowrap flex-shrink-0"
                   onClick={() => setSelectedCategory(category)}
                 >
                   {category}
@@ -169,11 +169,11 @@ export default function Noticias() {
 
         {/* Empty State */}
         {!isLoading && (!filteredNews || filteredNews.length === 0) && (
-          <Section className="py-20 text-center">
-            <div className="max-w-md mx-auto">
-              <Newspaper className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-              <h2 className="text-2xl font-bold text-foreground mb-2">No hay noticias disponibles</h2>
-              <p className="text-muted-foreground mb-6">
+          <Section className="py-12 sm:py-16 md:py-20 text-center">
+            <div className="max-w-md mx-auto px-4">
+              <Newspaper className="w-12 h-12 sm:w-16 sm:h-16 text-muted-foreground mx-auto mb-4" />
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">No hay noticias disponibles</h2>
+              <p className="text-sm sm:text-base text-muted-foreground mb-6">
                 {searchTerm || selectedCategory !== "Todas"
                   ? "No se encontraron noticias con los filtros seleccionados."
                   : "Próximamente publicaremos noticias del sector EdTech."}
