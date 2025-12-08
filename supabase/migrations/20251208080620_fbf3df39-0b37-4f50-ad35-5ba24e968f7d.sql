@@ -1,0 +1,1 @@
+UPDATE public.asociados SET pagina_web = 'https://campus.innovahub.org' WHERE id = '8b5d9531-4a05-4a5d-9aea-5727d8f8ccba';
