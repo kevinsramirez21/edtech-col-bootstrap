@@ -20,12 +20,15 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
-import eventoAsociadosImg from "@/assets/evento-edtech-fondo.jpg";
-import eventoPonenteImg from "@/assets/asamblea-evento-ponente.jpg";
-import eventoAudienciaImg from "@/assets/asamblea-evento-audiencia.jpg";
-import angelaAndradeImg from "@/assets/testimonios/angela-andrade-v2.png";
-import santiagoCarrilloImg from "@/assets/testimonios/santiago-carrillo.png";
-import oscarIvanImg from "@/assets/testimonios/oscar-ivan-rodriguez.png";
+import { OptimizedImage } from "@/components/ui/optimized-image";
+
+// Image paths - using public folder for better performance
+const eventoAsociadosImg = "/images/evento-edtech-fondo.jpg";
+const eventoPonenteImg = "/images/asamblea-evento-ponente.jpg";
+const eventoAudienciaImg = "/images/asamblea-evento-audiencia.jpg";
+const angelaAndradeImg = "/images/testimonios/angela-andrade-v2.png";
+const santiagoCarrilloImg = "/images/testimonios/santiago-carrillo.png";
+const oscarIvanImg = "/images/testimonios/oscar-ivan-rodriguez.png";
 
 const formSchema = z.object({
   nombre_empresa: z.string().trim().min(2, "El nombre debe tener al menos 2 caracteres").max(200, "El nombre es muy largo"),
@@ -188,7 +191,12 @@ const Asociados = () => {
       <Section className="py-24 md:py-40 lg:py-52 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[85vh]">
         {/* Background image */}
         <div className="absolute inset-0">
-          <img src={eventoAsociadosImg} alt="Evento Colombia EdTech" className="w-full h-full object-cover object-center" />
+          <OptimizedImage 
+            src={eventoAsociadosImg} 
+            alt="Evento Colombia EdTech" 
+            className="w-full h-full" 
+            priority={true}
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
         </div>
         <div className="relative z-10 container max-w-7xl mx-auto h-full flex items-center pt-20 md:pt-24">
@@ -229,7 +237,12 @@ const Asociados = () => {
             <div className="absolute left-0 top-1/2 -translate-y-1/2 h-16 w-64 bg-gradient-to-r from-[#F73C5C] via-[#8B3A8B] to-transparent -ml-32 lg:-ml-48"></div>
             
             <div className="relative z-10">
-              <img src={eventoPonenteImg} alt="Evento Colombia EdTech - Ponente en escenario" className="aspect-video rounded-lg shadow-xl object-cover w-full" />
+              <OptimizedImage 
+                src={eventoPonenteImg} 
+                alt="Evento Colombia EdTech - Ponente en escenario" 
+                className="rounded-lg shadow-xl w-full"
+                aspectRatio="video"
+              />
             </div>
             <div className="relative z-10">
               <p className="text-lg text-[#0B47CE] mb-6 leading-relaxed">
@@ -258,7 +271,12 @@ const Asociados = () => {
               </p>
             </div>
             <div className="relative z-10">
-              <img src={eventoAudienciaImg} alt="Evento Colombia EdTech - Audiencia comprometida" className="aspect-[4/3] rounded-lg shadow-xl object-cover w-full" />
+              <OptimizedImage 
+                src={eventoAudienciaImg} 
+                alt="Evento Colombia EdTech - Audiencia comprometida" 
+                className="rounded-lg shadow-xl w-full"
+                aspectRatio="4/3"
+              />
             </div>
           </div>
         </div>
@@ -285,9 +303,20 @@ const Asociados = () => {
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {testimonios.map((testimonio, index) => <div key={index} className={`p-8 rounded-lg text-white ${testimonio.color === 'blue' ? 'bg-[#0B47CE]' : 'bg-[#F73C5C]'}`}>
                 <div className="flex items-center mb-4">
-                  {testimonio.image ? <img src={testimonio.image} alt={testimonio.name} className="w-16 h-16 rounded-full object-cover mr-4" /> : <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                  {testimonio.image ? (
+                    <div className="w-16 h-16 rounded-full overflow-hidden mr-4 flex-shrink-0">
+                      <OptimizedImage 
+                        src={testimonio.image} 
+                        alt={testimonio.name} 
+                        className="w-full h-full"
+                        aspectRatio="square"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
                       <div className="w-12 h-12 bg-white/40 rounded-full"></div>
-                    </div>}
+                    </div>
+                  )}
                   <div>
                     <h4 className="font-bold text-lg">{testimonio.name}</h4>
                     <p className="text-sm opacity-90">{testimonio.role}</p>

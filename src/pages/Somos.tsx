@@ -11,9 +11,12 @@ import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, Lightbulb, Users, Globe, Building2, BookOpen, Handshake, Target, Heart, ChevronDown, CheckCircle } from "lucide-react";
-import juntaDirectiva2024 from "@/assets/junta-directiva-2024.jpg";
-import eventoColombiaEdtech from "@/assets/evento-colombia-edtech-hq.jpg";
-import eventoVision2030 from "@/assets/evento-vision-2030-hq.jpg";
+import { OptimizedImage } from "@/components/ui/optimized-image";
+
+// Image paths - using public folder for better performance
+const juntaDirectiva2024 = "/images/junta-directiva-2024.jpg";
+const eventoColombiaEdtech = "/images/evento-colombia-edtech-hq.jpg";
+const eventoVision2030 = "/images/evento-vision-2030-hq.jpg";
 const Somos = () => {
   const meta = generatePageMeta({
     title: "Lideramos la revolución EdTech en Colombia - Quiénes Somos",
@@ -161,7 +164,12 @@ const Somos = () => {
             animationDelay: '1s'
           }}>
               <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                <img src={juntaDirectiva2024} alt="Junta Directiva de Colombia EdTech 2024" className="w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[450px] xl:h-[500px] object-cover" />
+                <OptimizedImage 
+                  src={juntaDirectiva2024} 
+                  alt="Junta Directiva de Colombia EdTech 2024" 
+                  className="w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[450px] xl:h-[500px]"
+                  priority={true}
+                />
                 {/* Overlay sutil */}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-900/30 to-transparent"></div>
                 
@@ -248,7 +256,11 @@ const Somos = () => {
 
           {/* Columna derecha - Imagen */}
           <div className="relative h-[400px] lg:h-auto">
-            <img src={eventoColombiaEdtech} alt="Evento Colombia EdTech - Formando líderes que transforman el país" className="absolute inset-0 w-full h-full object-cover" />
+            <OptimizedImage 
+              src={eventoColombiaEdtech} 
+              alt="Evento Colombia EdTech - Formando líderes que transforman el país" 
+              className="absolute inset-0 w-full h-full"
+            />
           </div>
         </div>
       </section>
@@ -258,7 +270,11 @@ const Somos = () => {
         <div className="grid lg:grid-cols-2 min-h-[700px] lg:min-h-[80vh]">
           {/* Columna izquierda - Imagen */}
           <div className="relative h-[400px] lg:h-auto order-last lg:order-first">
-            <img src={eventoVision2030} alt="Evento Colombia EdTech - Visión 2030" className="absolute inset-0 w-full h-full object-cover" />
+            <OptimizedImage 
+              src={eventoVision2030} 
+              alt="Evento Colombia EdTech - Visión 2030" 
+              className="absolute inset-0 w-full h-full"
+            />
           </div>
 
           {/* Columna derecha - Contenido */}
