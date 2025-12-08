@@ -114,26 +114,26 @@ const Somos = () => {
       </Helmet>
 
       {/* HERO IMPACTANTE */}
-      <section className="min-h-[70vh] lg:min-h-[80vh] bg-primary-900 relative overflow-hidden flex items-center">
+      <section className="min-h-[50vh] sm:min-h-[60vh] lg:min-h-[80vh] bg-primary-900 relative overflow-hidden flex items-center">
         {/* Elementos decorativos de fondo */}
-        <div className="absolute top-10 right-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-10 w-24 h-24 bg-sand/20 rounded-full blur-2xl"></div>
+        <div className="absolute top-10 right-10 w-24 sm:w-32 h-24 sm:h-32 bg-accent/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-16 sm:w-24 h-16 sm:h-24 bg-sand/20 rounded-full blur-2xl"></div>
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
           {/* Layout Grid Principal */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 xl:gap-16 items-center">
             
             {/* COLUMNA IZQUIERDA - CONTENIDO CENTRADO */}
-            <div className="text-center space-y-8 lg:pr-8">
+            <div className="text-center space-y-4 sm:space-y-6 lg:space-y-8 lg:pr-8">
               {/* Título Principal */}
-            <div className="space-y-5">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight animate-fade-in" style={{
+            <div className="space-y-3 sm:space-y-4 lg:space-y-5">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight animate-fade-in" style={{
                 fontFamily: 'var(--font-display)'
               }}>
                   La evolución de la educación ha comenzado
                 </h1>
                 
-                <h2 className="text-lg md:text-xl lg:text-2xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto" style={{
+                <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto" style={{
                 animationDelay: '0.2s'
               }}>
                   Conectamos a startups, scaleups, empresas tradicionales, universidades, colegios, ONG, Bigtech, el estado y la comunidad todos unidos por un objetivo común, dispuestos a revolucionar desde la raíz la manera en que se enseña y aprende.
@@ -141,7 +141,7 @@ const Somos = () => {
               </div>
               
               {/* CTA Principal */}
-              <div className="pt-8" style={{
+              <div className="pt-4 sm:pt-6 lg:pt-8" style={{
               animationDelay: '0.6s'
             }}>
                 <button onClick={() => {
@@ -149,9 +149,9 @@ const Somos = () => {
                   behavior: 'smooth',
                   block: 'start'
                 });
-              }} className="bg-accent hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-accent/30">
+              }} className="bg-accent hover:bg-accent-600 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-accent/30">
                   Conoce nuestra historia
-                  <ArrowRight className="ml-2 w-6 h-6 inline-block" />
+                  <ArrowRight className="ml-2 w-5 h-5 sm:w-6 sm:h-6 inline-block" />
                 </button>
               </div>
             </div>
@@ -160,8 +160,8 @@ const Somos = () => {
             <div className="relative order-first lg:order-last" style={{
             animationDelay: '1s'
           }}>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                <img src={juntaDirectiva2024} alt="Junta Directiva de Colombia EdTech 2024" className="w-full h-[350px] md:h-[450px] lg:h-[500px] object-cover" />
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                <img src={juntaDirectiva2024} alt="Junta Directiva de Colombia EdTech 2024" className="w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[450px] xl:h-[500px] object-cover" />
                 {/* Overlay sutil */}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-900/30 to-transparent"></div>
                 
@@ -184,12 +184,12 @@ const Somos = () => {
       </section>
 
       {/* JUNTA DIRECTIVA - DESPUÉS DEL HERO */}
-      <Section id="junta-directiva" className="py-16 bg-white">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700 font-funnel">
+      <Section id="junta-directiva" className="py-10 sm:py-12 lg:py-16 bg-white">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-primary-700 font-funnel">
             Conoce nuestra Junta Directiva
           </h2>
-          <p className="text-lg text-primary-900 max-w-2xl mx-auto">Líderes comprometidos con la transformación educativa en Colombia y latinoamérica</p>
+          <p className="text-base sm:text-lg text-primary-900 max-w-2xl mx-auto">Líderes comprometidos con la transformación educativa en Colombia y latinoamérica</p>
         </div>
         
         <LogoGrid partners={asociados} columns={4} title="" className="mb-12" />
@@ -283,22 +283,22 @@ const Somos = () => {
       </section>
 
       {/* VALORES - FONDO SAND */}
-      <Section className="py-16 bg-sand">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-700 font-funnel">
+      <Section className="py-10 sm:py-12 lg:py-16 bg-sand">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-primary-700 font-funnel">
             Estos son los valores que nos mueven en Colombia EdTech
           </h2>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-          <Card className="p-8 bg-sand/50 border-primary-200 text-center">
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
-              <Lightbulb className="w-10 h-10 text-white" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto px-4">
+          <Card className="p-5 sm:p-6 lg:p-8 bg-sand/50 border-primary-200 text-center">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mx-auto mb-4 sm:mb-5 lg:mb-6 rounded-full bg-accent flex items-center justify-center">
+              <Lightbulb className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-4 text-primary-700">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-primary-700">
               Innovación
             </h3>
-            <p className="text-base text-primary-900 leading-relaxed">
+            <p className="text-sm sm:text-base text-primary-900 leading-relaxed">
               La tecnología está presente en todas las áreas de nuestra vida, adaptarnos a sus beneficios, y crear sobre ella, mejorará significativamente la calidad de vida de profesores, estudiantes e instituciones educativas.
             </p>
           </Card>

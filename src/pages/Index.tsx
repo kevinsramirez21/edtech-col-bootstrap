@@ -93,20 +93,20 @@ const Index = () => {
           <div className="absolute bottom-1/4 left-1/4 w-28 h-28 bg-white/10 rounded-full blur-2xl animate-float animation-delay-2000"></div>
         </div>
 
-        <div className="relative z-10 text-center max-w-7xl mx-auto px-6">
+        <div className="relative z-10 text-center max-w-7xl mx-auto px-4 sm:px-6">
           {/* Hero Typography */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 leading-tight text-white animate-fade-in-up animation-delay-200">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-6 sm:mb-8 lg:mb-12 leading-tight text-white animate-fade-in-up animation-delay-200">
             ¿Sabías que las <span className="text-accent-brand font-extrabold">EdTechs colombianas</span> impactan a más de{" "}
             <span className="text-accent-brand font-extrabold">15 millones de personas</span>{" "}
             en más de <span className="text-accent-brand font-extrabold">25 países?</span>
           </h1>
           
-          <p className="text-xl lg:text-2xl xl:text-3xl mb-12 max-w-5xl mx-auto text-white/90 leading-relaxed font-medium animate-fade-in-up animation-delay-400">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 sm:mb-8 lg:mb-12 max-w-5xl mx-auto text-white/90 leading-relaxed font-medium animate-fade-in-up animation-delay-400">
             Aún así, <strong className="text-accent-brand">no llegamos a quienes más lo necesitan.</strong>
           </p>
 
-          <div className="mb-16 animate-fade-in-up animation-delay-600">
-            <p className="text-lg lg:text-xl xl:text-2xl max-w-5xl mx-auto text-white/85 leading-relaxed font-medium">
+          <div className="mb-8 sm:mb-12 lg:mb-16 animate-fade-in-up animation-delay-600">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl max-w-5xl mx-auto text-white/85 leading-relaxed font-medium">
               En <strong className="text-white">Colombia EdTech</strong> promovemos la{" "}
               <strong className="text-accent-brand">inversión, colaboración y crecimiento</strong>{" "}
               de todas las organizaciones que reconocen que{" "}
@@ -127,22 +127,22 @@ const Index = () => {
             </div>}
 
           {/* CTA Section Premium */}
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center animate-fade-in-up animation-delay-800">
-            {!loading && !user && <Button asChild variant="outline" className="border-2 border-white text-white bg-white/10 backdrop-blur-md hover:bg-white hover:text-primary-700 font-semibold px-8 py-4 rounded-2xl transition-all duration-500 hover:scale-110 text-base lg:text-lg group">
+          <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8 justify-center items-center animate-fade-in-up animation-delay-800">
+            {!loading && !user && <Button asChild variant="outline" className="border-2 border-white text-white bg-white/10 backdrop-blur-md hover:bg-white hover:text-primary-700 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 hover:scale-105 text-sm sm:text-base lg:text-lg group w-full sm:w-auto">
                 
               </Button>}
             
-            <Button asChild className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-10 py-5 rounded-2xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-110 text-lg lg:text-xl group">
-              <Link to="/asociados" className="flex items-center space-x-4">
-                <Users className="w-7 h-7 group-hover:rotate-12 transition-transform duration-300" />
-                <span>Quiero conocer cómo ser parte de Colombia EdTech</span>
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+            <Button asChild className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-105 text-sm sm:text-base lg:text-lg xl:text-xl group w-full sm:w-auto">
+              <Link to="/asociados" className="flex items-center justify-center space-x-2 sm:space-x-3 lg:space-x-4">
+                <Users className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
+                <span className="text-center">Quiero ser parte de Colombia EdTech</span>
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0 hidden sm:block" />
               </Link>
             </Button>
             
-            <Button asChild variant="outline" className="border-2 border-primary-700 text-primary-700 bg-white hover:bg-primary-700 hover:text-white font-semibold px-10 py-5 rounded-2xl transition-all duration-500 hover:scale-110 text-lg lg:text-xl">
-              <Link to="/somos" className="flex items-center space-x-3">
-                <BookOpen className="w-6 h-6" />
+            <Button asChild variant="outline" className="border-2 border-primary-700 text-primary-700 bg-white hover:bg-primary-700 hover:text-white font-semibold px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl transition-all duration-500 hover:scale-105 text-sm sm:text-base lg:text-lg xl:text-xl w-full sm:w-auto">
+              <Link to="/somos" className="flex items-center justify-center space-x-2 sm:space-x-3">
+                <BookOpen className="w-5 h-5 sm:w-6 sm:h-6" />
                 <span>Conoce Nuestra Misión</span>
               </Link>
             </Button>
@@ -153,7 +153,7 @@ const Index = () => {
 
 
       {/* Segmentation Section Premium */}
-      <Section className="py-20 relative overflow-hidden" style={{
+      <Section className="py-12 sm:py-16 lg:py-20 relative overflow-hidden" style={{
       backgroundColor: '#f4e8dd'
     }}>
         {/* Background Decorations */}
@@ -162,9 +162,9 @@ const Index = () => {
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent-brand rounded-full blur-3xl"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 text-primary-700 leading-tight">
               Ayudamos a crear un sistema educativo que forme estudiantes, docentes, instituciones y organizaciones para los{" "}
               <span className="text-primary-700">
                 retos de la nueva era
@@ -214,7 +214,7 @@ const Index = () => {
       </Section>
 
       {/* Inspirational Vision Section Premium */}
-      <Section className="py-32 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden">
+      <Section className="py-16 sm:py-20 lg:py-32 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden">
         {/* Premium Background Effects */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-full h-full">
@@ -224,24 +224,24 @@ const Index = () => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(11,71,206,0.15),transparent_70%)]"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 leading-tight animate-fade-in-up">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-6 sm:mb-8 lg:mb-12 leading-tight animate-fade-in-up">
               Imagina un mundo donde todas las personas encuentran{" "}
               <span className="text-accent-brand">
                 propósito
               </span>{" "}
               en lo que hacen
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-12 rounded-full animate-fade-in-up animation-delay-200"></div>
-            <p className="text-xl lg:text-2xl xl:text-3xl max-w-6xl mx-auto text-white/90 leading-relaxed mb-12 font-medium animate-fade-in-up animation-delay-400">
+            <div className="w-20 sm:w-24 lg:w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-6 sm:mb-8 lg:mb-12 rounded-full animate-fade-in-up animation-delay-200"></div>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl max-w-6xl mx-auto text-white/90 leading-relaxed mb-6 sm:mb-8 lg:mb-12 font-medium animate-fade-in-up animation-delay-400">
               La educación impulsada por la tecnología nos acerca a ese futuro.
             </p>
             <div className="max-w-5xl mx-auto animate-fade-in-up animation-delay-600">
-              <p className="text-2xl lg:text-3xl xl:text-4xl font-bold mb-8 leading-tight">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight">
                 Nuestra misión: <span className="text-accent-brand">CONSTRUIR</span> una educación que inspire, motive y transforme.
               </p>
-              <p className="text-xl lg:text-2xl text-white/85 font-medium">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/85 font-medium">
                 Porque <strong className="text-accent-brand">nadie</strong> debería quedar atrás.
               </p>
             </div>

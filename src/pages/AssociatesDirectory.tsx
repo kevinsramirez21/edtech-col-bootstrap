@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async"
 import { useState, useEffect, useMemo } from "react"
-import { Users, Building2, Loader2, Settings, ChevronDown, ChevronUp, X } from "lucide-react"
+import { Users, Building2, Loader2, Settings, ChevronDown, ChevronUp, X, Filter } from "lucide-react"
 import { supabase } from "@/integrations/supabase/client"
 import { AssociateCard } from "@/components/ui/associate-card"
 import { Button } from "@/components/ui/button"
@@ -15,6 +15,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 import { useAdmin } from "@/hooks/use-admin"
 import { Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
@@ -68,6 +75,7 @@ export default function AssociatesDirectory() {
   const [segmentosExpanded, setSegmentosExpanded] = useState(true)
   const [tamanosExpanded, setTamanosExpanded] = useState(true)
   const [serviciosExpanded, setServiciosExpanded] = useState(true)
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const { isAdmin } = useAdmin()
   const [filters, setFilters] = useState<FiltersState>({
     search: "",
@@ -233,6 +241,7 @@ export default function AssociatesDirectory() {
 
   const hasActiveFilters = filters.search || filters.segmentos.length > 0 || filters.tamanos.length > 0 || filters.servicios.length > 0
   const totalAssociates = associates.length
+  const activeFiltersCount = filters.segmentos.length + filters.tamanos.length + filters.servicios.length
 
   if (loading) {
     return (
@@ -284,13 +293,13 @@ export default function AssociatesDirectory() {
 
       <main className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <div className="bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white py-12">
+        <div className="bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white py-8 sm:py-10 md:py-12">
           <div className="container max-w-7xl mx-auto px-4">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">
                 Directorio de Asociados
               </h1>
-              <p className="text-lg text-white/90 mb-6">
+              <p className="text-base sm:text-lg text-white/90 mb-4 md:mb-6">
                 Explora las empresas EdTech que están transformando la educación en Colombia
               </p>
               {isAdmin && (
@@ -310,10 +319,185 @@ export default function AssociatesDirectory() {
         </div>
 
         {/* Main Content */}
-        <div className="container max-w-7xl mx-auto px-4 py-8">
-          <div className="flex gap-8">
-            {/* Sidebar Filters */}
-            <aside className="w-80 flex-shrink-0 hidden lg:block">
+        <div className="container max-w-7xl mx-auto px-4 py-4 sm:py-6 md:py-8">
+          {/* Mobile Filter Button */}
+          <div className="lg:hidden mb-4">
+            <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
+              <SheetTrigger asChild>
+                <Button variant="outline" className="w-full justify-between">
+                  <span className="flex items-center gap-2">
+                    <Filter className="w-4 h-4" />
+                    Filtros
+                  </span>
+                  {activeFiltersCount > 0 && (
+                    <Badge variant="secondary" className="bg-[#0B47CE] text-white">
+                      {activeFiltersCount}
+                    </Badge>
+                  )}
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px] sm:w-[350px] overflow-y-auto">
+                <SheetHeader>
+                  <SheetTitle className="flex items-center justify-between">
+                    <span>Filtros</span>
+                    {hasActiveFilters && (
+                      <Button 
+                        variant="ghost" 
+                        size="sm"
+                        onClick={() => {
+                          resetFilters()
+                          setMobileFiltersOpen(false)
+                        }}
+                        className="text-[#F73C5C] hover:text-[#F73C5C]/90 hover:bg-[#F73C5C]/10"
+                      >
+                        Limpiar todo
+                      </Button>
+                    )}
+                  </SheetTitle>
+                </SheetHeader>
+                
+                <div className="mt-6 space-y-6">
+                  {/* Segmentos Filter - Mobile */}
+                  <div className="border-b pb-4">
+                    <button
+                      onClick={() => setSegmentosExpanded(!segmentosExpanded)}
+                      className="flex items-center justify-between w-full text-left mb-3"
+                    >
+                      <h3 className="font-semibold text-primary-900">Segmentos</h3>
+                      {segmentosExpanded ? (
+                        <ChevronUp className="w-4 h-4 text-primary-700" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4 text-primary-700" />
+                      )}
+                    </button>
+                    {segmentosExpanded && (
+                      <div className="space-y-3">
+                        {segmentOptions.map(option => (
+                          <div key={option.value} className="flex items-center justify-between">
+                            <div className="flex items-center space-x-2">
+                              <Checkbox
+                                id={`mobile-segmento-${option.value}`}
+                                checked={filters.segmentos.includes(option.value)}
+                                onCheckedChange={() => handleSegmentoToggle(option.value)}
+                              />
+                              <Label 
+                                htmlFor={`mobile-segmento-${option.value}`}
+                                className="text-sm cursor-pointer text-primary-900/80"
+                              >
+                                {option.label}
+                              </Label>
+                            </div>
+                            {segmentCounts[option.value] && (
+                              <span className="text-xs text-primary-700/60">
+                                ({segmentCounts[option.value]})
+                              </span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Tamaño Filter - Mobile */}
+                  <div className="border-b pb-4">
+                    <button
+                      onClick={() => setTamanosExpanded(!tamanosExpanded)}
+                      className="flex items-center justify-between w-full text-left mb-3"
+                    >
+                      <h3 className="font-semibold text-primary-900">Tamaño</h3>
+                      {tamanosExpanded ? (
+                        <ChevronUp className="w-4 h-4 text-primary-700" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4 text-primary-700" />
+                      )}
+                    </button>
+                    {tamanosExpanded && (
+                      <div className="space-y-3">
+                        {sizeOptions.map(option => (
+                          <div key={option.value} className="flex items-center justify-between">
+                            <div className="flex items-center space-x-2">
+                              <Checkbox
+                                id={`mobile-tamano-${option.value}`}
+                                checked={filters.tamanos.includes(option.value)}
+                                onCheckedChange={() => handleTamanoToggle(option.value)}
+                              />
+                              <Label 
+                                htmlFor={`mobile-tamano-${option.value}`}
+                                className="text-sm cursor-pointer text-primary-900/80"
+                              >
+                                {option.label}
+                              </Label>
+                            </div>
+                            {sizeCounts[option.value] && (
+                              <span className="text-xs text-primary-700/60">
+                                ({sizeCounts[option.value]})
+                              </span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Servicios Filter - Mobile */}
+                  {availableServices.length > 0 && (
+                    <div>
+                      <button
+                        onClick={() => setServiciosExpanded(!serviciosExpanded)}
+                        className="flex items-center justify-between w-full text-left mb-3"
+                      >
+                        <h3 className="font-semibold text-primary-900">Servicios</h3>
+                        {serviciosExpanded ? (
+                          <ChevronUp className="w-4 h-4 text-primary-700" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4 text-primary-700" />
+                        )}
+                      </button>
+                      {serviciosExpanded && (
+                        <div className="space-y-3 max-h-64 overflow-y-auto">
+                          {availableServices.map(service => (
+                            <div key={service} className="flex items-center justify-between">
+                              <div className="flex items-center space-x-2">
+                                <Checkbox
+                                  id={`mobile-servicio-${service}`}
+                                  checked={filters.servicios.includes(service)}
+                                  onCheckedChange={() => handleServicioToggle(service)}
+                                />
+                                <Label 
+                                  htmlFor={`mobile-servicio-${service}`}
+                                  className="text-sm cursor-pointer text-primary-900/80"
+                                >
+                                  {service}
+                                </Label>
+                              </div>
+                              {serviceCounts[service] && (
+                                <span className="text-xs text-primary-700/60">
+                                  ({serviceCounts[service]})
+                                </span>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-6 pt-4 border-t">
+                  <Button 
+                    onClick={() => setMobileFiltersOpen(false)}
+                    className="w-full bg-[#0B47CE] hover:bg-[#003889]"
+                  >
+                    Ver {filteredAssociates.length} resultados
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+
+          <div className="flex gap-6 lg:gap-8">
+            {/* Sidebar Filters - Desktop */}
+            <aside className="w-72 xl:w-80 flex-shrink-0 hidden lg:block">
               <div className="sticky top-24 space-y-6">
                 {/* Filters Header */}
                 <div className="bg-white rounded-lg shadow-sm border p-6">
@@ -547,7 +731,7 @@ export default function AssociatesDirectory() {
 
               {/* Associates Grid */}
               {filteredAssociates.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-4 sm:gap-6">
                   {filteredAssociates.map(associate => (
                     <AssociateCard 
                       key={associate.id} 
