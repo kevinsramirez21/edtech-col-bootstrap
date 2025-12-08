@@ -501,23 +501,23 @@ const Panorama = () => {
                 </ul>
               </Card>
               
-              <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 bg-white/10 backdrop-blur-sm border-white/20">
+              <Card className="h-full flex flex-col p-4 sm:p-5 md:p-6 lg:p-8 bg-white/10 backdrop-blur-sm border-white/20">
                 <div className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 md:mb-4">💡</div>
-                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white">Nuevos Modelos</h3>
-                <ul className="flex-grow space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90">
-                  <li>• <strong>Técnicos y Lifelong Learning</strong>: Educación continua</li>
-                  <li>• <strong>Universidades Corporativas</strong>: Hacku, Sistel, Laboratoria</li>
-                  <li>• <strong>Micro-credentials</strong>: Certificaciones específicas</li>
+                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white break-words">Nuevos Modelos</h3>
+                <ul className="flex-grow space-y-1.5 sm:space-y-2 md:space-y-3 text-[11px] sm:text-xs md:text-sm lg:text-base text-white/90">
+                  <li>• Educación continua como norma</li>
+                  <li>• Universidades Corporativas</li>
+                  <li>• Micro-credenciales</li>
                 </ul>
               </Card>
               
-              <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 bg-white/10 backdrop-blur-sm border-white/20 sm:col-span-2 md:col-span-1">
+              <Card className="h-full flex flex-col p-4 sm:p-5 md:p-6 lg:p-8 bg-white/10 backdrop-blur-sm border-white/20 sm:col-span-2 md:col-span-1">
                 <div className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 md:mb-4">🌐</div>
-                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white">Operación Global</h3>
-                <ul className="flex-grow space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90">
+                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white break-words">Operación Global</h3>
+                <ul className="flex-grow space-y-1.5 sm:space-y-2 md:space-y-3 text-[11px] sm:text-xs md:text-sm lg:text-base text-white/90">
                   <li>• Education as a Service</li>
-                  <li>• Colaboración con OPMs, VCs EdTech, Big Tech</li>
-                  <li>• <strong>73%</strong> de EdTechs colombianas operan en 2-10 países</li>
+                  <li>• Colaboración con Big Tech</li>
+                  <li>• 73% operan en 2-10 países</li>
                 </ul>
               </Card>
             </div>
