@@ -147,24 +147,24 @@ const Voluntariado = () => {
       </Section>
 
       {/* Motivaciones */}
-      <Section className="py-20 bg-white">
-        <div className="container max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 font-funnel">
+      <Section className="py-12 sm:py-16 lg:py-20 bg-white">
+        <div className="container max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 font-funnel">
             <span className="text-[#F73C5C]">Si estás aquí es porque sientes que…</span>
           </h2>
           
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-12">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center mb-8 sm:mb-12">
             <div>
-              <ul className="space-y-6 text-lg text-[#0B47CE]">
+              <ul className="space-y-4 sm:space-y-6 text-sm sm:text-base lg:text-lg text-[#0B47CE]">
                 {motivaciones.map((motivacion, index) => (
                   <li key={index} className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-[#F73C5C] mr-4 flex-shrink-0 mt-1" />
+                    <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-[#F73C5C] mr-3 sm:mr-4 flex-shrink-0 mt-0.5" />
                     <span>{motivacion}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="relative">
+            <div className="relative order-first lg:order-last">
               <OptimizedImage 
                 src={eventoVision2030} 
                 alt="Colombia EdTech - Visión 2030" 
@@ -174,15 +174,15 @@ const Voluntariado = () => {
             </div>
           </div>
 
-          <div className="text-center bg-[#F4E8DD] p-10 md:p-12 rounded-xl">
-            <div className="flex items-center justify-center mb-6">
-              <Sparkles className="w-12 h-12 text-[#F73C5C] mr-4" />
-              <h3 className="text-3xl md:text-4xl font-bold text-[#0B47CE] font-funnel">¡Bienvenido/a!</h3>
+          <div className="text-center bg-[#F4E8DD] p-6 sm:p-8 md:p-10 lg:p-12 rounded-xl">
+            <div className="flex items-center justify-center mb-4 sm:mb-6">
+              <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-[#F73C5C] mr-3 sm:mr-4" />
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B47CE] font-funnel">¡Bienvenido/a!</h3>
             </div>
-            <p className="text-xl text-[#0B47CE] mb-6 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-[#0B47CE] mb-4 sm:mb-6 max-w-3xl mx-auto">
               Hay un lugar esperando por ti en nuestros <strong>grupos de voluntariado</strong>.
             </p>
-            <p className="text-lg text-[#0B47CE] max-w-3xl mx-auto">
+            <p className="text-sm sm:text-base lg:text-lg text-[#0B47CE] max-w-3xl mx-auto">
               <strong className="text-[#F73C5C]">Colombia EdTech</strong> integra tecnología innovadora y une a todos los actores del ecosistema 
               para construir una <strong>educación de calidad, accesible y personalizable</strong>.
             </p>
@@ -191,23 +191,23 @@ const Voluntariado = () => {
       </Section>
 
       {/* Beneficios */}
-      <Section id="beneficios" className="py-20 bg-[#F4E8DD]">
-        <div className="container">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 font-funnel">
-            <span className="text-[#0B47CE]">Beneficios de ser</span><br className="md:hidden" /> <span className="text-[#F73C5C]">voluntario/a</span>
+      <Section id="beneficios" className="py-12 sm:py-16 lg:py-20 bg-[#F4E8DD]">
+        <div className="container px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 sm:mb-6 font-funnel">
+            <span className="text-[#0B47CE]">Beneficios de ser</span><br className="sm:hidden" /> <span className="text-[#F73C5C]">voluntario/a</span>
           </h2>
-          <p className="text-xl text-center text-[#0B47CE] mb-16 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-center text-[#0B47CE] mb-10 sm:mb-12 lg:mb-16 max-w-3xl mx-auto">
             Todo lo que recibes por donar tu tiempo y talento
           </p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {beneficios.map((beneficio, index) => (
-              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-lg p-8 hover:shadow-xl transition-all duration-300">
-                <div className="w-16 h-16 bg-[#F73C5C] rounded-full flex items-center justify-center mb-6">
-                  <beneficio.icon className="w-8 h-8 text-white" />
+              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-lg p-5 sm:p-6 lg:p-8 hover:shadow-xl transition-all duration-300">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-[#F73C5C] rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                  <beneficio.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-[#0B47CE] mb-4">{beneficio.title}</h3>
-                <p className="text-[#0B47CE] leading-relaxed">{beneficio.description}</p>
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-[#0B47CE] mb-2 sm:mb-4">{beneficio.title}</h3>
+                <p className="text-sm sm:text-base text-[#0B47CE] leading-relaxed">{beneficio.description}</p>
               </div>
             ))}
           </div>
@@ -215,22 +215,22 @@ const Voluntariado = () => {
       </Section>
 
       {/* Propósito */}
-      <Section className="py-20 bg-[#0B47CE] text-white">
-        <div className="container max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 font-funnel">Propósito</h2>
+      <Section className="py-12 sm:py-16 lg:py-20 bg-[#0B47CE] text-white">
+        <div className="container max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 font-funnel">Propósito</h2>
           
           <div className="text-center max-w-4xl mx-auto">
-            <p className="text-2xl md:text-3xl mb-8 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 sm:mb-8 leading-relaxed">
               La vida no se trata solo de lo que <strong>conseguimos</strong>, sino de lo que <strong>podemos dar</strong>.
             </p>
-            <p className="text-xl mb-12 opacity-90 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-8 sm:mb-12 opacity-90 leading-relaxed">
               A través del voluntariado, contribuyes a una <strong>causa más grande</strong> que tú: encuentras propósito y alineas 
               tus conocimientos, habilidades y pasión con <strong>impacto social real</strong>.
             </p>
             
             <CTAButton 
               size="lg"
-              className="bg-white text-[#0B47CE] hover:bg-gray-100 text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 font-bold shadow-2xl"
+              className="bg-white text-[#0B47CE] hover:bg-gray-100 text-xs sm:text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6 font-bold shadow-2xl"
               onClick={() => {
                 handleVolunteerApplyClick();
                 document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
@@ -243,43 +243,43 @@ const Voluntariado = () => {
       </Section>
 
       {/* Requisitos */}
-      <Section className="py-20 bg-white">
-        <div className="container max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 font-funnel">
+      <Section className="py-12 sm:py-16 lg:py-20 bg-white">
+        <div className="container max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 lg:mb-16 font-funnel">
             <span className="text-[#0B47CE]">Requisitos y</span> <span className="text-[#F73C5C]">compromisos</span>
           </h2>
           
-          <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
-            <div className="bg-white border-2 border-[#0B47CE]/20 p-10 rounded-xl shadow-lg">
-              <div className="flex items-center mb-8">
-                <CheckCircle className="w-10 h-10 text-[#0B47CE] mr-4" />
-                <h3 className="text-2xl font-bold text-[#0B47CE] font-funnel">Es muy simple. Respóndete:</h3>
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start mb-8 sm:mb-12">
+            <div className="bg-white border-2 border-[#0B47CE]/20 p-5 sm:p-6 md:p-8 lg:p-10 rounded-xl shadow-lg">
+              <div className="flex items-center mb-5 sm:mb-6 lg:mb-8">
+                <CheckCircle className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-[#0B47CE] mr-3 sm:mr-4" />
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-[#0B47CE] font-funnel">Es muy simple. Respóndete:</h3>
               </div>
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                 {requisitos.map((requisito, index) => (
-                  <li key={index} className="flex items-start text-lg text-[#0B47CE]">
-                    <span className="text-[#F73C5C] font-bold mr-3 mt-1 text-xl">•</span>
+                  <li key={index} className="flex items-start text-sm sm:text-base lg:text-lg text-[#0B47CE]">
+                    <span className="text-[#F73C5C] font-bold mr-2 sm:mr-3 mt-0.5 text-base sm:text-lg lg:text-xl">•</span>
                     {requisito}
                   </li>
                 ))}
               </ul>
-              <div className="bg-[#F4E8DD] p-8 rounded-lg">
-                <p className="text-xl text-[#0B47CE] font-semibold">
+              <div className="bg-[#F4E8DD] p-4 sm:p-5 lg:p-8 rounded-lg">
+                <p className="text-sm sm:text-base lg:text-xl text-[#0B47CE] font-semibold">
                   Si respondiste <strong>SÍ</strong> a todo, ¡<strong>bienvenido/a</strong>! 
                   Tienes lo necesario para ser <strong>voluntario/a</strong> en Colombia EdTech.
                 </p>
               </div>
             </div>
             
-            <div className="bg-white border-2 border-[#F73C5C] p-10 rounded-xl shadow-lg">
-              <div className="flex items-center mb-8">
-                <Handshake className="w-10 h-10 text-[#F73C5C] mr-4" />
-                <h3 className="text-2xl font-bold text-[#F73C5C] font-funnel">Tu compromiso principal</h3>
+            <div className="bg-white border-2 border-[#F73C5C] p-5 sm:p-6 md:p-8 lg:p-10 rounded-xl shadow-lg">
+              <div className="flex items-center mb-5 sm:mb-6 lg:mb-8">
+                <Handshake className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-[#F73C5C] mr-3 sm:mr-4" />
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-[#F73C5C] font-funnel">Tu compromiso principal</h3>
               </div>
-              <p className="text-xl text-[#0B47CE] mb-8">
+              <p className="text-sm sm:text-base lg:text-xl text-[#0B47CE] mb-4 sm:mb-6 lg:mb-8">
                 Es cumplir con los <strong>tiempos y responsabilidades</strong> acordadas.
               </p>
-              <p className="text-xl text-[#0B47CE] mb-8">
+              <p className="text-sm sm:text-base lg:text-xl text-[#0B47CE]">
                 Este es un <strong>pacto de confianza y respeto</strong>, donde cada voluntario/a entrega lo mejor de sí, 
                 asegurando que la <strong>transformación educativa</strong> que buscamos sea real y efectiva.
               </p>
@@ -289,7 +289,7 @@ const Voluntariado = () => {
           <div className="text-center">
             <CTAButton 
               size="lg"
-              className="btn-primary text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6"
+              className="btn-primary text-xs sm:text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6"
               onClick={() => {
                 handleVolunteerApplyClick();
                 document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
