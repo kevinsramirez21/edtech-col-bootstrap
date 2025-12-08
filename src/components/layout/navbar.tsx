@@ -84,7 +84,7 @@ export function Navbar() {
                     fallback="/placeholder.svg"
                     className={cn(
                       "w-auto object-contain transition-all duration-300 group-hover:scale-105",
-                      isScrolled ? "h-10" : "h-12"
+                      isScrolled ? "h-12" : "h-16"
                     )}
                     priority
                   />
@@ -98,7 +98,7 @@ export function Navbar() {
                     fallback="/placeholder.svg"
                     className={cn(
                       "w-auto object-contain transition-all duration-300 group-hover:scale-105",
-                      isScrolled ? "h-8" : "h-10"
+                      isScrolled ? "h-10" : "h-14"
                     )}
                     priority
                   />
