@@ -41,26 +41,26 @@ const Panorama = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <Section className="py-24 md:py-32 lg:py-40 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden min-h-[70vh] flex items-center">
+      <Section className="py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center">
         {/* Background Effects */}
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-accent-brand rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-sand rounded-full blur-3xl"></div>
+          <div className="absolute top-10 left-10 sm:top-20 sm:left-20 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-accent-brand rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 sm:bottom-20 sm:right-20 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-sand rounded-full blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto relative z-10">
+        <div className="container mx-auto relative z-10 px-4 sm:px-6">
           <div className="text-center max-w-5xl mx-auto animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-tight drop-shadow-2xl">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight drop-shadow-2xl">
               Panorama del Futuro de la Educación
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto text-white/90 leading-relaxed mb-12 font-medium">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl max-w-4xl mx-auto text-white/90 leading-relaxed mb-6 sm:mb-8 md:mb-12 font-medium">
               Explorando las tendencias, desafíos y oportunidades que están redefiniendo 
               el aprendizaje en el siglo XXI
             </p>
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold px-10 py-6 rounded-xl shadow-2xl hover:shadow-accent/40 transition-all duration-500 hover:scale-110 text-lg" asChild>
-              <Link to="/asociados" className="flex items-center space-x-3">
+            <Button size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-xl shadow-2xl hover:shadow-accent/40 transition-all duration-500 hover:scale-105 md:hover:scale-110 text-sm sm:text-base md:text-lg" asChild>
+              <Link to="/asociados" className="flex items-center space-x-2 sm:space-x-3">
                 <span>Únete a la Transformación</span>
-                <ArrowRight className="w-6 h-6" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </Link>
             </Button>
           </div>
@@ -68,85 +68,85 @@ const Panorama = () => {
       </Section>
 
       {/* Contexto Global */}
-      <Section className="py-20 bg-sand">
-        <div className="container max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
               Contexto Global
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
           </div>
 
           {/* KPIs principales */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
-                <Brain className="w-10 h-10 text-white" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-8 sm:mb-12 md:mb-16">
+            <Card className="p-4 sm:p-6 md:p-8 lg:p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-accent flex items-center justify-center">
+                <Brain className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" />
               </div>
-              <div className="text-5xl font-bold mb-4 text-accent">2 años</div>
-              <div className="text-lg font-semibold mb-2 text-primary-700">Duplicación del Conocimiento</div>
-              <div className="text-sm text-primary-900">El conocimiento se duplica ahora</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 text-accent">2 años</div>
+              <div className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold mb-1 sm:mb-2 text-primary-700">Duplicación del Conocimiento</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-primary-900">El conocimiento se duplica ahora</div>
             </Card>
             
-            <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-700 flex items-center justify-center">
-                <DollarSign className="w-10 h-10 text-white" />
+            <Card className="p-4 sm:p-6 md:p-8 lg:p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-primary-700 flex items-center justify-center">
+                <DollarSign className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" />
               </div>
-              <div className="text-5xl font-bold mb-4 text-primary-700">$10T</div>
-              <div className="text-lg font-semibold mb-2 text-primary-700">Mercado Global 2030</div>
-              <div className="text-sm text-primary-900">Gasto global en educación</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 text-primary-700">$10T</div>
+              <div className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold mb-1 sm:mb-2 text-primary-700">Mercado Global 2030</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-primary-900">Gasto global en educación</div>
             </Card>
             
-            <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
-                <TrendingDown className="w-10 h-10 text-white" />
+            <Card className="p-4 sm:p-6 md:p-8 lg:p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-accent flex items-center justify-center">
+                <TrendingDown className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" />
               </div>
-              <div className="text-5xl font-bold mb-4 text-accent">50%</div>
-              <div className="text-lg font-semibold mb-2 text-primary-700">Habilidades Obsoletas</div>
-              <div className="text-sm text-primary-900">En menos de 5 años (WEF)</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 text-accent">50%</div>
+              <div className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold mb-1 sm:mb-2 text-primary-700">Habilidades Obsoletas</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-primary-900">En menos de 5 años (WEF)</div>
             </Card>
             
-            <Card className="p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-700 flex items-center justify-center">
-                <Globe className="w-10 h-10 text-white" />
+            <Card className="p-4 sm:p-6 md:p-8 lg:p-10 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-primary-700 flex items-center justify-center">
+                <Globe className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" />
               </div>
-              <div className="text-5xl font-bold mb-4 text-primary-700">73%</div>
-              <div className="text-lg font-semibold mb-2 text-primary-700">Operación Global</div>
-              <div className="text-sm text-primary-900">EdTechs colombianas en 2-10 países</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 text-primary-700">73%</div>
+              <div className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold mb-1 sm:mb-2 text-primary-700">Operación Global</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-primary-900">EdTechs colombianas en 2-10 países</div>
             </Card>
           </div>
 
           {/* Timeline de aceleración */}
-          <Card className="p-10 bg-white border-0 shadow-xl">
-            <h3 className="text-2xl font-bold mb-8 text-primary-700 text-center">Aceleración del Conocimiento</h3>
-            <div className="space-y-6">
-              <div className="flex items-center gap-6">
-                <Badge variant="outline" className="min-w-[100px] flex items-center justify-center text-lg py-2 border-2 border-primary-700">1900</Badge>
-                <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
-                  <div className="h-4 bg-primary-900 rounded-full transition-all duration-1000" style={{ width: '10%' }}></div>
+          <Card className="p-4 sm:p-6 md:p-8 lg:p-10 bg-white border-0 shadow-xl">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 text-center">Aceleración del Conocimiento</h3>
+            <div className="space-y-3 sm:space-y-4 md:space-y-6">
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+                <Badge variant="outline" className="min-w-[60px] sm:min-w-[80px] md:min-w-[100px] flex items-center justify-center text-xs sm:text-sm md:text-base lg:text-lg py-1 sm:py-1.5 md:py-2 border-2 border-primary-700">1900</Badge>
+                <div className="flex-1 h-2 sm:h-3 md:h-4 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-full bg-primary-900 rounded-full transition-all duration-1000" style={{ width: '10%' }}></div>
                 </div>
-                <span className="text-base text-primary-900 font-medium min-w-[200px]">Cada siglo</span>
+                <span className="text-[10px] sm:text-xs md:text-sm lg:text-base text-primary-900 font-medium min-w-[70px] sm:min-w-[100px] md:min-w-[150px] lg:min-w-[200px] text-right">Cada siglo</span>
               </div>
-              <div className="flex items-center gap-6">
-                <Badge variant="outline" className="min-w-[100px] flex items-center justify-center text-lg py-2 border-2 border-primary-700">1945</Badge>
-                <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
-                  <div className="h-4 bg-primary-700 rounded-full transition-all duration-1000" style={{ width: '30%' }}></div>
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+                <Badge variant="outline" className="min-w-[60px] sm:min-w-[80px] md:min-w-[100px] flex items-center justify-center text-xs sm:text-sm md:text-base lg:text-lg py-1 sm:py-1.5 md:py-2 border-2 border-primary-700">1945</Badge>
+                <div className="flex-1 h-2 sm:h-3 md:h-4 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-full bg-primary-700 rounded-full transition-all duration-1000" style={{ width: '30%' }}></div>
                 </div>
-                <span className="text-base text-primary-900 font-medium min-w-[200px]">Cada 25 años</span>
+                <span className="text-[10px] sm:text-xs md:text-sm lg:text-base text-primary-900 font-medium min-w-[70px] sm:min-w-[100px] md:min-w-[150px] lg:min-w-[200px] text-right">Cada 25 años</span>
               </div>
-              <div className="flex items-center gap-6">
-                <Badge variant="outline" className="min-w-[100px] flex items-center justify-center text-lg py-2 border-2 border-accent">1982</Badge>
-                <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
-                  <div className="h-4 bg-accent rounded-full transition-all duration-1000" style={{ width: '60%' }}></div>
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+                <Badge variant="outline" className="min-w-[60px] sm:min-w-[80px] md:min-w-[100px] flex items-center justify-center text-xs sm:text-sm md:text-base lg:text-lg py-1 sm:py-1.5 md:py-2 border-2 border-accent">1982</Badge>
+                <div className="flex-1 h-2 sm:h-3 md:h-4 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-full bg-accent rounded-full transition-all duration-1000" style={{ width: '60%' }}></div>
                 </div>
-                <span className="text-base text-primary-900 font-medium min-w-[200px]">Cada 8 años</span>
+                <span className="text-[10px] sm:text-xs md:text-sm lg:text-base text-primary-900 font-medium min-w-[70px] sm:min-w-[100px] md:min-w-[150px] lg:min-w-[200px] text-right">Cada 8 años</span>
               </div>
-              <div className="flex items-center gap-6">
-                <Badge variant="outline" className="min-w-[100px] flex items-center justify-center text-lg py-2 border-2 border-accent">2025</Badge>
-                <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
-                  <div className="h-4 bg-accent rounded-full transition-all duration-1000" style={{ width: '100%' }}></div>
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+                <Badge variant="outline" className="min-w-[60px] sm:min-w-[80px] md:min-w-[100px] flex items-center justify-center text-xs sm:text-sm md:text-base lg:text-lg py-1 sm:py-1.5 md:py-2 border-2 border-accent">2025</Badge>
+                <div className="flex-1 h-2 sm:h-3 md:h-4 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-full bg-accent rounded-full transition-all duration-1000" style={{ width: '100%' }}></div>
                 </div>
-                <span className="text-base text-primary-900 font-medium min-w-[200px]">Cada 2 años</span>
+                <span className="text-[10px] sm:text-xs md:text-sm lg:text-base text-primary-900 font-medium min-w-[70px] sm:min-w-[100px] md:min-w-[150px] lg:min-w-[200px] text-right">Cada 2 años</span>
               </div>
             </div>
           </Card>
@@ -154,126 +154,126 @@ const Panorama = () => {
       </Section>
 
       {/* Tendencias Clave */}
-      <Section className="py-20 bg-sand">
-        <div className="container max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
               Tendencias Clave en EdTech
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
           </div>
           
           {/* Crecimiento de modelos */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            <Card className="p-8 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="text-5xl font-bold text-accent mb-3">+59%</div>
-              <div className="text-xl font-semibold mb-2 text-primary-700">Gamificación</div>
-              <div className="text-sm text-primary-900 mb-4">10.24% → 16.32%</div>
-              <TrendingUp className="w-8 h-8 text-green-600 mx-auto" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-8 sm:mb-12 md:mb-16">
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-accent mb-1 sm:mb-2 md:mb-3">+59%</div>
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold mb-1 sm:mb-2 text-primary-700">Gamificación</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-primary-900 mb-2 sm:mb-3 md:mb-4">10.24% → 16.32%</div>
+              <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-green-600 mx-auto" />
             </Card>
             
-            <Card className="p-8 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="text-5xl font-bold text-accent mb-3">+58%</div>
-              <div className="text-xl font-semibold mb-2 text-primary-700">Tutores Inteligentes</div>
-              <div className="text-sm text-primary-900 mb-4">7.0% → 11.05%</div>
-              <TrendingUp className="w-8 h-8 text-green-600 mx-auto" />
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-accent mb-1 sm:mb-2 md:mb-3">+58%</div>
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold mb-1 sm:mb-2 text-primary-700">Tutores Inteligentes</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-primary-900 mb-2 sm:mb-3 md:mb-4">7.0% → 11.05%</div>
+              <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-green-600 mx-auto" />
             </Card>
             
-            <Card className="p-8 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="text-5xl font-bold text-accent mb-3">+39%</div>
-              <div className="text-xl font-semibold mb-2 text-primary-700">Personalización</div>
-              <div className="text-sm text-primary-900 mb-4">18.9% → 26.32%</div>
-              <TrendingUp className="w-8 h-8 text-green-600 mx-auto" />
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-accent mb-1 sm:mb-2 md:mb-3">+39%</div>
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold mb-1 sm:mb-2 text-primary-700">Personalización</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-primary-900 mb-2 sm:mb-3 md:mb-4">18.9% → 26.32%</div>
+              <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-green-600 mx-auto" />
             </Card>
             
-            <Card className="p-8 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="text-5xl font-bold text-accent mb-3">+4%</div>
-              <div className="text-xl font-semibold mb-2 text-primary-700">Aprendizaje Colaborativo</div>
-              <div className="text-sm text-primary-900 mb-4">15.75% → 16.32%</div>
-              <TrendingUp className="w-8 h-8 text-green-600 mx-auto" />
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 text-center bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-accent mb-1 sm:mb-2 md:mb-3">+4%</div>
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold mb-1 sm:mb-2 text-primary-700">Aprendizaje Colaborativo</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-primary-900 mb-2 sm:mb-3 md:mb-4">15.75% → 16.32%</div>
+              <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-green-600 mx-auto" />
             </Card>
           </div>
 
           {/* Los 5 Clusters */}
-          <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-primary-700">Los Cinco Clusters del Ecosistema EdTech</h3>
+          <div className="text-center mb-6 sm:mb-8 md:mb-12">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary-700">Los Cinco Clusters del Ecosistema EdTech</h3>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <h4 className="text-xl font-bold mb-4 text-primary-700">Global Giants</h4>
-              <p className="text-sm text-accent mb-3 font-semibold">Pearson, Google</p>
-              <p className="text-base text-primary-900 leading-relaxed">Gigantes con productos gratuitos y alianzas industriales</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <h4 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-primary-700">Global Giants</h4>
+              <p className="text-xs sm:text-sm text-accent mb-2 sm:mb-3 font-semibold">Pearson, Google</p>
+              <p className="text-sm sm:text-base text-primary-900 leading-relaxed">Gigantes con productos gratuitos y alianzas industriales</p>
             </Card>
             
-            <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <h4 className="text-xl font-bold mb-4 text-primary-700">Regional Rising</h4>
-              <p className="text-sm text-accent mb-3 font-semibold">Platzi, Comfandi</p>
-              <p className="text-base text-primary-900 leading-relaxed">Colaboración regional y credencialización</p>
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <h4 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-primary-700">Regional Rising</h4>
+              <p className="text-xs sm:text-sm text-accent mb-2 sm:mb-3 font-semibold">Platzi, Comfandi</p>
+              <p className="text-sm sm:text-base text-primary-900 leading-relaxed">Colaboración regional y credencialización</p>
             </Card>
             
-            <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <h4 className="text-xl font-bold mb-4 text-primary-700">Education-as-Usual</h4>
-              <p className="text-sm text-accent mb-3 font-semibold">Universidad tradicional</p>
-              <p className="text-base text-primary-900 leading-relaxed">Universidad pública tradicional y MOOCs</p>
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <h4 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-primary-700">Education-as-Usual</h4>
+              <p className="text-xs sm:text-sm text-accent mb-2 sm:mb-3 font-semibold">Universidad tradicional</p>
+              <p className="text-sm sm:text-base text-primary-900 leading-relaxed">Universidad pública tradicional y MOOCs</p>
             </Card>
             
-            <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <h4 className="text-xl font-bold mb-4 text-primary-700">Peer to Peer</h4>
-              <p className="text-sm text-accent mb-3 font-semibold">OER, Blockchain</p>
-              <p className="text-base text-primary-900 leading-relaxed">Aprendizaje entre pares descentralizado</p>
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <h4 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-primary-700">Peer to Peer</h4>
+              <p className="text-xs sm:text-sm text-accent mb-2 sm:mb-3 font-semibold">OER, Blockchain</p>
+              <p className="text-sm sm:text-base text-primary-900 leading-relaxed">Aprendizaje entre pares descentralizado</p>
             </Card>
             
-            <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <h4 className="text-xl font-bold mb-4 text-primary-700">Robo Revolution</h4>
-              <p className="text-sm text-accent mb-3 font-semibold">IA, Smart Classrooms</p>
-              <p className="text-base text-primary-900 leading-relaxed">Personalización masiva mediante IA</p>
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <h4 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-primary-700">Robo Revolution</h4>
+              <p className="text-xs sm:text-sm text-accent mb-2 sm:mb-3 font-semibold">IA, Smart Classrooms</p>
+              <p className="text-sm sm:text-base text-primary-900 leading-relaxed">Personalización masiva mediante IA</p>
             </Card>
           </div>
         </div>
       </Section>
 
       {/* Neoeducación */}
-      <Section className="py-20 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden">
+      <Section className="py-10 sm:py-14 md:py-20 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(247,60,92,0.1),transparent_70%)]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(11,71,206,0.15),transparent_70%)]"></div>
         </div>
         
-        <div className="container max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+        <div className="container max-w-7xl mx-auto relative z-10 px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight">
               Neoeducación
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-12 rounded-full"></div>
-            <p className="text-xl md:text-2xl max-w-4xl mx-auto text-white/90">Un cambio paradigmático en la forma de aprender y enseñar</p>
+            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-6 sm:mb-8 md:mb-12 rounded-full"></div>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-white/90">Un cambio paradigmático en la forma de aprender y enseñar</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
-              <Sparkles className="w-16 h-16 text-accent-brand mb-6 mx-auto drop-shadow-lg" />
-              <h3 className="text-2xl font-bold mb-6 text-white">Apuestas Pedagógicas</h3>
-              <ul className="space-y-3 text-base text-white/90 text-left">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            <Card className="p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
+              <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-accent-brand mb-3 sm:mb-4 md:mb-6 mx-auto drop-shadow-lg" />
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-white">Apuestas Pedagógicas</h3>
+              <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90 text-left">
                 <li>• Evaluación primero y subjetiva</li>
                 <li>• Métodos experimentales y adaptativos</li>
                 <li>• Power Skills (no habilidades blandas)</li>
               </ul>
             </Card>
             
-            <Card className="p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
-              <GraduationCap className="w-16 h-16 text-accent-brand mb-6 mx-auto drop-shadow-lg" />
-              <h3 className="text-2xl font-bold mb-6 text-white">Experiencia 360</h3>
-              <ul className="space-y-3 text-base text-white/90 text-left">
+            <Card className="p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
+              <GraduationCap className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-accent-brand mb-3 sm:mb-4 md:mb-6 mx-auto drop-shadow-lg" />
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-white">Experiencia 360</h3>
+              <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90 text-left">
                 <li>• Tech-enabled (habilitador, no reemplazo)</li>
                 <li>• Data-oriented (decisiones basadas en datos)</li>
                 <li>• Personalización continua</li>
               </ul>
             </Card>
             
-            <Card className="p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500">
-              <Target className="w-16 h-16 text-accent-brand mb-6 mx-auto drop-shadow-lg" />
-              <h3 className="text-2xl font-bold mb-6 text-white">Tesis de Industria</h3>
-              <ul className="space-y-3 text-base text-white/90 text-left">
+            <Card className="p-5 sm:p-6 md:p-8 lg:p-10 text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-500 sm:col-span-2 md:col-span-1">
+              <Target className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-accent-brand mb-3 sm:mb-4 md:mb-6 mx-auto drop-shadow-lg" />
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-white">Tesis de Industria</h3>
+              <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90 text-left">
                 <li>• Nicho Técnico (Platzi)</li>
                 <li>• Nicho Geográfico (Mangus)</li>
                 <li>• Nicho Industrial (Revive)</li>
@@ -284,56 +284,56 @@ const Panorama = () => {
       </Section>
 
       {/* Mercado Laboral */}
-      <Section className="py-20 bg-sand">
-        <div className="container max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
               Mercado Laboral en Transformación
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl text-primary-900 max-w-3xl mx-auto">La crisis de competencias que está transformando el mundo del trabajo</p>
+            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
+            <p className="text-base sm:text-lg md:text-xl text-primary-900 max-w-3xl mx-auto">La crisis de competencias que está transformando el mundo del trabajo</p>
           </div>
           
           {/* Estadísticas de crisis */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            <Card className="p-8 text-center bg-red-50 border-2 border-red-200">
-              <div className="text-5xl font-bold text-red-600 mb-4">50%</div>
-              <div className="text-base text-primary-900 font-medium">Habilidades obsoletas en 5 años (WEF)</div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-8 sm:mb-12 md:mb-16">
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 text-center bg-red-50 border-2 border-red-200">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-red-600 mb-2 sm:mb-3 md:mb-4">50%</div>
+              <div className="text-xs sm:text-sm md:text-base text-primary-900 font-medium">Habilidades obsoletas en 5 años (WEF)</div>
             </Card>
             
-            <Card className="p-8 text-center bg-orange-50 border-2 border-orange-200">
-              <div className="text-5xl font-bold text-orange-600 mb-4">29%</div>
-              <div className="text-base text-primary-900 font-medium">Programas alineados al mercado (McKinsey)</div>
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 text-center bg-orange-50 border-2 border-orange-200">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-orange-600 mb-2 sm:mb-3 md:mb-4">29%</div>
+              <div className="text-xs sm:text-sm md:text-base text-primary-900 font-medium">Programas alineados al mercado (McKinsey)</div>
             </Card>
             
-            <Card className="p-8 text-center bg-yellow-50 border-2 border-yellow-200">
-              <div className="text-5xl font-bold text-yellow-700 mb-4">60%</div>
-              <div className="text-base text-primary-900 font-medium">Estudiantes buscan alternativas fuera de la U tradicional</div>
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 text-center bg-yellow-50 border-2 border-yellow-200">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-yellow-700 mb-2 sm:mb-3 md:mb-4">60%</div>
+              <div className="text-xs sm:text-sm md:text-base text-primary-900 font-medium">Estudiantes buscan alternativas fuera de la U tradicional</div>
             </Card>
             
-            <Card className="p-8 text-center bg-red-50 border-2 border-red-200">
-              <div className="text-5xl font-bold text-red-600 mb-4">49%</div>
-              <div className="text-base text-primary-900 font-medium">Empresas sin competencias adecuadas (LinkedIn)</div>
+            <Card className="p-4 sm:p-5 md:p-6 lg:p-8 text-center bg-red-50 border-2 border-red-200">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-red-600 mb-2 sm:mb-3 md:mb-4">49%</div>
+              <div className="text-xs sm:text-sm md:text-base text-primary-900 font-medium">Empresas sin competencias adecuadas (LinkedIn)</div>
             </Card>
           </div>
 
           {/* Competencias faltantes */}
-          <Card className="p-10 bg-white border-0 shadow-xl mb-12">
-            <h3 className="text-2xl font-bold mb-8 text-primary-700 text-center">Top 10 Competencias Faltantes</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-4">
+          <Card className="p-4 sm:p-6 md:p-8 lg:p-10 bg-white border-0 shadow-xl mb-6 sm:mb-8 md:mb-12">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 text-center">Top 10 Competencias Faltantes</h3>
+            <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+              <div className="space-y-2 sm:space-y-3 md:space-y-4">
                 {['Business Strategy', 'Strategic Planning', 'Sales Management', 'Project Planning', 'Operations Management'].map((skill, i) => (
-                  <div key={i} className="flex items-center gap-4">
-                    <Badge className="bg-accent text-white text-lg py-2 px-4">{i + 1}</Badge>
-                    <span className="text-base text-primary-900 font-medium">{skill}</span>
+                  <div key={i} className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                    <Badge className="bg-accent text-white text-xs sm:text-sm md:text-base lg:text-lg py-1 sm:py-1.5 md:py-2 px-2 sm:px-3 md:px-4">{i + 1}</Badge>
+                    <span className="text-xs sm:text-sm md:text-base text-primary-900 font-medium">{skill}</span>
                   </div>
                 ))}
               </div>
-              <div className="space-y-4">
+              <div className="space-y-2 sm:space-y-3 md:space-y-4">
                 {['Marketing Strategy', 'Management', 'Business Development', 'Negotiation', 'Team Leadership'].map((skill, i) => (
-                  <div key={i} className="flex items-center gap-4">
-                    <Badge className="bg-accent text-white text-lg py-2 px-4">{i + 6}</Badge>
-                    <span className="text-base text-primary-900 font-medium">{skill}</span>
+                  <div key={i} className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                    <Badge className="bg-accent text-white text-xs sm:text-sm md:text-base lg:text-lg py-1 sm:py-1.5 md:py-2 px-2 sm:px-3 md:px-4">{i + 6}</Badge>
+                    <span className="text-xs sm:text-sm md:text-base text-primary-900 font-medium">{skill}</span>
                   </div>
                 ))}
               </div>
@@ -341,21 +341,21 @@ const Panorama = () => {
           </Card>
 
           {/* Contracción por IA */}
-          <Card className="p-10 bg-red-50 border-2 border-red-200">
-            <h3 className="text-2xl font-bold mb-8 text-red-900 text-center">Contracción del Mercado "White-Collar" por IA</h3>
-            <div className="space-y-6 max-w-4xl mx-auto">
+          <Card className="p-4 sm:p-6 md:p-8 lg:p-10 bg-red-50 border-2 border-red-200">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 md:mb-8 text-red-900 text-center">Contracción del Mercado "White-Collar" por IA</h3>
+            <div className="space-y-3 sm:space-y-4 md:space-y-6 max-w-4xl mx-auto">
               {[
                 { sector: 'Banking & Finance', percentage: 94.2 },
                 { sector: 'Scientific R&D', percentage: 80.1 },
                 { sector: 'Software Development', percentage: 52.5 },
                 { sector: 'Mathematics', percentage: 49.8 }
               ].map((item, i) => (
-                <div key={i} className="flex items-center justify-between gap-6">
-                  <span className="text-base font-semibold text-primary-900 min-w-[180px]">{item.sector}</span>
-                  <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-4 bg-red-600 rounded-full" style={{ width: `${item.percentage}%` }}></div>
+                <div key={i} className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+                  <span className="text-xs sm:text-sm md:text-base font-semibold text-primary-900 min-w-[80px] sm:min-w-[120px] md:min-w-[150px] lg:min-w-[180px]">{item.sector}</span>
+                  <div className="flex-1 h-2 sm:h-3 md:h-4 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-red-600 rounded-full" style={{ width: `${item.percentage}%` }}></div>
                   </div>
-                  <span className="text-red-600 font-bold text-lg min-w-[80px] text-right">-{item.percentage}%</span>
+                  <span className="text-red-600 font-bold text-xs sm:text-sm md:text-base lg:text-lg min-w-[50px] sm:min-w-[60px] md:min-w-[70px] lg:min-w-[80px] text-right">-{item.percentage}%</span>
                 </div>
               ))}
             </div>
@@ -364,108 +364,108 @@ const Panorama = () => {
       </Section>
 
       {/* K-12 */}
-      <Section className="py-20 bg-white">
-        <div className="container max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+      <Section className="py-10 sm:py-14 md:py-20 bg-white">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
               Cambios Sistémicos en K-12
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
+            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
           </div>
           
           <div className="max-w-5xl mx-auto">
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold text-primary-700 mb-6">Transformaciones en Curso</h3>
-              <p className="text-lg text-primary-900 mb-8 leading-relaxed">
+            <div className="mb-6 sm:mb-8 md:mb-12">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary-700 mb-3 sm:mb-4 md:mb-6">Transformaciones en Curso</h3>
+              <p className="text-sm sm:text-base md:text-lg text-primary-900 mb-4 sm:mb-6 md:mb-8 leading-relaxed">
                 El sistema K-12 está experimentando cambios fundamentales que están redefiniendo la educación básica y media:
               </p>
               
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <span className="text-white font-bold text-lg">1</span>
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+                <Card className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+                  <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <span className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg">1</span>
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-primary-700 mb-3">Menos colegios privados</h4>
-                      <p className="text-base text-primary-900 leading-relaxed">Mayor presión sobre la calidad de la educación pública</p>
+                      <h4 className="text-sm sm:text-base md:text-lg font-bold text-primary-700 mb-1 sm:mb-2 md:mb-3">Menos colegios privados</h4>
+                      <p className="text-xs sm:text-sm md:text-base text-primary-900 leading-relaxed">Mayor presión sobre la calidad de la educación pública</p>
                     </div>
                   </div>
                 </Card>
                 
-                <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <span className="text-white font-bold text-lg">2</span>
+                <Card className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+                  <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <span className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg">2</span>
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-primary-700 mb-3">Aprendizajes fundamentales en riesgo</h4>
-                      <p className="text-base text-primary-900 leading-relaxed">Más del 50% de estudiantes sin competencias básicas de lectura y matemáticas</p>
+                      <h4 className="text-sm sm:text-base md:text-lg font-bold text-primary-700 mb-1 sm:mb-2 md:mb-3">Aprendizajes fundamentales en riesgo</h4>
+                      <p className="text-xs sm:text-sm md:text-base text-primary-900 leading-relaxed">Más del 50% de estudiantes sin competencias básicas de lectura y matemáticas</p>
                     </div>
                   </div>
                 </Card>
                 
-                <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <span className="text-white font-bold text-lg">3</span>
+                <Card className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+                  <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <span className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg">3</span>
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-primary-700 mb-3">Tecnología solo para lo indispensable</h4>
-                      <p className="text-base text-primary-900 leading-relaxed">Con niños pequeños - enfoque en desarrollo humano primero</p>
+                      <h4 className="text-sm sm:text-base md:text-lg font-bold text-primary-700 mb-1 sm:mb-2 md:mb-3">Tecnología solo para lo indispensable</h4>
+                      <p className="text-xs sm:text-sm md:text-base text-primary-900 leading-relaxed">Con niños pequeños - enfoque en desarrollo humano primero</p>
                     </div>
                   </div>
                 </Card>
                 
-                <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <span className="text-white font-bold text-lg">4</span>
+                <Card className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+                  <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <span className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg">4</span>
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-primary-700 mb-3">Más habilidades laborales</h4>
-                      <p className="text-base text-primary-900 leading-relaxed">Integradas al graduarse del colegio</p>
+                      <h4 className="text-sm sm:text-base md:text-lg font-bold text-primary-700 mb-1 sm:mb-2 md:mb-3">Más habilidades laborales</h4>
+                      <p className="text-xs sm:text-sm md:text-base text-primary-900 leading-relaxed">Integradas al graduarse del colegio</p>
                     </div>
                   </div>
                 </Card>
                 
-                <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <span className="text-white font-bold text-lg">5</span>
+                <Card className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+                  <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <span className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg">5</span>
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-primary-700 mb-3">Integración salud-educación</h4>
-                      <p className="text-base text-primary-900 leading-relaxed">Para decisiones pedagógicas basadas en desarrollo integral</p>
+                      <h4 className="text-sm sm:text-base md:text-lg font-bold text-primary-700 mb-1 sm:mb-2 md:mb-3">Integración salud-educación</h4>
+                      <p className="text-xs sm:text-sm md:text-base text-primary-900 leading-relaxed">Para decisiones pedagógicas basadas en desarrollo integral</p>
                     </div>
                   </div>
                 </Card>
                 
-                <Card className="p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <span className="text-white font-bold text-lg">6</span>
+                <Card className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+                  <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-accent to-primary-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <span className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg">6</span>
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-primary-700 mb-3">Más superpoderes para profesores</h4>
-                      <p className="text-base text-primary-900 leading-relaxed">Herramientas avanzadas de enseñanza potenciadas por IA</p>
+                      <h4 className="text-sm sm:text-base md:text-lg font-bold text-primary-700 mb-1 sm:mb-2 md:mb-3">Más superpoderes para profesores</h4>
+                      <p className="text-xs sm:text-sm md:text-base text-primary-900 leading-relaxed">Herramientas avanzadas de enseñanza potenciadas por IA</p>
                     </div>
                   </div>
                 </Card>
               </div>
             </div>
             
-            <Card className="p-10 bg-gradient-to-br from-red-50 to-white border-0 shadow-2xl">
-              <div className="flex items-start gap-6">
-                <div className="w-20 h-20 rounded-2xl bg-red-600 flex items-center justify-center flex-shrink-0 shadow-xl">
-                  <span className="text-4xl">⚠️</span>
+            <Card className="p-4 sm:p-6 md:p-8 lg:p-10 bg-gradient-to-br from-red-50 to-white border-0 shadow-2xl">
+              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 md:gap-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-xl sm:rounded-2xl bg-red-600 flex items-center justify-center flex-shrink-0 shadow-xl">
+                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">⚠️</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-red-900 mb-4">La Brecha Digital Docente</h3>
-                  <p className="text-lg text-primary-900 mb-4 leading-relaxed">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-red-900 mb-2 sm:mb-3 md:mb-4">La Brecha Digital Docente</h3>
+                  <p className="text-sm sm:text-base md:text-lg text-primary-900 mb-2 sm:mb-3 md:mb-4 leading-relaxed">
                     <strong className="text-red-600">Menos del 40%</strong> de docentes en América Latina se siente preparado para integrar tecnología en sus prácticas pedagógicas (UNESCO).
                   </p>
-                  <p className="text-base text-primary-900 leading-relaxed">
+                  <p className="text-xs sm:text-sm md:text-base text-primary-900 leading-relaxed">
                     El BID identifica una <strong>"brecha de competencias digitales docentes"</strong> que limita el aprovechamiento de herramientas EdTech incluso cuando hay acceso a infraestructura. Esta brecha es más crítica que la brecha de acceso tecnológico.
                   </p>
                 </div>
