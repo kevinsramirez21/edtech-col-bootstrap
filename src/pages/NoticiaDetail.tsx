@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async"
 import { format } from "date-fns"
 import { es } from "date-fns/locale"
 import { ArrowLeft, Calendar, User, Tag, ExternalLink, Share2, Linkedin, Twitter } from "lucide-react"
+import DOMPurify from "dompurify"
 import { supabase } from "@/integrations/supabase/client"
 import { Section } from "@/components/ui/section"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
@@ -227,7 +228,7 @@ export default function NoticiaDetail() {
             {noticia.contenido && (
               <div
                 className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary"
-                dangerouslySetInnerHTML={{ __html: noticia.contenido }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(noticia.contenido) }}
               />
             )}
 
