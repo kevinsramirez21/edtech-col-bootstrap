@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Mail, MapPin, Phone, Linkedin, Twitter, Instagram, Youtube } from "lucide-react"
+import { Mail, MapPin, Phone, Linkedin } from "lucide-react"
 import { ColombiaEdTechLogo } from "@/components/ui/placeholder-logo"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -11,17 +11,17 @@ import { useToast } from "@/hooks/use-toast"
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form"
 
 const quickLinks = [
+  { name: "Inicio", href: "/" },
   { name: "Somos", href: "/somos" },
   { name: "Asociados", href: "/asociados" },
+  { name: "Directorio", href: "/directorio" },
   { name: "Aliados", href: "/aliados" },
   { name: "Voluntariado", href: "/voluntariado" },
+  { name: "Eventos", href: "/eventos" },
 ]
 
 const socialLinks = [
-  { name: "LinkedIn", href: "#", icon: Linkedin },
-  { name: "Twitter", href: "#", icon: Twitter },
-  { name: "Instagram", href: "#", icon: Instagram },
-  { name: "YouTube", href: "#", icon: Youtube },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/colombiaedtech", icon: Linkedin },
 ]
 
 const newsletterSchema = z.object({
@@ -140,18 +140,20 @@ export function Footer() {
               <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">
                 Navegación
               </h3>
-              <ul className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-3 sm:block sm:space-y-3 lg:space-y-4">
-                {quickLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.href}
-                      className="text-sand hover:text-white transition-colors duration-300 text-base sm:text-lg font-medium hover:underline"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <nav aria-label="Enlaces del footer">
+                <ul className="grid grid-cols-2 gap-x-6 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-8 sm:gap-y-3">
+                  {quickLinks.map((link) => (
+                    <li key={link.name}>
+                      <Link
+                        to={link.href}
+                        className="text-sand hover:text-white transition-colors duration-300 text-base font-medium hover:underline"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </div>
 
             {/* Newsletter Section */}
