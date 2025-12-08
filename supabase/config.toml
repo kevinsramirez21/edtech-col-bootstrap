@@ -1,1 +1,4 @@
 project_id = "iwzkhjhiatipbybqenhz"
+
+[functions.enrich-associate]
+verify_jwt = true
