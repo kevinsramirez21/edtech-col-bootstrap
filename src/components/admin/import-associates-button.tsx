@@ -128,8 +128,7 @@ export function ImportAssociatesButton() {
     <Button 
       onClick={handleImport} 
       disabled={isLoading}
-      variant="outline"
-      className="gap-2"
+      className="gap-2 bg-white text-[#003889] hover:bg-white/90 hover:text-[#003889] border-0"
     >
       {isLoading ? (
         <>
@@ -139,7 +138,7 @@ export function ImportAssociatesButton() {
       ) : (
         <>
           <Upload className="h-4 w-4" />
-          Actualizar 70 Asociados con Calificaciones
+          Actualizar Asociados
         </>
       )}
     </Button>
