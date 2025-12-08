@@ -296,9 +296,14 @@ export default function AssociatesDirectory() {
         <div className="bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white py-8 sm:py-10 md:py-12">
           <div className="container max-w-7xl mx-auto px-4">
             <div className="max-w-3xl">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">
-                Directorio de Asociados
-              </h1>
+              <div className="flex items-center gap-3 mb-3 md:mb-4">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+                  Directorio de Asociados
+                </h1>
+                <Badge className="bg-[#F73C5C] hover:bg-[#F73C5C] text-white text-xs font-bold px-2 py-1 animate-pulse">
+                  BETA
+                </Badge>
+              </div>
               <p className="text-base sm:text-lg text-white/90 mb-4 md:mb-6">
                 Explora las empresas EdTech que están transformando la educación en Colombia
               </p>
