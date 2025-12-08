@@ -113,13 +113,25 @@ export function IndividualEnrichment() {
     return true;
   }) || [];
 
-  // Set initial selected associate
+  // Set initial selected associate and keep it synced with data
   useEffect(() => {
-    if (filteredAssociates.length > 0 && !selectedAssociate) {
-      setSelectedAssociate(filteredAssociates[0]);
-      setSelectedIndex(0);
+    if (filteredAssociates.length > 0) {
+      if (!selectedAssociate) {
+        setSelectedAssociate(filteredAssociates[0]);
+        setSelectedIndex(0);
+      } else {
+        // Keep selectedAssociate in sync with latest data
+        const updated = filteredAssociates.find(a => a.id === selectedAssociate.id);
+        if (updated) {
+          setSelectedAssociate(updated);
+        } else if (filteredAssociates.length > 0) {
+          // Selected was filtered out, select first
+          setSelectedAssociate(filteredAssociates[0]);
+          setSelectedIndex(0);
+        }
+      }
     }
-  }, [filteredAssociates, selectedAssociate]);
+  }, [filteredAssociates]);
 
   // Check for broken logo images
   const checkLogoImage = (associate: Associate) => {
@@ -251,29 +263,31 @@ export function IndividualEnrichment() {
     }
   };
 
+  // Clear suggestion when changing associates
+  const selectAssociateById = (associate: Associate, index: number) => {
+    setSelectedAssociate(associate);
+    setSelectedIndex(index);
+    setSuggestion(null); // Clear old suggestion
+    setSearchingField(null); // Clear searching state
+  };
+
   // Navigation
   const goToNext = () => {
     if (selectedIndex < filteredAssociates.length - 1) {
       const nextIndex = selectedIndex + 1;
-      setSelectedIndex(nextIndex);
-      setSelectedAssociate(filteredAssociates[nextIndex]);
-      setSuggestion(null);
+      selectAssociateById(filteredAssociates[nextIndex], nextIndex);
     }
   };
 
   const goToPrevious = () => {
     if (selectedIndex > 0) {
       const prevIndex = selectedIndex - 1;
-      setSelectedIndex(prevIndex);
-      setSelectedAssociate(filteredAssociates[prevIndex]);
-      setSuggestion(null);
+      selectAssociateById(filteredAssociates[prevIndex], prevIndex);
     }
   };
 
   const selectAssociate = (associate: Associate, index: number) => {
-    setSelectedAssociate(associate);
-    setSelectedIndex(index);
-    setSuggestion(null);
+    selectAssociateById(associate, index);
   };
 
   // Search handlers
