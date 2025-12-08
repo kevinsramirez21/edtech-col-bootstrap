@@ -19,7 +19,6 @@ import { useAdmin } from "@/hooks/use-admin"
 import { Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
 
-// Public-safe associate interface (no sensitive contact info)
 interface Associate {
   id: string
   nombre_empresa: string
@@ -27,12 +26,14 @@ interface Associate {
   pagina_web?: string
   segmento?: string
   servicios?: string[]
+  correo_contacto?: string
   logo_url?: string
   ubicacion?: string
   tamano_empresa?: string
   linkedin?: string
   twitter?: string
   fecha_ingreso?: string
+  calificacion_colombia_edtech?: number
 }
 
 interface FiltersState {
@@ -80,10 +81,9 @@ export default function AssociatesDirectory() {
     const fetchAssociates = async () => {
       try {
         setLoading(true)
-        // Only select public-safe fields (no sensitive contact info like email, phone, contact name)
         const { data, error } = await supabase
           .from('asociados')
-          .select('id, nombre_empresa, descripcion, pagina_web, logo_url, segmento, tamano_empresa, servicios, ubicacion, linkedin, twitter, fecha_ingreso, calificacion_colombia_edtech')
+          .select('id, nombre_empresa, descripcion, pagina_web, logo_url, segmento, tamano_empresa, servicios, ubicacion, linkedin, twitter, fecha_ingreso, calificacion_colombia_edtech, correo_contacto')
           .eq('estado', 'activo')
           .order('nombre_empresa', { ascending: true })
 
