@@ -7,9 +7,12 @@ import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd, trackCTA, GA_EVENTS } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp, Award, Heart, Network, Globe, Users, DollarSign, Gift, Zap, Megaphone, HandHeart, Eye, CreditCard } from "lucide-react";
-import eventoAliadosPresentacion from "@/assets/evento-aliados-presentacion.jpg";
-import eventoCapacitacionAliados from "@/assets/evento-capacitacion-aliados.jpg";
 import { AllyApplicationForm } from "@/components/forms/ally-application-form";
+import { OptimizedImage } from "@/components/ui/optimized-image";
+
+// Image paths - using public folder for better performance
+const eventoAliadosPresentacion = "/images/evento-aliados-presentacion.jpg";
+const eventoCapacitacionAliados = "/images/evento-capacitacion-aliados.jpg";
 const Aliados = () => {
   const meta = generatePageMeta({
     title: "Aliados",
@@ -83,10 +86,11 @@ const Aliados = () => {
       <Section className="py-12 sm:py-16 md:py-24 lg:py-32 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[60vh] sm:min-h-[70vh] lg:min-h-[85vh]">
         {/* Background image */}
         <div className="absolute inset-0">
-          <img 
+          <OptimizedImage 
             src={eventoAliadosPresentacion} 
             alt="Evento Colombia EdTech - Aliados" 
-            className="w-full h-full object-cover object-center" 
+            className="w-full h-full"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
         </div>
@@ -195,10 +199,11 @@ const Aliados = () => {
           </div>
 
           <div className="relative mb-12">
-            <img 
+            <OptimizedImage 
               src={eventoCapacitacionAliados} 
               alt="Evento de capacitación Colombia EdTech" 
-              className="w-full aspect-[16/9] object-cover rounded-lg shadow-2xl"
+              className="w-full rounded-lg shadow-2xl"
+              aspectRatio="video"
             />
           </div>
 
