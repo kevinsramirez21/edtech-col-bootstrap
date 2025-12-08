@@ -15,8 +15,8 @@ import {
   Loader2,
   ChevronLeft,
   ChevronRight,
-  Image,
-  Link2,
+  ImageIcon,
+  Linkedin,
   Briefcase,
   RefreshCw,
   AlertTriangle,
@@ -24,7 +24,8 @@ import {
   XCircle,
   Pencil,
   Plus,
-  Trash2
+  Globe,
+  Sparkles
 } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
@@ -451,13 +452,29 @@ export function IndividualEnrichment() {
   const FieldStatusIcon = ({ status }: { status: "empty" | "has_data" | "approved" | "broken" }) => {
     switch (status) {
       case "approved":
-        return <CheckCircle2 className="h-4 w-4 text-green-500" />;
+        return (
+          <div className="h-5 w-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
+          </div>
+        );
       case "has_data":
-        return <div className="h-2 w-2 rounded-full bg-blue-500" />;
+        return (
+          <div className="h-5 w-5 rounded-full bg-blue-500/20 flex items-center justify-center">
+            <div className="h-2 w-2 rounded-full bg-blue-500" />
+          </div>
+        );
       case "broken":
-        return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
+        return (
+          <div className="h-5 w-5 rounded-full bg-amber-500/20 flex items-center justify-center">
+            <AlertTriangle className="h-3 w-3 text-amber-600" />
+          </div>
+        );
       default:
-        return <XCircle className="h-4 w-4 text-muted-foreground/40" />;
+        return (
+          <div className="h-5 w-5 rounded-full bg-muted flex items-center justify-center">
+            <XCircle className="h-3 w-3 text-muted-foreground/50" />
+          </div>
+        );
     }
   };
 
@@ -465,11 +482,11 @@ export function IndividualEnrichment() {
   const getConfianzaBadge = (confianza: string) => {
     switch (confianza) {
       case "alta":
-        return <Badge className="bg-green-500/10 text-green-600 border-green-500/30">Alta</Badge>;
+        return <Badge className="bg-emerald-500/15 text-emerald-700 border-emerald-500/30 font-medium">✓ Alta</Badge>;
       case "media":
-        return <Badge className="bg-yellow-500/10 text-yellow-600 border-yellow-500/30">Media</Badge>;
+        return <Badge className="bg-amber-500/15 text-amber-700 border-amber-500/30 font-medium">○ Media</Badge>;
       case "baja":
-        return <Badge className="bg-red-500/10 text-red-600 border-red-500/30">Baja</Badge>;
+        return <Badge className="bg-rose-500/15 text-rose-700 border-rose-500/30 font-medium">⚠ Baja</Badge>;
       default:
         return <Badge variant="outline">{confianza}</Badge>;
     }
@@ -484,6 +501,19 @@ export function IndividualEnrichment() {
     return labels[campo] || campo;
   };
 
+  const getCampoIcon = (campo: string) => {
+    switch (campo) {
+      case "logo_url":
+        return <ImageIcon className="h-4 w-4" />;
+      case "linkedin":
+        return <Linkedin className="h-4 w-4" />;
+      case "servicios":
+        return <Briefcase className="h-4 w-4" />;
+      default:
+        return null;
+    }
+  };
+
   // Render suggestion card for a field
   const renderSuggestionCard = (campo: string) => {
     const suggestion = suggestions.get(campo);
@@ -493,13 +523,16 @@ export function IndividualEnrichment() {
     if (!currentOption) return null;
 
     return (
-      <Card className="border-primary/30 bg-primary/5">
+      <Card className="border-primary/40 bg-gradient-to-br from-primary/5 to-primary/10 shadow-sm overflow-hidden">
         <CardContent className="pt-4">
           <div className="space-y-3">
             {/* Header with navigation */}
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="font-semibold">{getCampoLabel(campo)}</span>
+              <div className="flex items-center gap-2.5">
+                <div className="h-8 w-8 rounded-lg bg-primary/15 flex items-center justify-center text-primary">
+                  {getCampoIcon(campo)}
+                </div>
+                <span className="font-semibold text-foreground">{getCampoLabel(campo)}</span>
                 {getConfianzaBadge(currentOption.confianza)}
               </div>
               
@@ -617,18 +650,18 @@ export function IndividualEnrichment() {
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left column: Associate list */}
-        <Card className="lg:col-span-1">
-          <CardHeader className="pb-3">
+      {/* Left column: Associate list */}
+        <Card className="lg:col-span-1 shadow-sm border-border/50">
+          <CardHeader className="pb-3 bg-gradient-to-b from-muted/30 to-transparent">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-lg">Empresas</CardTitle>
-              <Badge variant="outline">{filteredAssociates.length}</Badge>
+              <CardTitle className="text-lg font-semibold">Empresas</CardTitle>
+              <Badge variant="secondary" className="font-mono">{filteredAssociates.length}</Badge>
             </div>
             <Select value={filter} onValueChange={(v) => setFilter(v as FilterType)}>
-              <SelectTrigger className="w-full mt-2">
+              <SelectTrigger className="w-full mt-2 bg-background">
                 <SelectValue placeholder="Filtrar por..." />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-popover">
                 <SelectItem value="all">Todas las empresas</SelectItem>
                 <SelectItem value="missing_logo">Sin logo / Logo roto</SelectItem>
                 <SelectItem value="missing_linkedin">Sin LinkedIn</SelectItem>
@@ -637,7 +670,7 @@ export function IndividualEnrichment() {
             </Select>
           </CardHeader>
           <CardContent className="p-0">
-            <ScrollArea className="h-[500px]">
+            <ScrollArea className="h-[600px]">
               {filteredAssociates.map((associate, index) => {
                 const status = getFieldStatus(associate);
                 const isSelected = selectedAssociate?.id === associate.id;
@@ -646,19 +679,24 @@ export function IndividualEnrichment() {
                   <div
                     key={associate.id}
                     onClick={() => selectAssociate(associate, index)}
-                    className={`flex items-center justify-between px-4 py-3 cursor-pointer border-b transition-colors ${
-                      isSelected ? "bg-primary/5 border-l-2 border-l-primary" : "hover:bg-muted/50"
+                    className={`group flex items-center justify-between px-4 py-3.5 cursor-pointer border-b border-border/40 transition-all duration-150 ${
+                      isSelected 
+                        ? "bg-primary/8 border-l-3 border-l-primary shadow-sm" 
+                        : "hover:bg-muted/40 border-l-3 border-l-transparent"
                     }`}
                   >
                     <div className="flex-1 min-w-0">
-                      <p className="font-medium truncate">{associate.nombre_empresa}</p>
+                      <p className={`font-medium truncate transition-colors ${isSelected ? "text-primary" : "group-hover:text-foreground"}`}>
+                        {associate.nombre_empresa}
+                      </p>
                       {associate.pagina_web && (
-                        <p className="text-xs text-muted-foreground truncate">
-                          {associate.pagina_web.replace(/^https?:\/\//, "")}
+                        <p className="text-xs text-muted-foreground truncate flex items-center gap-1 mt-0.5">
+                          <Globe className="h-3 w-3 flex-shrink-0" />
+                          {associate.pagina_web.replace(/^https?:\/\/(www\.)?/, "")}
                         </p>
                       )}
                     </div>
-                    <div className="flex items-center gap-1.5 ml-2">
+                    <div className="flex items-center gap-1 ml-3">
                       <FieldStatusIcon status={status.logo_url} />
                       <FieldStatusIcon status={status.linkedin} />
                       <FieldStatusIcon status={status.servicios} />
@@ -671,42 +709,45 @@ export function IndividualEnrichment() {
         </Card>
 
         {/* Right column: Detail view */}
-        <Card className="lg:col-span-2">
-          <CardHeader>
+        <Card className="lg:col-span-2 shadow-sm border-border/50">
+          <CardHeader className="bg-gradient-to-b from-muted/30 to-transparent">
             <div className="flex items-center justify-between">
-              <div>
-                <CardTitle>{selectedAssociate?.nombre_empresa || "Selecciona una empresa"}</CardTitle>
+              <div className="space-y-1">
+                <CardTitle className="text-xl font-bold">
+                  {selectedAssociate?.nombre_empresa || "Selecciona una empresa"}
+                </CardTitle>
                 {selectedAssociate?.pagina_web && (
-                  <CardDescription className="flex items-center gap-1 mt-1">
-                    <a 
-                      href={selectedAssociate.pagina_web} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="hover:underline flex items-center gap-1"
-                    >
-                      {selectedAssociate.pagina_web}
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
-                  </CardDescription>
+                  <a 
+                    href={selectedAssociate.pagina_web.startsWith('http') ? selectedAssociate.pagina_web : `https://${selectedAssociate.pagina_web}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                  >
+                    <Globe className="h-3.5 w-3.5" />
+                    {selectedAssociate.pagina_web.replace(/^https?:\/\/(www\.)?/, "")}
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
                 )}
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-1">
                 <Button 
-                  variant="outline" 
+                  variant="ghost" 
                   size="icon" 
                   onClick={goToPrevious}
                   disabled={selectedIndex === 0}
+                  className="h-8 w-8"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </Button>
-                <span className="text-sm text-muted-foreground min-w-[60px] text-center">
+                <span className="text-sm font-medium text-muted-foreground min-w-[60px] text-center">
                   {selectedIndex + 1} / {filteredAssociates.length}
                 </span>
                 <Button 
-                  variant="outline" 
+                  variant="ghost" 
                   size="icon" 
                   onClick={goToNext}
                   disabled={selectedIndex === filteredAssociates.length - 1}
+                  className="h-8 w-8"
                 >
                   <ChevronRight className="h-4 w-4" />
                 </Button>
@@ -715,162 +756,191 @@ export function IndividualEnrichment() {
           </CardHeader>
 
           {selectedAssociate && (
-            <CardContent className="space-y-6">
+          <CardContent className="space-y-6">
               {/* Current data section */}
               <div className="space-y-4">
-                <h3 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide">
-                  Datos Actuales
-                </h3>
+                <div className="flex items-center gap-2">
+                  <div className="h-1 w-1 rounded-full bg-primary"></div>
+                  <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground">
+                    Datos Actuales
+                  </h3>
+                </div>
                 
-                <div className="grid gap-4">
+                <div className="grid gap-3">
                   {/* Logo */}
-                  <div className="flex items-start gap-4 p-4 rounded-lg border bg-muted/20">
-                    <div className="flex-shrink-0 w-16 h-16 rounded-lg border bg-background flex items-center justify-center overflow-hidden">
+                  <div className="group relative flex items-start gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all">
+                    <div className="flex-shrink-0 w-20 h-20 rounded-xl border-2 border-dashed border-border/50 bg-muted/30 flex items-center justify-center overflow-hidden">
                       {selectedAssociate.logo_url ? (
                         brokenLogos.has(selectedAssociate.id) ? (
-                          <AlertTriangle className="h-6 w-6 text-yellow-500" />
+                          <div className="text-center p-2">
+                            <AlertTriangle className="h-6 w-6 text-amber-500 mx-auto" />
+                            <span className="text-[10px] text-amber-600 mt-1 block">Error</span>
+                          </div>
                         ) : (
                           <img 
                             src={selectedAssociate.logo_url} 
                             alt="Logo" 
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain p-1"
                             onError={() => setBrokenLogos(prev => new Set(prev).add(selectedAssociate.id))}
                           />
                         )
                       ) : (
-                        <Image className="h-6 w-6 text-muted-foreground/40" />
+                        <div className="text-center">
+                          <ImageIcon className="h-6 w-6 text-muted-foreground/40 mx-auto" />
+                          <span className="text-[10px] text-muted-foreground mt-1 block">Sin logo</span>
+                        </div>
                       )}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium">Logo</span>
+                    <div className="flex-1 min-w-0 py-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <ImageIcon className="h-4 w-4 text-primary" />
+                        <span className="font-semibold text-foreground">Logo</span>
                         {brokenLogos.has(selectedAssociate.id) && (
-                          <Badge variant="outline" className="text-yellow-600 border-yellow-600/30">
+                          <Badge className="bg-amber-500/15 text-amber-700 border-amber-500/30 text-[10px] px-1.5">
                             URL rota
                           </Badge>
                         )}
                       </div>
                       {selectedAssociate.logo_url ? (
-                        <p className="text-sm text-muted-foreground truncate">
+                        <p className="text-xs text-muted-foreground truncate font-mono">
                           {selectedAssociate.logo_url}
                         </p>
                       ) : (
-                        <p className="text-sm text-muted-foreground italic">Sin logo</p>
+                        <p className="text-sm text-muted-foreground/60 italic">No configurado</p>
                       )}
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-1.5 flex-shrink-0">
                       <Button 
-                        variant="outline" 
+                        variant="default" 
                         size="sm"
                         onClick={() => handleSearch("logo_url")}
                         disabled={searchMutation.isPending}
+                        className="shadow-sm"
                       >
                         {searchingField === "logo_url" ? (
                           <Loader2 className="h-4 w-4 animate-spin" />
                         ) : (
                           <>
-                            <Search className="h-4 w-4 mr-1" />
+                            <Search className="h-3.5 w-3.5 mr-1.5" />
                             Buscar
                           </>
                         )}
                       </Button>
                       <Button
-                        variant="ghost"
-                        size="sm"
+                        variant="outline"
+                        size="icon"
                         onClick={() => openManualEdit("logo_url")}
+                        className="h-9 w-9"
                       >
-                        <Pencil className="h-4 w-4" />
+                        <Pencil className="h-3.5 w-3.5" />
                       </Button>
                     </div>
                   </div>
 
                   {/* LinkedIn */}
-                  <div className="flex items-center gap-4 p-4 rounded-lg border bg-muted/20">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg border bg-background flex items-center justify-center">
-                      <Link2 className="h-5 w-5 text-muted-foreground" />
+                  <div className="group relative flex items-center gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#0A66C2]/10 flex items-center justify-center">
+                      <Linkedin className="h-6 w-6 text-[#0A66C2]" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="font-medium">LinkedIn</span>
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="font-semibold text-foreground">LinkedIn</span>
+                      </div>
                       {selectedAssociate.linkedin ? (
                         <a 
                           href={selectedAssociate.linkedin} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="block text-sm text-primary hover:underline truncate"
+                          className="text-sm text-[#0A66C2] hover:underline truncate block font-medium"
                         >
-                          {selectedAssociate.linkedin}
+                          {selectedAssociate.linkedin.replace(/^https?:\/\/(www\.)?linkedin\.com\/company\//, "")}
                         </a>
                       ) : (
-                        <p className="text-sm text-muted-foreground italic">Sin LinkedIn</p>
+                        <p className="text-sm text-muted-foreground/60 italic">No configurado</p>
                       )}
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-1.5 flex-shrink-0">
                       <Button 
-                        variant="outline" 
+                        variant="default" 
                         size="sm"
                         onClick={() => handleSearch("linkedin")}
                         disabled={searchMutation.isPending}
+                        className="shadow-sm"
                       >
                         {searchingField === "linkedin" ? (
                           <Loader2 className="h-4 w-4 animate-spin" />
                         ) : (
                           <>
-                            <Search className="h-4 w-4 mr-1" />
+                            <Search className="h-3.5 w-3.5 mr-1.5" />
                             Buscar
                           </>
                         )}
                       </Button>
                       <Button
-                        variant="ghost"
-                        size="sm"
+                        variant="outline"
+                        size="icon"
                         onClick={() => openManualEdit("linkedin")}
+                        className="h-9 w-9"
                       >
-                        <Pencil className="h-4 w-4" />
+                        <Pencil className="h-3.5 w-3.5" />
                       </Button>
                     </div>
                   </div>
 
                   {/* Servicios */}
-                  <div className="flex items-start gap-4 p-4 rounded-lg border bg-muted/20">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg border bg-background flex items-center justify-center">
-                      <Briefcase className="h-5 w-5 text-muted-foreground" />
+                  <div className="group relative flex items-start gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center">
+                      <Briefcase className="h-6 w-6 text-violet-600" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="font-medium">Servicios</span>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="font-semibold text-foreground">Servicios</span>
+                        {selectedAssociate.servicios && selectedAssociate.servicios.length > 0 && (
+                          <Badge variant="secondary" className="text-[10px] px-1.5 font-mono">
+                            {selectedAssociate.servicios.length}
+                          </Badge>
+                        )}
+                      </div>
                       {selectedAssociate.servicios && selectedAssociate.servicios.length > 0 ? (
-                        <div className="flex flex-wrap gap-1 mt-1">
+                        <div className="flex flex-wrap gap-1.5">
                           {selectedAssociate.servicios.map((s, i) => (
-                            <Badge key={i} variant="secondary" className="text-xs">
+                            <Badge 
+                              key={i} 
+                              variant="outline" 
+                              className="text-xs bg-violet-500/5 text-violet-700 border-violet-500/20 font-normal"
+                            >
                               {s}
                             </Badge>
                           ))}
                         </div>
                       ) : (
-                        <p className="text-sm text-muted-foreground italic">Sin servicios</p>
+                        <p className="text-sm text-muted-foreground/60 italic">No configurado</p>
                       )}
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-1.5 flex-shrink-0">
                       <Button 
-                        variant="outline" 
+                        variant="default" 
                         size="sm"
                         onClick={() => handleSearch("servicios")}
                         disabled={searchMutation.isPending}
+                        className="shadow-sm"
                       >
                         {searchingField === "servicios" ? (
                           <Loader2 className="h-4 w-4 animate-spin" />
                         ) : (
                           <>
-                            <Search className="h-4 w-4 mr-1" />
+                            <Search className="h-3.5 w-3.5 mr-1.5" />
                             Buscar
                           </>
                         )}
                       </Button>
                       <Button
-                        variant="ghost"
-                        size="sm"
+                        variant="outline"
+                        size="icon"
                         onClick={() => openManualEdit("servicios")}
+                        className="h-9 w-9"
                       >
-                        <Pencil className="h-4 w-4" />
+                        <Pencil className="h-3.5 w-3.5" />
                       </Button>
                     </div>
                   </div>
@@ -880,12 +950,13 @@ export function IndividualEnrichment() {
                 <Button 
                   onClick={handleSearchAll}
                   disabled={searchMutation.isPending}
-                  className="w-full"
+                  className="w-full h-12 text-base font-medium shadow-sm"
+                  size="lg"
                 >
                   {searchingField === "all" ? (
-                    <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                    <Loader2 className="h-5 w-5 animate-spin mr-2" />
                   ) : (
-                    <RefreshCw className="h-4 w-4 mr-2" />
+                    <Sparkles className="h-5 w-5 mr-2" />
                   )}
                   Buscar todos los campos
                 </Button>
@@ -894,20 +965,26 @@ export function IndividualEnrichment() {
               {/* Suggestions section */}
               {suggestions.size > 0 && (
                 <>
-                  <Separator />
+                  <Separator className="my-6" />
                   <div className="space-y-4">
-                    <h3 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide">
-                      Sugerencias Encontradas
-                    </h3>
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="h-4 w-4 text-primary" />
+                      <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground">
+                        Sugerencias Encontradas
+                      </h3>
+                      <Badge variant="secondary" className="ml-auto font-mono text-xs">
+                        {suggestions.size} campo{suggestions.size > 1 ? "s" : ""}
+                      </Badge>
+                    </div>
                     
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                       {renderSuggestionCard("logo_url")}
                       {renderSuggestionCard("linkedin")}
                       {renderSuggestionCard("servicios")}
                     </div>
 
                     <Button 
-                      variant="ghost"
+                      variant="outline"
                       onClick={goToNext}
                       disabled={selectedIndex === filteredAssociates.length - 1}
                       className="w-full"
