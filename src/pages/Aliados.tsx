@@ -129,18 +129,18 @@ const Aliados = () => {
             <span className="text-[#F73C5C]">¿Por que unirte como aliado a Colombia Edtech?</span>
           </h2>
           
-          <div className="max-w-4xl mx-auto mb-12">
-            <p className="text-lg text-[#0B47CE] mb-4">
+          <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
+            <p className="text-base sm:text-lg text-[#0B47CE] mb-4">
               Si estás buscando una manera de <span className="text-[#F73C5C] font-bold">dejar una huella real</span> y <span className="text-[#0B47CE]">aportar al cambio en la educación de Latinoamérica</span>, <span className="text-[#F73C5C] font-bold">esta es tu oportunidad.</span>
             </p>
             
-            <div className="bg-white border-2 border-gray-200 rounded-lg p-8 text-left">
-              <div className="space-y-4">
-                <p className="text-lg text-[#0B47CE]">
+            <div className="bg-white border-2 border-gray-200 rounded-lg p-5 sm:p-6 lg:p-8 text-left">
+              <div className="space-y-3 sm:space-y-4">
+                <p className="text-sm sm:text-base lg:text-lg text-[#0B47CE]">
                   El mercado EdTech en América Latina <span className="text-[#F73C5C] font-bold">está experimentando un crecimiento significativo.</span> En 2023, <span className="text-[#F73C5C] font-bold">este mercado generó ingresos de aproximadamente 2,645 millones de dólares</span>, y se espera que continúe creciendo a una tasa compuesta anual (CAGR) <span className="text-[#F73C5C] font-bold">del 15.3% hasta alcanzar 7,156 millones de dólares en 2030.</span>
                 </p>
                 
-                <p className="text-lg text-[#0B47CE]">
+                <p className="text-sm sm:text-base lg:text-lg text-[#0B47CE]">
                   Porque ser ALIADO no solo se trata de aportar dinero, recursos o contactos; se trata de <span className="text-[#F73C5C] font-bold">invertir en el futuro de miles de estudiantes, docentes, instituciones y emprendedores</span> que están creando el futuro.
                 </p>
               </div>
@@ -180,17 +180,17 @@ const Aliados = () => {
       {/* Formas de aliarse */}
       <Section className="py-10 sm:py-12 lg:py-16 bg-[#0B47CE] text-white">
         <div className="container max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 lg:mb-12">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-10 lg:mb-12">
             ¿De qué formas te puedes ALIAR con Colombia EdTech?
           </h2>
           
-          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-10 lg:mb-12">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-3 mb-8 sm:mb-10 lg:mb-12">
             {formasAlianza.map((forma, index) => <div key={index} className="text-left">
-                <div className="flex items-center mb-3 sm:mb-4">
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#F73C5C] rounded-full flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0">
+                <div className="flex items-start sm:items-center mb-3 sm:mb-4">
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#F73C5C] rounded-full flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0 mt-0.5 sm:mt-0">
                     <span className="text-white text-xs sm:text-sm">✓</span>
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold">{forma.title}</h3>
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold leading-tight">{forma.title}</h3>
                 </div>
                 <p className="text-sm sm:text-base leading-relaxed opacity-90 ml-7 sm:ml-9">
                   {forma.description}
@@ -198,7 +198,7 @@ const Aliados = () => {
               </div>)}
           </div>
 
-          <div className="relative mb-12">
+          <div className="relative mb-8 sm:mb-12">
             <OptimizedImage 
               src={eventoCapacitacionAliados} 
               alt="Evento de capacitación Colombia EdTech" 
@@ -208,7 +208,7 @@ const Aliados = () => {
           </div>
 
           <div className="text-center">
-            <CTAButton size="lg" className="bg-[#F73C5C] text-white hover:bg-[#F73C5C]/90 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F73C5C]/30" onClick={handleAllyContactClick} asChild>
+            <CTAButton size="lg" className="bg-[#F73C5C] text-white hover:bg-[#F73C5C]/90 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F73C5C]/30 text-sm sm:text-base" onClick={handleAllyContactClick} asChild>
               <Link to="/aliados#form">
                 Regístrate para ser aliado hoy
               </Link>
@@ -218,10 +218,10 @@ const Aliados = () => {
       </Section>
 
       {/* Formulario */}
-      <div id="form" className="py-16 bg-[#F4E8DD]">
-        <div className="container max-w-4xl mx-auto">
-          <h3 className="text-3xl font-bold text-[#0B47CE] mb-4 text-center">¿Quieres ser aliado?</h3>
-          <p className="text-[#0B47CE] mb-8 text-center max-w-2xl mx-auto">
+      <div id="form" className="py-10 sm:py-12 lg:py-16 bg-[#F4E8DD]">
+        <div className="container max-w-4xl mx-auto px-4 sm:px-6">
+          <h3 className="text-2xl sm:text-3xl font-bold text-[#0B47CE] mb-3 sm:mb-4 text-center">¿Quieres ser aliado?</h3>
+          <p className="text-sm sm:text-base text-[#0B47CE] mb-6 sm:mb-8 text-center max-w-2xl mx-auto">
             Completa el siguiente formulario y nos pondremos en contacto contigo para explorar cómo podemos trabajar juntos
           </p>
           
