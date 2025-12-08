@@ -12,7 +12,6 @@ interface AssociateData {
   pagina_web: string | null;
   descripcion: string | null;
   linkedin: string | null;
-  twitter: string | null;
   logo_url: string | null;
   servicios: string[] | null;
   tamano_empresa: string | null;
@@ -50,7 +49,7 @@ serve(async (req) => {
     // Get associate data
     const { data: associate, error: fetchError } = await supabase
       .from("asociados")
-      .select("id, nombre_empresa, pagina_web, descripcion, linkedin, twitter, logo_url, servicios, tamano_empresa")
+      .select("id, nombre_empresa, pagina_web, descripcion, linkedin, logo_url, servicios, tamano_empresa")
       .eq("id", asociado_id)
       .single();
 
@@ -66,11 +65,16 @@ ${associate.pagina_web ? `Sitio web oficial: ${associate.pagina_web}` : "No tien
 ${associate.descripcion ? `Descripción actual: ${associate.descripcion}` : ""}
 
 Busca y verifica la siguiente información:
-1. LinkedIn de la empresa (URL completa del perfil de empresa)
-2. Twitter/X de la empresa (URL completa)
-3. Logo de la empresa (URL directa a imagen, preferiblemente del sitio oficial)
-4. Servicios principales que ofrece (lista de 3-5 servicios)
-5. Tamaño de la empresa (startup, pequeña, mediana, grande)
+1. LinkedIn de la empresa (URL completa del perfil de empresa en linkedin.com/company/...)
+2. Logo de la empresa - IMPORTANTE para el logo:
+   - Busca el logo en el sitio web oficial de la empresa
+   - Busca la etiqueta og:image en el HTML del sitio
+   - Busca en el favicon o logo del header
+   - Busca en LinkedIn o Crunchbase el logo de la empresa
+   - La URL debe ser directa a una imagen (.png, .jpg, .svg, .webp)
+   - NO uses URLs de favicon.ico pequeños
+3. Servicios principales que ofrece (lista de 3-5 servicios relacionados con educación/tecnología)
+4. Tamaño de la empresa (startup, pequeña, mediana, grande)
 
 IMPORTANTE: Solo reporta información que puedas verificar. Si no encuentras algo con certeza, indícalo.`;
 
@@ -94,13 +98,21 @@ CONTEXTO IMPORTANTE:
 - Busca específicamente perfiles de empresas relacionadas con: educación, e-learning, capacitación digital, plataformas educativas, LMS, gamificación educativa, contenidos digitales de aprendizaje, tutorías online, etc.
 - Si encuentras varias empresas con el mismo nombre, SIEMPRE prioriza la que tenga relación con el sector educativo/EdTech en Colombia.
 
-REGLAS:
+REGLAS PARA LOGOS:
+- Prioriza logos del sitio web oficial (og:image, logo en header, assets)
+- Busca en LinkedIn de la empresa el logo del perfil
+- La URL debe apuntar directamente a un archivo de imagen (.png, .jpg, .svg, .webp)
+- NO uses URLs de favicon.ico (son muy pequeños)
+- NO uses URLs de páginas HTML, solo de imágenes
+- Verifica que la URL sea accesible públicamente
+
+REGLAS GENERALES:
 - Solo reporta datos que puedas confirmar con certeza
-- Prioriza fuentes oficiales (sitio web de la empresa, LinkedIn oficial, redes sociales oficiales)
+- Prioriza fuentes oficiales (sitio web de la empresa, LinkedIn oficial)
 - Para cada dato indica la fuente exacta donde lo encontraste
 - Si no estás seguro de un dato o no lo encuentras, marca la confianza como "baja"
 - Las URLs deben ser completas (https://...)
-- Para servicios, extrae los principales relacionados con educación/EdTech del sitio web
+- Para servicios, extrae los principales relacionados con educación/EdTech
 - Para tamaño, usa: "startup" (<10 empleados), "pequeña" (10-50), "mediana" (50-200), "grande" (>200)`
           },
           { role: "user", content: prompt }
@@ -117,16 +129,7 @@ REGLAS:
                   linkedin: {
                     type: "object",
                     properties: {
-                      url: { type: "string", description: "URL completa del LinkedIn de la empresa" },
-                      confianza: { type: "string", enum: ["alta", "media", "baja"] },
-                      fuente: { type: "string", description: "Donde se encontró esta información" }
-                    },
-                    required: ["confianza", "fuente"]
-                  },
-                  twitter: {
-                    type: "object",
-                    properties: {
-                      url: { type: "string", description: "URL completa del Twitter/X de la empresa" },
+                      url: { type: "string", description: "URL completa del LinkedIn de la empresa (formato: https://linkedin.com/company/nombre)" },
                       confianza: { type: "string", enum: ["alta", "media", "baja"] },
                       fuente: { type: "string", description: "Donde se encontró esta información" }
                     },
@@ -135,9 +138,9 @@ REGLAS:
                   logo_url: {
                     type: "object",
                     properties: {
-                      url: { type: "string", description: "URL directa al logo de la empresa" },
+                      url: { type: "string", description: "URL directa a la imagen del logo (debe terminar en .png, .jpg, .svg o .webp, NO favicon.ico)" },
                       confianza: { type: "string", enum: ["alta", "media", "baja"] },
-                      fuente: { type: "string", description: "Donde se encontró esta información" }
+                      fuente: { type: "string", description: "Donde se encontró el logo (ej: 'og:image del sitio web', 'logo en header', 'perfil de LinkedIn')" }
                     },
                     required: ["confianza", "fuente"]
                   },
@@ -160,7 +163,7 @@ REGLAS:
                     required: ["confianza", "fuente"]
                   }
                 },
-                required: ["linkedin", "twitter", "logo_url", "servicios", "tamano_empresa"]
+                required: ["linkedin", "logo_url", "servicios", "tamano_empresa"]
               }
             }
           }
@@ -210,16 +213,6 @@ REGLAS:
         valor_sugerido: companyInfo.linkedin.url,
         confianza: companyInfo.linkedin.confianza,
         fuente: companyInfo.linkedin.fuente
-      });
-    }
-
-    // Twitter
-    if (companyInfo.twitter?.url && companyInfo.twitter.url !== associate.twitter) {
-      enrichments.push({
-        campo: "twitter",
-        valor_sugerido: companyInfo.twitter.url,
-        confianza: companyInfo.twitter.confianza,
-        fuente: companyInfo.twitter.fuente
       });
     }
 
