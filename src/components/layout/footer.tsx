@@ -14,7 +14,7 @@ const quickLinks = [
   { name: "Inicio", href: "/" },
   { name: "Somos", href: "/somos" },
   { name: "Asociados", href: "/asociados" },
-  { name: "Directorio", href: "/directorio" },
+  { name: "Directorio", href: "/asociados/directorio" },
   { name: "Aliados", href: "/aliados" },
   { name: "Voluntariado", href: "/voluntariado" },
   { name: "Eventos", href: "/eventos" },
