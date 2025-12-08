@@ -1,0 +1,23 @@
+-- Actualizar todos los sitios web restantes encontrados
+UPDATE public.asociados SET pagina_web = 'https://adneducativa.com' WHERE nombre_empresa = 'ADN Educativo S.A.S' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.griky.co' WHERE nombre_empresa = 'Alianza Superior Griky' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://almia.com.co' WHERE nombre_empresa = 'Almia' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://ceinfes.com' WHERE nombre_empresa = 'CEINFES' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://contentgrp.com' WHERE nombre_empresa = 'Content Group' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.critertec.com' WHERE nombre_empresa = 'Critertec Educación S.A.S' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://cymetria.com' WHERE nombre_empresa = 'Cymetria' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.danalyticspro.com' WHERE nombre_empresa = 'Danalytics' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://edu-labs.co' WHERE nombre_empresa = 'Edu Labs S.A.S' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://escole.com.co' WHERE nombre_empresa = 'ESCOLE' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://etraining.co' WHERE nombre_empresa = 'Etraining S.A.S' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.hacku.com' WHERE nombre_empresa = 'HackU' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.i3-technologies.com' WHERE nombre_empresa = 'i3-Technologies' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://mentu.co' WHERE nombre_empresa = 'Mentu' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.naskadigital.com' WHERE nombre_empresa = 'Naska Digital' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://panzofi.com' WHERE nombre_empresa = 'Panzofi' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://scalalearning.com' WHERE nombre_empresa = 'Scala Learning' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://sistel.co' WHERE nombre_empresa = 'Sistel' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://uplanner.com' WHERE nombre_empresa = 'U-Planner' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.walinwa.com' WHERE nombre_empresa = 'Walinwa' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.xertify.co' WHERE nombre_empresa = 'Xertify' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.tdrobotica.co' WHERE nombre_empresa = 'Robotica Colombia S.A.S' AND (pagina_web IS NULL OR pagina_web = '');

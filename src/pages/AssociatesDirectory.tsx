@@ -244,7 +244,7 @@ export default function AssociatesDirectory() {
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <div className="text-center">
             <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-[#0B47CE]" />
-            <p className="text-gray-600">Cargando asociados...</p>
+            <p className="text-primary-900/70">Cargando asociados...</p>
           </div>
         </div>
       </>
@@ -260,8 +260,8 @@ export default function AssociatesDirectory() {
         </Helmet>
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <div className="text-center">
-            <Building2 className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-            <p className="text-gray-600 mb-4">{error}</p>
+            <Building2 className="w-12 h-12 mx-auto mb-4 text-primary-700/50" />
+            <p className="text-primary-900/70 mb-4">{error}</p>
             <button 
               onClick={() => window.location.reload()}
               className="text-[#0B47CE] hover:text-[#003889] font-medium"
@@ -318,7 +318,7 @@ export default function AssociatesDirectory() {
                 {/* Filters Header */}
                 <div className="bg-white rounded-lg shadow-sm border p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-bold text-gray-900">Filtros</h2>
+                    <h2 className="text-xl font-bold text-primary-900">Filtros</h2>
                     {hasActiveFilters && (
                       <Button 
                         variant="ghost" 
@@ -337,11 +337,11 @@ export default function AssociatesDirectory() {
                       onClick={() => setSegmentosExpanded(!segmentosExpanded)}
                       className="flex items-center justify-between w-full text-left mb-3"
                     >
-                      <h3 className="font-semibold text-gray-900">Segmentos</h3>
+                      <h3 className="font-semibold text-primary-900">Segmentos</h3>
                       {segmentosExpanded ? (
-                        <ChevronUp className="w-4 h-4 text-gray-500" />
+                        <ChevronUp className="w-4 h-4 text-primary-700" />
                       ) : (
-                        <ChevronDown className="w-4 h-4 text-gray-500" />
+                        <ChevronDown className="w-4 h-4 text-primary-700" />
                       )}
                     </button>
                     {segmentosExpanded && (
@@ -356,13 +356,13 @@ export default function AssociatesDirectory() {
                               />
                               <Label 
                                 htmlFor={`segmento-${option.value}`}
-                                className="text-sm cursor-pointer text-gray-700"
+                                className="text-sm cursor-pointer text-primary-900/80"
                               >
                                 {option.label}
                               </Label>
                             </div>
                             {segmentCounts[option.value] && (
-                              <span className="text-xs text-gray-500">
+                              <span className="text-xs text-primary-700/60">
                                 ({segmentCounts[option.value]})
                               </span>
                             )}
@@ -378,11 +378,11 @@ export default function AssociatesDirectory() {
                       onClick={() => setTamanosExpanded(!tamanosExpanded)}
                       className="flex items-center justify-between w-full text-left mb-3"
                     >
-                      <h3 className="font-semibold text-gray-900">Tamaño</h3>
+                      <h3 className="font-semibold text-primary-900">Tamaño</h3>
                       {tamanosExpanded ? (
-                        <ChevronUp className="w-4 h-4 text-gray-500" />
+                        <ChevronUp className="w-4 h-4 text-primary-700" />
                       ) : (
-                        <ChevronDown className="w-4 h-4 text-gray-500" />
+                        <ChevronDown className="w-4 h-4 text-primary-700" />
                       )}
                     </button>
                     {tamanosExpanded && (
@@ -397,13 +397,13 @@ export default function AssociatesDirectory() {
                               />
                               <Label 
                                 htmlFor={`tamano-${option.value}`}
-                                className="text-sm cursor-pointer text-gray-700"
+                                className="text-sm cursor-pointer text-primary-900/80"
                               >
                                 {option.label}
                               </Label>
                             </div>
                             {sizeCounts[option.value] && (
-                              <span className="text-xs text-gray-500">
+                              <span className="text-xs text-primary-700/60">
                                 ({sizeCounts[option.value]})
                               </span>
                             )}
@@ -420,11 +420,11 @@ export default function AssociatesDirectory() {
                         onClick={() => setServiciosExpanded(!serviciosExpanded)}
                         className="flex items-center justify-between w-full text-left mb-3"
                       >
-                        <h3 className="font-semibold text-gray-900">Servicios</h3>
+                        <h3 className="font-semibold text-primary-900">Servicios</h3>
                         {serviciosExpanded ? (
-                          <ChevronUp className="w-4 h-4 text-gray-500" />
+                          <ChevronUp className="w-4 h-4 text-primary-700" />
                         ) : (
-                          <ChevronDown className="w-4 h-4 text-gray-500" />
+                          <ChevronDown className="w-4 h-4 text-primary-700" />
                         )}
                       </button>
                       {serviciosExpanded && (
@@ -439,13 +439,13 @@ export default function AssociatesDirectory() {
                                 />
                                 <Label 
                                   htmlFor={`servicio-${service}`}
-                                  className="text-sm cursor-pointer text-gray-700"
+                                  className="text-sm cursor-pointer text-primary-900/80"
                                 >
                                   {service}
                                 </Label>
                               </div>
                               {serviceCounts[service] && (
-                                <span className="text-xs text-gray-500">
+                                <span className="text-xs text-primary-700/60">
                                   ({serviceCounts[service]})
                                 </span>
                               )}
@@ -474,7 +474,7 @@ export default function AssociatesDirectory() {
                     />
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-600 whitespace-nowrap">Ordenar por:</span>
+                    <span className="text-sm text-primary-900/70 whitespace-nowrap">Ordenar por:</span>
                     <Select value={sortBy} onValueChange={setSortBy}>
                       <SelectTrigger className="w-[180px]">
                         <SelectValue />
@@ -540,7 +540,7 @@ export default function AssociatesDirectory() {
               </div>
 
               {/* Results Count */}
-              <div className="text-sm text-gray-600 mb-4">
+              <div className="text-sm text-primary-900/70 mb-4">
                 Mostrando <span className="font-bold text-[#0B47CE]">{filteredAssociates.length}</span> de{' '}
                 <span className="font-bold text-[#0B47CE]">{totalAssociates}</span> asociados
               </div>
@@ -556,12 +556,12 @@ export default function AssociatesDirectory() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-20 bg-white rounded-xl border-2 border-dashed border-gray-200">
-                  <Building2 className="w-20 h-20 mx-auto mb-6 text-gray-300" />
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                <div className="text-center py-20 bg-white rounded-xl border-2 border-dashed border-primary-200">
+                  <Building2 className="w-20 h-20 mx-auto mb-6 text-primary-300" />
+                  <h3 className="text-2xl font-bold text-primary-900 mb-3">
                     No se encontraron asociados
                   </h3>
-                  <p className="text-gray-600 mb-8 max-w-md mx-auto">
+                  <p className="text-primary-900/70 mb-8 max-w-md mx-auto">
                     {hasActiveFilters 
                       ? "Intenta ajustar los filtros para encontrar más resultados" 
                       : "No hay asociados disponibles en este momento"}
