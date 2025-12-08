@@ -1,0 +1,24 @@
+-- Actualizar sitios web de los asociados encontrados en internet
+UPDATE public.asociados SET pagina_web = 'https://acreditta.com' WHERE nombre_empresa = 'Acreditta S.A.S' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://ada-school.org' WHERE nombre_empresa = 'Ada School' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://adipa.cl' WHERE nombre_empresa = 'Adipa' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.aeiotu.com' WHERE nombre_empresa = 'AEIOTu' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://arukay.com' WHERE nombre_empresa = 'Arukay S.A.S' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.aulaplaneta.com' WHERE nombre_empresa = 'Aula Planeta' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://aulasamigas.com' WHERE nombre_empresa = 'Aulas Amigas (TOMi)' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://buendata.com' WHERE nombre_empresa = 'Buen Data S.A.S' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.cesa.edu.co' WHERE nombre_empresa = 'CESA' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.cibercolegios.com' WHERE nombre_empresa = 'Cibercolegios' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.comfandi.com.co' WHERE nombre_empresa = 'Comfandi' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://coschool.co' WHERE nombre_empresa = 'Coschool' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://educacionestrella.com' WHERE nombre_empresa = 'Educación Estrella' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://geekgirlslatam.org' WHERE nombre_empresa = 'Geek Girls LatAm' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://hypercubus.co' WHERE nombre_empresa = 'Hypercubus S.A.S' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://laboratoria.la' WHERE nombre_empresa = 'Laboratoria' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://makaia.org' WHERE nombre_empresa = 'Makaia' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://manguselearning.com' WHERE nombre_empresa = 'Mangus S.A.S' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://mindhubweb.com' WHERE nombre_empresa = 'MindHub' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.sistemasaberes.com' WHERE nombre_empresa = 'Sistema Saberes' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.uniminuto.edu' WHERE nombre_empresa = 'UNIMINUTO' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.eafit.edu.co' WHERE nombre_empresa = 'Universidad EAFIT' AND (pagina_web IS NULL OR pagina_web = '');
+UPDATE public.asociados SET pagina_web = 'https://www.unisabana.edu.co' WHERE nombre_empresa = 'Universidad de La Sabana' AND (pagina_web IS NULL OR pagina_web = '');
