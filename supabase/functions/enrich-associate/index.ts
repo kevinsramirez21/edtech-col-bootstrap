@@ -14,7 +14,6 @@ interface AssociateData {
   linkedin: string | null;
   logo_url: string | null;
   servicios: string[] | null;
-  tamano_empresa: string | null;
 }
 
 interface EnrichmentResult {
@@ -49,7 +48,7 @@ serve(async (req) => {
     // Get associate data
     const { data: associate, error: fetchError } = await supabase
       .from("asociados")
-      .select("id, nombre_empresa, pagina_web, descripcion, linkedin, logo_url, servicios, tamano_empresa")
+      .select("id, nombre_empresa, pagina_web, descripcion, linkedin, logo_url, servicios")
       .eq("id", asociado_id)
       .single();
 
@@ -57,26 +56,117 @@ serve(async (req) => {
       throw new Error(`Associate not found: ${fetchError?.message}`);
     }
 
+    // Check for existing high-confidence approved enrichments
+    const { data: existingEnrichments } = await supabase
+      .from("asociados_enrichment")
+      .select("campo, confianza, aprobado")
+      .eq("asociado_id", asociado_id)
+      .eq("aprobado", true)
+      .eq("confianza", "alta");
+
+    // Get fields that already have high-confidence approved data
+    const completedFields = new Set(
+      (existingEnrichments || []).map((e: any) => e.campo)
+    );
+
+    // Also check if field already has data in the associate record
+    const fieldsWithData = new Set<string>();
+    if (associate.linkedin) fieldsWithData.add("linkedin");
+    if (associate.logo_url) fieldsWithData.add("logo_url");
+    if (associate.servicios && associate.servicios.length > 0) fieldsWithData.add("servicios");
+
+    // Combine completed fields with fields that already have data
+    const skipFields = new Set([...completedFields, ...fieldsWithData]);
+
+    // If all fields are complete, skip this associate
+    const allFields = ["linkedin", "logo_url", "servicios"];
+    const fieldsToEnrich = allFields.filter(f => !skipFields.has(f));
+
+    if (fieldsToEnrich.length === 0) {
+      console.log(`All fields already complete for: ${associate.nombre_empresa}`);
+      return new Response(JSON.stringify({
+        success: true,
+        nombre_empresa: associate.nombre_empresa,
+        enrichments_count: 0,
+        message: "All fields already have data or high-confidence approved suggestions",
+        enrichments: []
+      }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     console.log(`Enriching data for: ${associate.nombre_empresa}`);
+    console.log(`Fields to enrich: ${fieldsToEnrich.join(", ")}`);
 
-    // Build prompt for AI research
-    const prompt = `Investiga la empresa EdTech colombiana "${associate.nombre_empresa}".
-${associate.pagina_web ? `Sitio web oficial: ${associate.pagina_web}` : "No tiene sitio web registrado."}
-${associate.descripcion ? `Descripción actual: ${associate.descripcion}` : ""}
-
-Busca y verifica la siguiente información:
-1. LinkedIn de la empresa (URL completa del perfil de empresa en linkedin.com/company/...)
-2. Logo de la empresa - IMPORTANTE para el logo:
+    // Build dynamic prompt based on fields to enrich
+    const fieldInstructions: string[] = [];
+    if (fieldsToEnrich.includes("linkedin")) {
+      fieldInstructions.push("1. LinkedIn de la empresa (URL completa del perfil de empresa en linkedin.com/company/...)");
+    }
+    if (fieldsToEnrich.includes("logo_url")) {
+      fieldInstructions.push(`2. Logo de la empresa - IMPORTANTE:
    - Busca el logo en el sitio web oficial de la empresa
    - Busca la etiqueta og:image en el HTML del sitio
    - Busca en el favicon o logo del header
    - Busca en LinkedIn o Crunchbase el logo de la empresa
    - La URL debe ser directa a una imagen (.png, .jpg, .svg, .webp)
-   - NO uses URLs de favicon.ico pequeños
-3. Servicios principales que ofrece (lista de 3-5 servicios relacionados con educación/tecnología)
-4. Tamaño de la empresa (startup, pequeña, mediana, grande)
+   - NO uses URLs de favicon.ico pequeños`);
+    }
+    if (fieldsToEnrich.includes("servicios")) {
+      fieldInstructions.push("3. Servicios principales que ofrece (lista de 3-5 servicios relacionados con educación/tecnología)");
+    }
+
+    const prompt = `Investiga la empresa EdTech colombiana "${associate.nombre_empresa}".
+${associate.pagina_web ? `Sitio web oficial: ${associate.pagina_web}` : "No tiene sitio web registrado."}
+${associate.descripcion ? `Descripción actual: ${associate.descripcion}` : ""}
+
+Busca y verifica la siguiente información:
+${fieldInstructions.join("\n")}
 
 IMPORTANTE: Solo reporta información que puedas verificar. Si no encuentras algo con certeza, indícalo.`;
+
+    // Build dynamic tool properties based on fields to enrich
+    const toolProperties: Record<string, any> = {};
+    const requiredFields: string[] = [];
+
+    if (fieldsToEnrich.includes("linkedin")) {
+      toolProperties.linkedin = {
+        type: "object",
+        properties: {
+          url: { type: "string", description: "URL completa del LinkedIn de la empresa (formato: https://linkedin.com/company/nombre)" },
+          confianza: { type: "string", enum: ["alta", "media", "baja"] },
+          fuente: { type: "string", description: "Donde se encontró esta información" }
+        },
+        required: ["confianza", "fuente"]
+      };
+      requiredFields.push("linkedin");
+    }
+
+    if (fieldsToEnrich.includes("logo_url")) {
+      toolProperties.logo_url = {
+        type: "object",
+        properties: {
+          url: { type: "string", description: "URL directa a la imagen del logo (debe terminar en .png, .jpg, .svg o .webp, NO favicon.ico)" },
+          confianza: { type: "string", enum: ["alta", "media", "baja"] },
+          fuente: { type: "string", description: "Donde se encontró el logo (ej: 'og:image del sitio web', 'logo en header', 'perfil de LinkedIn')" }
+        },
+        required: ["confianza", "fuente"]
+      };
+      requiredFields.push("logo_url");
+    }
+
+    if (fieldsToEnrich.includes("servicios")) {
+      toolProperties.servicios = {
+        type: "object",
+        properties: {
+          lista: { type: "array", items: { type: "string" }, description: "Lista de servicios principales" },
+          confianza: { type: "string", enum: ["alta", "media", "baja"] },
+          fuente: { type: "string", description: "Donde se encontró esta información" }
+        },
+        required: ["confianza", "fuente"]
+      };
+      requiredFields.push("servicios");
+    }
 
     // Call Lovable AI with tool calling for structured output
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
@@ -112,8 +202,7 @@ REGLAS GENERALES:
 - Para cada dato indica la fuente exacta donde lo encontraste
 - Si no estás seguro de un dato o no lo encuentras, marca la confianza como "baja"
 - Las URLs deben ser completas (https://...)
-- Para servicios, extrae los principales relacionados con educación/EdTech
-- Para tamaño, usa: "startup" (<10 empleados), "pequeña" (10-50), "mediana" (50-200), "grande" (>200)`
+- Para servicios, extrae los principales relacionados con educación/EdTech`
           },
           { role: "user", content: prompt }
         ],
@@ -125,45 +214,8 @@ REGLAS GENERALES:
               description: "Reporta la información encontrada sobre la empresa",
               parameters: {
                 type: "object",
-                properties: {
-                  linkedin: {
-                    type: "object",
-                    properties: {
-                      url: { type: "string", description: "URL completa del LinkedIn de la empresa (formato: https://linkedin.com/company/nombre)" },
-                      confianza: { type: "string", enum: ["alta", "media", "baja"] },
-                      fuente: { type: "string", description: "Donde se encontró esta información" }
-                    },
-                    required: ["confianza", "fuente"]
-                  },
-                  logo_url: {
-                    type: "object",
-                    properties: {
-                      url: { type: "string", description: "URL directa a la imagen del logo (debe terminar en .png, .jpg, .svg o .webp, NO favicon.ico)" },
-                      confianza: { type: "string", enum: ["alta", "media", "baja"] },
-                      fuente: { type: "string", description: "Donde se encontró el logo (ej: 'og:image del sitio web', 'logo en header', 'perfil de LinkedIn')" }
-                    },
-                    required: ["confianza", "fuente"]
-                  },
-                  servicios: {
-                    type: "object",
-                    properties: {
-                      lista: { type: "array", items: { type: "string" }, description: "Lista de servicios principales" },
-                      confianza: { type: "string", enum: ["alta", "media", "baja"] },
-                      fuente: { type: "string", description: "Donde se encontró esta información" }
-                    },
-                    required: ["confianza", "fuente"]
-                  },
-                  tamano_empresa: {
-                    type: "object",
-                    properties: {
-                      valor: { type: "string", enum: ["startup", "pequena", "mediana", "grande"] },
-                      confianza: { type: "string", enum: ["alta", "media", "baja"] },
-                      fuente: { type: "string", description: "Donde se encontró esta información" }
-                    },
-                    required: ["confianza", "fuente"]
-                  }
-                },
-                required: ["linkedin", "logo_url", "servicios", "tamano_empresa"]
+                properties: toolProperties,
+                required: requiredFields
               }
             }
           }
@@ -207,7 +259,7 @@ REGLAS GENERALES:
     const enrichments: EnrichmentResult[] = [];
 
     // LinkedIn
-    if (companyInfo.linkedin?.url && companyInfo.linkedin.url !== associate.linkedin) {
+    if (companyInfo.linkedin?.url && companyInfo.linkedin.url !== "No disponible") {
       enrichments.push({
         campo: "linkedin",
         valor_sugerido: companyInfo.linkedin.url,
@@ -217,7 +269,7 @@ REGLAS GENERALES:
     }
 
     // Logo
-    if (companyInfo.logo_url?.url && companyInfo.logo_url.url !== associate.logo_url) {
+    if (companyInfo.logo_url?.url && companyInfo.logo_url.url !== "No disponible") {
       enrichments.push({
         campo: "logo_url",
         valor_sugerido: companyInfo.logo_url.url,
@@ -228,25 +280,11 @@ REGLAS GENERALES:
 
     // Servicios
     if (companyInfo.servicios?.lista?.length > 0) {
-      const serviciosStr = JSON.stringify(companyInfo.servicios.lista);
-      const currentServiciosStr = JSON.stringify(associate.servicios || []);
-      if (serviciosStr !== currentServiciosStr) {
-        enrichments.push({
-          campo: "servicios",
-          valor_sugerido: serviciosStr,
-          confianza: companyInfo.servicios.confianza,
-          fuente: companyInfo.servicios.fuente
-        });
-      }
-    }
-
-    // Tamaño empresa
-    if (companyInfo.tamano_empresa?.valor && companyInfo.tamano_empresa.valor !== associate.tamano_empresa) {
       enrichments.push({
-        campo: "tamano_empresa",
-        valor_sugerido: companyInfo.tamano_empresa.valor,
-        confianza: companyInfo.tamano_empresa.confianza,
-        fuente: companyInfo.tamano_empresa.fuente
+        campo: "servicios",
+        valor_sugerido: JSON.stringify(companyInfo.servicios.lista),
+        confianza: companyInfo.servicios.confianza,
+        fuente: companyInfo.servicios.fuente
       });
     }
 
