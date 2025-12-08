@@ -15,7 +15,9 @@ import {
   Loader2,
   RefreshCw,
   AlertCircle,
-  CheckCircle2
+  CheckCircle2,
+  User,
+  ListChecks
 } from "lucide-react";
 import {
   Table,
@@ -35,6 +37,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { IndividualEnrichment } from "./individual-enrichment";
 
 interface Enrichment {
   id: string;
@@ -322,14 +326,37 @@ export function EnrichmentAdmin() {
 
   return (
     <div className="space-y-6">
-      {/* Header with actions */}
-      <div className="flex flex-col md:flex-row justify-between gap-4">
-        <div>
-          <h2 className="text-2xl font-bold">Enriquecimiento de Datos</h2>
-          <p className="text-muted-foreground">
-            Usa IA para buscar y completar información de los asociados
-          </p>
-        </div>
+      {/* Header */}
+      <div>
+        <h2 className="text-2xl font-bold">Enriquecimiento de Datos</h2>
+        <p className="text-muted-foreground">
+          Usa IA para buscar y completar información de los asociados
+        </p>
+      </div>
+
+      {/* Tabs for different modes */}
+      <Tabs defaultValue="individual" className="space-y-6">
+        <TabsList className="grid w-full max-w-md grid-cols-2">
+          <TabsTrigger value="individual" className="gap-2">
+            <User className="h-4 w-4" />
+            Individual
+          </TabsTrigger>
+          <TabsTrigger value="batch" className="gap-2">
+            <ListChecks className="h-4 w-4" />
+            Por Lotes
+          </TabsTrigger>
+        </TabsList>
+
+        {/* Individual enrichment mode */}
+        <TabsContent value="individual">
+          <IndividualEnrichment />
+        </TabsContent>
+
+        {/* Batch enrichment mode */}
+        <TabsContent value="batch" className="space-y-6">
+          {/* Header with actions */}
+          <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div></div>
         
         <div className="flex gap-2">
           {!isProcessing ? (
@@ -506,6 +533,8 @@ export function EnrichmentAdmin() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }

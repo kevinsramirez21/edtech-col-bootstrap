@@ -39,11 +39,17 @@ serve(async (req) => {
 
     const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_ROLE_KEY!);
 
-    const { asociado_id } = await req.json();
+    // Parse request body - now supports force_fields parameter
+    const { asociado_id, force_fields } = await req.json();
+    // force_fields: string[] - optional array of fields to force re-search
+    // Example: ["logo_url"] - will search logo even if it already has data
+    // Example: ["linkedin", "servicios"] - will search both fields
 
     if (!asociado_id) {
       throw new Error("asociado_id is required");
     }
+
+    console.log(`Request for ${asociado_id}, force_fields:`, force_fields);
 
     // Get associate data
     const { data: associate, error: fetchError } = await supabase
@@ -78,9 +84,21 @@ serve(async (req) => {
     // Combine completed fields with fields that already have data
     const skipFields = new Set([...completedFields, ...fieldsWithData]);
 
-    // If all fields are complete, skip this associate
+    // Determine which fields to enrich
     const allFields = ["linkedin", "logo_url", "servicios"];
-    const fieldsToEnrich = allFields.filter(f => !skipFields.has(f));
+    
+    // If force_fields is provided, use those (allows re-searching existing data)
+    // Otherwise, only search fields that don't have data
+    let fieldsToEnrich: string[];
+    
+    if (force_fields && Array.isArray(force_fields) && force_fields.length > 0) {
+      // Validate that force_fields contains valid field names
+      fieldsToEnrich = force_fields.filter(f => allFields.includes(f));
+      console.log(`Forcing enrichment of fields: ${fieldsToEnrich.join(", ")}`);
+    } else {
+      // Default behavior: only enrich empty fields
+      fieldsToEnrich = allFields.filter(f => !skipFields.has(f));
+    }
 
     if (fieldsToEnrich.length === 0) {
       console.log(`All fields already complete for: ${associate.nombre_empresa}`);
