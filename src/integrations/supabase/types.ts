@@ -98,6 +98,56 @@ export type Database = {
         }
         Relationships: []
       }
+      asociados_enrichment: {
+        Row: {
+          aprobado: boolean | null
+          asociado_id: string
+          campo: string
+          confianza: string | null
+          created_at: string | null
+          fuente: string | null
+          id: string
+          updated_at: string | null
+          valor_actual: string | null
+          valor_sugerido: string | null
+          verificado: boolean | null
+        }
+        Insert: {
+          aprobado?: boolean | null
+          asociado_id: string
+          campo: string
+          confianza?: string | null
+          created_at?: string | null
+          fuente?: string | null
+          id?: string
+          updated_at?: string | null
+          valor_actual?: string | null
+          valor_sugerido?: string | null
+          verificado?: boolean | null
+        }
+        Update: {
+          aprobado?: boolean | null
+          asociado_id?: string
+          campo?: string
+          confianza?: string | null
+          created_at?: string | null
+          fuente?: string | null
+          id?: string
+          updated_at?: string | null
+          valor_actual?: string | null
+          valor_sugerido?: string | null
+          verificado?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "asociados_enrichment_asociado_id_fkey"
+            columns: ["asociado_id"]
+            isOneToOne: false
+            referencedRelation: "asociados"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       newsletter_subscriptions: {
         Row: {
           created_at: string
