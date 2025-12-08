@@ -52,16 +52,11 @@ const horasOptions = [
 ];
 
 const areasInteres = [
-  { value: "comunicaciones", label: "Comunicaciones y Marketing" },
-  { value: "diseno", label: "Diseño Gráfico y UX/UI" },
-  { value: "desarrollo", label: "Desarrollo Web/App" },
-  { value: "investigacion", label: "Investigación y Análisis" },
-  { value: "contenido", label: "Creación de Contenido" },
-  { value: "eventos", label: "Organización de Eventos" },
-  { value: "alianzas", label: "Gestión de Alianzas" },
-  { value: "educacion", label: "Formación y Capacitación" },
-  { value: "estrategia", label: "Estrategia y Planeación" },
-  { value: "otro", label: "Otro" },
+  { value: "copywriting", label: "Copywriting" },
+  { value: "diseno", label: "Diseño" },
+  { value: "investigacion", label: "Investigación" },
+  { value: "eventos", label: "Organización de eventos" },
+  { value: "talent", label: "Talent Management" },
 ];
 
 export function VolunteerApplicationForm() {
@@ -170,7 +165,7 @@ export function VolunteerApplicationForm() {
                   <FormItem>
                     <FormLabel className="text-[#0B47CE]">Nombre completo *</FormLabel>
                     <FormControl>
-                      <Input placeholder="Tu nombre completo" {...field} className="border-gray-300 focus:border-[#0B47CE]" />
+                      <Input placeholder="Tu nombre completo" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -184,7 +179,7 @@ export function VolunteerApplicationForm() {
                   <FormItem>
                     <FormLabel className="text-[#0B47CE]">Correo electrónico *</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="tu@email.com" {...field} className="border-gray-300 focus:border-[#0B47CE]" />
+                      <Input type="email" placeholder="tu@email.com" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -200,7 +195,7 @@ export function VolunteerApplicationForm() {
                   <FormItem>
                     <FormLabel className="text-[#0B47CE]">Teléfono *</FormLabel>
                     <FormControl>
-                      <Input placeholder="+57 300 123 4567" {...field} className="border-gray-300 focus:border-[#0B47CE]" />
+                      <Input placeholder="+57 300 123 4567" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -214,7 +209,7 @@ export function VolunteerApplicationForm() {
                   <FormItem>
                     <FormLabel className="text-[#0B47CE]">LinkedIn (opcional)</FormLabel>
                     <FormControl>
-                      <Input placeholder="https://linkedin.com/in/tu-perfil" {...field} className="border-gray-300 focus:border-[#0B47CE]" />
+                      <Input placeholder="https://linkedin.com/in/tu-perfil" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -230,7 +225,7 @@ export function VolunteerApplicationForm() {
                   <FormItem>
                     <FormLabel className="text-[#0B47CE]">Ciudad *</FormLabel>
                     <FormControl>
-                      <Input placeholder="Bogotá" {...field} className="border-gray-300 focus:border-[#0B47CE]" />
+                      <Input placeholder="Bogotá" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -244,7 +239,7 @@ export function VolunteerApplicationForm() {
                   <FormItem>
                     <FormLabel className="text-[#0B47CE]">País *</FormLabel>
                     <FormControl>
-                      <Input placeholder="Colombia" {...field} className="border-gray-300 focus:border-[#0B47CE]" />
+                      <Input placeholder="Colombia" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -267,7 +262,7 @@ export function VolunteerApplicationForm() {
                   <FormItem>
                     <FormLabel className="text-[#0B47CE]">Ocupación actual *</FormLabel>
                     <FormControl>
-                      <Input placeholder="Ej: Diseñador UX, Estudiante, Docente..." {...field} className="border-gray-300 focus:border-[#0B47CE]" />
+                      <Input placeholder="Ej: Diseñador UX, Estudiante, Docente..." {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -281,7 +276,7 @@ export function VolunteerApplicationForm() {
                   <FormItem>
                     <FormLabel className="text-[#0B47CE]">Organización/Universidad (opcional)</FormLabel>
                     <FormControl>
-                      <Input placeholder="Nombre de tu empresa o universidad" {...field} className="border-gray-300 focus:border-[#0B47CE]" />
+                      <Input placeholder="Nombre de tu empresa o universidad" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -304,7 +299,7 @@ export function VolunteerApplicationForm() {
                   <FormLabel className="text-[#0B47CE]">¿Cuántas horas semanales puedes dedicar al voluntariado? *</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className="border-gray-300 focus:border-[#0B47CE]">
+                      <SelectTrigger className="border-gray-300 focus:border-[#0B47CE] data-[placeholder]:text-gray-400">
                         <SelectValue placeholder="Selecciona tu disponibilidad" />
                       </SelectTrigger>
                     </FormControl>
@@ -327,17 +322,17 @@ export function VolunteerApplicationForm() {
               render={() => (
                 <FormItem>
                   <FormLabel className="text-[#0B47CE]">¿En qué áreas te gustaría contribuir? *</FormLabel>
-                  <FormDescription className="text-gray-500">
+                  <FormDescription className="text-gray-400">
                     Selecciona todas las que apliquen
                   </FormDescription>
-                  <div className="grid sm:grid-cols-2 gap-3 mt-2">
+                  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mt-2">
                     {areasInteres.map((area) => (
                       <FormField
                         key={area.value}
                         control={form.control}
                         name="areas_interes"
                         render={({ field }) => (
-                          <FormItem className="flex items-center space-x-2 space-y-0">
+                          <FormItem className="flex items-center space-x-2 space-y-0 bg-gray-50 p-3 rounded-lg hover:bg-gray-100 transition-colors">
                             <FormControl>
                               <Checkbox
                                 checked={field.value?.includes(area.value)}
@@ -348,7 +343,7 @@ export function VolunteerApplicationForm() {
                                 }}
                               />
                             </FormControl>
-                            <FormLabel className="text-sm font-normal text-gray-700 cursor-pointer">
+                            <FormLabel className="text-sm font-medium text-[#003889] cursor-pointer">
                               {area.label}
                             </FormLabel>
                           </FormItem>
@@ -377,7 +372,7 @@ export function VolunteerApplicationForm() {
                   <FormControl>
                     <Textarea 
                       placeholder="Cuéntanos brevemente sobre tu experiencia anterior en voluntariado, si la tienes..."
-                      className="border-gray-300 focus:border-[#0B47CE] min-h-[80px]"
+                      className="border-gray-300 focus:border-[#0B47CE] min-h-[80px] placeholder:text-gray-400"
                       {...field} 
                     />
                   </FormControl>
@@ -395,7 +390,7 @@ export function VolunteerApplicationForm() {
                   <FormControl>
                     <Textarea 
                       placeholder="Cuéntanos qué te motiva a unirte y cómo crees que puedes aportar..."
-                      className="border-gray-300 focus:border-[#0B47CE] min-h-[120px]"
+                      className="border-gray-300 focus:border-[#0B47CE] min-h-[120px] placeholder:text-gray-400"
                       {...field} 
                     />
                   </FormControl>
@@ -411,7 +406,7 @@ export function VolunteerApplicationForm() {
                 <FormItem>
                   <FormLabel className="text-[#0B47CE]">¿Cómo conociste Colombia EdTech? (opcional)</FormLabel>
                   <FormControl>
-                    <Input placeholder="Ej: Redes sociales, un amigo, evento..." {...field} className="border-gray-300 focus:border-[#0B47CE]" />
+                    <Input placeholder="Ej: Redes sociales, un amigo, evento..." {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -433,7 +428,7 @@ export function VolunteerApplicationForm() {
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
-                    <FormLabel className="text-sm text-gray-700 cursor-pointer">
+                    <FormLabel className="text-sm text-[#003889] cursor-pointer">
                       Acepto los términos y condiciones del programa de voluntariado y el tratamiento de mis datos personales *
                     </FormLabel>
                     <FormMessage />
@@ -454,7 +449,7 @@ export function VolunteerApplicationForm() {
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
-                    <FormLabel className="text-sm text-gray-700 cursor-pointer">
+                    <FormLabel className="text-sm text-[#003889] cursor-pointer">
                       Deseo recibir comunicaciones sobre eventos, oportunidades y novedades de Colombia EdTech
                     </FormLabel>
                   </div>
