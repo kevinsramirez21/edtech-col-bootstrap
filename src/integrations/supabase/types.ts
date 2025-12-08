@@ -436,6 +436,8 @@ export type Database = {
       get_public_associate_fields: {
         Args: never
         Returns: {
+          calificacion_colombia_edtech: number
+          correo_contacto: string
           descripcion: string
           fecha_ingreso: string
           id: string
@@ -446,6 +448,7 @@ export type Database = {
           segmento: Database["public"]["Enums"]["company_segment"]
           servicios: string[]
           tamano_empresa: Database["public"]["Enums"]["company_size"]
+          tipo_organizacion: string
           twitter: string
           ubicacion: string
         }[]

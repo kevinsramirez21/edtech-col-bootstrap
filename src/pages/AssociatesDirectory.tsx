@@ -70,15 +70,15 @@ export default function AssociatesDirectory() {
     tiposOrganizacion: []
   })
 
-  // Fetch associates from Supabase
+  // Fetch associates from Supabase using secure RPC function
   useEffect(() => {
     const fetchAssociates = async () => {
       try {
         setLoading(true)
+        // Use the secure RPC function that only exposes public-safe fields
+        // This excludes sensitive data like telefono, nombre_contacto, cargo_contacto
         const { data, error } = await supabase
-          .from('asociados')
-          .select('id, nombre_empresa, descripcion, pagina_web, logo_url, segmento, tamano_empresa, servicios, ubicacion, linkedin, twitter, fecha_ingreso, calificacion_colombia_edtech, correo_contacto, tipo_organizacion')
-          .eq('estado', 'activo')
+          .rpc('get_public_associate_fields')
           .order('nombre_empresa', { ascending: true })
 
         if (error) throw error
