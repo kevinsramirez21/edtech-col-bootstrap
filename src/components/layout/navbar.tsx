@@ -187,7 +187,7 @@ export function Navbar() {
                   <Button 
                     asChild
                     variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-[#F73C5C] font-semibold px-4 py-2 rounded-lg transition-all duration-300"
+                    className="border-2 border-white/90 bg-white/10 text-white hover:bg-white hover:text-[#F73C5C] font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 backdrop-blur-sm"
                   >
                     <Link to="/auth" className="flex items-center space-x-2">
                       <LogIn className="w-4 h-4" />
@@ -196,7 +196,7 @@ export function Navbar() {
                   </Button>
                   <Button 
                     asChild
-                    className="bg-white text-[#F73C5C] hover:bg-white/90 font-semibold px-6 py-2 rounded-lg shadow-lg shadow-black/25 hover:shadow-xl hover:shadow-black/40 transition-all duration-300 hover:scale-105"
+                    className="bg-white text-[#F73C5C] hover:bg-gray-100 font-bold px-6 py-2.5 rounded-lg shadow-lg shadow-black/30 hover:shadow-xl transition-all duration-300 hover:scale-105"
                   >
                     <Link to="/asociados" className="flex items-center space-x-2">
                       <Users className="w-4 h-4" />
