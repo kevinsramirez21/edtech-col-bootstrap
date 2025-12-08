@@ -25,6 +25,7 @@ import Eventos from "./pages/Eventos";
 import Legal from "./pages/Legal";
 import Panorama from "./pages/Panorama";
 import Noticias from "./pages/Noticias";
+import NoticiaDetail from "./pages/NoticiaDetail";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
                   <Route path="/legal" element={<Legal />} />
                   <Route path="/mundo-edtech/panorama" element={<Panorama />} />
                   <Route path="/mundo-edtech/noticias" element={<Noticias />} />
+                  <Route path="/mundo-edtech/noticias/:slug" element={<NoticiaDetail />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
