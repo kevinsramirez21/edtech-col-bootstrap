@@ -16,11 +16,15 @@ interface AssociateData {
   servicios: string[] | null;
 }
 
-interface EnrichmentResult {
-  campo: string;
-  valor_sugerido: string | null;
+interface EnrichmentOption {
+  valor: string;
   confianza: "alta" | "media" | "baja";
   fuente: string;
+}
+
+interface EnrichmentResult {
+  campo: string;
+  opciones: EnrichmentOption[];
 }
 
 interface LogoSearchResult {
@@ -79,9 +83,11 @@ async function tryClearbit(domain: string): Promise<LogoSearchResult | null> {
   return null;
 }
 
-// Scrape website for logo
-async function scrapeWebsiteForLogo(websiteUrl: string, domain: string): Promise<LogoSearchResult | null> {
-  console.log(`Scraping website for logo: ${websiteUrl}`);
+// Scrape website for ALL potential logos (returns array)
+async function scrapeWebsiteForLogos(websiteUrl: string, domain: string): Promise<LogoSearchResult[]> {
+  console.log(`Scraping website for logos: ${websiteUrl}`);
+  const results: LogoSearchResult[] = [];
+  const seenUrls = new Set<string>();
   
   try {
     const response = await fetch(websiteUrl, {
@@ -92,36 +98,39 @@ async function scrapeWebsiteForLogo(websiteUrl: string, domain: string): Promise
     
     if (!response.ok) {
       console.log(`Failed to fetch website: ${response.status}`);
-      return null;
+      return results;
     }
     
     const html = await response.text();
     const baseUrl = websiteUrl.endsWith("/") ? websiteUrl.slice(0, -1) : websiteUrl;
     
     // List of logo patterns to search (in order of priority)
-    const logoPatterns: { regex: RegExp; name: string }[] = [
+    const logoPatterns: { regex: RegExp; name: string; confianza: "alta" | "media" | "baja" }[] = [
       // og:image meta tag
-      { regex: /<meta\s+(?:property|name)=["']og:image["']\s+content=["']([^"']+)["']/i, name: "og:image" },
-      { regex: /<meta\s+content=["']([^"']+)["']\s+(?:property|name)=["']og:image["']/i, name: "og:image" },
+      { regex: /<meta\s+(?:property|name)=["']og:image["']\s+content=["']([^"']+)["']/gi, name: "og:image", confianza: "alta" },
+      { regex: /<meta\s+content=["']([^"']+)["']\s+(?:property|name)=["']og:image["']/gi, name: "og:image", confianza: "alta" },
       // Twitter image
-      { regex: /<meta\s+(?:property|name)=["']twitter:image["']\s+content=["']([^"']+)["']/i, name: "twitter:image" },
+      { regex: /<meta\s+(?:property|name)=["']twitter:image["']\s+content=["']([^"']+)["']/gi, name: "twitter:image", confianza: "alta" },
       // Apple touch icon (usually high quality)
-      { regex: /<link\s+[^>]*rel=["']apple-touch-icon["'][^>]*href=["']([^"']+)["']/i, name: "apple-touch-icon" },
+      { regex: /<link\s+[^>]*rel=["']apple-touch-icon["'][^>]*href=["']([^"']+)["']/gi, name: "apple-touch-icon", confianza: "alta" },
       // High-res favicon
-      { regex: /<link\s+[^>]*rel=["']icon["'][^>]*sizes=["'](?:192x192|180x180|152x152|144x144|128x128|96x96)["'][^>]*href=["']([^"']+)["']/i, name: "high-res favicon" },
+      { regex: /<link\s+[^>]*rel=["']icon["'][^>]*sizes=["'](?:192x192|180x180|152x152|144x144|128x128|96x96)["'][^>]*href=["']([^"']+)["']/gi, name: "high-res favicon", confianza: "media" },
       // Logo in img tag with logo in class/id/alt
-      { regex: /<img\s+[^>]*(?:class|id|alt)=["'][^"']*logo[^"']*["'][^>]*src=["']([^"']+)["']/i, name: "img with logo class/id/alt" },
-      { regex: /<img\s+[^>]*src=["']([^"']+)["'][^>]*(?:class|id|alt)=["'][^"']*logo[^"']*["']/i, name: "img with logo class/id/alt" },
+      { regex: /<img\s+[^>]*(?:class|id|alt)=["'][^"']*logo[^"']*["'][^>]*src=["']([^"']+)["']/gi, name: "img with logo class", confianza: "alta" },
+      { regex: /<img\s+[^>]*src=["']([^"']+)["'][^>]*(?:class|id|alt)=["'][^"']*logo[^"']*["']/gi, name: "img with logo class", confianza: "alta" },
       // Logo in header/nav img
-      { regex: /<(?:header|nav)[^>]*>[\s\S]*?<img\s+[^>]*src=["']([^"']+)["']/i, name: "header/nav img" },
+      { regex: /<(?:header|nav)[^>]*>[\s\S]*?<img\s+[^>]*src=["']([^"']+)["']/gi, name: "header/nav img", confianza: "media" },
       // Common logo paths
-      { regex: /["']([^"']*\/logo[^"']*\.(?:png|jpg|jpeg|svg|webp))["']/i, name: "path containing 'logo'" },
-      { regex: /["']([^"']*\/brand[^"']*\.(?:png|jpg|jpeg|svg|webp))["']/i, name: "path containing 'brand'" },
+      { regex: /["']([^"']*\/logo[^"']*\.(?:png|jpg|jpeg|svg|webp))["']/gi, name: "path with 'logo'", confianza: "media" },
+      { regex: /["']([^"']*\/brand[^"']*\.(?:png|jpg|jpeg|svg|webp))["']/gi, name: "path with 'brand'", confianza: "media" },
     ];
     
     for (const pattern of logoPatterns) {
-      const match = html.match(pattern.regex);
-      if (match && match[1]) {
+      // Use matchAll to get all matches
+      const matches = html.matchAll(pattern.regex);
+      
+      for (const match of matches) {
+        if (!match[1]) continue;
         let logoUrl = match[1];
         
         // Skip data URIs, tiny icons, and tracking pixels
@@ -139,57 +148,82 @@ async function scrapeWebsiteForLogo(websiteUrl: string, domain: string): Promise
           logoUrl = `${baseUrl}/${logoUrl}`;
         }
         
+        // Skip if already seen
+        if (seenUrls.has(logoUrl)) continue;
+        seenUrls.add(logoUrl);
+        
         // Verify the image exists
         console.log(`Checking ${pattern.name}: ${logoUrl}`);
         const isValid = await verifyImageUrl(logoUrl);
         
         if (isValid) {
           console.log(`✓ Found valid logo via ${pattern.name}: ${logoUrl}`);
-          return {
+          results.push({
             url: logoUrl,
-            confianza: "alta",
+            confianza: pattern.confianza,
             fuente: `Sitio web oficial (${pattern.name})`
-          };
+          });
+          
+          // Stop after finding 5 valid logos
+          if (results.length >= 5) {
+            console.log(`Found 5 logos, stopping search`);
+            return results;
+          }
         }
       }
     }
     
-    console.log(`✗ No valid logo found on website`);
-    return null;
+    console.log(`Found ${results.length} valid logos on website`);
+    return results;
   } catch (error) {
     console.log(`Error scraping website:`, error);
-    return null;
+    return results;
   }
 }
 
-// Main function to find logo
-async function findLogo(websiteUrl: string | null): Promise<LogoSearchResult | null> {
+// Main function to find MULTIPLE logo options
+async function findLogoOptions(websiteUrl: string | null): Promise<LogoSearchResult[]> {
   const domain = extractDomain(websiteUrl);
+  const allOptions: LogoSearchResult[] = [];
   
   if (!domain) {
     console.log("No valid domain to search for logo");
-    return null;
+    return allOptions;
   }
   
   // Layer 1: Try Clearbit first (fast and reliable)
   const clearbitResult = await tryClearbit(domain);
-  if (clearbitResult) return clearbitResult;
+  if (clearbitResult) {
+    allOptions.push(clearbitResult);
+  }
   
-  // Layer 2: Scrape the website
+  // Layer 2: Scrape the website for ALL logos
   if (websiteUrl) {
     const fullUrl = websiteUrl.startsWith("http") ? websiteUrl : `https://${websiteUrl}`;
-    const scrapeResult = await scrapeWebsiteForLogo(fullUrl, domain);
-    if (scrapeResult) return scrapeResult;
+    const scrapeResults = await scrapeWebsiteForLogos(fullUrl, domain);
     
-    // Try with www if not present
-    if (!websiteUrl.includes("www.")) {
+    // Add scrape results, avoiding duplicates
+    for (const result of scrapeResults) {
+      if (!allOptions.some(o => o.url === result.url)) {
+        allOptions.push(result);
+      }
+    }
+    
+    // Try with www if not present and we still have room
+    if (!websiteUrl.includes("www.") && allOptions.length < 5) {
       const wwwUrl = `https://www.${domain}`;
-      const wwwResult = await scrapeWebsiteForLogo(wwwUrl, domain);
-      if (wwwResult) return wwwResult;
+      const wwwResults = await scrapeWebsiteForLogos(wwwUrl, domain);
+      for (const result of wwwResults) {
+        if (!allOptions.some(o => o.url === result.url)) {
+          allOptions.push(result);
+          if (allOptions.length >= 5) break;
+        }
+      }
     }
   }
   
-  return null;
+  console.log(`Total logo options found: ${allOptions.length}`);
+  return allOptions;
 }
 
 serve(async (req) => {
@@ -280,26 +314,25 @@ serve(async (req) => {
 
     const enrichments: EnrichmentResult[] = [];
     
-    // Handle logo_url separately with direct search
+    // Handle logo_url with MULTIPLE options
     if (fieldsToEnrich.includes("logo_url")) {
-      console.log("=== Starting logo search ===");
-      const logoResult = await findLogo(associate.pagina_web);
+      console.log("=== Starting logo search (multiple options) ===");
+      const logoOptions = await findLogoOptions(associate.pagina_web);
       
-      if (logoResult) {
+      if (logoOptions.length > 0) {
         enrichments.push({
           campo: "logo_url",
-          valor_sugerido: logoResult.url,
-          confianza: logoResult.confianza,
-          fuente: logoResult.fuente
+          opciones: logoOptions.map(opt => ({
+            valor: opt.url,
+            confianza: opt.confianza,
+            fuente: opt.fuente
+          }))
         });
-        console.log(`Logo found: ${logoResult.url}`);
-      } else {
-        console.log("No logo found via direct search, will try AI as fallback");
-      }
-      
-      // Remove logo_url from AI fields if we found it
-      if (logoResult) {
+        console.log(`Found ${logoOptions.length} logo options`);
+        // Remove logo_url from AI fields since we found options
         fieldsToEnrich = fieldsToEnrich.filter(f => f !== "logo_url");
+      } else {
+        console.log("No logos found via direct search, will try AI as fallback");
       }
     }
 
@@ -447,9 +480,11 @@ Para servicios, extrae los principales relacionados con educación/EdTech.`
         if (companyInfo.linkedin?.url && companyInfo.linkedin.url !== "No disponible") {
           enrichments.push({
             campo: "linkedin",
-            valor_sugerido: companyInfo.linkedin.url,
-            confianza: companyInfo.linkedin.confianza,
-            fuente: companyInfo.linkedin.fuente
+            opciones: [{
+              valor: companyInfo.linkedin.url,
+              confianza: companyInfo.linkedin.confianza,
+              fuente: companyInfo.linkedin.fuente
+            }]
           });
         }
 
@@ -460,9 +495,11 @@ Para servicios, extrae los principales relacionados con educación/EdTech.`
           if (isValid) {
             enrichments.push({
               campo: "logo_url",
-              valor_sugerido: companyInfo.logo_url.url,
-              confianza: companyInfo.logo_url.confianza,
-              fuente: `${companyInfo.logo_url.fuente} (verificado)`
+              opciones: [{
+                valor: companyInfo.logo_url.url,
+                confianza: companyInfo.logo_url.confianza,
+                fuente: `${companyInfo.logo_url.fuente} (verificado)`
+              }]
             });
           } else {
             console.log(`AI suggested logo URL is invalid: ${companyInfo.logo_url.url}`);
@@ -473,17 +510,22 @@ Para servicios, extrae los principales relacionados con educación/EdTech.`
         if (companyInfo.servicios?.lista?.length > 0) {
           enrichments.push({
             campo: "servicios",
-            valor_sugerido: JSON.stringify(companyInfo.servicios.lista),
-            confianza: companyInfo.servicios.confianza,
-            fuente: companyInfo.servicios.fuente
+            opciones: [{
+              valor: JSON.stringify(companyInfo.servicios.lista),
+              confianza: companyInfo.servicios.confianza,
+              fuente: companyInfo.servicios.fuente
+            }]
           });
         }
       }
     }
 
-    // Save enrichments to database using upsert
+    // Save FIRST option of each enrichment to database for tracking
     if (enrichments.length > 0) {
       for (const enrichment of enrichments) {
+        const firstOption = enrichment.opciones[0];
+        if (!firstOption) continue;
+        
         const { error: upsertError } = await supabase
           .from("asociados_enrichment")
           .upsert({
@@ -492,9 +534,9 @@ Para servicios, extrae los principales relacionados con educación/EdTech.`
             valor_actual: enrichment.campo === "servicios" 
               ? JSON.stringify(associate.servicios || [])
               : (associate as any)[enrichment.campo] || null,
-            valor_sugerido: enrichment.valor_sugerido,
-            confianza: enrichment.confianza,
-            fuente: enrichment.fuente,
+            valor_sugerido: firstOption.valor,
+            confianza: firstOption.confianza,
+            fuente: firstOption.fuente,
             verificado: false,
             aprobado: null
           }, {
@@ -507,12 +549,14 @@ Para servicios, extrae los principales relacionados con educación/EdTech.`
       }
     }
 
-    console.log(`Found ${enrichments.length} enrichment suggestions for ${associate.nombre_empresa}`);
+    const totalOptions = enrichments.reduce((sum, e) => sum + e.opciones.length, 0);
+    console.log(`Found ${enrichments.length} fields with ${totalOptions} total options for ${associate.nombre_empresa}`);
 
     return new Response(JSON.stringify({
       success: true,
       nombre_empresa: associate.nombre_empresa,
       enrichments_count: enrichments.length,
+      total_options: totalOptions,
       enrichments
     }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
