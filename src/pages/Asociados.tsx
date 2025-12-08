@@ -227,15 +227,15 @@ const Asociados = () => {
       </Section>
 
       {/* Technology & Union Section */}
-      <Section className="py-20 bg-[#F4E8DD] relative overflow-hidden">
+      <Section className="py-12 sm:py-16 lg:py-20 bg-[#F4E8DD] relative overflow-hidden">
         
-        <div className="container max-w-7xl mx-auto px-8 lg:px-16">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
           {/* First Row - Image Left, Text Right */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24 relative">
-            {/* Horizontal bar from left */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 h-16 w-64 bg-gradient-to-r from-[#F73C5C] via-[#8B3A8B] to-transparent -ml-32 lg:-ml-48"></div>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-12 lg:mb-24 relative">
+            {/* Horizontal bar from left - hidden on mobile */}
+            <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 h-16 w-64 bg-gradient-to-r from-[#F73C5C] via-[#8B3A8B] to-transparent -ml-48"></div>
             
-            <div className="relative z-10">
+            <div className="relative z-10 order-2 lg:order-1">
               <OptimizedImage 
                 src={eventoPonenteImg} 
                 alt="Evento Colombia EdTech - Ponente en escenario" 
@@ -243,29 +243,29 @@ const Asociados = () => {
                 aspectRatio="video"
               />
             </div>
-            <div className="relative z-10">
-              <p className="text-lg text-[#0B47CE] mb-6 leading-relaxed">
+            <div className="relative z-10 order-1 lg:order-2">
+              <p className="text-base sm:text-lg text-[#0B47CE] mb-4 sm:mb-6 leading-relaxed">
                 Tenemos herramientas capaz de derribar las barreras que han limitado generaciones enteras, una herramienta para abrir puertas a un aprendizaje accesible, personalizado y relevante para todos, y esta herramienta es ...
               </p>
-              <h2 className="text-5xl font-bold mb-6 font-funnel">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 font-funnel">
                 <span className="text-[#F73C5C]">La tecnología</span>
               </h2>
-              <p className="text-xl text-[#0B47CE] font-medium">
+              <p className="text-lg sm:text-xl text-[#0B47CE] font-medium">
                 Pero la tecnología, por sí sola, <span className="text-[#F73C5C] font-bold">no es suficiente.</span>
               </p>
             </div>
           </div>
 
           {/* Second Row - Text Left, Image Right */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center relative">
-            {/* Horizontal bar from right */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 h-16 w-64 bg-gradient-to-l from-[#8B3A8B] via-[#F73C5C] to-transparent -mr-32 lg:-mr-48"></div>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center relative">
+            {/* Horizontal bar from right - hidden on mobile */}
+            <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 h-16 w-64 bg-gradient-to-l from-[#8B3A8B] via-[#F73C5C] to-transparent -mr-48"></div>
             
             <div className="relative z-10">
-              <h3 className="text-4xl font-bold mb-8 leading-tight font-funnel">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-8 leading-tight font-funnel">
                 <span className="text-[#F73C5C]">El verdadero cambio necesita unión, sinergia, comunidad</span>
               </h3>
-              <p className="text-xl text-[#0B47CE]">
+              <p className="text-lg sm:text-xl text-[#0B47CE]">
                 Aquí es donde entras tú, entra tu organización, por que el éxito está garantizado cuando <span className="text-[#F73C5C] font-bold">trabajamos juntos</span>
               </p>
             </div>
@@ -294,17 +294,17 @@ const Asociados = () => {
       </Section>
 
       {/* Testimonios */}
-      <Section className="py-16 bg-white">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 font-funnel">
+      <Section className="py-12 sm:py-16 bg-white">
+        <div className="container px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 font-funnel">
             <span className="text-[#F73C5C]">Algunos testimonios de nuestros asociados</span>
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {testimonios.map((testimonio, index) => <div key={index} className={`p-8 rounded-lg text-white ${testimonio.color === 'blue' ? 'bg-[#0B47CE]' : 'bg-[#F73C5C]'}`}>
-                <div className="flex items-center mb-4">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
+            {testimonios.map((testimonio, index) => <div key={index} className={`p-5 sm:p-6 lg:p-8 rounded-lg text-white ${testimonio.color === 'blue' ? 'bg-[#0B47CE]' : 'bg-[#F73C5C]'}`}>
+                <div className="flex items-center mb-3 sm:mb-4">
                   {testimonio.image ? (
-                    <div className="w-16 h-16 rounded-full overflow-hidden mr-4 flex-shrink-0">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden mr-3 sm:mr-4 flex-shrink-0">
                       <OptimizedImage 
                         src={testimonio.image} 
                         alt={testimonio.name} 
@@ -313,16 +313,16 @@ const Asociados = () => {
                       />
                     </div>
                   ) : (
-                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
-                      <div className="w-12 h-12 bg-white/40 rounded-full"></div>
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-full flex items-center justify-center mr-3 sm:mr-4">
+                      <div className="w-8 h-8 sm:w-12 sm:h-12 bg-white/40 rounded-full"></div>
                     </div>
                   )}
                   <div>
-                    <h4 className="font-bold text-lg">{testimonio.name}</h4>
-                    <p className="text-sm opacity-90">{testimonio.role}</p>
+                    <h4 className="font-bold text-base sm:text-lg">{testimonio.name}</h4>
+                    <p className="text-xs sm:text-sm opacity-90">{testimonio.role}</p>
                   </div>
                 </div>
-                <p className="text-base leading-relaxed">
+                <p className="text-sm sm:text-base leading-relaxed">
                   {testimonio.quote}
                 </p>
               </div>)}
@@ -331,33 +331,33 @@ const Asociados = () => {
       </Section>
 
       {/* Problemas Reales */}
-      <Section className="py-20 md:py-28 bg-[#0B47CE] text-white">
-        <div className="container max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-funnel">
+      <Section className="py-12 sm:py-16 lg:py-28 bg-[#0B47CE] text-white">
+        <div className="container max-w-7xl mx-auto text-center px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 font-funnel">
             Soluciones reales para problemas reales
           </h2>
-          <h3 className="text-2xl md:text-3xl mb-16">Lo sabemos ...</h3>
+          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-12 lg:mb-16">Lo sabemos ...</h3>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {statistics.slice(0, 2).map((stat, index) => <div key={index} className="bg-white/15 rounded-xl p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
-                <div className="text-5xl md:text-6xl font-bold mb-4">{stat.percentage}</div>
-                <div className="text-base md:text-lg mb-3">{stat.label}</div>
-                <div className="text-lg md:text-xl">{stat.description}</div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 lg:mb-16">
+            {statistics.slice(0, 2).map((stat, index) => <div key={index} className="bg-white/15 rounded-xl p-5 sm:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4">{stat.percentage}</div>
+                <div className="text-sm sm:text-base md:text-lg mb-2 sm:mb-3">{stat.label}</div>
+                <div className="text-base sm:text-lg md:text-xl">{stat.description}</div>
               </div>)}
-            <div className="bg-white/15 rounded-xl p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
-              <div className="text-5xl md:text-6xl font-bold mb-4">{statistics[2].percentage}</div>
-              <div className="text-lg md:text-xl">{statistics[2].description}</div>
+            <div className="bg-white/15 rounded-xl p-5 sm:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300 sm:col-span-2 lg:col-span-1">
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4">{statistics[2].percentage}</div>
+              <div className="text-base sm:text-lg md:text-xl">{statistics[2].description}</div>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 text-left">
-            <div className="bg-white/15 rounded-xl p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
-              <p className="text-lg md:text-xl leading-relaxed">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 text-left">
+            <div className="bg-white/15 rounded-xl p-5 sm:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed">
                 Hay una ausencia de formación especializada en BTC, BTG, y BTBTC enfocado en EdTech
               </p>
             </div>
-            <div className="bg-white/15 rounded-xl p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
-              <p className="text-lg md:text-xl leading-relaxed">
+            <div className="bg-white/15 rounded-xl p-5 sm:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed">
                 El gobierno es lento en las licitaciones educativas, y le sector B2C enfrenta cambios en la capacidad de pago
               </p>
             </div>
@@ -477,7 +477,7 @@ const Asociados = () => {
                   )}
                 />
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
                   <FormField
                     control={form.control}
                     name="nombre_contacto"
@@ -507,7 +507,7 @@ const Asociados = () => {
                   />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
                   <FormField
                     control={form.control}
                     name="telefono"
