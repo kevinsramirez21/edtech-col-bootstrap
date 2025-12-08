@@ -299,13 +299,13 @@ export function AssociatesAdmin() {
               placeholder="Buscar por nombre o descripción..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg border-0 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-[#F73C5C]"
+              className="w-full px-4 py-2 rounded-lg border-0 bg-white text-slate-900 placeholder-slate-500 focus:ring-2 focus:ring-[#F73C5C] focus:outline-none"
             />
           </div>
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="px-4 py-2 rounded-lg border-0 text-gray-900 focus:ring-2 focus:ring-[#F73C5C] md:w-48"
+            className="px-4 py-2 rounded-lg border-0 bg-white text-slate-900 focus:ring-2 focus:ring-[#F73C5C] focus:outline-none md:w-48"
           >
             <option value="all">Todos los estados</option>
             <option value="activo">Activos</option>
