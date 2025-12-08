@@ -19,6 +19,7 @@ import { useAdmin } from "@/hooks/use-admin"
 import { Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
 
+// Public-safe associate interface (no sensitive contact info)
 interface Associate {
   id: string
   nombre_empresa: string
@@ -26,12 +27,12 @@ interface Associate {
   pagina_web?: string
   segmento?: string
   servicios?: string[]
-  correo_contacto?: string
   logo_url?: string
   ubicacion?: string
   tamano_empresa?: string
-  tipo_membresia?: string
-  created_at: string
+  linkedin?: string
+  twitter?: string
+  fecha_ingreso?: string
 }
 
 interface FiltersState {
@@ -79,9 +80,10 @@ export default function AssociatesDirectory() {
     const fetchAssociates = async () => {
       try {
         setLoading(true)
+        // Only select public-safe fields (no sensitive contact info like email, phone, contact name)
         const { data, error } = await supabase
           .from('asociados')
-          .select('*')
+          .select('id, nombre_empresa, descripcion, pagina_web, logo_url, segmento, tamano_empresa, servicios, ubicacion, linkedin, twitter, fecha_ingreso, calificacion_colombia_edtech')
           .eq('estado', 'activo')
           .order('nombre_empresa', { ascending: true })
 
@@ -183,7 +185,7 @@ export default function AssociatesDirectory() {
         filtered.sort((a, b) => b.nombre_empresa.localeCompare(a.nombre_empresa))
         break
       case 'recent':
-        filtered.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+        filtered.sort((a, b) => new Date(b.fecha_ingreso || '').getTime() - new Date(a.fecha_ingreso || '').getTime())
         break
       default:
         break

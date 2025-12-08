@@ -260,6 +260,23 @@ export type Database = {
         Args: never
         Returns: Database["public"]["Enums"]["app_role"]
       }
+      get_public_associate_fields: {
+        Args: never
+        Returns: {
+          descripcion: string
+          fecha_ingreso: string
+          id: string
+          linkedin: string
+          logo_url: string
+          nombre_empresa: string
+          pagina_web: string
+          segmento: Database["public"]["Enums"]["company_segment"]
+          servicios: string[]
+          tamano_empresa: Database["public"]["Enums"]["company_size"]
+          twitter: string
+          ubicacion: string
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
