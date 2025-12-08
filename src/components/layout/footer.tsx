@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Mail, MapPin, Phone, Linkedin, Instagram } from "lucide-react"
+import { Mail, MapPin, Linkedin, Instagram } from "lucide-react"
 import footerLogo from "@/assets/isotipo-footer.png"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -104,11 +104,7 @@ export function Footer() {
             <div className="space-y-3 sm:space-y-4">
               <div className="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4">
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-accent-brand flex-shrink-0" />
-                <span className="text-white text-sm sm:text-base font-medium">info@colombiaedtech.org</span>
-              </div>
-              <div className="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4">
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-accent-brand flex-shrink-0" />
-                <span className="text-white text-sm sm:text-base font-medium">+57 (1) 234-5678</span>
+                <span className="text-white text-sm sm:text-base font-medium">kevin@colombiaedtech.org</span>
               </div>
               <div className="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-accent-brand flex-shrink-0" />
