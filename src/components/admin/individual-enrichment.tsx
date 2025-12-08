@@ -100,6 +100,7 @@ export function IndividualEnrichment() {
   const [manualValue, setManualValue] = useState("");
   const [manualLogoPreviewError, setManualLogoPreviewError] = useState(false);
   const [manualServicios, setManualServicios] = useState<string[]>([]);
+  const [manualTiposOrg, setManualTiposOrg] = useState<string[]>([]);
   const [newServicio, setNewServicio] = useState("");
 
   // Fetch all active associates
@@ -425,7 +426,18 @@ export function IndividualEnrichment() {
     } else if (field === "pagina_web") {
       setManualValue(selectedAssociate.pagina_web || "");
     } else if (field === "tipo_organizacion") {
-      setManualValue(selectedAssociate.tipo_organizacion || "");
+      // Parse existing tipos - could be JSON array or single string
+      const existing = selectedAssociate.tipo_organizacion;
+      if (existing) {
+        try {
+          const parsed = JSON.parse(existing);
+          setManualTiposOrg(Array.isArray(parsed) ? parsed : [existing]);
+        } catch {
+          setManualTiposOrg([existing]);
+        }
+      } else {
+        setManualTiposOrg([]);
+      }
     } else if (field === "servicios") {
       setManualServicios(selectedAssociate.servicios || []);
       setNewServicio("");
@@ -438,6 +450,12 @@ export function IndividualEnrichment() {
     let valueToSave = "";
     if (manualEditField === "servicios") {
       valueToSave = JSON.stringify(manualServicios);
+    } else if (manualEditField === "tipo_organizacion") {
+      if (manualTiposOrg.length === 0) {
+        toast.error("Por favor selecciona al menos un tipo");
+        return;
+      }
+      valueToSave = JSON.stringify(manualTiposOrg);
     } else {
       valueToSave = manualValue.trim();
     }
@@ -454,6 +472,14 @@ export function IndividualEnrichment() {
     });
     
     setManualEditField(null);
+  };
+
+  const toggleTipoOrg = (tipo: string) => {
+    setManualTiposOrg(prev => 
+      prev.includes(tipo) 
+        ? prev.filter(t => t !== tipo)
+        : [...prev, tipo]
+    );
   };
 
   const addServicio = () => {
@@ -615,6 +641,26 @@ export function IndividualEnrichment() {
                     {s}
                   </Badge>
                 ))}
+              </div>
+            ) : campo === "tipo_organizacion" ? (
+              <div className="flex flex-wrap gap-1.5">
+                {(() => {
+                  try {
+                    const tipos = typeof currentOption.valor === 'string' ? JSON.parse(currentOption.valor) : currentOption.valor;
+                    if (Array.isArray(tipos)) {
+                      return tipos.map((tipo: string, i: number) => (
+                        <Badge key={i} className="bg-orange-500/15 text-orange-700 border-orange-500/30">
+                          {tipo}
+                        </Badge>
+                      ));
+                    }
+                  } catch {}
+                  return (
+                    <Badge className="bg-orange-500/15 text-orange-700 border-orange-500/30">
+                      {currentOption.valor}
+                    </Badge>
+                  );
+                })()}
               </div>
             ) : (
               <a 
@@ -1016,9 +1062,25 @@ export function IndividualEnrichment() {
                         <span className="font-semibold text-foreground">Tipo de Organización</span>
                       </div>
                       {selectedAssociate.tipo_organizacion ? (
-                        <Badge className="bg-orange-500/15 text-orange-700 border-orange-500/30">
-                          {selectedAssociate.tipo_organizacion}
-                        </Badge>
+                        <div className="flex flex-wrap gap-1.5">
+                          {(() => {
+                            try {
+                              const tipos = JSON.parse(selectedAssociate.tipo_organizacion);
+                              if (Array.isArray(tipos)) {
+                                return tipos.map((tipo, i) => (
+                                  <Badge key={i} className="bg-orange-500/15 text-orange-700 border-orange-500/30">
+                                    {tipo}
+                                  </Badge>
+                                ));
+                              }
+                            } catch {}
+                            return (
+                              <Badge className="bg-orange-500/15 text-orange-700 border-orange-500/30">
+                                {selectedAssociate.tipo_organizacion}
+                              </Badge>
+                            );
+                          })()}
+                        </div>
                       ) : (
                         <p className="text-sm text-muted-foreground/60 italic">No clasificado</p>
                       )}
@@ -1193,21 +1255,36 @@ export function IndividualEnrichment() {
 
             {manualEditField === "tipo_organizacion" && (
               <div className="space-y-3">
-                <Label>Selecciona el tipo de organización</Label>
+                <Label>Selecciona uno o más tipos de organización</Label>
                 <div className="grid gap-2">
-                  {ORGANIZATION_TYPES.map((tipo) => (
-                    <Button
-                      key={tipo}
-                      type="button"
-                      variant={manualValue === tipo ? "default" : "outline"}
-                      className="justify-start h-auto py-3 px-4"
-                      onClick={() => setManualValue(tipo)}
-                    >
-                      <Building className="h-4 w-4 mr-2 flex-shrink-0" />
-                      {tipo}
-                    </Button>
-                  ))}
+                  {ORGANIZATION_TYPES.map((tipo) => {
+                    const isSelected = manualTiposOrg.includes(tipo);
+                    return (
+                      <Button
+                        key={tipo}
+                        type="button"
+                        variant={isSelected ? "default" : "outline"}
+                        className="justify-start h-auto py-3 px-4"
+                        onClick={() => toggleTipoOrg(tipo)}
+                      >
+                        <div className={`h-4 w-4 mr-2 rounded border flex items-center justify-center ${isSelected ? 'bg-primary-foreground border-primary-foreground' : 'border-current'}`}>
+                          {isSelected && <Check className="h-3 w-3" />}
+                        </div>
+                        <Building className="h-4 w-4 mr-2 flex-shrink-0" />
+                        {tipo}
+                      </Button>
+                    );
+                  })}
                 </div>
+                {manualTiposOrg.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {manualTiposOrg.map((tipo, i) => (
+                      <Badge key={i} className="bg-orange-500/15 text-orange-700 border-orange-500/30">
+                        {tipo}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 
