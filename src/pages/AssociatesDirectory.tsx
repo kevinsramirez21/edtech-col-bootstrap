@@ -277,28 +277,28 @@ export default function AssociatesDirectory() {
 
       <main className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <div className="bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white py-8 sm:py-10 md:py-12">
-          <div className="container max-w-7xl mx-auto px-4">
+        <div className="bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white py-6 sm:py-8 md:py-10 lg:py-12">
+          <div className="container max-w-7xl mx-auto px-4 sm:px-6">
             <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-3 md:mb-4">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
+                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
                   Directorio de Asociados
                 </h1>
-                <Badge className="bg-[#F73C5C] hover:bg-[#F73C5C] text-white text-xs font-bold px-2 py-1 animate-pulse">
+                <Badge className="bg-[#F73C5C] hover:bg-[#F73C5C] text-white text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 animate-pulse">
                   BETA
                 </Badge>
               </div>
-              <p className="text-base sm:text-lg text-white/90 mb-4 md:mb-6">
+              <p className="text-sm sm:text-base md:text-lg text-white/90 mb-3 sm:mb-4 md:mb-6">
                 Explora las empresas EdTech que están transformando la educación en Colombia
               </p>
               {isAdmin && (
                 <Button 
                   asChild
                   size="sm"
-                  className="bg-white text-[#0B47CE] hover:bg-white/90 font-semibold"
+                  className="bg-white text-[#0B47CE] hover:bg-white/90 font-semibold text-xs sm:text-sm"
                 >
                   <Link to="/admin" className="flex items-center gap-2">
-                    <Settings className="w-4 h-4" />
+                    <Settings className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     Panel de Administración
                   </Link>
                 </Button>
@@ -308,12 +308,16 @@ export default function AssociatesDirectory() {
         </div>
 
         {/* Main Content */}
-        <div className="container max-w-7xl mx-auto px-4 py-4 sm:py-6 md:py-8">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 md:py-8">
           {/* Mobile Filter Button */}
-          <div className="lg:hidden mb-4">
+          <div className="lg:hidden mb-3 sm:mb-4">
             <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
               <SheetTrigger asChild>
-                <Button variant="outline" className="w-full justify-between">
+                <Button variant="outline" className="w-full justify-between text-sm">
+                  <span className="flex items-center gap-2">
+                    <Filter className="w-4 h-4" />
+                    Filtrar por tipo
+                  </span>
                   <span className="flex items-center gap-2">
                     <Filter className="w-4 h-4" />
                     Filtrar por tipo
@@ -402,23 +406,23 @@ export default function AssociatesDirectory() {
             {/* Main Content Area */}
             <div className="flex-1 min-w-0">
               {/* Search and Sort Bar */}
-              <div className="bg-white rounded-lg shadow-sm border p-4 mb-6">
-                <div className="flex flex-col sm:flex-row gap-4">
+              <div className="bg-white rounded-lg shadow-sm border p-3 sm:p-4 mb-4 sm:mb-6">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   {/* Search */}
                   <div className="relative flex-1">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                     <Input
                       type="text"
-                      placeholder="Buscar por nombre o descripción..."
+                      placeholder="Buscar por nombre..."
                       value={filters.search}
                       onChange={(e) => setFilters(prev => ({ ...prev, search: e.target.value }))}
-                      className="pl-10"
+                      className="pl-10 text-sm sm:text-base"
                     />
                   </div>
                   
                   {/* Sort */}
                   <Select value={sortBy} onValueChange={setSortBy}>
-                    <SelectTrigger className="w-full sm:w-[180px]">
+                    <SelectTrigger className="w-full sm:w-[180px] text-sm">
                       <SelectValue placeholder="Ordenar por" />
                     </SelectTrigger>
                     <SelectContent>
@@ -431,9 +435,9 @@ export default function AssociatesDirectory() {
 
                 {/* Active Filters Display */}
                 {hasActiveFilters && (
-                  <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3 sm:mt-4 pt-3 sm:pt-4 border-t">
                     {filters.search && (
-                      <Badge variant="secondary" className="gap-1 bg-gray-100">
+                      <Badge variant="secondary" className="gap-1 bg-gray-100 text-xs">
                         Búsqueda: "{filters.search}"
                         <button
                           onClick={() => setFilters(prev => ({ ...prev, search: "" }))}
@@ -445,7 +449,7 @@ export default function AssociatesDirectory() {
                     )}
                     
                     {filters.tiposOrganizacion.map(tipo => (
-                      <Badge key={tipo} variant="secondary" className="gap-1 bg-[#0B47CE]/10 text-[#0B47CE]">
+                      <Badge key={tipo} variant="secondary" className="gap-1 bg-[#0B47CE]/10 text-[#0B47CE] text-xs">
                         {tipo}
                         <button
                           onClick={() => handleTipoToggle(tipo)}
@@ -460,15 +464,15 @@ export default function AssociatesDirectory() {
               </div>
 
               {/* Results Count */}
-              <div className="flex items-center justify-between mb-4">
-                <p className="text-sm text-primary-900/60">
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <p className="text-xs sm:text-sm text-primary-900/60">
                   Mostrando <span className="font-semibold text-primary-900">{filteredAssociates.length}</span> de {totalAssociates} asociados
                 </p>
               </div>
 
               {/* Results Grid */}
               {filteredAssociates.length > 0 ? (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
                   {filteredAssociates.map((associate) => (
                     <AssociateCard
                       key={associate.id}
@@ -491,16 +495,16 @@ export default function AssociatesDirectory() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-16 bg-white rounded-lg border">
-                  <Building2 className="w-16 h-16 mx-auto mb-4 text-primary-700/30" />
-                  <h3 className="text-xl font-semibold text-primary-900 mb-2">
+                <div className="text-center py-10 sm:py-12 lg:py-16 bg-white rounded-lg border px-4">
+                  <Building2 className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 text-primary-700/30" />
+                  <h3 className="text-lg sm:text-xl font-semibold text-primary-900 mb-2">
                     No se encontraron asociados
                   </h3>
-                  <p className="text-primary-900/60 mb-6 max-w-md mx-auto">
+                  <p className="text-sm sm:text-base text-primary-900/60 mb-4 sm:mb-6 max-w-md mx-auto">
                     No hay asociados que coincidan con los filtros seleccionados. 
                     Intenta ajustar tus criterios de búsqueda.
                   </p>
-                  <Button onClick={resetFilters} variant="outline">
+                  <Button onClick={resetFilters} variant="outline" size="sm">
                     Limpiar filtros
                   </Button>
                 </div>
