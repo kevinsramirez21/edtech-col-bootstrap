@@ -79,7 +79,7 @@ export function Navbar() {
                 {/* Desktop Logo */}
                 <div className="hidden sm:block">
                   <OptimizedImage
-                    src="/images/logo-horizontal-beige-pg.png"
+                    src="/images/logo-horizontal-transparent.png"
                     alt="Colombia EdTech - Asociación de Organizaciones EdTech"
                     fallback="/placeholder.svg"
                     className={cn(
@@ -93,7 +93,7 @@ export function Navbar() {
                 {/* Mobile Logo */}
                 <div className="block sm:hidden">
                   <OptimizedImage
-                    src="/images/isotipo-red-bg.png"
+                    src="/images/isotipo-transparent.png"
                     alt="Colombia EdTech"
                     fallback="/placeholder.svg"
                     className={cn(
@@ -103,7 +103,6 @@ export function Navbar() {
                     priority
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/20 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
               </div>
             </Link>
           </div>
