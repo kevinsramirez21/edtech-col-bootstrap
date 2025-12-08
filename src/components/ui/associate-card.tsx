@@ -62,7 +62,7 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
               )}
             />
           ))}
-          <span className="text-xs font-semibold text-gray-700 ml-1">{rating}/5</span>
+          <span className="text-xs font-semibold text-primary-900/80 ml-1">{rating}/5</span>
         </div>
         <p className="text-xs text-primary-700 font-medium">
           Calidad Certificada Colombia EdTech
@@ -114,14 +114,14 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
       
       <CardContent className="pt-0 space-y-4">
         {associate.descripcion && (
-          <p className="text-sm text-gray-600 line-clamp-3">
+          <p className="text-sm text-primary-900/70 line-clamp-3">
             {associate.descripcion}
           </p>
         )}
 
         {associate.servicios && associate.servicios.length > 0 && (
           <div className="space-y-2">
-            <p className="text-xs font-semibold text-gray-700 uppercase tracking-wide">
+            <p className="text-xs font-semibold text-primary-900/80 uppercase tracking-wide">
               Servicios
             </p>
             <div className="flex flex-wrap gap-1">
@@ -143,17 +143,17 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
           </div>
         )}
 
-        <div className="space-y-2 text-sm text-gray-600">
+        <div className="space-y-2 text-sm text-primary-900/70">
           {associate.ubicacion && (
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-gray-400" />
+              <MapPin className="w-4 h-4 text-primary-700/50" />
               <span className="truncate">{associate.ubicacion}</span>
             </div>
           )}
           
           {associate.correo_contacto && (
             <div className="flex items-center gap-2">
-              <Mail className="w-4 h-4 text-gray-400" />
+              <Mail className="w-4 h-4 text-primary-700/50" />
               <a 
                 href={`mailto:${associate.correo_contacto}`}
                 className="truncate hover:text-primary-700 transition-colors"
