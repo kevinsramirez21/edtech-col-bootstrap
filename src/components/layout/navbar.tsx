@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom"
 import { Menu, X, Users, LogIn, ChevronDown, Settings } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { OptimizedImage } from "@/components/ui/optimized-image"
 import { UserMenu } from "@/components/ui/user-menu"
 import { useAuth } from "@/hooks/use-auth"
 import { useAdmin } from "@/hooks/use-admin"
@@ -74,18 +73,16 @@ export function Navbar() {
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center flex-shrink-0 group transition-all duration-300"
+            className="flex items-center flex-shrink-0 group"
             aria-label="Colombia EdTech - Ir al inicio"
           >
-            <OptimizedImage
+            <img
               src="/images/isotipo-azul-transparent.png"
               alt="Colombia EdTech"
-              fallback="/placeholder.svg"
               className={cn(
                 "w-auto object-contain transition-all duration-300 group-hover:scale-105",
-                isScrolled ? "h-10 sm:h-12" : "h-11 sm:h-16"
+                isScrolled ? "h-12 sm:h-14" : "h-14 sm:h-16"
               )}
-              priority
             />
           </Link>
 
