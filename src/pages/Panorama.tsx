@@ -491,13 +491,13 @@ const Panorama = () => {
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-12">
-              <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 bg-white/10 backdrop-blur-sm border-white/20">
+              <Card className="h-full flex flex-col p-4 sm:p-5 md:p-6 lg:p-8 bg-white/10 backdrop-blur-sm border-white/20">
                 <div className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 md:mb-4">🔄</div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white">Hiperpersonalización</h3>
-                <ul className="flex-grow space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90">
-                  <li>• Tutores virtuales con IA que conocen a cada estudiante</li>
-                  <li>• Adaptación de contenido y ritmo en tiempo real</li>
-                  <li>• Rutas personalizadas según objetivos y capacidades</li>
+                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white break-words">Hiperpersonalización</h3>
+                <ul className="flex-grow space-y-1.5 sm:space-y-2 md:space-y-3 text-[11px] sm:text-xs md:text-sm lg:text-base text-white/90">
+                  <li>• Tutores virtuales con IA</li>
+                  <li>• Adaptación en tiempo real</li>
+                  <li>• Rutas personalizadas</li>
                 </ul>
               </Card>
               
