@@ -9,6 +9,7 @@ interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> 
   className?: string;
   aspectRatio?: 'video' | 'square' | '4/3' | '3/2' | 'auto';
   placeholderColor?: string;
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none';
 }
 
 export function OptimizedImage({ 
@@ -19,6 +20,7 @@ export function OptimizedImage({
   className,
   aspectRatio = 'auto',
   placeholderColor = 'bg-gray-200',
+  objectFit = 'cover',
   ...props 
 }: OptimizedImageProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -121,7 +123,11 @@ export function OptimizedImage({
           onLoad={handleLoad}
           onError={handleError}
           className={cn(
-            "w-full h-full object-cover transition-opacity duration-500",
+            "w-full h-full transition-opacity duration-500",
+            objectFit === 'contain' && "object-contain",
+            objectFit === 'cover' && "object-cover",
+            objectFit === 'fill' && "object-fill",
+            objectFit === 'none' && "object-none",
             isLoading ? "opacity-0" : "opacity-100"
           )}
           {...props}

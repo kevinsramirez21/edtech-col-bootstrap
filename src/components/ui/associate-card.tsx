@@ -76,12 +76,15 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
       <CardHeader className="pb-3 sm:pb-4 px-4 sm:px-6">
         <div className="flex items-start gap-3 sm:gap-4">
           {associate.logo_url ? (
-            <OptimizedImage
-              src={associate.logo_url}
-              alt={`Logo de ${associate.nombre_empresa}`}
-              fallback="/placeholder.svg"
-              className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg object-contain bg-gray-50 p-1.5 sm:p-2 flex-shrink-0"
-            />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg bg-white border border-border/50 p-1.5 sm:p-2 flex-shrink-0 flex items-center justify-center">
+              <OptimizedImage
+                src={associate.logo_url}
+                alt={`Logo de ${associate.nombre_empresa}`}
+                fallback="/placeholder.svg"
+                objectFit="contain"
+                className="w-full h-full"
+              />
+            </div>
           ) : (
             <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center flex-shrink-0">
               <Building2 className="w-6 h-6 sm:w-8 sm:h-8 text-primary-700" />
