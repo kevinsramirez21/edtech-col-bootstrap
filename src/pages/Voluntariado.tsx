@@ -97,7 +97,7 @@ const Voluntariado = () => {
       </Helmet>
       
       {/* Hero */}
-      <Section className="py-24 md:py-40 lg:py-52 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[85vh]">
+      <Section className="py-16 sm:py-20 md:py-28 lg:py-36 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[70vh] sm:min-h-[75vh] lg:min-h-[85vh]">
         {/* Background image */}
         <div className="absolute inset-0">
           <OptimizedImage 
@@ -108,40 +108,38 @@ const Voluntariado = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
         </div>
-        <div className="relative z-10 container max-w-7xl mx-auto h-full flex items-center pt-20 md:pt-24">
+        <div className="relative z-10 container max-w-7xl mx-auto px-4 h-full flex items-center pt-16 sm:pt-20 md:pt-24">
           <div className="max-w-4xl animate-fade-in">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight drop-shadow-2xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight drop-shadow-2xl">
               Voluntariado
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl mb-10 leading-relaxed drop-shadow-lg max-w-3xl">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 sm:mb-8 md:mb-10 leading-relaxed drop-shadow-lg max-w-3xl">
               Si eres experto, profesional o estudiante y quieres 
               <strong className="text-[#F73C5C]"> donar tu tiempo y talento</strong> en esta revolución de la educación, 
               bienvenido al mundo de los <strong className="text-[#F73C5C]">VOLUNTARIOS</strong>
             </p>
-            <p className="text-lg md:text-xl mb-10 opacity-90 drop-shadow-lg max-w-3xl">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 md:mb-10 opacity-90 drop-shadow-lg max-w-3xl">
               Aquí podrás conectar tus <strong>intereses profesionales</strong> con un <strong>propósito profundo</strong>: 
               mejorar el sistema educativo de Colombia y el mundo.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <Button 
                 size="lg" 
-                className="text-lg px-8 py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300"
-                onClick={handleVolunteerApplyClick}
-                asChild
+                className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300"
+                onClick={() => {
+                  handleVolunteerApplyClick();
+                  document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
-                <Link to="/voluntariado#form">
-                  Quiero ser voluntario/a <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+                Quiero ser voluntario/a <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="text-lg px-8 py-6 bg-white/95 border-white hover:bg-white backdrop-blur-sm hover-scale text-[#0B47CE] font-bold shadow-xl hover:shadow-2xl"
-                asChild
+                className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 bg-white/95 border-white hover:bg-white backdrop-blur-sm hover-scale text-[#0B47CE] font-bold shadow-xl hover:shadow-2xl"
+                onClick={() => document.getElementById('beneficios')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <Link to="#beneficios">
-                  Conoce los beneficios
-                </Link>
+                Conoce los beneficios
               </Button>
             </div>
           </div>
@@ -232,13 +230,13 @@ const Voluntariado = () => {
             
             <CTAButton 
               size="lg"
-              className="bg-white text-[#0B47CE] hover:bg-gray-100 text-lg px-8 py-6 font-bold shadow-2xl"
-              onClick={handleVolunteerApplyClick}
-              asChild
+              className="bg-white text-[#0B47CE] hover:bg-gray-100 text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 font-bold shadow-2xl"
+              onClick={() => {
+                handleVolunteerApplyClick();
+                document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
-              <Link to="/voluntariado#form">
-                SÍ, QUIERO SER VOLUNTARIO/A EN COLOMBIA EDTECH
-              </Link>
+              SÍ, QUIERO SER VOLUNTARIO/A EN COLOMBIA EDTECH
             </CTAButton>
           </div>
         </div>
@@ -291,49 +289,49 @@ const Voluntariado = () => {
           <div className="text-center">
             <CTAButton 
               size="lg"
-              className="btn-primary text-lg px-8 py-6"
-              onClick={handleVolunteerApplyClick}
-              asChild
+              className="btn-primary text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6"
+              onClick={() => {
+                handleVolunteerApplyClick();
+                document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
-              <Link to="/voluntariado#form">
-                ¿DÓNDE FIRMO? ESTOY LISTO/A PARA SER VOLUNTARIO/A
-              </Link>
+              ¿DÓNDE FIRMO? ESTOY LISTO/A PARA SER VOLUNTARIO/A
             </CTAButton>
           </div>
         </div>
       </Section>
 
       {/* Cierre */}
-      <Section className="py-24 md:py-32 bg-gradient-to-br from-[#003889] via-[#8B3A8B] to-[#F73C5C] text-white">
-        <div className="container max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-10 font-funnel drop-shadow-lg">Querido/a voluntario/a</h2>
-          <p className="text-2xl md:text-3xl mb-8 leading-relaxed drop-shadow-md">
+      <Section className="py-16 sm:py-20 md:py-24 lg:py-32 bg-gradient-to-br from-[#003889] via-[#8B3A8B] to-[#F73C5C] text-white">
+        <div className="container max-w-4xl mx-auto text-center px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 md:mb-10 font-funnel drop-shadow-lg">Querido/a voluntario/a</h2>
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 sm:mb-8 leading-relaxed drop-shadow-md">
             Tu <strong>tiempo</strong> y tu <strong>talento</strong> tienen un propósito <strong>enorme</strong>, más allá de lo que imaginas.
           </p>
-          <p className="text-xl mb-10 opacity-90 drop-shadow-md leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 opacity-90 drop-shadow-md leading-relaxed">
             Más que un voluntariado, es la oportunidad de <strong>dejar tu legado</strong> en la educación de Colombia y Latinoamérica.
           </p>
-          <p className="text-3xl font-bold mb-12 drop-shadow-lg">¡Nos vemos dentro!</p>
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 sm:mb-10 md:mb-12 drop-shadow-lg">¡Nos vemos dentro!</p>
           <CTAButton 
             size="lg"
-            className="bg-white text-[#0B47CE] hover:bg-gray-100 text-lg px-8 py-6 font-bold shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)] transition-all duration-300"
-            onClick={handleVolunteerApplyClick}
-            asChild
+            className="bg-white text-[#0B47CE] hover:bg-gray-100 text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 font-bold shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)] transition-all duration-300"
+            onClick={() => {
+              handleVolunteerApplyClick();
+              document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
+            }}
           >
-            <Link to="/voluntariado#form">
-              ¡HECHO! SERÉ VOLUNTARIO/A <Heart className="ml-2 h-5 w-5" />
-            </Link>
+            ¡HECHO! SERÉ VOLUNTARIO/A <Heart className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
           </CTAButton>
         </div>
       </Section>
 
       {/* Formulario */}
-      <div id="form" className="py-20 bg-[#F4E8DD]">
-        <div className="container max-w-3xl mx-auto px-4">
-          <h3 className="text-3xl md:text-4xl font-bold text-[#0B47CE] mb-4 text-center font-funnel">
+      <div id="form" className="py-12 sm:py-16 md:py-20 bg-[#F4E8DD]">
+        <div className="container max-w-3xl mx-auto px-4 sm:px-6">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B47CE] mb-3 sm:mb-4 text-center font-funnel">
             ¿Quieres ser voluntario/a?
           </h3>
-          <p className="text-lg text-[#0B47CE] mb-8 text-center max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-[#0B47CE] mb-6 sm:mb-8 text-center max-w-2xl mx-auto">
             Completa el siguiente formulario y nos pondremos en contacto contigo para comenzar esta increíble experiencia
           </p>
           

@@ -319,38 +319,38 @@ const Somos = () => {
             </p>
           </Card>
           
-          <Card className="p-8 bg-sand/50 border-primary-200 text-center">
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
-              <Handshake className="w-10 h-10 text-white" />
+          <Card className="p-5 sm:p-6 lg:p-8 bg-sand/50 border-primary-200 text-center">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mx-auto mb-4 sm:mb-5 lg:mb-6 rounded-full bg-accent flex items-center justify-center">
+              <Handshake className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-4 text-primary-700">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-primary-700">
               Colaboración
             </h3>
-            <p className="text-base text-primary-900 leading-relaxed">
+            <p className="text-sm sm:text-base text-primary-900 leading-relaxed">
               Tejemos una red de alianzas estratégicas entre organizaciones, instituciones y profesionales comprometidos con transformar la educación a través de la innovación y el trabajo conjunto.
             </p>
           </Card>
           
-          <Card className="p-8 bg-sand/50 border-primary-200 text-center">
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
-              <Globe className="w-10 h-10 text-white" />
+          <Card className="p-5 sm:p-6 lg:p-8 bg-sand/50 border-primary-200 text-center">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mx-auto mb-4 sm:mb-5 lg:mb-6 rounded-full bg-accent flex items-center justify-center">
+              <Globe className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-4 text-primary-700">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-primary-700">
               Accesibilidad
             </h3>
-            <p className="text-base text-primary-900 leading-relaxed">
+            <p className="text-sm sm:text-base text-primary-900 leading-relaxed">
               Trabajamos para democratizar el acceso a una educación de calidad, eliminando barreras tecnológicas y económicas que limitan las oportunidades de aprendizaje en Colombia y Latinoamérica.
             </p>
           </Card>
           
-          <Card className="p-8 bg-sand/50 border-primary-200 text-center">
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
-              <Users className="w-10 h-10 text-white" />
+          <Card className="p-5 sm:p-6 lg:p-8 bg-sand/50 border-primary-200 text-center">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mx-auto mb-4 sm:mb-5 lg:mb-6 rounded-full bg-accent flex items-center justify-center">
+              <Users className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-4 text-primary-700">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-primary-700">
               Impacto Social
             </h3>
-            <p className="text-base text-primary-900 leading-relaxed">
+            <p className="text-sm sm:text-base text-primary-900 leading-relaxed">
               Contribuimos al mejoramiento de la calidad y a la maximización de la cobertura y calidad educativa del país, identificando y fortaleciendo las edtech en Colombia.
             </p>
           </Card>

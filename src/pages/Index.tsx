@@ -128,9 +128,6 @@ const Index = () => {
 
           {/* CTA Section Premium */}
           <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8 justify-center items-center animate-fade-in-up animation-delay-800">
-            {!loading && !user && <Button asChild variant="outline" className="border-2 border-white text-white bg-white/10 backdrop-blur-md hover:bg-white hover:text-primary-700 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 hover:scale-105 text-sm sm:text-base lg:text-lg group w-full sm:w-auto">
-                
-              </Button>}
             
             <Button asChild className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-105 text-sm sm:text-base lg:text-lg xl:text-xl group w-full sm:w-auto">
               <Link to="/asociados" className="flex items-center justify-center space-x-2 sm:space-x-3 lg:space-x-4">
