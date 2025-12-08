@@ -171,8 +171,7 @@ export function Navbar() {
                     <Button 
                       asChild
                       size="sm"
-                      variant="outline"
-                      className="border-white text-white hover:bg-white hover:text-[#F73C5C] font-semibold"
+                      className="bg-[#0B47CE] text-white hover:bg-[#003889] font-semibold shadow-md hover:shadow-lg transition-all duration-300 border-0"
                     >
                       <Link to="/admin" className="flex items-center space-x-2">
                         <Settings className="w-4 h-4" />
@@ -285,8 +284,7 @@ export function Navbar() {
                         <Button 
                           asChild
                           size="sm"
-                          variant="outline"
-                          className="w-full border-white text-white hover:bg-white hover:text-[#F73C5C] font-semibold py-3 rounded-lg"
+                          className="w-full bg-[#0B47CE] text-white hover:bg-[#003889] font-semibold py-3 rounded-lg shadow-md border-0"
                         >
                           <Link to="/admin" className="flex items-center justify-center space-x-2">
                             <Settings className="w-4 h-4" />
