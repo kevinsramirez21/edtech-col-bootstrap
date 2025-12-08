@@ -1,11 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Users, Mail, Phone, Clock, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Loader2, Users, Mail, Phone, Clock, MapPin, Search, CheckCircle, XCircle, Eye } from "lucide-react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
+import { toast } from "sonner";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface VolunteerApplication {
   id: string;
@@ -29,6 +39,10 @@ interface VolunteerApplication {
 export function VolunteersAdmin() {
   const [volunteers, setVolunteers] = useState<VolunteerApplication[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [statusFilter, setStatusFilter] = useState<string>("todos");
+  const [selectedVolunteer, setSelectedVolunteer] = useState<VolunteerApplication | null>(null);
+  const [updating, setUpdating] = useState<string | null>(null);
 
   useEffect(() => {
     fetchVolunteers();
@@ -45,121 +59,320 @@ export function VolunteersAdmin() {
       setVolunteers(data || []);
     } catch (error) {
       console.error("Error fetching volunteers:", error);
+      toast.error("Error al cargar voluntarios");
     } finally {
       setLoading(false);
     }
   };
 
+  const updateStatus = async (id: string, newStatus: string) => {
+    setUpdating(id);
+    try {
+      const { error } = await supabase
+        .from("solicitudes_voluntarios")
+        .update({ estado: newStatus })
+        .eq("id", id);
+
+      if (error) throw error;
+      
+      setVolunteers(prev => 
+        prev.map(v => v.id === id ? { ...v, estado: newStatus } : v)
+      );
+      toast.success(`Estado actualizado a ${newStatus}`);
+    } catch (error) {
+      console.error("Error updating status:", error);
+      toast.error("Error al actualizar estado");
+    } finally {
+      setUpdating(null);
+    }
+  };
+
+  const filteredVolunteers = useMemo(() => {
+    return volunteers.filter(volunteer => {
+      const matchesSearch = 
+        volunteer.nombre_completo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        volunteer.correo_electronico.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        volunteer.ciudad.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesStatus = statusFilter === "todos" || volunteer.estado === statusFilter;
+      
+      return matchesSearch && matchesStatus;
+    });
+  }, [volunteers, searchTerm, statusFilter]);
+
   const getStatusBadge = (estado: string) => {
     switch (estado) {
       case "pendiente":
-        return <Badge variant="outline" className="bg-yellow-50 text-yellow-700 border-yellow-300">Pendiente</Badge>;
+        return <Badge className="bg-amber-100 text-amber-700 border-amber-300 hover:bg-amber-100">Pendiente</Badge>;
       case "aprobado":
-        return <Badge variant="outline" className="bg-green-50 text-green-700 border-green-300">Aprobado</Badge>;
+        return <Badge className="bg-emerald-100 text-emerald-700 border-emerald-300 hover:bg-emerald-100">Aprobado</Badge>;
       case "rechazado":
-        return <Badge variant="outline" className="bg-red-50 text-red-700 border-red-300">Rechazado</Badge>;
+        return <Badge className="bg-red-100 text-red-700 border-red-300 hover:bg-red-100">Rechazado</Badge>;
       default:
         return <Badge variant="outline">{estado}</Badge>;
     }
   };
 
+  const pendingCount = volunteers.filter(v => v.estado === "pendiente").length;
+  const approvedCount = volunteers.filter(v => v.estado === "aprobado").length;
+
   if (loading) {
     return (
-      <Card>
-        <CardContent className="flex items-center justify-center py-12">
-          <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      <Card className="border-0 shadow-lg">
+        <CardContent className="flex items-center justify-center py-16">
+          <div className="text-center">
+            <Loader2 className="w-10 h-10 animate-spin text-[#0B47CE] mx-auto mb-4" />
+            <p className="text-slate-500">Cargando voluntarios...</p>
+          </div>
         </CardContent>
       </Card>
     );
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Users className="w-5 h-5" />
-          Solicitudes de Voluntariado ({volunteers.length})
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        {volunteers.length === 0 ? (
-          <div className="text-center py-8">
-            <Users className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-            <p className="text-gray-600">No hay solicitudes de voluntariado</p>
+    <>
+      <Card className="border-0 shadow-lg overflow-hidden">
+        {/* Header with gradient */}
+        <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="h-12 w-12 rounded-xl bg-white/20 flex items-center justify-center">
+                <Users className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-white">Solicitudes de Voluntariado</h2>
+                <p className="text-white/80 text-sm">
+                  {pendingCount} pendientes · {approvedCount} aprobados · {volunteers.length} total
+                </p>
+              </div>
+            </div>
           </div>
-        ) : (
-          <div className="overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Nombre</TableHead>
-                  <TableHead>Contacto</TableHead>
-                  <TableHead>Ubicación</TableHead>
-                  <TableHead>Ocupación</TableHead>
-                  <TableHead>Horas/Semana</TableHead>
-                  <TableHead>Áreas</TableHead>
-                  <TableHead>Estado</TableHead>
-                  <TableHead>Fecha</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {volunteers.map((volunteer) => (
-                  <TableRow key={volunteer.id}>
-                    <TableCell className="font-medium">{volunteer.nombre_completo}</TableCell>
-                    <TableCell>
-                      <div className="space-y-1 text-sm">
-                        <div className="flex items-center gap-1">
-                          <Mail className="w-3 h-3 text-gray-400" />
-                          <a href={`mailto:${volunteer.correo_electronico}`} className="text-primary hover:underline">
-                            {volunteer.correo_electronico}
-                          </a>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Phone className="w-3 h-3 text-gray-400" />
-                          {volunteer.telefono}
-                        </div>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-1 text-sm">
-                        <MapPin className="w-3 h-3 text-gray-400" />
-                        {volunteer.ciudad}, {volunteer.pais}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="text-sm">
-                        {volunteer.ocupacion}
-                        {volunteer.organizacion && (
-                          <div className="text-gray-500 text-xs">{volunteer.organizacion}</div>
-                        )}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-1 text-sm">
-                        <Clock className="w-3 h-3 text-gray-400" />
-                        {volunteer.horas_semanales}h
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex flex-wrap gap-1">
-                        {volunteer.areas_interes.map((area) => (
-                          <Badge key={area} variant="secondary" className="text-xs">
-                            {area}
-                          </Badge>
-                        ))}
-                      </div>
-                    </TableCell>
-                    <TableCell>{getStatusBadge(volunteer.estado)}</TableCell>
-                    <TableCell className="text-sm text-gray-500">
-                      {format(new Date(volunteer.created_at), "d MMM yyyy", { locale: es })}
-                    </TableCell>
+        </div>
+
+        {/* Filters */}
+        <div className="p-4 bg-slate-50 border-b flex flex-col sm:flex-row gap-3">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
+            <Input
+              placeholder="Buscar por nombre, email o ciudad..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10 bg-white border-slate-200"
+            />
+          </div>
+          <Select value={statusFilter} onValueChange={setStatusFilter}>
+            <SelectTrigger className="w-full sm:w-48 bg-white border-slate-200">
+              <SelectValue placeholder="Filtrar por estado" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="todos">Todos los estados</SelectItem>
+              <SelectItem value="pendiente">Pendiente</SelectItem>
+              <SelectItem value="aprobado">Aprobado</SelectItem>
+              <SelectItem value="rechazado">Rechazado</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <CardContent className="p-0">
+          {filteredVolunteers.length === 0 ? (
+            <div className="text-center py-16">
+              <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-slate-100 flex items-center justify-center">
+                <Users className="w-10 h-10 text-slate-400" />
+              </div>
+              <h3 className="text-lg font-semibold text-slate-700 mb-1">No hay solicitudes</h3>
+              <p className="text-slate-500">No se encontraron solicitudes de voluntariado</p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow className="bg-slate-50 hover:bg-slate-50">
+                    <TableHead className="font-semibold text-slate-700">Nombre</TableHead>
+                    <TableHead className="font-semibold text-slate-700">Contacto</TableHead>
+                    <TableHead className="font-semibold text-slate-700">Ubicación</TableHead>
+                    <TableHead className="font-semibold text-slate-700">Horas/Semana</TableHead>
+                    <TableHead className="font-semibold text-slate-700">Estado</TableHead>
+                    <TableHead className="font-semibold text-slate-700">Fecha</TableHead>
+                    <TableHead className="font-semibold text-slate-700 text-right">Acciones</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        )}
-      </CardContent>
-    </Card>
+                </TableHeader>
+                <TableBody>
+                  {filteredVolunteers.map((volunteer) => (
+                    <TableRow key={volunteer.id} className="hover:bg-slate-50/50 transition-colors">
+                      <TableCell>
+                        <div className="font-medium text-slate-900">{volunteer.nombre_completo}</div>
+                        <div className="text-xs text-slate-500">{volunteer.ocupacion}</div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="space-y-1 text-sm">
+                          <div className="flex items-center gap-1.5">
+                            <Mail className="w-3.5 h-3.5 text-slate-400" />
+                            <a href={`mailto:${volunteer.correo_electronico}`} className="text-[#0B47CE] hover:underline">
+                              {volunteer.correo_electronico}
+                            </a>
+                          </div>
+                          <div className="flex items-center gap-1.5 text-slate-600">
+                            <Phone className="w-3.5 h-3.5 text-slate-400" />
+                            {volunteer.telefono}
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-1.5 text-sm text-slate-600">
+                          <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                          {volunteer.ciudad}, {volunteer.pais}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-1.5 text-sm">
+                          <Clock className="w-3.5 h-3.5 text-slate-400" />
+                          <span className="font-medium text-slate-700">{volunteer.horas_semanales}h</span>
+                        </div>
+                      </TableCell>
+                      <TableCell>{getStatusBadge(volunteer.estado)}</TableCell>
+                      <TableCell className="text-sm text-slate-500">
+                        {format(new Date(volunteer.created_at), "d MMM yyyy", { locale: es })}
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center justify-end gap-1">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setSelectedVolunteer(volunteer)}
+                            className="h-8 w-8 p-0 text-slate-500 hover:text-slate-700"
+                          >
+                            <Eye className="w-4 h-4" />
+                          </Button>
+                          {volunteer.estado === "pendiente" && (
+                            <>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => updateStatus(volunteer.id, "aprobado")}
+                                disabled={updating === volunteer.id}
+                                className="h-8 w-8 p-0 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50"
+                              >
+                                {updating === volunteer.id ? (
+                                  <Loader2 className="w-4 h-4 animate-spin" />
+                                ) : (
+                                  <CheckCircle className="w-4 h-4" />
+                                )}
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => updateStatus(volunteer.id, "rechazado")}
+                                disabled={updating === volunteer.id}
+                                className="h-8 w-8 p-0 text-red-600 hover:text-red-700 hover:bg-red-50"
+                              >
+                                <XCircle className="w-4 h-4" />
+                              </Button>
+                            </>
+                          )}
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Detail Dialog */}
+      <Dialog open={!!selectedVolunteer} onOpenChange={() => setSelectedVolunteer(null)}>
+        <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-xl">Detalle del Voluntario</DialogTitle>
+          </DialogHeader>
+          {selectedVolunteer && (
+            <div className="space-y-6">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Nombre</label>
+                  <p className="text-slate-900 font-medium">{selectedVolunteer.nombre_completo}</p>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Estado</label>
+                  <div className="mt-1">{getStatusBadge(selectedVolunteer.estado)}</div>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Email</label>
+                  <p className="text-slate-900">{selectedVolunteer.correo_electronico}</p>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Teléfono</label>
+                  <p className="text-slate-900">{selectedVolunteer.telefono}</p>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Ubicación</label>
+                  <p className="text-slate-900">{selectedVolunteer.ciudad}, {selectedVolunteer.pais}</p>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Ocupación</label>
+                  <p className="text-slate-900">{selectedVolunteer.ocupacion}</p>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Organización</label>
+                  <p className="text-slate-900">{selectedVolunteer.organizacion || "N/A"}</p>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Horas Semanales</label>
+                  <p className="text-slate-900">{selectedVolunteer.horas_semanales} horas</p>
+                </div>
+              </div>
+              
+              <div>
+                <label className="text-xs font-medium text-slate-500 uppercase">Áreas de Interés</label>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {selectedVolunteer.areas_interes.map((area) => (
+                    <Badge key={area} variant="secondary">{area}</Badge>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="text-xs font-medium text-slate-500 uppercase">Motivación</label>
+                <p className="text-slate-700 mt-1 bg-slate-50 p-3 rounded-lg">{selectedVolunteer.motivacion}</p>
+              </div>
+
+              {selectedVolunteer.experiencia_voluntariado && (
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Experiencia</label>
+                  <p className="text-slate-700 mt-1 bg-slate-50 p-3 rounded-lg">{selectedVolunteer.experiencia_voluntariado}</p>
+                </div>
+              )}
+
+              {selectedVolunteer.estado === "pendiente" && (
+                <div className="flex gap-3 pt-4 border-t">
+                  <Button
+                    onClick={() => {
+                      updateStatus(selectedVolunteer.id, "aprobado");
+                      setSelectedVolunteer(null);
+                    }}
+                    className="flex-1 bg-emerald-600 hover:bg-emerald-700"
+                  >
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    Aprobar
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      updateStatus(selectedVolunteer.id, "rechazado");
+                      setSelectedVolunteer(null);
+                    }}
+                    className="flex-1 border-red-300 text-red-600 hover:bg-red-50"
+                  >
+                    <XCircle className="w-4 h-4 mr-2" />
+                    Rechazar
+                  </Button>
+                </div>
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
