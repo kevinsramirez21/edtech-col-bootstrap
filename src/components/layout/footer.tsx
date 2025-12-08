@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import { Mail, MapPin, Phone, Linkedin } from "lucide-react"
-import { ColombiaEdTechLogo } from "@/components/ui/placeholder-logo"
+import { Mail, MapPin, Phone, Linkedin, Instagram } from "lucide-react"
+import footerLogo from "@/assets/isotipo-footer.png"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
@@ -22,6 +22,7 @@ const quickLinks = [
 
 const socialLinks = [
   { name: "LinkedIn", href: "https://www.linkedin.com/company/colombiaedtech", icon: Linkedin },
+  { name: "Instagram", href: "https://www.instagram.com/colombiaedtech", icon: Instagram },
 ]
 
 const newsletterSchema = z.object({
@@ -90,8 +91,8 @@ export function Footer() {
           {/* Left Side - Brand & Contact */}
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
             <div>
-              <Link to="/" className="inline-flex items-center space-x-2 text-white mb-4 sm:mb-6">
-                <ColombiaEdTechLogo className="h-8 sm:h-10 w-auto text-white" />
+              <Link to="/" className="inline-block mb-4 sm:mb-6">
+                <img src={footerLogo} alt="Colombia EdTech" className="h-12 sm:h-16 w-auto" />
               </Link>
               <p className="text-white text-base sm:text-lg max-w-md mx-auto lg:mx-0 leading-relaxed font-medium">
                 Fortaleciendo el ecosistema EdTech colombiano a través de la colaboración, 
