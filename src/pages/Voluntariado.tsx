@@ -8,8 +8,12 @@ import { Helmet } from "react-helmet-async";
 import { generatePageMeta, generateBreadcrumbJsonLd, trackCTA, GA_EVENTS } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { ArrowRight, Heart, Users, BookOpen, Award, UserCheck, Target, CheckCircle, Lightbulb, Handshake, Sparkles } from "lucide-react";
-import eventoVoluntariosAsamblea from "@/assets/evento-voluntarios-asamblea.jpg";
-import eventoVision2030 from "@/assets/evento-vision-2030-hq.jpg";
+import { OptimizedImage } from "@/components/ui/optimized-image";
+import { VolunteerApplicationForm } from "@/components/forms/volunteer-application-form";
+
+// Image paths - using public folder for better performance
+const eventoVoluntariosAsamblea = "/images/evento-voluntarios-asamblea.jpg";
+const eventoVision2030 = "/images/evento-vision-2030-hq.jpg";
 
 const Voluntariado = () => {
   const meta = generatePageMeta({
@@ -96,10 +100,11 @@ const Voluntariado = () => {
       <Section className="py-24 md:py-40 lg:py-52 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[85vh]">
         {/* Background image */}
         <div className="absolute inset-0">
-          <img 
+          <OptimizedImage 
             src={eventoVoluntariosAsamblea} 
             alt="Evento Colombia EdTech - Voluntarios" 
-            className="w-full h-full object-cover object-center" 
+            className="w-full h-full"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
         </div>
@@ -162,10 +167,11 @@ const Voluntariado = () => {
               </ul>
             </div>
             <div className="relative">
-              <img 
+              <OptimizedImage 
                 src={eventoVision2030} 
                 alt="Colombia EdTech - Visión 2030" 
-                className="aspect-[4/3] rounded-lg shadow-xl object-cover w-full"
+                className="rounded-lg shadow-xl w-full"
+                aspectRatio="4/3"
               />
             </div>
           </div>
@@ -323,22 +329,15 @@ const Voluntariado = () => {
 
       {/* Formulario */}
       <div id="form" className="py-20 bg-[#F4E8DD]">
-        <div className="container max-w-2xl mx-auto text-center">
-          <h3 className="text-3xl md:text-4xl font-bold text-[#0B47CE] mb-6 font-funnel">¿Quieres ser voluntario/a?</h3>
-          <p className="text-xl text-[#0B47CE] mb-10">
-            Formulario de aplicación próximamente disponible
+        <div className="container max-w-3xl mx-auto px-4">
+          <h3 className="text-3xl md:text-4xl font-bold text-[#0B47CE] mb-4 text-center font-funnel">
+            ¿Quieres ser voluntario/a?
+          </h3>
+          <p className="text-lg text-[#0B47CE] mb-8 text-center max-w-2xl mx-auto">
+            Completa el siguiente formulario y nos pondremos en contacto contigo para comenzar esta increíble experiencia
           </p>
-          <div className="bg-white p-10 rounded-xl shadow-lg">
-            <p className="text-lg text-[#0B47CE] mb-4">
-              Mientras tanto, contáctanos a:
-            </p>
-            <a 
-              href="mailto:voluntariado@colombiaedtech.org" 
-              className="text-2xl font-bold text-[#F73C5C] hover:text-[#F73C5C]/80 transition-colors"
-            >
-              voluntariado@colombiaedtech.org
-            </a>
-          </div>
+          
+          <VolunteerApplicationForm />
         </div>
       </div>
     </>

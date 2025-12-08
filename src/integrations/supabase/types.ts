@@ -230,6 +230,72 @@ export type Database = {
         }
         Relationships: []
       }
+      solicitudes_voluntarios: {
+        Row: {
+          acepta_comunicaciones: boolean
+          acepta_terminos: boolean
+          areas_interes: string[]
+          ciudad: string
+          como_conocio: string | null
+          correo_electronico: string
+          created_at: string
+          estado: string
+          experiencia_voluntariado: string | null
+          horas_semanales: string
+          id: string
+          linkedin: string | null
+          motivacion: string
+          nombre_completo: string
+          ocupacion: string
+          organizacion: string | null
+          pais: string
+          telefono: string
+          updated_at: string
+        }
+        Insert: {
+          acepta_comunicaciones?: boolean
+          acepta_terminos?: boolean
+          areas_interes: string[]
+          ciudad: string
+          como_conocio?: string | null
+          correo_electronico: string
+          created_at?: string
+          estado?: string
+          experiencia_voluntariado?: string | null
+          horas_semanales: string
+          id?: string
+          linkedin?: string | null
+          motivacion: string
+          nombre_completo: string
+          ocupacion: string
+          organizacion?: string | null
+          pais?: string
+          telefono: string
+          updated_at?: string
+        }
+        Update: {
+          acepta_comunicaciones?: boolean
+          acepta_terminos?: boolean
+          areas_interes?: string[]
+          ciudad?: string
+          como_conocio?: string | null
+          correo_electronico?: string
+          created_at?: string
+          estado?: string
+          experiencia_voluntariado?: string | null
+          horas_semanales?: string
+          id?: string
+          linkedin?: string | null
+          motivacion?: string
+          nombre_completo?: string
+          ocupacion?: string
+          organizacion?: string | null
+          pais?: string
+          telefono?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
