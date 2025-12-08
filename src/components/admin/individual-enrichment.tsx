@@ -72,8 +72,8 @@ interface FieldStatus {
   servicios: "empty" | "has_data" | "approved";
 }
 
-type FieldType = "linkedin" | "logo_url" | "servicios";
-type FilterType = "all" | "missing_logo" | "missing_linkedin" | "missing_servicios";
+type FieldType = "linkedin" | "logo_url" | "servicios" | "pagina_web";
+type FilterType = "all" | "missing_logo" | "missing_linkedin" | "missing_servicios" | "missing_web";
 
 export function IndividualEnrichment() {
   const queryClient = useQueryClient();
@@ -136,6 +136,7 @@ export function IndividualEnrichment() {
     if (filter === "missing_logo") return !a.logo_url || brokenLogos.has(a.id);
     if (filter === "missing_linkedin") return !a.linkedin;
     if (filter === "missing_servicios") return !a.servicios || a.servicios.length === 0;
+    if (filter === "missing_web") return !a.pagina_web;
     return true;
   }) || [];
 
@@ -407,6 +408,8 @@ export function IndividualEnrichment() {
       setManualValue(selectedAssociate.logo_url || "");
     } else if (field === "linkedin") {
       setManualValue(selectedAssociate.linkedin || "");
+    } else if (field === "pagina_web") {
+      setManualValue(selectedAssociate.pagina_web || "");
     } else if (field === "servicios") {
       setManualServicios(selectedAssociate.servicios || []);
       setNewServicio("");
@@ -497,6 +500,7 @@ export function IndividualEnrichment() {
       linkedin: "LinkedIn",
       logo_url: "Logo",
       servicios: "Servicios",
+      pagina_web: "Página Web",
     };
     return labels[campo] || campo;
   };
@@ -509,6 +513,8 @@ export function IndividualEnrichment() {
         return <Linkedin className="h-4 w-4" />;
       case "servicios":
         return <Briefcase className="h-4 w-4" />;
+      case "pagina_web":
+        return <Globe className="h-4 w-4" />;
       default:
         return null;
     }
@@ -663,6 +669,7 @@ export function IndividualEnrichment() {
               </SelectTrigger>
               <SelectContent className="bg-popover">
                 <SelectItem value="all">Todas las empresas</SelectItem>
+                <SelectItem value="missing_web">Sin página web</SelectItem>
                 <SelectItem value="missing_logo">Sin logo / Logo roto</SelectItem>
                 <SelectItem value="missing_linkedin">Sin LinkedIn</SelectItem>
                 <SelectItem value="missing_servicios">Sin servicios</SelectItem>
@@ -767,6 +774,40 @@ export function IndividualEnrichment() {
                 </div>
                 
                 <div className="grid gap-3">
+                  {/* Página Web */}
+                  <div className="group relative flex items-center gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center">
+                      <Globe className="h-6 w-6 text-teal-600" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="font-semibold text-foreground">Página Web</span>
+                      </div>
+                      {selectedAssociate.pagina_web ? (
+                        <a 
+                          href={selectedAssociate.pagina_web.startsWith('http') ? selectedAssociate.pagina_web : `https://${selectedAssociate.pagina_web}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-sm text-teal-600 hover:underline truncate block font-medium"
+                        >
+                          {selectedAssociate.pagina_web.replace(/^https?:\/\/(www\.)?/, "")}
+                        </a>
+                      ) : (
+                        <p className="text-sm text-muted-foreground/60 italic">No configurado</p>
+                      )}
+                    </div>
+                    <div className="flex gap-1.5 flex-shrink-0">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => openManualEdit("pagina_web")}
+                        className="h-9 w-9"
+                      >
+                        <Pencil className="h-3.5 w-3.5" />
+                      </Button>
+                    </div>
+                  </div>
+
                   {/* Logo */}
                   <div className="group relative flex items-start gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all">
                     <div className="flex-shrink-0 w-20 h-20 rounded-xl border-2 border-dashed border-border/50 bg-muted/30 flex items-center justify-center overflow-hidden">
@@ -1057,6 +1098,29 @@ export function IndividualEnrichment() {
                   value={manualValue}
                   onChange={(e) => setManualValue(e.target.value)}
                 />
+              </div>
+            )}
+
+            {manualEditField === "pagina_web" && (
+              <div className="space-y-2">
+                <Label htmlFor="pagina-web-url">URL de la Página Web</Label>
+                <Input
+                  id="pagina-web-url"
+                  placeholder="https://ejemplo.com"
+                  value={manualValue}
+                  onChange={(e) => setManualValue(e.target.value)}
+                />
+                {manualValue && (
+                  <a 
+                    href={manualValue.startsWith('http') ? manualValue : `https://${manualValue}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm text-teal-600 hover:underline"
+                  >
+                    <ExternalLink className="h-3.5 w-3.5" />
+                    Abrir enlace
+                  </a>
+                )}
               </div>
             )}
 
