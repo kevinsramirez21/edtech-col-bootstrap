@@ -62,11 +62,15 @@ export function Navbar() {
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full backdrop-blur-md border-b transition-all duration-300",
+      "pt-[env(safe-area-inset-top)]",
       isScrolled 
-        ? "bg-[#F73C5C] border-[#F73C5C]/30 shadow-xl shadow-[#F73C5C]/20 h-16" 
-        : "bg-[#F73C5C] border-[#F73C5C]/20 shadow-lg shadow-[#F73C5C]/10 h-20"
+        ? "bg-[#F73C5C] border-[#F73C5C]/30 shadow-xl shadow-[#F73C5C]/20" 
+        : "bg-[#F73C5C] border-[#F73C5C]/20 shadow-lg shadow-[#F73C5C]/10"
     )}>
-      <nav className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full" aria-label="Navegación principal">
+      <nav className={cn(
+        "container max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 transition-all duration-300",
+        isScrolled ? "h-14 sm:h-16" : "h-16 sm:h-20"
+      )} aria-label="Navegación principal">
         <div className="flex h-full items-center justify-between">
           {/* Logo Premium */}
           <div className="flex-shrink-0">
@@ -98,7 +102,7 @@ export function Navbar() {
                     fallback="/placeholder.svg"
                     className={cn(
                       "w-auto object-contain transition-all duration-300 group-hover:scale-105",
-                      isScrolled ? "h-10" : "h-14"
+                      isScrolled ? "h-8" : "h-10"
                     )}
                     priority
                   />
