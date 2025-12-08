@@ -729,49 +729,34 @@ export function IndividualEnrichment() {
                   </a>
                 )}
               </div>
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-1">
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    onClick={goToPrevious}
-                    disabled={selectedIndex === 0}
-                    className="h-8 w-8"
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                  </Button>
-                  <div className="flex items-center gap-1 min-w-[80px] justify-center">
-                    <Input
-                      type="number"
-                      min={1}
-                      max={filteredAssociates.length}
-                      value={selectedIndex + 1}
-                      onChange={(e) => {
-                        const page = parseInt(e.target.value) - 1;
-                        if (page >= 0 && page < filteredAssociates.length) {
-                          selectAssociateById(filteredAssociates[page], page);
-                        }
-                      }}
-                      className="h-7 w-12 text-center text-sm font-medium p-0 border-0 bg-transparent"
-                    />
-                    <span className="text-sm text-muted-foreground">/ {filteredAssociates.length}</span>
-                  </div>
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    onClick={goToNext}
-                    disabled={selectedIndex === filteredAssociates.length - 1}
-                    className="h-8 w-8"
-                  >
-                    <ChevronRight className="h-4 w-4" />
-                  </Button>
-                </div>
+              <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-1">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={goToPrevious}
+                  disabled={selectedIndex === 0}
+                  className="h-8 w-8"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <span className="text-sm font-medium text-muted-foreground min-w-[60px] text-center">
+                  {selectedIndex + 1} / {filteredAssociates.length}
+                </span>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={goToNext}
+                  disabled={selectedIndex === filteredAssociates.length - 1}
+                  className="h-8 w-8"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
               </div>
             </div>
           </CardHeader>
 
           {selectedAssociate && (
-            <CardContent className="space-y-6">
+          <CardContent className="space-y-6">
               {/* Current data section */}
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
