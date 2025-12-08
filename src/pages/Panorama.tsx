@@ -501,20 +501,20 @@ const Panorama = () => {
                 </ul>
               </Card>
               
-              <Card className="p-8 bg-white/10 backdrop-blur-sm border-white/20">
-                <div className="text-4xl mb-4">💡</div>
-                <h3 className="text-2xl font-bold mb-4 text-white">Nuevos Modelos</h3>
-                <ul className="space-y-3 text-white/90">
-                  <li>• <strong>Técnicos y Lifelong Learning</strong>: Educación continua como norma</li>
+              <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 bg-white/10 backdrop-blur-sm border-white/20">
+                <div className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 md:mb-4">💡</div>
+                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white">Nuevos Modelos</h3>
+                <ul className="flex-grow space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90">
+                  <li>• <strong>Técnicos y Lifelong Learning</strong>: Educación continua</li>
                   <li>• <strong>Universidades Corporativas</strong>: Hacku, Sistel, Laboratoria</li>
                   <li>• <strong>Micro-credentials</strong>: Certificaciones específicas</li>
                 </ul>
               </Card>
               
-              <Card className="p-8 bg-white/10 backdrop-blur-sm border-white/20">
-                <div className="text-4xl mb-4">🌐</div>
-                <h3 className="text-2xl font-bold mb-4 text-white">Operación Global</h3>
-                <ul className="space-y-3 text-white/90">
+              <Card className="h-full flex flex-col p-5 sm:p-6 md:p-8 bg-white/10 backdrop-blur-sm border-white/20 sm:col-span-2 md:col-span-1">
+                <div className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 md:mb-4">🌐</div>
+                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white">Operación Global</h3>
+                <ul className="flex-grow space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-base text-white/90">
                   <li>• Education as a Service</li>
                   <li>• Colaboración con OPMs, VCs EdTech, Big Tech</li>
                   <li>• <strong>73%</strong> de EdTechs colombianas operan en 2-10 países</li>
@@ -522,8 +522,8 @@ const Panorama = () => {
               </Card>
             </div>
             
-            <Card className="p-8 bg-accent/20 border-accent/40">
-              <p className="text-xl text-white font-semibold text-center">
+            <Card className="p-4 sm:p-6 md:p-8 bg-accent/20 border-accent/40">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white font-semibold text-center leading-relaxed">
                 El diploma universitario tradicional está siendo complementado (y en algunos casos reemplazado) por portfolios de competencias verificables
               </p>
             </Card>
