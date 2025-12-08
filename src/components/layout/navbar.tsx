@@ -79,12 +79,12 @@ export function Navbar() {
                 {/* Desktop Logo */}
                 <div className="hidden sm:block">
                   <OptimizedImage
-                    src="/images/logo-principal-transparent.png"
+                    src="/images/logo-colombia-edtech-cropped.png"
                     alt="Colombia EdTech - Asociación de Organizaciones EdTech"
                     fallback="/placeholder.svg"
                     className={cn(
                       "w-auto object-contain transition-all duration-300 group-hover:scale-105",
-                      isScrolled ? "h-10" : "h-12"
+                      isScrolled ? "h-12" : "h-14"
                     )}
                     priority
                   />
@@ -93,12 +93,12 @@ export function Navbar() {
                 {/* Mobile Logo */}
                 <div className="block sm:hidden">
                   <OptimizedImage
-                    src="/images/logo-principal-transparent.png"
+                    src="/images/logo-colombia-edtech-cropped.png"
                     alt="Colombia EdTech"
                     fallback="/placeholder.svg"
                     className={cn(
                       "w-auto object-contain transition-all duration-300 group-hover:scale-105",
-                      isScrolled ? "h-7" : "h-9"
+                      isScrolled ? "h-10" : "h-12"
                     )}
                     priority
                   />
