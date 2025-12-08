@@ -368,12 +368,13 @@ serve(async (req) => {
         fieldInstructions.push("3. Servicios principales que ofrece (lista de 3-5 servicios relacionados con educación/tecnología)");
       }
       if (fieldsToEnrich.includes("tipo_organizacion")) {
-        fieldInstructions.push(`4. Tipo de organización - DEBE ser exactamente UNA de estas categorías:
+        fieldInstructions.push(`4. Tipos de organización - Puede pertenecer a UNA O MÁS de estas categorías (selecciona todas las que apliquen):
    - "K12 (Colegios)": empresas que sirven a colegios, educación primaria y secundaria
    - "Educación Superior": empresas enfocadas en educación universitaria o técnica superior
    - "Educación para la Vida": empresas de formación continua, cursos online, upskilling, capacitación profesional
    - "Cajas de Compensación": cajas de compensación familiar
-   - "Universidades": instituciones universitarias directamente`);
+   - "Universidades": instituciones universitarias directamente
+   Ejemplo: una empresa que vende a colegios y universidades debería tener ["K12 (Colegios)", "Universidades"]`);
       }
 
       const prompt = `Investiga la empresa EdTech colombiana "${associate.nombre_empresa}".
@@ -432,15 +433,18 @@ IMPORTANTE: Solo reporta información que puedas verificar. Si no encuentras alg
         toolProperties.tipo_organizacion = {
           type: "object",
           properties: {
-            categoria: { 
-              type: "string", 
-              enum: ["K12 (Colegios)", "Educación Superior", "Educación para la Vida", "Cajas de Compensación", "Universidades"],
-              description: "Categoría del tipo de organización"
+            categorias: { 
+              type: "array",
+              items: {
+                type: "string", 
+                enum: ["K12 (Colegios)", "Educación Superior", "Educación para la Vida", "Cajas de Compensación", "Universidades"]
+              },
+              description: "Lista de categorías a las que pertenece la organización (puede ser más de una)"
             },
             confianza: { type: "string", enum: ["alta", "media", "baja"] },
             fuente: { type: "string", description: "Donde se encontró esta información" }
           },
-          required: ["categoria", "confianza", "fuente"]
+          required: ["categorias", "confianza", "fuente"]
         };
         requiredFields.push("tipo_organizacion");
       }
@@ -554,12 +558,12 @@ Para servicios, extrae los principales relacionados con educación/EdTech.`
           });
         }
 
-        // Tipo de Organización
-        if (companyInfo.tipo_organizacion?.categoria) {
+        // Tipo de Organización (now supports multiple)
+        if (companyInfo.tipo_organizacion?.categorias?.length > 0) {
           enrichments.push({
             campo: "tipo_organizacion",
             opciones: [{
-              valor: companyInfo.tipo_organizacion.categoria,
+              valor: JSON.stringify(companyInfo.tipo_organizacion.categorias),
               confianza: companyInfo.tipo_organizacion.confianza,
               fuente: companyInfo.tipo_organizacion.fuente
             }]
