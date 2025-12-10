@@ -545,10 +545,10 @@ const Somos = () => {
             ¡Bienvenidos! Unidos, construiremos una educación que no solo inspire y transforme, sino que lidere el cambio que el mundo necesita, una generación a la vez.
           </p>
           
-          <CTAButton size="lg" variant="accent" asChild className="text-sm sm:text-base">
-            <Link to="/asociados">
-              Quiero ser parte de Colombia EdTech
-              <ArrowRight className="ml-2 w-5 h-5 sm:w-6 sm:h-6" />
+          <CTAButton size="lg" variant="accent" asChild className="text-sm sm:text-base w-full sm:w-auto">
+            <Link to="/asociados" className="inline-flex items-center justify-center gap-2">
+              <span>Quiero ser parte</span>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
             </Link>
           </CTAButton>
         </div>
