@@ -28,16 +28,16 @@ export function TeamMemberCard({
         className
       )}
     >
-      {/* Photo container */}
-      <div className="relative aspect-[4/5] overflow-hidden">
+      {/* Photo container - taller aspect ratio */}
+      <div className="relative aspect-[3/5] overflow-hidden">
         <img
           src={image}
           alt={`${name} - ${position}`}
           className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
         />
         
-        {/* Gradient overlay - stronger for readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-900 via-primary-900/60 to-transparent" />
+        {/* Gradient overlay - only bottom half for text readability */}
+        <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-primary-900 via-primary-900/80 to-transparent" />
         
         {/* Content overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
