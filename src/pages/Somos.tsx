@@ -216,6 +216,7 @@ const Somos = () => {
             email="andres@colombiaedtech.org"
             linkedin="https://www.linkedin.com/in/andresfmendez/"
             image={andresMendezImg}
+            bio="Emprendedor serial con +10 años de experiencia, presidente gremial"
           />
           <TeamMemberCard
             name="Kevin Ramírez"
@@ -223,6 +224,7 @@ const Somos = () => {
             email="kevin@colombiaedtech.org"
             linkedin="https://www.linkedin.com/in/kevin-santiago-ramirez/"
             image={kevinRamirezImg}
+            bio="Mueve en Colombia EdTech +45 voluntarios e impactó a +2000 jóvenes con programas de preparación preICFES"
           />
           <TeamMemberCard
             name="Sofía Orjuela"
@@ -230,6 +232,7 @@ const Somos = () => {
             email="sofia@colombiaedtech.org"
             linkedin="https://www.linkedin.com/in/ana-sofia-orjuela-bernal/"
             image={sofiaOrjuelaImg}
+            bio="Ingeniera y piloto con experiencia en StartUps"
           />
           <TeamMemberCard
             name="Valentina Villalobos"
@@ -237,6 +240,7 @@ const Somos = () => {
             email="valentina@colombiaedtech.org"
             linkedin="https://www.linkedin.com/in/issis-valentina-villalobos/"
             image={valentinaVillalobosImg}
+            bio="Estudiante de pregrado con un propósito de impactar la educación"
           />
         </div>
       </Section>
