@@ -204,7 +204,7 @@ const Somos = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-5 text-primary-700 font-funnel">
             Nuestro Equipo
           </h2>
-          <p className="text-base sm:text-lg text-primary-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-primary-900 max-w-2xl mx-auto">
             Conoce a las personas que lideran Colombia EdTech día a día
           </p>
         </div>
