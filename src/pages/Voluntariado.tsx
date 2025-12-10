@@ -290,13 +290,14 @@ const Voluntariado = () => {
           <div className="text-center">
             <CTAButton 
               size="lg"
-              className="btn-primary text-xs sm:text-sm md:text-base px-4 sm:px-6 py-2.5 sm:py-3 md:py-4"
+              className="btn-primary text-xs sm:text-sm md:text-base px-4 sm:px-6 py-2.5 sm:py-3 md:py-4 w-full sm:w-auto"
               onClick={() => {
                 handleVolunteerApplyClick();
                 document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              ¿DÓNDE FIRMO? ESTOY LISTO/A PARA SER VOLUNTARIO/A
+              <span className="hidden sm:inline">¿DÓNDE FIRMO? ESTOY LISTO/A PARA SER VOLUNTARIO/A</span>
+              <span className="sm:hidden">ESTOY LISTO/A</span>
             </CTAButton>
           </div>
         </div>
