@@ -8,6 +8,7 @@ interface TeamMemberCardProps {
   email: string
   linkedin: string
   image: string
+  bio: string
   className?: string
 }
 
@@ -17,6 +18,7 @@ export function TeamMemberCard({
   email,
   linkedin,
   image,
+  bio,
   className
 }: TeamMemberCardProps) {
   return (
@@ -42,27 +44,31 @@ export function TeamMemberCard({
           <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 font-funnel">
             {name}
           </h3>
-          <p className="text-white/80 text-sm sm:text-base mb-4">
+          <p className="text-white/80 text-sm sm:text-base mb-2">
             {position}
           </p>
+          <p className="text-white/70 text-xs sm:text-sm line-clamp-2 mb-3">
+            {bio}
+          </p>
           
-          {/* Action buttons */}
-          <div className="flex gap-3">
+          {/* Contact info */}
+          <div className="flex items-center justify-between gap-3">
             <a
               href={`mailto:${email}`}
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-accent hover:bg-accent-600 text-white transition-colors duration-300 shadow-lg"
+              className="flex items-center gap-2 text-white/80 hover:text-white text-xs sm:text-sm transition-colors duration-300 truncate"
               aria-label={`Enviar email a ${name}`}
             >
-              <Mail className="w-5 h-5" />
+              <Mail className="w-4 h-4 flex-shrink-0" />
+              <span className="truncate">{email}</span>
             </a>
             <a
               href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-[#0A66C2] hover:bg-[#004182] text-white transition-colors duration-300 shadow-lg"
+              className="flex items-center justify-center w-9 h-9 rounded-full bg-[#0A66C2] hover:bg-[#004182] text-white transition-colors duration-300 shadow-lg flex-shrink-0"
               aria-label={`Ver perfil de LinkedIn de ${name}`}
             >
-              <Linkedin className="w-5 h-5" />
+              <Linkedin className="w-4 h-4" />
             </a>
           </div>
         </div>
