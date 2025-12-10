@@ -230,13 +230,14 @@ const Voluntariado = () => {
             
             <CTAButton 
               size="lg"
-              className="bg-white text-[#0B47CE] hover:bg-gray-100 text-xs sm:text-sm md:text-base px-4 sm:px-6 py-2.5 sm:py-3 md:py-4 font-bold shadow-2xl"
+              className="bg-white text-[#0B47CE] hover:bg-gray-100 text-xs sm:text-sm md:text-base px-4 sm:px-6 py-2.5 sm:py-3 md:py-4 font-bold shadow-2xl w-full sm:w-auto"
               onClick={() => {
                 handleVolunteerApplyClick();
                 document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              SÍ, QUIERO SER VOLUNTARIO/A EN COLOMBIA EDTECH
+              <span className="hidden sm:inline">SÍ, QUIERO SER VOLUNTARIO/A EN COLOMBIA EDTECH</span>
+              <span className="sm:hidden">QUIERO SER VOLUNTARIO/A</span>
             </CTAButton>
           </div>
         </div>
