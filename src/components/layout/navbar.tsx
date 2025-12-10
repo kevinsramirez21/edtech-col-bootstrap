@@ -69,7 +69,7 @@ export function Navbar() {
         "container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300",
         isScrolled ? "h-16" : "h-16 sm:h-20"
       )} aria-label="Navegación principal">
-        <div className="flex h-full items-center justify-between gap-3">
+        <div className="flex h-full items-center justify-between gap-2 min-w-0">
           {/* Logo */}
           <Link 
             to="/" 
@@ -138,7 +138,7 @@ export function Navbar() {
           </div>
 
           {/* Desktop Auth/User Menu */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-4">
+          <div className="hidden lg:flex lg:items-center lg:space-x-2 flex-shrink-0">
             {!loading && (
               user ? (
                 <div className="flex items-center space-x-4">
@@ -161,20 +161,23 @@ export function Navbar() {
                   <Button 
                     asChild
                     variant="outline"
-                    className="border-2 border-white/90 bg-white/10 text-white hover:bg-white hover:text-[#F73C5C] font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 backdrop-blur-sm"
+                    size="sm"
+                    className="border-2 border-white/90 bg-white/10 text-white hover:bg-white hover:text-[#F73C5C] font-semibold px-3 py-2 rounded-lg transition-all duration-300 backdrop-blur-sm"
                   >
-                    <Link to="/auth" className="flex items-center space-x-2">
+                    <Link to="/auth" className="flex items-center space-x-1.5">
                       <LogIn className="w-4 h-4" />
                       <span>Iniciar Sesión</span>
                     </Link>
                   </Button>
                   <Button 
                     asChild
-                    className="bg-white text-[#F73C5C] hover:bg-gray-100 font-bold px-6 py-2.5 rounded-lg shadow-lg shadow-black/30 hover:shadow-xl transition-all duration-300 hover:scale-105"
+                    size="sm"
+                    className="bg-white text-[#F73C5C] hover:bg-gray-100 font-bold px-3 py-2 rounded-lg shadow-lg shadow-black/30 hover:shadow-xl transition-all duration-300 hover:scale-105"
                   >
-                    <Link to="/asociados" className="flex items-center space-x-2">
+                    <Link to="/asociados" className="flex items-center space-x-1.5">
                       <Users className="w-4 h-4" />
-                      <span>Únete al Gremio</span>
+                      <span className="hidden xl:inline">Únete al Gremio</span>
+                      <span className="xl:hidden">Únete</span>
                     </Link>
                   </Button>
                 </>
