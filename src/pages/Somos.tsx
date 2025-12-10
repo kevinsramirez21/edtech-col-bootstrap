@@ -343,14 +343,14 @@ const Somos = () => {
             </p>
           </Card>
           
-          <Card className="p-5 sm:p-6 lg:p-8 bg-sand/50 border-primary-200 text-center">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mx-auto mb-4 sm:mb-5 lg:mb-6 rounded-full bg-accent flex items-center justify-center">
-              <Users className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
+          <Card className="p-4 sm:p-5 lg:p-6 bg-sand/50 border-primary-200 text-center">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 mx-auto mb-3 sm:mb-4 lg:mb-5 rounded-full bg-accent flex items-center justify-center">
+              <Users className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-white" />
             </div>
-            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-primary-700">
+            <h3 className="text-sm sm:text-base lg:text-lg font-bold mb-2 sm:mb-3 text-primary-700">
               Impacto Social
             </h3>
-            <p className="text-sm sm:text-base text-primary-900 leading-relaxed">
+            <p className="text-xs sm:text-sm text-primary-900 leading-relaxed">
               Contribuimos al mejoramiento de la calidad y a la maximización de la cobertura y calidad educativa del país, identificando y fortaleciendo las edtech en Colombia.
             </p>
           </Card>
