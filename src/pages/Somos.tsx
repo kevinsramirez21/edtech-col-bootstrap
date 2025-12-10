@@ -191,7 +191,46 @@ const Somos = () => {
         <div className="absolute bottom-0 left-0 right-0 h-8 sm:h-12 bg-gradient-to-b from-transparent to-sand/20"></div>
       </section>
 
-      {/* JUNTA DIRECTIVA - DESPUÉS DEL HERO */}
+      {/* EQUIPO EJECUTIVO - DESPUÉS DEL HERO */}
+      <Section id="equipo" className="py-8 sm:py-10 lg:py-14 bg-sand">
+        <div className="text-center mb-6 sm:mb-10 lg:mb-12 px-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-primary-700 font-funnel">
+            Nuestro Equipo
+          </h2>
+          <p className="text-sm sm:text-base text-primary-900 max-w-2xl mx-auto">
+            Conoce a las personas que lideran Colombia EdTech día a día
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-6xl mx-auto px-4">
+          <LeadershipCard
+            name="Andrés Méndez"
+            position="Presidente Ejecutivo"
+            email="andres@colombiaedtech.org"
+            image="/images/equipo/andres-mendez.jpg"
+          />
+          <LeadershipCard
+            name="Kevin Ramírez"
+            position="VP de Operaciones"
+            email="kevin@colombiaedtech.org"
+            image="/images/equipo/kevin-ramirez.jpg"
+          />
+          <LeadershipCard
+            name="Sofía Orjuela"
+            position="VP de Partnerships"
+            email="sofia@colombiaedtech.org"
+            image="/images/equipo/sofia-orjuela.jpg"
+          />
+          <LeadershipCard
+            name="Valentina Villalobos"
+            position="Chief of Staff"
+            email="valentina@colombiaedtech.org"
+            image="/images/equipo/valentina-villalobos.jpg"
+          />
+        </div>
+      </Section>
+
+      {/* JUNTA DIRECTIVA */}
       <Section id="junta-directiva" className="py-8 sm:py-10 lg:py-14 bg-white">
         <div className="text-center mb-6 sm:mb-10 lg:mb-12 px-4">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-primary-700 font-funnel">
