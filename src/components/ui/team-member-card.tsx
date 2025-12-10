@@ -52,14 +52,14 @@ export function TeamMemberCard({
           </p>
           
           {/* Contact info */}
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center justify-between gap-2">
             <a
               href={`mailto:${email}`}
-              className="flex items-center gap-2 text-white/80 hover:text-white text-xs sm:text-sm transition-colors duration-300 truncate"
+              className="flex items-center gap-1.5 text-white/90 hover:text-white text-xs transition-colors duration-300"
               aria-label={`Enviar email a ${name}`}
             >
-              <Mail className="w-4 h-4 flex-shrink-0" />
-              <span className="truncate">{email}</span>
+              <Mail className="w-3.5 h-3.5 flex-shrink-0" />
+              <span className="break-all">{email}</span>
             </a>
             <a
               href={linkedin}
