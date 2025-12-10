@@ -129,6 +129,15 @@ const Index = () => {
           {/* CTA Section Premium */}
           <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8 justify-center items-center animate-fade-in-up animation-delay-800">
             
+            {/* Primary CTA - Conoce a nuestros asociados */}
+            <Button asChild className="bg-white hover:bg-white/90 text-primary-700 font-bold px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl shadow-2xl shadow-white/30 hover:shadow-white/50 transition-all duration-500 hover:scale-105 text-sm sm:text-base lg:text-lg xl:text-xl group w-full sm:w-auto border-2 border-white/20">
+              <Link to="/directorio" className="flex items-center justify-center space-x-2 sm:space-x-3 lg:space-x-4">
+                <Star className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
+                <span className="text-center">Conoce a Nuestros Asociados</span>
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0 hidden sm:block" />
+              </Link>
+            </Button>
+            
             <Button asChild className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-105 text-sm sm:text-base lg:text-lg xl:text-xl group w-full sm:w-auto">
               <Link to="/asociados" className="flex items-center justify-center space-x-2 sm:space-x-3 lg:space-x-4">
                 <Users className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
@@ -137,7 +146,7 @@ const Index = () => {
               </Link>
             </Button>
             
-            <Button asChild variant="outline" className="border-2 border-primary-700 text-primary-700 bg-white hover:bg-primary-700 hover:text-white font-semibold px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl transition-all duration-500 hover:scale-105 text-sm sm:text-base lg:text-lg xl:text-xl w-full sm:w-auto">
+            <Button asChild variant="outline" className="border-2 border-white/50 text-white bg-transparent hover:bg-white hover:text-primary-700 font-semibold px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl transition-all duration-500 hover:scale-105 text-sm sm:text-base lg:text-lg xl:text-xl w-full sm:w-auto">
               <Link to="/somos" className="flex items-center justify-center space-x-2 sm:space-x-3">
                 <BookOpen className="w-5 h-5 sm:w-6 sm:h-6" />
                 <span>Conoce Nuestra Misión</span>
