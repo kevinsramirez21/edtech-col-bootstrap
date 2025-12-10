@@ -1,6 +1,6 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
-import { ChevronDown, ChevronUp } from "lucide-react"
+import { ChevronDown, ChevronUp, Mail } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar"
 
 interface LeadershipCardProps {
@@ -8,6 +8,7 @@ interface LeadershipCardProps {
   position: string
   bio?: string
   image?: string
+  email?: string
   className?: string
 }
 
@@ -16,6 +17,7 @@ export function LeadershipCard({
   position, 
   bio, 
   image,
+  email,
   className 
 }: LeadershipCardProps) {
   const [isExpanded, setIsExpanded] = React.useState(false)
@@ -45,9 +47,18 @@ export function LeadershipCard({
         <h3 className="text-lg font-bold text-primary-900 mb-1">
           {name}
         </h3>
-        <p className="text-primary-600 text-sm mb-4">
+        <p className="text-primary-600 text-sm mb-2">
           {position}
         </p>
+        {email && (
+          <a 
+            href={`mailto:${email}`} 
+            className="inline-flex items-center gap-1.5 text-accent hover:text-accent-600 text-sm transition-colors"
+          >
+            <Mail className="w-4 h-4" />
+            <span>{email}</span>
+          </a>
+        )}
       </div>
 
       {bio && (
