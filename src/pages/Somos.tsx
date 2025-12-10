@@ -117,26 +117,26 @@ const Somos = () => {
       </Helmet>
 
       {/* HERO IMPACTANTE */}
-      <section className="min-h-[50vh] sm:min-h-[60vh] lg:min-h-[80vh] bg-primary-900 relative overflow-hidden flex items-center">
-        {/* Elementos decorativos de fondo */}
-        <div className="absolute top-10 right-10 w-24 sm:w-32 h-24 sm:h-32 bg-accent/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-10 w-16 sm:w-24 h-16 sm:h-24 bg-sand/20 rounded-full blur-2xl"></div>
+      <section className="min-h-[45vh] sm:min-h-[55vh] lg:min-h-[70vh] bg-primary-900 relative overflow-hidden flex items-center">
+        {/* Elementos decorativos de fondo - hidden on mobile */}
+        <div className="absolute top-10 right-10 w-24 sm:w-32 h-24 sm:h-32 bg-accent/10 rounded-full blur-3xl hidden sm:block"></div>
+        <div className="absolute bottom-20 left-10 w-16 sm:w-24 h-16 sm:h-24 bg-sand/20 rounded-full blur-2xl hidden sm:block"></div>
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-14">
           {/* Layout Grid Principal */}
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 xl:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 xl:gap-14 items-center">
             
             {/* COLUMNA IZQUIERDA - CONTENIDO CENTRADO */}
-            <div className="text-center space-y-4 sm:space-y-6 lg:space-y-8 lg:pr-8">
+            <div className="text-center space-y-3 sm:space-y-5 lg:space-y-6 lg:pr-6">
               {/* Título Principal */}
-            <div className="space-y-3 sm:space-y-4 lg:space-y-5">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight animate-fade-in" style={{
+            <div className="space-y-2 sm:space-y-3 lg:space-y-4">
+                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight animate-fade-in" style={{
                 fontFamily: 'var(--font-display)'
               }}>
                   La evolución de la educación ha comenzado
                 </h1>
                 
-                <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto" style={{
+                <h2 className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto" style={{
                 animationDelay: '0.2s'
               }}>
                   Conectamos a startups, scaleups, empresas tradicionales, universidades, colegios, ONG, Bigtech, el estado y la comunidad todos unidos por un objetivo común, dispuestos a revolucionar desde la raíz la manera en que se enseña y aprende.
@@ -144,7 +144,7 @@ const Somos = () => {
               </div>
               
               {/* CTA Principal */}
-              <div className="pt-4 sm:pt-6 lg:pt-8" style={{
+              <div className="pt-2 sm:pt-4 lg:pt-6" style={{
               animationDelay: '0.6s'
             }}>
                 <button onClick={() => {
@@ -152,9 +152,9 @@ const Somos = () => {
                   behavior: 'smooth',
                   block: 'start'
                 });
-              }} className="bg-accent hover:bg-accent-600 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-accent/30">
+              }} className="bg-accent hover:bg-accent-600 text-white font-semibold px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base transition-all duration-300 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-accent/30">
                   Conoce nuestra historia
-                  <ArrowRight className="ml-2 w-5 h-5 sm:w-6 sm:h-6 inline-block" />
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 inline-block" />
                 </button>
               </div>
             </div>
@@ -163,57 +163,57 @@ const Somos = () => {
             <div className="relative order-first lg:order-last" style={{
             animationDelay: '1s'
           }}>
-              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
+              <div className="relative rounded-lg sm:rounded-xl overflow-hidden shadow-xl sm:shadow-2xl sm:hover:scale-105 transition-transform duration-500">
                 <OptimizedImage 
                   src={juntaDirectiva2024} 
                   alt="Junta Directiva de Colombia EdTech 2024" 
-                  className="w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[450px] xl:h-[500px]"
+                  className="w-full h-[200px] sm:h-[250px] md:h-[350px] lg:h-[400px] xl:h-[450px]"
                   priority={true}
                 />
                 {/* Overlay sutil */}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-900/30 to-transparent"></div>
                 
                 {/* Badge flotante optimizado */}
-                <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm rounded-xl px-6 py-3 shadow-xl">
-                  <p className="text-sm font-bold text-primary-700">Junta Directiva</p>
+                <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl px-4 sm:px-6 py-2 sm:py-3 shadow-xl">
+                  <p className="text-xs sm:text-sm font-bold text-primary-700">Junta Directiva</p>
                   <p className="text-xs text-primary-500 font-medium">2024</p>
                 </div>
               </div>
               
-              {/* Elementos decorativos optimizados */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl"></div>
-              <div className="absolute -top-6 -left-6 w-20 h-20 bg-sand/30 rounded-full blur-lg"></div>
+              {/* Elementos decorativos optimizados - hidden on mobile */}
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl hidden sm:block"></div>
+              <div className="absolute -top-6 -left-6 w-20 h-20 bg-sand/30 rounded-full blur-lg hidden sm:block"></div>
             </div>
           </div>
         </div>
         
         {/* Separador visual hacia la siguiente sección */}
-        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-b from-transparent to-sand/20"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-8 sm:h-12 bg-gradient-to-b from-transparent to-sand/20"></div>
       </section>
 
       {/* JUNTA DIRECTIVA - DESPUÉS DEL HERO */}
-      <Section id="junta-directiva" className="py-10 sm:py-12 lg:py-16 bg-white">
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-primary-700 font-funnel">
+      <Section id="junta-directiva" className="py-8 sm:py-10 lg:py-14 bg-white">
+        <div className="text-center mb-6 sm:mb-10 lg:mb-12 px-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-primary-700 font-funnel">
             Conoce nuestra Junta Directiva
           </h2>
-          <p className="text-base sm:text-lg text-primary-900 max-w-2xl mx-auto">Líderes comprometidos con la transformación educativa en Colombia y latinoamérica</p>
+          <p className="text-sm sm:text-base text-primary-900 max-w-2xl mx-auto">Líderes comprometidos con la transformación educativa en Colombia y latinoamérica</p>
         </div>
         
-        <LogoGrid partners={asociados} columns={4} title="" className="mb-8 sm:mb-12" />
+        <LogoGrid partners={asociados} columns={4} title="" className="mb-6 sm:mb-10" />
         
-        <div className="flex justify-center mb-12 sm:mb-16 lg:mb-20 px-4">
+        <div className="flex justify-center mb-8 sm:mb-12 lg:mb-16 px-4">
           <CTAButton size="lg" variant="accent" asChild>
             <Link to="/asociados">
               Ver todos nuestros asociados
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
             </Link>
           </CTAButton>
         </div>
 
         {/* NOS HAN VISTO EN - MISMA SECCIÓN */}
-        <div className="text-center mb-8 sm:mb-12 px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-primary-700 font-funnel">
+        <div className="text-center mb-6 sm:mb-10 px-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-primary-700 font-funnel">
             Nos has visto en
           </h2>
         </div>
@@ -223,31 +223,31 @@ const Somos = () => {
 
       {/* MISIÓN Y CÓMO LO HACEMOS */}
       <section className="relative overflow-hidden">
-        <div className="grid lg:grid-cols-2 min-h-[500px] sm:min-h-[600px] lg:min-h-[80vh]">
+        <div className="grid lg:grid-cols-2 min-h-[400px] sm:min-h-[500px] lg:min-h-[70vh]">
           {/* Columna izquierda - Contenido */}
-          <div className="bg-primary-700 text-white p-6 sm:p-8 md:p-12 lg:p-20 flex flex-col justify-center">
-            <div className="space-y-6 sm:space-y-8 lg:space-y-10 max-w-2xl">
+          <div className="bg-primary-700 text-white p-5 sm:p-6 md:p-10 lg:p-16 flex flex-col justify-center">
+            <div className="space-y-4 sm:space-y-6 lg:space-y-8 max-w-2xl">
               {/* Misión */}
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-accent flex-shrink-0" />
-                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-funnel">Nuestra misión es clara</h2>
+              <div className="space-y-2 sm:space-y-3">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-accent flex-shrink-0" />
+                  <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-funnel">Nuestra misión es clara</h2>
                 </div>
-                <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                   Transformar la calidad, inclusión y accesibilidad de la educación en Colombia y Latinoamérica.
                 </p>
-                <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                   No se trata solo de enseñar, sino de abrir caminos hacia un aprendizaje significativo que conecte estudiantes, docentes e instituciones con las oportunidades del mundo moderno.
                 </p>
               </div>
 
               {/* Cómo lo hacemos */}
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-accent flex-shrink-0" />
-                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-funnel">¿Cómo lo hacemos?</h3>
+              <div className="space-y-2 sm:space-y-3">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-accent flex-shrink-0" />
+                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-funnel">¿Cómo lo hacemos?</h3>
                 </div>
-                <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                   Tejiendo lazos de colaboración entre organizaciones con ánimo y sin ánimo de lucro que trabajan por la educación, impulsando soluciones innovadoras que impacten a millones de personas.
                 </p>
               </div>
@@ -255,7 +255,7 @@ const Somos = () => {
           </div>
 
           {/* Columna derecha - Imagen */}
-          <div className="relative h-[250px] sm:h-[300px] lg:h-auto">
+          <div className="relative h-[200px] sm:h-[250px] lg:h-auto">
             <OptimizedImage 
               src={eventoColombiaEdtech} 
               alt="Evento Colombia EdTech - Formando líderes que transforman el país" 
@@ -267,9 +267,9 @@ const Somos = () => {
 
       {/* VISIÓN 2030 */}
       <section className="relative overflow-hidden">
-        <div className="grid lg:grid-cols-2 min-h-[500px] sm:min-h-[600px] lg:min-h-[80vh]">
+        <div className="grid lg:grid-cols-2 min-h-[400px] sm:min-h-[500px] lg:min-h-[70vh]">
           {/* Columna izquierda - Imagen */}
-          <div className="relative h-[250px] sm:h-[300px] lg:h-auto order-last lg:order-first">
+          <div className="relative h-[200px] sm:h-[250px] lg:h-auto order-last lg:order-first">
             <OptimizedImage 
               src={eventoVision2030} 
               alt="Evento Colombia EdTech - Visión 2030" 
@@ -278,18 +278,18 @@ const Somos = () => {
           </div>
 
           {/* Columna derecha - Contenido */}
-          <div className="bg-accent text-white p-6 sm:p-8 md:p-12 lg:p-20 flex flex-col justify-center">
-            <div className="space-y-6 sm:space-y-8 lg:space-y-10 max-w-2xl">
+          <div className="bg-accent text-white p-5 sm:p-6 md:p-10 lg:p-16 flex flex-col justify-center">
+            <div className="space-y-4 sm:space-y-6 lg:space-y-8 max-w-2xl">
               {/* Visión */}
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-white flex-shrink-0" />
-                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-funnel">Nuestro horizonte es ambicioso.</h2>
+              <div className="space-y-2 sm:space-y-3">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white flex-shrink-0" />
+                  <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-funnel">Nuestro horizonte es ambicioso.</h2>
                 </div>
-                <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                   Para 2030, seremos líderes en Latinoamérica en la creación de un ecosistema EdTech ético, dinámico y colaborativo que transforme el aprendizaje, impulse la globalización y priorice la personalización educativa.
                 </p>
-                <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                   Queremos un modelo donde aprender sea tan natural como respirar, y enseñar sea la puerta hacia un futuro lleno de progreso y equidad.
                 </p>
               </div>
@@ -299,46 +299,46 @@ const Somos = () => {
       </section>
 
       {/* VALORES - FONDO SAND */}
-      <Section className="py-10 sm:py-12 lg:py-16 bg-sand">
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-primary-700 font-funnel">
+      <Section className="py-8 sm:py-10 lg:py-14 bg-sand">
+        <div className="text-center mb-6 sm:mb-10 lg:mb-12 px-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-primary-700 font-funnel">
             Estos son los valores que nos mueven en Colombia EdTech
           </h2>
         </div>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto px-4">
-          <Card className="p-5 sm:p-6 lg:p-8 bg-sand/50 border-primary-200 text-center">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mx-auto mb-4 sm:mb-5 lg:mb-6 rounded-full bg-accent flex items-center justify-center">
-              <Lightbulb className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 max-w-7xl mx-auto px-4">
+          <Card className="p-4 sm:p-5 lg:p-6 bg-sand/50 border-primary-200 text-center">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 mx-auto mb-3 sm:mb-4 lg:mb-5 rounded-full bg-accent flex items-center justify-center">
+              <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-white" />
             </div>
-            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-primary-700">
+            <h3 className="text-sm sm:text-base lg:text-lg font-bold mb-2 sm:mb-3 text-primary-700">
               Innovación
             </h3>
-            <p className="text-sm sm:text-base text-primary-900 leading-relaxed">
+            <p className="text-xs sm:text-sm text-primary-900 leading-relaxed">
               La tecnología está presente en todas las áreas de nuestra vida, adaptarnos a sus beneficios, y crear sobre ella, mejorará significativamente la calidad de vida de profesores, estudiantes e instituciones educativas.
             </p>
           </Card>
           
-          <Card className="p-5 sm:p-6 lg:p-8 bg-sand/50 border-primary-200 text-center">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mx-auto mb-4 sm:mb-5 lg:mb-6 rounded-full bg-accent flex items-center justify-center">
-              <Handshake className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
+          <Card className="p-4 sm:p-5 lg:p-6 bg-sand/50 border-primary-200 text-center">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 mx-auto mb-3 sm:mb-4 lg:mb-5 rounded-full bg-accent flex items-center justify-center">
+              <Handshake className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-white" />
             </div>
-            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-primary-700">
+            <h3 className="text-sm sm:text-base lg:text-lg font-bold mb-2 sm:mb-3 text-primary-700">
               Colaboración
             </h3>
-            <p className="text-sm sm:text-base text-primary-900 leading-relaxed">
+            <p className="text-xs sm:text-sm text-primary-900 leading-relaxed">
               Tejemos una red de alianzas estratégicas entre organizaciones, instituciones y profesionales comprometidos con transformar la educación a través de la innovación y el trabajo conjunto.
             </p>
           </Card>
           
-          <Card className="p-5 sm:p-6 lg:p-8 bg-sand/50 border-primary-200 text-center">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mx-auto mb-4 sm:mb-5 lg:mb-6 rounded-full bg-accent flex items-center justify-center">
-              <Globe className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
+          <Card className="p-4 sm:p-5 lg:p-6 bg-sand/50 border-primary-200 text-center">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 mx-auto mb-3 sm:mb-4 lg:mb-5 rounded-full bg-accent flex items-center justify-center">
+              <Globe className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-white" />
             </div>
-            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-primary-700">
+            <h3 className="text-sm sm:text-base lg:text-lg font-bold mb-2 sm:mb-3 text-primary-700">
               Accesibilidad
             </h3>
-            <p className="text-sm sm:text-base text-primary-900 leading-relaxed">
+            <p className="text-xs sm:text-sm text-primary-900 leading-relaxed">
               Trabajamos para democratizar el acceso a una educación de calidad, eliminando barreras tecnológicas y económicas que limitan las oportunidades de aprendizaje en Colombia y Latinoamérica.
             </p>
           </Card>

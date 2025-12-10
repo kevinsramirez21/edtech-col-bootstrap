@@ -188,7 +188,7 @@ const Asociados = () => {
       </Helmet>
       
       {/* Hero */}
-      <Section className="py-16 sm:py-20 md:py-28 lg:py-36 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[70vh] sm:min-h-[75vh] lg:min-h-[85vh]">
+      <Section className="py-10 sm:py-14 md:py-20 lg:py-28 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[50vh] sm:min-h-[60vh] lg:min-h-[75vh]">
         {/* Background image */}
         <div className="absolute inset-0">
           <OptimizedImage 
@@ -199,26 +199,26 @@ const Asociados = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
         </div>
-        <div className="relative z-10 container max-w-7xl mx-auto px-4 h-full flex items-center pt-16 sm:pt-20 md:pt-24">
+        <div className="relative z-10 container max-w-7xl mx-auto px-4 h-full flex items-center pt-8 sm:pt-12 md:pt-16 lg:pt-20">
           <div className="max-w-4xl animate-fade-in">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight drop-shadow-2xl">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight drop-shadow-2xl">
               Asociados
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 sm:mb-8 md:mb-10 leading-relaxed drop-shadow-lg max-w-3xl">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-4 sm:mb-6 md:mb-8 leading-relaxed drop-shadow-lg max-w-3xl">
               Si eres una organización con o sin ánimo de lucro que está 
               <strong className="text-[#F73C5C]"> TRANSFORMANDO</strong> la educación, 
               bienvenido al mundo de los asociados
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in" style={{
+            <div className="flex flex-col sm:flex-row gap-3 animate-fade-in" style={{
             animationDelay: '0.2s'
           }}>
-              <Button size="lg" className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300" onClick={() => {
+              <Button size="lg" className="text-xs sm:text-sm lg:text-base px-5 sm:px-6 py-3 sm:py-4 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300" onClick={() => {
                 handleAssociateClick();
                 document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
               }}>
-                Únete ahora <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                Únete ahora <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 bg-white/95 border-white hover:bg-white backdrop-blur-sm hover-scale text-[#0B47CE] font-bold shadow-xl hover:shadow-2xl" onClick={() => document.getElementById('beneficios')?.scrollIntoView({ behavior: 'smooth' })}>
+              <Button size="lg" variant="outline" className="text-xs sm:text-sm lg:text-base px-5 sm:px-6 py-3 sm:py-4 bg-white/95 border-white hover:bg-white backdrop-blur-sm hover-scale text-[#0B47CE] font-bold shadow-xl hover:shadow-2xl" onClick={() => document.getElementById('beneficios')?.scrollIntoView({ behavior: 'smooth' })}>
                 Conoce los beneficios
               </Button>
             </div>
@@ -227,11 +227,11 @@ const Asociados = () => {
       </Section>
 
       {/* Technology & Union Section */}
-      <Section className="py-12 sm:py-16 lg:py-20 bg-[#F4E8DD] relative overflow-hidden">
+      <Section className="py-8 sm:py-12 lg:py-16 bg-[#F4E8DD] relative overflow-hidden">
         
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           {/* First Row - Image Left, Text Right */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-12 lg:mb-24 relative">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center mb-8 lg:mb-16 relative">
             {/* Horizontal bar from left - hidden on mobile */}
             <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 h-16 w-64 bg-gradient-to-r from-[#F73C5C] via-[#8B3A8B] to-transparent -ml-48"></div>
             
@@ -244,28 +244,28 @@ const Asociados = () => {
               />
             </div>
             <div className="relative z-10 order-1 lg:order-2">
-              <p className="text-base sm:text-lg text-[#0B47CE] mb-4 sm:mb-6 leading-relaxed">
+              <p className="text-sm sm:text-base text-[#0B47CE] mb-3 sm:mb-4 leading-relaxed">
                 Tenemos herramientas capaz de derribar las barreras que han limitado generaciones enteras, una herramienta para abrir puertas a un aprendizaje accesible, personalizado y relevante para todos, y esta herramienta es ...
               </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 font-funnel">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 font-funnel">
                 <span className="text-[#F73C5C]">La tecnología</span>
               </h2>
-              <p className="text-lg sm:text-xl text-[#0B47CE] font-medium">
+              <p className="text-base sm:text-lg text-[#0B47CE] font-medium">
                 Pero la tecnología, por sí sola, <span className="text-[#F73C5C] font-bold">no es suficiente.</span>
               </p>
             </div>
           </div>
 
           {/* Second Row - Text Left, Image Right */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center relative">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center relative">
             {/* Horizontal bar from right - hidden on mobile */}
             <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 h-16 w-64 bg-gradient-to-l from-[#8B3A8B] via-[#F73C5C] to-transparent -mr-48"></div>
             
             <div className="relative z-10">
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-8 leading-tight font-funnel">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 sm:mb-5 leading-tight font-funnel">
                 <span className="text-[#F73C5C]">El verdadero cambio necesita unión, sinergia, comunidad</span>
               </h3>
-              <p className="text-lg sm:text-xl text-[#0B47CE]">
+              <p className="text-base sm:text-lg text-[#0B47CE]">
                 Aquí es donde entras tú, entra tu organización, por que el éxito está garantizado cuando <span className="text-[#F73C5C] font-bold">trabajamos juntos</span>
               </p>
             </div>
@@ -282,9 +282,9 @@ const Asociados = () => {
       </Section>
 
       {/* CTA Section */}
-      <Section className="py-8 sm:py-12 bg-[#F4E8DD]">
+      <Section className="py-6 sm:py-10 bg-[#F4E8DD]">
         <div className="container text-center px-4">
-          <CTAButton size="lg" className="btn-primary" onClick={() => {
+          <CTAButton size="lg" className="btn-primary text-xs sm:text-sm" onClick={() => {
             handleAssociateClick();
             document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
           }}>
@@ -294,17 +294,17 @@ const Asociados = () => {
       </Section>
 
       {/* Testimonios */}
-      <Section className="py-12 sm:py-16 bg-white">
+      <Section className="py-8 sm:py-12 bg-white">
         <div className="container px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 font-funnel">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-10 font-funnel">
             <span className="text-[#F73C5C]">Algunos testimonios de nuestros asociados</span>
           </h2>
           
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
-            {testimonios.map((testimonio, index) => <div key={index} className={`p-5 sm:p-6 lg:p-8 rounded-lg text-white ${testimonio.color === 'blue' ? 'bg-[#0B47CE]' : 'bg-[#F73C5C]'}`}>
-                <div className="flex items-center mb-3 sm:mb-4">
+          <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 max-w-6xl mx-auto">
+            {testimonios.map((testimonio, index) => <div key={index} className={`p-4 sm:p-5 lg:p-6 rounded-lg text-white ${testimonio.color === 'blue' ? 'bg-[#0B47CE]' : 'bg-[#F73C5C]'}`}>
+                <div className="flex items-center mb-2 sm:mb-3">
                   {testimonio.image ? (
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden mr-3 sm:mr-4 flex-shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden mr-2 sm:mr-3 flex-shrink-0">
                       <OptimizedImage 
                         src={testimonio.image} 
                         alt={testimonio.name} 
@@ -313,16 +313,16 @@ const Asociados = () => {
                       />
                     </div>
                   ) : (
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-full flex items-center justify-center mr-3 sm:mr-4">
-                      <div className="w-8 h-8 sm:w-12 sm:h-12 bg-white/40 rounded-full"></div>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center mr-2 sm:mr-3">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-white/40 rounded-full"></div>
                     </div>
                   )}
                   <div>
-                    <h4 className="font-bold text-base sm:text-lg">{testimonio.name}</h4>
-                    <p className="text-xs sm:text-sm opacity-90">{testimonio.role}</p>
+                    <h4 className="font-bold text-sm sm:text-base">{testimonio.name}</h4>
+                    <p className="text-xs opacity-90">{testimonio.role}</p>
                   </div>
                 </div>
-                <p className="text-sm sm:text-base leading-relaxed">
+                <p className="text-xs sm:text-sm leading-relaxed">
                   {testimonio.quote}
                 </p>
               </div>)}
@@ -331,16 +331,16 @@ const Asociados = () => {
       </Section>
 
       {/* Problemas Reales */}
-      <Section className="py-8 sm:py-12 md:py-16 lg:py-28 bg-[#0B47CE] text-white">
+      <Section className="py-6 sm:py-10 md:py-14 lg:py-20 bg-[#0B47CE] text-white">
         <div className="container max-w-7xl mx-auto text-center px-4 sm:px-6">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 font-funnel">
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mb-2 sm:mb-3 md:mb-5 font-funnel">
             Soluciones reales para problemas reales
           </h2>
-          <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-4 sm:mb-8 md:mb-12 lg:mb-16">Lo sabemos ...</h3>
+          <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-3 sm:mb-6 md:mb-10 lg:mb-12">Lo sabemos ...</h3>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-4 sm:mb-8 md:mb-12 lg:mb-16">
-            {statistics.slice(0, 2).map((stat, index) => <div key={index} className="bg-white/15 rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-1 sm:mb-2 md:mb-4">{stat.percentage}</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-3 sm:mb-6 md:mb-10 lg:mb-12">
+            {statistics.slice(0, 2).map((stat, index) => <div key={index} className="bg-white/15 rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-1 sm:mb-2 md:mb-3">{stat.percentage}</div>
                 <div className="text-xs sm:text-sm md:text-base mb-1 sm:mb-2 md:mb-3">{stat.label}</div>
                 <div className="text-sm sm:text-base md:text-lg lg:text-xl">{stat.description}</div>
               </div>)}

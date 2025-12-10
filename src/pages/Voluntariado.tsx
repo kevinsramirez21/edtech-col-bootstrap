@@ -97,7 +97,7 @@ const Voluntariado = () => {
       </Helmet>
       
       {/* Hero */}
-      <Section className="py-16 sm:py-20 md:py-28 lg:py-36 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[70vh] sm:min-h-[75vh] lg:min-h-[85vh]">
+      <Section className="py-10 sm:py-14 md:py-20 lg:py-28 bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] text-white relative overflow-hidden min-h-[50vh] sm:min-h-[60vh] lg:min-h-[75vh]">
         {/* Background image */}
         <div className="absolute inset-0">
           <OptimizedImage 
@@ -108,35 +108,35 @@ const Voluntariado = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#003889]/80 via-[#0B47CE]/65 to-[#003889]/50"></div>
         </div>
-        <div className="relative z-10 container max-w-7xl mx-auto px-4 h-full flex items-center pt-16 sm:pt-20 md:pt-24">
+        <div className="relative z-10 container max-w-7xl mx-auto px-4 h-full flex items-center pt-8 sm:pt-12 md:pt-16 lg:pt-20">
           <div className="max-w-4xl animate-fade-in">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight drop-shadow-2xl">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight drop-shadow-2xl">
               Voluntariado
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 sm:mb-8 md:mb-10 leading-relaxed drop-shadow-lg max-w-3xl">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-4 sm:mb-6 md:mb-8 leading-relaxed drop-shadow-lg max-w-3xl">
               Si eres experto, profesional o estudiante y quieres 
               <strong className="text-[#F73C5C]"> donar tu tiempo y talento</strong> en esta revolución de la educación, 
               bienvenido al mundo de los <strong className="text-[#F73C5C]">VOLUNTARIOS</strong>
             </p>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 md:mb-10 opacity-90 drop-shadow-lg max-w-3xl">
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg mb-4 sm:mb-6 md:mb-8 opacity-90 drop-shadow-lg max-w-3xl">
               Aquí podrás conectar tus <strong>intereses profesionales</strong> con un <strong>propósito profundo</strong>: 
               mejorar el sistema educativo de Colombia y el mundo.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <div className="flex flex-col sm:flex-row gap-3 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <Button 
                 size="lg" 
-                className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300"
+                className="text-xs sm:text-sm lg:text-base px-5 sm:px-6 py-3 sm:py-4 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold hover-scale shadow-2xl hover:shadow-[0_20px_50px_rgba(247,60,92,0.5)] transition-all duration-300"
                 onClick={() => {
                   handleVolunteerApplyClick();
                   document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                Quiero ser voluntario/a <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                Quiero ser voluntario/a <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 bg-white/95 border-white hover:bg-white backdrop-blur-sm hover-scale text-[#0B47CE] font-bold shadow-xl hover:shadow-2xl"
+                className="text-xs sm:text-sm lg:text-base px-5 sm:px-6 py-3 sm:py-4 bg-white/95 border-white hover:bg-white backdrop-blur-sm hover-scale text-[#0B47CE] font-bold shadow-xl hover:shadow-2xl"
                 onClick={() => document.getElementById('beneficios')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Conoce los beneficios
@@ -147,18 +147,18 @@ const Voluntariado = () => {
       </Section>
 
       {/* Motivaciones */}
-      <Section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <Section className="py-8 sm:py-12 lg:py-16 bg-white">
         <div className="container max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 font-funnel">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-10 font-funnel">
             <span className="text-[#F73C5C]">Si estás aquí es porque sientes que…</span>
           </h2>
           
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center mb-8 sm:mb-12">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-14 items-center mb-6 sm:mb-10">
             <div>
-              <ul className="space-y-4 sm:space-y-6 text-sm sm:text-base lg:text-lg text-[#0B47CE]">
+              <ul className="space-y-3 sm:space-y-4 text-xs sm:text-sm lg:text-base text-[#0B47CE]">
                 {motivaciones.map((motivacion, index) => (
                   <li key={index} className="flex items-start">
-                    <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-[#F73C5C] mr-3 sm:mr-4 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#F73C5C] mr-2 sm:mr-3 flex-shrink-0 mt-0.5" />
                     <span>{motivacion}</span>
                   </li>
                 ))}
@@ -174,15 +174,15 @@ const Voluntariado = () => {
             </div>
           </div>
 
-          <div className="text-center bg-[#F4E8DD] p-6 sm:p-8 md:p-10 lg:p-12 rounded-xl">
-            <div className="flex items-center justify-center mb-4 sm:mb-6">
-              <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-[#F73C5C] mr-3 sm:mr-4" />
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B47CE] font-funnel">¡Bienvenido/a!</h3>
+          <div className="text-center bg-[#F4E8DD] p-5 sm:p-6 md:p-8 lg:p-10 rounded-xl">
+            <div className="flex items-center justify-center mb-3 sm:mb-4">
+              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-[#F73C5C] mr-2 sm:mr-3" />
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0B47CE] font-funnel">¡Bienvenido/a!</h3>
             </div>
-            <p className="text-base sm:text-lg lg:text-xl text-[#0B47CE] mb-4 sm:mb-6 max-w-3xl mx-auto">
+            <p className="text-sm sm:text-base lg:text-lg text-[#0B47CE] mb-3 sm:mb-4 max-w-3xl mx-auto">
               Hay un lugar esperando por ti en nuestros <strong>grupos de voluntariado</strong>.
             </p>
-            <p className="text-sm sm:text-base lg:text-lg text-[#0B47CE] max-w-3xl mx-auto">
+            <p className="text-xs sm:text-sm lg:text-base text-[#0B47CE] max-w-3xl mx-auto">
               <strong className="text-[#F73C5C]">Colombia EdTech</strong> integra tecnología innovadora y une a todos los actores del ecosistema 
               para construir una <strong>educación de calidad, accesible y personalizable</strong>.
             </p>
@@ -191,23 +191,23 @@ const Voluntariado = () => {
       </Section>
 
       {/* Beneficios */}
-      <Section id="beneficios" className="py-12 sm:py-16 lg:py-20 bg-[#F4E8DD]">
+      <Section id="beneficios" className="py-8 sm:py-12 lg:py-16 bg-[#F4E8DD]">
         <div className="container px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 sm:mb-6 font-funnel">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 sm:mb-4 font-funnel">
             <span className="text-[#0B47CE]">Beneficios de ser</span><br className="sm:hidden" /> <span className="text-[#F73C5C]">voluntario/a</span>
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-center text-[#0B47CE] mb-10 sm:mb-12 lg:mb-16 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base lg:text-lg text-center text-[#0B47CE] mb-6 sm:mb-10 lg:mb-12 max-w-3xl mx-auto">
             Todo lo que recibes por donar tu tiempo y talento
           </p>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
             {beneficios.map((beneficio, index) => (
-              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-lg p-5 sm:p-6 lg:p-8 hover:shadow-xl transition-all duration-300">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-[#F73C5C] rounded-full flex items-center justify-center mb-4 sm:mb-6">
-                  <beneficio.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
+              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-lg p-4 sm:p-5 lg:p-6 hover:shadow-xl transition-all duration-300">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-[#F73C5C] rounded-full flex items-center justify-center mb-3 sm:mb-4">
+                  <beneficio.icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white" />
                 </div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-[#0B47CE] mb-2 sm:mb-4">{beneficio.title}</h3>
-                <p className="text-sm sm:text-base text-[#0B47CE] leading-relaxed">{beneficio.description}</p>
+                <h3 className="text-sm sm:text-base lg:text-lg font-bold text-[#0B47CE] mb-1 sm:mb-2">{beneficio.title}</h3>
+                <p className="text-xs sm:text-sm text-[#0B47CE] leading-relaxed">{beneficio.description}</p>
               </div>
             ))}
           </div>
@@ -215,22 +215,22 @@ const Voluntariado = () => {
       </Section>
 
       {/* Propósito */}
-      <Section className="py-12 sm:py-16 lg:py-20 bg-[#0B47CE] text-white">
+      <Section className="py-8 sm:py-12 lg:py-16 bg-[#0B47CE] text-white">
         <div className="container max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 font-funnel">Propósito</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-10 font-funnel">Propósito</h2>
           
           <div className="text-center max-w-4xl mx-auto">
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 sm:mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-4 sm:mb-6 leading-relaxed">
               La vida no se trata solo de lo que <strong>conseguimos</strong>, sino de lo que <strong>podemos dar</strong>.
             </p>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-8 sm:mb-12 opacity-90 leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg mb-6 sm:mb-10 opacity-90 leading-relaxed">
               A través del voluntariado, contribuyes a una <strong>causa más grande</strong> que tú: encuentras propósito y alineas 
               tus conocimientos, habilidades y pasión con <strong>impacto social real</strong>.
             </p>
             
             <CTAButton 
               size="lg"
-              className="bg-white text-[#0B47CE] hover:bg-gray-100 text-xs sm:text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6 font-bold shadow-2xl"
+              className="bg-white text-[#0B47CE] hover:bg-gray-100 text-xs sm:text-sm md:text-base px-4 sm:px-6 py-2.5 sm:py-3 md:py-4 font-bold shadow-2xl"
               onClick={() => {
                 handleVolunteerApplyClick();
                 document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
@@ -243,43 +243,43 @@ const Voluntariado = () => {
       </Section>
 
       {/* Requisitos */}
-      <Section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <Section className="py-8 sm:py-12 lg:py-16 bg-white">
         <div className="container max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 lg:mb-16 font-funnel">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-10 lg:mb-12 font-funnel">
             <span className="text-[#0B47CE]">Requisitos y</span> <span className="text-[#F73C5C]">compromisos</span>
           </h2>
           
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start mb-8 sm:mb-12">
-            <div className="bg-white border-2 border-[#0B47CE]/20 p-5 sm:p-6 md:p-8 lg:p-10 rounded-xl shadow-lg">
-              <div className="flex items-center mb-5 sm:mb-6 lg:mb-8">
-                <CheckCircle className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-[#0B47CE] mr-3 sm:mr-4" />
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-[#0B47CE] font-funnel">Es muy simple. Respóndete:</h3>
+          <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start mb-6 sm:mb-10">
+            <div className="bg-white border-2 border-[#0B47CE]/20 p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl shadow-lg">
+              <div className="flex items-center mb-4 sm:mb-5 lg:mb-6">
+                <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-[#0B47CE] mr-2 sm:mr-3" />
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-[#0B47CE] font-funnel">Es muy simple. Respóndete:</h3>
               </div>
-              <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+              <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                 {requisitos.map((requisito, index) => (
-                  <li key={index} className="flex items-start text-sm sm:text-base lg:text-lg text-[#0B47CE]">
-                    <span className="text-[#F73C5C] font-bold mr-2 sm:mr-3 mt-0.5 text-base sm:text-lg lg:text-xl">•</span>
+                  <li key={index} className="flex items-start text-xs sm:text-sm lg:text-base text-[#0B47CE]">
+                    <span className="text-[#F73C5C] font-bold mr-2 mt-0.5 text-sm sm:text-base">•</span>
                     {requisito}
                   </li>
                 ))}
               </ul>
-              <div className="bg-[#F4E8DD] p-4 sm:p-5 lg:p-8 rounded-lg">
-                <p className="text-sm sm:text-base lg:text-xl text-[#0B47CE] font-semibold">
+              <div className="bg-[#F4E8DD] p-3 sm:p-4 lg:p-6 rounded-lg">
+                <p className="text-xs sm:text-sm lg:text-base text-[#0B47CE] font-semibold">
                   Si respondiste <strong>SÍ</strong> a todo, ¡<strong>bienvenido/a</strong>! 
                   Tienes lo necesario para ser <strong>voluntario/a</strong> en Colombia EdTech.
                 </p>
               </div>
             </div>
             
-            <div className="bg-white border-2 border-[#F73C5C] p-5 sm:p-6 md:p-8 lg:p-10 rounded-xl shadow-lg">
-              <div className="flex items-center mb-5 sm:mb-6 lg:mb-8">
-                <Handshake className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-[#F73C5C] mr-3 sm:mr-4" />
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-[#F73C5C] font-funnel">Tu compromiso principal</h3>
+            <div className="bg-white border-2 border-[#F73C5C] p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl shadow-lg">
+              <div className="flex items-center mb-4 sm:mb-5 lg:mb-6">
+                <Handshake className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-[#F73C5C] mr-2 sm:mr-3" />
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-[#F73C5C] font-funnel">Tu compromiso principal</h3>
               </div>
-              <p className="text-sm sm:text-base lg:text-xl text-[#0B47CE] mb-4 sm:mb-6 lg:mb-8">
+              <p className="text-xs sm:text-sm lg:text-base text-[#0B47CE] mb-3 sm:mb-4 lg:mb-6">
                 Es cumplir con los <strong>tiempos y responsabilidades</strong> acordadas.
               </p>
-              <p className="text-sm sm:text-base lg:text-xl text-[#0B47CE]">
+              <p className="text-xs sm:text-sm lg:text-base text-[#0B47CE]">
                 Este es un <strong>pacto de confianza y respeto</strong>, donde cada voluntario/a entrega lo mejor de sí, 
                 asegurando que la <strong>transformación educativa</strong> que buscamos sea real y efectiva.
               </p>
@@ -289,7 +289,7 @@ const Voluntariado = () => {
           <div className="text-center">
             <CTAButton 
               size="lg"
-              className="btn-primary text-xs sm:text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6"
+              className="btn-primary text-xs sm:text-sm md:text-base px-4 sm:px-6 py-2.5 sm:py-3 md:py-4"
               onClick={() => {
                 handleVolunteerApplyClick();
                 document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
@@ -302,36 +302,36 @@ const Voluntariado = () => {
       </Section>
 
       {/* Cierre */}
-      <Section className="py-16 sm:py-20 md:py-24 lg:py-32 bg-gradient-to-br from-[#003889] via-[#8B3A8B] to-[#F73C5C] text-white">
+      <Section className="py-10 sm:py-14 md:py-18 lg:py-24 bg-gradient-to-br from-[#003889] via-[#8B3A8B] to-[#F73C5C] text-white">
         <div className="container max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 md:mb-10 font-funnel drop-shadow-lg">Querido/a voluntario/a</h2>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 sm:mb-8 leading-relaxed drop-shadow-md">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 md:mb-8 font-funnel drop-shadow-lg">Querido/a voluntario/a</h2>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-4 sm:mb-6 leading-relaxed drop-shadow-md">
             Tu <strong>tiempo</strong> y tu <strong>talento</strong> tienen un propósito <strong>enorme</strong>, más allá de lo que imaginas.
           </p>
-          <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 opacity-90 drop-shadow-md leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 opacity-90 drop-shadow-md leading-relaxed">
             Más que un voluntariado, es la oportunidad de <strong>dejar tu legado</strong> en la educación de Colombia y Latinoamérica.
           </p>
-          <p className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 sm:mb-10 md:mb-12 drop-shadow-lg">¡Nos vemos dentro!</p>
+          <p className="text-lg sm:text-xl md:text-2xl font-bold mb-6 sm:mb-8 md:mb-10 drop-shadow-lg">¡Nos vemos dentro!</p>
           <CTAButton 
             size="lg"
-            className="bg-white text-[#0B47CE] hover:bg-gray-100 text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 font-bold shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)] transition-all duration-300"
+            className="bg-white text-[#0B47CE] hover:bg-gray-100 text-xs sm:text-sm lg:text-base px-5 sm:px-6 py-3 sm:py-4 font-bold shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)] transition-all duration-300"
             onClick={() => {
               handleVolunteerApplyClick();
               document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            ¡HECHO! SERÉ VOLUNTARIO/A <Heart className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+            ¡HECHO! SERÉ VOLUNTARIO/A <Heart className="ml-2 h-4 w-4" />
           </CTAButton>
         </div>
       </Section>
 
       {/* Formulario */}
-      <div id="form" className="py-12 sm:py-16 md:py-20 bg-[#F4E8DD]">
+      <div id="form" className="py-8 sm:py-12 md:py-16 bg-[#F4E8DD]">
         <div className="container max-w-3xl mx-auto px-4 sm:px-6">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B47CE] mb-3 sm:mb-4 text-center font-funnel">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0B47CE] mb-2 sm:mb-3 text-center font-funnel">
             ¿Quieres ser voluntario/a?
           </h3>
-          <p className="text-base sm:text-lg text-[#0B47CE] mb-6 sm:mb-8 text-center max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-[#0B47CE] mb-4 sm:mb-6 text-center max-w-2xl mx-auto">
             Completa el siguiente formulario y nos pondremos en contacto contigo para comenzar esta increíble experiencia
           </p>
           

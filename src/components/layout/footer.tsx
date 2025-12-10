@@ -86,16 +86,16 @@ export function Footer() {
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl"></div>
       </div>
       
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-10 sm:py-12 lg:py-16 xl:py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-10 lg:py-14 xl:py-16 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 xl:gap-14">
           
           {/* Left Side - Brand & Contact */}
-          <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
+          <div className="space-y-4 sm:space-y-6 text-center lg:text-left">
             <div>
-              <Link to="/" className="inline-block mb-4 sm:mb-6">
-                <img src={footerLogo} alt="Colombia EdTech" className="h-12 sm:h-16 w-auto" />
+              <Link to="/" className="inline-block mb-3 sm:mb-4">
+                <img src={footerLogo} alt="Colombia EdTech" className="h-10 sm:h-12 w-auto" />
               </Link>
-              <p className="text-white text-base sm:text-lg max-w-md mx-auto lg:mx-0 leading-relaxed font-medium">
+              <p className="text-white text-sm sm:text-base max-w-md mx-auto lg:mx-0 leading-relaxed font-medium">
                 Fortaleciendo el ecosistema EdTech colombiano a través de la colaboración, 
                 investigación y políticas públicas que transformen la educación.
               </p>
@@ -131,20 +131,20 @@ export function Footer() {
           </div>
 
           {/* Right Side - Navigation & Newsletter */}
-          <div className="space-y-8 sm:space-y-10 lg:space-y-12">
+          <div className="space-y-6 sm:space-y-8 lg:space-y-10">
             
             {/* Quick Links */}
             <div className="text-center lg:text-left">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">
+              <h3 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4">
                 Navegación
               </h3>
               <nav aria-label="Enlaces del footer">
-                <ul className="grid grid-cols-2 gap-x-6 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-8 sm:gap-y-3">
+                <ul className="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-wrap sm:gap-x-6 sm:gap-y-2">
                   {quickLinks.map((link) => (
                     <li key={link.name}>
                       <Link
                         to={link.href}
-                        className="text-sand hover:text-white transition-colors duration-300 text-base font-medium hover:underline"
+                        className="text-sand hover:text-white transition-colors duration-300 text-sm sm:text-base font-medium hover:underline"
                       >
                         {link.name}
                       </Link>
@@ -155,15 +155,15 @@ export function Footer() {
             </div>
 
             {/* Newsletter Section */}
-            <div className="bg-primary-700/30 rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 border border-white/10">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 text-center lg:text-left">
+            <div className="bg-primary-700/30 rounded-lg sm:rounded-xl p-4 sm:p-5 lg:p-6 border border-white/10">
+              <h3 className="text-base sm:text-lg font-bold text-white mb-2 text-center lg:text-left">
                 Mantente conectado
               </h3>
-              <p className="text-white/90 text-base sm:text-lg mb-4 sm:mb-6 leading-relaxed text-center lg:text-left">
+              <p className="text-white/90 text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed text-center lg:text-left">
                 Únete a +500 líderes EdTech que reciben nuestras actualizaciones
               </p>
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                   <FormField
                     control={form.control}
                     name="email"
@@ -173,7 +173,7 @@ export function Footer() {
                           <Input
                             type="email"
                             placeholder="tu@email.com"
-                            className="bg-white border-0 text-primary-900 placeholder:text-primary-900/60 focus:ring-2 focus:ring-accent-brand h-10 sm:h-12 text-base sm:text-lg rounded-lg sm:rounded-xl"
+                            className="bg-white border-0 text-primary-900 placeholder:text-primary-900/60 focus:ring-2 focus:ring-accent-brand h-9 sm:h-10 text-sm sm:text-base rounded-lg"
                             aria-label="Dirección de correo electrónico"
                             {...field}
                           />
@@ -184,7 +184,7 @@ export function Footer() {
                   <Button 
                     type="submit"
                     disabled={form.formState.isSubmitting}
-                    className="bg-accent-brand hover:bg-accent-brand/90 text-white font-bold px-6 sm:px-8 py-2.5 sm:py-3 h-10 sm:h-12 rounded-lg sm:rounded-xl text-base sm:text-lg whitespace-nowrap transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50"
+                    className="bg-accent-brand hover:bg-accent-brand/90 text-white font-bold px-4 sm:px-6 py-2 h-9 sm:h-10 rounded-lg text-sm sm:text-base whitespace-nowrap transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50"
                   >
                     {form.formState.isSubmitting ? "Enviando..." : "Suscribirse"}
                   </Button>
@@ -196,16 +196,16 @@ export function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-8 sm:mt-12 lg:mt-16 pt-6 sm:pt-8 border-t border-white/20">
-          <div className="flex flex-col items-center lg:flex-row lg:items-center lg:justify-between gap-3 sm:gap-4 text-center lg:text-left">
-            <p className="text-sand text-xs sm:text-sm font-medium">
+        <div className="mt-6 sm:mt-8 lg:mt-12 pt-4 sm:pt-6 border-t border-white/20">
+          <div className="flex flex-col items-center lg:flex-row lg:items-center lg:justify-between gap-2 sm:gap-3 text-center lg:text-left">
+            <p className="text-sand text-xs font-medium">
               © {new Date().getFullYear()} Colombia EdTech. Todos los derechos reservados.
             </p>
-            <div className="flex items-center space-x-4 sm:space-x-6">
-              <Link to="/legal" className="text-sand hover:text-white transition-colors text-xs sm:text-sm">
+            <div className="flex items-center space-x-3 sm:space-x-5">
+              <Link to="/legal" className="text-sand hover:text-white transition-colors text-xs">
                 Términos y Condiciones
               </Link>
-              <Link to="/legal" className="text-sand hover:text-white transition-colors text-xs sm:text-sm">
+              <Link to="/legal" className="text-sand hover:text-white transition-colors text-xs">
                 Política de Privacidad
               </Link>
             </div>
