@@ -28,7 +28,7 @@ export function TeamMemberCard({
         className
       )}
     >
-      {/* Photo container with aspect ratio */}
+      {/* Photo container */}
       <div className="relative aspect-[4/5] overflow-hidden">
         <img
           src={image}
@@ -36,18 +36,18 @@ export function TeamMemberCard({
           className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
         />
         
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/40 to-transparent" />
+        {/* Gradient overlay - stronger for readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-900 via-primary-900/60 to-transparent" />
         
         {/* Content overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
           <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 font-funnel">
             {name}
           </h3>
-          <p className="text-white/80 text-sm sm:text-base mb-2">
+          <p className="text-white/90 text-sm sm:text-base mb-2">
             {position}
           </p>
-          <p className="text-white/70 text-xs sm:text-sm line-clamp-2 mb-3">
+          <p className="text-white/80 text-xs sm:text-sm mb-4 leading-relaxed">
             {bio}
           </p>
           
