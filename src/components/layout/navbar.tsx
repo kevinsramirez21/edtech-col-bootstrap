@@ -89,14 +89,14 @@ export function Navbar() {
           {/* Desktop Navigation - Premium Layout */}
           <div className="hidden lg:flex lg:items-center lg:space-x-1">
             {navItems.map((item) => (
-              <div key={item.name}>
+              <div key={item.name} className="flex items-center">
                 {item.isDropdown ? (
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button
                         variant="ghost"
                         className={cn(
-                          "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group",
+                          "h-10 px-4 text-sm font-semibold rounded-lg transition-all duration-300 group",
                           "text-white hover:text-white/90 hover:bg-white/10"
                         )}
                       >
@@ -123,7 +123,7 @@ export function Navbar() {
                   <Link
                     to={item.href}
                     className={cn(
-                      "relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group",
+                      "flex items-center h-10 px-4 text-sm font-semibold rounded-lg transition-all duration-300 group",
                       isActive(item.href)
                         ? "text-white bg-white/20 shadow-sm"
                         : "text-white hover:text-white/90 hover:bg-white/10"
@@ -131,10 +131,6 @@ export function Navbar() {
                     aria-current={isActive(item.href) ? "page" : undefined}
                   >
                     <span className="relative z-10">{item.name}</span>
-                    {isActive(item.href) && (
-                      <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-white rounded-full"></div>
-                    )}
-                    <div className="absolute inset-0 rounded-lg bg-white/0 group-hover:bg-white/5 transition-all duration-300"></div>
                   </Link>
                 )}
               </div>
