@@ -310,11 +310,11 @@ const Index = () => {
                 <span className="text-accent-brand">accesible, personalizada y relevante</span>{" "}
                 para todas las personas.
               </p>
-              <Button asChild className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 rounded-xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-105 sm:hover:scale-110 text-sm sm:text-base lg:text-lg group w-full sm:w-auto">
-                <Link to="/asociados" className="flex items-center space-x-3">
-                  <Users className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
-                  <span>Quiero conocer cómo ser parte de Colombia EdTech</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              <Button asChild className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 rounded-xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-105 sm:hover:scale-110 text-xs sm:text-base lg:text-lg group w-full sm:w-auto whitespace-normal text-center">
+                <Link to="/asociados" className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap sm:flex-nowrap">
+                  <Users className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
+                  <span className="leading-tight">Quiero conocer cómo ser parte</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0" />
                 </Link>
               </Button>
             </div>
