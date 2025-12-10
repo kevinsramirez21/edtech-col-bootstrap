@@ -316,13 +316,13 @@ const Voluntariado = () => {
           <p className="text-lg sm:text-xl md:text-2xl font-bold mb-6 sm:mb-8 md:mb-10 drop-shadow-lg">¡Nos vemos dentro!</p>
           <CTAButton 
             size="lg"
-            className="bg-white text-[#0B47CE] hover:bg-gray-100 text-xs sm:text-sm lg:text-base px-5 sm:px-6 py-3 sm:py-4 font-bold shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)] transition-all duration-300"
+            className="bg-white text-[#0B47CE] hover:bg-gray-100 text-xs sm:text-sm lg:text-base px-5 sm:px-6 py-3 sm:py-4 font-bold shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)] transition-all duration-300 whitespace-nowrap"
             onClick={() => {
               handleVolunteerApplyClick();
               document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            ¡HECHO! SERÉ VOLUNTARIO/A <Heart className="ml-2 h-4 w-4" />
+            ¡SERÉ VOLUNTARIO/A! <Heart className="ml-2 h-4 w-4 inline" />
           </CTAButton>
         </div>
       </Section>
