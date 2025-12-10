@@ -532,82 +532,82 @@ const Panorama = () => {
       </Section>
 
       {/* ROI */}
-      <Section className="py-20 bg-sand">
-        <div className="container max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary-700 leading-tight">
+      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
               Educación = ROI (o Muerte)
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl text-primary-900 max-w-3xl mx-auto">
+            <div className="w-20 sm:w-28 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-900 max-w-3xl mx-auto">
               La educación ya no es un gasto - es una inversión con retorno medible
             </p>
           </div>
           
           <div className="max-w-6xl mx-auto">
-            <Card className="p-10 bg-gradient-to-br from-accent-brand/10 to-white border-2 border-accent-brand/30 mb-12">
-              <div className="text-center mb-8">
-                <h3 className="text-3xl font-bold text-primary-700 mb-4">Customer Education: El Nuevo Paradigma</h3>
-                <p className="text-xl text-primary-900 mb-6">
+            <Card className="p-4 sm:p-6 md:p-8 lg:p-10 bg-gradient-to-br from-accent-brand/10 to-white border-2 border-accent-brand/30 mb-6 sm:mb-8 md:mb-12">
+              <div className="text-center mb-4 sm:mb-6 md:mb-8">
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-primary-700 mb-2 sm:mb-3 md:mb-4">Customer Education: El Nuevo Paradigma</h3>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-900 mb-4 sm:mb-5 md:mb-6">
                   <strong className="text-accent-brand">86%</strong> de las empresas confirman que sus estrategias de Customer Education son <strong>rentables y generan retorno medible</strong>
                 </p>
-                <div className="inline-block bg-accent-brand text-white px-8 py-4 rounded-xl">
-                  <div className="text-5xl font-bold mb-2">372%</div>
-                  <div className="text-lg">ROI Comprobado</div>
-                  <div className="text-sm opacity-90">Forrester TEI Model, 2024</div>
+                <div className="inline-block bg-accent-brand text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-xl">
+                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">372%</div>
+                  <div className="text-sm sm:text-base md:text-lg">ROI Comprobado</div>
+                  <div className="text-xs sm:text-sm opacity-90">Forrester TEI Model, 2024</div>
                 </div>
               </div>
             </Card>
             
-            <h3 className="text-2xl font-bold text-primary-700 mb-8 text-center">Impacto Medible de Programas de Educación al Cliente</h3>
+            <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary-700 mb-4 sm:mb-6 md:mb-8 text-center">Impacto Medible de Programas de Educación al Cliente</h3>
             
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="p-6 bg-white border-2 border-primary-700/30">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-lg font-semibold text-primary-700">📈 Adopción de producto</span>
-                  <span className="text-3xl font-bold text-primary-700">+38.3%</span>
+            <div className="grid md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+              <Card className="p-3 sm:p-4 md:p-6 bg-white border-2 border-primary-700/30">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-primary-700">📈 Adopción de producto</span>
+                  <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-primary-700">+38.3%</span>
                 </div>
               </Card>
               
-              <Card className="p-6 bg-white border-2 border-primary-700/30">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-lg font-semibold text-primary-700">⭐ Engagement de usuarios</span>
-                  <span className="text-3xl font-bold text-primary-700">+30.7%</span>
+              <Card className="p-3 sm:p-4 md:p-6 bg-white border-2 border-primary-700/30">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-primary-700">⭐ Engagement de usuarios</span>
+                  <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-primary-700">+30.7%</span>
                 </div>
               </Card>
               
-              <Card className="p-6 bg-white border-2 border-primary-700/30">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-lg font-semibold text-primary-700">😊 Satisfacción del cliente</span>
-                  <span className="text-3xl font-bold text-primary-700">+26.2%</span>
+              <Card className="p-3 sm:p-4 md:p-6 bg-white border-2 border-primary-700/30">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-primary-700">😊 Satisfacción del cliente</span>
+                  <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-primary-700">+26.2%</span>
                 </div>
               </Card>
               
-              <Card className="p-6 bg-white border-2 border-primary-700/30">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-lg font-semibold text-primary-700">💎 Valor de vida (LTV)</span>
-                  <span className="text-3xl font-bold text-primary-700">+34.6%</span>
+              <Card className="p-3 sm:p-4 md:p-6 bg-white border-2 border-primary-700/30">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-primary-700">💎 Valor de vida (LTV)</span>
+                  <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-primary-700">+34.6%</span>
                 </div>
               </Card>
               
-              <Card className="p-6 bg-white border-2 border-accent-brand/30">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-lg font-semibold text-primary-700">⏱️ Ciclo de ventas</span>
-                  <span className="text-3xl font-bold text-accent-brand">-8.1%</span>
+              <Card className="p-3 sm:p-4 md:p-6 bg-white border-2 border-accent-brand/30">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-primary-700">⏱️ Ciclo de ventas</span>
+                  <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-accent-brand">-8.1%</span>
                 </div>
               </Card>
               
-              <Card className="p-6 bg-white border-2 border-accent-brand/30">
-                <div className="flex items-center justify-between mb-1 sm:mb-2">
-                  <span className="text-sm sm:text-base md:text-lg font-semibold text-primary-700">🎫 Tickets de soporte</span>
-                  <span className="text-xl sm:text-2xl md:text-3xl font-bold text-accent-brand">-15.5%</span>
+              <Card className="p-3 sm:p-4 md:p-6 bg-white border-2 border-accent-brand/30">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-primary-700">🎫 Tickets de soporte</span>
+                  <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-accent-brand">-15.5%</span>
                 </div>
               </Card>
               
-              <Card className="h-full p-4 sm:p-5 md:p-6 bg-white border-2 border-accent-brand/30 sm:col-span-2">
-                <div className="flex items-center justify-between mb-1 sm:mb-2">
-                  <span className="text-sm sm:text-base md:text-lg font-semibold text-primary-700">💵 Costos de soporte</span>
-                  <span className="text-xl sm:text-2xl md:text-3xl font-bold text-accent-brand">-7.2%</span>
+              <Card className="p-3 sm:p-4 md:p-6 bg-white border-2 border-accent-brand/30 md:col-span-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-primary-700">💵 Costos de soporte</span>
+                  <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-accent-brand">-7.2%</span>
                 </div>
               </Card>
             </div>
