@@ -27,7 +27,7 @@ import {
 
 const associateSchema = z.object({
   nombre_empresa: z.string().min(1, "El nombre de la empresa es requerido"),
-  descripcion: z.string().optional(),
+  descripcion: z.string().optional().or(z.literal("")),
   pagina_web: z.string().url("Debe ser una URL válida").optional().or(z.literal("")),
   segmento: z.enum([
     "educacion_basica",
@@ -37,17 +37,17 @@ const associateSchema = z.object({
     "edtech_tools",
     "infrastructure",
     "other"
-  ]).optional(),
+  ]).optional().nullable(),
   correo_contacto: z.string().email("Debe ser un email válido").optional().or(z.literal("")),
   logo_url: z.string().url("Debe ser una URL válida").optional().or(z.literal("")),
-  ubicacion: z.string().optional(),
-  tamano_empresa: z.enum(["startup", "pequena", "mediana", "grande"]).optional(),
+  ubicacion: z.string().optional().or(z.literal("")),
+  tamano_empresa: z.enum(["startup", "pequena", "mediana", "grande"]).optional().nullable(),
   estado: z.enum(["activo", "inactivo", "pendiente"]),
-  tipo_membresia: z.string().optional(),
-  telefono: z.string().optional(),
+  tipo_membresia: z.string().optional().or(z.literal("")),
+  telefono: z.string().optional().or(z.literal("")),
   linkedin: z.string().url("Debe ser una URL válida").optional().or(z.literal("")),
   twitter: z.string().url("Debe ser una URL válida").optional().or(z.literal("")),
-  calificacion_colombia_edtech: z.number().min(1).max(5).optional(),
+  calificacion_colombia_edtech: z.number().min(1).max(5).optional().nullable(),
 })
 
 type AssociateFormData = z.infer<typeof associateSchema>
@@ -97,7 +97,7 @@ export function AssociateForm({ initialData, onSubmit, onCancel, isLoading }: As
       logo_url: initialData?.logo_url || "",
       ubicacion: initialData?.ubicacion || "",
       tamano_empresa: initialData?.tamano_empresa as any,
-      estado: (initialData?.estado as any) || "activo",
+      estado: (initialData?.estado as any) || "pendiente",
       tipo_membresia: initialData?.tipo_membresia || "basica",
       telefono: initialData?.telefono || "",
       linkedin: initialData?.linkedin || "",
