@@ -46,7 +46,6 @@ const associateSchema = z.object({
   tipo_membresia: z.string().optional().or(z.literal("")),
   telefono: z.string().optional().or(z.literal("")),
   linkedin: z.string().url("Debe ser una URL válida").optional().or(z.literal("")),
-  twitter: z.string().url("Debe ser una URL válida").optional().or(z.literal("")),
   calificacion_colombia_edtech: z.number().min(1).max(5).optional().nullable(),
 })
 
@@ -101,7 +100,6 @@ export function AssociateForm({ initialData, onSubmit, onCancel, isLoading }: As
       tipo_membresia: initialData?.tipo_membresia || "basica",
       telefono: initialData?.telefono || "",
       linkedin: initialData?.linkedin || "",
-      twitter: initialData?.twitter || "",
       calificacion_colombia_edtech: initialData?.calificacion_colombia_edtech,
     }
   })
@@ -313,20 +311,6 @@ export function AssociateForm({ initialData, onSubmit, onCancel, isLoading }: As
                 <FormLabel>LinkedIn</FormLabel>
                 <FormControl>
                   <Input placeholder="https://linkedin.com/company/empresa" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="twitter"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Twitter</FormLabel>
-                <FormControl>
-                  <Input placeholder="https://twitter.com/empresa" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

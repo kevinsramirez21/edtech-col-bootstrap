@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Globe, MapPin, Building2, ExternalLink, Star, Linkedin, Twitter, Mail } from "lucide-react"
+import { Globe, MapPin, Building2, ExternalLink, Star, Linkedin, Mail } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -18,7 +18,6 @@ interface Associate {
   ubicacion?: string
   tamano_empresa?: string
   linkedin?: string
-  twitter?: string
   calificacion_colombia_edtech?: number
 }
 
@@ -221,23 +220,6 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
                 rel="noopener noreferrer"
               >
                 <Linkedin className="w-4 h-4" />
-              </a>
-            </Button>
-          )}
-          
-          {associate.twitter && (
-            <Button 
-              size="sm" 
-              variant="outline"
-              className="h-10 w-10 p-0"
-              asChild
-            >
-              <a 
-                href={associate.twitter} 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                <Twitter className="w-4 h-4" />
               </a>
             </Button>
           )}
