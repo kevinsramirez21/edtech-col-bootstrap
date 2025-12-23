@@ -75,7 +75,7 @@ export function Footer() {
     }
   }
   return (
-    <footer className="bg-primary-900 text-white relative overflow-hidden" aria-labelledby="footer-heading">
+    <footer className="bg-primary-900 dark:bg-background text-white dark:text-foreground relative overflow-hidden border-t border-border" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Pie de página
       </h2>
@@ -155,11 +155,11 @@ export function Footer() {
             </div>
 
             {/* Newsletter Section */}
-            <div className="bg-primary-700/30 rounded-lg sm:rounded-xl p-4 sm:p-5 lg:p-6 border border-white/10">
-              <h3 className="text-base sm:text-lg font-bold text-white mb-2 text-center lg:text-left">
+            <div className="bg-primary-700/30 dark:bg-muted rounded-lg sm:rounded-xl p-4 sm:p-5 lg:p-6 border border-white/10 dark:border-border">
+              <h3 className="text-base sm:text-lg font-bold text-white dark:text-foreground mb-2 text-center lg:text-left">
                 Mantente conectado
               </h3>
-              <p className="text-white/90 text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed text-center lg:text-left">
+              <p className="text-white/90 dark:text-muted-foreground text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed text-center lg:text-left">
                 Únete a +500 líderes EdTech que reciben nuestras actualizaciones
               </p>
               <Form {...form}>
@@ -173,7 +173,7 @@ export function Footer() {
                           <Input
                             type="email"
                             placeholder="tu@email.com"
-                            className="bg-white border-0 text-primary-900 placeholder:text-primary-900/60 focus:ring-2 focus:ring-accent-brand h-9 sm:h-10 text-sm sm:text-base rounded-lg"
+                            className="bg-card dark:bg-input border-0 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-accent h-9 sm:h-10 text-sm sm:text-base rounded-lg"
                             aria-label="Dirección de correo electrónico"
                             {...field}
                           />

@@ -76,7 +76,7 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
       <CardHeader className="pb-4 px-5 sm:px-6">
         <div className="flex items-start gap-4">
           {associate.logo_url ? (
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg bg-white border border-border/50 p-2 flex-shrink-0 flex items-center justify-center">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg bg-card border border-border/50 p-2 flex-shrink-0 flex items-center justify-center">
               <OptimizedImage
                 src={associate.logo_url}
                 alt={`Logo de ${associate.nombre_empresa}`}
@@ -86,12 +86,12 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
               />
             </div>
           ) : (
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center flex-shrink-0">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center flex-shrink-0">
               <Building2 className="w-8 h-8 sm:w-10 sm:h-10 text-primary-700" />
             </div>
           )}
           <div className="flex-1 min-w-0">
-            <CardTitle className="text-lg sm:text-xl font-bold text-primary-900 group-hover:text-primary-700 transition-colors line-clamp-2">
+            <CardTitle className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
               {associate.nombre_empresa}
             </CardTitle>
             {associate.calificacion_colombia_edtech && (
@@ -119,14 +119,14 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
         {/* Content section - grows to fill space */}
         <div className="flex-1 space-y-4">
           {associate.descripcion && (
-            <p className="text-sm text-primary-900/70 line-clamp-3">
+            <p className="text-sm text-muted-foreground line-clamp-3">
               {associate.descripcion}
             </p>
           )}
 
           {associate.servicios && associate.servicios.length > 0 && (
             <div className="space-y-2">
-              <p className="text-xs font-semibold text-primary-900/80 uppercase tracking-wide">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
                 Servicios
               </p>
               <div className="flex flex-wrap gap-1.5">
@@ -134,7 +134,7 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
                   <Badge 
                     key={index} 
                     variant="outline" 
-                    className="text-xs bg-primary-50 text-primary-700 border-primary-200 hover:bg-primary-100"
+                    className="text-xs bg-secondary text-secondary-foreground border-border hover:bg-secondary/80"
                   >
                     {servicio}
                   </Badge>
@@ -148,20 +148,20 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
             </div>
           )}
 
-          <div className="space-y-2 text-sm text-primary-900/70">
+          <div className="space-y-2 text-sm text-muted-foreground">
             {associate.ubicacion && (
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-primary-700/50 flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-muted-foreground flex-shrink-0" />
                 <span className="truncate">{associate.ubicacion}</span>
               </div>
             )}
             
             {associate.correo_contacto && (
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-primary-700/50 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-muted-foreground flex-shrink-0" />
                 <a 
                   href={`mailto:${associate.correo_contacto}`}
-                  className="truncate hover:text-primary-700 transition-colors"
+                  className="truncate hover:text-primary transition-colors"
                 >
                   {associate.correo_contacto}
                 </a>
@@ -195,7 +195,7 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
           {associate.correo_contacto && (
             <Button 
               size="sm" 
-              className="bg-primary-700 hover:bg-primary-800 text-sm h-10"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm h-10"
               asChild
             >
               <a 

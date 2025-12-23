@@ -24,7 +24,7 @@ export function TeamMemberCard({
   return (
     <div 
       className={cn(
-        "group relative overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-500 hover:scale-[1.02]",
+        "group relative overflow-hidden rounded-2xl bg-card shadow-md hover:shadow-xl transition-all duration-500 hover:scale-[1.02]",
         className
       )}
     >
