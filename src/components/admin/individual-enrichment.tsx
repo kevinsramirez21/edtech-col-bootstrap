@@ -27,7 +27,8 @@ import {
   Globe,
   Sparkles,
   Building,
-  Mail
+  Mail,
+  MapPin
 } from "lucide-react";
 import { FeedbackChat } from "./feedback-chat";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -57,6 +58,7 @@ interface Associate {
   servicios: string[] | null;
   tipo_organizacion: string | null;
   correo_contacto: string | null;
+  ubicacion: string | null;
 }
 
 const ORGANIZATION_TYPES = [
@@ -87,7 +89,7 @@ interface FieldStatus {
   correo_contacto: "empty" | "has_data" | "approved";
 }
 
-type FieldType = "linkedin" | "logo_url" | "servicios" | "pagina_web" | "tipo_organizacion" | "correo_contacto" | "nombre_empresa";
+type FieldType = "linkedin" | "logo_url" | "servicios" | "pagina_web" | "tipo_organizacion" | "correo_contacto" | "nombre_empresa" | "ubicacion";
 type FilterType = "all" | "missing_logo" | "missing_linkedin" | "missing_servicios" | "missing_web" | "missing_tipo" | "missing_correo";
 
 export function IndividualEnrichment() {
@@ -113,7 +115,7 @@ export function IndividualEnrichment() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("asociados")
-        .select("id, nombre_empresa, pagina_web, linkedin, logo_url, servicios, tipo_organizacion, correo_contacto")
+        .select("id, nombre_empresa, pagina_web, linkedin, logo_url, servicios, tipo_organizacion, correo_contacto, ubicacion")
         .eq("estado", "activo")
         .order("nombre_empresa");
 
@@ -290,7 +292,7 @@ export function IndividualEnrichment() {
       if (updateError) throw updateError;
 
       // Mark enrichment as approved (skip for nombre_empresa as it's not enrichment data)
-      if (campo !== "nombre_empresa") {
+      if (campo !== "nombre_empresa" && campo !== "ubicacion") {
         await supabase
           .from("asociados_enrichment")
           .upsert({
@@ -454,6 +456,8 @@ export function IndividualEnrichment() {
       setManualValue(selectedAssociate.correo_contacto || "");
     } else if (field === "nombre_empresa") {
       setManualValue(selectedAssociate.nombre_empresa || "");
+    } else if (field === "ubicacion") {
+      setManualValue(selectedAssociate.ubicacion || "");
     }
   };
 
@@ -559,6 +563,7 @@ export function IndividualEnrichment() {
       tipo_organizacion: "Tipo de Organización",
       correo_contacto: "Correo de Contacto",
       nombre_empresa: "Nombre de la Empresa",
+      ubicacion: "País / Ubicación",
     };
     return labels[campo] || campo;
   };
@@ -844,6 +849,21 @@ export function IndividualEnrichment() {
                     <span className="truncate">{selectedAssociate.pagina_web.replace(/^https?:\/\/(www\.)?/, "")}</span>
                     <ExternalLink className="h-3 w-3 flex-shrink-0" />
                   </a>
+                )}
+                {selectedAssociate && (
+                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                    <MapPin className="h-3.5 w-3.5 flex-shrink-0" />
+                    <span className="truncate">{selectedAssociate.ubicacion || "Sin ubicación"}</span>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => openManualEdit("ubicacion")}
+                      className="h-6 w-6 flex-shrink-0"
+                      title="Editar ubicación"
+                    >
+                      <Pencil className="h-3 w-3" />
+                    </Button>
+                  </div>
                 )}
               </div>
               <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-1 flex-shrink-0">
@@ -1381,6 +1401,18 @@ export function IndividualEnrichment() {
                 <Input
                   id="nombre-empresa"
                   placeholder="Nombre de la empresa"
+                  value={manualValue}
+                  onChange={(e) => setManualValue(e.target.value)}
+                />
+              </div>
+            )}
+
+            {manualEditField === "ubicacion" && (
+              <div className="space-y-2">
+                <Label htmlFor="ubicacion">País / Ubicación</Label>
+                <Input
+                  id="ubicacion"
+                  placeholder="Colombia, Bogotá"
                   value={manualValue}
                   onChange={(e) => setManualValue(e.target.value)}
                 />
