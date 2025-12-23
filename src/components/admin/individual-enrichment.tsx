@@ -586,16 +586,16 @@ export function IndividualEnrichment() {
     if (!currentOption) return null;
 
     return (
-      <Card className="border-primary/40 bg-gradient-to-br from-primary/5 to-primary/10 shadow-sm overflow-hidden">
-        <CardContent className="pt-4">
-          <div className="space-y-3">
+      <Card className="border-primary/40 bg-gradient-to-br from-primary/5 to-primary/10 shadow-sm overflow-hidden max-w-full">
+        <CardContent className="pt-4 overflow-hidden">
+          <div className="space-y-3 min-w-0">
             {/* Header with navigation */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="h-8 w-8 rounded-lg bg-primary/15 flex items-center justify-center text-primary">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="h-8 w-8 rounded-lg bg-primary/15 flex items-center justify-center text-primary flex-shrink-0">
                   {getCampoIcon(campo)}
                 </div>
-                <span className="font-semibold text-foreground">{getCampoLabel(campo)}</span>
+                <span className="font-semibold text-foreground truncate">{getCampoLabel(campo)}</span>
                 {getConfianzaBadge(currentOption.confianza)}
               </div>
               
@@ -626,8 +626,8 @@ export function IndividualEnrichment() {
 
             {/* Value preview */}
             {campo === "logo_url" ? (
-              <div className="flex items-center gap-4">
-                <div className="w-20 h-20 rounded-lg border bg-background flex items-center justify-center overflow-hidden">
+              <div className="flex items-start gap-4 min-w-0">
+                <div className="w-20 h-20 rounded-lg border bg-background flex items-center justify-center overflow-hidden flex-shrink-0">
                   <img 
                     src={currentOption.valor} 
                     alt="Logo sugerido" 
@@ -637,19 +637,21 @@ export function IndividualEnrichment() {
                     }}
                   />
                 </div>
-                <a 
-                  href={currentOption.valor}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline break-all"
-                >
-                  {currentOption.valor}
-                </a>
+                <div className="min-w-0 flex-1">
+                  <a 
+                    href={currentOption.valor}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-primary hover:underline break-all line-clamp-3"
+                  >
+                    {currentOption.valor}
+                  </a>
+                </div>
               </div>
             ) : campo === "servicios" ? (
               <div className="flex flex-wrap gap-1">
                 {(typeof currentOption.valor === 'string' ? JSON.parse(currentOption.valor) : currentOption.valor).map((s: string, i: number) => (
-                  <Badge key={i} variant="secondary">
+                  <Badge key={i} variant="secondary" className="text-xs">
                     {s}
                   </Badge>
                 ))}
@@ -661,31 +663,40 @@ export function IndividualEnrichment() {
                     const tipos = typeof currentOption.valor === 'string' ? JSON.parse(currentOption.valor) : currentOption.valor;
                     if (Array.isArray(tipos)) {
                       return tipos.map((tipo: string, i: number) => (
-                        <Badge key={i} className="bg-orange-500/15 text-orange-700 border-orange-500/30">
+                        <Badge key={i} className="bg-orange-500/15 text-orange-700 border-orange-500/30 text-xs">
                           {tipo}
                         </Badge>
                       ));
                     }
                   } catch {}
                   return (
-                    <Badge className="bg-orange-500/15 text-orange-700 border-orange-500/30">
+                    <Badge className="bg-orange-500/15 text-orange-700 border-orange-500/30 text-xs">
                       {currentOption.valor}
                     </Badge>
                   );
                 })()}
               </div>
-            ) : (
+            ) : campo === "correo_contacto" ? (
               <a 
-                href={currentOption.valor}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline break-all"
+                href={`mailto:${currentOption.valor}`}
+                className="text-emerald-600 hover:underline truncate block"
               >
                 {currentOption.valor}
               </a>
+            ) : (
+              <div className="min-w-0">
+                <a 
+                  href={currentOption.valor}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline break-all line-clamp-2 text-sm"
+                >
+                  {currentOption.valor}
+                </a>
+              </div>
             )}
 
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground truncate">
               <strong>Fuente:</strong> {currentOption.fuente}
             </p>
           </div>
@@ -797,11 +808,11 @@ export function IndividualEnrichment() {
         </Card>
 
         {/* Right column: Detail view */}
-        <Card className="lg:col-span-2 shadow-sm border-border/50">
+        <Card className="lg:col-span-2 shadow-sm border-border/50 overflow-hidden">
           <CardHeader className="bg-gradient-to-b from-muted/30 to-transparent">
-            <div className="flex items-center justify-between">
-              <div className="space-y-1">
-                <CardTitle className="text-xl font-bold">
+            <div className="flex items-center justify-between gap-4 flex-wrap">
+              <div className="space-y-1 min-w-0 flex-1">
+                <CardTitle className="text-xl font-bold truncate">
                   {selectedAssociate?.nombre_empresa || "Selecciona una empresa"}
                 </CardTitle>
                 {selectedAssociate?.pagina_web && (
@@ -809,15 +820,15 @@ export function IndividualEnrichment() {
                     href={selectedAssociate.pagina_web.startsWith('http') ? selectedAssociate.pagina_web : `https://${selectedAssociate.pagina_web}`} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                    className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline max-w-full"
                   >
-                    <Globe className="h-3.5 w-3.5" />
-                    {selectedAssociate.pagina_web.replace(/^https?:\/\/(www\.)?/, "")}
-                    <ExternalLink className="h-3 w-3" />
+                    <Globe className="h-3.5 w-3.5 flex-shrink-0" />
+                    <span className="truncate">{selectedAssociate.pagina_web.replace(/^https?:\/\/(www\.)?/, "")}</span>
+                    <ExternalLink className="h-3 w-3 flex-shrink-0" />
                   </a>
                 )}
               </div>
-              <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-1">
+              <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-1 flex-shrink-0">
                 <Button 
                   variant="ghost" 
                   size="icon" 
@@ -844,7 +855,7 @@ export function IndividualEnrichment() {
           </CardHeader>
 
           {selectedAssociate && (
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-6 overflow-hidden">
               {/* Current data section */}
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
@@ -854,13 +865,13 @@ export function IndividualEnrichment() {
                   </h3>
                 </div>
                 
-                <div className="grid gap-3">
+                <div className="grid gap-3 overflow-hidden">
                   {/* Página Web */}
-                  <div className="group relative flex items-center gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all">
+                  <div className="group relative flex items-center gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all overflow-hidden">
                     <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center">
                       <Globe className="h-6 w-6 text-teal-600" />
                     </div>
-                    <div className="flex-1 min-w-0">
+                    <div className="flex-1 min-w-0 overflow-hidden">
                       <div className="flex items-center gap-2 mb-0.5">
                         <span className="font-semibold text-foreground">Página Web</span>
                       </div>
@@ -870,6 +881,7 @@ export function IndividualEnrichment() {
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="text-sm text-teal-600 hover:underline truncate block font-medium"
+                          title={selectedAssociate.pagina_web}
                         >
                           {selectedAssociate.pagina_web.replace(/^https?:\/\/(www\.)?/, "")}
                         </a>
@@ -890,7 +902,7 @@ export function IndividualEnrichment() {
                   </div>
 
                   {/* Logo */}
-                  <div className="group relative flex items-start gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all">
+                  <div className="group relative flex items-start gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all overflow-hidden">
                     <div className="flex-shrink-0 w-20 h-20 rounded-xl border-2 border-dashed border-border/50 bg-muted/30 flex items-center justify-center overflow-hidden">
                       {selectedAssociate.logo_url ? (
                         brokenLogos.has(selectedAssociate.id) ? (
@@ -913,9 +925,9 @@ export function IndividualEnrichment() {
                         </div>
                       )}
                     </div>
-                    <div className="flex-1 min-w-0 py-1">
+                    <div className="flex-1 min-w-0 py-1 overflow-hidden">
                       <div className="flex items-center gap-2 mb-1">
-                        <ImageIcon className="h-4 w-4 text-primary" />
+                        <ImageIcon className="h-4 w-4 text-primary flex-shrink-0" />
                         <span className="font-semibold text-foreground">Logo</span>
                         {brokenLogos.has(selectedAssociate.id) && (
                           <Badge className="bg-amber-500/15 text-amber-700 border-amber-500/30 text-[10px] px-1.5">
@@ -924,7 +936,7 @@ export function IndividualEnrichment() {
                         )}
                       </div>
                       {selectedAssociate.logo_url ? (
-                        <p className="text-xs text-muted-foreground truncate font-mono">
+                        <p className="text-xs text-muted-foreground truncate font-mono" title={selectedAssociate.logo_url}>
                           {selectedAssociate.logo_url}
                         </p>
                       ) : (
@@ -960,11 +972,11 @@ export function IndividualEnrichment() {
                   </div>
 
                   {/* LinkedIn */}
-                  <div className="group relative flex items-center gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all">
+                  <div className="group relative flex items-center gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all overflow-hidden">
                     <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#0A66C2]/10 flex items-center justify-center">
                       <Linkedin className="h-6 w-6 text-[#0A66C2]" />
                     </div>
-                    <div className="flex-1 min-w-0">
+                    <div className="flex-1 min-w-0 overflow-hidden">
                       <div className="flex items-center gap-2 mb-0.5">
                         <span className="font-semibold text-foreground">LinkedIn</span>
                       </div>
@@ -974,6 +986,7 @@ export function IndividualEnrichment() {
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="text-sm text-[#0A66C2] hover:underline truncate block font-medium"
+                          title={selectedAssociate.linkedin}
                         >
                           {selectedAssociate.linkedin.replace(/^https?:\/\/(www\.)?linkedin\.com\/company\//, "")}
                         </a>
@@ -1010,11 +1023,11 @@ export function IndividualEnrichment() {
                   </div>
 
                   {/* Servicios */}
-                  <div className="group relative flex items-start gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all">
+                  <div className="group relative flex items-start gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all overflow-hidden">
                     <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center">
                       <Briefcase className="h-6 w-6 text-violet-600" />
                     </div>
-                    <div className="flex-1 min-w-0">
+                    <div className="flex-1 min-w-0 overflow-hidden">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="font-semibold text-foreground">Servicios</span>
                         {selectedAssociate.servicios && selectedAssociate.servicios.length > 0 && (
@@ -1025,15 +1038,21 @@ export function IndividualEnrichment() {
                       </div>
                       {selectedAssociate.servicios && selectedAssociate.servicios.length > 0 ? (
                         <div className="flex flex-wrap gap-1.5">
-                          {selectedAssociate.servicios.map((s, i) => (
+                          {selectedAssociate.servicios.slice(0, 5).map((s, i) => (
                             <Badge 
                               key={i} 
                               variant="outline" 
-                              className="text-xs bg-violet-500/5 text-violet-700 border-violet-500/20 font-normal"
+                              className="text-xs bg-violet-500/5 text-violet-700 border-violet-500/20 font-normal max-w-[150px] truncate"
+                              title={s}
                             >
                               {s}
                             </Badge>
                           ))}
+                          {selectedAssociate.servicios.length > 5 && (
+                            <Badge variant="outline" className="text-xs">
+                              +{selectedAssociate.servicios.length - 5}
+                            </Badge>
+                          )}
                         </div>
                       ) : (
                         <p className="text-sm text-muted-foreground/60 italic">No configurado</p>
@@ -1064,6 +1083,7 @@ export function IndividualEnrichment() {
                       >
                         <Pencil className="h-3.5 w-3.5" />
                       </Button>
+                    </div>
                   </div>
 
                   {/* Tipo de Organización */}
@@ -1175,7 +1195,7 @@ export function IndividualEnrichment() {
                     </div>
                   </div>
                 </div>
-                </div>
+              </div>
 
                 {/* Feedback Chat */}
                 <FeedbackChat
@@ -1236,47 +1256,46 @@ export function IndividualEnrichment() {
                   )}
                   Buscar todos los campos
                 </Button>
-              </div>
 
-              {/* Suggestions section */}
-              {suggestions.size > 0 && (
-                <>
-                  <Separator className="my-6" />
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                      <Sparkles className="h-4 w-4 text-primary" />
-                      <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground">
-                        Sugerencias Encontradas
-                      </h3>
-                      <Badge variant="secondary" className="ml-auto font-mono text-xs">
-                        {suggestions.size} campo{suggestions.size > 1 ? "s" : ""}
-                      </Badge>
-                    </div>
-                    
-                    <div className="space-y-3">
-                      {renderSuggestionCard("logo_url")}
-                      {renderSuggestionCard("linkedin")}
-                      {renderSuggestionCard("servicios")}
-                      {renderSuggestionCard("tipo_organizacion")}
-                      {renderSuggestionCard("correo_contacto")}
-                    </div>
+                {/* Suggestions section */}
+                {suggestions.size > 0 && (
+                  <>
+                    <Separator className="my-6" />
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <Sparkles className="h-4 w-4 text-primary" />
+                        <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground">
+                          Sugerencias Encontradas
+                        </h3>
+                        <Badge variant="secondary" className="ml-auto font-mono text-xs">
+                          {suggestions.size} campo{suggestions.size > 1 ? "s" : ""}
+                        </Badge>
+                      </div>
+                      
+                      <div className="space-y-3">
+                        {renderSuggestionCard("logo_url")}
+                        {renderSuggestionCard("linkedin")}
+                        {renderSuggestionCard("servicios")}
+                        {renderSuggestionCard("tipo_organizacion")}
+                        {renderSuggestionCard("correo_contacto")}
+                      </div>
 
-                    <Button 
-                      variant="outline"
-                      onClick={goToNext}
-                      disabled={selectedIndex === filteredAssociates.length - 1}
-                      className="w-full"
-                    >
-                      Siguiente empresa
-                      <ChevronRight className="h-4 w-4 ml-1" />
-                    </Button>
-                  </div>
-                </>
-              )}
-            </CardContent>
-          )}
-        </Card>
-      </div>
+                      <Button 
+                        variant="outline"
+                        onClick={goToNext}
+                        disabled={selectedIndex === filteredAssociates.length - 1}
+                        className="w-full"
+                      >
+                        Siguiente empresa
+                        <ChevronRight className="h-4 w-4 ml-1" />
+                      </Button>
+                    </div>
+                  </>
+                )}
+              </CardContent>
+            )}
+          </Card>
+        </div>
 
       {/* Manual Edit Dialog */}
       <Dialog open={!!manualEditField} onOpenChange={() => setManualEditField(null)}>

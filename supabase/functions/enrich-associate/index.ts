@@ -499,6 +499,18 @@ IMPORTANTE: Solo reporta información que puedas verificar. Si no encuentras alg
         requiredFields.push("tipo_organizacion");
       }
 
+      if (fieldsToEnrich.includes("correo_contacto")) {
+        toolProperties.correo_contacto = {
+          type: "object",
+          properties: {
+            email: { type: "string", description: "Correo electrónico de contacto de la empresa" },
+            confianza: { type: "string", enum: ["alta", "media", "baja"] },
+            fuente: { type: "string", description: "Donde se encontró esta información" }
+          },
+          required: ["confianza", "fuente"]
+        };
+        requiredFields.push("correo_contacto");
+      }
       // Call Lovable AI with tool calling for structured output
       const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
         method: "POST",
@@ -619,9 +631,20 @@ Para servicios, extrae los principales relacionados con educación/EdTech.`
             }]
           });
         }
+
+        // Correo de contacto
+        if (companyInfo.correo_contacto?.email && companyInfo.correo_contacto.email !== "No disponible") {
+          enrichments.push({
+            campo: "correo_contacto",
+            opciones: [{
+              valor: companyInfo.correo_contacto.email,
+              confianza: companyInfo.correo_contacto.confianza,
+              fuente: companyInfo.correo_contacto.fuente
+            }]
+          });
+        }
       }
     }
-
     // Save FIRST option of each enrichment to database for tracking
     if (enrichments.length > 0) {
       for (const enrichment of enrichments) {
