@@ -87,7 +87,7 @@ interface FieldStatus {
   correo_contacto: "empty" | "has_data" | "approved";
 }
 
-type FieldType = "linkedin" | "logo_url" | "servicios" | "pagina_web" | "tipo_organizacion" | "correo_contacto";
+type FieldType = "linkedin" | "logo_url" | "servicios" | "pagina_web" | "tipo_organizacion" | "correo_contacto" | "nombre_empresa";
 type FilterType = "all" | "missing_logo" | "missing_linkedin" | "missing_servicios" | "missing_web" | "missing_tipo" | "missing_correo";
 
 export function IndividualEnrichment() {
@@ -289,18 +289,20 @@ export function IndividualEnrichment() {
 
       if (updateError) throw updateError;
 
-      // Mark enrichment as approved
-      await supabase
-        .from("asociados_enrichment")
-        .upsert({
-          asociado_id: associateId,
-          campo: campo,
-          valor_sugerido: valor,
-          aprobado: true,
-          verificado: true
-        }, {
-          onConflict: "asociado_id,campo"
-        });
+      // Mark enrichment as approved (skip for nombre_empresa as it's not enrichment data)
+      if (campo !== "nombre_empresa") {
+        await supabase
+          .from("asociados_enrichment")
+          .upsert({
+            asociado_id: associateId,
+            campo: campo,
+            valor_sugerido: valor,
+            aprobado: true,
+            verificado: true
+          }, {
+            onConflict: "asociado_id,campo"
+          });
+      }
     },
     onSuccess: (_, variables) => {
       toast.success("Dato guardado");
@@ -450,6 +452,8 @@ export function IndividualEnrichment() {
       setNewServicio("");
     } else if (field === "correo_contacto") {
       setManualValue(selectedAssociate.correo_contacto || "");
+    } else if (field === "nombre_empresa") {
+      setManualValue(selectedAssociate.nombre_empresa || "");
     }
   };
 
@@ -554,6 +558,7 @@ export function IndividualEnrichment() {
       pagina_web: "Página Web",
       tipo_organizacion: "Tipo de Organización",
       correo_contacto: "Correo de Contacto",
+      nombre_empresa: "Nombre de la Empresa",
     };
     return labels[campo] || campo;
   };
@@ -812,9 +817,22 @@ export function IndividualEnrichment() {
           <CardHeader className="bg-gradient-to-b from-muted/30 to-transparent">
             <div className="flex items-center justify-between gap-4 flex-wrap">
               <div className="space-y-1 min-w-0 flex-1">
-                <CardTitle className="text-xl font-bold truncate">
-                  {selectedAssociate?.nombre_empresa || "Selecciona una empresa"}
-                </CardTitle>
+                <div className="flex items-center gap-2">
+                  <CardTitle className="text-xl font-bold truncate">
+                    {selectedAssociate?.nombre_empresa || "Selecciona una empresa"}
+                  </CardTitle>
+                  {selectedAssociate && (
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => openManualEdit("nombre_empresa")}
+                      className="h-7 w-7 flex-shrink-0"
+                      title="Editar nombre"
+                    >
+                      <Pencil className="h-3.5 w-3.5" />
+                    </Button>
+                  )}
+                </div>
                 {selectedAssociate?.pagina_web && (
                   <a 
                     href={selectedAssociate.pagina_web.startsWith('http') ? selectedAssociate.pagina_web : `https://${selectedAssociate.pagina_web}`} 
@@ -1351,6 +1369,18 @@ export function IndividualEnrichment() {
                 <Input
                   id="linkedin-url"
                   placeholder="https://linkedin.com/company/nombre"
+                  value={manualValue}
+                  onChange={(e) => setManualValue(e.target.value)}
+                />
+              </div>
+            )}
+
+            {manualEditField === "nombre_empresa" && (
+              <div className="space-y-2">
+                <Label htmlFor="nombre-empresa">Nombre de la empresa</Label>
+                <Input
+                  id="nombre-empresa"
+                  placeholder="Nombre de la empresa"
                   value={manualValue}
                   onChange={(e) => setManualValue(e.target.value)}
                 />
