@@ -159,9 +159,8 @@ const Index = () => {
 
 
       {/* Segmentation Section Premium */}
-      <Section className="py-8 sm:py-12 lg:py-16 relative overflow-hidden" style={{
-      backgroundColor: '#f4e8dd'
-    }}>
+      <Section className="py-8 sm:py-12 lg:py-16 relative overflow-hidden bg-secondary dark:bg-background">
+        {/* Background Decorations - hidden on mobile */}
         {/* Background Decorations - hidden on mobile */}
         <div className="absolute inset-0 opacity-5 hidden sm:block">
           <div className="absolute top-20 left-20 w-96 h-96 bg-primary-700 rounded-full blur-3xl"></div>
@@ -170,15 +169,15 @@ const Index = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-6 sm:mb-10 lg:mb-14">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-5 lg:mb-6 text-primary-700 leading-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-5 lg:mb-6 text-primary dark:text-primary leading-tight">
               Ayudamos a crear un sistema educativo que forme estudiantes, docentes, instituciones y organizaciones para los{" "}
-              <span className="text-primary-700">
+              <span className="text-primary dark:text-primary">
                 retos de la nueva era
               </span>
             </h2>
             <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 rounded-full"></div>
-            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl max-w-4xl mx-auto text-primary-900 leading-relaxed font-medium">
-              Para <strong className="text-primary-700">SUMAR</strong> a esta revolución de la educación, tienes{" "}
+            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl max-w-4xl mx-auto text-foreground leading-relaxed font-medium">
+              Para <strong className="text-primary">SUMAR</strong> a esta revolución de la educación, tienes{" "}
               <strong className="text-accent-brand">3 caminos</strong>:
             </p>
           </div>
@@ -187,26 +186,26 @@ const Index = () => {
             {segmentationCards.map((card, index) => <div key={index} className="group relative animate-fade-in-up h-full" style={{
             animationDelay: `${index * 200}ms`
           }}>
-                <Card className="overflow-hidden border-0 shadow-lg sm:shadow-xl shadow-primary-900/15 hover:shadow-2xl hover:shadow-primary-700/25 transition-all duration-700 sm:hover:scale-105 bg-white relative sm:group-hover:-translate-y-2 h-full flex flex-col">
+                <Card className="overflow-hidden border-0 shadow-lg sm:shadow-xl shadow-primary/15 hover:shadow-2xl hover:shadow-primary/25 transition-all duration-700 sm:hover:scale-105 bg-card relative sm:group-hover:-translate-y-2 h-full flex flex-col">
                   {/* Image with Subtle Overlay */}
                   <div className="relative aspect-[3/2] overflow-hidden">
                     <OptimizedImage src={card.image} alt={`${card.title} - Únete a Colombia EdTech como ${card.title.toLowerCase()}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-primary-900/30 transition-opacity duration-500"></div>
                   </div>
                   
-                  <CardContent className="p-4 sm:p-5 lg:p-6 text-center relative bg-white flex-1 flex flex-col justify-between">
+                  <CardContent className="p-4 sm:p-5 lg:p-6 text-center relative bg-card flex-1 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1.5 sm:mb-2 text-primary-700">
-                        {card.title}
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1.5 sm:mb-2 text-primary">
+                      {card.title}
                       </h3>
-                      {card.subtitle && <p className="text-xs sm:text-sm lg:text-base font-semibold text-primary-900 mb-2 sm:mb-3 opacity-80">
+                      {card.subtitle && <p className="text-xs sm:text-sm lg:text-base font-semibold text-foreground mb-2 sm:mb-3 opacity-80">
                           {card.subtitle}
                         </p>}
-                      <p className="text-sm sm:text-base mb-3 sm:mb-4 lg:mb-6 leading-relaxed text-primary-900 font-medium">
+                      <p className="text-sm sm:text-base mb-3 sm:mb-4 lg:mb-6 leading-relaxed text-foreground font-medium">
                         {card.description}
                       </p>
                     </div>
-              <Button asChild className="w-full bg-primary-900 hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-700/40 text-white font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg sm:rounded-xl transition-all duration-500 hover:scale-105 text-sm sm:text-base group">
+              <Button asChild className="w-full bg-primary-900 dark:bg-primary hover:bg-primary dark:hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/40 text-primary-foreground font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg sm:rounded-xl transition-all duration-500 hover:scale-105 text-sm sm:text-base group">
                       <Link to={card.href} className="flex items-center justify-center space-x-2">
                         <span>{card.cta}</span>
                         <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -256,9 +255,8 @@ const Index = () => {
       </Section>
 
       {/* Mission & Impact Section Premium */}
-      <Section className="py-8 sm:py-12 lg:py-16 relative overflow-hidden" style={{
-      backgroundColor: '#f4e8dd'
-    }}>
+      <Section className="py-8 sm:py-12 lg:py-16 relative overflow-hidden bg-secondary dark:bg-background">
+        {/* Background Decorations - hidden on mobile */}
         {/* Background Decorations - hidden on mobile */}
         <div className="absolute inset-0 opacity-5 hidden sm:block">
           <div className="absolute top-40 right-20 w-80 h-80 bg-primary-700 rounded-full blur-3xl"></div>
@@ -267,18 +265,18 @@ const Index = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-6 sm:mb-10 lg:mb-14">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-5 lg:mb-6 text-primary-700 leading-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-5 lg:mb-6 text-primary leading-tight">
               ¿Por qué seguir haciendo lo mismo si el mundo ya{" "}
-              <span className="text-primary-700">
+              <span className="text-primary">
                 cambió?
               </span>
             </h2>
             <div className="w-20 sm:w-28 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-3 sm:mb-5 lg:mb-6 rounded-full"></div>
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl max-w-5xl mx-auto mb-3 sm:mb-5 lg:mb-6 text-primary-900 leading-relaxed font-medium">
+            <p className="text-sm sm:text-base lg:text-lg xl:text-xl max-w-5xl mx-auto mb-3 sm:mb-5 lg:mb-6 text-foreground leading-relaxed font-medium">
               La educación tradicional no está a la altura de las necesidades actuales de estudiantes, docentes e instituciones.
             </p>
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl max-w-6xl mx-auto mb-4 sm:mb-6 lg:mb-10 text-primary-900 font-semibold">
-              Nuestro ecosistema <strong className="text-accent-brand">CONECTA</strong> a ONGs, universidades, colegios, startups, scaleups, empresas y big tech para:
+            <p className="text-sm sm:text-base lg:text-lg xl:text-xl max-w-6xl mx-auto mb-4 sm:mb-6 lg:mb-10 text-foreground font-semibold">
+              Nuestro ecosistema <strong className="text-accent">CONECTA</strong> a ONGs, universidades, colegios, startups, scaleups, empresas y big tech para:
             </p>
           </div>
           
@@ -286,17 +284,17 @@ const Index = () => {
             {missionCards.map((card, index) => <div key={index} className="group animate-fade-in-up" style={{
             animationDelay: `${index * 200}ms`
           }}>
-                <Card className="p-5 sm:p-6 md:p-8 lg:p-10 text-center border-0 shadow-2xl shadow-primary-900/15 hover:shadow-3xl hover:shadow-primary-700/25 transition-all duration-700 hover:scale-105 bg-gradient-to-br from-white to-gray-50/30 h-full group-hover:-translate-y-2">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-6 sm:mb-8 lg:mb-10 rounded-2xl sm:rounded-3xl bg-primary-700 flex items-center justify-center shadow-2xl shadow-primary-700/40 group-hover:shadow-3xl group-hover:shadow-primary-700/50 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
-                    <card.icon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-white" />
+                <Card className="p-5 sm:p-6 md:p-8 lg:p-10 text-center border-0 shadow-2xl shadow-primary/15 hover:shadow-3xl hover:shadow-primary/25 transition-all duration-700 hover:scale-105 bg-card h-full group-hover:-translate-y-2">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-6 sm:mb-8 lg:mb-10 rounded-2xl sm:rounded-3xl bg-primary flex items-center justify-center shadow-2xl shadow-primary/40 group-hover:shadow-3xl group-hover:shadow-primary/50 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    <card.icon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-primary-foreground" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 text-primary-700">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 text-primary">
                     {card.title}
                   </h3>
-                  <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold mb-4 sm:mb-6 lg:mb-8 text-primary-900 leading-tight">
+                  <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold mb-4 sm:mb-6 lg:mb-8 text-foreground leading-tight">
                     {card.subtitle}
                   </h4>
-                  <p className="text-base sm:text-lg lg:text-xl text-primary-900 leading-relaxed font-medium">
+                  <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed font-medium">
                     {card.description}
                   </p>
                 </Card>
@@ -304,8 +302,8 @@ const Index = () => {
           </div>
           
           <div className="text-center animate-fade-in-up animation-delay-800">
-            <div className="max-w-6xl mx-auto p-4 sm:p-6 md:p-8 lg:p-12 bg-gradient-to-r from-primary-700/10 via-accent-brand/5 to-primary-700/10 rounded-2xl sm:rounded-3xl border border-primary-700/20 shadow-2xl shadow-primary-900/10">
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary-900 leading-relaxed mb-4 sm:mb-6 md:mb-8">
+            <div className="max-w-6xl mx-auto p-4 sm:p-6 md:p-8 lg:p-12 bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 dark:from-primary/20 dark:via-accent/10 dark:to-primary/20 rounded-2xl sm:rounded-3xl border border-primary/20 shadow-2xl shadow-primary/10">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground leading-relaxed mb-4 sm:mb-6 md:mb-8">
                 Juntas/os, convertimos el aprendizaje en una experiencia{" "}
                 <span className="text-accent-brand">accesible, personalizada y relevante</span>{" "}
                 para todas las personas.

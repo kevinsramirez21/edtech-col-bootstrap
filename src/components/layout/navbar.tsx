@@ -62,8 +62,8 @@ export function Navbar() {
     <header className={cn(
       "sticky top-0 z-50 w-full backdrop-blur-md border-b transition-all duration-300 safe-top",
       isScrolled 
-        ? "bg-[#F73C5C] border-[#F73C5C]/30 shadow-xl shadow-[#F73C5C]/20" 
-        : "bg-[#F73C5C] border-[#F73C5C]/20 shadow-lg shadow-[#F73C5C]/10"
+        ? "bg-accent border-accent/30 shadow-xl shadow-accent/20" 
+        : "bg-accent border-accent/20 shadow-lg shadow-accent/10"
     )}>
       <nav className={cn(
         "container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300",
@@ -106,12 +106,12 @@ export function Navbar() {
                         </span>
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start" className="min-w-[200px] bg-white border border-gray-200 shadow-lg rounded-lg">
+                    <DropdownMenuContent align="start" className="min-w-[200px] bg-popover border border-border shadow-lg rounded-lg z-50">
                       {item.items?.map((subItem) => (
                         <DropdownMenuItem key={subItem.name} asChild>
                           <Link
                             to={subItem.href}
-                            className="block px-3 py-2 text-sm font-medium text-primary-900 hover:text-primary-700 hover:bg-primary-700/10 cursor-pointer"
+                            className="block px-3 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 cursor-pointer"
                           >
                             {subItem.name}
                           </Link>
@@ -146,7 +146,7 @@ export function Navbar() {
                     <Button 
                       asChild
                       size="sm"
-                      className="bg-[#0B47CE] text-white hover:bg-[#003889] font-semibold shadow-md hover:shadow-lg transition-all duration-300 border-0"
+                      className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-md hover:shadow-lg transition-all duration-300 border-0"
                     >
                       <Link to="/admin" className="flex items-center space-x-2">
                         <Settings className="w-4 h-4" />
@@ -162,7 +162,7 @@ export function Navbar() {
                     asChild
                     variant="outline"
                     size="sm"
-                    className="border-2 border-white/90 bg-white/10 text-white hover:bg-white hover:text-[#F73C5C] font-semibold px-3 py-2 rounded-lg transition-all duration-300 backdrop-blur-sm"
+                    className="border-2 border-white/90 bg-white/10 text-white hover:bg-white hover:text-accent font-semibold px-3 py-2 rounded-lg transition-all duration-300 backdrop-blur-sm"
                   >
                     <Link to="/auth" className="flex items-center space-x-1.5">
                       <LogIn className="w-4 h-4" />
@@ -172,7 +172,7 @@ export function Navbar() {
                   <Button 
                     asChild
                     size="sm"
-                    className="bg-white text-[#F73C5C] hover:bg-gray-100 font-bold px-3 py-2 rounded-lg shadow-lg shadow-black/30 hover:shadow-xl transition-all duration-300 hover:scale-105"
+                    className="bg-white text-accent hover:bg-white/90 font-bold px-3 py-2 rounded-lg shadow-lg shadow-black/30 hover:shadow-xl transition-all duration-300 hover:scale-105"
                   >
                     <Link to="/asociados" className="flex items-center space-x-1.5">
                       <Users className="w-4 h-4" />
@@ -207,7 +207,7 @@ export function Navbar() {
         {isMobileMenuOpen && (
           <div 
             id="mobile-menu"
-            className="lg:hidden border-t border-white/20 bg-[#F73C5C] backdrop-blur-md"
+            className="lg:hidden border-t border-white/20 bg-accent backdrop-blur-md"
           >
             <div className="px-4 py-6 space-y-3">
               {navItems.map((item) => (
@@ -260,7 +260,7 @@ export function Navbar() {
                         <Button 
                           asChild
                           size="sm"
-                          className="w-full bg-[#0B47CE] text-white hover:bg-[#003889] font-semibold py-3 rounded-lg shadow-md border-0"
+                          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-3 rounded-lg shadow-md border-0"
                         >
                           <Link to="/admin" className="flex items-center justify-center space-x-2">
                             <Settings className="w-4 h-4" />
@@ -282,7 +282,7 @@ export function Navbar() {
                       <Button 
                         asChild
                         variant="outline"
-                        className="w-full border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#F73C5C] font-semibold py-3 rounded-lg"
+                        className="w-full border-2 border-white bg-transparent text-white hover:bg-white hover:text-accent font-semibold py-3 rounded-lg"
                       >
                         <Link to="/auth" className="flex items-center justify-center space-x-2">
                           <LogIn className="w-4 h-4" />
@@ -291,7 +291,7 @@ export function Navbar() {
                       </Button>
                       <Button 
                         asChild
-                        className="w-full bg-white text-[#F73C5C] hover:bg-white/90 font-semibold py-3 rounded-lg shadow-lg shadow-black/25"
+                        className="w-full bg-white text-accent hover:bg-white/90 font-semibold py-3 rounded-lg shadow-lg shadow-black/25"
                       >
                         <Link to="/asociados" className="flex items-center justify-center space-x-2">
                           <Users className="w-4 h-4" />
