@@ -26,8 +26,10 @@ import {
   Plus,
   Globe,
   Sparkles,
-  Building
+  Building,
+  Mail
 } from "lucide-react";
+import { FeedbackChat } from "./feedback-chat";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -54,6 +56,7 @@ interface Associate {
   logo_url: string | null;
   servicios: string[] | null;
   tipo_organizacion: string | null;
+  correo_contacto: string | null;
 }
 
 const ORGANIZATION_TYPES = [
@@ -81,10 +84,11 @@ interface FieldStatus {
   logo_url: "empty" | "has_data" | "approved" | "broken";
   servicios: "empty" | "has_data" | "approved";
   tipo_organizacion: "empty" | "has_data" | "approved";
+  correo_contacto: "empty" | "has_data" | "approved";
 }
 
-type FieldType = "linkedin" | "logo_url" | "servicios" | "pagina_web" | "tipo_organizacion";
-type FilterType = "all" | "missing_logo" | "missing_linkedin" | "missing_servicios" | "missing_web" | "missing_tipo";
+type FieldType = "linkedin" | "logo_url" | "servicios" | "pagina_web" | "tipo_organizacion" | "correo_contacto";
+type FilterType = "all" | "missing_logo" | "missing_linkedin" | "missing_servicios" | "missing_web" | "missing_tipo" | "missing_correo";
 
 export function IndividualEnrichment() {
   const queryClient = useQueryClient();
@@ -109,7 +113,7 @@ export function IndividualEnrichment() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("asociados")
-        .select("id, nombre_empresa, pagina_web, linkedin, logo_url, servicios, tipo_organizacion")
+        .select("id, nombre_empresa, pagina_web, linkedin, logo_url, servicios, tipo_organizacion, correo_contacto")
         .eq("estado", "activo")
         .order("nombre_empresa");
 
@@ -150,6 +154,7 @@ export function IndividualEnrichment() {
     if (filter === "missing_servicios") return !a.servicios || a.servicios.length === 0;
     if (filter === "missing_web") return !a.pagina_web;
     if (filter === "missing_tipo") return !a.tipo_organizacion;
+    if (filter === "missing_correo") return !a.correo_contacto;
     return true;
   }) || [];
 
@@ -209,6 +214,8 @@ export function IndividualEnrichment() {
                  (associate.servicios && associate.servicios.length > 0) ? "has_data" : "empty",
       tipo_organizacion: approved.has("tipo_organizacion") ? "approved" : 
                  associate.tipo_organizacion ? "has_data" : "empty",
+      correo_contacto: approved.has("correo_contacto") ? "approved" :
+                 associate.correo_contacto ? "has_data" : "empty",
     };
   };
 
@@ -409,7 +416,7 @@ export function IndividualEnrichment() {
     setSuggestions(new Map());
     searchMutation.mutate({ 
       associateId: selectedAssociate.id, 
-      fields: ["linkedin", "logo_url", "servicios", "tipo_organizacion"] 
+      fields: ["linkedin", "logo_url", "servicios", "tipo_organizacion", "correo_contacto"] 
     });
   };
 
@@ -441,6 +448,8 @@ export function IndividualEnrichment() {
     } else if (field === "servicios") {
       setManualServicios(selectedAssociate.servicios || []);
       setNewServicio("");
+    } else if (field === "correo_contacto") {
+      setManualValue(selectedAssociate.correo_contacto || "");
     }
   };
 
@@ -544,6 +553,7 @@ export function IndividualEnrichment() {
       servicios: "Servicios",
       pagina_web: "Página Web",
       tipo_organizacion: "Tipo de Organización",
+      correo_contacto: "Correo de Contacto",
     };
     return labels[campo] || campo;
   };
@@ -560,6 +570,8 @@ export function IndividualEnrichment() {
         return <Globe className="h-4 w-4" />;
       case "tipo_organizacion":
         return <Building className="h-4 w-4" />;
+      case "correo_contacto":
+        return <Mail className="h-4 w-4" />;
       default:
         return null;
     }
@@ -739,6 +751,7 @@ export function IndividualEnrichment() {
                 <SelectItem value="missing_linkedin">Sin LinkedIn</SelectItem>
                 <SelectItem value="missing_servicios">Sin servicios</SelectItem>
                 <SelectItem value="missing_tipo">Sin tipo de organización</SelectItem>
+                <SelectItem value="missing_correo">Sin correo de contacto</SelectItem>
               </SelectContent>
             </Select>
           </CardHeader>
@@ -774,6 +787,7 @@ export function IndividualEnrichment() {
                       <FieldStatusIcon status={status.linkedin} />
                       <FieldStatusIcon status={status.servicios} />
                       <FieldStatusIcon status={status.tipo_organizacion} />
+                      <FieldStatusIcon status={status.correo_contacto} />
                     </div>
                   </div>
                 );
@@ -1112,8 +1126,101 @@ export function IndividualEnrichment() {
                       </Button>
                     </div>
                   </div>
+
+                  {/* Correo de Contacto */}
+                  <div className="group relative flex items-center gap-4 p-4 rounded-xl border border-border/60 bg-gradient-to-br from-background to-muted/20 hover:border-border transition-all">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                      <Mail className="h-6 w-6 text-emerald-600" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="font-semibold text-foreground">Correo de Contacto</span>
+                      </div>
+                      {selectedAssociate.correo_contacto ? (
+                        <a 
+                          href={`mailto:${selectedAssociate.correo_contacto}`}
+                          className="text-sm text-emerald-600 hover:underline truncate block font-medium"
+                        >
+                          {selectedAssociate.correo_contacto}
+                        </a>
+                      ) : (
+                        <p className="text-sm text-muted-foreground/60 italic">No configurado</p>
+                      )}
+                    </div>
+                    <div className="flex gap-1.5 flex-shrink-0">
+                      <Button 
+                        variant="default" 
+                        size="sm"
+                        onClick={() => handleSearch("correo_contacto")}
+                        disabled={searchMutation.isPending}
+                        className="shadow-sm"
+                      >
+                        {searchingField === "correo_contacto" ? (
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                        ) : (
+                          <>
+                            <Search className="h-3.5 w-3.5 mr-1.5" />
+                            Buscar
+                          </>
+                        )}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => openManualEdit("correo_contacto")}
+                        className="h-9 w-9"
+                      >
+                        <Pencil className="h-3.5 w-3.5" />
+                      </Button>
+                    </div>
+                  </div>
                 </div>
                 </div>
+
+                {/* Feedback Chat */}
+                <FeedbackChat
+                  asociadoId={selectedAssociate.id}
+                  nombreEmpresa={selectedAssociate.nombre_empresa}
+                  onEnrichWithContext={(feedbackMessages) => {
+                    if (!selectedAssociate) return;
+                    setSearchingField("all");
+                    setSuggestions(new Map());
+                    
+                    supabase.functions.invoke("enrich-with-feedback", {
+                      body: {
+                        asociado_id: selectedAssociate.id,
+                        feedback_messages: feedbackMessages,
+                        fields: ["linkedin", "logo_url", "servicios", "tipo_organizacion", "correo_contacto"]
+                      }
+                    }).then(({ data, error }) => {
+                      if (error) {
+                        toast.error(`Error: ${error.message}`);
+                        setSearchingField(null);
+                        return;
+                      }
+                      
+                      if (data?.enrichments && data.enrichments.length > 0) {
+                        const newSuggestions = new Map<string, EnrichmentSuggestion>();
+                        data.enrichments.forEach((enrichment: { campo: string; opciones: EnrichmentOption[] }) => {
+                          newSuggestions.set(enrichment.campo, {
+                            campo: enrichment.campo,
+                            opciones: enrichment.opciones || [],
+                            currentIndex: 0
+                          });
+                        });
+                        setSuggestions(newSuggestions);
+                        const totalOptions = data.enrichments.reduce((sum: number, e: { opciones?: unknown[] }) => sum + (e.opciones?.length || 0), 0);
+                        toast.success(`Encontrado: ${totalOptions} opción(es) usando contexto del feedback`);
+                      } else {
+                        toast.info("No se encontró información nueva");
+                        setSuggestions(new Map());
+                      }
+                      setSearchingField(null);
+                      queryClient.invalidateQueries({ queryKey: ["associate-feedback", selectedAssociate.id] });
+                    });
+                  }}
+                  isEnriching={searchingField === "all"}
+                />
 
                 {/* Search all button */}
                 <Button 
@@ -1151,6 +1258,7 @@ export function IndividualEnrichment() {
                       {renderSuggestionCard("linkedin")}
                       {renderSuggestionCard("servicios")}
                       {renderSuggestionCard("tipo_organizacion")}
+                      {renderSuggestionCard("correo_contacto")}
                     </div>
 
                     <Button 
@@ -1224,6 +1332,19 @@ export function IndividualEnrichment() {
                 <Input
                   id="linkedin-url"
                   placeholder="https://linkedin.com/company/nombre"
+                  value={manualValue}
+                  onChange={(e) => setManualValue(e.target.value)}
+                />
+              </div>
+            )}
+
+            {manualEditField === "correo_contacto" && (
+              <div className="space-y-2">
+                <Label htmlFor="correo-url">Correo electrónico</Label>
+                <Input
+                  id="correo-url"
+                  type="email"
+                  placeholder="contacto@empresa.com"
                   value={manualValue}
                   onChange={(e) => setManualValue(e.target.value)}
                 />

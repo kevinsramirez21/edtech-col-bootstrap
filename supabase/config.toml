@@ -2,3 +2,6 @@ project_id = "iwzkhjhiatipbybqenhz"
 
 [functions.enrich-associate]
 verify_jwt = true
+
+[functions.enrich-with-feedback]
+verify_jwt = true
