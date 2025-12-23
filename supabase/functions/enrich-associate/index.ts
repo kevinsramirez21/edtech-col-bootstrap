@@ -15,6 +15,7 @@ interface AssociateData {
   logo_url: string | null;
   servicios: string[] | null;
   tipo_organizacion: string | null;
+  correo_contacto: string | null;
 }
 
 // Organization type categories
@@ -309,7 +310,7 @@ serve(async (req) => {
     // Get associate data
     const { data: associate, error: fetchError } = await supabase
       .from("asociados")
-      .select("id, nombre_empresa, pagina_web, descripcion, linkedin, logo_url, servicios, tipo_organizacion")
+      .select("id, nombre_empresa, pagina_web, descripcion, linkedin, logo_url, servicios, tipo_organizacion, correo_contacto")
       .eq("id", asociado_id)
       .single();
 
@@ -336,12 +337,13 @@ serve(async (req) => {
     if (associate.logo_url) fieldsWithData.add("logo_url");
     if (associate.servicios && associate.servicios.length > 0) fieldsWithData.add("servicios");
     if (associate.tipo_organizacion) fieldsWithData.add("tipo_organizacion");
+    if (associate.correo_contacto) fieldsWithData.add("correo_contacto");
 
     // Combine completed fields with fields that already have data
     const skipFields = new Set([...completedFields, ...fieldsWithData]);
 
     // Determine which fields to enrich
-    const allFields = ["linkedin", "logo_url", "servicios", "tipo_organizacion"];
+    const allFields = ["linkedin", "logo_url", "servicios", "tipo_organizacion", "correo_contacto"];
     
     let fieldsToEnrich: string[];
     
@@ -420,6 +422,9 @@ serve(async (req) => {
    - "Cajas de Compensación": cajas de compensación familiar
    - "Universidades": instituciones universitarias directamente
    Ejemplo: una empresa que vende a colegios y universidades debería tener ["K12 (Colegios)", "Universidades"]`);
+      }
+      if (fieldsToEnrich.includes("correo_contacto")) {
+        fieldInstructions.push("5. Correo electrónico de contacto - Busca en la página de contacto, footer, o información de la empresa. Debe ser un email válido como info@empresa.com o contacto@empresa.com.");
       }
 
       const prompt = `Investiga la empresa EdTech colombiana "${associate.nombre_empresa}".

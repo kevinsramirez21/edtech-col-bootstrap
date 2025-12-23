@@ -148,6 +148,41 @@ export type Database = {
           },
         ]
       }
+      asociados_feedback: {
+        Row: {
+          asociado_id: string
+          contexto_usado: boolean | null
+          created_at: string | null
+          id: string
+          mensaje: string
+          rol: string
+        }
+        Insert: {
+          asociado_id: string
+          contexto_usado?: boolean | null
+          created_at?: string | null
+          id?: string
+          mensaje: string
+          rol: string
+        }
+        Update: {
+          asociado_id?: string
+          contexto_usado?: boolean | null
+          created_at?: string | null
+          id?: string
+          mensaje?: string
+          rol?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "asociados_feedback_asociado_id_fkey"
+            columns: ["asociado_id"]
+            isOneToOne: false
+            referencedRelation: "asociados"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       newsletter_subscriptions: {
         Row: {
           created_at: string
