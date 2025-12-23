@@ -38,7 +38,6 @@ interface Associate {
   ubicacion?: string
   tamano_empresa?: string
   linkedin?: string
-  twitter?: string
   fecha_ingreso?: string
   calificacion_colombia_edtech?: number
   tipo_organizacion?: string
@@ -485,7 +484,6 @@ export default function AssociatesDirectory() {
                         ubicacion: associate.ubicacion,
                         pagina_web: associate.pagina_web,
                         linkedin: associate.linkedin,
-                        twitter: associate.twitter,
                         servicios: associate.servicios,
                         tamano_empresa: associate.tamano_empresa,
                         calificacion_colombia_edtech: associate.calificacion_colombia_edtech,
