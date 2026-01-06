@@ -131,7 +131,7 @@ const Index = () => {
             
             {/* Primary CTA - Conoce a nuestros asociados */}
             <Button asChild className="bg-white hover:bg-white/90 text-primary-700 font-bold px-5 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl shadow-2xl shadow-white/30 hover:shadow-white/50 transition-all duration-500 hover:scale-105 text-xs sm:text-sm lg:text-base xl:text-lg group w-full sm:w-auto border-2 border-white/20">
-              <Link to="/directorio" className="flex items-center justify-center space-x-2 sm:space-x-3">
+              <Link to="/asociados/directorio" className="flex items-center justify-center space-x-2 sm:space-x-3">
                 <Star className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
                 <span className="text-center">Conoce a Nuestros Asociados</span>
                 <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0 hidden sm:block" />
