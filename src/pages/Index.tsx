@@ -254,6 +254,72 @@ const Index = () => {
         </div>
       </Section>
 
+      {/* Mission & Impact Section Premium */}
+      <Section className="py-8 sm:py-12 lg:py-16 relative overflow-hidden bg-secondary dark:bg-background">
+        {/* Background Decorations - hidden on mobile */}
+        {/* Background Decorations - hidden on mobile */}
+        <div className="absolute inset-0 opacity-5 hidden sm:block">
+          <div className="absolute top-40 right-20 w-80 h-80 bg-primary-700 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-40 left-20 w-80 h-80 bg-accent-brand rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-6 sm:mb-10 lg:mb-14">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-5 lg:mb-6 text-primary leading-tight">
+              ¿Por qué seguir haciendo lo mismo si el mundo ya{" "}
+              <span className="text-primary">
+                cambió?
+              </span>
+            </h2>
+            <div className="w-20 sm:w-28 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-3 sm:mb-5 lg:mb-6 rounded-full"></div>
+            <p className="text-sm sm:text-base lg:text-lg xl:text-xl max-w-5xl mx-auto mb-3 sm:mb-5 lg:mb-6 text-foreground leading-relaxed font-medium">
+              La educación tradicional no está a la altura de las necesidades actuales de estudiantes, docentes e instituciones.
+            </p>
+            <p className="text-sm sm:text-base lg:text-lg xl:text-xl max-w-6xl mx-auto mb-4 sm:mb-6 lg:mb-10 text-foreground font-semibold">
+              Nuestro ecosistema <strong className="text-accent">CONECTA</strong> a ONGs, universidades, colegios, startups, scaleups, empresas y big tech para:
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto mb-8 sm:mb-12 lg:mb-16">
+            {missionCards.map((card, index) => <div key={index} className="group animate-fade-in-up" style={{
+            animationDelay: `${index * 200}ms`
+          }}>
+                <Card className="p-5 sm:p-6 md:p-8 lg:p-10 text-center border-0 shadow-2xl shadow-primary/15 hover:shadow-3xl hover:shadow-primary/25 transition-all duration-700 hover:scale-105 bg-card h-full group-hover:-translate-y-2">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-6 sm:mb-8 lg:mb-10 rounded-2xl sm:rounded-3xl bg-primary flex items-center justify-center shadow-2xl shadow-primary/40 group-hover:shadow-3xl group-hover:shadow-primary/50 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    <card.icon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-primary-foreground" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 text-primary">
+                    {card.title}
+                  </h3>
+                  <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold mb-4 sm:mb-6 lg:mb-8 text-foreground leading-tight">
+                    {card.subtitle}
+                  </h4>
+                  <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed font-medium">
+                    {card.description}
+                  </p>
+                </Card>
+              </div>)}
+          </div>
+          
+          <div className="text-center animate-fade-in-up animation-delay-800">
+            <div className="max-w-6xl mx-auto p-4 sm:p-6 md:p-8 lg:p-12 bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 dark:from-primary/20 dark:via-accent/10 dark:to-primary/20 rounded-2xl sm:rounded-3xl border border-primary/20 shadow-2xl shadow-primary/10">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground leading-relaxed mb-4 sm:mb-6 md:mb-8">
+                Juntas/os, convertimos el aprendizaje en una experiencia{" "}
+                <span className="text-accent-brand">accesible, personalizada y relevante</span>{" "}
+                para todas las personas.
+              </p>
+              <Button asChild className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 rounded-xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-105 sm:hover:scale-110 text-sm sm:text-base lg:text-lg group w-full sm:w-auto">
+                <Link to="/asociados" className="inline-flex items-center justify-center gap-2 sm:gap-3">
+                  <Users className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
+                  <span>Quiero ser parte</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       {/* EdTech Hub Latam Section */}
       <Section className="py-10 sm:py-14 lg:py-20 bg-gradient-to-br from-primary-700 via-primary-900 to-primary-700 text-white relative overflow-hidden">
         {/* Premium Background Effects */}
@@ -332,72 +398,6 @@ const Index = () => {
               <span>Conoce EdTech Hub Latam</span>
               <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
             </a>
-          </div>
-        </div>
-      </Section>
-
-      {/* Mission & Impact Section Premium */}
-      <Section className="py-8 sm:py-12 lg:py-16 relative overflow-hidden bg-secondary dark:bg-background">
-        {/* Background Decorations - hidden on mobile */}
-        {/* Background Decorations - hidden on mobile */}
-        <div className="absolute inset-0 opacity-5 hidden sm:block">
-          <div className="absolute top-40 right-20 w-80 h-80 bg-primary-700 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-40 left-20 w-80 h-80 bg-accent-brand rounded-full blur-3xl"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="text-center mb-6 sm:mb-10 lg:mb-14">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-5 lg:mb-6 text-primary leading-tight">
-              ¿Por qué seguir haciendo lo mismo si el mundo ya{" "}
-              <span className="text-primary">
-                cambió?
-              </span>
-            </h2>
-            <div className="w-20 sm:w-28 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-3 sm:mb-5 lg:mb-6 rounded-full"></div>
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl max-w-5xl mx-auto mb-3 sm:mb-5 lg:mb-6 text-foreground leading-relaxed font-medium">
-              La educación tradicional no está a la altura de las necesidades actuales de estudiantes, docentes e instituciones.
-            </p>
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl max-w-6xl mx-auto mb-4 sm:mb-6 lg:mb-10 text-foreground font-semibold">
-              Nuestro ecosistema <strong className="text-accent">CONECTA</strong> a ONGs, universidades, colegios, startups, scaleups, empresas y big tech para:
-            </p>
-          </div>
-          
-          <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto mb-8 sm:mb-12 lg:mb-16">
-            {missionCards.map((card, index) => <div key={index} className="group animate-fade-in-up" style={{
-            animationDelay: `${index * 200}ms`
-          }}>
-                <Card className="p-5 sm:p-6 md:p-8 lg:p-10 text-center border-0 shadow-2xl shadow-primary/15 hover:shadow-3xl hover:shadow-primary/25 transition-all duration-700 hover:scale-105 bg-card h-full group-hover:-translate-y-2">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-6 sm:mb-8 lg:mb-10 rounded-2xl sm:rounded-3xl bg-primary flex items-center justify-center shadow-2xl shadow-primary/40 group-hover:shadow-3xl group-hover:shadow-primary/50 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
-                    <card.icon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 text-primary">
-                    {card.title}
-                  </h3>
-                  <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold mb-4 sm:mb-6 lg:mb-8 text-foreground leading-tight">
-                    {card.subtitle}
-                  </h4>
-                  <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed font-medium">
-                    {card.description}
-                  </p>
-                </Card>
-              </div>)}
-          </div>
-          
-          <div className="text-center animate-fade-in-up animation-delay-800">
-            <div className="max-w-6xl mx-auto p-4 sm:p-6 md:p-8 lg:p-12 bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 dark:from-primary/20 dark:via-accent/10 dark:to-primary/20 rounded-2xl sm:rounded-3xl border border-primary/20 shadow-2xl shadow-primary/10">
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground leading-relaxed mb-4 sm:mb-6 md:mb-8">
-                Juntas/os, convertimos el aprendizaje en una experiencia{" "}
-                <span className="text-accent-brand">accesible, personalizada y relevante</span>{" "}
-                para todas las personas.
-              </p>
-              <Button asChild className="bg-gradient-to-r from-accent-brand to-primary-700 hover:from-accent-brand/90 hover:to-primary-700/90 text-white font-bold px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 rounded-xl shadow-2xl shadow-accent-brand/40 hover:shadow-accent-brand/60 transition-all duration-500 hover:scale-105 sm:hover:scale-110 text-sm sm:text-base lg:text-lg group w-full sm:w-auto">
-                <Link to="/asociados" className="inline-flex items-center justify-center gap-2 sm:gap-3">
-                  <Users className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
-                  <span>Quiero ser parte</span>
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0" />
-                </Link>
-              </Button>
-            </div>
           </div>
         </div>
       </Section>
