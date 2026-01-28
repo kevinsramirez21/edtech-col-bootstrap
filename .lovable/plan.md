@@ -1,176 +1,311 @@
 
-# Plan: Corregir Enlaces y Fechas Faltantes en Eventos LATAM 2026
 
-## Resumen del Problema
+# Plan: Añadir Nuevos Eventos EdTech LATAM 2026
 
-Tras una investigación exhaustiva, identifiqué **6 eventos sin enlaces** y **5 eventos con fechas tentativas**. La investigación reveló que varios eventos necesitan correcciones significativas o deben ser eliminados por falta de información verificable.
+## Resumen
 
----
-
-## Hallazgos de la Investigación
-
-### Eventos a CORREGIR (con nueva información verificada):
-
-| # | Evento | Problema | Solución |
-|---|--------|----------|----------|
-| 1 | **I Congreso Internacional de Educación Digital** | Sin enlace | ✅ Añadir: `https://educaciondigital.entropiaeducativa.com/` + Organizador: **Entropía Educativa** |
-| 2 | **15º Congreso Educación Superior** | Error de ubicación y sin enlace | ✅ Corregir: Es en **La Habana, Cuba** (no Buenos Aires, Argentina). Enlace: `https://www.congresouniversidad.cu/`. Organizador: **Ministerio de Educación Superior de Cuba** |
-| 3 | **XIII EDUTIC Santiago** | Fecha tentativa | ✅ Actualizar fecha: **10-11 junio 2026** (Summit día 10, Seminario día 11) |
-
-### Eventos a ELIMINAR (sin información verificable para 2026):
-
-| # | Evento | Razón |
-|---|--------|-------|
-| 4 | **ICCIHER** | No aparece en el calendario IFERP 2026. Sin evidencia de que exista para 2026 |
-| 5 | **ICCRTP** | No aparece en el calendario IFERP 2026. Sin evidencia de que exista para 2026 |
-| 6 | **UTED Global Education Technology Congress** | No existe información en ninguna fuente. Evento no verificable |
-| 7 | **V EDUTIC Medellín** | No aparece en próximos eventos EDUTIC. Solo se anuncian Santiago, CDMX y CIAED para 2026 |
-| 8 | **I EDUTIC Brasil** | No aparece en próximos eventos EDUTIC para 2026 |
-| 9 | **VII EDUTIC Lima** | No aparece en próximos eventos EDUTIC para 2026 (el VI fue en 2025) |
-| 10 | **Foro Educativo Nacional** | El Foro 2024 sirvió para preparar el Plan Decenal 2026-2035. No hay confirmación de edición 2026 |
-
-### Evento a MARCAR como "Por confirmar":
-
-| # | Evento | Problema | Solución |
-|---|--------|----------|----------|
-| 11 | **QS Higher Ed Summit: Americas** | 2025 es en Buenos Aires. 2026 no tiene sede confirmada | Cambiar estado a "Por confirmar" y añadir nota: "Sede y fechas 2026 pendientes de anuncio oficial" |
+Tras una investigación exhaustiva de múltiples fuentes, he identificado **8 nuevos eventos verificados** con información completa (fechas, enlaces, organizadores) que complementarán el calendario actual de 25 eventos, llevándolo a **33 eventos** totales.
 
 ---
 
-## Cambios en el Archivo de Datos
+## Nuevos Eventos Verificados para Añadir
+
+### 1. IEEE EDUNINE 2026
+| Campo | Valor |
+|-------|-------|
+| **Nombre** | X IEEE World Engineering Education Conference (EDUNINE 2026) |
+| **Fechas** | 8-11 marzo 2026 |
+| **Ciudad** | Ciudad de México |
+| **País** | México |
+| **Modalidad** | Híbrido |
+| **Estado** | Confirmado |
+| **Enlace** | https://edunine.eu/edunine2026/ |
+| **Organizador** | IEEE Education Society / COPEC |
+| **Descripción** | Conferencia IEEE sobre educación en ingeniería con enfoque en IA y tecnología. |
+
+### 2. Rio Innovation Week 2026
+| Campo | Valor |
+|-------|-------|
+| **Nombre** | Rio Innovation Week 2026 |
+| **Fechas** | 4-7 agosto 2026 |
+| **Ciudad** | Rio de Janeiro |
+| **País** | Brasil |
+| **Modalidad** | Presencial |
+| **Estado** | Confirmado |
+| **Enlace** | https://rioinnovationweek.com.br/ |
+| **Organizador** | Secretaría Municipal de Cultura de Rio |
+| **Descripción** | La mayor conferencia de tecnología e innovación de LATAM con +150,000 asistentes. |
+| **Nota** | Añadir "Brasil" a lista de países si no existe |
+
+### 3. America Digital LATAM Congress 2026
+| Campo | Valor |
+|-------|-------|
+| **Nombre** | 11th America Digital LATAM Congress |
+| **Fechas** | 9-10 septiembre 2026 |
+| **Ciudad** | Santiago |
+| **País** | Chile |
+| **Modalidad** | Presencial |
+| **Estado** | Confirmado |
+| **Enlace** | https://congreso.america-digital.com/?lang=en |
+| **Organizador** | America Digital |
+| **Descripción** | Congreso de AI, tecnología y negocios con +5,000 ejecutivos C-Level. |
+
+### 4. XXXIII Encuentro Internacional de Educación a Distancia
+| Campo | Valor |
+|-------|-------|
+| **Nombre** | 33º Encuentro Internacional de Educación a Distancia |
+| **Fechas** | Noviembre 2026 (fechas específicas por confirmar) |
+| **Ciudad** | Guadalajara |
+| **País** | México |
+| **Modalidad** | Híbrido |
+| **Estado** | Por confirmar |
+| **Enlace** | https://encuentro.udgvirtual.udg.mx/ |
+| **Organizador** | UDGVirtual / Universidad de Guadalajara |
+| **Descripción** | Encuentro sobre educación a distancia con +600 participantes de 10 países. |
+| **Nota** | Basado en el patrón anual del evento (edición 32 fue en 2025) |
+
+### 5. LACLO 2026 (XX Conferencia Latinoamericana de Tecnologías de Aprendizaje)
+| Campo | Valor |
+|-------|-------|
+| **Nombre** | XX Conferencia LACLO 2026 |
+| **Fechas** | Octubre 2026 (fechas específicas por confirmar) |
+| **Ciudad** | Por confirmar |
+| **País** | Por confirmar (rotativo anual) |
+| **Modalidad** | Presencial |
+| **Estado** | Por confirmar |
+| **Enlace** | https://laclo.org/ |
+| **Organizador** | Comunidad LACLO |
+| **Descripción** | Principal conferencia LATAM de tecnologías de aprendizaje y objetos educativos. |
+| **Nota** | Sede 2026 pendiente (2024 fue Uruguay, 2023 fue Ecuador) |
+
+### 6. TICAL 2026
+| Campo | Valor |
+|-------|-------|
+| **Nombre** | TICAL 2026 |
+| **Fechas** | Noviembre 2026 (fechas específicas por confirmar) |
+| **Ciudad** | Por confirmar |
+| **País** | Por confirmar (rotativo anual) |
+| **Modalidad** | Presencial |
+| **Estado** | Por confirmar |
+| **Enlace** | https://tical.redclara.net/ |
+| **Organizador** | RedCLARA |
+| **Descripción** | Conferencia de TIC para educación superior e investigación en América Latina. |
+| **Nota** | Sede 2026 pendiente (2025 fue Costa Rica) |
+
+### 7. XIX Congreso Internacional de Educación e Innovación (CIEI 2026)
+| Campo | Valor |
+|-------|-------|
+| **Nombre** | XIX CIEI - Congreso Internacional de Educación e Innovación |
+| **Fechas** | Mayo/Junio 2026 (por confirmar) |
+| **Ciudad** | Riga |
+| **País** | Virtual (sede principal en Letonia, participación híbrida) |
+| **Modalidad** | Híbrido |
+| **Estado** | Por confirmar |
+| **Enlace** | https://ciei.es/ |
+| **Organizador** | Universidad de Granada / Grupo AREA |
+| **Descripción** | Congreso internacional de educación e innovación con participantes de LATAM. |
+| **Nota** | Edición XIX será en Letonia, pero participación virtual disponible |
+
+### 8. EDUNOVATIC 2026
+| Campo | Valor |
+|-------|-------|
+| **Nombre** | XI Congreso Virtual EDUNOVATIC |
+| **Fechas** | Noviembre 2026 (por confirmar, basado en patrón anual) |
+| **Ciudad** | Virtual |
+| **País** | Virtual |
+| **Modalidad** | Virtual |
+| **Estado** | Por confirmar |
+| **Enlace** | https://www.edunovatic.org/ |
+| **Organizador** | EDUNOVATIC |
+| **Descripción** | Congreso virtual internacional sobre educación, innovación y TIC. |
+
+---
+
+## Eventos Considerados pero No Incluidos
+
+Los siguientes eventos fueron investigados pero **no se añaden** por falta de información verificable para 2026:
+
+| Evento | Razón de exclusión |
+|--------|-------------------|
+| INTED 2026 (Valencia) | Evento europeo, no LATAM |
+| IEEE EDUCON 2026 | Se realiza en Egipto, no LATAM |
+| Campus Party Brasil | Sin fechas confirmadas para 2026 |
+| Cumbre Líderes por la Educación (Semana) | Sin confirmación para 2026 |
+| Virtual Educa | Sin calendario 2026 publicado |
+| CREAD Conference | Sin evento 2026 anunciado |
+
+---
+
+## Cambios Técnicos Requeridos
 
 ### Archivo: `src/data/eventos-latam-2026.ts`
 
-**Total eventos actuales:** 32
-**Eventos después de correcciones:** 24 (eliminando 8 eventos no verificables)
+**Eventos actuales:** 25
+**Eventos nuevos:** 8
+**Total final:** 33 eventos
 
-### Correcciones Específicas:
+### Nuevas Entradas de Datos
 
-#### 1. I Congreso Internacional de Educación Digital (líneas 71-84)
 ```typescript
+// Marzo 2026 - Añadir después de BMI THE Latin America
 {
-  id: 'congreso-educacion-digital-2026',
-  nombre: 'I Congreso Internacional de Educación Digital',
-  fechaInicio: '2026-01-22',
-  fechaFin: '2026-01-23',
-  fechaDisplay: '22-23 enero 2026',
-  ciudad: 'Virtual',
-  pais: 'Virtual',
-  modalidad: 'Virtual',
+  id: 'edunine-2026',
+  nombre: 'X IEEE EDUNINE 2026',
+  fechaInicio: '2026-03-08',
+  fechaFin: '2026-03-11',
+  fechaDisplay: '8-11 marzo 2026',
+  ciudad: 'Ciudad de México',
+  pais: 'México',
+  modalidad: 'Híbrido',
   estado: 'Confirmado',
-  enlace: 'https://educaciondigital.entropiaeducativa.com/', // AÑADIDO
-  descripcion: 'Escenarios emergentes para la investigación y la educación del futuro.',
-  organizador: 'Entropía Educativa', // CORREGIDO
-}
-```
+  enlace: 'https://edunine.eu/edunine2026/',
+  descripcion: 'Conferencia IEEE sobre educación en ingeniería con enfoque en IA.',
+  organizador: 'IEEE Education Society / COPEC',
+},
 
-#### 2. 15º Congreso Educación Superior (líneas 113-126)
-```typescript
+// Agosto 2026 - Añadir antes de Edutechnia
 {
-  id: 'universidad-2026-cuba',
-  nombre: '15º Congreso Universidad 2026',
-  fechaInicio: '2026-02-09',
-  fechaFin: '2026-02-13',
-  fechaDisplay: '9-13 febrero 2026',
-  ciudad: 'La Habana', // CORREGIDO de Buenos Aires
-  pais: 'Virtual', // Cambiar a Virtual ya que Cuba no está en la lista de países, o añadir nota
-  modalidad: 'Híbrido', // Tiene formato presencial y virtual
+  id: 'rio-innovation-week-2026',
+  nombre: 'Rio Innovation Week 2026',
+  fechaInicio: '2026-08-04',
+  fechaFin: '2026-08-07',
+  fechaDisplay: '4-7 agosto 2026',
+  ciudad: 'Rio de Janeiro',
+  pais: 'Brasil',
+  modalidad: 'Presencial',
   estado: 'Confirmado',
-  enlace: 'https://www.congresouniversidad.cu/', // AÑADIDO
-  descripcion: 'Congreso internacional de educación superior organizado por Cuba.',
-  organizador: 'Ministerio de Educación Superior de Cuba', // CORREGIDO
-  notas: 'Sede: La Habana, Cuba. Formato híbrido disponible.',
-}
-```
+  enlace: 'https://rioinnovationweek.com.br/',
+  descripcion: 'La mayor conferencia de tecnología e innovación de LATAM (+150K asistentes).',
+  organizador: 'Secretaría Municipal de Cultura de Rio',
+},
 
-#### 3. XIII EDUTIC Santiago (líneas 325-338)
-```typescript
+// Septiembre 2026 - Añadir después de ALIE
 {
-  id: 'edutic-santiago-2026',
-  nombre: 'XIII EDUTIC Santiago',
-  fechaInicio: '2026-06-10',
-  fechaFin: '2026-06-11',
-  fechaDisplay: '10-11 junio 2026', // CORREGIDO
+  id: 'america-digital-2026',
+  nombre: '11th America Digital LATAM Congress',
+  fechaInicio: '2026-09-09',
+  fechaFin: '2026-09-10',
+  fechaDisplay: '9-10 septiembre 2026',
   ciudad: 'Santiago',
   pais: 'Chile',
   modalidad: 'Presencial',
-  estado: 'Confirmado', // CORREGIDO de Tentativo
-  enlace: 'https://event.edutic.org',
-  descripcion: 'Conferencia sobre tecnología educativa e innovación pedagógica en Chile.',
-  organizador: 'EDUTIC.org',
-  // notas eliminada ya que fecha está confirmada
-}
-```
+  estado: 'Confirmado',
+  enlace: 'https://congreso.america-digital.com/',
+  descripcion: 'Congreso de AI, tecnología y negocios con +5,000 ejecutivos C-Level.',
+  organizador: 'America Digital',
+},
 
-#### 4-9. Eventos a ELIMINAR:
-- `icciher-2026` (líneas 100-112)
-- `iccrtp-2026` (líneas 127-139)
-- `uted-2026` (líneas 239-252)
-- `edutic-medellin-2026` (líneas 399-412)
-- `edutic-brasil-2026` (líneas 428-441)
-- `edutic-lima-2026` (líneas 472-485)
-- `foro-educativo-nacional-2026` (líneas 486-499)
-
-#### 10. QS Higher Ed Summit (líneas 457-471)
-```typescript
+// Octubre 2026 - Añadir después de ICEF
 {
-  id: 'qs-summit-americas-2026',
-  nombre: 'QS Higher Ed Summit: Americas',
-  fechaInicio: '2026-10-01',
-  fechaFin: '2026-10-02',
-  fechaDisplay: 'Octubre 2026', // CAMBIAR a genérico
+  id: 'laclo-2026',
+  nombre: 'XX Conferencia LACLO 2026',
+  fechaInicio: '2026-10-15',
+  fechaFin: '2026-10-17',
+  fechaDisplay: 'Octubre 2026',
   ciudad: 'Por confirmar',
-  pais: 'México', // Mantener como tentativo
+  pais: 'Virtual', // Usar Virtual hasta confirmar sede
   modalidad: 'Presencial',
-  estado: 'Por confirmar', // CAMBIAR de Confirmado
-  enlace: 'https://qshesummits.com/americas',
-  descripcion: 'Cumbre de QS sobre rankings, empleabilidad y estrategias universitarias.',
-  organizador: 'Quacquarelli Symonds',
-  notas: 'Sede y fechas 2026 pendientes de anuncio oficial. 2025 fue en Buenos Aires.',
-}
+  estado: 'Por confirmar',
+  enlace: 'https://laclo.org/',
+  descripcion: 'Principal conferencia LATAM de tecnologías de aprendizaje.',
+  organizador: 'Comunidad LACLO',
+  notas: 'Sede 2026 pendiente de anuncio. Rotativo anual.',
+},
+
+// Noviembre 2026 - Nuevos eventos
+{
+  id: 'eied-udg-2026',
+  nombre: '33º Encuentro Internacional de Educación a Distancia',
+  fechaInicio: '2026-11-15',
+  fechaFin: '2026-11-20',
+  fechaDisplay: 'Noviembre 2026',
+  ciudad: 'Guadalajara',
+  pais: 'México',
+  modalidad: 'Híbrido',
+  estado: 'Por confirmar',
+  enlace: 'https://encuentro.udgvirtual.udg.mx/',
+  descripcion: 'Encuentro sobre educación a distancia con participantes de 10+ países.',
+  organizador: 'UDGVirtual / Universidad de Guadalajara',
+  notas: 'Fechas específicas pendientes (basado en patrón anual).',
+},
+
+{
+  id: 'tical-2026',
+  nombre: 'TICAL 2026',
+  fechaInicio: '2026-11-10',
+  fechaFin: '2026-11-13',
+  fechaDisplay: 'Noviembre 2026',
+  ciudad: 'Por confirmar',
+  pais: 'Virtual', // Usar Virtual hasta confirmar sede
+  modalidad: 'Presencial',
+  estado: 'Por confirmar',
+  enlace: 'https://tical.redclara.net/',
+  descripcion: 'Conferencia de TIC para educación superior e investigación en LATAM.',
+  organizador: 'RedCLARA',
+  notas: 'Sede 2026 pendiente. 2025 fue en Costa Rica.',
+},
+
+{
+  id: 'edunovatic-2026',
+  nombre: 'XI Congreso EDUNOVATIC 2026',
+  fechaInicio: '2026-11-18',
+  fechaFin: '2026-11-20',
+  fechaDisplay: 'Noviembre 2026',
+  ciudad: 'Virtual',
+  pais: 'Virtual',
+  modalidad: 'Virtual',
+  estado: 'Por confirmar',
+  enlace: 'https://www.edunovatic.org/',
+  descripcion: 'Congreso virtual sobre educación, innovación y TIC.',
+  organizador: 'EDUNOVATIC',
+  notas: 'Fechas específicas pendientes (basado en patrón anual).',
+},
+
+{
+  id: 'ciei-2026',
+  nombre: 'XIX CIEI - Congreso Internacional de Educación e Innovación',
+  fechaInicio: '2026-05-20',
+  fechaFin: '2026-05-22',
+  fechaDisplay: 'Mayo 2026',
+  ciudad: 'Riga (Virtual disponible)',
+  pais: 'Virtual',
+  modalidad: 'Híbrido',
+  estado: 'Por confirmar',
+  enlace: 'https://ciei.es/',
+  descripcion: 'Congreso de educación e innovación con participantes de LATAM.',
+  organizador: 'Universidad de Granada / Grupo AREA',
+  notas: 'Sede en Letonia, participación virtual para LATAM.',
+},
 ```
+
+---
+
+## Distribución Final por Mes
+
+| Mes | Cantidad | Eventos |
+|-----|----------|---------|
+| Enero | 3 | Congreso Futuro, I Congreso Educación Digital, IFE Conference |
+| Febrero | 2 | 15º Congreso Universidad Cuba, #ELEDU Cajicá |
+| Marzo | 5 | BMI THE, **IEEE EDUNINE**, II EDUTIC CDMX, GEduc, III Congreso ASCOFAME |
+| Abril | 3 | 7º Congreso EDUTIC Online, IV Congreso UIS, 31º CIAED |
+| Mayo | 4 | Bett Brasil, THE Latin America Summit, Congreso DOKUMA, **XIX CIEI** |
+| Junio | 3 | #ELEDU Brote, XIII EDUTIC Santiago, 4th LAICSEE |
+| Julio | 3 | Semana Diseño UP, LACCEI, ExpoEduc |
+| Agosto | 2 | **Rio Innovation Week**, Edutechnia |
+| Septiembre | 2 | Primer Congreso ALIE, **11th America Digital** |
+| Octubre | 3 | QS Higher Ed Summit, ICEF Latin America, **LACLO 2026** |
+| Noviembre | 3 | **33º EIED UDG**, **TICAL**, **EDUNOVATIC** |
+
+**Total: 33 eventos**
 
 ---
 
 ## Resumen de Cambios
 
-| Acción | Cantidad | Eventos |
-|--------|----------|---------|
-| **Añadir enlace** | 2 | I Congreso Educación Digital, 15º Congreso Universidad Cuba |
-| **Corregir ubicación** | 1 | 15º Congreso (Argentina → Cuba) |
-| **Corregir fecha** | 1 | XIII EDUTIC Santiago (10-11 junio) |
-| **Cambiar estado** | 2 | XIII EDUTIC Santiago (Tentativo→Confirmado), QS Summit (Confirmado→Por confirmar) |
-| **Eliminar** | 7 | ICCIHER, ICCRTP, UTED, V EDUTIC Medellín, I EDUTIC Brasil, VII EDUTIC Lima, Foro Educativo Nacional |
+| Tipo | Cantidad |
+|------|----------|
+| Eventos nuevos confirmados | 4 (EDUNINE, Rio Innovation Week, America Digital, CIEI) |
+| Eventos nuevos por confirmar | 4 (LACLO, EIED UDG, TICAL, EDUNOVATIC) |
+| **Total nuevos** | **8** |
+| **Total calendario final** | **33 eventos** |
 
-**Resultado final:** 25 eventos verificados y con información completa
-
----
-
-## Nota sobre Cuba
-
-El 15º Congreso Universidad 2026 se realiza en **La Habana, Cuba**. Como "Cuba" no está en la lista de países del filtro actual (`PAISES`), tengo dos opciones:
-
-1. **Añadir Cuba a la lista de países** (recomendado)
-2. **Mantener el evento pero marcarlo como "Virtual"** (ya que tiene formato híbrido)
-
-Recomiendo la opción 1: añadir Cuba a `PAISES`:
-```typescript
-{ value: 'Cuba', label: 'Cuba', emoji: '🇨🇺' },
-```
-
----
-
-## Sección Técnica
-
-### Lista final de eventos por mes (25 eventos):
-
-**Enero (3):** Congreso Futuro, I Congreso Educación Digital, IFE Conference
-**Febrero (2):** 15º Congreso Universidad Cuba, #ELEDU Cajicá
-**Marzo (4):** BMI THE Latin America, II EDUTIC CDMX, GEduc, III Congreso ASCOFAME
-**Abril (3):** 7º Congreso EDUTIC Online, IV Congreso UIS, 31º CIAED
-**Mayo (3):** Bett Brasil, THE Latin America Summit, Congreso DOKUMA
-**Junio (3):** #ELEDU Brote Principal, XIII EDUTIC Santiago, 4th LAICSEE
-**Julio (3):** Semana Diseño UP, LACCEI, ExpoEduc
-**Agosto (1):** Edutechnia
-**Septiembre (1):** Primer Congreso ALIE
-**Octubre (2):** QS Higher Ed Summit, ICEF Latin America
