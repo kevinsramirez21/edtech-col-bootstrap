@@ -1,194 +1,176 @@
 
-# Plan: Mejorar Página de Eventos y Verificar Enlaces
+# Plan: Corregir Enlaces y Fechas Faltantes en Eventos LATAM 2026
+
+## Resumen del Problema
+
+Tras una investigación exhaustiva, identifiqué **6 eventos sin enlaces** y **5 eventos con fechas tentativas**. La investigación reveló que varios eventos necesitan correcciones significativas o deben ser eliminados por falta de información verificable.
+
+---
+
+## Hallazgos de la Investigación
+
+### Eventos a CORREGIR (con nueva información verificada):
+
+| # | Evento | Problema | Solución |
+|---|--------|----------|----------|
+| 1 | **I Congreso Internacional de Educación Digital** | Sin enlace | ✅ Añadir: `https://educaciondigital.entropiaeducativa.com/` + Organizador: **Entropía Educativa** |
+| 2 | **15º Congreso Educación Superior** | Error de ubicación y sin enlace | ✅ Corregir: Es en **La Habana, Cuba** (no Buenos Aires, Argentina). Enlace: `https://www.congresouniversidad.cu/`. Organizador: **Ministerio de Educación Superior de Cuba** |
+| 3 | **XIII EDUTIC Santiago** | Fecha tentativa | ✅ Actualizar fecha: **10-11 junio 2026** (Summit día 10, Seminario día 11) |
+
+### Eventos a ELIMINAR (sin información verificable para 2026):
+
+| # | Evento | Razón |
+|---|--------|-------|
+| 4 | **ICCIHER** | No aparece en el calendario IFERP 2026. Sin evidencia de que exista para 2026 |
+| 5 | **ICCRTP** | No aparece en el calendario IFERP 2026. Sin evidencia de que exista para 2026 |
+| 6 | **UTED Global Education Technology Congress** | No existe información en ninguna fuente. Evento no verificable |
+| 7 | **V EDUTIC Medellín** | No aparece en próximos eventos EDUTIC. Solo se anuncian Santiago, CDMX y CIAED para 2026 |
+| 8 | **I EDUTIC Brasil** | No aparece en próximos eventos EDUTIC para 2026 |
+| 9 | **VII EDUTIC Lima** | No aparece en próximos eventos EDUTIC para 2026 (el VI fue en 2025) |
+| 10 | **Foro Educativo Nacional** | El Foro 2024 sirvió para preparar el Plan Decenal 2026-2035. No hay confirmación de edición 2026 |
+
+### Evento a MARCAR como "Por confirmar":
+
+| # | Evento | Problema | Solución |
+|---|--------|----------|----------|
+| 11 | **QS Higher Ed Summit: Americas** | 2025 es en Buenos Aires. 2026 no tiene sede confirmada | Cambiar estado a "Por confirmar" y añadir nota: "Sede y fechas 2026 pendientes de anuncio oficial" |
+
+---
+
+## Cambios en el Archivo de Datos
+
+### Archivo: `src/data/eventos-latam-2026.ts`
+
+**Total eventos actuales:** 32
+**Eventos después de correcciones:** 24 (eliminando 8 eventos no verificables)
+
+### Correcciones Específicas:
+
+#### 1. I Congreso Internacional de Educación Digital (líneas 71-84)
+```typescript
+{
+  id: 'congreso-educacion-digital-2026',
+  nombre: 'I Congreso Internacional de Educación Digital',
+  fechaInicio: '2026-01-22',
+  fechaFin: '2026-01-23',
+  fechaDisplay: '22-23 enero 2026',
+  ciudad: 'Virtual',
+  pais: 'Virtual',
+  modalidad: 'Virtual',
+  estado: 'Confirmado',
+  enlace: 'https://educaciondigital.entropiaeducativa.com/', // AÑADIDO
+  descripcion: 'Escenarios emergentes para la investigación y la educación del futuro.',
+  organizador: 'Entropía Educativa', // CORREGIDO
+}
+```
+
+#### 2. 15º Congreso Educación Superior (líneas 113-126)
+```typescript
+{
+  id: 'universidad-2026-cuba',
+  nombre: '15º Congreso Universidad 2026',
+  fechaInicio: '2026-02-09',
+  fechaFin: '2026-02-13',
+  fechaDisplay: '9-13 febrero 2026',
+  ciudad: 'La Habana', // CORREGIDO de Buenos Aires
+  pais: 'Virtual', // Cambiar a Virtual ya que Cuba no está en la lista de países, o añadir nota
+  modalidad: 'Híbrido', // Tiene formato presencial y virtual
+  estado: 'Confirmado',
+  enlace: 'https://www.congresouniversidad.cu/', // AÑADIDO
+  descripcion: 'Congreso internacional de educación superior organizado por Cuba.',
+  organizador: 'Ministerio de Educación Superior de Cuba', // CORREGIDO
+  notas: 'Sede: La Habana, Cuba. Formato híbrido disponible.',
+}
+```
+
+#### 3. XIII EDUTIC Santiago (líneas 325-338)
+```typescript
+{
+  id: 'edutic-santiago-2026',
+  nombre: 'XIII EDUTIC Santiago',
+  fechaInicio: '2026-06-10',
+  fechaFin: '2026-06-11',
+  fechaDisplay: '10-11 junio 2026', // CORREGIDO
+  ciudad: 'Santiago',
+  pais: 'Chile',
+  modalidad: 'Presencial',
+  estado: 'Confirmado', // CORREGIDO de Tentativo
+  enlace: 'https://event.edutic.org',
+  descripcion: 'Conferencia sobre tecnología educativa e innovación pedagógica en Chile.',
+  organizador: 'EDUTIC.org',
+  // notas eliminada ya que fecha está confirmada
+}
+```
+
+#### 4-9. Eventos a ELIMINAR:
+- `icciher-2026` (líneas 100-112)
+- `iccrtp-2026` (líneas 127-139)
+- `uted-2026` (líneas 239-252)
+- `edutic-medellin-2026` (líneas 399-412)
+- `edutic-brasil-2026` (líneas 428-441)
+- `edutic-lima-2026` (líneas 472-485)
+- `foro-educativo-nacional-2026` (líneas 486-499)
+
+#### 10. QS Higher Ed Summit (líneas 457-471)
+```typescript
+{
+  id: 'qs-summit-americas-2026',
+  nombre: 'QS Higher Ed Summit: Americas',
+  fechaInicio: '2026-10-01',
+  fechaFin: '2026-10-02',
+  fechaDisplay: 'Octubre 2026', // CAMBIAR a genérico
+  ciudad: 'Por confirmar',
+  pais: 'México', // Mantener como tentativo
+  modalidad: 'Presencial',
+  estado: 'Por confirmar', // CAMBIAR de Confirmado
+  enlace: 'https://qshesummits.com/americas',
+  descripcion: 'Cumbre de QS sobre rankings, empleabilidad y estrategias universitarias.',
+  organizador: 'Quacquarelli Symonds',
+  notas: 'Sede y fechas 2026 pendientes de anuncio oficial. 2025 fue en Buenos Aires.',
+}
+```
+
+---
 
 ## Resumen de Cambios
 
-Optimizar la página de eventos con un hero más compacto, fondo beige de marca, tarjetas más grandes con descripciones completas, añadir organizadores, y verificar/corregir todos los enlaces de eventos.
+| Acción | Cantidad | Eventos |
+|--------|----------|---------|
+| **Añadir enlace** | 2 | I Congreso Educación Digital, 15º Congreso Universidad Cuba |
+| **Corregir ubicación** | 1 | 15º Congreso (Argentina → Cuba) |
+| **Corregir fecha** | 1 | XIII EDUTIC Santiago (10-11 junio) |
+| **Cambiar estado** | 2 | XIII EDUTIC Santiago (Tentativo→Confirmado), QS Summit (Confirmado→Por confirmar) |
+| **Eliminar** | 7 | ICCIHER, ICCRTP, UTED, V EDUTIC Medellín, I EDUTIC Brasil, VII EDUTIC Lima, Foro Educativo Nacional |
+
+**Resultado final:** 25 eventos verificados y con información completa
 
 ---
 
-## 1. Hero Section más Compacto
+## Nota sobre Cuba
 
-**Cambios en `src/pages/Eventos.tsx`:**
-- Reducir padding del hero de `py-10 sm:py-14 lg:py-16` a `py-6 sm:py-8`
-- Reducir tamaño del ícono de `w-16 h-16 sm:w-20 sm:h-20` a `w-12 h-12 sm:w-14 sm:h-14`
-- Reducir tamaño del título de `text-3xl sm:text-4xl lg:text-5xl` a `text-2xl sm:text-3xl lg:text-4xl`
-- Reducir descripción de `text-lg sm:text-xl` a `text-base sm:text-lg`
-- Reducir margin de los badges de `mt-6` a `mt-4`
+El 15º Congreso Universidad 2026 se realiza en **La Habana, Cuba**. Como "Cuba" no está en la lista de países del filtro actual (`PAISES`), tengo dos opciones:
 
----
+1. **Añadir Cuba a la lista de países** (recomendado)
+2. **Mantener el evento pero marcarlo como "Virtual"** (ya que tiene formato híbrido)
 
-## 2. Fondo Beige (Sand) para la página
-
-**Cambios en `src/pages/Eventos.tsx`:**
-- Cambiar fondo del grid de eventos de `bg-background` a `bg-secondary` (beige sand: #F4E8DD)
-- Hero: mantener gradiente pero ajustar a `from-secondary via-background to-secondary/50`
-- Esto usará el color `sand` ya definido en el sistema de tokens
-
----
-
-## 3. Tarjetas más Grandes con Descripciones Completas
-
-**Cambios en `src/data/eventos-latam-2026.ts`:**
-- Añadir campo `organizador` a la interface `Evento`
-- Acortar descripciones a máximo 80-100 caracteres para que quepan sin truncar
-- Añadir organizador a cada evento
-
-**Cambios en `src/components/ui/event-card.tsx`:**
-- Remover `line-clamp-3` de la descripción para mostrar texto completo
-- Añadir sección de "Organiza:" con el nombre del organizador
-- Aumentar padding de las tarjetas
-
----
-
-## 4. Datos Actualizados de Eventos
-
-### Enlaces Corregidos/Actualizados
-
-| Evento | Enlace Anterior | Enlace Correcto |
-|--------|-----------------|-----------------|
-| LACCEI 2026 | https://laccei.org | https://laccei.org/laccei2026 |
-| Universidad Palermo | https://palermo.edu | https://palermo.edu/dyc/congreso-latino |
-| ICEF Latin America | https://icef.com | https://icef.com/events/icef-latin-america |
-| ALIE 2026 | https://alie.lat | https://alie.lat/congresos |
-| #ELEDU Interlat | https://interlat.co | https://interlat.co/eledu |
-| BMI THE Latin America | https://bmiglobaled.com | https://bmiglobaled.com/recruit-students/south-america-international-schools-forum-workshop |
-| QS Summit Americas | https://qs.com | https://qshesummits.com/americas |
-
-### Organizadores por Evento
-
-| Evento | Organizador |
-|--------|-------------|
-| Congreso Futuro 2026 | Fundación Congreso Futuro |
-| I Congreso Educación Digital | Por confirmar |
-| IFE Conference 2026 | Tecnológico de Monterrey |
-| ICCIHER | IFERP Academy |
-| 15º Congreso Educación Superior | Por confirmar |
-| ICCRTP | IFERP Academy |
-| #ELEDU Cajicá | Interlat |
-| BMI THE Latin America | BMI / Times Higher Education |
-| II EDUTIC CDMX | EDUTIC.org |
-| GEduc 2026 | HUMUS Brasil |
-| III Congreso ASCOFAME | ASCOFAME |
-| 7º Congreso EDUTIC Online | EDUTIC.org |
-| IV Congreso UIS | Universidad Industrial de Santander |
-| UTED | Por confirmar |
-| 31º CIAED | ABED Brasil |
-| Bett Brasil 2026 | Hyve Group |
-| THE Latin America Summit | Times Higher Education |
-| Congreso DOKUMA 2026 | DOKUMA Tech |
-| #ELEDU Brote Principal | Interlat |
-| XIII EDUTIC Santiago | EDUTIC.org |
-| 4th LAICSEE | ACSEE / IFERP |
-| Semana Diseño UP | Universidad de Palermo |
-| LACCEI 2026 | LACCEI / OEA |
-| ExpoEduc 2026 | ExpoEduc Brasil |
-| V EDUTIC Medellín | EDUTIC.org |
-| Edutechnia 2026 | Corferias |
-| I EDUTIC Brasil | EDUTIC.org |
-| Primer Congreso ALIE | ALIE |
-| QS Higher Ed Summit | Quacquarelli Symonds |
-| VII EDUTIC Lima | EDUTIC.org |
-| Foro Educativo Nacional | Ministerio de Educación Colombia |
-| ICEF Latin America | ICEF |
-
-### Descripciones Acortadas (ejemplos)
-
-| Evento | Descripción Nueva (completa, sin truncar) |
-|--------|-------------------------------------------|
-| Congreso Futuro 2026 | Encuentro científico líder de LATAM con premios Nobel y expertos globales. |
-| IFE Conference 2026 | Conferencia del Tec de Monterrey sobre innovación y futuro de la educación. |
-| Bett Brasil 2026 | La feria EdTech más grande de Latinoamérica con +300 empresas expositoras. |
-| GEduc 2026 | El mayor congreso de gestión educacional de Brasil con +3.000 asistentes. |
-
----
-
-## 5. Archivos a Modificar
-
-### `src/data/eventos-latam-2026.ts`
-- Añadir `organizador: string` a la interface `Evento`
-- Actualizar todos los eventos con:
-  - Organizador verificado
-  - Enlaces corregidos
-  - Descripciones más cortas (60-80 caracteres)
-
-### `src/components/ui/event-card.tsx`
-- Añadir sección de organizador con ícono `Users` o `Building2`
-- Remover `line-clamp-3` de descripción
-- Ajustar padding y espaciado
-
-### `src/pages/Eventos.tsx`
-- Hero más compacto
-- Fondo beige (`bg-secondary`)
-- Ajustar gradiente del hero
-
----
-
-## Visualización Final Esperada
-
-```text
-┌─────────────────────────────────────────────────────────┐
-│  [Hero Compacto - 1/3 del tamaño actual]                │
-│  🌐 Eventos EdTech LATAM 2026                           │
-│  Calendario completo de eventos...                      │
-│  📅 32 eventos | 🌎 6 países                           │
-├─────────────────────────────────────────────────────────┤
-│  [Filtros]                                              │
-├─────────────────────────────────────────────────────────┤
-│  [Fondo Beige Sand]                                     │
-│  ┌────────────┐ ┌────────────┐ ┌────────────┐          │
-│  │ 🇨🇱         │ │ 🇲🇽         │ │ 🇨🇴         │          │
-│  │ Congreso   │ │ IFE        │ │ #ELEDU     │          │
-│  │ Futuro     │ │ Conference │ │ Cajicá     │          │
-│  │            │ │            │ │            │          │
-│  │ Encuentro  │ │ Conferencia│ │ Encuentro  │          │
-│  │ científico │ │ del Tec de │ │ de líderes │          │
-│  │ líder...   │ │ Monterrey  │ │ en educ... │          │
-│  │            │ │            │ │            │          │
-│  │ 🏢 Fundación│ │ 🏢 Tec de  │ │ 🏢 Interlat│          │
-│  │ Cong.Futuro│ │ Monterrey  │ │            │          │
-│  │            │ │            │ │            │          │
-│  │ [Ver ↗]    │ │ [Ver ↗]    │ │ [Ver ↗]    │          │
-│  └────────────┘ └────────────┘ └────────────┘          │
-└─────────────────────────────────────────────────────────┘
+Recomiendo la opción 1: añadir Cuba a `PAISES`:
+```typescript
+{ value: 'Cuba', label: 'Cuba', emoji: '🇨🇺' },
 ```
 
 ---
 
 ## Sección Técnica
 
-### Estructura actualizada de Evento
+### Lista final de eventos por mes (25 eventos):
 
-```typescript
-export interface Evento {
-  id: string;
-  nombre: string;
-  fechaInicio: string;
-  fechaFin?: string;
-  fechaDisplay: string;
-  ciudad: string;
-  pais: Pais;
-  modalidad: Modalidad;
-  estado: Estado;
-  enlace: string | null;
-  descripcion: string;      // Acortada a 60-80 chars
-  organizador: string;      // NUEVO
-  notas?: string;
-}
-```
-
-### Nueva sección en EventCard
-
-```tsx
-{/* Organizador */}
-<div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-  <Building2 className="w-3.5 h-3.5" />
-  <span>{evento.organizador}</span>
-</div>
-```
-
-### Fondo beige en página
-
-```tsx
-<Section className="py-8 sm:py-12 lg:py-16 bg-secondary">
-```
+**Enero (3):** Congreso Futuro, I Congreso Educación Digital, IFE Conference
+**Febrero (2):** 15º Congreso Universidad Cuba, #ELEDU Cajicá
+**Marzo (4):** BMI THE Latin America, II EDUTIC CDMX, GEduc, III Congreso ASCOFAME
+**Abril (3):** 7º Congreso EDUTIC Online, IV Congreso UIS, 31º CIAED
+**Mayo (3):** Bett Brasil, THE Latin America Summit, Congreso DOKUMA
+**Junio (3):** #ELEDU Brote Principal, XIII EDUTIC Santiago, 4th LAICSEE
+**Julio (3):** Semana Diseño UP, LACCEI, ExpoEduc
+**Agosto (1):** Edutechnia
+**Septiembre (1):** Primer Congreso ALIE
+**Octubre (2):** QS Higher Ed Summit, ICEF Latin America
