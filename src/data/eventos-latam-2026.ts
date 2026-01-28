@@ -417,6 +417,21 @@ export const eventosLatam2026: Evento[] = [
   },
   // Septiembre 2026
   {
+    id: 'recla-2026',
+    nombre: 'Encuentro Internacional RECLA 2026',
+    fechaInicio: '2026-09-01',
+    fechaFin: '2026-09-03',
+    fechaDisplay: 'Septiembre 2026',
+    ciudad: 'Por confirmar',
+    pais: 'Colombia',
+    modalidad: 'Híbrido',
+    estado: 'Por confirmar',
+    enlace: 'https://recla.org/',
+    descripcion: 'Encuentro iberoamericano de educación continua y aprendizaje permanente.',
+    organizador: 'RECLA',
+    notas: 'Fechas y sede 2026 pendientes. 2025 fue en Bogotá.',
+  },
+  {
     id: 'alie-2026',
     nombre: 'Primer Congreso ALIE',
     fechaInicio: '2026-09-06',
