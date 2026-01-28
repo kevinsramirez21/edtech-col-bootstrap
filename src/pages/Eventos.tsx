@@ -1,92 +1,128 @@
-import { Helmet } from "react-helmet-async"
-import { Section } from "@/components/ui/section"
-import { Breadcrumbs } from "@/components/ui/breadcrumbs"
-import { Calendar, Construction } from "lucide-react"
+import { useMemo, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { Section } from "@/components/ui/section";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { EventCard } from "@/components/ui/event-card";
+import { EventFilters, EventFiltersState } from "@/components/ui/event-filters";
+import { eventosLatam2026 } from "@/data/eventos-latam-2026";
+import { Calendar, Globe2 } from "lucide-react";
 
 const Eventos = () => {
+  const [filters, setFilters] = useState<EventFiltersState>({
+    pais: 'todos',
+    modalidad: 'todos',
+    mes: null,
+  });
+
+  const filteredEvents = useMemo(() => {
+    return eventosLatam2026.filter(evento => {
+      if (filters.pais !== 'todos' && evento.pais !== filters.pais) return false;
+      if (filters.modalidad !== 'todos' && evento.modalidad !== filters.modalidad) return false;
+      if (filters.mes !== null) {
+        const eventMonth = new Date(evento.fechaInicio).getMonth() + 1;
+        if (eventMonth !== filters.mes) return false;
+      }
+      return true;
+    });
+  }, [filters]);
+
   return (
     <>
       <Helmet>
-        <title>Eventos - Colombia EdTech</title>
-        <meta name="description" content="Próximamente: eventos y encuentros del ecosistema EdTech colombiano" />
+        <title>Eventos EdTech LATAM 2026 - Colombia EdTech</title>
+        <meta 
+          name="description" 
+          content="Calendario completo de eventos EdTech en Latinoamérica para 2026. Encuentra conferencias, summits y congresos en Colombia, Brasil, Chile, México, Argentina y Perú." 
+        />
       </Helmet>
 
-      <Section className="py-6 sm:py-8 bg-gray-50">
+      <Section className="py-6 sm:py-8 bg-muted/30">
         <Breadcrumbs 
           items={[
-            { label: "Eventos" }
+            { label: "Eventos LATAM 2026" }
           ]} 
         />
       </Section>
       
-      <Section className="py-12 sm:py-20 lg:py-28 xl:py-36">
-        <div className="max-w-2xl mx-auto text-center px-4 sm:px-6">
-          {/* Icon */}
-          <div className="mb-6 sm:mb-8 flex justify-center">
-            <div className="relative">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-full bg-primary-100 flex items-center justify-center">
-                <Calendar className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-primary-700" />
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-accent-brand flex items-center justify-center">
-                <Construction className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
-              </div>
-            </div>
+      {/* Hero Section */}
+      <Section className="py-10 sm:py-14 lg:py-16 bg-gradient-to-br from-primary-50 via-background to-primary-50/50">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary-100 mb-6">
+            <Globe2 className="w-8 h-8 sm:w-10 sm:h-10 text-primary-700" />
           </div>
-
-          {/* Title */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-900 mb-3 sm:mb-4">
-            Eventos
+          
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Eventos EdTech LATAM 2026
           </h1>
           
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-amber-100 text-amber-800 font-medium text-xs sm:text-sm mb-4 sm:mb-6">
-            <Construction className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            En construcción
-          </div>
-
-          {/* Description */}
-          <p className="text-base sm:text-lg lg:text-xl text-primary-900/70 mb-6 sm:mb-8 leading-relaxed">
-            Estamos preparando esta sección para ti. Aquí podrás encontrar todos los 
-            <span className="font-semibold text-primary-900"> futuros eventos, encuentros y actividades </span>
-            del ecosistema EdTech colombiano.
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            El calendario más completo de eventos de tecnología educativa en Latinoamérica. 
+            Encuentra conferencias, summits y congresos en toda la región.
           </p>
 
-          {/* Coming soon details */}
-          <div className="bg-white rounded-xl sm:rounded-2xl border border-border/50 p-5 sm:p-6 lg:p-8 shadow-sm">
-            <h2 className="text-base sm:text-lg font-semibold text-primary-900 mb-3 sm:mb-4">
-              Próximamente podrás:
-            </h2>
-            <ul className="text-left space-y-2.5 sm:space-y-3 text-sm sm:text-base text-primary-900/70">
-              <li className="flex items-start gap-2.5 sm:gap-3">
-                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0 mt-0.5">1</span>
-                <span>Ver el calendario de eventos del ecosistema EdTech</span>
-              </li>
-              <li className="flex items-start gap-2.5 sm:gap-3">
-                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0 mt-0.5">2</span>
-                <span>Registrarte para webinars, summits y encuentros presenciales</span>
-              </li>
-              <li className="flex items-start gap-2.5 sm:gap-3">
-                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0 mt-0.5">3</span>
-                <span>Acceder a grabaciones y materiales de eventos pasados</span>
-              </li>
-              <li className="flex items-start gap-2.5 sm:gap-3">
-                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0 mt-0.5">4</span>
-                <span>Conectar con otros miembros del ecosistema</span>
-              </li>
-            </ul>
+          <div className="flex flex-wrap justify-center gap-3 mt-6">
+            <div className="flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-border/50 text-sm">
+              <Calendar className="w-4 h-4 text-primary-600" />
+              <span className="text-foreground font-medium">{eventosLatam2026.length} eventos</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-border/50 text-sm">
+              <span>🇨🇴🇧🇷🇨🇱🇲🇽🇦🇷🇵🇪</span>
+              <span className="text-foreground font-medium">6 países</span>
+            </div>
           </div>
+        </div>
+      </Section>
 
-          {/* CTA */}
-          <p className="mt-6 sm:mt-8 text-xs sm:text-sm text-primary-900/60">
-            ¿Tienes un evento que quieres compartir? Escríbenos a{" "}
-            <a href="mailto:kevin@colombiaedtech.org" className="text-primary-700 hover:underline font-medium">
-              kevin@colombiaedtech.org
-            </a>
+      {/* Filters and Events Grid */}
+      <Section className="py-8 sm:py-12 lg:py-16">
+        <EventFilters
+          filters={filters}
+          onFiltersChange={setFilters}
+          resultCount={filteredEvents.length}
+          totalCount={eventosLatam2026.length}
+        />
+
+        {filteredEvents.length === 0 ? (
+          <div className="text-center py-16">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">
+              <Calendar className="w-8 h-8 text-muted-foreground" />
+            </div>
+            <h3 className="text-lg font-semibold text-foreground mb-2">
+              No se encontraron eventos
+            </h3>
+            <p className="text-muted-foreground">
+              Intenta ajustar los filtros para ver más resultados.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+            {filteredEvents.map((evento) => (
+              <EventCard key={evento.id} evento={evento} />
+            ))}
+          </div>
+        )}
+      </Section>
+
+      {/* CTA Section */}
+      <Section className="py-12 sm:py-16 bg-muted/30">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-3">
+            ¿Conoces un evento que no está en la lista?
+          </h2>
+          <p className="text-muted-foreground mb-6">
+            Ayúdanos a mantener este calendario actualizado. Comparte información sobre eventos 
+            EdTech en Latinoamérica.
           </p>
+          <a
+            href="mailto:kevin@colombiaedtech.org?subject=Sugerencia de evento EdTech LATAM"
+            className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            Sugerir un evento
+          </a>
         </div>
       </Section>
     </>
-  )
-}
+  );
+};
 
-export default Eventos
+export default Eventos;
