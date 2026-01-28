@@ -13,6 +13,7 @@ export interface Evento {
   modalidad: Modalidad;
   estado: Estado;
   enlace: string | null;
+  descripcion: string;
   notas?: string;
 }
 
@@ -63,6 +64,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://congresofuturo.cl',
+    descripcion: 'El encuentro científico-tecnológico más importante de Latinoamérica. Reúne a premios Nobel, científicos y líderes globales para debatir el futuro de la humanidad.',
   },
   {
     id: 'congreso-educacion-digital-2026',
@@ -75,6 +77,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Virtual',
     estado: 'Confirmado',
     enlace: null,
+    descripcion: 'Congreso enfocado en las nuevas tendencias de educación digital, transformación pedagógica y herramientas tecnológicas para la enseñanza.',
   },
   {
     id: 'ife-conference-2026',
@@ -87,6 +90,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://ifeconference.tec.mx',
+    descripcion: 'Conferencia del Tec de Monterrey sobre innovación y futuro de la educación. Explora modelos disruptivos, tecnología educativa y liderazgo académico.',
   },
   // Febrero 2026
   {
@@ -99,6 +103,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: null,
+    descripcion: 'Conferencia internacional sobre investigación en ciencias de la computación, inteligencia artificial y aplicaciones en educación superior.',
   },
   {
     id: 'congreso-educacion-superior-argentina-2026',
@@ -111,6 +116,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: null,
+    descripcion: 'Foro académico que reúne a rectores, investigadores y gestores universitarios para debatir políticas y estrategias de educación superior en la región.',
   },
   {
     id: 'iccrtp-2026',
@@ -122,6 +128,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: null,
+    descripcion: 'Congreso internacional enfocado en investigación, creatividad y transferencia de conocimiento en procesos pedagógicos innovadores.',
   },
   {
     id: 'eledu-cajica-2026',
@@ -133,6 +140,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://interlat.co',
+    descripcion: 'Encuentro de líderes en educación digital organizado por Interlat. Networking y conferencias sobre transformación educativa y tecnología.',
   },
   // Marzo 2026
   {
@@ -146,6 +154,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://bmiglobaled.com',
+    descripcion: 'Foro líder en educación K-12 en Latinoamérica. Conecta colegios, proveedores EdTech y líderes educativos para explorar innovaciones pedagógicas.',
   },
   {
     id: 'edutic-cdmx-2026',
@@ -158,6 +167,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://conference.edutic.org',
+    descripcion: 'Conferencia sobre tecnología educativa en México. Talleres prácticos, casos de éxito y tendencias en EdTech para docentes y directivos.',
   },
   {
     id: 'geduc-2026',
@@ -170,6 +180,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://geducoficial.com.br',
+    descripcion: 'El mayor congreso de gestión educacional de Brasil. Reúne a más de 3.000 gestores para discutir tendencias, estrategias y tecnología en educación.',
   },
   {
     id: 'ascofame-2026',
@@ -182,6 +193,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://congreso2026.ascofame.org.co',
+    descripcion: 'Congreso mundial de educación médica organizado por ASCOFAME. Innovación en formación de profesionales de la salud y tecnología en medicina.',
   },
   // Abril 2026
   {
@@ -195,6 +207,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Virtual',
     estado: 'Confirmado',
     enlace: 'https://congreso.edutic.org',
+    descripcion: 'Congreso virtual de tecnología educativa con ponentes de toda Latinoamérica. Webinars, talleres y networking digital para educadores.',
   },
   {
     id: 'uis-educacion-2026',
@@ -207,6 +220,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://ivcongresointernacionaleducacion.com',
+    descripcion: 'Congreso académico de la Universidad Industrial de Santander. Investigación educativa, innovación pedagógica y desarrollo curricular.',
   },
   {
     id: 'uted-2026',
@@ -219,6 +233,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: null,
+    descripcion: 'Congreso global de tecnología educativa. Reúne expertos internacionales para explorar el futuro del aprendizaje digital y la innovación.',
   },
   {
     id: 'ciaed-2026',
@@ -231,6 +246,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://abed.org.br',
+    descripcion: 'Congreso Internacional ABED de Educación a Distancia. El evento más tradicional de EaD en Brasil con más de 30 años de trayectoria.',
   },
   // Mayo 2026
   {
@@ -244,6 +260,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://brasil.bettshow.com',
+    descripcion: 'La feria de tecnología educativa más grande de Latinoamérica. Exposición con cientos de empresas EdTech, conferencias y demostraciones.',
   },
   {
     id: 'the-latam-summit-2026',
@@ -256,6 +273,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://timeshighered-events.com',
+    descripcion: 'Cumbre de Times Higher Education para universidades latinoamericanas. Rankings, internacionalización y estrategias de posicionamiento global.',
   },
   {
     id: 'dokuma-2026',
@@ -268,6 +286,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://dokuma.tech',
+    descripcion: 'Congreso de tecnología y documentación. Innovación en gestión documental, transformación digital y soluciones empresariales.',
   },
   // Junio 2026
   {
@@ -281,6 +300,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://interlat.co',
+    descripcion: 'El evento principal de #ELEDU por Interlat. Cumbre de líderes en educación digital con conferencias magistrales y talleres prácticos.',
   },
   {
     id: 'edutic-santiago-2026',
@@ -292,6 +312,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Tentativo',
     enlace: 'https://event.edutic.org',
+    descripcion: 'Conferencia EDUTIC en Chile. Tecnología educativa, innovación pedagógica y casos de éxito en implementación de soluciones EdTech.',
     notas: 'Fecha exacta por confirmar',
   },
   {
@@ -305,6 +326,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Híbrido',
     estado: 'Por confirmar',
     enlace: 'https://acsee.net',
+    descripcion: 'Congreso latinoamericano sobre ingeniería de software y ciencias de la computación aplicadas a la educación.',
     notas: 'Verificar sede 2026 - organizador indica Tokyo como alternativa',
   },
   // Julio 2026
@@ -319,6 +341,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Híbrido',
     estado: 'Confirmado',
     enlace: 'https://palermo.edu',
+    descripcion: 'Evento académico de la Universidad de Palermo. Diseño, comunicación, creatividad y nuevas tecnologías aplicadas a la educación.',
     notas: 'Evento con componente presencial y virtual en fechas diferentes',
   },
   {
@@ -332,6 +355,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://laccei.org',
+    descripcion: 'Conferencia latinoamericana y caribeña para ingeniería y tecnología. Investigación, innovación y desarrollo en educación STEM.',
   },
   {
     id: 'expoeduc-2026',
@@ -344,6 +368,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://expoeduc.com.br',
+    descripcion: 'Feria y congreso de educación en el nordeste de Brasil. Tecnología, gestión escolar y tendencias pedagógicas para la región.',
   },
   // Agosto 2026
   {
@@ -356,6 +381,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Tentativo',
     enlace: 'https://event.edutic.org',
+    descripcion: 'Conferencia EDUTIC en la capital de la innovación colombiana. EdTech, transformación digital y casos de éxito regionales.',
     notas: 'Fecha exacta por confirmar',
   },
   {
@@ -369,6 +395,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://edutechnia.com',
+    descripcion: 'La feria de tecnología educativa más importante de Colombia. Exposición comercial, conferencias y networking para el sector educativo.',
   },
   // Septiembre 2026
   {
@@ -381,6 +408,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Tentativo',
     enlace: 'https://event.edutic.org',
+    descripcion: 'Primera edición de EDUTIC en Brasil. Tecnología educativa, innovación y experiencias de aprendizaje para el mercado brasileño.',
     notas: 'Fecha exacta por confirmar',
   },
   {
@@ -394,6 +422,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://alie.lat',
+    descripcion: 'Congreso de la Alianza Latinoamericana de Instituciones Educativas. Colaboración internacional, mejores prácticas y desarrollo institucional.',
   },
   // Octubre 2026
   {
@@ -407,6 +436,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://qs.com',
+    descripcion: 'Cumbre de Quacquarelli Symonds para educación superior en las Américas. Rankings, empleabilidad y estrategias universitarias.',
     notas: 'Ciudad sede por confirmar',
   },
   {
@@ -419,6 +449,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Tentativo',
     enlace: 'https://event.edutic.org',
+    descripcion: 'Conferencia EDUTIC en Perú. Tecnología educativa, innovación pedagógica y transformación digital en el contexto peruano.',
     notas: 'Fecha exacta por confirmar',
   },
   {
@@ -431,6 +462,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Tentativo',
     enlace: null,
+    descripcion: 'Foro anual del Ministerio de Educación de Colombia. Políticas públicas, innovación educativa y desarrollo del sector.',
     notas: 'Fecha exacta por confirmar',
   },
   {
@@ -444,6 +476,7 @@ export const eventosLatam2026: Evento[] = [
     modalidad: 'Presencial',
     estado: 'Confirmado',
     enlace: 'https://icef.com',
+    descripcion: 'Evento de networking para la industria de educación internacional. Conecta agencias, instituciones y proveedores de servicios educativos.',
   },
 ];
 
