@@ -1,4 +1,4 @@
-import { Calendar, MapPin, ExternalLink, Info } from "lucide-react";
+import { Calendar, MapPin, ExternalLink, Info, Building2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -43,7 +43,7 @@ export function EventCard({ evento }: EventCardProps) {
       
       <CardContent className="p-5 sm:p-6 flex flex-col h-full">
         {/* Date badge */}
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-3">
           <div className="flex items-center gap-2 px-3 py-1.5 bg-primary/5 dark:bg-primary/10 rounded-lg">
             <Calendar className="w-4 h-4 text-primary" />
             <span className="text-sm font-semibold text-primary">{evento.fechaDisplay}</span>
@@ -51,18 +51,18 @@ export function EventCard({ evento }: EventCardProps) {
         </div>
 
         {/* Event name */}
-        <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors line-clamp-2">
+        <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 leading-tight group-hover:text-primary transition-colors">
           {evento.nombre}
         </h3>
 
-        {/* Description */}
-        <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-3">
+        {/* Description - full text, no truncation */}
+        <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
           {evento.descripcion}
         </p>
 
         {/* Location */}
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xl">{getCountryEmoji(evento.pais)}</span>
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-lg">{getCountryEmoji(evento.pais)}</span>
           <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
             <MapPin className="w-3.5 h-3.5" />
             <span className="font-medium">{evento.ciudad}</span>
@@ -71,8 +71,14 @@ export function EventCard({ evento }: EventCardProps) {
           </div>
         </div>
 
+        {/* Organizer */}
+        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+          <Building2 className="w-3.5 h-3.5" />
+          <span>{evento.organizador}</span>
+        </div>
+
         {/* Badges */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-3">
           <Badge className={cn("text-xs font-medium border", estadoStyles[evento.estado])}>
             {evento.estado}
           </Badge>
@@ -86,7 +92,7 @@ export function EventCard({ evento }: EventCardProps) {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="flex items-start gap-2 text-xs bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 p-2.5 rounded-lg mb-4 cursor-help border border-amber-200 dark:border-amber-800/50">
+                <div className="flex items-start gap-2 text-xs bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 p-2.5 rounded-lg mb-3 cursor-help border border-amber-200 dark:border-amber-800/50">
                   <Info className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
                   <span className="line-clamp-2">{evento.notas}</span>
                 </div>

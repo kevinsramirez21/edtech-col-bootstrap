@@ -44,23 +44,22 @@ const Eventos = () => {
         />
       </Section>
       
-      {/* Hero Section */}
-      <Section className="py-10 sm:py-14 lg:py-16 bg-gradient-to-br from-primary-50 via-background to-primary-50/50">
+      {/* Hero Section - Compact */}
+      <Section className="py-6 sm:py-8 bg-gradient-to-br from-secondary via-background to-secondary/50">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary-100 mb-6">
-            <Globe2 className="w-8 h-8 sm:w-10 sm:h-10 text-primary-700" />
+          <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary-100 mb-4">
+            <Globe2 className="w-6 h-6 sm:w-7 sm:h-7 text-primary-700" />
           </div>
           
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-3">
             Eventos EdTech LATAM 2026
           </h1>
           
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            El calendario más completo de eventos de tecnología educativa en Latinoamérica. 
-            Encuentra conferencias, summits y congresos en toda la región.
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            El calendario más completo de eventos de tecnología educativa en Latinoamérica.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-3 mt-6">
+          <div className="flex flex-wrap justify-center gap-3 mt-4">
             <div className="flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-border/50 text-sm">
               <Calendar className="w-4 h-4 text-primary-600" />
               <span className="text-foreground font-medium">{eventosLatam2026.length} eventos</span>
@@ -74,7 +73,7 @@ const Eventos = () => {
       </Section>
 
       {/* Filters and Events Grid */}
-      <Section className="py-8 sm:py-12 lg:py-16">
+      <Section className="py-8 sm:py-12 lg:py-16 bg-secondary/50">
         <EventFilters
           filters={filters}
           onFiltersChange={setFilters}
