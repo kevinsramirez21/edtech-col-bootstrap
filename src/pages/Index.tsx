@@ -8,7 +8,7 @@ import { LogoGrid } from "@/components/ui/logo-grid";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { useAuth } from "@/hooks/use-auth";
 import { Link } from "react-router-dom";
-import { ArrowRight, Users, Target, Lightbulb, Monitor, Edit, Code, Zap, Globe, Heart, Star, BookOpen, Rocket, LogIn } from "lucide-react";
+import { ArrowRight, Users, Target, Lightbulb, Monitor, Edit, Code, Zap, Globe, Heart, Star, BookOpen, Rocket, LogIn, Globe2, MapPin, Handshake, ExternalLink } from "lucide-react";
 const segmentationCards = [{
   title: "EdTechs",
   subtitle: "(Asociadas)",
@@ -250,6 +250,88 @@ const Index = () => {
                 Porque <strong className="text-accent-brand">nadie</strong> debería quedar atrás.
               </p>
             </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* EdTech Hub Latam Section */}
+      <Section className="py-10 sm:py-14 lg:py-20 bg-gradient-to-br from-teal-900 via-cyan-800 to-teal-900 text-white relative overflow-hidden">
+        {/* Premium Background Effects */}
+        <div className="absolute inset-0 opacity-30 hidden sm:block">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.1),transparent_60%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(6,182,212,0.2),transparent_60%)]"></div>
+        </div>
+        
+        {/* Floating Elements */}
+        <div className="absolute inset-0 overflow-hidden hidden sm:block">
+          <div className="absolute top-10 left-10 w-24 h-24 bg-white/10 rounded-full blur-2xl animate-float"></div>
+          <div className="absolute bottom-20 right-20 w-32 h-32 bg-cyan-400/20 rounded-full blur-3xl animate-float animation-delay-1000"></div>
+          <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-teal-400/15 rounded-full blur-2xl animate-float animation-delay-500"></div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+          {/* Badge */}
+          <div className="flex justify-center mb-4 sm:mb-6 animate-fade-in-up">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-sm rounded-full text-sm font-semibold border border-white/20">
+              <Globe2 className="w-4 h-4" />
+              NUEVO: Expansión Regional
+            </span>
+          </div>
+          
+          {/* Title */}
+          <div className="text-center mb-6 sm:mb-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 leading-tight animate-fade-in-up animation-delay-200">
+              Llevamos la revolución EdTech a toda{" "}
+              <span className="text-cyan-300">Latinoamérica</span>
+            </h2>
+            <div className="w-20 sm:w-28 h-1 bg-gradient-to-r from-cyan-400 to-white mx-auto mb-4 sm:mb-6 rounded-full animate-fade-in-up animation-delay-300"></div>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-4xl mx-auto text-white/90 leading-relaxed font-medium animate-fade-in-up animation-delay-400">
+              EdTech Hub Latam conecta ecosistemas educativos de <strong className="text-cyan-300">Argentina, México, Chile, Perú, Brasil</strong> y más países para acelerar la transformación de la educación en la región.
+            </p>
+          </div>
+          
+          {/* Feature Grid */}
+          <div className="grid sm:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto mb-8 sm:mb-10">
+            {/* Card 1: Countries */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 sm:p-6 text-center border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 animate-fade-in-up animation-delay-500">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 sm:mb-4 rounded-xl bg-cyan-400/20 flex items-center justify-center">
+                <MapPin className="w-6 h-6 sm:w-7 sm:h-7 text-cyan-300" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-white">+10 Países</h3>
+              <p className="text-sm sm:text-base text-white/80">Ecosistemas EdTech conectados</p>
+            </div>
+            
+            {/* Card 2: Network */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 sm:p-6 text-center border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 animate-fade-in-up animation-delay-600">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 sm:mb-4 rounded-xl bg-cyan-400/20 flex items-center justify-center">
+                <Handshake className="w-6 h-6 sm:w-7 sm:h-7 text-cyan-300" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-white">Red Regional</h3>
+              <p className="text-sm sm:text-base text-white/80">Colaboración transfronteriza</p>
+            </div>
+            
+            {/* Card 3: Opportunities */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 sm:p-6 text-center border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 animate-fade-in-up animation-delay-700">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 sm:mb-4 rounded-xl bg-cyan-400/20 flex items-center justify-center">
+                <Rocket className="w-6 h-6 sm:w-7 sm:h-7 text-cyan-300" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-white">Oportunidades</h3>
+              <p className="text-sm sm:text-base text-white/80">Expansión y alianzas internacionales</p>
+            </div>
+          </div>
+          
+          {/* CTA Button */}
+          <div className="text-center animate-fade-in-up animation-delay-800">
+            <a 
+              href="https://edtechhublatam.org/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-white hover:bg-white/90 text-teal-900 font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-2xl shadow-white/30 hover:shadow-white/50 transition-all duration-500 hover:scale-105 text-sm sm:text-base lg:text-lg group"
+            >
+              <Globe2 className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300" />
+              <span>Conoce EdTech Hub Latam</span>
+              <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+            </a>
           </div>
         </div>
       </Section>
