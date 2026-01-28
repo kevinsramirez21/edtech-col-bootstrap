@@ -1,248 +1,194 @@
 
-# Plan: Implementar Página de Eventos LATAM 2026 con Filtros por País
+# Plan: Mejorar Página de Eventos y Verificar Enlaces
 
-## Resumen
+## Resumen de Cambios
 
-Transformar la página de eventos actual (que muestra "En construcción") en una página funcional que muestre el calendario completo de eventos EdTech LATAM 2026 con filtros por país. Los datos se basarán en el MD proporcionado con las correcciones verificadas durante la investigación.
-
----
-
-## Correcciones Verificadas al Calendario
-
-Durante la investigación de cada enlace oficial, se identificaron las siguientes correcciones necesarias:
-
-| Evento | Dato Original | Corrección | Fuente |
-|--------|---------------|------------|--------|
-| BMI THE Latin America Schools Forum | 4-6 marzo 2026 | **5-6 marzo 2026** | bmiglobaled.com |
-| Universidad Palermo (Semana Diseño) | 13-31 julio continuo | **13-17 julio (presencial) + 27-31 julio (virtual)** | palermo.edu |
-| 4th LAICSEE | 19-20 junio Lima, Peru | **Estado: Por confirmar** - El organizador (IFERP Academy) indica Tokyo para 2026 | acsee.net |
-| ExpoEduc Brasil (Norte-Nordeste) | 23-25 julio Natal | **23-25 julio 2026** (basado en patrón anual) | expoeduc.com.br |
-
-**Eventos verificados como correctos:**
-- Congreso Futuro: 12-17 enero, Santiago, Chile
-- IFE Conference: 27-29 enero, Monterrey, México
-- III Congreso ASCOFAME: 25-27 marzo, Medellín, Colombia
-- IV Congreso Educación (UIS): 15-17 abril, Bucaramanga, Colombia
-- Bett Brasil: 5-8 mayo, São Paulo, Brasil
-- THE Latin America Summit: 12-14 mayo, Barranquilla, Colombia
-- LACCEI: 15-17 julio, Santiago, Chile
-- 31º CIAED: 27-30 abril, João Pessoa, Brasil
-- Edutechnia: 26-28 agosto, Bogotá, Colombia
-- ICEF Latin America: 4-6 octubre, Rio de Janeiro, Brasil
-- Primer Congreso ALIE: 6-9 septiembre, Curitiba, Brasil
+Optimizar la página de eventos con un hero más compacto, fondo beige de marca, tarjetas más grandes con descripciones completas, añadir organizadores, y verificar/corregir todos los enlaces de eventos.
 
 ---
 
-## Arquitectura de la Solución
+## 1. Hero Section más Compacto
 
-### 1. Estructura de Datos
+**Cambios en `src/pages/Eventos.tsx`:**
+- Reducir padding del hero de `py-10 sm:py-14 lg:py-16` a `py-6 sm:py-8`
+- Reducir tamaño del ícono de `w-16 h-16 sm:w-20 sm:h-20` a `w-12 h-12 sm:w-14 sm:h-14`
+- Reducir tamaño del título de `text-3xl sm:text-4xl lg:text-5xl` a `text-2xl sm:text-3xl lg:text-4xl`
+- Reducir descripción de `text-lg sm:text-xl` a `text-base sm:text-lg`
+- Reducir margin de los badges de `mt-6` a `mt-4`
 
-Crear un archivo de datos TypeScript con todos los eventos:
+---
+
+## 2. Fondo Beige (Sand) para la página
+
+**Cambios en `src/pages/Eventos.tsx`:**
+- Cambiar fondo del grid de eventos de `bg-background` a `bg-secondary` (beige sand: #F4E8DD)
+- Hero: mantener gradiente pero ajustar a `from-secondary via-background to-secondary/50`
+- Esto usará el color `sand` ya definido en el sistema de tokens
+
+---
+
+## 3. Tarjetas más Grandes con Descripciones Completas
+
+**Cambios en `src/data/eventos-latam-2026.ts`:**
+- Añadir campo `organizador` a la interface `Evento`
+- Acortar descripciones a máximo 80-100 caracteres para que quepan sin truncar
+- Añadir organizador a cada evento
+
+**Cambios en `src/components/ui/event-card.tsx`:**
+- Remover `line-clamp-3` de la descripción para mostrar texto completo
+- Añadir sección de "Organiza:" con el nombre del organizador
+- Aumentar padding de las tarjetas
+
+---
+
+## 4. Datos Actualizados de Eventos
+
+### Enlaces Corregidos/Actualizados
+
+| Evento | Enlace Anterior | Enlace Correcto |
+|--------|-----------------|-----------------|
+| LACCEI 2026 | https://laccei.org | https://laccei.org/laccei2026 |
+| Universidad Palermo | https://palermo.edu | https://palermo.edu/dyc/congreso-latino |
+| ICEF Latin America | https://icef.com | https://icef.com/events/icef-latin-america |
+| ALIE 2026 | https://alie.lat | https://alie.lat/congresos |
+| #ELEDU Interlat | https://interlat.co | https://interlat.co/eledu |
+| BMI THE Latin America | https://bmiglobaled.com | https://bmiglobaled.com/recruit-students/south-america-international-schools-forum-workshop |
+| QS Summit Americas | https://qs.com | https://qshesummits.com/americas |
+
+### Organizadores por Evento
+
+| Evento | Organizador |
+|--------|-------------|
+| Congreso Futuro 2026 | Fundación Congreso Futuro |
+| I Congreso Educación Digital | Por confirmar |
+| IFE Conference 2026 | Tecnológico de Monterrey |
+| ICCIHER | IFERP Academy |
+| 15º Congreso Educación Superior | Por confirmar |
+| ICCRTP | IFERP Academy |
+| #ELEDU Cajicá | Interlat |
+| BMI THE Latin America | BMI / Times Higher Education |
+| II EDUTIC CDMX | EDUTIC.org |
+| GEduc 2026 | HUMUS Brasil |
+| III Congreso ASCOFAME | ASCOFAME |
+| 7º Congreso EDUTIC Online | EDUTIC.org |
+| IV Congreso UIS | Universidad Industrial de Santander |
+| UTED | Por confirmar |
+| 31º CIAED | ABED Brasil |
+| Bett Brasil 2026 | Hyve Group |
+| THE Latin America Summit | Times Higher Education |
+| Congreso DOKUMA 2026 | DOKUMA Tech |
+| #ELEDU Brote Principal | Interlat |
+| XIII EDUTIC Santiago | EDUTIC.org |
+| 4th LAICSEE | ACSEE / IFERP |
+| Semana Diseño UP | Universidad de Palermo |
+| LACCEI 2026 | LACCEI / OEA |
+| ExpoEduc 2026 | ExpoEduc Brasil |
+| V EDUTIC Medellín | EDUTIC.org |
+| Edutechnia 2026 | Corferias |
+| I EDUTIC Brasil | EDUTIC.org |
+| Primer Congreso ALIE | ALIE |
+| QS Higher Ed Summit | Quacquarelli Symonds |
+| VII EDUTIC Lima | EDUTIC.org |
+| Foro Educativo Nacional | Ministerio de Educación Colombia |
+| ICEF Latin America | ICEF |
+
+### Descripciones Acortadas (ejemplos)
+
+| Evento | Descripción Nueva (completa, sin truncar) |
+|--------|-------------------------------------------|
+| Congreso Futuro 2026 | Encuentro científico líder de LATAM con premios Nobel y expertos globales. |
+| IFE Conference 2026 | Conferencia del Tec de Monterrey sobre innovación y futuro de la educación. |
+| Bett Brasil 2026 | La feria EdTech más grande de Latinoamérica con +300 empresas expositoras. |
+| GEduc 2026 | El mayor congreso de gestión educacional de Brasil con +3.000 asistentes. |
+
+---
+
+## 5. Archivos a Modificar
+
+### `src/data/eventos-latam-2026.ts`
+- Añadir `organizador: string` a la interface `Evento`
+- Actualizar todos los eventos con:
+  - Organizador verificado
+  - Enlaces corregidos
+  - Descripciones más cortas (60-80 caracteres)
+
+### `src/components/ui/event-card.tsx`
+- Añadir sección de organizador con ícono `Users` o `Building2`
+- Remover `line-clamp-3` de descripción
+- Ajustar padding y espaciado
+
+### `src/pages/Eventos.tsx`
+- Hero más compacto
+- Fondo beige (`bg-secondary`)
+- Ajustar gradiente del hero
+
+---
+
+## Visualización Final Esperada
 
 ```text
-src/data/eventos-latam-2026.ts
+┌─────────────────────────────────────────────────────────┐
+│  [Hero Compacto - 1/3 del tamaño actual]                │
+│  🌐 Eventos EdTech LATAM 2026                           │
+│  Calendario completo de eventos...                      │
+│  📅 32 eventos | 🌎 6 países                           │
+├─────────────────────────────────────────────────────────┤
+│  [Filtros]                                              │
+├─────────────────────────────────────────────────────────┤
+│  [Fondo Beige Sand]                                     │
+│  ┌────────────┐ ┌────────────┐ ┌────────────┐          │
+│  │ 🇨🇱         │ │ 🇲🇽         │ │ 🇨🇴         │          │
+│  │ Congreso   │ │ IFE        │ │ #ELEDU     │          │
+│  │ Futuro     │ │ Conference │ │ Cajicá     │          │
+│  │            │ │            │ │            │          │
+│  │ Encuentro  │ │ Conferencia│ │ Encuentro  │          │
+│  │ científico │ │ del Tec de │ │ de líderes │          │
+│  │ líder...   │ │ Monterrey  │ │ en educ... │          │
+│  │            │ │            │ │            │          │
+│  │ 🏢 Fundación│ │ 🏢 Tec de  │ │ 🏢 Interlat│          │
+│  │ Cong.Futuro│ │ Monterrey  │ │            │          │
+│  │            │ │            │ │            │          │
+│  │ [Ver ↗]    │ │ [Ver ↗]    │ │ [Ver ↗]    │          │
+│  └────────────┘ └────────────┘ └────────────┘          │
+└─────────────────────────────────────────────────────────┘
 ```
 
-Cada evento tendrá:
-- id (único)
-- nombre
-- fechaInicio / fechaFin (formato ISO)
-- fechaDisplay (texto legible)
-- ciudad
-- pais
-- modalidad (Presencial | Virtual | Híbrido)
-- estado (Confirmado | Tentativo | Por confirmar)
-- enlace (URL oficial o null)
-- descripcion (opcional)
-- categoria (EdTech | Educación Superior | Innovación | etc.)
-
-### 2. Componentes a Crear
-
-**EventCard** (`src/components/ui/event-card.tsx`)
-- Tarjeta visual para cada evento
-- Muestra: fecha, nombre, ciudad/país, modalidad, estado
-- Botón de enlace externo cuando disponible
-- Badge de estado (colores según confirmación)
-- Icono de bandera del país
-
-**EventFilters** (`src/components/ui/event-filters.tsx`)
-- Filtro por país (Select con banderas)
-- Filtro por modalidad
-- Filtro por mes
-- Botón de reset
-
-### 3. Página de Eventos Rediseñada
-
-**`src/pages/Eventos.tsx`**
-- Header con título y descripción
-- Barra de filtros
-- Grid de eventos (responsive)
-- Sección de "Eventos adicionales a monitorear"
-- Footer con CTA para sugerir eventos
-
 ---
 
-## Diseño Visual
+## Sección Técnica
 
-### Paleta de Colores para Estados
-- **Confirmado**: Verde (bg-green-100, text-green-800)
-- **Tentativo**: Amarillo (bg-amber-100, text-amber-800)
-- **Por confirmar**: Gris (bg-gray-100, text-gray-600)
+### Estructura actualizada de Evento
 
-### Paleta de Colores para Modalidad
-- **Presencial**: Azul (bg-blue-100, text-blue-800)
-- **Virtual**: Púrpura (bg-purple-100, text-purple-800)
-- **Híbrido**: Teal (bg-teal-100, text-teal-800)
-
-### Países con Banderas
-Los países en el calendario son:
-- Colombia
-- Chile
-- México
-- Brasil
-- Argentina
-- Perú
-- Virtual (sin país específico)
-
----
-
-## Datos de Eventos (Lista Completa Verificada)
-
-### Enero 2026
-1. **Congreso Futuro 2026** - 12-17 enero - Santiago/regiones - Chile - Presencial - Confirmado - https://congresofuturo.cl
-2. **I Congreso Internacional de Educación Digital** - 22-23 enero - Virtual - Virtual - Confirmado - (URL por verificar)
-3. **IFE Conference 2026** - 27-29 enero - Monterrey - México - Presencial - Confirmado - https://ifeconference.tec.mx
-
-### Febrero 2026
-4. **ICCIHER** - 5 febrero - Medellín - Colombia - Presencial - Confirmado - Por confirmar URL
-5. **15º Congreso Internacional de Educación Superior** - 9-13 febrero - Argentina - Presencial - Confirmado - Por confirmar URL
-6. **ICCRTP** - 11 febrero - Medellín - Colombia - Presencial - Confirmado - Por confirmar URL
-7. **#ELEDU Cajicá** - 26 febrero - Cajicá - Colombia - Presencial - Confirmado - https://interlat.co
-
-### Marzo 2026
-8. **BMI THE Latin America Schools Forum** - 5-6 marzo - Bogotá - Colombia - Presencial - Confirmado - https://bmiglobaled.com
-9. **II EDUTIC CDMX** - 18-19 marzo - Ciudad de México - México - Presencial - Confirmado - https://conference.edutic.org
-10. **GEduc 2026** - 25-27 marzo - São Paulo - Brasil - Presencial - Confirmado - https://geducoficial.com.br
-11. **III Congreso Mundial Educación Médica ASCOFAME** - 25-27 marzo - Medellín - Colombia - Presencial - Confirmado - https://congreso2026.ascofame.org.co
-
-### Abril 2026
-12. **7º Congreso EDUTIC Online** - 14-16 abril - Virtual - Virtual - Confirmado - https://congreso.edutic.org
-13. **IV Congreso Internacional de Educación (UIS)** - 15-17 abril - Bucaramanga - Colombia - Presencial - Confirmado - https://ivcongresointernacionaleducacion.com
-14. **UTED Global Education Technology Congress** - 17-18 abril - Medellín - Colombia - Presencial - Confirmado - (URL por verificar)
-15. **31º CIAED** - 27-30 abril - João Pessoa - Brasil - Presencial - Confirmado - https://abed.org.br
-
-### Mayo 2026
-16. **Bett Brasil 2026** - 5-8 mayo - São Paulo - Brasil - Presencial - Confirmado - https://brasil.bettshow.com
-17. **THE Latin America Universities Summit** - 12-14 mayo - Barranquilla - Colombia - Presencial - Confirmado - https://timeshighered-events.com
-18. **Congreso DOKUMA 2026** - 28-29 mayo - Bogotá - Colombia - Presencial - Confirmado - https://dokuma.tech
-
-### Junio 2026
-19. **#ELEDU Brote Principal** - 4-5 junio - Bogotá - Colombia - Presencial - Confirmado - https://interlat.co
-20. **XIII EDUTIC Santiago** - junio 2026 - Santiago - Chile - Presencial - Tentativo - https://event.edutic.org
-21. **4th LAICSEE** - 19-20 junio - Lima - Perú - Híbrido - **Por confirmar** - https://acsee.net (nota: verificar sede 2026)
-
-### Julio 2026
-22. **Semana Internacional de Diseño UP** - 13-17 julio (presencial) + 27-31 julio (virtual) - Buenos Aires - Argentina - Mixto - Confirmado - https://palermo.edu
-23. **LACCEI 2026** - 15-17 julio - Santiago - Chile - Presencial - Confirmado - https://laccei.org
-24. **ExpoEduc 2026** - 23-25 julio - Natal - Brasil - Presencial - Confirmado - https://expoeduc.com.br
-
-### Agosto 2026
-25. **V EDUTIC Medellín** - agosto 2026 - Medellín - Colombia - Presencial - Tentativo - https://event.edutic.org
-26. **Edutechnia 2026** - 26-28 agosto - Bogotá - Colombia - Presencial - Confirmado - https://edutechnia.com
-
-### Septiembre 2026
-27. **I EDUTIC Brasil** - septiembre 2026 - Florianópolis - Brasil - Presencial - Tentativo - https://event.edutic.org
-28. **Primer Congreso ALIE** - 6-9 septiembre - Curitiba - Brasil - Presencial - Confirmado - https://alie.lat
-
-### Octubre 2026
-29. **QS Higher Ed Summit: Americas** - 1-2 octubre - Por verificar - México - Presencial - Confirmado - https://qs.com
-30. **VII EDUTIC Lima** - octubre 2026 - Lima - Perú - Presencial - Tentativo - https://event.edutic.org
-31. **Foro Educativo Nacional** - octubre 2026 - Bogotá - Colombia - Presencial - Tentativo - Por confirmar
-32. **ICEF Latin America** - 4-6 octubre - Rio de Janeiro - Brasil - Presencial - Confirmado - https://icef.com
-
----
-
-## Implementación Técnica
-
-### Archivos a Crear
-
-1. **`src/data/eventos-latam-2026.ts`** - Datos de todos los eventos
-2. **`src/components/ui/event-card.tsx`** - Componente de tarjeta de evento
-3. **`src/components/ui/event-filters.tsx`** - Componente de filtros
-
-### Archivos a Modificar
-
-1. **`src/pages/Eventos.tsx`** - Reemplazar contenido "en construcción" por página funcional
-
-### Dependencias Existentes Utilizadas
-- React state para filtros
-- Componentes UI existentes (Badge, Button, Card, Select)
-- Lucide icons (Calendar, MapPin, ExternalLink, Globe, etc.)
-
----
-
-## Flujo de Usuario
-
-1. Usuario entra a /eventos
-2. Ve todos los eventos ordenados cronológicamente
-3. Puede filtrar por país usando el Select
-4. Puede filtrar por modalidad (Presencial/Virtual/Híbrido)
-5. Puede ver eventos de un mes específico
-6. Click en evento muestra detalle y botón a enlace oficial
-7. Al final, CTA para sugerir eventos
-
----
-
-## Consideraciones de UX
-
-- Mostrar contador de eventos filtrados
-- Indicar claramente cuando no hay resultados
-- Scroll suave a resultados después de filtrar
-- Responsive: 1 columna en móvil, 2 en tablet, 3 en desktop
-- Loading state mientras se filtran eventos
-- Empty state cuando no hay eventos que coincidan
-
----
-
-## Sección Técnica: Estructura del Código
-
-```text
-// Estructura del tipo Event
-interface Event {
+```typescript
+export interface Evento {
   id: string;
   nombre: string;
-  fechaInicio: string;      // ISO format
-  fechaFin?: string;        // ISO format  
-  fechaDisplay: string;     // "12-17 enero 2026"
+  fechaInicio: string;
+  fechaFin?: string;
+  fechaDisplay: string;
   ciudad: string;
-  pais: 'Colombia' | 'Chile' | 'México' | 'Brasil' | 'Argentina' | 'Perú' | 'Virtual';
-  modalidad: 'Presencial' | 'Virtual' | 'Híbrido';
-  estado: 'Confirmado' | 'Tentativo' | 'Por confirmar';
+  pais: Pais;
+  modalidad: Modalidad;
+  estado: Estado;
   enlace: string | null;
-  descripcion?: string;
+  descripcion: string;      // Acortada a 60-80 chars
+  organizador: string;      // NUEVO
   notas?: string;
-}
-
-// Filtros
-interface EventFilters {
-  pais: string | 'todos';
-  modalidad: string | 'todos';
-  mes: number | null;
 }
 ```
 
-### Lógica de Filtrado
+### Nueva sección en EventCard
 
-```text
-const filteredEvents = useMemo(() => {
-  return events.filter(event => {
-    if (filters.pais !== 'todos' && event.pais !== filters.pais) return false;
-    if (filters.modalidad !== 'todos' && event.modalidad !== filters.modalidad) return false;
-    if (filters.mes !== null) {
-      const eventMonth = new Date(event.fechaInicio).getMonth() + 1;
-      if (eventMonth !== filters.mes) return false;
-    }
-    return true;
-  });
-}, [events, filters]);
+```tsx
+{/* Organizador */}
+<div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+  <Building2 className="w-3.5 h-3.5" />
+  <span>{evento.organizador}</span>
+</div>
+```
+
+### Fondo beige en página
+
+```tsx
+<Section className="py-8 sm:py-12 lg:py-16 bg-secondary">
 ```
