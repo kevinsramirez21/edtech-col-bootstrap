@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Globe, MapPin, Building2, ExternalLink, Star, Linkedin, Mail } from "lucide-react"
+import { Globe, MapPin, Building2, ExternalLink, Star, Linkedin } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -155,17 +155,6 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
               </div>
             )}
             
-            {associate.correo_contacto && (
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                <a 
-                  href={`mailto:${associate.correo_contacto}`}
-                  className="truncate hover:text-primary transition-colors"
-                >
-                  {associate.correo_contacto}
-                </a>
-              </div>
-            )}
           </div>
         </div>
 
@@ -191,21 +180,6 @@ export function AssociateCard({ associate, className }: AssociateCardProps) {
             </Button>
           )}
           
-          {associate.correo_contacto && (
-            <Button 
-              size="sm" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm h-10"
-              asChild
-            >
-              <a 
-                href={`mailto:${associate.correo_contacto}`}
-                className="flex items-center gap-2"
-              >
-                <Mail className="w-4 h-4" />
-                <span>Contactar</span>
-              </a>
-            </Button>
-          )}
           
           {associate.linkedin && (
             <Button 
