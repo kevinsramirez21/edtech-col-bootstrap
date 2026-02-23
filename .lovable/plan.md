@@ -1,167 +1,102 @@
 
 
-# Plan: Restaurar Lenguaje Original del PDF en Acuerdo por la Educacion
+# Optimizacion Visual de la Pagina "Acuerdo por la Educacion"
 
-## Problema
+## Problemas Detectados
 
-La pagina actual reescribio el contenido del PDF con lenguaje tipico de AI: frases tipo "no es X, es Y", em dashes decorativos, y reformulaciones innecesarias. El documento original ya fue redactado cuidadosamente y debe respetarse tal cual.
+1. **"La Propuesta" y "Pilar 1" se funden**: Ambas secciones tienen fondo blanco, sin separacion visual. Se sienten como una sola seccion.
+2. **Cards del Pilar 1 poco visibles**: Fondo gradient "from-white to-gray-50/30" es practicamente invisible sobre fondo blanco.
+3. **Ritmo de colores desbalanceado**: Hay dos secciones blancas consecutivas (Propuesta + Pilar 1), y luego otra blanca (Llamado a la Accion) que tambien se pierde.
+4. **Cards del Pilar 3** podrian tener mas presencia visual con bordes laterales de color.
 
----
+## Solucion: Nuevo Ritmo de Fondos
 
-## Cambios Linea por Linea
+```text
+Hero           -> gradiente azul (se mantiene)
+El Problema    -> sand (se mantiene)
+La Propuesta   -> blanco (se mantiene, pero se fusiona visualmente CON los 3 pilares como intro)
+Pilar 1        -> gray-50 con borde superior de color (CAMBIAR de blanco)
+Pilar 2        -> gradiente azul (se mantiene)
+Pilar 3        -> sand (se mantiene)
+Llamado        -> gray-50 (CAMBIAR de blanco para separar de sand)
+CTA Final      -> gradiente azul (se mantiene)
+```
 
-### Archivo: `src/pages/AcuerdoEducacion.tsx`
+## Cambios Especificos
 
-### 1. Hero - Quitar subtitulo inventado (linea 64)
+### 1. Seccion "La Propuesta" - Hacerla mas compacta y con separador visual
 
-**Actual:** "No es un plan de gobierno. Es un piso comun para que todos -- sector publico, privado y tercer sector -- jueguen con las mismas reglas."
+- Reducir padding vertical (es una intro breve, no necesita tanto espacio)
+- Agregar un borde inferior sutil o un separador visual con gradiente
+- Agregar los 3 numeros de los pilares como preview visual (circulos con 1, 2, 3) debajo de los badges de sector
 
-**Accion:** Eliminar esta linea. No existe en el PDF.
+### 2. Pilar 1 - Cambiar fondo a `bg-gray-50` para separar de la propuesta
 
----
+- Cambiar `bg-white` a `bg-gray-50` en la Section
+- Dar a las cards fondo blanco puro con un borde izquierdo de color (`border-l-4 border-primary-700`)
+- Quitar el gradient sutil de las cards que no se nota
 
-### 2. El Problema - Texto principal (lineas 82-85)
+### 3. Pilar 1 Cards - Mejorar diseño
 
-**Actual:** "El sistema educativo colombiano no esta roto por falta de voluntad. Esta desarticulado. El sector publico regula sin experimentar. El privado innova sin marco. El tercer sector conecta sin datos. Cada uno empuja, pero no hacia el mismo lado."
+- Agregar `border-l-4 border-primary-700` a la primera card y `border-l-4 border-accent` a la segunda
+- Fondo `bg-white` solido en vez del gradient invisible
+- Aumentar ligeramente el padding
 
-**Original PDF:** "El sistema educativo colombiano esta desarticulado. El sector publico disena politicas desde Bogota, el sector privado innova por su cuenta y el tercer sector interviene donde puede. Cada uno con su agenda, sin rendicion de cuentas compartida."
+### 4. Pilar 3 Cards - Agregar borde lateral de color
 
----
+- Agregar `border-l-4 border-primary-700` para que las cards tengan mas presencia sobre el fondo sand
+- Alternar colores de borde entre primary y accent
 
-### 3. La Propuesta - Intro (lineas 120-123)
+### 5. Seccion "Llamado a la Accion" - Cambiar fondo
 
-**Actual:** "Este acuerdo plantea 3 pilares que unen a los 3 sectores bajo un piso comun. No es un curriculo unico ni una politica publica cerrada. Es un marco de accion compartido."
+- Cambiar de `bg-white` a `bg-gray-50` para separar visualmente del Pilar 3 (sand)
+- Las 3 cards de sectores ya tienen colores fuertes, asi que se veran bien en cualquier fondo
 
-**Original PDF:** "Colombia EdTech convoca a los tres sectores (publico, privado y tercer sector) a un acuerdo minimo basado en tres pilares. Un piso comun desde el cual trabajar juntos."
+### 6. Ajustes menores de espaciado
 
----
-
-### 4. Pilar 1 - Descripcion completa (lineas 147-150)
-
-**Actual:** "Colombia regula la innovacion educativa antes de probarla. Eso frena al sector privado, limita la experimentacion y deja al pais rezagado frente a modelos que ya funcionan en el mundo."
-
-**Original PDF:** "Colombia ya lo hizo en telecomunicaciones con la Resolucion 5980 de 2020. Singapur y Corea del Sur usaron el mismo principio para transformar sus sistemas educativos. Reino Unido y Francia ya operan sandbox especificos para EdTech. Colombia tiene el precedente legal, mas de 500 instituciones de educacion y un ecosistema de mas de 140 organizaciones EdTech activas. Falta adaptar el modelo al sector educativo."
-
----
-
-### 5. Pilar 1 - Cards de propuestas (lineas 163-196)
-
-**Actual:** Dos cards con titulos inventados ("Zona de pruebas controlada" y "Regulacion basada en evidencia") con texto resumido.
-
-**Original PDF - Card 1:**
-- Titulo: "Sandbox Nacional de Innovacion Educativa"
-- Texto: "Crear un Sandbox Nacional de Innovacion Educativa donde soluciones EdTech se prueben en instituciones reales, con metricas claras, evaluacion independiente y proteccion de datos obligatoria."
-
-**Original PDF - Card 2:**
-- Titulo: "Cohortes con resultados publicos"
-- Texto: "Cohortes de 12 a 24 meses. Resultados publicos. Lo que funciona, se escala. Lo que no, se descarta."
-
----
-
-### 6. Pilar 2 - Stat PISA corregir (linea 226)
-
-**Actual:** "de los estudiantes colombianos alcanzan nivel minimo de competencia en lectura (PISA)"
-
-**Original PDF:** "de los estudiantes colombianos alcanzo el nivel minimo de competencia en matematicas" (PISA 2022, OECD 2023)
+- Reducir padding de "La Propuesta" de `py-10 sm:py-14 md:py-20` a `py-8 sm:py-10 md:py-14` (es una intro corta)
+- Asegurar que cada pilar tenga suficiente padding para "respirar"
 
 ---
 
-### 7. Pilar 2 - Stat OCDE (linea 232)
+## Seccion Tecnica
 
-**Actual:** "es el promedio OCDE. Colombia esta 40 puntos porcentuales por debajo."
+### Archivo a modificar:
+- `src/pages/AcuerdoEducacion.tsx`
 
-**Original PDF:** "es el promedio OCDE (OECD, 2023). Esa brecha no se cierra con mas cobertura. Se cierra con claridad sobre que se debe ensenar y a que nivel."
+### Cambios linea por linea:
 
----
+**Linea 111** - La Propuesta: reducir padding
+- De: `py-10 sm:py-14 md:py-20 bg-white`
+- A: `py-8 sm:py-10 md:py-14 bg-white border-b border-gray-300/50`
 
-### 8. Pilar 2 - Las 3 cards de propuestas (lineas 239-254)
+**Linea 129** - Pilar 1: cambiar fondo
+- De: `py-10 sm:py-14 md:py-20 bg-white`
+- A: `py-10 sm:py-14 md:py-20 bg-gray-50`
 
-**Actual:** Cards inventadas ("Estandares minimos por nivel", "Pensamiento computacional + IA", "Evaluacion por competencias") con textos resumidos.
+**Lineas 159, 174** - Pilar 1 cards: mejorar estilo
+- Card 1: cambiar `bg-gradient-to-br from-white to-gray-50/30` a `bg-white border-l-4 border-l-primary-700`
+- Card 2: cambiar `bg-gradient-to-br from-white to-gray-50/30` a `bg-white border-l-4 border-l-accent`
 
-**Original PDF - 3 propuestas:**
-1. "Definir estandares minimos de competencias por nivel educativo en areas prioritarias: matematicas, lectura, pensamiento computacional, habilidades socioemocionales, ingles y otras."
-2. "Que estos estandares sean el referente para evaluar calidad. No la cantidad de horas en aula ni el cumplimiento burocratico de programas."
-3. "Que cualquier institucion pueda innovar en el como, siempre que cumpla con el que."
+**Lineas 306** - Pilar 3 cards: agregar borde lateral
+- Cambiar `bg-white border-0` a `bg-white border-0 border-l-4 border-l-primary-700` para cards impares y `border-l-accent` para pares (usando indice del map)
 
----
+**Linea 337** - Llamado a la Accion: cambiar fondo
+- De: `py-10 sm:py-14 md:py-20 bg-white`
+- A: `py-10 sm:py-14 md:py-20 bg-gray-50`
 
-### 9. Pilar 2 - Intro (linea 218 area)
+### Resultado visual esperado:
 
-**Actual:** Solo dice "Piso de calidad, no curriculo unico."
+```text
+Hero           [gradiente azul]
+El Problema    [sand]         -- contraste con azul
+La Propuesta   [blanco]       -- separador inferior
+Pilar 1        [gray-50]      -- se diferencia de propuesta
+Pilar 2        [gradiente azul] -- contraste fuerte
+Pilar 3        [sand]         -- coherente con problema
+Llamado        [gray-50]      -- se diferencia de sand
+CTA Final      [gradiente azul] -- cierre fuerte
+```
 
-**Agregar despues:** "Proponemos acuerdos minimos sobre que competencias debe alcanzar un estudiante en cada nivel, en materias clave. Un estandar que permita medir, comparar y mejorar, sin eliminar la autonomia pedagogica de las instituciones."
-
----
-
-### 10. Pilar 3 - Descripcion (lineas 281-284)
-
-**Actual:** "Colombia tiene datos educativos dispersos en SIMAT, SNIES, ICFES y SPADIES. Ninguno se habla entre si. Sin datos integrados no hay politica publica efectiva."
-
-**Original PDF:** "Lo que no se mide, no se mejora. Lo que no se publica, no se fiscaliza. Colombia tiene datos educativos valiosos dispersos en sistemas que no se comunican entre si: SIMAT, SNIES, ICFES, SPADIES. Hoy no hay forma de seguir la trayectoria de un estudiante desde primaria hasta el mercado laboral. Sin esa trazabilidad, toda politica publica opera a ciegas."
-
----
-
-### 11. Pilar 3 - Cards de propuestas (lineas 289-309)
-
-Restaurar textos al original del PDF:
-
-- **SUIE:** "Integrar las bases de datos existentes en una plataforma interoperable, con dashboards publicos en tiempo real."
-- **ID Unico:** "Un identificador unico estudiantil que permita el seguimiento longitudinal de trayectorias educativas."
-- **Datos abiertos:** "Datos abiertos con licencias reutilizables para que investigadores, EdTechs y la ciudadania puedan fiscalizar el sistema."
-- **Recursos a resultados:** "Vincular la asignacion de recursos publicos a resultados verificables de calidad, equidad y pertinencia laboral."
-
----
-
-### 12. Pilar 3 - Frase faltante
-
-**Agregar despues de las cards:** "Este es el pilar mas complejo y el mas incomodo politicamente. Por eso es el mas necesario."
-
----
-
-### 13. Llamado a la Accion - Texto intro (linea 346)
-
-**Actual:** "El cambio no depende de un solo sector. Cada uno tiene compromisos concretos."
-
-**Original PDF:** "Este acuerdo pide reglas claras para trabajar juntos."
-
----
-
-### 14. Llamado a la Accion - Compromisos por sector (lineas 358-410)
-
-**Actual:** Listas largas inventadas con 4 items cada una.
-
-**Original PDF (simple y directo):**
-- **Sector publico:** "Implementar un sandbox educativo piloto y abrir los datos del sistema."
-- **Sector privado:** "Transparencia en resultados cuando se reciban recursos publicos."
-- **Tercer sector:** "Compartir datos de impacto en formato abierto."
-
----
-
-### 15. Frase final faltante antes del CTA
-
-**Agregar:** "El marco legal existe. La capacidad existe. Los actores comprometidos existen. Falta firmar."
-
----
-
-## Resumen de Cambios
-
-| Seccion | Tipo de cambio |
-|---------|---------------|
-| Hero | Eliminar subtitulo inventado |
-| El Problema | Restaurar texto original |
-| La Propuesta | Restaurar texto original |
-| Pilar 1 descripcion | Restaurar texto completo del PDF |
-| Pilar 1 cards | Restaurar propuestas originales |
-| Pilar 2 stat PISA | Corregir "lectura" a "matematicas" |
-| Pilar 2 stat OCDE | Restaurar texto completo |
-| Pilar 2 cards | Reemplazar con 3 propuestas originales |
-| Pilar 2 intro | Agregar parrafo faltante |
-| Pilar 3 descripcion | Restaurar texto completo |
-| Pilar 3 cards | Restaurar textos originales |
-| Pilar 3 frase | Agregar "el pilar mas incomodo" |
-| Llamado a la accion intro | Restaurar texto original |
-| Llamado a la accion cards | Simplificar a texto original (1 item por sector) |
-| CTA | Agregar frase "Falta firmar" |
-
-**Archivo modificado:** `src/pages/AcuerdoEducacion.tsx` (unico archivo, solo cambios de texto)
+Cada seccion ahora tiene un fondo distinto al de sus vecinas, creando ritmo visual claro.
 
