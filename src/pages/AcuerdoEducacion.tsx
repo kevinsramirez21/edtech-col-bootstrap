@@ -2,6 +2,7 @@ import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import {
   AlertTriangle,
@@ -23,9 +24,70 @@ import {
   Fingerprint,
   FolderOpen,
   CheckCircle,
+  Mail,
 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { generatePageMeta } from "@/lib/seo";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+
+function EmailCollectorForm() {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setLoading(true);
+    try {
+      const { error } = await supabase
+        .from("newsletter_subscriptions")
+        .upsert({ email, subscribed: true }, { onConflict: "email" });
+      if (error) throw error;
+      setSubmitted(true);
+      toast.success("¡Listo! Te mantendremos informado.");
+    } catch {
+      toast.error("Hubo un error. Intenta de nuevo.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (submitted) {
+    return (
+      <div className="flex flex-col items-center gap-3">
+        <div className="w-12 h-12 rounded-full bg-primary-700/10 flex items-center justify-center">
+          <CheckCircle className="w-6 h-6 text-primary-700" />
+        </div>
+        <p className="text-base sm:text-lg font-semibold text-primary-700">¡Gracias por suscribirte!</p>
+        <p className="text-sm text-primary-900/70">Pronto recibirás noticias sobre nuestras posiciones.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+      <Input
+        type="email"
+        required
+        placeholder="tu@correo.com"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="flex-1 bg-white border-primary-700/20 text-primary-900 placeholder:text-primary-900/40 h-12 rounded-xl"
+      />
+      <Button
+        type="submit"
+        disabled={loading}
+        className="bg-primary-700 hover:bg-primary-900 text-white font-bold px-6 h-12 rounded-xl transition-all duration-300"
+      >
+        {loading ? "Enviando..." : "Suscribirme"}
+        <ArrowRight className="w-4 h-4 ml-2" />
+      </Button>
+    </form>
+  );
+}
 
 const AcuerdoEducacion = () => {
   const meta = generatePageMeta({
@@ -170,8 +232,8 @@ const AcuerdoEducacion = () => {
           </div>
 
           {/* Propuestas */}
-          <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-            <Card className="p-5 sm:p-6 md:p-8 bg-white border-0 border-l-4 border-l-primary-700 shadow-xl hover:shadow-2xl transition-all duration-500">
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-stretch">
+            <Card className="p-5 sm:p-6 md:p-8 bg-white border-0 border-l-4 border-l-primary-700 shadow-xl hover:shadow-2xl transition-all duration-500 h-full">
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-700/10 flex items-center justify-center flex-shrink-0">
                   <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-primary-700" />
@@ -186,7 +248,7 @@ const AcuerdoEducacion = () => {
                 </div>
               </div>
             </Card>
-            <Card className="p-5 sm:p-6 md:p-8 bg-white border-0 border-l-4 border-l-accent shadow-xl hover:shadow-2xl transition-all duration-500">
+            <Card className="p-5 sm:p-6 md:p-8 bg-white border-0 border-l-4 border-l-accent shadow-xl hover:shadow-2xl transition-all duration-500 h-full">
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
                   <Target className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
@@ -429,7 +491,7 @@ const AcuerdoEducacion = () => {
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-2 border-white/80 text-white hover:bg-white hover:text-primary-900 font-bold px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-xl transition-all duration-500 text-sm sm:text-base md:text-lg" asChild>
+              <Button size="lg" className="bg-white text-primary-900 hover:bg-white/90 font-bold px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-xl transition-all duration-500 text-sm sm:text-base md:text-lg border-0" asChild>
                 <Link to="/aliados" className="flex items-center space-x-2 sm:space-x-3">
                   <span>Sé un Aliado</span>
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
@@ -437,6 +499,22 @@ const AcuerdoEducacion = () => {
               </Button>
             </div>
           </div>
+        </div>
+      </Section>
+
+      {/* Email Collector */}
+      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
+        <div className="container max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 rounded-full bg-primary-700 flex items-center justify-center">
+            <Mail className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+          </div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-primary-700 leading-tight">
+            Mantente informado
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg text-primary-900 leading-relaxed mb-6 sm:mb-8 max-w-xl mx-auto">
+            Recibe actualizaciones sobre nuestras posiciones, investigaciones y cómo estamos trabajando para transformar la educación en Colombia.
+          </p>
+          <EmailCollectorForm />
         </div>
       </Section>
     </>
