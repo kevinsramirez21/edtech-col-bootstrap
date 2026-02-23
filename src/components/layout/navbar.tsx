@@ -34,6 +34,13 @@ const navItems = [
       { name: "Noticias", href: "/mundo-edtech/noticias" },
     ]
   },
+  {
+    name: "Nuestra Posición",
+    isDropdown: true,
+    items: [
+      { name: "Acuerdo por la Educación", href: "/nuestra-posicion/acuerdo-educacion" },
+    ]
+  },
   { name: "Voluntariado", href: "/voluntariado" },
 ]
 
