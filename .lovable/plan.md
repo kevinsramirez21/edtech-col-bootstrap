@@ -1,311 +1,139 @@
 
 
-# Plan: Añadir Nuevos Eventos EdTech LATAM 2026
+# Plan: Nueva Sección "Nuestra Posición" con Página "Acuerdo por la Educación"
 
 ## Resumen
 
-Tras una investigación exhaustiva de múltiples fuentes, he identificado **8 nuevos eventos verificados** con información completa (fechas, enlaces, organizadores) que complementarán el calendario actual de 25 eventos, llevándolo a **33 eventos** totales.
+Crear una nueva sección de navegacion "Nuestra Posicion" con una pagina dedicada al "Acuerdo Basico por la Educacion de Colombia 2030", usando el mismo estilo visual que la pagina Panorama (hero con gradientes, cards con KPIs, secciones alternadas, iconos).
 
 ---
 
-## Nuevos Eventos Verificados para Añadir
+## Contenido del PDF (Estructura)
 
-### 1. IEEE EDUNINE 2026
-| Campo | Valor |
-|-------|-------|
-| **Nombre** | X IEEE World Engineering Education Conference (EDUNINE 2026) |
-| **Fechas** | 8-11 marzo 2026 |
-| **Ciudad** | Ciudad de México |
-| **País** | México |
-| **Modalidad** | Híbrido |
-| **Estado** | Confirmado |
-| **Enlace** | https://edunine.eu/edunine2026/ |
-| **Organizador** | IEEE Education Society / COPEC |
-| **Descripción** | Conferencia IEEE sobre educación en ingeniería con enfoque en IA y tecnología. |
+El documento tiene 4 secciones principales:
 
-### 2. Rio Innovation Week 2026
-| Campo | Valor |
-|-------|-------|
-| **Nombre** | Rio Innovation Week 2026 |
-| **Fechas** | 4-7 agosto 2026 |
-| **Ciudad** | Rio de Janeiro |
-| **País** | Brasil |
-| **Modalidad** | Presencial |
-| **Estado** | Confirmado |
-| **Enlace** | https://rioinnovationweek.com.br/ |
-| **Organizador** | Secretaría Municipal de Cultura de Rio |
-| **Descripción** | La mayor conferencia de tecnología e innovación de LATAM con +150,000 asistentes. |
-| **Nota** | Añadir "Brasil" a lista de países si no existe |
-
-### 3. America Digital LATAM Congress 2026
-| Campo | Valor |
-|-------|-------|
-| **Nombre** | 11th America Digital LATAM Congress |
-| **Fechas** | 9-10 septiembre 2026 |
-| **Ciudad** | Santiago |
-| **País** | Chile |
-| **Modalidad** | Presencial |
-| **Estado** | Confirmado |
-| **Enlace** | https://congreso.america-digital.com/?lang=en |
-| **Organizador** | America Digital |
-| **Descripción** | Congreso de AI, tecnología y negocios con +5,000 ejecutivos C-Level. |
-
-### 4. XXXIII Encuentro Internacional de Educación a Distancia
-| Campo | Valor |
-|-------|-------|
-| **Nombre** | 33º Encuentro Internacional de Educación a Distancia |
-| **Fechas** | Noviembre 2026 (fechas específicas por confirmar) |
-| **Ciudad** | Guadalajara |
-| **País** | México |
-| **Modalidad** | Híbrido |
-| **Estado** | Por confirmar |
-| **Enlace** | https://encuentro.udgvirtual.udg.mx/ |
-| **Organizador** | UDGVirtual / Universidad de Guadalajara |
-| **Descripción** | Encuentro sobre educación a distancia con +600 participantes de 10 países. |
-| **Nota** | Basado en el patrón anual del evento (edición 32 fue en 2025) |
-
-### 5. LACLO 2026 (XX Conferencia Latinoamericana de Tecnologías de Aprendizaje)
-| Campo | Valor |
-|-------|-------|
-| **Nombre** | XX Conferencia LACLO 2026 |
-| **Fechas** | Octubre 2026 (fechas específicas por confirmar) |
-| **Ciudad** | Por confirmar |
-| **País** | Por confirmar (rotativo anual) |
-| **Modalidad** | Presencial |
-| **Estado** | Por confirmar |
-| **Enlace** | https://laclo.org/ |
-| **Organizador** | Comunidad LACLO |
-| **Descripción** | Principal conferencia LATAM de tecnologías de aprendizaje y objetos educativos. |
-| **Nota** | Sede 2026 pendiente (2024 fue Uruguay, 2023 fue Ecuador) |
-
-### 6. TICAL 2026
-| Campo | Valor |
-|-------|-------|
-| **Nombre** | TICAL 2026 |
-| **Fechas** | Noviembre 2026 (fechas específicas por confirmar) |
-| **Ciudad** | Por confirmar |
-| **País** | Por confirmar (rotativo anual) |
-| **Modalidad** | Presencial |
-| **Estado** | Por confirmar |
-| **Enlace** | https://tical.redclara.net/ |
-| **Organizador** | RedCLARA |
-| **Descripción** | Conferencia de TIC para educación superior e investigación en América Latina. |
-| **Nota** | Sede 2026 pendiente (2025 fue Costa Rica) |
-
-### 7. XIX Congreso Internacional de Educación e Innovación (CIEI 2026)
-| Campo | Valor |
-|-------|-------|
-| **Nombre** | XIX CIEI - Congreso Internacional de Educación e Innovación |
-| **Fechas** | Mayo/Junio 2026 (por confirmar) |
-| **Ciudad** | Riga |
-| **País** | Virtual (sede principal en Letonia, participación híbrida) |
-| **Modalidad** | Híbrido |
-| **Estado** | Por confirmar |
-| **Enlace** | https://ciei.es/ |
-| **Organizador** | Universidad de Granada / Grupo AREA |
-| **Descripción** | Congreso internacional de educación e innovación con participantes de LATAM. |
-| **Nota** | Edición XIX será en Letonia, pero participación virtual disponible |
-
-### 8. EDUNOVATIC 2026
-| Campo | Valor |
-|-------|-------|
-| **Nombre** | XI Congreso Virtual EDUNOVATIC |
-| **Fechas** | Noviembre 2026 (por confirmar, basado en patrón anual) |
-| **Ciudad** | Virtual |
-| **País** | Virtual |
-| **Modalidad** | Virtual |
-| **Estado** | Por confirmar |
-| **Enlace** | https://www.edunovatic.org/ |
-| **Organizador** | EDUNOVATIC |
-| **Descripción** | Congreso virtual internacional sobre educación, innovación y TIC. |
+1. **El Problema**: Sistema educativo desarticulado con 5 datos clave (desercion, NINIs, brecha digital, formacion docente, talento)
+2. **Pilar 1 - Sandbox Regulatorio**: Probar primero, regular despues
+3. **Pilar 2 - Acuerdos Minimos Curriculares**: Piso de calidad, no curriculo unico
+4. **Pilar 3 - Gobernanza y Datos**: Medir para transformar
+5. **Llamado a la Accion**: Compromisos por sector (publico, privado, tercer sector)
 
 ---
 
-## Eventos Considerados pero No Incluidos
+## Cambios a Implementar
 
-Los siguientes eventos fueron investigados pero **no se añaden** por falta de información verificable para 2026:
+### 1. Nueva Pagina: `src/pages/AcuerdoEducacion.tsx`
 
-| Evento | Razón de exclusión |
-|--------|-------------------|
-| INTED 2026 (Valencia) | Evento europeo, no LATAM |
-| IEEE EDUCON 2026 | Se realiza en Egipto, no LATAM |
-| Campus Party Brasil | Sin fechas confirmadas para 2026 |
-| Cumbre Líderes por la Educación (Semana) | Sin confirmación para 2026 |
-| Virtual Educa | Sin calendario 2026 publicado |
-| CREAD Conference | Sin evento 2026 anunciado |
+Pagina con el mismo estilo visual que Panorama.tsx:
 
----
+- **Hero Section**: Gradiente azul oscuro, titulo "Acuerdo Basico por la Educacion 2030", subtitulo "Reglas del Juego: Educacion en Colombia", badge "Colombia EdTech - Febrero 2026"
+- **Seccion El Problema**: Fondo sand, texto del problema + 5 KPI cards con los datos:
+  - 6/10 empresas no encuentran talento
+  - ~50% desercion en educacion superior
+  - 2.3M jovenes NINIs
+  - 79.8% hogares rurales sin internet
+  - 68% docentes sin formacion en IA
+- **Pilar 1 - Sandbox Regulatorio**: Fondo blanco, icono de flask/beaker, descripcion + bullets de propuesta, badges con paises referentes (Singapur, Corea del Sur, Reino Unido, Francia)
+- **Pilar 2 - Acuerdos Curriculares**: Fondo gradiente azul (como Panorama Neoeducacion), stat del 29% PISA, propuesta de estandares minimos con 3 bullets
+- **Pilar 3 - Gobernanza y Datos**: Fondo sand, 4 propuestas en cards (SUIE, ID unico, datos abiertos, recursos a resultados), mencion de sistemas actuales (SIMAT, SNIES, ICFES, SPADIES)
+- **Llamado a la Accion**: 3 columnas (sector publico, privado, tercer sector) con compromisos, frase final: "Probar y luego regular. Ensenar lo que importa. Medir para transformar."
+- **CTA Final**: "Colombia EdTech marca la parada. Quien se suma?"
 
-## Cambios Técnicos Requeridos
+### 2. Actualizar Navegacion: `src/components/layout/navbar.tsx`
 
-### Archivo: `src/data/eventos-latam-2026.ts`
-
-**Eventos actuales:** 25
-**Eventos nuevos:** 8
-**Total final:** 33 eventos
-
-### Nuevas Entradas de Datos
+Agregar nueva seccion dropdown "Nuestra Posicion" en `navItems`:
 
 ```typescript
-// Marzo 2026 - Añadir después de BMI THE Latin America
 {
-  id: 'edunine-2026',
-  nombre: 'X IEEE EDUNINE 2026',
-  fechaInicio: '2026-03-08',
-  fechaFin: '2026-03-11',
-  fechaDisplay: '8-11 marzo 2026',
-  ciudad: 'Ciudad de México',
-  pais: 'México',
-  modalidad: 'Híbrido',
-  estado: 'Confirmado',
-  enlace: 'https://edunine.eu/edunine2026/',
-  descripcion: 'Conferencia IEEE sobre educación en ingeniería con enfoque en IA.',
-  organizador: 'IEEE Education Society / COPEC',
+  name: "Nuestra Posición",
+  isDropdown: true,
+  items: [
+    { name: "Acuerdo por la Educación", href: "/nuestra-posicion/acuerdo-educacion" },
+  ]
 },
+```
 
-// Agosto 2026 - Añadir antes de Edutechnia
-{
-  id: 'rio-innovation-week-2026',
-  nombre: 'Rio Innovation Week 2026',
-  fechaInicio: '2026-08-04',
-  fechaFin: '2026-08-07',
-  fechaDisplay: '4-7 agosto 2026',
-  ciudad: 'Rio de Janeiro',
-  pais: 'Brasil',
-  modalidad: 'Presencial',
-  estado: 'Confirmado',
-  enlace: 'https://rioinnovationweek.com.br/',
-  descripcion: 'La mayor conferencia de tecnología e innovación de LATAM (+150K asistentes).',
-  organizador: 'Secretaría Municipal de Cultura de Rio',
-},
+Ubicacion: despues de "Mundo Edtech" y antes de "Voluntariado".
 
-// Septiembre 2026 - Añadir después de ALIE
-{
-  id: 'america-digital-2026',
-  nombre: '11th America Digital LATAM Congress',
-  fechaInicio: '2026-09-09',
-  fechaFin: '2026-09-10',
-  fechaDisplay: '9-10 septiembre 2026',
-  ciudad: 'Santiago',
-  pais: 'Chile',
-  modalidad: 'Presencial',
-  estado: 'Confirmado',
-  enlace: 'https://congreso.america-digital.com/',
-  descripcion: 'Congreso de AI, tecnología y negocios con +5,000 ejecutivos C-Level.',
-  organizador: 'America Digital',
-},
+### 3. Actualizar Rutas: `src/App.tsx`
 
-// Octubre 2026 - Añadir después de ICEF
-{
-  id: 'laclo-2026',
-  nombre: 'XX Conferencia LACLO 2026',
-  fechaInicio: '2026-10-15',
-  fechaFin: '2026-10-17',
-  fechaDisplay: 'Octubre 2026',
-  ciudad: 'Por confirmar',
-  pais: 'Virtual', // Usar Virtual hasta confirmar sede
-  modalidad: 'Presencial',
-  estado: 'Por confirmar',
-  enlace: 'https://laclo.org/',
-  descripcion: 'Principal conferencia LATAM de tecnologías de aprendizaje.',
-  organizador: 'Comunidad LACLO',
-  notas: 'Sede 2026 pendiente de anuncio. Rotativo anual.',
-},
+Agregar:
 
-// Noviembre 2026 - Nuevos eventos
-{
-  id: 'eied-udg-2026',
-  nombre: '33º Encuentro Internacional de Educación a Distancia',
-  fechaInicio: '2026-11-15',
-  fechaFin: '2026-11-20',
-  fechaDisplay: 'Noviembre 2026',
-  ciudad: 'Guadalajara',
-  pais: 'México',
-  modalidad: 'Híbrido',
-  estado: 'Por confirmar',
-  enlace: 'https://encuentro.udgvirtual.udg.mx/',
-  descripcion: 'Encuentro sobre educación a distancia con participantes de 10+ países.',
-  organizador: 'UDGVirtual / Universidad de Guadalajara',
-  notas: 'Fechas específicas pendientes (basado en patrón anual).',
-},
+```typescript
+import AcuerdoEducacion from "./pages/AcuerdoEducacion";
 
-{
-  id: 'tical-2026',
-  nombre: 'TICAL 2026',
-  fechaInicio: '2026-11-10',
-  fechaFin: '2026-11-13',
-  fechaDisplay: 'Noviembre 2026',
-  ciudad: 'Por confirmar',
-  pais: 'Virtual', // Usar Virtual hasta confirmar sede
-  modalidad: 'Presencial',
-  estado: 'Por confirmar',
-  enlace: 'https://tical.redclara.net/',
-  descripcion: 'Conferencia de TIC para educación superior e investigación en LATAM.',
-  organizador: 'RedCLARA',
-  notas: 'Sede 2026 pendiente. 2025 fue en Costa Rica.',
-},
-
-{
-  id: 'edunovatic-2026',
-  nombre: 'XI Congreso EDUNOVATIC 2026',
-  fechaInicio: '2026-11-18',
-  fechaFin: '2026-11-20',
-  fechaDisplay: 'Noviembre 2026',
-  ciudad: 'Virtual',
-  pais: 'Virtual',
-  modalidad: 'Virtual',
-  estado: 'Por confirmar',
-  enlace: 'https://www.edunovatic.org/',
-  descripcion: 'Congreso virtual sobre educación, innovación y TIC.',
-  organizador: 'EDUNOVATIC',
-  notas: 'Fechas específicas pendientes (basado en patrón anual).',
-},
-
-{
-  id: 'ciei-2026',
-  nombre: 'XIX CIEI - Congreso Internacional de Educación e Innovación',
-  fechaInicio: '2026-05-20',
-  fechaFin: '2026-05-22',
-  fechaDisplay: 'Mayo 2026',
-  ciudad: 'Riga (Virtual disponible)',
-  pais: 'Virtual',
-  modalidad: 'Híbrido',
-  estado: 'Por confirmar',
-  enlace: 'https://ciei.es/',
-  descripcion: 'Congreso de educación e innovación con participantes de LATAM.',
-  organizador: 'Universidad de Granada / Grupo AREA',
-  notas: 'Sede en Letonia, participación virtual para LATAM.',
-},
+// En Routes:
+<Route path="/nuestra-posicion/acuerdo-educacion" element={<AcuerdoEducacion />} />
 ```
 
 ---
 
-## Distribución Final por Mes
+## Estructura Visual de la Pagina
 
-| Mes | Cantidad | Eventos |
-|-----|----------|---------|
-| Enero | 3 | Congreso Futuro, I Congreso Educación Digital, IFE Conference |
-| Febrero | 2 | 15º Congreso Universidad Cuba, #ELEDU Cajicá |
-| Marzo | 5 | BMI THE, **IEEE EDUNINE**, II EDUTIC CDMX, GEduc, III Congreso ASCOFAME |
-| Abril | 3 | 7º Congreso EDUTIC Online, IV Congreso UIS, 31º CIAED |
-| Mayo | 4 | Bett Brasil, THE Latin America Summit, Congreso DOKUMA, **XIX CIEI** |
-| Junio | 3 | #ELEDU Brote, XIII EDUTIC Santiago, 4th LAICSEE |
-| Julio | 3 | Semana Diseño UP, LACCEI, ExpoEduc |
-| Agosto | 2 | **Rio Innovation Week**, Edutechnia |
-| Septiembre | 2 | Primer Congreso ALIE, **11th America Digital** |
-| Octubre | 3 | QS Higher Ed Summit, ICEF Latin America, **LACLO 2026** |
-| Noviembre | 3 | **33º EIED UDG**, **TICAL**, **EDUNOVATIC** |
-
-**Total: 33 eventos**
+```text
++--------------------------------------------------+
+|  HERO (gradiente azul oscuro)                     |
+|  Badge: Colombia EdTech - Febrero 2026            |
+|  "Acuerdo Basico por la Educacion 2030"           |
+|  "Reglas del Juego: Educacion en Colombia"        |
++--------------------------------------------------+
+|  EL PROBLEMA (fondo sand)                         |
+|  Texto del problema                               |
+|  [KPI] [KPI] [KPI] [KPI] [KPI]  (5 cards)        |
+|  Frase: "No faltan diagnosticos. Falta un marco   |
+|  comun para actuar."                              |
++--------------------------------------------------+
+|  LA PROPUESTA (fondo blanco, intro breve)          |
+|  "3 sectores, 3 pilares, un piso comun"           |
++--------------------------------------------------+
+|  PILAR 1: SANDBOX (fondo blanco)                  |
+|  Icono + Titulo + Descripcion                     |
+|  Badges: Singapur, Corea, UK, Francia             |
+|  2 bullets de propuesta en cards                  |
++--------------------------------------------------+
+|  PILAR 2: CURRICULO (gradiente azul)              |
+|  Stat grande: 29% vs 69% PISA                    |
+|  3 propuestas en cards claras                     |
++--------------------------------------------------+
+|  PILAR 3: DATOS (fondo sand)                      |
+|  4 propuestas en grid de cards                    |
+|  Sistemas actuales: SIMAT, SNIES, ICFES, SPADIES |
++--------------------------------------------------+
+|  LLAMADO A LA ACCION (fondo blanco)               |
+|  3 columnas: Publico | Privado | Tercer Sector   |
++--------------------------------------------------+
+|  CTA FINAL (gradiente azul)                       |
+|  "Probar y luego regular."                        |
+|  "Ensenar lo que importa."                        |
+|  "Medir para transformar."                        |
+|  Boton: Unete / Contactanos                       |
++--------------------------------------------------+
+```
 
 ---
 
-## Resumen de Cambios
+## Seccion Tecnica
 
-| Tipo | Cantidad |
-|------|----------|
-| Eventos nuevos confirmados | 4 (EDUNINE, Rio Innovation Week, America Digital, CIEI) |
-| Eventos nuevos por confirmar | 4 (LACLO, EIED UDG, TICAL, EDUNOVATIC) |
-| **Total nuevos** | **8** |
-| **Total calendario final** | **33 eventos** |
+### Archivos a crear:
+- `src/pages/AcuerdoEducacion.tsx` (~400-500 lineas, similar a Panorama.tsx)
 
+### Archivos a modificar:
+- `src/App.tsx` (agregar import + ruta)
+- `src/components/layout/navbar.tsx` (agregar dropdown "Nuestra Posicion")
+
+### Componentes reutilizados:
+- `Section` de `@/components/ui/section`
+- `Card` de `@/components/ui/card`
+- `Badge` de `@/components/ui/badge`
+- `Button` de `@/components/ui/button`
+- Iconos de `lucide-react`: `AlertTriangle`, `Flask/Beaker`, `BookOpen`, `Database`, `Building2`, `Briefcase`, `Heart`, `ArrowRight`, `Target`, `Shield`, `BarChart3`, `Users`, `GraduationCap`, `Wifi`
+- `Helmet` para SEO
+- `Link` de react-router-dom
+
+### Patrones de diseno copiados de Panorama.tsx:
+- Hero con gradiente `from-primary-900 via-primary-700 to-primary-900`
+- Secciones alternadas con fondo `bg-sand` y blanco
+- Cards con `border-0 shadow-xl hover:shadow-2xl`
+- KPI cards con iconos circulares coloreados
+- Linea decorativa bajo titulos de seccion
+- Responsive breakpoints consistentes
