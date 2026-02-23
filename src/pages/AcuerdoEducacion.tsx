@@ -108,7 +108,7 @@ const AcuerdoEducacion = () => {
       </Section>
 
       {/* La Propuesta - Intro */}
-      <Section className="py-10 sm:py-14 md:py-20 bg-white">
+      <Section className="py-8 sm:py-10 md:py-14 bg-white border-b border-gray-300/50">
         <div className="container max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
             La Propuesta
@@ -117,16 +117,31 @@ const AcuerdoEducacion = () => {
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-900 leading-relaxed max-w-3xl mx-auto mb-6">
             Colombia EdTech convoca a los tres sectores (público, privado y tercer sector) a un acuerdo mínimo basado en <span className="font-bold text-accent">tres pilares</span>. Un piso común desde el cual trabajar juntos.
           </p>
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
             <Badge className="bg-primary-700 text-white text-xs sm:text-sm md:text-base px-4 py-2">Sector Público</Badge>
             <Badge className="bg-accent text-white text-xs sm:text-sm md:text-base px-4 py-2">Sector Privado</Badge>
             <Badge className="bg-primary-900 text-white text-xs sm:text-sm md:text-base px-4 py-2">Tercer Sector</Badge>
+          </div>
+          {/* Preview de los 3 pilares */}
+          <div className="flex justify-center gap-4 sm:gap-6 md:gap-8">
+            {[
+              { num: "1", label: "Sandbox Regulatorio", color: "bg-primary-700" },
+              { num: "2", label: "Acuerdos Curriculares", color: "bg-accent" },
+              { num: "3", label: "Gobernanza y Datos", color: "bg-primary-900" },
+            ].map((pilar) => (
+              <div key={pilar.num} className="flex flex-col items-center gap-2">
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full ${pilar.color} flex items-center justify-center text-white font-bold text-lg sm:text-xl`}>
+                  {pilar.num}
+                </div>
+                <span className="text-[10px] sm:text-xs text-primary-900/70 font-medium">{pilar.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
 
       {/* Pilar 1 - Sandbox Regulatorio */}
-      <Section className="py-10 sm:py-14 md:py-20 bg-white">
+      <Section className="py-10 sm:py-14 md:py-20 bg-gray-50">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-4 sm:mb-6 rounded-full bg-primary-700 flex items-center justify-center">
@@ -156,7 +171,7 @@ const AcuerdoEducacion = () => {
 
           {/* Propuestas */}
           <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-            <Card className="p-5 sm:p-6 md:p-8 bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+            <Card className="p-5 sm:p-6 md:p-8 bg-white border-0 border-l-4 border-l-primary-700 shadow-xl hover:shadow-2xl transition-all duration-500">
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-700/10 flex items-center justify-center flex-shrink-0">
                   <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-primary-700" />
@@ -171,7 +186,7 @@ const AcuerdoEducacion = () => {
                 </div>
               </div>
             </Card>
-            <Card className="p-5 sm:p-6 md:p-8 bg-gradient-to-br from-white to-gray-50/30 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+            <Card className="p-5 sm:p-6 md:p-8 bg-white border-0 border-l-4 border-l-accent shadow-xl hover:shadow-2xl transition-all duration-500">
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
                   <Target className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
@@ -302,8 +317,8 @@ const AcuerdoEducacion = () => {
                 title: "Recursos atados a resultados",
                 desc: "Vincular la asignación de recursos públicos a resultados verificables de calidad, equidad y pertinencia laboral.",
               },
-            ].map((item) => (
-              <Card key={item.title} className="p-5 sm:p-6 md:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+            ].map((item, index) => (
+              <Card key={item.title} className={`p-5 sm:p-6 md:p-8 bg-white border-0 border-l-4 ${index % 2 === 0 ? 'border-l-primary-700' : 'border-l-accent'} shadow-xl hover:shadow-2xl transition-all duration-500`}>
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-700/10 flex items-center justify-center flex-shrink-0">
                     <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-700" />
@@ -334,7 +349,7 @@ const AcuerdoEducacion = () => {
       </Section>
 
       {/* Llamado a la Acción - 3 columnas */}
-      <Section className="py-10 sm:py-14 md:py-20 bg-white">
+      <Section className="py-10 sm:py-14 md:py-20 bg-gray-50">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-primary-700 leading-tight">
