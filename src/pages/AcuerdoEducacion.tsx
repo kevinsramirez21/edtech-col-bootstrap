@@ -60,9 +60,6 @@ const AcuerdoEducacion = () => {
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl max-w-4xl mx-auto text-white/90 leading-relaxed mb-6 sm:mb-8 md:mb-12 font-medium">
               Reglas del Juego: Educación en Colombia
             </p>
-            <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto text-white/70 leading-relaxed">
-              No es un plan de gobierno. Es un piso común para que todos —sector público, privado y tercer sector— jueguen con las mismas reglas.
-            </p>
           </div>
         </div>
       </Section>
@@ -79,9 +76,9 @@ const AcuerdoEducacion = () => {
             </h2>
             <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto text-primary-900 leading-relaxed">
-              El sistema educativo colombiano no está roto por falta de voluntad. Está desarticulado.
-              El sector público regula sin experimentar. El privado innova sin marco. El tercer sector
-              conecta sin datos. Cada uno empuja, pero no hacia el mismo lado.
+              El sistema educativo colombiano está desarticulado. El sector público diseña políticas desde Bogotá, 
+              el sector privado innova por su cuenta y el tercer sector interviene donde puede. 
+              Cada uno con su agenda, sin rendición de cuentas compartida.
             </p>
           </div>
 
@@ -118,8 +115,7 @@ const AcuerdoEducacion = () => {
           </h2>
           <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-6 sm:mb-8 md:mb-10 rounded-full"></div>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-900 leading-relaxed max-w-3xl mx-auto mb-6">
-            Este acuerdo plantea <span className="font-bold text-accent">3 pilares</span> que unen a los 3 sectores bajo un piso común.
-            No es un currículo único ni una política pública cerrada. Es un marco de acción compartido.
+            Colombia EdTech convoca a los tres sectores (público, privado y tercer sector) a un acuerdo mínimo basado en <span className="font-bold text-accent">tres pilares</span>. Un piso común desde el cual trabajar juntos.
           </p>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             <Badge className="bg-primary-700 text-white text-xs sm:text-sm md:text-base px-4 py-2">Sector Público</Badge>
@@ -145,8 +141,7 @@ const AcuerdoEducacion = () => {
               Probar primero, regular después.
             </p>
             <p className="text-sm sm:text-base md:text-lg text-primary-900 max-w-3xl mx-auto leading-relaxed">
-              Colombia regula la innovación educativa antes de probarla. Eso frena al sector privado,
-              limita la experimentación y deja al país rezagado frente a modelos que ya funcionan en el mundo.
+              Colombia ya lo hizo en telecomunicaciones con la Resolución 5980 de 2020. Singapur y Corea del Sur usaron el mismo principio para transformar sus sistemas educativos. Reino Unido y Francia ya operan sandbox específicos para EdTech. Colombia tiene el precedente legal, más de 500 instituciones de educación y un ecosistema de más de 140 organizaciones EdTech activas. Falta adaptar el modelo al sector educativo.
             </p>
           </div>
 
@@ -168,11 +163,10 @@ const AcuerdoEducacion = () => {
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary-700 mb-2">
-                    Zona de pruebas controlada
+                    Sandbox Nacional de Innovación Educativa
                   </h3>
                   <p className="text-sm sm:text-base text-primary-900 leading-relaxed">
-                    Crear una zona de pruebas controlada para nuevos modelos educativos con tecnología,
-                    con métricas claras y tiempos definidos antes de legislar.
+                    Crear un Sandbox Nacional de Innovación Educativa donde soluciones EdTech se prueben en instituciones reales, con métricas claras, evaluación independiente y protección de datos obligatoria.
                   </p>
                 </div>
               </div>
@@ -184,11 +178,10 @@ const AcuerdoEducacion = () => {
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary-700 mb-2">
-                    Regulación basada en evidencia
+                    Cohortes con resultados públicos
                   </h3>
                   <p className="text-sm sm:text-base text-primary-900 leading-relaxed">
-                    Las reglas deben nacer de la evidencia, no de la intuición.
-                    Solo se regula lo que ya se probó con datos reales.
+                    Cohortes de 12 a 24 meses. Resultados públicos. Lo que funciona, se escala. Lo que no, se descarta.
                   </p>
                 </div>
               </div>
@@ -216,6 +209,9 @@ const AcuerdoEducacion = () => {
             <p className="text-base sm:text-lg md:text-xl font-bold text-white/90 max-w-3xl mx-auto mb-4">
               Piso de calidad, no currículo único.
             </p>
+            <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+              Proponemos acuerdos mínimos sobre qué competencias debe alcanzar un estudiante en cada nivel, en materias clave. Un estándar que permita medir, comparar y mejorar, sin eliminar la autonomía pedagógica de las instituciones.
+            </p>
           </div>
 
           {/* Stat PISA */}
@@ -223,13 +219,13 @@ const AcuerdoEducacion = () => {
             <Card className="p-6 sm:p-8 md:p-10 text-center bg-white/10 border-0 backdrop-blur-sm">
               <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-2 sm:mb-3">29%</div>
               <p className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed">
-                de los estudiantes colombianos alcanzan nivel mínimo de competencia en lectura (PISA)
+                de los estudiantes colombianos alcanzó el nivel mínimo de competencia en matemáticas (PISA 2022, OECD 2023)
               </p>
             </Card>
             <Card className="p-6 sm:p-8 md:p-10 text-center bg-white/10 border-0 backdrop-blur-sm">
               <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-accent-brand mb-2 sm:mb-3">69%</div>
               <p className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed">
-                es el promedio OCDE. Colombia está 40 puntos porcentuales por debajo.
+                es el promedio OCDE (OECD, 2023). Esa brecha no se cierra con más cobertura. Se cierra con claridad sobre qué se debe enseñar y a qué nivel.
               </p>
             </Card>
           </div>
@@ -239,18 +235,18 @@ const AcuerdoEducacion = () => {
             {[
               {
                 icon: Target,
-                title: "Estándares mínimos por nivel",
-                desc: "Definir qué debe saber un estudiante al terminar cada ciclo, no cómo debe aprenderlo.",
-              },
-              {
-                icon: Brain,
-                title: "Pensamiento computacional + IA",
-                desc: "Incorporar pensamiento computacional e IA como competencia transversal desde básica.",
+                title: "Estándares mínimos de competencias",
+                desc: "Definir estándares mínimos de competencias por nivel educativo en áreas prioritarias: matemáticas, lectura, pensamiento computacional, habilidades socioemocionales, inglés y otras.",
               },
               {
                 icon: BarChart3,
-                title: "Evaluación por competencias",
-                desc: "Pasar de evaluar memorización a evaluar habilidades aplicadas y resolución de problemas.",
+                title: "Calidad sobre burocracia",
+                desc: "Que estos estándares sean el referente para evaluar calidad. No la cantidad de horas en aula ni el cumplimiento burocrático de programas.",
+              },
+              {
+                icon: Brain,
+                title: "Autonomía en el cómo",
+                desc: "Que cualquier institución pueda innovar en el cómo, siempre que cumpla con el qué.",
               },
             ].map((item) => (
               <Card key={item.title} className="p-5 sm:p-6 md:p-8 bg-white/10 border-0 backdrop-blur-sm hover:bg-white/20 transition-all duration-500">
@@ -279,8 +275,7 @@ const AcuerdoEducacion = () => {
               Medir para transformar.
             </p>
             <p className="text-sm sm:text-base md:text-lg text-primary-900 max-w-3xl mx-auto leading-relaxed">
-              Colombia tiene datos educativos dispersos en SIMAT, SNIES, ICFES y SPADIES. 
-              Ninguno se habla entre sí. Sin datos integrados no hay política pública efectiva.
+              Lo que no se mide, no se mejora. Lo que no se publica, no se fiscaliza. Colombia tiene datos educativos valiosos dispersos en sistemas que no se comunican entre sí: SIMAT, SNIES, ICFES, SPADIES. Hoy no hay forma de seguir la trayectoria de un estudiante desde primaria hasta el mercado laboral. Sin esa trazabilidad, toda política pública opera a ciegas.
             </p>
           </div>
 
@@ -290,22 +285,22 @@ const AcuerdoEducacion = () => {
               {
                 icon: FileCheck,
                 title: "SUIE: Sistema Único de Información Educativa",
-                desc: "Integrar todos los sistemas existentes en una sola plataforma con interoperabilidad real.",
+                desc: "Integrar las bases de datos existentes en una plataforma interoperable, con dashboards públicos en tiempo real.",
               },
               {
                 icon: Fingerprint,
                 title: "ID Único del Estudiante",
-                desc: "Un identificador que acompañe al estudiante desde preescolar hasta su vida laboral.",
+                desc: "Un identificador único estudiantil que permita el seguimiento longitudinal de trayectorias educativas.",
               },
               {
                 icon: FolderOpen,
                 title: "Datos abiertos",
-                desc: "Liberar datos de resultados educativos para que investigadores, EdTechs y sociedad civil puedan innovar.",
+                desc: "Datos abiertos con licencias reutilizables para que investigadores, EdTechs y la ciudadanía puedan fiscalizar el sistema.",
               },
               {
                 icon: BarChart3,
                 title: "Recursos atados a resultados",
-                desc: "Vincular la asignación de recursos públicos a indicadores de impacto, no solo a cobertura.",
+                desc: "Vincular la asignación de recursos públicos a resultados verificables de calidad, equidad y pertinencia laboral.",
               },
             ].map((item) => (
               <Card key={item.title} className="p-5 sm:p-6 md:p-8 bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
@@ -321,6 +316,10 @@ const AcuerdoEducacion = () => {
               </Card>
             ))}
           </div>
+
+          <p className="text-center text-base sm:text-lg md:text-xl font-bold text-accent mt-8 sm:mt-10 md:mt-12 max-w-3xl mx-auto italic">
+            Este es el pilar más complejo y el más incómodo políticamente. Por eso es el más necesario.
+          </p>
 
           {/* Sistemas actuales */}
           <div className="mt-6 sm:mt-8 md:mt-10 text-center">
@@ -343,7 +342,7 @@ const AcuerdoEducacion = () => {
             </h2>
             <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
             <p className="text-sm sm:text-base md:text-lg text-primary-900 max-w-3xl mx-auto leading-relaxed">
-              El cambio no depende de un solo sector. Cada uno tiene compromisos concretos.
+              Este acuerdo pide reglas claras para trabajar juntos.
             </p>
           </div>
 
@@ -354,19 +353,9 @@ const AcuerdoEducacion = () => {
                 <Building2 className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 text-center">Sector Público</h3>
-              <ul className="space-y-3 sm:space-y-4">
-                {[
-                  "Crear el sandbox regulatorio",
-                  "Integrar sistemas de datos (SUIE)",
-                  "Vincular recursos a resultados",
-                  "Adoptar estándares mínimos de competencias",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2 sm:gap-3">
-                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-accent-brand flex-shrink-0 mt-0.5" />
-                    <span className="text-xs sm:text-sm md:text-base text-white/90">{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed text-center">
+                Implementar un sandbox educativo piloto y abrir los datos del sistema.
+              </p>
             </Card>
 
             {/* Sector Privado */}
@@ -375,19 +364,9 @@ const AcuerdoEducacion = () => {
                 <Briefcase className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 text-center">Sector Privado</h3>
-              <ul className="space-y-3 sm:space-y-4">
-                {[
-                  "Participar activamente en el sandbox",
-                  "Reportar métricas de impacto",
-                  "Alinearse a estándares curriculares mínimos",
-                  "Invertir en formación docente en IA",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2 sm:gap-3">
-                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white/80 flex-shrink-0 mt-0.5" />
-                    <span className="text-xs sm:text-sm md:text-base text-white/90">{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed text-center">
+                Transparencia en resultados cuando se reciban recursos públicos.
+              </p>
             </Card>
 
             {/* Tercer Sector */}
@@ -396,19 +375,9 @@ const AcuerdoEducacion = () => {
                 <Heart className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 text-center">Tercer Sector</h3>
-              <ul className="space-y-3 sm:space-y-4">
-                {[
-                  "Ser puente entre público y privado",
-                  "Facilitar investigación con datos abiertos",
-                  "Validar modelos en territorio",
-                  "Amplificar voces de comunidades educativas",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2 sm:gap-3">
-                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-accent-brand flex-shrink-0 mt-0.5" />
-                    <span className="text-xs sm:text-sm md:text-base text-white/90">{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed text-center">
+                Compartir datos de impacto en formato abierto.
+              </p>
             </Card>
           </div>
         </div>
@@ -432,6 +401,9 @@ const AcuerdoEducacion = () => {
                 Medir para transformar.
               </p>
             </div>
+            <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8">
+              El marco legal existe. La capacidad existe. Los actores comprometidos existen. Falta firmar.
+            </p>
             <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 md:mb-10">
               Colombia EdTech marca la parada. ¿Quién se suma?
             </p>
