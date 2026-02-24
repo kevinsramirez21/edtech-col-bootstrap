@@ -126,49 +126,6 @@ const AcuerdoEducacion = () => {
         </div>
       </Section>
 
-      {/* El Problema */}
-      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-4 sm:mb-6 rounded-full bg-accent flex items-center justify-center">
-              <AlertTriangle className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
-              El Problema
-            </h2>
-            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto text-primary-900 leading-relaxed">
-              El sistema educativo colombiano está desarticulado. El sector público diseña políticas desde Bogotá, 
-              el sector privado innova por su cuenta y el tercer sector interviene donde puede. 
-              Cada uno con su agenda, sin rendición de cuentas compartida.
-            </p>
-          </div>
-
-          {/* 5 KPIs */}
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-12 md:mb-16">
-            {[
-              { value: "6/10", label: "Empresas no encuentran talento", icon: Briefcase, color: "bg-accent" },
-              { value: "~50%", label: "Deserción en educación superior", icon: GraduationCap, color: "bg-primary-700" },
-              { value: "2.3M", label: "Jóvenes NINIs en Colombia", icon: Users, color: "bg-accent" },
-              { value: "79.8%", label: "Hogares rurales sin internet", icon: Wifi, color: "bg-primary-700" },
-              { value: "68%", label: "Docentes sin formación en IA", icon: Brain, color: "bg-accent" },
-            ].map((kpi) => (
-              <Card key={kpi.label} className="p-4 sm:p-5 md:p-6 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
-                <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 mx-auto mb-2 sm:mb-3 md:mb-4 rounded-full ${kpi.color} flex items-center justify-center`}>
-                  <kpi.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
-                </div>
-                <div className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2 text-accent">{kpi.value}</div>
-                <div className="text-[10px] sm:text-xs md:text-sm text-primary-900 leading-snug">{kpi.label}</div>
-              </Card>
-            ))}
-          </div>
-
-          <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary-700 max-w-3xl mx-auto">
-            No faltan diagnósticos. Falta un marco común para actuar.
-          </p>
-        </div>
-      </Section>
-
       {/* La Propuesta - Intro */}
       <Section className="py-8 sm:py-10 md:py-14 bg-white border-b border-gray-300/50">
         <div className="container max-w-5xl mx-auto px-4 sm:px-6 text-center">
@@ -457,6 +414,48 @@ const AcuerdoEducacion = () => {
               </p>
             </Card>
           </div>
+        </div>
+      </Section>
+
+      {/* El Problema - Datos de contexto */}
+      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-4 sm:mb-6 rounded-full bg-accent flex items-center justify-center">
+              <AlertTriangle className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
+              ¿Por qué es urgente?
+            </h2>
+            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto text-primary-900 leading-relaxed">
+              El sistema educativo colombiano está desarticulado. El sector público diseña políticas desde Bogotá, 
+              el sector privado innova por su cuenta y el tercer sector interviene donde puede. 
+              Cada uno con su agenda, sin rendición de cuentas compartida.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-12 md:mb-16">
+            {[
+              { value: "6/10", label: "Empresas no encuentran talento", icon: Briefcase, color: "bg-accent" },
+              { value: "~50%", label: "Deserción en educación superior", icon: GraduationCap, color: "bg-primary-700" },
+              { value: "2.3M", label: "Jóvenes NINIs en Colombia", icon: Users, color: "bg-accent" },
+              { value: "79.8%", label: "Hogares rurales sin internet", icon: Wifi, color: "bg-primary-700" },
+              { value: "68%", label: "Docentes sin formación en IA", icon: Brain, color: "bg-accent" },
+            ].map((kpi) => (
+              <Card key={kpi.label} className="p-4 sm:p-5 md:p-6 text-center bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 mx-auto mb-2 sm:mb-3 md:mb-4 rounded-full ${kpi.color} flex items-center justify-center`}>
+                  <kpi.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
+                </div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2 text-accent">{kpi.value}</div>
+                <div className="text-[10px] sm:text-xs md:text-sm text-primary-900 leading-snug">{kpi.label}</div>
+              </Card>
+            ))}
+          </div>
+
+          <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary-700 max-w-3xl mx-auto">
+            No faltan diagnósticos. Falta un marco común para actuar.
+          </p>
         </div>
       </Section>
 
