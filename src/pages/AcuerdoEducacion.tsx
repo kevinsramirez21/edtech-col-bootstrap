@@ -247,14 +247,14 @@ const AcuerdoEducacion = () => {
               <BookOpen className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" />
             </div>
             <Badge className="mb-3 sm:mb-4 bg-white/20 text-white border-white/30 text-xs sm:text-sm">Pilar 2</Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight text-white">
               Acuerdos Mínimos Curriculares
             </h2>
             <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-accent-brand to-white mx-auto mb-6 sm:mb-8 md:mb-10 rounded-full"></div>
-            <p className="text-base sm:text-lg md:text-xl font-bold text-white/90 max-w-3xl mx-auto mb-4">
+            <p className="text-base sm:text-lg md:text-xl font-bold text-white max-w-3xl mx-auto mb-4">
               Piso de calidad, no currículo único.
             </p>
-            <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-white max-w-3xl mx-auto leading-relaxed">
               Proponemos acuerdos mínimos sobre qué competencias debe alcanzar un estudiante en cada nivel, en materias clave. Un estándar que permita medir, comparar y mejorar, sin eliminar la autonomía pedagógica de las instituciones.
             </p>
           </div>
@@ -263,13 +263,13 @@ const AcuerdoEducacion = () => {
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 mb-8 sm:mb-12 md:mb-16">
             <Card className="p-6 sm:p-8 md:p-10 text-center bg-white/10 border-0 backdrop-blur-sm">
               <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-2 sm:mb-3">29%</div>
-              <p className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-white leading-relaxed">
                 de los estudiantes colombianos alcanzó el nivel mínimo de competencia en matemáticas (PISA 2022, OECD 2023)
               </p>
             </Card>
             <Card className="p-6 sm:p-8 md:p-10 text-center bg-white/10 border-0 backdrop-blur-sm">
               <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-accent-brand mb-2 sm:mb-3">69%</div>
-              <p className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-white leading-relaxed">
                 es el promedio OCDE (OECD, 2023). Esa brecha no se cierra con más cobertura. Se cierra con claridad sobre qué se debe enseñar y a qué nivel.
               </p>
             </Card>
@@ -296,8 +296,8 @@ const AcuerdoEducacion = () => {
             ].map((item) => (
               <Card key={item.title} className="p-5 sm:p-6 md:p-8 bg-white/10 border-0 backdrop-blur-sm hover:bg-white/20 transition-all duration-500">
                 <item.icon className="w-8 h-8 sm:w-10 sm:h-10 text-accent-brand mb-3 sm:mb-4" />
-                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3">{item.title}</h3>
-                <p className="text-sm sm:text-base text-white/80 leading-relaxed">{item.desc}</p>
+                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 text-white">{item.title}</h3>
+                <p className="text-sm sm:text-base text-white leading-relaxed">{item.desc}</p>
               </Card>
             ))}
           </div>
