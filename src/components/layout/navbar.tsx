@@ -35,10 +35,10 @@ const navItems = [
     ]
   },
   {
-    name: "Nuestra Posición",
+    name: "Nuestra Postura",
     isDropdown: true,
     items: [
-      { name: "Acuerdo por la Educación", href: "/nuestra-posicion/acuerdo-educacion" },
+      { name: "Acuerdo por la Educación", href: "/nuestra-postura/acuerdo-educacion" },
     ]
   },
   { name: "Voluntariado", href: "/voluntariado" },
