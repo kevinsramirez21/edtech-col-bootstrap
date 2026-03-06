@@ -131,33 +131,37 @@ const AcuerdoEducacion = () => {
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white leading-tight">
               El Problema
             </h2>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto text-white/90 leading-relaxed mb-10 sm:mb-14 md:mb-20">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto text-white/90 leading-relaxed">
               Muchas ideas, datos y soluciones, pero poca gobernanza democrática de la educación.
             </p>
+          </div>
+        </div>
+      </Section>
 
-            {/* La Propuesta */}
-            <div className="w-16 sm:w-20 md:w-24 h-px bg-white/30 mx-auto mb-8 sm:mb-10 md:mb-14"></div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white leading-tight">
-              La Propuesta
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto mb-8 sm:mb-10">
-              Colombia EdTech busca 3 acuerdos con todo el sector de educación.
-            </p>
-            {/* Preview de los 3 pilares */}
-            <div className="flex justify-center gap-4 sm:gap-6 md:gap-8">
-              {[
-                { num: "1", label: "Sandbox Regulatorio", color: "bg-white/20" },
-                { num: "2", label: "Acuerdos de Pedagogía", color: "bg-accent" },
-                { num: "3", label: "Gobernanza y Datos", color: "bg-white/20" },
-              ].map((pilar) => (
-                <div key={pilar.num} className="flex flex-col items-center gap-2">
-                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full ${pilar.color} flex items-center justify-center text-white font-bold text-lg sm:text-xl backdrop-blur-sm`}>
-                    {pilar.num}
-                  </div>
-                  <span className="text-[10px] sm:text-xs text-white/70 font-medium">{pilar.label}</span>
+      {/* La Propuesta */}
+      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
+        <div className="container max-w-5xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-primary-700 leading-tight">
+            La Propuesta
+          </h2>
+          <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-900 leading-relaxed max-w-3xl mx-auto mb-8 sm:mb-10">
+            Colombia EdTech busca 3 acuerdos con todo el sector de educación.
+          </p>
+          {/* Preview de los 3 pilares */}
+          <div className="flex justify-center gap-4 sm:gap-6 md:gap-8">
+            {[
+              { num: "1", label: "Sandbox Regulatorio", color: "bg-primary-700" },
+              { num: "2", label: "Acuerdos de Pedagogía", color: "bg-accent" },
+              { num: "3", label: "Gobernanza y Datos", color: "bg-primary-700" },
+            ].map((pilar) => (
+              <div key={pilar.num} className="flex flex-col items-center gap-2">
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full ${pilar.color} flex items-center justify-center text-white font-bold text-lg sm:text-xl`}>
+                  {pilar.num}
                 </div>
-              ))}
-            </div>
+                <span className="text-[10px] sm:text-xs text-primary-900/70 font-medium">{pilar.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
