@@ -378,55 +378,8 @@ const AcuerdoEducacion = () => {
         </div>
       </Section>
 
-      {/* Llamado a la Acción - 3 columnas */}
-      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-primary-700 leading-tight">
-              Llamado a la Acción
-            </h2>
-            <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
-            <p className="text-sm sm:text-base md:text-lg text-primary-900 max-w-3xl mx-auto leading-relaxed">
-              Este acuerdo pide reglas claras para trabajar juntos.
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {/* Sector Público */}
-            <Card className="p-5 sm:p-6 md:p-8 bg-gradient-to-br from-primary-700 to-primary-900 text-white border-0 shadow-xl">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 sm:mb-6 rounded-full bg-white/20 flex items-center justify-center">
-                <Building2 className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-              </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 text-center">Sector Público</h3>
-              <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed text-center">
-                Implementar un sandbox educativo piloto y abrir los datos del sistema.
-              </p>
-            </Card>
 
-            {/* Sector Privado */}
-            <Card className="p-5 sm:p-6 md:p-8 bg-gradient-to-br from-accent to-accent/80 text-white border-0 shadow-xl">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 sm:mb-6 rounded-full bg-white/20 flex items-center justify-center">
-                <Briefcase className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-              </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 text-center">Sector Privado</h3>
-              <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed text-center">
-                Transparencia en resultados cuando se reciban recursos públicos.
-              </p>
-            </Card>
-
-            {/* Tercer Sector */}
-            <Card className="p-5 sm:p-6 md:p-8 bg-gradient-to-br from-primary-900 to-primary-700 text-white border-0 shadow-xl">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 sm:mb-6 rounded-full bg-white/20 flex items-center justify-center">
-                <Heart className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-              </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 text-center">Tercer Sector</h3>
-              <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed text-center">
-                Compartir datos de impacto en formato abierto.
-              </p>
-            </Card>
-          </div>
-        </div>
-      </Section>
 
 
       {/* CTA Final */}
