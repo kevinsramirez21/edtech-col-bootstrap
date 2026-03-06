@@ -105,8 +105,8 @@ const AcuerdoEducacion = () => {
         <meta property="og:description" content={meta.ogDescription} />
       </Helmet>
 
-      {/* Hero */}
-      <Section className="py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center">
+      {/* Hero con Problema y Propuesta integrados */}
+      <Section className="py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden flex items-center">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 left-10 sm:top-20 sm:left-20 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-accent-brand rounded-full blur-3xl"></div>
           <div className="absolute bottom-10 right-10 sm:bottom-20 sm:right-20 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-sand rounded-full blur-3xl"></div>
@@ -119,48 +119,45 @@ const AcuerdoEducacion = () => {
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight drop-shadow-2xl">
               Acuerdo Básico por la Educación de Colombia
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl max-w-4xl mx-auto text-white/90 leading-relaxed mb-6 sm:mb-8 md:mb-12 font-medium">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl max-w-4xl mx-auto text-white/90 leading-relaxed mb-10 sm:mb-14 md:mb-20 font-medium">
               Reglas del Juego: Educación en Colombia
             </p>
-          </div>
-        </div>
-      </Section>
 
-      {/* El Problema + La Propuesta (unificadas) */}
-      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
-        <div className="container max-w-5xl mx-auto px-4 sm:px-6 text-center">
-          <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-4 sm:mb-6 rounded-full bg-accent flex items-center justify-center">
-            <AlertTriangle className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
-          </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-primary-700 leading-tight">
-            El Problema
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto text-primary-900 leading-relaxed mb-8 sm:mb-10 md:mb-14">
-            Muchas ideas, datos y soluciones, pero poca gobernanza democrática de la educación.
-          </p>
+            {/* El Problema */}
+            <div className="w-16 sm:w-20 md:w-24 h-px bg-white/30 mx-auto mb-8 sm:mb-10 md:mb-14"></div>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-4 sm:mb-6 rounded-full bg-accent flex items-center justify-center">
+              <AlertTriangle className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
+            </div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white leading-tight">
+              El Problema
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto text-white/90 leading-relaxed mb-10 sm:mb-14 md:mb-20">
+              Muchas ideas, datos y soluciones, pero poca gobernanza democrática de la educación.
+            </p>
 
-          <div className="w-20 sm:w-24 md:w-32 h-px bg-primary-700/20 mx-auto mb-8 sm:mb-10 md:mb-14"></div>
-
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-primary-700 leading-tight">
-            La Propuesta
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-900 leading-relaxed max-w-3xl mx-auto mb-8">
-            Colombia EdTech busca 3 acuerdos con todo el sector de educación.
-          </p>
-          {/* Preview de los 3 pilares */}
-          <div className="flex justify-center gap-4 sm:gap-6 md:gap-8">
-            {[
-              { num: "1", label: "Sandbox Regulatorio", color: "bg-primary-700" },
-              { num: "2", label: "Acuerdos de Pedagogía", color: "bg-accent" },
-              { num: "3", label: "Gobernanza y Datos", color: "bg-primary-900" },
-            ].map((pilar) => (
-              <div key={pilar.num} className="flex flex-col items-center gap-2">
-                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full ${pilar.color} flex items-center justify-center text-white font-bold text-lg sm:text-xl`}>
-                  {pilar.num}
+            {/* La Propuesta */}
+            <div className="w-16 sm:w-20 md:w-24 h-px bg-white/30 mx-auto mb-8 sm:mb-10 md:mb-14"></div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white leading-tight">
+              La Propuesta
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto mb-8 sm:mb-10">
+              Colombia EdTech busca 3 acuerdos con todo el sector de educación.
+            </p>
+            {/* Preview de los 3 pilares */}
+            <div className="flex justify-center gap-4 sm:gap-6 md:gap-8">
+              {[
+                { num: "1", label: "Sandbox Regulatorio", color: "bg-white/20" },
+                { num: "2", label: "Acuerdos de Pedagogía", color: "bg-accent" },
+                { num: "3", label: "Gobernanza y Datos", color: "bg-white/20" },
+              ].map((pilar) => (
+                <div key={pilar.num} className="flex flex-col items-center gap-2">
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full ${pilar.color} flex items-center justify-center text-white font-bold text-lg sm:text-xl backdrop-blur-sm`}>
+                    {pilar.num}
+                  </div>
+                  <span className="text-[10px] sm:text-xs text-white/70 font-medium">{pilar.label}</span>
                 </div>
-                <span className="text-[10px] sm:text-xs text-primary-900/70 font-medium">{pilar.label}</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </Section>
