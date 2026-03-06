@@ -218,7 +218,7 @@ const AcuerdoEducacion = () => {
                     Cohortes con resultados públicos
                   </h3>
                   <p className="text-sm sm:text-base text-primary-900 leading-relaxed">
-                    Cohortes de 12 a 24 meses. Resultados públicos. Lo que funciona, se escala. Lo que no, se descarta.
+                    Cohortes de 12 a 24 meses con participación de instituciones educativas, empresas EdTech y evaluadores independientes. Los resultados se publican abiertamente: lo que demuestra impacto medible se escala con apoyo público. Lo que no funciona, se descarta con transparencia y aprendizaje documentado para todo el ecosistema.
                   </p>
                 </div>
               </div>
