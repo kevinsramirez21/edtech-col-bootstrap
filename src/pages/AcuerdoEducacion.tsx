@@ -149,19 +149,14 @@ const AcuerdoEducacion = () => {
             La Propuesta
           </h2>
           <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-6 sm:mb-8 md:mb-10 rounded-full"></div>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-900 leading-relaxed max-w-3xl mx-auto mb-6">
-            Colombia EdTech convoca a los tres sectores (público, privado y tercer sector) a un acuerdo mínimo basado en <span className="font-bold text-accent">tres pilares</span>. Un piso común desde el cual trabajar juntos.
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-900 leading-relaxed max-w-3xl mx-auto mb-8">
+            Colombia EdTech busca 3 acuerdos con todo el sector de educación.
           </p>
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
-            <Badge className="bg-primary-700 text-white text-xs sm:text-sm md:text-base px-4 py-2">Sector Público</Badge>
-            <Badge className="bg-accent text-white text-xs sm:text-sm md:text-base px-4 py-2">Sector Privado</Badge>
-            <Badge className="bg-primary-900 text-white text-xs sm:text-sm md:text-base px-4 py-2">Tercer Sector</Badge>
-          </div>
           {/* Preview de los 3 pilares */}
           <div className="flex justify-center gap-4 sm:gap-6 md:gap-8">
             {[
               { num: "1", label: "Sandbox Regulatorio", color: "bg-primary-700" },
-              { num: "2", label: "Acuerdos Curriculares", color: "bg-accent" },
+              { num: "2", label: "Acuerdos de Pedagogía", color: "bg-accent" },
               { num: "3", label: "Gobernanza y Datos", color: "bg-primary-900" },
             ].map((pilar) => (
               <div key={pilar.num} className="flex flex-col items-center gap-2">
