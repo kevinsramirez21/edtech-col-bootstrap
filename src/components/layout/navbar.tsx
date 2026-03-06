@@ -15,16 +15,14 @@ import {
 
 const navItems = [
   { name: "Inicio", href: "/" },
-  { name: "Somos", href: "/somos" },
-  { 
-    name: "Asociados", 
+  {
+    name: "Nuestra Postura",
     isDropdown: true,
     items: [
-      { name: "Conoce los Beneficios", href: "/asociados" },
-      { name: "Conoce los Asociados", href: "/asociados/directorio" },
+      { name: "Acuerdo por la Educación", href: "/nuestra-postura/acuerdo-educacion" },
     ]
   },
-  { name: "Aliados", href: "/aliados" },
+  { name: "Somos", href: "/somos" },
   { 
     name: "Mundo Edtech", 
     isDropdown: true,
@@ -32,13 +30,9 @@ const navItems = [
       { name: "Panorama", href: "/mundo-edtech/panorama" },
       { name: "Eventos", href: "/eventos" },
       { name: "Noticias", href: "/mundo-edtech/noticias" },
-    ]
-  },
-  {
-    name: "Nuestra Postura",
-    isDropdown: true,
-    items: [
-      { name: "Acuerdo por la Educación", href: "/nuestra-postura/acuerdo-educacion" },
+      { name: "Asociados", href: "/asociados" },
+      { name: "Directorio", href: "/asociados/directorio" },
+      { name: "Aliados", href: "/aliados" },
     ]
   },
   { name: "Voluntariado", href: "/voluntariado" },
