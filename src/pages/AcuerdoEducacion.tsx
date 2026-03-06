@@ -366,15 +366,6 @@ const AcuerdoEducacion = () => {
             Este es el pilar más complejo y el más incómodo políticamente. Por eso es el más necesario.
           </p>
 
-          {/* Sistemas actuales */}
-          <div className="mt-6 sm:mt-8 md:mt-10 text-center">
-            <p className="text-xs sm:text-sm text-primary-900/70 mb-3">Sistemas actuales que necesitan integración:</p>
-            <div className="flex flex-wrap justify-center gap-2">
-              {["SIMAT", "SNIES", "ICFES", "SPADIES"].map((s) => (
-                <Badge key={s} variant="outline" className="text-xs sm:text-sm border-primary-700/40 text-primary-700">{s}</Badge>
-              ))}
-            </div>
-          </div>
         </div>
       </Section>
 
