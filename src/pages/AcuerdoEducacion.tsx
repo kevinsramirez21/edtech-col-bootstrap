@@ -91,7 +91,7 @@ function EmailCollectorForm() {
 
 const AcuerdoEducacion = () => {
   const meta = generatePageMeta({
-    title: "Acuerdo Básico por la Educación de Colombia 2030",
+    title: "Acuerdo Básico por la Educación de Colombia",
     description:
       "Tres pilares para transformar la educación en Colombia: sandbox regulatorio, acuerdos curriculares mínimos y gobernanza con datos. Colombia EdTech marca la parada.",
   });
@@ -114,10 +114,10 @@ const AcuerdoEducacion = () => {
         <div className="container mx-auto relative z-10 px-4 sm:px-6">
           <div className="text-center max-w-5xl mx-auto animate-fade-in">
             <Badge className="mb-4 sm:mb-6 bg-white/20 text-white border-white/30 text-xs sm:text-sm md:text-base px-4 py-1.5">
-              Colombia EdTech · Febrero 2026
+              Colombia EdTech · Marzo 2026
             </Badge>
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight drop-shadow-2xl">
-              Acuerdo Básico por la Educación de Colombia 2030
+              Acuerdo Básico por la Educación de Colombia
             </h1>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl max-w-4xl mx-auto text-white/90 leading-relaxed mb-6 sm:mb-8 md:mb-12 font-medium">
               Reglas del Juego: Educación en Colombia
