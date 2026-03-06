@@ -126,29 +126,24 @@ const AcuerdoEducacion = () => {
         </div>
       </Section>
 
-      {/* El Problema */}
+      {/* El Problema + La Propuesta (unificadas) */}
       <Section className="py-10 sm:py-14 md:py-20 bg-sand">
         <div className="container max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-4 sm:mb-6 rounded-full bg-accent flex items-center justify-center">
             <AlertTriangle className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-primary-700 leading-tight">
             El Problema
           </h2>
-          <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-4 sm:mb-6 md:mb-8 rounded-full"></div>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto text-primary-900 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto text-primary-900 leading-relaxed mb-8 sm:mb-10 md:mb-14">
             Muchas ideas, datos y soluciones, pero poca gobernanza democrática de la educación.
           </p>
-        </div>
-      </Section>
 
-      {/* La Propuesta - Intro */}
-      <Section className="py-8 sm:py-10 md:py-14 bg-sand border-b border-primary-700/10">
-        <div className="container max-w-5xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
+          <div className="w-20 sm:w-24 md:w-32 h-px bg-primary-700/20 mx-auto mb-8 sm:mb-10 md:mb-14"></div>
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-primary-700 leading-tight">
             La Propuesta
           </h2>
-          <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-primary-700 to-accent-brand mx-auto mb-6 sm:mb-8 md:mb-10 rounded-full"></div>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-900 leading-relaxed max-w-3xl mx-auto mb-8">
             Colombia EdTech busca 3 acuerdos con todo el sector de educación.
           </p>
