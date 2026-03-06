@@ -193,12 +193,12 @@ const AcuerdoEducacion = () => {
 
           {/* Propuestas */}
           <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-            <Card className="p-5 sm:p-6 md:p-8 bg-white border-0 border-l-4 border-l-primary-700 shadow-xl hover:shadow-2xl transition-all duration-500 flex">
-              <div className="flex items-start gap-3 sm:gap-4 flex-1">
+            <Card className="p-5 sm:p-6 md:p-8 bg-white border-0 border-l-4 border-l-primary-700 shadow-xl hover:shadow-2xl transition-all duration-500 flex items-center">
+              <div className="flex items-start gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-700/10 flex items-center justify-center flex-shrink-0">
                   <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-primary-700" />
                 </div>
-                <div className="flex flex-col flex-1">
+                <div>
                   <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary-700 mb-2">
                     Sandbox Nacional de Innovación Educativa
                   </h3>
@@ -208,12 +208,12 @@ const AcuerdoEducacion = () => {
                 </div>
               </div>
             </Card>
-            <Card className="p-5 sm:p-6 md:p-8 bg-white border-0 border-l-4 border-l-accent shadow-xl hover:shadow-2xl transition-all duration-500 flex">
-              <div className="flex items-start gap-3 sm:gap-4 flex-1">
+            <Card className="p-5 sm:p-6 md:p-8 bg-white border-0 border-l-4 border-l-accent shadow-xl hover:shadow-2xl transition-all duration-500 flex items-center">
+              <div className="flex items-start gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
                   <Target className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
                 </div>
-                <div className="flex flex-col flex-1">
+                <div>
                   <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary-700 mb-2">
                     Cohortes con resultados públicos
                   </h3>
