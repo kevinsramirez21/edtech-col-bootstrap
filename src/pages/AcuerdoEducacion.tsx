@@ -149,17 +149,17 @@ const AcuerdoEducacion = () => {
             Colombia EdTech busca 3 acuerdos con todo el sector de educación.
           </p>
           {/* Preview de los 3 pilares */}
-          <div className="flex justify-center gap-4 sm:gap-6 md:gap-8">
+          <div className="flex justify-center gap-6 sm:gap-10 md:gap-14">
             {[
               { num: "1", label: "Sandbox Regulatorio", color: "bg-primary-700" },
               { num: "2", label: "Acuerdos de Pedagogía", color: "bg-accent" },
               { num: "3", label: "Gobernanza y Datos", color: "bg-primary-700" },
             ].map((pilar) => (
-              <div key={pilar.num} className="flex flex-col items-center gap-2">
-                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full ${pilar.color} flex items-center justify-center text-white font-bold text-lg sm:text-xl`}>
+              <div key={pilar.num} className="flex flex-col items-center gap-3 sm:gap-4">
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full ${pilar.color} flex items-center justify-center text-white font-bold text-2xl sm:text-3xl md:text-4xl shadow-lg`}>
                   {pilar.num}
                 </div>
-                <span className="text-[10px] sm:text-xs text-primary-900/70 font-medium">{pilar.label}</span>
+                <span className="text-xs sm:text-sm md:text-base text-primary-900/80 font-semibold">{pilar.label}</span>
               </div>
             ))}
           </div>
