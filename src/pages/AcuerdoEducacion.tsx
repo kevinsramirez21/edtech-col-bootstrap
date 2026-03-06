@@ -268,9 +268,9 @@ const AcuerdoEducacion = () => {
               </p>
             </Card>
             <Card className="p-6 sm:p-8 md:p-10 text-center bg-white/10 border-0 backdrop-blur-sm">
-              <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-accent-brand mb-2 sm:mb-3">69%</div>
+              <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-sand mb-2 sm:mb-3">69%</div>
               <p className="text-sm sm:text-base md:text-lg text-white leading-relaxed">
-                es el promedio OCDE (OECD, 2023). Esa brecha no se cierra con más cobertura. Se cierra con claridad sobre qué se debe enseñar y a qué nivel.
+                de los estudiantes de la OCDE alcanzó el nivel mínimo en matemáticas (OECD, 2023). Esa brecha no se cierra con más cobertura. Se cierra con claridad sobre qué se debe enseñar y a qué nivel.
               </p>
             </Card>
           </div>
