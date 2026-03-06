@@ -400,11 +400,8 @@ const AcuerdoEducacion = () => {
                 Medir para transformar.
               </p>
             </div>
-            <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8">
-              El marco legal existe. La capacidad existe. Los actores comprometidos existen. Falta firmar.
-            </p>
             <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 md:mb-10">
-              Colombia EdTech marca la parada. ¿Quién se suma?
+              Fortalecer el ecosistema EdTech y acelerar la educación de Colombia debe ser una política de Estado.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Button size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-xl shadow-2xl hover:shadow-accent/40 transition-all duration-500 hover:scale-105 text-sm sm:text-base md:text-lg" asChild>
