@@ -143,7 +143,7 @@ const AcuerdoEducacion = () => {
       </Section>
 
       {/* La Propuesta - Intro */}
-      <Section className="py-8 sm:py-10 md:py-14 bg-white border-b border-gray-300/50">
+      <Section className="py-8 sm:py-10 md:py-14 bg-sand border-b border-primary-700/10">
         <div className="container max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-primary-700 leading-tight">
             La Propuesta
@@ -176,7 +176,7 @@ const AcuerdoEducacion = () => {
       </Section>
 
       {/* Pilar 1 - Sandbox Regulatorio */}
-      <Section className="py-10 sm:py-14 md:py-20 bg-gray-50">
+      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-4 sm:mb-6 rounded-full bg-primary-700 flex items-center justify-center">
@@ -384,7 +384,7 @@ const AcuerdoEducacion = () => {
       </Section>
 
       {/* Llamado a la Acción - 3 columnas */}
-      <Section className="py-10 sm:py-14 md:py-20 bg-gray-50">
+      <Section className="py-10 sm:py-14 md:py-20 bg-sand">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-primary-700 leading-tight">
