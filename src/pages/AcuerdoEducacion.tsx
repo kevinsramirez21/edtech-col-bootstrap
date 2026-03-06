@@ -106,7 +106,7 @@ const AcuerdoEducacion = () => {
       </Helmet>
 
       {/* Hero con Problema y Propuesta integrados */}
-      <Section className="py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden flex items-center">
+      <Section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-primary-900 via-primary-700 to-primary-900 text-white relative overflow-hidden min-h-screen max-h-[110vh] flex items-center">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 left-10 sm:top-20 sm:left-20 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-accent-brand rounded-full blur-3xl"></div>
           <div className="absolute bottom-10 right-10 sm:bottom-20 sm:right-20 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-sand rounded-full blur-3xl"></div>
