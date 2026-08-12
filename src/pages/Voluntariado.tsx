@@ -327,19 +327,39 @@ const Voluntariado = () => {
         </div>
       </Section>
 
-      {/* Formulario */}
+      {/* Video + Formulario */}
       <div id="form" className="py-8 sm:py-12 md:py-16 bg-[#F4E8DD]">
         <div className="container max-w-3xl mx-auto px-4 sm:px-6">
+          {/* Video (pendiente) */}
+          <div className="mb-8 sm:mb-12">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0B47CE] mb-2 sm:mb-3 text-center font-funnel">
+              Mira este video antes de aplicar
+            </h3>
+            <p className="text-sm sm:text-base text-[#0B47CE] mb-4 sm:mb-6 text-center max-w-2xl mx-auto">
+              En pocos minutos te contamos cómo funciona el voluntariado de Colombia EdTech.
+            </p>
+            <div className="aspect-video w-full rounded-xl bg-[#0B47CE]/10 border-2 border-dashed border-[#0B47CE]/30 flex flex-col items-center justify-center text-center px-6">
+              <div className="w-14 h-14 rounded-full bg-[#0B47CE]/15 flex items-center justify-center mb-3">
+                <ArrowRight className="w-6 h-6 text-[#0B47CE]" />
+              </div>
+              <p className="text-sm sm:text-base font-semibold text-[#0B47CE]">Video próximamente</p>
+              <p className="text-xs sm:text-sm text-[#0B47CE]/70 mt-1">
+                Aquí irá el video de bienvenida al voluntariado.
+              </p>
+            </div>
+          </div>
+
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0B47CE] mb-2 sm:mb-3 text-center font-funnel">
             ¿Quieres ser voluntario/a?
           </h3>
           <p className="text-sm sm:text-base text-[#0B47CE] mb-4 sm:mb-6 text-center max-w-2xl mx-auto">
-            Completa el siguiente formulario y nos pondremos en contacto contigo para comenzar esta increíble experiencia
+            Completa el siguiente formulario paso a paso y nos pondremos en contacto contigo
           </p>
           
           <VolunteerApplicationForm />
         </div>
       </div>
+
     </>
   );
 };
