@@ -246,12 +246,12 @@ export function VolunteerApplicationForm() {
     const valid = await form.trigger(steps[step].fields as never, { shouldFocus: true });
     if (!valid) return;
     setStep((s) => Math.min(s + 1, steps.length - 1));
-    document.getElementById("form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById("volunteer-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const goBack = () => {
     setStep((s) => Math.max(s - 1, 0));
-    document.getElementById("form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById("volunteer-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const onSubmit = async (values: FormValues) => {
@@ -335,7 +335,7 @@ export function VolunteerApplicationForm() {
   }
 
   return (
-    <div className="bg-white rounded-xl p-6 md:p-10 shadow-lg">
+    <div id="volunteer-form" className="bg-white rounded-xl p-6 md:p-10 shadow-lg">
       {/* Progreso */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-3">
