@@ -24,7 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Loader2, Send, CheckCircle } from "lucide-react";
+import { Loader2, Send, CheckCircle, ArrowLeft, ArrowRight } from "lucide-react";
 
 const formSchema = z.object({
   nombre_completo: z.string().trim().min(3, "El nombre debe tener al menos 3 caracteres").max(100, "El nombre es muy largo"),
@@ -44,6 +44,8 @@ const formSchema = z.object({
   acepta_comunicaciones: z.boolean(),
 });
 
+type FormValues = z.infer<typeof formSchema>;
+
 const horasOptions = [
   { value: "2-4", label: "2-4 horas por semana" },
   { value: "4-8", label: "4-8 horas por semana" },
@@ -59,13 +61,45 @@ const areasInteres = [
   { value: "talent", label: "Talent Management" },
 ];
 
+const steps: { title: string; description: string; fields: (keyof FormValues)[] }[] = [
+  {
+    title: "Información personal",
+    description: "Cuéntanos quién eres y cómo contactarte",
+    fields: ["nombre_completo", "correo_electronico", "telefono", "linkedin", "ciudad", "pais"],
+  },
+  {
+    title: "Información profesional",
+    description: "Tu ocupación actual y organización",
+    fields: ["ocupacion", "organizacion"],
+  },
+  {
+    title: "Disponibilidad e intereses",
+    description: "Tiempo disponible y áreas donde quieres aportar",
+    fields: ["horas_semanales", "areas_interes"],
+  },
+  {
+    title: "Cuéntanos sobre ti",
+    description: "Tu motivación y experiencia",
+    fields: ["experiencia_voluntariado", "motivacion", "como_conocio"],
+  },
+  {
+    title: "Confirmación",
+    description: "Revisa y acepta los términos para enviar",
+    fields: ["acepta_terminos", "acepta_comunicaciones"],
+  },
+];
+
+const inputClass = "border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400";
+
 export function VolunteerApplicationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [step, setStep] = useState(0);
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
+    mode: "onTouched",
     defaultValues: {
       nombre_completo: "",
       correo_electronico: "",
@@ -85,7 +119,21 @@ export function VolunteerApplicationForm() {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const isLastStep = step === steps.length - 1;
+
+  const goNext = async () => {
+    const valid = await form.trigger(steps[step].fields as never, { shouldFocus: true });
+    if (!valid) return;
+    setStep((s) => Math.min(s + 1, steps.length - 1));
+    document.getElementById("form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const goBack = () => {
+    setStep((s) => Math.max(s - 1, 0));
+    document.getElementById("form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     try {
       const { error } = await supabase.from("solicitudes_voluntarios").insert([{
@@ -114,6 +162,7 @@ export function VolunteerApplicationForm() {
         description: "Gracias por tu interés en ser voluntario/a. Te contactaremos pronto.",
       });
       form.reset();
+      setStep(0);
     } catch (error) {
       console.error("Error submitting volunteer form:", error);
       toast({
@@ -149,111 +198,126 @@ export function VolunteerApplicationForm() {
 
   return (
     <div className="bg-white rounded-xl p-6 md:p-10 shadow-lg">
+      {/* Progreso */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-sm font-semibold text-[#0B47CE]">
+            Paso {step + 1} de {steps.length}
+          </span>
+          <span className="text-sm text-gray-500">
+            {Math.round(((step + 1) / steps.length) * 100)}% completado
+          </span>
+        </div>
+        <div className="h-2 w-full rounded-full bg-gray-100 overflow-hidden">
+          <div
+            className="h-full bg-[#F73C5C] transition-all duration-300"
+            style={{ width: `${((step + 1) / steps.length) * 100}%` }}
+          />
+        </div>
+        <h4 className="text-lg font-semibold text-[#0B47CE] mt-4">{steps[step].title}</h4>
+        <p className="text-sm text-gray-500">{steps[step].description}</p>
+      </div>
+
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          {/* Información Personal */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-[#0B47CE] border-b border-[#0B47CE]/20 pb-2">
-              Información Personal
-            </h4>
-            
-            <div className="grid md:grid-cols-2 gap-4">
-              <FormField
-                control={form.control}
-                name="nombre_completo"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-[#0B47CE]">Nombre completo *</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Tu nombre completo" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <FormField
-                control={form.control}
-                name="correo_electronico"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-[#0B47CE]">Correo electrónico *</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="tu@email.com" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !isLastStep) e.preventDefault();
+          }}
+          className="space-y-6"
+        >
+          {step === 0 && (
+            <div className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="nombre_completo"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[#0B47CE]">Nombre completo *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Tu nombre completo" {...field} className={inputClass} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="correo_electronico"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[#0B47CE]">Correo electrónico *</FormLabel>
+                      <FormControl>
+                        <Input type="email" placeholder="tu@email.com" {...field} className={inputClass} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
 
-            <div className="grid md:grid-cols-2 gap-4">
-              <FormField
-                control={form.control}
-                name="telefono"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-[#0B47CE]">Teléfono *</FormLabel>
-                    <FormControl>
-                      <Input placeholder="+57 300 123 4567" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <FormField
-                control={form.control}
-                name="linkedin"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-[#0B47CE]">LinkedIn (opcional)</FormLabel>
-                    <FormControl>
-                      <Input placeholder="https://linkedin.com/in/tu-perfil" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
+              <div className="grid md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="telefono"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[#0B47CE]">Teléfono *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="+57 300 123 4567" {...field} className={inputClass} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="linkedin"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[#0B47CE]">LinkedIn (opcional)</FormLabel>
+                      <FormControl>
+                        <Input placeholder="https://linkedin.com/in/tu-perfil" {...field} className={inputClass} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
 
-            <div className="grid md:grid-cols-2 gap-4">
-              <FormField
-                control={form.control}
-                name="ciudad"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-[#0B47CE]">Ciudad *</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Bogotá" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <FormField
-                control={form.control}
-                name="pais"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-[#0B47CE]">País *</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Colombia" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <div className="grid md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="ciudad"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[#0B47CE]">Ciudad *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Bogotá" {...field} className={inputClass} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="pais"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[#0B47CE]">País *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Colombia" {...field} className={inputClass} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
             </div>
-          </div>
+          )}
 
-          {/* Información Profesional */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-[#0B47CE] border-b border-[#0B47CE]/20 pb-2">
-              Información Profesional
-            </h4>
-            
+          {step === 1 && (
             <div className="grid md:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
@@ -262,13 +326,12 @@ export function VolunteerApplicationForm() {
                   <FormItem>
                     <FormLabel className="text-[#0B47CE]">Ocupación actual *</FormLabel>
                     <FormControl>
-                      <Input placeholder="Ej: Diseñador UX, Estudiante, Docente..." {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
+                      <Input placeholder="Ej: Diseñador UX, Estudiante, Docente..." {...field} className={inputClass} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              
               <FormField
                 control={form.control}
                 name="organizacion"
@@ -276,205 +339,219 @@ export function VolunteerApplicationForm() {
                   <FormItem>
                     <FormLabel className="text-[#0B47CE]">Organización/Universidad (opcional)</FormLabel>
                     <FormControl>
-                      <Input placeholder="Nombre de tu empresa o universidad" {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
+                      <Input placeholder="Nombre de tu empresa o universidad" {...field} className={inputClass} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
-          </div>
+          )}
 
-          {/* Disponibilidad y Áreas */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-[#0B47CE] border-b border-[#0B47CE]/20 pb-2">
-              Disponibilidad y Áreas de Interés
-            </h4>
-            
-            <FormField
-              control={form.control}
-              name="horas_semanales"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[#0B47CE]">¿Cuántas horas semanales puedes dedicar al voluntariado? *</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger className="border-gray-300 focus:border-[#0B47CE] data-[placeholder]:text-gray-400">
-                        <SelectValue placeholder="Selecciona tu disponibilidad" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {horasOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="areas_interes"
-              render={() => (
-                <FormItem>
-                  <FormLabel className="text-[#0B47CE]">¿En qué áreas te gustaría contribuir? *</FormLabel>
-                  <FormDescription className="text-gray-400">
-                    Selecciona todas las que apliquen
-                  </FormDescription>
-                  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mt-2">
-                    {areasInteres.map((area) => (
-                      <FormField
-                        key={area.value}
-                        control={form.control}
-                        name="areas_interes"
-                        render={({ field }) => (
-                          <FormItem className="flex items-center space-x-2 space-y-0 bg-gray-50 p-3 rounded-lg hover:bg-gray-100 transition-colors">
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(area.value)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([...field.value, area.value])
-                                    : field.onChange(field.value?.filter((value) => value !== area.value));
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-sm font-medium text-[#003889] cursor-pointer">
-                              {area.label}
-                            </FormLabel>
-                          </FormItem>
-                        )}
-                      />
-                    ))}
-                  </div>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-
-          {/* Motivación */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-[#0B47CE] border-b border-[#0B47CE]/20 pb-2">
-              Cuéntanos sobre ti
-            </h4>
-            
-            <FormField
-              control={form.control}
-              name="experiencia_voluntariado"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[#0B47CE]">¿Tienes experiencia previa en voluntariado? (opcional)</FormLabel>
-                  <FormControl>
-                    <Textarea 
-                      placeholder="Cuéntanos brevemente sobre tu experiencia anterior en voluntariado, si la tienes..."
-                      className="border-gray-300 focus:border-[#0B47CE] min-h-[80px] placeholder:text-gray-400"
-                      {...field} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="motivacion"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[#0B47CE]">¿Por qué quieres ser voluntario/a en Colombia EdTech? *</FormLabel>
-                  <FormControl>
-                    <Textarea 
-                      placeholder="Cuéntanos qué te motiva a unirte y cómo crees que puedes aportar..."
-                      className="border-gray-300 focus:border-[#0B47CE] min-h-[120px] placeholder:text-gray-400"
-                      {...field} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="como_conocio"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[#0B47CE]">¿Cómo conociste Colombia EdTech? (opcional)</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Ej: Redes sociales, un amigo, evento..." {...field} className="border-gray-300 focus:border-[#0B47CE] placeholder:text-gray-400" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-
-          {/* Términos */}
-          <div className="space-y-4 bg-gray-50 p-4 rounded-lg">
-            <FormField
-              control={form.control}
-              name="acepta_terminos"
-              render={({ field }) => (
-                <FormItem className="flex items-start space-x-3 space-y-0">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <div className="space-y-1 leading-none">
-                    <FormLabel className="text-sm text-[#003889] cursor-pointer">
-                      Acepto los términos y condiciones del programa de voluntariado y el tratamiento de mis datos personales *
-                    </FormLabel>
+          {step === 2 && (
+            <div className="space-y-4">
+              <FormField
+                control={form.control}
+                name="horas_semanales"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-[#0B47CE]">¿Cuántas horas semanales puedes dedicar al voluntariado? *</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger className="border-gray-300 focus:border-[#0B47CE] data-[placeholder]:text-gray-400">
+                          <SelectValue placeholder="Selecciona tu disponibilidad" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {horasOptions.map((option) => (
+                          <SelectItem key={option.value} value={option.value}>
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                     <FormMessage />
-                  </div>
-                </FormItem>
-              )}
-            />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              control={form.control}
-              name="acepta_comunicaciones"
-              render={({ field }) => (
-                <FormItem className="flex items-start space-x-3 space-y-0">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <div className="space-y-1 leading-none">
-                    <FormLabel className="text-sm text-[#003889] cursor-pointer">
-                      Deseo recibir comunicaciones sobre eventos, oportunidades y novedades de Colombia EdTech
-                    </FormLabel>
-                  </div>
-                </FormItem>
-              )}
-            />
-          </div>
+              <FormField
+                control={form.control}
+                name="areas_interes"
+                render={() => (
+                  <FormItem>
+                    <FormLabel className="text-[#0B47CE]">¿En qué áreas te gustaría contribuir? *</FormLabel>
+                    <FormDescription className="text-gray-400">
+                      Selecciona todas las que apliquen
+                    </FormDescription>
+                    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mt-2">
+                      {areasInteres.map((area) => (
+                        <FormField
+                          key={area.value}
+                          control={form.control}
+                          name="areas_interes"
+                          render={({ field }) => (
+                            <FormItem className="flex items-center space-x-2 space-y-0 bg-gray-50 p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                              <FormControl>
+                                <Checkbox
+                                  checked={field.value?.includes(area.value)}
+                                  onCheckedChange={(checked) => {
+                                    return checked
+                                      ? field.onChange([...field.value, area.value])
+                                      : field.onChange(field.value?.filter((value) => value !== area.value));
+                                  }}
+                                />
+                              </FormControl>
+                              <FormLabel className="text-sm font-medium text-[#003889] cursor-pointer">
+                                {area.label}
+                              </FormLabel>
+                            </FormItem>
+                          )}
+                        />
+                      ))}
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
 
-          <Button 
-            type="submit" 
-            disabled={isSubmitting}
-            className="w-full bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold py-6 text-lg"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                Enviando solicitud...
-              </>
-            ) : (
-              <>
-                <Send className="mr-2 h-5 w-5" />
-                Enviar mi solicitud de voluntariado
-              </>
+          {step === 3 && (
+            <div className="space-y-4">
+              <FormField
+                control={form.control}
+                name="experiencia_voluntariado"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-[#0B47CE]">¿Tienes experiencia previa en voluntariado? (opcional)</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Cuéntanos brevemente sobre tu experiencia anterior en voluntariado, si la tienes..."
+                        className="border-gray-300 focus:border-[#0B47CE] min-h-[80px] placeholder:text-gray-400"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="motivacion"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-[#0B47CE]">¿Por qué quieres ser voluntario/a en Colombia EdTech? *</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Cuéntanos qué te motiva a unirte y cómo crees que puedes aportar..."
+                        className="border-gray-300 focus:border-[#0B47CE] min-h-[120px] placeholder:text-gray-400"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="como_conocio"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-[#0B47CE]">¿Cómo conociste Colombia EdTech? (opcional)</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Ej: Redes sociales, un amigo, evento..." {...field} className={inputClass} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
+
+          {step === 4 && (
+            <div className="space-y-4 bg-gray-50 p-4 rounded-lg">
+              <FormField
+                control={form.control}
+                name="acepta_terminos"
+                render={({ field }) => (
+                  <FormItem className="flex items-start space-x-3 space-y-0">
+                    <FormControl>
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                    </FormControl>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel className="text-sm text-[#003889] cursor-pointer">
+                        Acepto los términos y condiciones del programa de voluntariado y el tratamiento de mis datos personales *
+                      </FormLabel>
+                      <FormMessage />
+                    </div>
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="acepta_comunicaciones"
+                render={({ field }) => (
+                  <FormItem className="flex items-start space-x-3 space-y-0">
+                    <FormControl>
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                    </FormControl>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel className="text-sm text-[#003889] cursor-pointer">
+                        Deseo recibir comunicaciones sobre eventos, oportunidades y novedades de Colombia EdTech
+                      </FormLabel>
+                    </div>
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
+
+          {/* Navegación */}
+          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            {step > 0 && (
+              <Button
+                type="button"
+                variant="outline"
+                onClick={goBack}
+                disabled={isSubmitting}
+                className="sm:w-auto border-[#0B47CE] text-[#0B47CE] hover:bg-[#0B47CE] hover:text-white py-6"
+              >
+                <ArrowLeft className="mr-2 h-4 w-4" /> Anterior
+              </Button>
             )}
-          </Button>
+
+            {!isLastStep ? (
+              <Button
+                type="button"
+                onClick={goNext}
+                className="flex-1 bg-[#0B47CE] hover:bg-[#0B47CE]/90 text-white font-bold py-6 text-base"
+              >
+                Siguiente <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            ) : (
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="flex-1 bg-[#F73C5C] hover:bg-[#F73C5C]/90 text-white font-bold py-6 text-lg"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    Enviando solicitud...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-5 w-5" />
+                    Enviar mi solicitud de voluntariado
+                  </>
+                )}
+              </Button>
+            )}
+          </div>
         </form>
       </Form>
     </div>
