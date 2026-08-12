@@ -335,7 +335,7 @@ export function VolunteerApplicationForm() {
   }
 
   return (
-    <div className="bg-white rounded-xl p-6 md:p-10 shadow-lg">
+    <div id="volunteer-form" className="bg-white rounded-xl p-6 md:p-10 shadow-lg">
       {/* Progreso */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-3">
