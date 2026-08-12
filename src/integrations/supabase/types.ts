@@ -376,65 +376,119 @@ export type Database = {
         Row: {
           acepta_comunicaciones: boolean
           acepta_terminos: boolean
+          anios_experiencia: string | null
+          aporte_equipo: string | null
+          area_liderazgo: string | null
           areas_interes: string[]
           ciudad: string
           como_conocio: string | null
+          confirma_horas: boolean
+          confirma_no_remunerado: boolean
+          confirma_video: boolean
           correo_electronico: string
           created_at: string
+          duracion_compromiso: string | null
+          equipo_principal: string | null
+          equipo_secundario: string | null
           estado: string
+          estado_actual: string | null
+          expectativas: string | null
+          experiencia_area: string | null
           experiencia_voluntariado: string | null
+          habilidades_equipo: string[] | null
           horas_semanales: string
           id: string
+          interes_liderazgo: string | null
           linkedin: string | null
           motivacion: string
           nombre_completo: string
-          ocupacion: string
+          ocupacion: string | null
           organizacion: string | null
           pais: string
+          sobre_ti: string | null
           telefono: string
+          trabaja_edtech: string | null
+          universidad_programa: string | null
           updated_at: string
+          varita_magica: string | null
         }
         Insert: {
           acepta_comunicaciones?: boolean
           acepta_terminos?: boolean
-          areas_interes: string[]
+          anios_experiencia?: string | null
+          aporte_equipo?: string | null
+          area_liderazgo?: string | null
+          areas_interes?: string[]
           ciudad: string
           como_conocio?: string | null
+          confirma_horas?: boolean
+          confirma_no_remunerado?: boolean
+          confirma_video?: boolean
           correo_electronico: string
           created_at?: string
+          duracion_compromiso?: string | null
+          equipo_principal?: string | null
+          equipo_secundario?: string | null
           estado?: string
+          estado_actual?: string | null
+          expectativas?: string | null
+          experiencia_area?: string | null
           experiencia_voluntariado?: string | null
+          habilidades_equipo?: string[] | null
           horas_semanales: string
           id?: string
+          interes_liderazgo?: string | null
           linkedin?: string | null
           motivacion: string
           nombre_completo: string
-          ocupacion: string
+          ocupacion?: string | null
           organizacion?: string | null
           pais?: string
+          sobre_ti?: string | null
           telefono: string
+          trabaja_edtech?: string | null
+          universidad_programa?: string | null
           updated_at?: string
+          varita_magica?: string | null
         }
         Update: {
           acepta_comunicaciones?: boolean
           acepta_terminos?: boolean
+          anios_experiencia?: string | null
+          aporte_equipo?: string | null
+          area_liderazgo?: string | null
           areas_interes?: string[]
           ciudad?: string
           como_conocio?: string | null
+          confirma_horas?: boolean
+          confirma_no_remunerado?: boolean
+          confirma_video?: boolean
           correo_electronico?: string
           created_at?: string
+          duracion_compromiso?: string | null
+          equipo_principal?: string | null
+          equipo_secundario?: string | null
           estado?: string
+          estado_actual?: string | null
+          expectativas?: string | null
+          experiencia_area?: string | null
           experiencia_voluntariado?: string | null
+          habilidades_equipo?: string[] | null
           horas_semanales?: string
           id?: string
+          interes_liderazgo?: string | null
           linkedin?: string | null
           motivacion?: string
           nombre_completo?: string
-          ocupacion?: string
+          ocupacion?: string | null
           organizacion?: string | null
           pais?: string
+          sobre_ti?: string | null
           telefono?: string
+          trabaja_edtech?: string | null
+          universidad_programa?: string | null
           updated_at?: string
+          varita_magica?: string | null
         }
         Relationships: []
       }
