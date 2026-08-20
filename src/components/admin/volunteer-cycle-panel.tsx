@@ -187,25 +187,15 @@ export function VolunteerCyclePanel({ ciclos, responsables, activeCicloId, onSel
       </div>
 
       <CardContent className="p-6 space-y-6">
-        {/* Cycle selector + create */}
-        <div className="flex flex-col md:flex-row gap-3 md:items-end">
-          <div className="flex-1">
-            <Label className="text-xs uppercase text-slate-500">Ciclo</Label>
-            <Select value={activeCicloId ?? undefined} onValueChange={onSelectCiclo}>
-              <SelectTrigger className="mt-1">
-                <SelectValue placeholder={ciclos.length ? "Selecciona un ciclo" : "Aún no hay ciclos"} />
-              </SelectTrigger>
-              <SelectContent>
-                {ciclos.map((c) => (
-                  <SelectItem key={c.id} value={c.id}>
-                    {c.nombre} {c.activo ? "· activo" : ""}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="flex-1">
-            <Label className="text-xs uppercase text-slate-500">Nuevo ciclo</Label>
+        <div className="grid md:grid-cols-2 gap-4">
+          {/* Sección 1: crear ciclo */}
+          <section className="rounded-xl border border-slate-200 bg-slate-50/60 p-4">
+            <div className="flex items-center gap-2 mb-1">
+              <Plus className="w-4 h-4 text-[#0B47CE]" />
+              <h3 className="font-semibold text-slate-800">Crear un nuevo ciclo</h3>
+            </div>
+            <p className="text-xs text-slate-500 mb-3">Escribe el nombre del ciclo (mes, fecha o etiqueta).</p>
+            <Label className="text-xs uppercase text-slate-500">Nombre del nuevo ciclo</Label>
             <div className="flex gap-2 mt-1">
               <Input
                 placeholder="Ej. Agosto 2026"
@@ -217,11 +207,33 @@ export function VolunteerCyclePanel({ ciclos, responsables, activeCicloId, onSel
                 {creating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
               </Button>
             </div>
-          </div>
+          </section>
+
+          {/* Sección 2: seleccionar ciclo actual */}
+          <section className="rounded-xl border border-[#0B47CE]/30 bg-[#0B47CE]/5 p-4">
+            <div className="flex items-center gap-2 mb-1">
+              <CalendarRange className="w-4 h-4 text-[#0B47CE]" />
+              <h3 className="font-semibold text-slate-800">Ciclo en el que estamos</h3>
+            </div>
+            <p className="text-xs text-slate-500 mb-3">Selecciona el ciclo que quieres gestionar.</p>
+            <Label className="text-xs uppercase text-slate-500">Ciclo seleccionado</Label>
+            <Select value={activeCicloId ?? undefined} onValueChange={onSelectCiclo}>
+              <SelectTrigger className="mt-1 bg-white">
+                <SelectValue placeholder={ciclos.length ? "Selecciona un ciclo" : "Aún no hay ciclos"} />
+              </SelectTrigger>
+              <SelectContent>
+                {ciclos.map((c) => (
+                  <SelectItem key={c.id} value={c.id}>
+                    {c.nombre} {c.activo ? "· activo" : ""}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </section>
         </div>
 
         {ciclo && (
-          <>
+          <div className="border-t pt-6 space-y-6">
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <Label className="text-xs uppercase text-slate-500">Nombre del ciclo</Label>
@@ -326,7 +338,7 @@ export function VolunteerCyclePanel({ ciclos, responsables, activeCicloId, onSel
                 </div>
               )}
             </div>
-          </>
+          </div>
         )}
       </CardContent>
     </Card>

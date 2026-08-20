@@ -139,8 +139,34 @@ export function VolunteersAdmin() {
     }
   };
 
+  const assignCiclo = async (volunteer: VolunteerApplication, value: string) => {
+    const cicloId = value === "none" ? null : value;
+    // Si el responsable actual no pertenece al nuevo ciclo, se limpia
+    const currentResp = responsables.find((r) => r.id === volunteer.responsable_id);
+    const responsableId = currentResp && currentResp.ciclo_id !== cicloId ? null : volunteer.responsable_id;
+    try {
+      const { error } = await supabase
+        .from("solicitudes_voluntarios")
+        .update({ ciclo_id: cicloId, responsable_id: responsableId })
+        .eq("id", volunteer.id);
+      if (error) throw error;
+      setVolunteers((prev) =>
+        prev.map((v) => (v.id === volunteer.id ? { ...v, ciclo_id: cicloId, responsable_id: responsableId } : v))
+      );
+      setSelectedVolunteer((prev) =>
+        prev && prev.id === volunteer.id ? { ...prev, ciclo_id: cicloId, responsable_id: responsableId } : prev
+      );
+      toast.success(cicloId ? "Ciclo asignado" : "Ciclo removido");
+    } catch (error) {
+      console.error("Error assigning ciclo:", error);
+      toast.error("No se pudo asignar el ciclo");
+    }
+  };
+
   const responsableName = (id: string | null) =>
     id ? responsables.find((r) => r.id === id)?.nombre ?? "—" : null;
+
+  const cicloName = (id: string | null) => (id ? ciclos.find((c) => c.id === id)?.nombre ?? "—" : null);
 
   const cicloResponsables = useMemo(
     () => responsables.filter((r) => r.ciclo_id === activeCicloId),
@@ -154,13 +180,14 @@ export function VolunteersAdmin() {
         volunteer.nombre_completo.toLowerCase().includes(term) ||
         volunteer.correo_electronico.toLowerCase().includes(term) ||
         volunteer.ciudad.toLowerCase().includes(term) ||
-        (responsableName(volunteer.responsable_id) ?? "").toLowerCase().includes(term);
+        (responsableName(volunteer.responsable_id) ?? "").toLowerCase().includes(term) ||
+        (cicloName(volunteer.ciclo_id) ?? "").toLowerCase().includes(term);
       
       const matchesStatus = statusFilter === "todos" || volunteer.estado === statusFilter;
       
       return matchesSearch && matchesStatus;
     });
-  }, [volunteers, searchTerm, statusFilter, responsables]);
+  }, [volunteers, searchTerm, statusFilter, responsables, ciclos]);
 
 
   const getStatusBadge = (estado: string) => {
@@ -258,7 +285,7 @@ export function VolunteersAdmin() {
             </div>
           ) : (
             <div className="overflow-x-auto scrollbar-x-visible">
-              <Table className="min-w-[900px]">
+              <Table className="min-w-[1080px]">
                 <TableHeader>
                   <TableRow className="bg-slate-50 hover:bg-slate-50">
                     <TableHead className="font-semibold text-slate-700">Nombre</TableHead>
@@ -266,6 +293,7 @@ export function VolunteersAdmin() {
                     <TableHead className="font-semibold text-slate-700">Ubicación</TableHead>
                     <TableHead className="font-semibold text-slate-700">Horas/Semana</TableHead>
                     <TableHead className="font-semibold text-slate-700">Estado</TableHead>
+                    <TableHead className="font-semibold text-slate-700">Ciclo</TableHead>
                     <TableHead className="font-semibold text-slate-700">Responsable</TableHead>
                     <TableHead className="font-semibold text-slate-700">Fecha</TableHead>
 
@@ -308,27 +336,52 @@ export function VolunteersAdmin() {
                       <TableCell>{getStatusBadge(volunteer.estado)}</TableCell>
                       <TableCell>
                         <Select
-                          value={volunteer.responsable_id ?? "none"}
-                          onValueChange={(value) => assignResponsable(volunteer, value)}
+                          value={volunteer.ciclo_id ?? "none"}
+                          onValueChange={(value) => assignCiclo(volunteer, value)}
                         >
                           <SelectTrigger className="w-40 h-9 bg-white">
-                            <SelectValue placeholder="Sin asignar" />
+                            <SelectValue placeholder="Sin ciclo" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="none">Sin asignar</SelectItem>
-                            {cicloResponsables.map((r) => (
-                              <SelectItem key={r.id} value={r.id}>
-                                {r.nombre}
+                            <SelectItem value="none">Sin ciclo</SelectItem>
+                            {ciclos.map((c) => (
+                              <SelectItem key={c.id} value={c.id}>
+                                {c.nombre}
                               </SelectItem>
                             ))}
-                            {volunteer.responsable_id &&
-                              !cicloResponsables.some((r) => r.id === volunteer.responsable_id) && (
-                                <SelectItem value={volunteer.responsable_id}>
-                                  {responsableName(volunteer.responsable_id)}
-                                </SelectItem>
-                              )}
                           </SelectContent>
                         </Select>
+                      </TableCell>
+                      <TableCell>
+                        {(() => {
+                          const opciones = responsables.filter(
+                            (r) => r.ciclo_id === (volunteer.ciclo_id ?? activeCicloId)
+                          );
+                          return (
+                            <Select
+                              value={volunteer.responsable_id ?? "none"}
+                              onValueChange={(value) => assignResponsable(volunteer, value)}
+                            >
+                              <SelectTrigger className="w-40 h-9 bg-white">
+                                <SelectValue placeholder="Sin asignar" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="none">Sin asignar</SelectItem>
+                                {opciones.map((r) => (
+                                  <SelectItem key={r.id} value={r.id}>
+                                    {r.nombre}
+                                  </SelectItem>
+                                ))}
+                                {volunteer.responsable_id &&
+                                  !opciones.some((r) => r.id === volunteer.responsable_id) && (
+                                    <SelectItem value={volunteer.responsable_id}>
+                                      {responsableName(volunteer.responsable_id)}
+                                    </SelectItem>
+                                  )}
+                              </SelectContent>
+                            </Select>
+                          );
+                        })()}
                       </TableCell>
 
                       <TableCell className="text-sm text-slate-500">
