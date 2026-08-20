@@ -338,7 +338,7 @@ export function VolunteerCyclePanel({ ciclos, responsables, activeCicloId, onSel
                 </div>
               )}
             </div>
-          </>
+          </div>
         )}
       </CardContent>
     </Card>
