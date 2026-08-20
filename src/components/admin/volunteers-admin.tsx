@@ -194,7 +194,18 @@ export function VolunteersAdmin() {
 
   return (
     <>
+      <div className="mb-6">
+        <VolunteerCyclePanel
+          ciclos={ciclos}
+          responsables={responsables}
+          activeCicloId={activeCicloId}
+          onSelectCiclo={setActiveCicloId}
+          onRefresh={fetchCycles}
+        />
+      </div>
+
       <Card className="border-0 shadow-lg overflow-hidden">
+
         {/* Header with gradient */}
         <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
