@@ -204,7 +204,7 @@ export function VolunteersAdmin() {
         />
       </div>
 
-      <Card className="border-0 shadow-lg overflow-hidden">
+      <Card className="border-0 shadow-lg">
 
         {/* Header with gradient */}
         <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-6">
