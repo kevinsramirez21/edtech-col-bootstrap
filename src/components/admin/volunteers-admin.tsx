@@ -335,27 +335,52 @@ export function VolunteersAdmin() {
                       <TableCell>{getStatusBadge(volunteer.estado)}</TableCell>
                       <TableCell>
                         <Select
-                          value={volunteer.responsable_id ?? "none"}
-                          onValueChange={(value) => assignResponsable(volunteer, value)}
+                          value={volunteer.ciclo_id ?? "none"}
+                          onValueChange={(value) => assignCiclo(volunteer, value)}
                         >
                           <SelectTrigger className="w-40 h-9 bg-white">
-                            <SelectValue placeholder="Sin asignar" />
+                            <SelectValue placeholder="Sin ciclo" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="none">Sin asignar</SelectItem>
-                            {cicloResponsables.map((r) => (
-                              <SelectItem key={r.id} value={r.id}>
-                                {r.nombre}
+                            <SelectItem value="none">Sin ciclo</SelectItem>
+                            {ciclos.map((c) => (
+                              <SelectItem key={c.id} value={c.id}>
+                                {c.nombre}
                               </SelectItem>
                             ))}
-                            {volunteer.responsable_id &&
-                              !cicloResponsables.some((r) => r.id === volunteer.responsable_id) && (
-                                <SelectItem value={volunteer.responsable_id}>
-                                  {responsableName(volunteer.responsable_id)}
-                                </SelectItem>
-                              )}
                           </SelectContent>
                         </Select>
+                      </TableCell>
+                      <TableCell>
+                        {(() => {
+                          const opciones = responsables.filter(
+                            (r) => r.ciclo_id === (volunteer.ciclo_id ?? activeCicloId)
+                          );
+                          return (
+                            <Select
+                              value={volunteer.responsable_id ?? "none"}
+                              onValueChange={(value) => assignResponsable(volunteer, value)}
+                            >
+                              <SelectTrigger className="w-40 h-9 bg-white">
+                                <SelectValue placeholder="Sin asignar" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="none">Sin asignar</SelectItem>
+                                {opciones.map((r) => (
+                                  <SelectItem key={r.id} value={r.id}>
+                                    {r.nombre}
+                                  </SelectItem>
+                                ))}
+                                {volunteer.responsable_id &&
+                                  !opciones.some((r) => r.id === volunteer.responsable_id) && (
+                                    <SelectItem value={volunteer.responsable_id}>
+                                      {responsableName(volunteer.responsable_id)}
+                                    </SelectItem>
+                                  )}
+                              </SelectContent>
+                            </Select>
+                          );
+                        })()}
                       </TableCell>
 
                       <TableCell className="text-sm text-slate-500">
