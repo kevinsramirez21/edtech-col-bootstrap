@@ -190,7 +190,21 @@ export function Navbar() {
           <div className="flex lg:hidden items-center space-x-2 flex-shrink-0">
             {!loading && (
               user ? (
-                <UserMenu />
+                <>
+                  {isAdmin && (
+                    <Button
+                      asChild
+                      size="sm"
+                      className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-2 sm:px-3 py-2 rounded-lg shadow-md border-0"
+                    >
+                      <Link to="/admin" aria-label="Panel Admin" className="flex items-center space-x-1.5">
+                        <Settings className="w-4 h-4" />
+                        <span className="hidden sm:inline">Admin</span>
+                      </Link>
+                    </Button>
+                  )}
+                  <UserMenu />
+                </>
               ) : (
                 <Button 
                   asChild
