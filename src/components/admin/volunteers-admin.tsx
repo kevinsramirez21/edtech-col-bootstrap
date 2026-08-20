@@ -180,13 +180,14 @@ export function VolunteersAdmin() {
         volunteer.nombre_completo.toLowerCase().includes(term) ||
         volunteer.correo_electronico.toLowerCase().includes(term) ||
         volunteer.ciudad.toLowerCase().includes(term) ||
-        (responsableName(volunteer.responsable_id) ?? "").toLowerCase().includes(term);
+        (responsableName(volunteer.responsable_id) ?? "").toLowerCase().includes(term) ||
+        (cicloName(volunteer.ciclo_id) ?? "").toLowerCase().includes(term);
       
       const matchesStatus = statusFilter === "todos" || volunteer.estado === statusFilter;
       
       return matchesSearch && matchesStatus;
     });
-  }, [volunteers, searchTerm, statusFilter, responsables]);
+  }, [volunteers, searchTerm, statusFilter, responsables, ciclos]);
 
 
   const getStatusBadge = (estado: string) => {
