@@ -139,8 +139,34 @@ export function VolunteersAdmin() {
     }
   };
 
+  const assignCiclo = async (volunteer: VolunteerApplication, value: string) => {
+    const cicloId = value === "none" ? null : value;
+    // Si el responsable actual no pertenece al nuevo ciclo, se limpia
+    const currentResp = responsables.find((r) => r.id === volunteer.responsable_id);
+    const responsableId = currentResp && currentResp.ciclo_id !== cicloId ? null : volunteer.responsable_id;
+    try {
+      const { error } = await supabase
+        .from("solicitudes_voluntarios")
+        .update({ ciclo_id: cicloId, responsable_id: responsableId })
+        .eq("id", volunteer.id);
+      if (error) throw error;
+      setVolunteers((prev) =>
+        prev.map((v) => (v.id === volunteer.id ? { ...v, ciclo_id: cicloId, responsable_id: responsableId } : v))
+      );
+      setSelectedVolunteer((prev) =>
+        prev && prev.id === volunteer.id ? { ...prev, ciclo_id: cicloId, responsable_id: responsableId } : prev
+      );
+      toast.success(cicloId ? "Ciclo asignado" : "Ciclo removido");
+    } catch (error) {
+      console.error("Error assigning ciclo:", error);
+      toast.error("No se pudo asignar el ciclo");
+    }
+  };
+
   const responsableName = (id: string | null) =>
     id ? responsables.find((r) => r.id === id)?.nombre ?? "—" : null;
+
+  const cicloName = (id: string | null) => (id ? ciclos.find((c) => c.id === id)?.nombre ?? "—" : null);
 
   const cicloResponsables = useMemo(
     () => responsables.filter((r) => r.ciclo_id === activeCicloId),
