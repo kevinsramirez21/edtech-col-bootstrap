@@ -422,7 +422,18 @@ export function VolunteersAdmin() {
                   <label className="text-xs font-medium text-slate-500 uppercase">Horas Semanales</label>
                   <p className="text-slate-900">{selectedVolunteer.horas_semanales} horas</p>
                 </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Responsable</label>
+                  <p className="text-slate-900">{responsableName(selectedVolunteer.responsable_id) || "Sin asignar"}</p>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Ciclo</label>
+                  <p className="text-slate-900">
+                    {ciclos.find((c) => c.id === selectedVolunteer.ciclo_id)?.nombre || "Sin ciclo"}
+                  </p>
+                </div>
               </div>
+
               
               <div>
                 <label className="text-xs font-medium text-slate-500 uppercase">Áreas de Interés</label>
