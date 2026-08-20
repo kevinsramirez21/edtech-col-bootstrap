@@ -16,6 +16,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { VolunteerCyclePanel, type Ciclo, type Responsable } from "./volunteer-cycle-panel";
 
 interface VolunteerApplication {
   id: string;
@@ -34,6 +35,8 @@ interface VolunteerApplication {
   como_conocio: string | null;
   estado: string;
   created_at: string;
+  ciclo_id: string | null;
+  responsable_id: string | null;
 }
 
 export function VolunteersAdmin() {
@@ -43,6 +46,10 @@ export function VolunteersAdmin() {
   const [statusFilter, setStatusFilter] = useState<string>("todos");
   const [selectedVolunteer, setSelectedVolunteer] = useState<VolunteerApplication | null>(null);
   const [updating, setUpdating] = useState<string | null>(null);
+  const [ciclos, setCiclos] = useState<Ciclo[]>([]);
+  const [responsables, setResponsables] = useState<Responsable[]>([]);
+  const [activeCicloId, setActiveCicloId] = useState<string | null>(null);
+
 
   useEffect(() => {
     fetchVolunteers();
