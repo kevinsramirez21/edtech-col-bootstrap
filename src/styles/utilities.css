@@ -234,6 +234,24 @@
   }
 }
 
+/* Visible horizontal scrollbar helper */
+.scrollbar-x-visible {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.scrollbar-x-visible::-webkit-scrollbar {
+  height: 8px;
+}
+.scrollbar-x-visible::-webkit-scrollbar-track {
+  background: var(--color-sand);
+  border-radius: 999px;
+}
+.scrollbar-x-visible::-webkit-scrollbar-thumb {
+  background: var(--color-primary-700);
+  border-radius: 999px;
+}
+
 /* Responsive Utilities */
 @media (max-width: 768px) {
   .container {

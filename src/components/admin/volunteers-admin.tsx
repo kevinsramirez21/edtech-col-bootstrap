@@ -204,7 +204,7 @@ export function VolunteersAdmin() {
         />
       </div>
 
-      <Card className="border-0 shadow-lg overflow-hidden">
+      <Card className="border-0 shadow-lg">
 
         {/* Header with gradient */}
         <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-6">
@@ -257,8 +257,8 @@ export function VolunteersAdmin() {
               <p className="text-slate-500">No se encontraron solicitudes de voluntariado</p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <Table>
+            <div className="overflow-x-auto scrollbar-x-visible">
+              <Table className="min-w-[900px]">
                 <TableHeader>
                   <TableRow className="bg-slate-50 hover:bg-slate-50">
                     <TableHead className="font-semibold text-slate-700">Nombre</TableHead>
