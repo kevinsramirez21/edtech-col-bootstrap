@@ -266,7 +266,9 @@ export function VolunteersAdmin() {
                     <TableHead className="font-semibold text-slate-700">Ubicación</TableHead>
                     <TableHead className="font-semibold text-slate-700">Horas/Semana</TableHead>
                     <TableHead className="font-semibold text-slate-700">Estado</TableHead>
+                    <TableHead className="font-semibold text-slate-700">Responsable</TableHead>
                     <TableHead className="font-semibold text-slate-700">Fecha</TableHead>
+
                     <TableHead className="font-semibold text-slate-700 text-right">Acciones</TableHead>
                   </TableRow>
                 </TableHeader>
