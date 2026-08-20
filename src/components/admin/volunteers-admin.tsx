@@ -53,7 +53,28 @@ export function VolunteersAdmin() {
 
   useEffect(() => {
     fetchVolunteers();
+    fetchCycles();
   }, []);
+
+  const fetchCycles = async () => {
+    try {
+      const [{ data: ciclosData, error: ciclosError }, { data: respData, error: respError }] = await Promise.all([
+        supabase.from("ciclos_voluntariado").select("id, nombre, lider_nombre, activo").order("created_at", { ascending: false }),
+        supabase.from("responsables_ciclo").select("id, ciclo_id, nombre").order("nombre"),
+      ]);
+      if (ciclosError) throw ciclosError;
+      if (respError) throw respError;
+      const list = (ciclosData || []) as Ciclo[];
+      setCiclos(list);
+      setResponsables((respData || []) as Responsable[]);
+      setActiveCicloId((prev) => {
+        if (prev && list.some((c) => c.id === prev)) return prev;
+        return list.find((c) => c.activo)?.id ?? list[0]?.id ?? null;
+      });
+    } catch (error) {
+      console.error("Error fetching cycles:", error);
+    }
+  };
 
   const fetchVolunteers = async () => {
     try {
@@ -63,7 +84,7 @@ export function VolunteersAdmin() {
         .order("created_at", { ascending: false });
 
       if (error) throw error;
-      setVolunteers(data || []);
+      setVolunteers((data || []) as VolunteerApplication[]);
     } catch (error) {
       console.error("Error fetching volunteers:", error);
       toast.error("Error al cargar voluntarios");
@@ -94,18 +115,53 @@ export function VolunteersAdmin() {
     }
   };
 
+  const assignResponsable = async (volunteer: VolunteerApplication, value: string) => {
+    const responsableId = value === "none" ? null : value;
+    const cicloId = responsableId
+      ? responsables.find((r) => r.id === responsableId)?.ciclo_id ?? volunteer.ciclo_id
+      : volunteer.ciclo_id;
+    try {
+      const { error } = await supabase
+        .from("solicitudes_voluntarios")
+        .update({ responsable_id: responsableId, ciclo_id: cicloId })
+        .eq("id", volunteer.id);
+      if (error) throw error;
+      setVolunteers((prev) =>
+        prev.map((v) => (v.id === volunteer.id ? { ...v, responsable_id: responsableId, ciclo_id: cicloId } : v))
+      );
+      setSelectedVolunteer((prev) =>
+        prev && prev.id === volunteer.id ? { ...prev, responsable_id: responsableId, ciclo_id: cicloId } : prev
+      );
+      toast.success(responsableId ? "Responsable asignado" : "Responsable removido");
+    } catch (error) {
+      console.error("Error assigning responsable:", error);
+      toast.error("No se pudo asignar el responsable");
+    }
+  };
+
+  const responsableName = (id: string | null) =>
+    id ? responsables.find((r) => r.id === id)?.nombre ?? "—" : null;
+
+  const cicloResponsables = useMemo(
+    () => responsables.filter((r) => r.ciclo_id === activeCicloId),
+    [responsables, activeCicloId]
+  );
+
   const filteredVolunteers = useMemo(() => {
     return volunteers.filter(volunteer => {
+      const term = searchTerm.toLowerCase();
       const matchesSearch = 
-        volunteer.nombre_completo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        volunteer.correo_electronico.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        volunteer.ciudad.toLowerCase().includes(searchTerm.toLowerCase());
+        volunteer.nombre_completo.toLowerCase().includes(term) ||
+        volunteer.correo_electronico.toLowerCase().includes(term) ||
+        volunteer.ciudad.toLowerCase().includes(term) ||
+        (responsableName(volunteer.responsable_id) ?? "").toLowerCase().includes(term);
       
       const matchesStatus = statusFilter === "todos" || volunteer.estado === statusFilter;
       
       return matchesSearch && matchesStatus;
     });
-  }, [volunteers, searchTerm, statusFilter]);
+  }, [volunteers, searchTerm, statusFilter, responsables]);
+
 
   const getStatusBadge = (estado: string) => {
     switch (estado) {
