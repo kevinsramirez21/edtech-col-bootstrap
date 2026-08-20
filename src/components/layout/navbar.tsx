@@ -301,27 +301,15 @@ export function Navbar() {
                       </div>
                     </div>
                   ) : (
-                    <div className="space-y-3">
-                      <Button 
-                        asChild
-                        variant="outline"
-                        className="w-full border-2 border-white bg-transparent text-white hover:bg-white hover:text-accent font-semibold py-3 rounded-lg"
-                      >
-                        <Link to="/auth" className="flex items-center justify-center space-x-2">
-                          <LogIn className="w-4 h-4" />
-                          <span>Iniciar Sesión</span>
-                        </Link>
-                      </Button>
-                      <Button 
-                        asChild
-                        className="w-full bg-white text-accent hover:bg-white/90 font-semibold py-3 rounded-lg shadow-lg shadow-black/25"
-                      >
-                        <Link to="/asociados" className="flex items-center justify-center space-x-2">
-                          <Users className="w-4 h-4" />
-                          <span>Únete al Gremio</span>
-                        </Link>
-                      </Button>
-                    </div>
+                    <Button 
+                      asChild
+                      className="w-full bg-white text-accent hover:bg-white/90 font-semibold py-3 rounded-lg shadow-lg shadow-black/25"
+                    >
+                      <Link to="/asociados" className="flex items-center justify-center space-x-2">
+                        <Users className="w-4 h-4" />
+                        <span>Únete al Gremio</span>
+                      </Link>
+                    </Button>
                   )
                 )}
               </div>
