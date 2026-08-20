@@ -16,6 +16,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { VolunteerCyclePanel, type Ciclo, type Responsable } from "./volunteer-cycle-panel";
 
 interface VolunteerApplication {
   id: string;
@@ -34,6 +35,8 @@ interface VolunteerApplication {
   como_conocio: string | null;
   estado: string;
   created_at: string;
+  ciclo_id: string | null;
+  responsable_id: string | null;
 }
 
 export function VolunteersAdmin() {
@@ -43,10 +46,35 @@ export function VolunteersAdmin() {
   const [statusFilter, setStatusFilter] = useState<string>("todos");
   const [selectedVolunteer, setSelectedVolunteer] = useState<VolunteerApplication | null>(null);
   const [updating, setUpdating] = useState<string | null>(null);
+  const [ciclos, setCiclos] = useState<Ciclo[]>([]);
+  const [responsables, setResponsables] = useState<Responsable[]>([]);
+  const [activeCicloId, setActiveCicloId] = useState<string | null>(null);
+
 
   useEffect(() => {
     fetchVolunteers();
+    fetchCycles();
   }, []);
+
+  const fetchCycles = async () => {
+    try {
+      const [{ data: ciclosData, error: ciclosError }, { data: respData, error: respError }] = await Promise.all([
+        supabase.from("ciclos_voluntariado").select("id, nombre, lider_nombre, activo").order("created_at", { ascending: false }),
+        supabase.from("responsables_ciclo").select("id, ciclo_id, nombre").order("nombre"),
+      ]);
+      if (ciclosError) throw ciclosError;
+      if (respError) throw respError;
+      const list = (ciclosData || []) as Ciclo[];
+      setCiclos(list);
+      setResponsables((respData || []) as Responsable[]);
+      setActiveCicloId((prev) => {
+        if (prev && list.some((c) => c.id === prev)) return prev;
+        return list.find((c) => c.activo)?.id ?? list[0]?.id ?? null;
+      });
+    } catch (error) {
+      console.error("Error fetching cycles:", error);
+    }
+  };
 
   const fetchVolunteers = async () => {
     try {
@@ -56,7 +84,7 @@ export function VolunteersAdmin() {
         .order("created_at", { ascending: false });
 
       if (error) throw error;
-      setVolunteers(data || []);
+      setVolunteers((data || []) as VolunteerApplication[]);
     } catch (error) {
       console.error("Error fetching volunteers:", error);
       toast.error("Error al cargar voluntarios");
@@ -87,18 +115,53 @@ export function VolunteersAdmin() {
     }
   };
 
+  const assignResponsable = async (volunteer: VolunteerApplication, value: string) => {
+    const responsableId = value === "none" ? null : value;
+    const cicloId = responsableId
+      ? responsables.find((r) => r.id === responsableId)?.ciclo_id ?? volunteer.ciclo_id
+      : volunteer.ciclo_id;
+    try {
+      const { error } = await supabase
+        .from("solicitudes_voluntarios")
+        .update({ responsable_id: responsableId, ciclo_id: cicloId })
+        .eq("id", volunteer.id);
+      if (error) throw error;
+      setVolunteers((prev) =>
+        prev.map((v) => (v.id === volunteer.id ? { ...v, responsable_id: responsableId, ciclo_id: cicloId } : v))
+      );
+      setSelectedVolunteer((prev) =>
+        prev && prev.id === volunteer.id ? { ...prev, responsable_id: responsableId, ciclo_id: cicloId } : prev
+      );
+      toast.success(responsableId ? "Responsable asignado" : "Responsable removido");
+    } catch (error) {
+      console.error("Error assigning responsable:", error);
+      toast.error("No se pudo asignar el responsable");
+    }
+  };
+
+  const responsableName = (id: string | null) =>
+    id ? responsables.find((r) => r.id === id)?.nombre ?? "—" : null;
+
+  const cicloResponsables = useMemo(
+    () => responsables.filter((r) => r.ciclo_id === activeCicloId),
+    [responsables, activeCicloId]
+  );
+
   const filteredVolunteers = useMemo(() => {
     return volunteers.filter(volunteer => {
+      const term = searchTerm.toLowerCase();
       const matchesSearch = 
-        volunteer.nombre_completo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        volunteer.correo_electronico.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        volunteer.ciudad.toLowerCase().includes(searchTerm.toLowerCase());
+        volunteer.nombre_completo.toLowerCase().includes(term) ||
+        volunteer.correo_electronico.toLowerCase().includes(term) ||
+        volunteer.ciudad.toLowerCase().includes(term) ||
+        (responsableName(volunteer.responsable_id) ?? "").toLowerCase().includes(term);
       
       const matchesStatus = statusFilter === "todos" || volunteer.estado === statusFilter;
       
       return matchesSearch && matchesStatus;
     });
-  }, [volunteers, searchTerm, statusFilter]);
+  }, [volunteers, searchTerm, statusFilter, responsables]);
+
 
   const getStatusBadge = (estado: string) => {
     switch (estado) {
@@ -131,7 +194,18 @@ export function VolunteersAdmin() {
 
   return (
     <>
+      <div className="mb-6">
+        <VolunteerCyclePanel
+          ciclos={ciclos}
+          responsables={responsables}
+          activeCicloId={activeCicloId}
+          onSelectCiclo={setActiveCicloId}
+          onRefresh={fetchCycles}
+        />
+      </div>
+
       <Card className="border-0 shadow-lg overflow-hidden">
+
         {/* Header with gradient */}
         <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -192,7 +266,9 @@ export function VolunteersAdmin() {
                     <TableHead className="font-semibold text-slate-700">Ubicación</TableHead>
                     <TableHead className="font-semibold text-slate-700">Horas/Semana</TableHead>
                     <TableHead className="font-semibold text-slate-700">Estado</TableHead>
+                    <TableHead className="font-semibold text-slate-700">Responsable</TableHead>
                     <TableHead className="font-semibold text-slate-700">Fecha</TableHead>
+
                     <TableHead className="font-semibold text-slate-700 text-right">Acciones</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -230,6 +306,31 @@ export function VolunteersAdmin() {
                         </div>
                       </TableCell>
                       <TableCell>{getStatusBadge(volunteer.estado)}</TableCell>
+                      <TableCell>
+                        <Select
+                          value={volunteer.responsable_id ?? "none"}
+                          onValueChange={(value) => assignResponsable(volunteer, value)}
+                        >
+                          <SelectTrigger className="w-40 h-9 bg-white">
+                            <SelectValue placeholder="Sin asignar" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="none">Sin asignar</SelectItem>
+                            {cicloResponsables.map((r) => (
+                              <SelectItem key={r.id} value={r.id}>
+                                {r.nombre}
+                              </SelectItem>
+                            ))}
+                            {volunteer.responsable_id &&
+                              !cicloResponsables.some((r) => r.id === volunteer.responsable_id) && (
+                                <SelectItem value={volunteer.responsable_id}>
+                                  {responsableName(volunteer.responsable_id)}
+                                </SelectItem>
+                              )}
+                          </SelectContent>
+                        </Select>
+                      </TableCell>
+
                       <TableCell className="text-sm text-slate-500">
                         {format(new Date(volunteer.created_at), "d MMM yyyy", { locale: es })}
                       </TableCell>
@@ -321,7 +422,18 @@ export function VolunteersAdmin() {
                   <label className="text-xs font-medium text-slate-500 uppercase">Horas Semanales</label>
                   <p className="text-slate-900">{selectedVolunteer.horas_semanales} horas</p>
                 </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Responsable</label>
+                  <p className="text-slate-900">{responsableName(selectedVolunteer.responsable_id) || "Sin asignar"}</p>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Ciclo</label>
+                  <p className="text-slate-900">
+                    {ciclos.find((c) => c.id === selectedVolunteer.ciclo_id)?.nombre || "Sin ciclo"}
+                  </p>
+                </div>
               </div>
+
               
               <div>
                 <label className="text-xs font-medium text-slate-500 uppercase">Áreas de Interés</label>

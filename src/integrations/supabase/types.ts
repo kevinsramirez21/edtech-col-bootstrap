@@ -183,6 +183,33 @@ export type Database = {
           },
         ]
       }
+      ciclos_voluntariado: {
+        Row: {
+          activo: boolean
+          created_at: string
+          id: string
+          lider_nombre: string | null
+          nombre: string
+          updated_at: string
+        }
+        Insert: {
+          activo?: boolean
+          created_at?: string
+          id?: string
+          lider_nombre?: string | null
+          nombre: string
+          updated_at?: string
+        }
+        Update: {
+          activo?: boolean
+          created_at?: string
+          id?: string
+          lider_nombre?: string | null
+          nombre?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       newsletter_subscriptions: {
         Row: {
           created_at: string
@@ -303,6 +330,38 @@ export type Database = {
         }
         Relationships: []
       }
+      responsables_ciclo: {
+        Row: {
+          ciclo_id: string
+          created_at: string
+          id: string
+          nombre: string
+          updated_at: string
+        }
+        Insert: {
+          ciclo_id: string
+          created_at?: string
+          id?: string
+          nombre: string
+          updated_at?: string
+        }
+        Update: {
+          ciclo_id?: string
+          created_at?: string
+          id?: string
+          nombre?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "responsables_ciclo_ciclo_id_fkey"
+            columns: ["ciclo_id"]
+            isOneToOne: false
+            referencedRelation: "ciclos_voluntariado"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       solicitudes_aliados: {
         Row: {
           acepta_comunicaciones: boolean
@@ -380,6 +439,7 @@ export type Database = {
           aporte_equipo: string | null
           area_liderazgo: string | null
           areas_interes: string[]
+          ciclo_id: string | null
           ciudad: string
           como_conocio: string | null
           confirma_horas: boolean
@@ -405,6 +465,7 @@ export type Database = {
           ocupacion: string | null
           organizacion: string | null
           pais: string
+          responsable_id: string | null
           sobre_ti: string | null
           telefono: string
           trabaja_edtech: string | null
@@ -419,6 +480,7 @@ export type Database = {
           aporte_equipo?: string | null
           area_liderazgo?: string | null
           areas_interes?: string[]
+          ciclo_id?: string | null
           ciudad: string
           como_conocio?: string | null
           confirma_horas?: boolean
@@ -444,6 +506,7 @@ export type Database = {
           ocupacion?: string | null
           organizacion?: string | null
           pais?: string
+          responsable_id?: string | null
           sobre_ti?: string | null
           telefono: string
           trabaja_edtech?: string | null
@@ -458,6 +521,7 @@ export type Database = {
           aporte_equipo?: string | null
           area_liderazgo?: string | null
           areas_interes?: string[]
+          ciclo_id?: string | null
           ciudad?: string
           como_conocio?: string | null
           confirma_horas?: boolean
@@ -483,6 +547,7 @@ export type Database = {
           ocupacion?: string | null
           organizacion?: string | null
           pais?: string
+          responsable_id?: string | null
           sobre_ti?: string | null
           telefono?: string
           trabaja_edtech?: string | null
@@ -490,7 +555,22 @@ export type Database = {
           updated_at?: string
           varita_magica?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "solicitudes_voluntarios_ciclo_id_fkey"
+            columns: ["ciclo_id"]
+            isOneToOne: false
+            referencedRelation: "ciclos_voluntariado"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "solicitudes_voluntarios_responsable_id_fkey"
+            columns: ["responsable_id"]
+            isOneToOne: false
+            referencedRelation: "responsables_ciclo"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
