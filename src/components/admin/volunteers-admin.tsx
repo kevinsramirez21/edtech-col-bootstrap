@@ -258,7 +258,7 @@ export function VolunteersAdmin() {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <Table>
+              <Table className="min-w-[900px]">
                 <TableHeader>
                   <TableRow className="bg-slate-50 hover:bg-slate-50">
                     <TableHead className="font-semibold text-slate-700">Nombre</TableHead>
