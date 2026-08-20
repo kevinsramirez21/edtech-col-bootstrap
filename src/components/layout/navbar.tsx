@@ -186,6 +186,28 @@ export function Navbar() {
             )}
           </div>
 
+          {/* Tablet/Mobile Auth/User Menu */}
+          <div className="flex lg:hidden items-center space-x-2 flex-shrink-0">
+            {!loading && (
+              user ? (
+                <UserMenu />
+              ) : (
+                <Button 
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="border-2 border-white/90 bg-white/10 text-white hover:bg-white hover:text-accent font-semibold px-2 sm:px-3 py-2 rounded-lg transition-all duration-300 backdrop-blur-sm"
+                >
+                  <Link to="/auth" className="flex items-center space-x-1.5">
+                    <LogIn className="w-4 h-4" />
+                    <span className="hidden sm:inline">Iniciar Sesión</span>
+                  </Link>
+                </Button>
+              )
+            )}
+          </div>
+
+
           {/* Mobile menu button */}
           <Button
             variant="ghost"
