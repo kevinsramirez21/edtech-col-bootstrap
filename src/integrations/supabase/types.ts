@@ -452,6 +452,7 @@ export type Database = {
           equipo_secundario: string | null
           estado: string
           estado_actual: string | null
+          estado_proceso: string
           expectativas: string | null
           experiencia_area: string | null
           experiencia_voluntariado: string | null
@@ -493,6 +494,7 @@ export type Database = {
           equipo_secundario?: string | null
           estado?: string
           estado_actual?: string | null
+          estado_proceso?: string
           expectativas?: string | null
           experiencia_area?: string | null
           experiencia_voluntariado?: string | null
@@ -534,6 +536,7 @@ export type Database = {
           equipo_secundario?: string | null
           estado?: string
           estado_actual?: string | null
+          estado_proceso?: string
           expectativas?: string | null
           experiencia_area?: string | null
           experiencia_voluntariado?: string | null
