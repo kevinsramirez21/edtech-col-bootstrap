@@ -540,6 +540,16 @@ export function VolunteersAdmin() {
                   <div className="mt-1">{getStatusBadge(selectedVolunteer.estado)}</div>
                 </div>
                 <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Estado del proceso</label>
+                  <div className="mt-1">
+                    <Badge
+                      className={`${TONE_CLASSES[estadoProcesoInfo(selectedVolunteer.estado_proceso).tone]} hover:opacity-100`}
+                    >
+                      {estadoProcesoInfo(selectedVolunteer.estado_proceso).label}
+                    </Badge>
+                  </div>
+                </div>
+                <div>
                   <label className="text-xs font-medium text-slate-500 uppercase">Email</label>
                   <p className="text-slate-900">{selectedVolunteer.correo_electronico}</p>
                 </div>
