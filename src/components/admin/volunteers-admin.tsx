@@ -353,7 +353,7 @@ export function VolunteersAdmin() {
             </div>
           ) : (
             <div className="overflow-x-auto scrollbar-x-visible">
-              <Table className="min-w-[1080px]">
+              <Table className="min-w-[1320px]">
                 <TableHeader>
                   <TableRow className="bg-slate-50 hover:bg-slate-50">
                     <TableHead className="font-semibold text-slate-700">Nombre</TableHead>
@@ -361,6 +361,7 @@ export function VolunteersAdmin() {
                     <TableHead className="font-semibold text-slate-700">Ubicación</TableHead>
                     <TableHead className="font-semibold text-slate-700">Horas/Semana</TableHead>
                     <TableHead className="font-semibold text-slate-700">Estado</TableHead>
+                    <TableHead className="font-semibold text-slate-700">Estado del proceso</TableHead>
                     <TableHead className="font-semibold text-slate-700">Ciclo</TableHead>
                     <TableHead className="font-semibold text-slate-700">Responsable</TableHead>
                     <TableHead className="font-semibold text-slate-700">Fecha</TableHead>
