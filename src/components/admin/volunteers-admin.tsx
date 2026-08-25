@@ -242,7 +242,7 @@ export function VolunteersAdmin() {
       return matchesSearch && matchesStatus && matchesProceso;
     });
 
-  }, [volunteers, searchTerm, statusFilter, responsables, ciclos]);
+  }, [volunteers, searchTerm, statusFilter, procesoFilter, responsables, ciclos]);
 
 
   const getStatusBadge = (estado: string) => {
