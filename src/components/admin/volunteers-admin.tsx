@@ -70,6 +70,8 @@ export function VolunteersAdmin() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("todos");
+  const [procesoFilter, setProcesoFilter] = useState<string>("todos");
+
   const [selectedVolunteer, setSelectedVolunteer] = useState<VolunteerApplication | null>(null);
   const [updating, setUpdating] = useState<string | null>(null);
   const [ciclos, setCiclos] = useState<Ciclo[]>([]);
