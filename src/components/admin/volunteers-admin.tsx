@@ -18,6 +18,30 @@ import {
 } from "@/components/ui/dialog";
 import { VolunteerCyclePanel, type Ciclo, type Responsable } from "./volunteer-cycle-panel";
 
+const ESTADOS_PROCESO = [
+  { value: "pendiente_primer_contacto", label: "0. Pendiente de primer contacto", tone: "neutral" },
+  { value: "primer_contacto_realizado", label: "1. Primer contacto realizado", tone: "progress" },
+  { value: "agendado_assessment", label: "2. Agendado para Assessment", tone: "progress" },
+  { value: "asistio_assessment", label: "3. Asistió al Assessment", tone: "good" },
+  { value: "no_asistio_assessment", label: "4. No asistió al Assessment", tone: "bad" },
+  { value: "confirma_onboarding", label: "5. Confirma asistencia a Onboarding", tone: "progress" },
+  { value: "asistio_onboarding", label: "6. Asistió a Onboarding", tone: "good" },
+  { value: "no_asistio_onboarding", label: "7. No asistió a Onboarding", tone: "bad" },
+  { value: "no_responde", label: "No responde", tone: "bad" },
+  { value: "desistio", label: "Desistió", tone: "bad" },
+  { value: "rechazado", label: "Rechazado", tone: "bad" },
+] as const;
+
+const TONE_CLASSES: Record<string, string> = {
+  neutral: "bg-slate-100 text-slate-700 border-slate-300",
+  progress: "bg-sky-100 text-sky-700 border-sky-300",
+  good: "bg-emerald-100 text-emerald-700 border-emerald-300",
+  bad: "bg-red-100 text-red-700 border-red-300",
+};
+
+const estadoProcesoInfo = (value: string) =>
+  ESTADOS_PROCESO.find((e) => e.value === value) ?? ESTADOS_PROCESO[0];
+
 interface VolunteerApplication {
   id: string;
   nombre_completo: string;
@@ -34,16 +58,20 @@ interface VolunteerApplication {
   motivacion: string;
   como_conocio: string | null;
   estado: string;
+  estado_proceso: string;
   created_at: string;
   ciclo_id: string | null;
   responsable_id: string | null;
 }
+
 
 export function VolunteersAdmin() {
   const [volunteers, setVolunteers] = useState<VolunteerApplication[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("todos");
+  const [procesoFilter, setProcesoFilter] = useState<string>("todos");
+
   const [selectedVolunteer, setSelectedVolunteer] = useState<VolunteerApplication | null>(null);
   const [updating, setUpdating] = useState<string | null>(null);
   const [ciclos, setCiclos] = useState<Ciclo[]>([]);
@@ -115,6 +143,29 @@ export function VolunteersAdmin() {
     }
   };
 
+  const updateEstadoProceso = async (volunteer: VolunteerApplication, value: string) => {
+    const rechaza = value === "no_asistio_assessment" || value === "rechazado";
+    const patch: { estado_proceso: string; estado?: string } = { estado_proceso: value };
+    if (rechaza) patch.estado = "rechazado";
+    try {
+      const { error } = await supabase
+        .from("solicitudes_voluntarios")
+        .update(patch)
+        .eq("id", volunteer.id);
+      if (error) throw error;
+      setVolunteers((prev) =>
+        prev.map((v) => (v.id === volunteer.id ? { ...v, ...patch } : v))
+      );
+      setSelectedVolunteer((prev) => (prev && prev.id === volunteer.id ? { ...prev, ...patch } : prev));
+      toast.success(`Proceso: ${estadoProcesoInfo(value).label}`);
+    } catch (error) {
+      console.error("Error updating estado_proceso:", error);
+      toast.error("No se pudo actualizar el estado del proceso");
+    }
+  };
+
+
+
   const assignResponsable = async (volunteer: VolunteerApplication, value: string) => {
     const responsableId = value === "none" ? null : value;
     const cicloId = responsableId
@@ -181,13 +232,17 @@ export function VolunteersAdmin() {
         volunteer.correo_electronico.toLowerCase().includes(term) ||
         volunteer.ciudad.toLowerCase().includes(term) ||
         (responsableName(volunteer.responsable_id) ?? "").toLowerCase().includes(term) ||
-        (cicloName(volunteer.ciclo_id) ?? "").toLowerCase().includes(term);
+        (cicloName(volunteer.ciclo_id) ?? "").toLowerCase().includes(term) ||
+        estadoProcesoInfo(volunteer.estado_proceso).label.toLowerCase().includes(term);
       
       const matchesStatus = statusFilter === "todos" || volunteer.estado === statusFilter;
+      const matchesProceso =
+        procesoFilter === "todos" || (volunteer.estado_proceso ?? "pendiente_primer_contacto") === procesoFilter;
       
-      return matchesSearch && matchesStatus;
+      return matchesSearch && matchesStatus && matchesProceso;
     });
-  }, [volunteers, searchTerm, statusFilter, responsables, ciclos]);
+
+  }, [volunteers, searchTerm, statusFilter, procesoFilter, responsables, ciclos]);
 
 
   const getStatusBadge = (estado: string) => {
@@ -272,6 +327,19 @@ export function VolunteersAdmin() {
               <SelectItem value="rechazado">Rechazado</SelectItem>
             </SelectContent>
           </Select>
+          <Select value={procesoFilter} onValueChange={setProcesoFilter}>
+            <SelectTrigger className="w-full sm:w-64 bg-white border-slate-200">
+              <SelectValue placeholder="Filtrar por proceso" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="todos">Todo el proceso</SelectItem>
+              {ESTADOS_PROCESO.map((e) => (
+                <SelectItem key={e.value} value={e.value}>
+                  {e.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         <CardContent className="p-0">
@@ -285,7 +353,7 @@ export function VolunteersAdmin() {
             </div>
           ) : (
             <div className="overflow-x-auto scrollbar-x-visible">
-              <Table className="min-w-[1080px]">
+              <Table className="min-w-[1320px]">
                 <TableHeader>
                   <TableRow className="bg-slate-50 hover:bg-slate-50">
                     <TableHead className="font-semibold text-slate-700">Nombre</TableHead>
@@ -293,6 +361,7 @@ export function VolunteersAdmin() {
                     <TableHead className="font-semibold text-slate-700">Ubicación</TableHead>
                     <TableHead className="font-semibold text-slate-700">Horas/Semana</TableHead>
                     <TableHead className="font-semibold text-slate-700">Estado</TableHead>
+                    <TableHead className="font-semibold text-slate-700">Estado del proceso</TableHead>
                     <TableHead className="font-semibold text-slate-700">Ciclo</TableHead>
                     <TableHead className="font-semibold text-slate-700">Responsable</TableHead>
                     <TableHead className="font-semibold text-slate-700">Fecha</TableHead>
@@ -334,6 +403,25 @@ export function VolunteersAdmin() {
                         </div>
                       </TableCell>
                       <TableCell>{getStatusBadge(volunteer.estado)}</TableCell>
+                      <TableCell>
+                        <Select
+                          value={volunteer.estado_proceso ?? "pendiente_primer_contacto"}
+                          onValueChange={(value) => updateEstadoProceso(volunteer, value)}
+                        >
+                          <SelectTrigger
+                            className={`w-56 h-9 border ${TONE_CLASSES[estadoProcesoInfo(volunteer.estado_proceso).tone]}`}
+                          >
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {ESTADOS_PROCESO.map((e) => (
+                              <SelectItem key={e.value} value={e.value}>
+                                {e.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </TableCell>
                       <TableCell>
                         <Select
                           value={volunteer.ciclo_id ?? "none"}
@@ -450,6 +538,16 @@ export function VolunteersAdmin() {
                 <div>
                   <label className="text-xs font-medium text-slate-500 uppercase">Estado</label>
                   <div className="mt-1">{getStatusBadge(selectedVolunteer.estado)}</div>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 uppercase">Estado del proceso</label>
+                  <div className="mt-1">
+                    <Badge
+                      className={`${TONE_CLASSES[estadoProcesoInfo(selectedVolunteer.estado_proceso).tone]} hover:opacity-100`}
+                    >
+                      {estadoProcesoInfo(selectedVolunteer.estado_proceso).label}
+                    </Badge>
+                  </div>
                 </div>
                 <div>
                   <label className="text-xs font-medium text-slate-500 uppercase">Email</label>
