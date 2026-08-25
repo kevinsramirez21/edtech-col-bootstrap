@@ -327,6 +327,19 @@ export function VolunteersAdmin() {
               <SelectItem value="rechazado">Rechazado</SelectItem>
             </SelectContent>
           </Select>
+          <Select value={procesoFilter} onValueChange={setProcesoFilter}>
+            <SelectTrigger className="w-full sm:w-64 bg-white border-slate-200">
+              <SelectValue placeholder="Filtrar por proceso" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="todos">Todo el proceso</SelectItem>
+              {ESTADOS_PROCESO.map((e) => (
+                <SelectItem key={e.value} value={e.value}>
+                  {e.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         <CardContent className="p-0">
