@@ -18,6 +18,30 @@ import {
 } from "@/components/ui/dialog";
 import { VolunteerCyclePanel, type Ciclo, type Responsable } from "./volunteer-cycle-panel";
 
+const ESTADOS_PROCESO = [
+  { value: "pendiente_primer_contacto", label: "0. Pendiente de primer contacto", tone: "neutral" },
+  { value: "primer_contacto_realizado", label: "1. Primer contacto realizado", tone: "progress" },
+  { value: "agendado_assessment", label: "2. Agendado para Assessment", tone: "progress" },
+  { value: "asistio_assessment", label: "3. Asistió al Assessment", tone: "good" },
+  { value: "no_asistio_assessment", label: "4. No asistió al Assessment", tone: "bad" },
+  { value: "confirma_onboarding", label: "5. Confirma asistencia a Onboarding", tone: "progress" },
+  { value: "asistio_onboarding", label: "6. Asistió a Onboarding", tone: "good" },
+  { value: "no_asistio_onboarding", label: "7. No asistió a Onboarding", tone: "bad" },
+  { value: "no_responde", label: "No responde", tone: "bad" },
+  { value: "desistio", label: "Desistió", tone: "bad" },
+  { value: "rechazado", label: "Rechazado", tone: "bad" },
+] as const;
+
+const TONE_CLASSES: Record<string, string> = {
+  neutral: "bg-slate-100 text-slate-700 border-slate-300",
+  progress: "bg-sky-100 text-sky-700 border-sky-300",
+  good: "bg-emerald-100 text-emerald-700 border-emerald-300",
+  bad: "bg-red-100 text-red-700 border-red-300",
+};
+
+const estadoProcesoInfo = (value: string) =>
+  ESTADOS_PROCESO.find((e) => e.value === value) ?? ESTADOS_PROCESO[0];
+
 interface VolunteerApplication {
   id: string;
   nombre_completo: string;
@@ -34,10 +58,12 @@ interface VolunteerApplication {
   motivacion: string;
   como_conocio: string | null;
   estado: string;
+  estado_proceso: string;
   created_at: string;
   ciclo_id: string | null;
   responsable_id: string | null;
 }
+
 
 export function VolunteersAdmin() {
   const [volunteers, setVolunteers] = useState<VolunteerApplication[]>([]);
