@@ -405,6 +405,25 @@ export function VolunteersAdmin() {
                       <TableCell>{getStatusBadge(volunteer.estado)}</TableCell>
                       <TableCell>
                         <Select
+                          value={volunteer.estado_proceso ?? "pendiente_primer_contacto"}
+                          onValueChange={(value) => updateEstadoProceso(volunteer, value)}
+                        >
+                          <SelectTrigger
+                            className={`w-56 h-9 border ${TONE_CLASSES[estadoProcesoInfo(volunteer.estado_proceso).tone]}`}
+                          >
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {ESTADOS_PROCESO.map((e) => (
+                              <SelectItem key={e.value} value={e.value}>
+                                {e.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </TableCell>
+                      <TableCell>
+                        <Select
                           value={volunteer.ciclo_id ?? "none"}
                           onValueChange={(value) => assignCiclo(volunteer, value)}
                         >
