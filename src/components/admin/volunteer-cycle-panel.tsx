@@ -6,7 +6,19 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2, Plus, Trash2, CalendarRange, UserCheck, Check, X, Pencil } from "lucide-react";
+import {
+  Loader2,
+  Plus,
+  Trash2,
+  CalendarRange,
+  UserCheck,
+  Check,
+  X,
+  Pencil,
+  ChevronDown,
+  ChevronUp,
+  Settings2,
+} from "lucide-react";
 import { toast } from "sonner";
 
 export interface Ciclo {
@@ -33,6 +45,7 @@ interface Props {
 export function VolunteerCyclePanel({ ciclos, responsables, activeCicloId, onSelectCiclo, onRefresh }: Props) {
   const ciclo = ciclos.find((c) => c.id === activeCicloId) ?? null;
 
+  const [expanded, setExpanded] = useState(false);
   const [nombre, setNombre] = useState("");
   const [lider, setLider] = useState("");
   const [saving, setSaving] = useState(false);
@@ -62,6 +75,7 @@ export function VolunteerCyclePanel({ ciclos, responsables, activeCicloId, onSel
       if (error) throw error;
       setNewCicloName("");
       onSelectCiclo(data.id);
+      setExpanded(true);
       onRefresh();
       toast.success("Ciclo creado");
     } catch (e) {
@@ -174,173 +188,231 @@ export function VolunteerCyclePanel({ ciclos, responsables, activeCicloId, onSel
 
   return (
     <Card className="border-0 shadow-lg overflow-hidden">
-      <div className="bg-gradient-to-r from-[#0B47CE] to-indigo-500 p-6">
-        <div className="flex items-center gap-3">
-          <div className="h-12 w-12 rounded-xl bg-white/20 flex items-center justify-center">
-            <CalendarRange className="w-6 h-6 text-white" />
+      <div className="bg-gradient-to-r from-[#0B47CE] to-indigo-500 p-4 sm:p-6">
+        <div className="flex items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="h-10 w-10 sm:h-12 sm:w-12 shrink-0 rounded-xl bg-white/20 flex items-center justify-center">
+              <CalendarRange className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            </div>
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-xl font-bold text-white truncate">Ciclo de selección</h2>
+              <p className="text-white/80 text-xs sm:text-sm hidden sm:block">
+                Define el ciclo, su líder y los responsables del seguimiento
+              </p>
+            </div>
           </div>
-          <div>
-            <h2 className="text-xl font-bold text-white">Ciclo de selección</h2>
-            <p className="text-white/80 text-sm">Define el ciclo, su líder y los responsables del seguimiento</p>
-          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setExpanded((v) => !v)}
+            className="text-white hover:bg-white/20 shrink-0"
+          >
+            {expanded ? (
+              <>
+                <ChevronUp className="w-4 h-4 mr-2" /> Ocultar configuración
+              </>
+            ) : (
+              <>
+                <Settings2 className="w-4 h-4 mr-2" /> Configurar
+              </>
+            )}
+          </Button>
         </div>
       </div>
 
-      <CardContent className="p-6 space-y-6">
-        <div className="grid md:grid-cols-2 gap-4">
-          {/* Sección 1: crear ciclo */}
-          <section className="rounded-xl border border-slate-200 bg-slate-50/60 p-4">
-            <div className="flex items-center gap-2 mb-1">
-              <Plus className="w-4 h-4 text-[#0B47CE]" />
-              <h3 className="font-semibold text-slate-800">Crear un nuevo ciclo</h3>
+      {!expanded && (
+        <CardContent className="p-4 sm:p-6">
+          {ciclo ? (
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6">
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-wide text-slate-500 font-medium">Ciclo actual</span>
+                <span className="text-sm font-semibold text-slate-800">{ciclo.nombre}</span>
+                {ciclo.activo && (
+                  <Badge className="bg-emerald-100 text-emerald-700 border-emerald-300 text-xs">Activo</Badge>
+                )}
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-wide text-slate-500 font-medium">Líder</span>
+                <span className="text-sm font-semibold text-slate-800">{ciclo.lider_nombre || "Sin asignar"}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <UserCheck className="w-4 h-4 text-slate-400" />
+                <span className="text-xs uppercase tracking-wide text-slate-500 font-medium">Colaboradores</span>
+                <span className="text-sm font-semibold text-slate-800">
+                  {cicloResponsables.length > 0
+                    ? cicloResponsables.map((r) => r.nombre).join(", ")
+                    : "Sin colaboradores"}
+                </span>
+              </div>
             </div>
-            <p className="text-xs text-slate-500 mb-3">Escribe el nombre del ciclo (mes, fecha o etiqueta).</p>
-            <Label className="text-xs uppercase text-slate-500">Nombre del nuevo ciclo</Label>
-            <div className="flex gap-2 mt-1">
-              <Input
-                placeholder="Ej. Agosto 2026"
-                value={newCicloName}
-                onChange={(e) => setNewCicloName(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && createCiclo()}
-              />
-              <Button onClick={createCiclo} disabled={creating || !newCicloName.trim()}>
-                {creating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
+          ) : (
+            <div className="flex items-center justify-between gap-4">
+              <p className="text-sm text-slate-500">No hay un ciclo seleccionado.</p>
+              <Button size="sm" onClick={() => setExpanded(true)}>
+                <Plus className="w-4 h-4 mr-2" /> Crear ciclo
               </Button>
             </div>
-          </section>
+          )}
+        </CardContent>
+      )}
 
-          {/* Sección 2: seleccionar ciclo actual */}
-          <section className="rounded-xl border border-[#0B47CE]/30 bg-[#0B47CE]/5 p-4">
-            <div className="flex items-center gap-2 mb-1">
-              <CalendarRange className="w-4 h-4 text-[#0B47CE]" />
-              <h3 className="font-semibold text-slate-800">Ciclo en el que estamos</h3>
-            </div>
-            <p className="text-xs text-slate-500 mb-3">Selecciona el ciclo que quieres gestionar.</p>
-            <Label className="text-xs uppercase text-slate-500">Ciclo seleccionado</Label>
-            <Select value={activeCicloId ?? undefined} onValueChange={onSelectCiclo}>
-              <SelectTrigger className="mt-1 bg-white">
-                <SelectValue placeholder={ciclos.length ? "Selecciona un ciclo" : "Aún no hay ciclos"} />
-              </SelectTrigger>
-              <SelectContent>
-                {ciclos.map((c) => (
-                  <SelectItem key={c.id} value={c.id}>
-                    {c.nombre} {c.activo ? "· activo" : ""}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </section>
-        </div>
-
-        {ciclo && (
-          <div className="border-t pt-6 space-y-6">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <Label className="text-xs uppercase text-slate-500">Nombre del ciclo</Label>
-                <Input className="mt-1" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+      {expanded && (
+        <CardContent className="p-4 sm:p-6 space-y-6">
+          <div className="grid md:grid-cols-2 gap-4">
+            {/* Sección 1: crear ciclo */}
+            <section className="rounded-xl border border-slate-200 bg-slate-50/60 p-4">
+              <div className="flex items-center gap-2 mb-1">
+                <Plus className="w-4 h-4 text-[#0B47CE]" />
+                <h3 className="font-semibold text-slate-800">Crear un nuevo ciclo</h3>
               </div>
-              <div>
-                <Label className="text-xs uppercase text-slate-500">Nombre del líder</Label>
+              <p className="text-xs text-slate-500 mb-3">Escribe el nombre del ciclo (mes, fecha o etiqueta).</p>
+              <Label className="text-xs uppercase text-slate-500">Nombre del nuevo ciclo</Label>
+              <div className="flex gap-2 mt-1">
                 <Input
-                  className="mt-1"
-                  placeholder="Ej. María Gómez"
-                  value={lider}
-                  onChange={(e) => setLider(e.target.value)}
+                  placeholder="Ej. Agosto 2026"
+                  value={newCicloName}
+                  onChange={(e) => setNewCicloName(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && createCiclo()}
                 />
-              </div>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-2">
-              <Button onClick={saveCiclo} disabled={saving}>
-                {saving && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
-                Guardar cambios
-              </Button>
-              {ciclo.activo ? (
-                <Badge className="bg-emerald-100 text-emerald-700 border-emerald-300">Ciclo activo</Badge>
-              ) : (
-                <Button variant="outline" onClick={markActive}>
-                  Marcar como activo
-                </Button>
-              )}
-              <Button variant="ghost" className="text-red-600 hover:bg-red-50" onClick={deleteCiclo}>
-                <Trash2 className="w-4 h-4 mr-2" /> Eliminar ciclo
-              </Button>
-            </div>
-
-            {/* Responsables */}
-            <div className="border-t pt-5">
-              <div className="flex items-center gap-2 mb-3">
-                <UserCheck className="w-4 h-4 text-slate-500" />
-                <h3 className="font-semibold text-slate-800">Responsables</h3>
-                <span className="text-sm text-slate-500">({cicloResponsables.length})</span>
-              </div>
-
-              <div className="flex gap-2 mb-4 max-w-md">
-                <Input
-                  placeholder="Nombre del responsable"
-                  value={newResponsable}
-                  onChange={(e) => setNewResponsable(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && addResponsable()}
-                />
-                <Button onClick={addResponsable} disabled={addingResponsable || !newResponsable.trim()}>
-                  {addingResponsable ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
+                <Button onClick={createCiclo} disabled={creating || !newCicloName.trim()}>
+                  {creating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
                 </Button>
               </div>
+            </section>
 
-              {cicloResponsables.length === 0 ? (
-                <p className="text-sm text-slate-500">Aún no hay responsables en este ciclo.</p>
-              ) : (
-                <div className="flex flex-wrap gap-2">
-                  {cicloResponsables.map((r) =>
-                    editingId === r.id ? (
-                      <div key={r.id} className="flex items-center gap-1">
-                        <Input
-                          className="h-9 w-44"
-                          value={editingName}
-                          onChange={(e) => setEditingName(e.target.value)}
-                          onKeyDown={(e) => e.key === "Enter" && saveResponsable(r.id)}
-                        />
-                        <Button size="sm" variant="ghost" onClick={() => saveResponsable(r.id)}>
-                          <Check className="w-4 h-4 text-emerald-600" />
-                        </Button>
-                        <Button size="sm" variant="ghost" onClick={() => setEditingId(null)}>
-                          <X className="w-4 h-4 text-slate-500" />
-                        </Button>
-                      </div>
-                    ) : (
-                      <div
-                        key={r.id}
-                        className="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 pl-3 pr-1 py-1"
-                      >
-                        <span className="text-sm text-slate-700">{r.nombre}</span>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          className="h-7 w-7 p-0"
-                          onClick={() => {
-                            setEditingId(r.id);
-                            setEditingName(r.nombre);
-                          }}
-                        >
-                          <Pencil className="w-3.5 h-3.5 text-slate-500" />
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          className="h-7 w-7 p-0"
-                          onClick={() => deleteResponsable(r.id)}
-                        >
-                          <Trash2 className="w-3.5 h-3.5 text-red-500" />
-                        </Button>
-                      </div>
-                    )
-                  )}
-                </div>
-              )}
-            </div>
+            {/* Sección 2: seleccionar ciclo actual */}
+            <section className="rounded-xl border border-[#0B47CE]/30 bg-[#0B47CE]/5 p-4">
+              <div className="flex items-center gap-2 mb-1">
+                <CalendarRange className="w-4 h-4 text-[#0B47CE]" />
+                <h3 className="font-semibold text-slate-800">Ciclo en el que estamos</h3>
+              </div>
+              <p className="text-xs text-slate-500 mb-3">Selecciona el ciclo que quieres gestionar.</p>
+              <Label className="text-xs uppercase text-slate-500">Ciclo seleccionado</Label>
+              <Select value={activeCicloId ?? undefined} onValueChange={onSelectCiclo}>
+                <SelectTrigger className="mt-1 bg-white">
+                  <SelectValue placeholder={ciclos.length ? "Selecciona un ciclo" : "Aún no hay ciclos"} />
+                </SelectTrigger>
+                <SelectContent>
+                  {ciclos.map((c) => (
+                    <SelectItem key={c.id} value={c.id}>
+                      {c.nombre} {c.activo ? "· activo" : ""}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </section>
           </div>
-        )}
-      </CardContent>
+
+          {ciclo && (
+            <div className="border-t pt-6 space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs uppercase text-slate-500">Nombre del ciclo</Label>
+                  <Input className="mt-1" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                </div>
+                <div>
+                  <Label className="text-xs uppercase text-slate-500">Nombre del líder</Label>
+                  <Input
+                    className="mt-1"
+                    placeholder="Ej. María Gómez"
+                    value={lider}
+                    onChange={(e) => setLider(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <Button onClick={saveCiclo} disabled={saving}>
+                  {saving && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+                  Guardar cambios
+                </Button>
+                {ciclo.activo ? (
+                  <Badge className="bg-emerald-100 text-emerald-700 border-emerald-300">Ciclo activo</Badge>
+                ) : (
+                  <Button variant="outline" onClick={markActive}>
+                    Marcar como activo
+                  </Button>
+                )}
+                <Button variant="ghost" className="text-red-600 hover:bg-red-50" onClick={deleteCiclo}>
+                  <Trash2 className="w-4 h-4 mr-2" /> Eliminar ciclo
+                </Button>
+              </div>
+
+              {/* Responsables */}
+              <div className="border-t pt-5">
+                <div className="flex items-center gap-2 mb-3">
+                  <UserCheck className="w-4 h-4 text-slate-500" />
+                  <h3 className="font-semibold text-slate-800">Responsables</h3>
+                  <span className="text-sm text-slate-500">({cicloResponsables.length})</span>
+                </div>
+
+                <div className="flex gap-2 mb-4 max-w-md">
+                  <Input
+                    placeholder="Nombre del responsable"
+                    value={newResponsable}
+                    onChange={(e) => setNewResponsable(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && addResponsable()}
+                  />
+                  <Button onClick={addResponsable} disabled={addingResponsable || !newResponsable.trim()}>
+                    {addingResponsable ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
+                  </Button>
+                </div>
+
+                {cicloResponsables.length === 0 ? (
+                  <p className="text-sm text-slate-500">Aún no hay responsables en este ciclo.</p>
+                ) : (
+                  <div className="flex flex-wrap gap-2">
+                    {cicloResponsables.map((r) =>
+                      editingId === r.id ? (
+                        <div key={r.id} className="flex items-center gap-1">
+                          <Input
+                            className="h-9 w-44"
+                            value={editingName}
+                            onChange={(e) => setEditingName(e.target.value)}
+                            onKeyDown={(e) => e.key === "Enter" && saveResponsable(r.id)}
+                          />
+                          <Button size="sm" variant="ghost" onClick={() => saveResponsable(r.id)}>
+                            <Check className="w-4 h-4 text-emerald-600" />
+                          </Button>
+                          <Button size="sm" variant="ghost" onClick={() => setEditingId(null)}>
+                            <X className="w-4 h-4 text-slate-500" />
+                          </Button>
+                        </div>
+                      ) : (
+                        <div
+                          key={r.id}
+                          className="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 pl-3 pr-1 py-1"
+                        >
+                          <span className="text-sm text-slate-700">{r.nombre}</span>
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            className="h-7 w-7 p-0"
+                            onClick={() => {
+                              setEditingId(r.id);
+                              setEditingName(r.nombre);
+                            }}
+                          >
+                            <Pencil className="w-3.5 h-3.5 text-slate-500" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            className="h-7 w-7 p-0"
+                            onClick={() => deleteResponsable(r.id)}
+                          >
+                            <Trash2 className="w-3.5 h-3.5 text-red-500" />
+                          </Button>
+                        </div>
+                      )
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </CardContent>
+      )}
     </Card>
   );
 }
