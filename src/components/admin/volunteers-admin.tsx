@@ -143,6 +143,29 @@ export function VolunteersAdmin() {
     }
   };
 
+  const updateEstadoProceso = async (volunteer: VolunteerApplication, value: string) => {
+    const rechaza = value === "no_asistio_assessment" || value === "rechazado";
+    const patch: { estado_proceso: string; estado?: string } = { estado_proceso: value };
+    if (rechaza) patch.estado = "rechazado";
+    try {
+      const { error } = await supabase
+        .from("solicitudes_voluntarios")
+        .update(patch)
+        .eq("id", volunteer.id);
+      if (error) throw error;
+      setVolunteers((prev) =>
+        prev.map((v) => (v.id === volunteer.id ? { ...v, ...patch } : v))
+      );
+      setSelectedVolunteer((prev) => (prev && prev.id === volunteer.id ? { ...prev, ...patch } : prev));
+      toast.success(`Proceso: ${estadoProcesoInfo(value).label}`);
+    } catch (error) {
+      console.error("Error updating estado_proceso:", error);
+      toast.error("No se pudo actualizar el estado del proceso");
+    }
+  };
+
+
+
   const assignResponsable = async (volunteer: VolunteerApplication, value: string) => {
     const responsableId = value === "none" ? null : value;
     const cicloId = responsableId
