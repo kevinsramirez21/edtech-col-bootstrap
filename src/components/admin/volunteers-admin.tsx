@@ -232,12 +232,16 @@ export function VolunteersAdmin() {
         volunteer.correo_electronico.toLowerCase().includes(term) ||
         volunteer.ciudad.toLowerCase().includes(term) ||
         (responsableName(volunteer.responsable_id) ?? "").toLowerCase().includes(term) ||
-        (cicloName(volunteer.ciclo_id) ?? "").toLowerCase().includes(term);
+        (cicloName(volunteer.ciclo_id) ?? "").toLowerCase().includes(term) ||
+        estadoProcesoInfo(volunteer.estado_proceso).label.toLowerCase().includes(term);
       
       const matchesStatus = statusFilter === "todos" || volunteer.estado === statusFilter;
+      const matchesProceso =
+        procesoFilter === "todos" || (volunteer.estado_proceso ?? "pendiente_primer_contacto") === procesoFilter;
       
-      return matchesSearch && matchesStatus;
+      return matchesSearch && matchesStatus && matchesProceso;
     });
+
   }, [volunteers, searchTerm, statusFilter, responsables, ciclos]);
 
 
