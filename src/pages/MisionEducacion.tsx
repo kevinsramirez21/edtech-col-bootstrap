@@ -119,6 +119,27 @@ const PROMESAS = [
   },
 ];
 
+const CONFIABILIDAD_STYLES: Record<Confiabilidad, string> = {
+  oficial: "bg-emerald-500/10 text-emerald-700 border-emerald-500/30",
+  estimacion: "bg-amber-500/10 text-amber-700 border-amber-500/30",
+  mesa: "bg-accent/10 text-accent-brand border-accent/30",
+};
+
+function ConfiabilidadBadge({ nivel }: { nivel: Confiabilidad }) {
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium",
+        CONFIABILIDAD_STYLES[nivel],
+      )}
+    >
+      {CONFIABILIDAD_LABEL[nivel]}
+    </span>
+  );
+}
+
+
+
 export default function MisionEducacion() {
   const [ruta, setRuta] = useState<Ruta | null>(null);
 
