@@ -27,6 +27,7 @@ import Panorama from "./pages/Panorama";
 import Noticias from "./pages/Noticias";
 import NoticiaDetail from "./pages/NoticiaDetail";
 import AcuerdoEducacion from "./pages/AcuerdoEducacion";
+import MisionEducacion from "./pages/MisionEducacion";
 
 const queryClient = new QueryClient();
 
