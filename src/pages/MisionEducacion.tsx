@@ -147,23 +147,30 @@ export default function MisionEducacion() {
       </Helmet>
 
       {/* Hero + rutas */}
-      <Section className="bg-secondary/40 pt-8">
-        <Breadcrumbs items={[{ label: "Misión Educación" }]} />
-        <div className="mt-6 max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-wider text-accent-brand">
-            Terremoto 2026 · Respuesta del ecosistema
-          </p>
-          <h1
-            className="mt-3 text-4xl font-bold text-foreground sm:text-5xl"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Misión Educación
-          </h1>
-          <p className="mt-5 text-lg text-muted-foreground">
-            Cuando la tierra se mueve, la escuela se detiene. Estamos articulando a más de 150 líderes del
-            ecosistema educativo para que ningún estudiante quede por fuera. Empieza eligiendo cómo quieres
-            participar.
-          </p>
+      <Section className="bg-gradient-to-br from-[#003889] via-[#0B47CE] to-[#003889] pt-8 text-primary-foreground relative overflow-hidden">
+        {/* Decorative glows like other brand heroes */}
+        <div className="pointer-events-none absolute -top-16 right-10 h-64 w-64 rounded-full bg-accent/20 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-48 rounded-full bg-sand/10 blur-3xl" />
+        <div className="relative z-10">
+          <div className="[&_a]:text-primary-foreground/70 [&_span]:text-primary-foreground [&_svg]:text-primary-foreground/70">
+            <Breadcrumbs items={[{ label: "Misión Educación" }]} />
+          </div>
+          <div className="mt-6 max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-wider text-[#F73C5C]">
+              Terremoto 2026 · Respuesta del ecosistema
+            </p>
+            <h1
+              className="mt-3 text-4xl font-bold text-primary-foreground sm:text-5xl"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Misión Educación
+            </h1>
+            <p className="mt-5 text-lg text-primary-foreground/85">
+              Cuando la tierra se mueve, la escuela se detiene. Estamos articulando a más de 150 líderes del
+              ecosistema educativo para que ningún estudiante quede por fuera. Empieza eligiendo cómo quieres
+              participar.
+            </p>
+          </div>
         </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -219,7 +226,7 @@ export default function MisionEducacion() {
       </Section>
 
       {/* Dimensión del impacto */}
-      <Section className="bg-secondary/40">
+      <Section className="bg-sand">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-wider text-accent-brand">
             La dimensión del impacto
@@ -314,7 +321,7 @@ export default function MisionEducacion() {
       </Section>
 
       {/* Qué haremos con tu registro */}
-      <Section className="bg-secondary/40">
+      <Section className="bg-sand">
         <div className="max-w-3xl">
           <h2
             className="text-3xl font-bold text-foreground sm:text-4xl"
