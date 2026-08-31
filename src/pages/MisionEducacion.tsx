@@ -239,53 +239,96 @@ export default function MisionEducacion() {
             className="mt-3 text-3xl font-bold text-foreground sm:text-4xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Lo que vamos entendiendo del territorio
+            El mapeo de la afectación educativa
           </h2>
           <p className="mt-4 text-muted-foreground">{IMPACTO_RESUMEN.nota}</p>
           <p className="mt-2 text-sm text-muted-foreground">{IMPACTO_FECHA_CORTE}</p>
         </div>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
-          <Card className="border-border/70">
-            <CardContent className="p-6">
-              <p className="text-4xl font-bold text-primary">{IMPACTO_RESUMEN.instituciones}</p>
-              <p className="mt-2 text-muted-foreground">instituciones educativas registradas</p>
-            </CardContent>
-          </Card>
-          <Card className="border-border/70">
-            <CardContent className="p-6">
-              <p className="text-4xl font-bold text-primary">{IMPACTO_RESUMEN.personas}</p>
-              <p className="mt-2 text-muted-foreground">estudiantes y docentes impactados</p>
-            </CardContent>
-          </Card>
+        {/* Semáforo de confiabilidad */}
+        <div className="mt-6 flex flex-wrap gap-2">
+          {(Object.keys(CONFIABILIDAD_LABEL) as Confiabilidad[]).map((c) => (
+            <ConfiabilidadBadge key={c} nivel={c} />
+          ))}
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {IMPACTO_TERRITORIOS.map((t) => (
-            <Card key={t.departamento} className="border-border/70">
-              <CardContent className="p-5">
-                <div className="flex items-baseline justify-between gap-3">
-                  <h3 className="font-semibold text-foreground">{t.departamento}</h3>
-                  <span className="text-sm text-muted-foreground">{t.porcentaje}</span>
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {IMPACTO_CIFRAS_NACIONALES.map((c) => (
+            <Card key={c.etiqueta} className="h-full border-border/70">
+              <CardContent className="flex h-full flex-col p-5">
+                <p className="text-3xl font-bold text-primary">{c.valor}</p>
+                <p className="mt-2 flex-1 text-sm text-muted-foreground">{c.etiqueta}</p>
+                <div className="mt-4 flex flex-wrap items-center gap-2">
+                  <ConfiabilidadBadge nivel={c.confiabilidad} />
+                  <span className="text-xs text-muted-foreground">{c.fuente}</span>
                 </div>
-                <p className="mt-2 text-3xl font-bold text-primary">{t.valor}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{t.detalle}</p>
               </CardContent>
             </Card>
           ))}
         </div>
 
+        {/* Fichas por territorio */}
+        <h3 className="mt-14 text-2xl font-bold text-foreground">Territorio por territorio</h3>
+        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+          {IMPACTO_TERRITORIOS.map((t) => (
+            <Card key={t.departamento} className="h-full border-border/70">
+              <CardContent className="flex h-full flex-col p-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h4 className="text-xl font-bold text-foreground">{t.departamento}</h4>
+                  <ConfiabilidadBadge nivel={t.confiabilidad} />
+                </div>
+                <p className="mt-4 text-3xl font-bold text-primary">{t.valor}</p>
+                <p className="text-sm text-muted-foreground">{t.etiquetaValor}</p>
+                <dl className="mt-4 space-y-3 border-t border-border/60 pt-4 text-sm">
+                  <div>
+                    <dt className="font-semibold text-foreground">Estudiantes</dt>
+                    <dd className="text-muted-foreground">{t.estudiantes}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-foreground">Retorno a clases</dt>
+                    <dd className="text-muted-foreground">{t.retorno}</dd>
+                  </div>
+                </dl>
+                <p className="mt-4 flex-1 text-sm text-muted-foreground">{t.detalle}</p>
+                <p className="mt-4 text-xs text-muted-foreground">Fuente: {t.fuente}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Lo que ya movió la misión */}
+        <h3 className="mt-14 text-2xl font-bold text-foreground">Lo que ya movió la misión</h3>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {IMPACTO_INDICADORES.map((i) => (
+          {IMPACTO_MISION.map((i) => (
             <Card key={i.etiqueta} className="border-border/70 bg-card">
               <CardContent className="p-5">
-                <p className="text-2xl font-bold text-foreground">{i.valor}</p>
+                <p className="text-3xl font-bold text-foreground">{i.valor}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{i.etiqueta}</p>
               </CardContent>
             </Card>
           ))}
         </div>
+
+        {/* Vacíos de información */}
+        <Card className="mt-14 border-border/70">
+          <CardContent className="p-6 sm:p-8">
+            <h3 className="text-2xl font-bold text-foreground">Lo que todavía no sabemos</h3>
+            <p className="mt-3 max-w-3xl text-muted-foreground">
+              El vacío de datos es, hoy, uno de los mayores obstáculos para responder bien. Estos son los
+              huecos que estamos levantando en terreno con las secretarías y las instituciones educativas.
+            </p>
+            <ul className="mt-6 grid gap-3 md:grid-cols-2">
+              {IMPACTO_VACIOS.map((v) => (
+                <li key={v} className="flex gap-3 text-sm text-muted-foreground">
+                  <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-accent-brand" />
+                  <span>{v}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
       </Section>
+
 
       {/* La crisis dura años */}
       <Section>
