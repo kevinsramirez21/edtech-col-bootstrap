@@ -36,6 +36,7 @@ const navItems = [
     ]
   },
   { name: "Voluntariado", href: "/voluntariado" },
+  { name: "Misión Educación", href: "/mision-educacion" },
 ]
 
 export function Navbar() {

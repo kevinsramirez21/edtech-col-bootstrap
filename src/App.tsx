@@ -27,6 +27,7 @@ import Panorama from "./pages/Panorama";
 import Noticias from "./pages/Noticias";
 import NoticiaDetail from "./pages/NoticiaDetail";
 import AcuerdoEducacion from "./pages/AcuerdoEducacion";
+import MisionEducacion from "./pages/MisionEducacion";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
                   <Route path="/asociados/directorio" element={<AssociatesDirectory />} />
                   <Route path="/aliados" element={<Aliados />} />
                   <Route path="/voluntariado" element={<Voluntariado />} />
+                  <Route path="/mision-educacion" element={<MisionEducacion />} />
                   <Route path="/auth" element={<Auth />} />
                   <Route path="/admin" element={<Admin />} />
                   <Route path="/blog" element={<Blog />} />

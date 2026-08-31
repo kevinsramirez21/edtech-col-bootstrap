@@ -210,6 +210,60 @@ export type Database = {
         }
         Relationships: []
       }
+      mision_educacion_registros: {
+        Row: {
+          acepta_comunicaciones: boolean
+          acepta_tratamiento_datos: boolean
+          cargo: string | null
+          correo: string
+          created_at: string
+          departamento: string | null
+          detalle: Json
+          estado: string
+          id: string
+          municipio: string | null
+          nombre: string
+          organizacion: string | null
+          telefono: string | null
+          tipo_registro: string
+          updated_at: string
+        }
+        Insert: {
+          acepta_comunicaciones?: boolean
+          acepta_tratamiento_datos?: boolean
+          cargo?: string | null
+          correo: string
+          created_at?: string
+          departamento?: string | null
+          detalle?: Json
+          estado?: string
+          id?: string
+          municipio?: string | null
+          nombre: string
+          organizacion?: string | null
+          telefono?: string | null
+          tipo_registro: string
+          updated_at?: string
+        }
+        Update: {
+          acepta_comunicaciones?: boolean
+          acepta_tratamiento_datos?: boolean
+          cargo?: string | null
+          correo?: string
+          created_at?: string
+          departamento?: string | null
+          detalle?: Json
+          estado?: string
+          id?: string
+          municipio?: string | null
+          nombre?: string
+          organizacion?: string | null
+          telefono?: string | null
+          tipo_registro?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       newsletter_subscriptions: {
         Row: {
           created_at: string
