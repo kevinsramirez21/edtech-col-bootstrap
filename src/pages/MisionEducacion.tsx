@@ -18,10 +18,14 @@ import {
   Users,
 } from "lucide-react";
 import {
+  CONFIABILIDAD_LABEL,
+  IMPACTO_CIFRAS_NACIONALES,
   IMPACTO_FECHA_CORTE,
-  IMPACTO_INDICADORES,
+  IMPACTO_MISION,
   IMPACTO_RESUMEN,
   IMPACTO_TERRITORIOS,
+  IMPACTO_VACIOS,
+  type Confiabilidad,
 } from "@/components/mision-educacion/impact-data";
 import {
   FormAportarTiempo,
