@@ -144,13 +144,13 @@ export default function MisionEducacion() {
   const [ruta, setRuta] = useState<Ruta | null>(null);
 
   const meta = generatePageMeta({
-    title: "Misión Educación | Terremoto 2026",
+    title: "Terremoto 2026 | Colombia EdTech",
     description:
       "Respuesta del ecosistema EdTech al terremoto en Colombia: registra tu organización afectada, ofrece una solución o aporta tu tiempo.",
   });
 
   const breadcrumbLd = generateBreadcrumbJsonLd([
-    { name: "Misión Educación", item: `${window.location.origin}/mision-educacion` },
+    { name: "Terremoto", item: `${window.location.origin}/mision-educacion` },
   ]);
 
   const seleccionar = (id: Ruta) => {
@@ -179,7 +179,7 @@ export default function MisionEducacion() {
         <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-48 rounded-full bg-sand/10 blur-3xl" />
         <div className="relative z-10">
           <div className="[&_a]:text-primary-foreground/70 [&_span]:text-primary-foreground [&_svg]:text-primary-foreground/70">
-            <Breadcrumbs items={[{ label: "Misión Educación" }]} />
+            <Breadcrumbs items={[{ label: "Terremoto" }]} />
           </div>
           <div className="mt-6 max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-wider text-[#F73C5C]">
@@ -189,7 +189,7 @@ export default function MisionEducacion() {
               className="mt-3 text-4xl font-bold text-primary-foreground sm:text-5xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Misión Educación
+              Terremoto
             </h1>
             <p className="mt-5 text-lg text-primary-foreground/85">
               Cuando la tierra se mueve, la escuela se detiene. Estamos articulando a más de 150 líderes del
