@@ -226,7 +226,7 @@ export default function MisionEducacion() {
       </Section>
 
       {/* Dimensión del impacto */}
-      <Section className="bg-secondary/40">
+      <Section className="bg-sand">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-wider text-accent-brand">
             La dimensión del impacto
@@ -321,7 +321,7 @@ export default function MisionEducacion() {
       </Section>
 
       {/* Qué haremos con tu registro */}
-      <Section className="bg-secondary/40">
+      <Section className="bg-sand">
         <div className="max-w-3xl">
           <h2
             className="text-3xl font-bold text-foreground sm:text-4xl"
