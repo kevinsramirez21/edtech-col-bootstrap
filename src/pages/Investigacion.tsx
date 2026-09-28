@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async"
 import { ArrowDown } from "lucide-react"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { PublicationCard, PublicationCTA, ResearchLine } from "@/components/research/research-sections"
+import { PublicationCard, ResearchLine } from "@/components/research/research-sections"
 import { researchLines, sortedPublications } from "@/content/research/publications"
 import researchPhoto from "@/assets/evento-vision-2030-hq.jpg"
 
@@ -61,6 +61,5 @@ export default function Investigacion() {
         <div>{researchLines.map((line, index) => <ResearchLine key={line.id} number={String(index + 1).padStart(2, "0")} title={line.title} />)}</div>
       </div>
     </section>
-    <PublicationCTA />
   </>
 }
