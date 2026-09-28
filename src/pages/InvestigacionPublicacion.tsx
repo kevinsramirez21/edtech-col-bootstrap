@@ -11,11 +11,11 @@ export default function InvestigacionPublicacion() {
 
   if (!publication) return <>
     <Helmet><title>Publicación no disponible | Colombia EdTech</title><meta name="robots" content="noindex" /></Helmet>
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 min-h-[50vh]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 min-h-[50vh]">
       <h1 className="text-3xl font-bold text-foreground">Publicación no disponible</h1>
       <p className="mt-4 text-muted-foreground">Esta publicación no está disponible en la biblioteca.</p>
       <Button asChild className="mt-8"><Link to="/investigacion"><ArrowLeft aria-hidden="true" /> Volver a Investigación</Link></Button>
-    </main>
+    </div>
   </>
 
   const url = `https://colombiaedtech.org/investigacion/${publication.slug}`

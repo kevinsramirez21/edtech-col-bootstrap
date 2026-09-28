@@ -32,7 +32,7 @@ export default function Investigacion() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] items-center gap-8 lg:gap-14 py-10 sm:py-14 lg:py-16">
         <div className="min-w-0">
           <p className="text-xs font-bold uppercase tracking-widest text-primary mb-5">Conocimiento para la transformación</p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">Investigación<span className="text-accent">.</span></h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">Investigación<span aria-hidden="true" className="text-accent">.</span></h1>
           <p className="text-lg sm:text-xl text-foreground/80 leading-relaxed mt-6 max-w-2xl">Generamos conocimiento para comprender los retos, oportunidades y transformaciones de la educación y la tecnología en Colombia y Latinoamérica.</p>
           <Button asChild variant="link" className="px-0 mt-7 text-primary font-semibold"><a href="#publicaciones">Explorar publicaciones <ArrowDown aria-hidden="true" /></a></Button>
         </div>
