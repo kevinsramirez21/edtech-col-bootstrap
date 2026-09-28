@@ -1,0 +1,2 @@
+- Mantener las publicaciones de Investigación en un único catálogo tipado dentro de `src/content/research/`; la portada, las fichas y el detalle comparten esa fuente para evitar inconsistencias.
+- Publicar fichas de Investigación solo cuando exista metadata verificable y un documento real; evita hallazgos o autores inventados.

@@ -1,0 +1,3 @@
+- [ ] Integrar Investigación en navegación y crear landing editorial con líneas y biblioteca vacía honesta.
+- [ ] Preparar estructura única de publicaciones y página individual con descarga, hallazgos, autores y compartir.
+- [ ] Ajustar SEO de las nuevas páginas y verificar experiencia móvil y escritorio.
