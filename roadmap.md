@@ -1,0 +1,5 @@
+- [x] Integrar Investigación en navegación y crear landing editorial con líneas y biblioteca vacía honesta.
+- [x] Preparar estructura única de publicaciones y página individual con descarga, hallazgos, autores y compartir.
+- [x] Ajustar metadatos dinámicos de las nuevas páginas y verificar experiencia móvil y escritorio.
+- [ ] Publicar el primer white paper: pendiente de título, portada, autores, resumen, hallazgos y PDF aprobados.
+- [ ] Obtener vistas sociales únicas por publicación en WhatsApp/LinkedIn: pendiente de renderizado de metadatos en servidor (SPA actual solo envía metadatos comunes a rastreadores sociales).

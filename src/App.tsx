@@ -28,6 +28,8 @@ import Noticias from "./pages/Noticias";
 import NoticiaDetail from "./pages/NoticiaDetail";
 import AcuerdoEducacion from "./pages/AcuerdoEducacion";
 import MisionEducacion from "./pages/MisionEducacion";
+import Investigacion from "./pages/Investigacion";
+import InvestigacionPublicacion from "./pages/InvestigacionPublicacion";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +54,8 @@ const App = () => (
                   <Route path="/aliados" element={<Aliados />} />
                   <Route path="/voluntariado" element={<Voluntariado />} />
                   <Route path="/mision-educacion" element={<MisionEducacion />} />
+                  <Route path="/investigacion" element={<Investigacion />} />
+                  <Route path="/investigacion/:slug" element={<InvestigacionPublicacion />} />
                   <Route path="/auth" element={<Auth />} />
                   <Route path="/admin" element={<Admin />} />
                   <Route path="/blog" element={<Blog />} />
