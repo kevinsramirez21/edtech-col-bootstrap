@@ -23,6 +23,7 @@ const navItems = [
     ]
   },
   { name: "Somos", href: "/somos" },
+  { name: "Investigación", href: "/investigacion" },
   { 
     name: "Mundo Edtech", 
     isDropdown: true,
@@ -89,7 +90,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation - Premium Layout */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-1">
+          <div className="hidden xl:flex xl:items-center xl:space-x-1">
             {navItems.map((item) => (
               <div key={item.name} className="flex items-center">
                 {item.isDropdown ? (
@@ -140,7 +141,7 @@ export function Navbar() {
           </div>
 
           {/* Desktop Auth/User Menu */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-2 flex-shrink-0">
+           <div className="hidden xl:flex xl:items-center xl:space-x-2 flex-shrink-0">
             {!loading && (
               user ? (
                 <div className="flex items-center space-x-4">
@@ -188,7 +189,7 @@ export function Navbar() {
           </div>
 
           {/* Tablet/Mobile Auth/User Menu */}
-          <div className="flex lg:hidden items-center space-x-2 flex-shrink-0">
+           <div className="flex xl:hidden items-center space-x-2 flex-shrink-0">
             {!loading && (
               user ? (
                 <>
@@ -236,7 +237,7 @@ export function Navbar() {
             aria-controls="mobile-menu"
             aria-expanded={isMobileMenuOpen}
             aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
-            className="lg:hidden text-white hover:bg-white/10 min-w-[44px] min-h-[44px]"
+             className="xl:hidden text-white hover:bg-white/10 min-w-[44px] min-h-[44px]"
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6" />
@@ -250,7 +251,7 @@ export function Navbar() {
         {isMobileMenuOpen && (
           <div 
             id="mobile-menu"
-            className="lg:hidden border-t border-white/20 bg-accent backdrop-blur-md"
+             className="xl:hidden border-t border-white/20 bg-accent backdrop-blur-md"
           >
             <div className="px-4 py-6 space-y-3">
               {navItems.map((item) => (
