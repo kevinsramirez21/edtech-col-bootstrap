@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
-import { ArrowRight, BookOpen, Download, Linkedin, Link2, Share2 } from "lucide-react"
+import { ArrowRight, Download, Linkedin, Link2, Share2 } from "lucide-react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { getResearchLine, type ResearchPublication } from "@/content/research/publications"
 
 export function PublicationCard({ publication, featured = false }: { publication: ResearchPublication; featured?: boolean }) {
   return (
-    <article className={`group border-b border-border py-7 md:py-9 ${featured ? "md:grid md:grid-cols-[minmax(0,0.75fr)_minmax(0,1fr)] md:gap-12 md:items-center" : ""}`}>
+    <article className={`group border-b border-border py-7 md:py-9 ${featured ? "md:grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] md:gap-12 md:items-center" : ""}`}>
       <Link to={`/investigacion/${publication.slug}`} className="block overflow-hidden bg-secondary aspect-[4/3] max-h-[420px]" aria-label={`Ver ${publication.title}`}>
         <img src={publication.cover} alt={publication.coverAlt} loading="lazy" className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]" />
       </Link>
@@ -26,7 +26,7 @@ export function PublicationCard({ publication, featured = false }: { publication
 export function ResearchLine({ number, title }: { number: string; title: string }) {
   return <div className="border-t border-border pt-5 pb-6 flex items-start gap-5">
     <span className="text-sm font-semibold text-accent shrink-0">{number}</span>
-    <h3 className="text-lg sm:text-xl font-semibold leading-snug text-foreground">{title}</h3>
+     <h3 className="text-base sm:text-lg font-medium leading-snug text-foreground">{title}</h3>
   </div>
 }
 
@@ -81,11 +81,11 @@ export function PublicationAuthors({ authors }: { authors: ResearchPublication["
 }
 
 export function PublicationCTA() {
-  return <section className="bg-primary-900 dark:bg-card py-16 sm:py-20" aria-labelledby="research-cta-heading">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+   return <section className="bg-primary-900 dark:bg-card py-12 sm:py-16" aria-labelledby="research-cta-heading">
+     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
       <div><p className="text-accent-brand font-semibold text-xs uppercase tracking-widest mb-4">Colombia EdTech</p>
         <h2 id="research-cta-heading" className="max-w-2xl text-3xl sm:text-4xl font-bold leading-tight text-primary-foreground dark:text-foreground">Construyamos conocimiento para transformar la educación.</h2></div>
-      <Button asChild variant="secondary" size="lg" className="shrink-0 w-full sm:w-auto"><Link to="/voluntariado#form"><BookOpen aria-hidden="true" /> Participa en nuestras investigaciones</Link></Button>
+       <div className="w-full sm:w-auto shrink-0 text-center sm:text-left"><Button variant="secondary" size="lg" disabled className="w-full sm:w-auto whitespace-normal h-auto min-h-12 py-3 text-center">Conoce nuestro grupo de investigación</Button><p className="mt-2 text-xs text-primary-foreground/70 dark:text-muted-foreground">Información disponible próximamente.</p></div>
     </div>
   </section>
 }
