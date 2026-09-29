@@ -80,7 +80,7 @@ export function PublicationAuthors({ authors }: { authors: ResearchPublication["
   </section>
 }
 
-export function PublicationShare({ title, url }: { title: string; url: string }) {
+export function PublicationShare({ url }: { url: string }) {
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(url)
