@@ -1,5 +1,7 @@
 /** Verified papers here power both the library and their landing pages. */
-import competenciasCover from "@/assets/research/competencias-digitales-cover.svg"
+import competenciasCoverAsset from "@/assets/research/competencias-digitales-cover.png.asset.json"
+
+const competenciasCover = competenciasCoverAsset.url
 export const researchLines = [
   { id: "stem", title: "STEM, datos y pedagogía" },
   { id: "ia", title: "Inteligencia artificial y uso ético" },
