@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1120" role="img" aria-labelledby="title description">
+  <title id="title">Competencias Digitales para Transformar la Educación en Colombia</title>
+  <desc id="description">Portada tipográfica del white paper WP-2026-01 de Colombia EdTech</desc>
+  <rect width="800" height="1120" fill="white"/>
+  <g fill="black" font-family="Arial, Helvetica, sans-serif">
+    <text x="72" y="96" font-size="24" font-weight="700">COLOMBIA EDTECH</text>
+    <text x="72" y="320" font-size="42" font-weight="700">
+      <tspan x="72" dy="0">Competencias Digitales</tspan>
+      <tspan x="72" dy="56">para Transformar la Educación</tspan>
+      <tspan x="72" dy="56">en Colombia</tspan>
+    </text>
+    <text x="72" y="535" font-size="27">De la conectividad al desarrollo de capacidades</text>
+    <text x="72" y="768" font-size="21">Autora: Diana Lizeth Mora, Equipo de Investigación</text>
+    <text x="72" y="816" font-size="21">Agosto de 2026</text>
+    <text x="72" y="906" font-size="19">Audiencia primaria: decisores de política educativa y digital,</text>
+    <text x="72" y="935" font-size="19">ecosistema EdTech, comunidad académica</text>
+    <text x="72" y="1048" font-size="23" font-weight="700">WP-2026-01</text>
+  </g>
+</svg>
