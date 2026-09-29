@@ -1,5 +1,5 @@
 /** Verified papers here power both the library and their landing pages. */
-import competenciasCover from "@/assets/research/competencias-digitales-cover.svg"
+import competenciasCover from "@/assets/research/competencias-digitales-cover.webp"
 export const researchLines = [
   { id: "stem", title: "STEM, datos y pedagogía" },
   { id: "ia", title: "Inteligencia artificial y uso ético" },
@@ -38,6 +38,7 @@ export const publications: ResearchPublication[] = [{
   authors: [{ name: "Diana Lizeth Mora", role: "Equipo de Investigación" }],
   cover: competenciasCover,
   coverAlt: "Portada de Competencias Digitales para Transformar la Educación en Colombia, white paper WP-2026-01",
+  socialImage: "https://colombiaedtech.org/images/research/competencias-digitales-cover.webp",
   pdfUrl: "https://drive.google.com/file/d/19_Kne78pfnnVSU44u8NqJgL00qh0o3sB/view?usp=drivesdk",
   summary: [
     "Colombia ha avanzado de manera significativa en conectividad, infraestructura tecnológica y digitalización. Sin embargo, el acceso a internet y la disponibilidad de dispositivos no garantizan, por sí solos, mejores aprendizajes ni el desarrollo de las capacidades necesarias para desenvolverse en una sociedad marcada por la inteligencia artificial, la circulación masiva de información y la creciente automatización.",
