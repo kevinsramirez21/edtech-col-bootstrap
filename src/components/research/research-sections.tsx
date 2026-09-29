@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { ArrowRight, Download, Linkedin, Link2, Share2 } from "lucide-react"
+import { ArrowRight, Download, Link2 } from "lucide-react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { getResearchLine, type ResearchPublication } from "@/content/research/publications"
@@ -80,21 +80,17 @@ export function PublicationAuthors({ authors }: { authors: ResearchPublication["
   </section>
 }
 
-export function PublicationShare({ title, url }: { title: string; url: string }) {
+export function PublicationShare({ url }: { url: string }) {
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(url)
       toast.success("Enlace copiado")
     } catch { toast.error("No se pudo copiar el enlace") }
   }
-  const linkedin = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`
-  const whatsapp = `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`
   return <section className="py-10 border-t border-border" aria-label="Compartir publicación">
     <p className="font-semibold text-foreground mb-4">Compartir publicación</p>
     <div className="flex flex-wrap gap-3">
       <Button variant="outline" onClick={copyLink}><Link2 aria-hidden="true" /> Copiar enlace</Button>
-      <Button asChild variant="outline"><a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label="Compartir en LinkedIn"><Linkedin aria-hidden="true" /> LinkedIn</a></Button>
-      <Button asChild variant="outline"><a href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Compartir en WhatsApp"><Share2 aria-hidden="true" /> WhatsApp</a></Button>
     </div>
   </section>
 }

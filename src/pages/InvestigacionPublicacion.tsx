@@ -67,7 +67,7 @@ export default function InvestigacionPublicacion() {
         <Button asChild variant="outline" size="lg"><a href={publication.pdfUrl} target="_blank" rel="noopener noreferrer"><ExternalLink aria-hidden="true" /> Ver documento</a></Button>
       </div>
       <PublicationAuthors authors={publication.authors} />
-      <PublicationShare title={publication.title} url={url} />
+      <PublicationShare url={url} />
     </div></section>
   </>
 }
