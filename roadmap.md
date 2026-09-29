@@ -2,5 +2,6 @@
 - [x] Preparar estructura única de publicaciones y página individual con descarga, hallazgos, autores y compartir.
 - [x] Ajustar metadatos dinámicos de las nuevas páginas y verificar experiencia móvil y escritorio.
 - [x] Refinar hero, biblioteca, líneas y CTA de Investigación; verificar escritorio y móvil.
-- [ ] Publicar el primer white paper: pendiente de título, portada, autores, resumen, hallazgos y PDF aprobados.
+- [x] Publicar el primer white paper con portada SVG, datos verificados y enlace temporal de Drive.
+- [ ] Confirmar acceso público al PDF temporal: el enlace de Drive redirige a inicio de sesión sin una cuenta autenticada.
 - [ ] Obtener vistas sociales únicas por publicación en WhatsApp/LinkedIn: pendiente de renderizado de metadatos en servidor (SPA actual solo envía metadatos comunes a rastreadores sociales).
