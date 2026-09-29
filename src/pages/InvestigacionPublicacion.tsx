@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import { ArrowLeft, Download, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { getPublication } from "@/content/research/publications"
-import { KeyFindings, PublicationAuthors, PublicationCTA, PublicationHero, PublicationShare } from "@/components/research/research-sections"
+import { KeyFindings, PublicationAuthors, PublicationHero, PublicationShare } from "@/components/research/research-sections"
 
 export default function InvestigacionPublicacion() {
   const { slug } = useParams<{ slug: string }>()
@@ -63,12 +63,11 @@ export default function InvestigacionPublicacion() {
       <h2 id="document-heading" className="text-3xl font-bold text-foreground">Documento completo</h2>
       <p className="mt-4 text-muted-foreground leading-relaxed">Descarga el documento o ábrelo en una nueva pestaña para leerlo a tu ritmo.</p>
       <div className="flex flex-col sm:flex-row gap-3 mt-8">
-        <Button asChild size="lg"><a href={publication.pdfUrl} download><Download aria-hidden="true" /> Descargar publicación</a></Button>
+        <Button asChild size="lg"><a href={publication.pdfUrl} target="_blank" rel="noopener noreferrer" download={publication.pdfUrl.startsWith("/") ? true : undefined}><Download aria-hidden="true" /> Descargar publicación</a></Button>
         <Button asChild variant="outline" size="lg"><a href={publication.pdfUrl} target="_blank" rel="noopener noreferrer"><ExternalLink aria-hidden="true" /> Ver documento</a></Button>
       </div>
       <PublicationAuthors authors={publication.authors} />
       <PublicationShare title={publication.title} url={url} />
     </div></section>
-    <PublicationCTA />
   </>
 }

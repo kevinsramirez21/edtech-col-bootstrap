@@ -13,7 +13,7 @@ export function PublicationCard({ publication, featured = false }: { publication
       <div className="py-6 md:py-0 min-w-0">
         <p className="text-xs font-bold uppercase text-primary tracking-widest">{publication.type} <span className="text-muted-foreground mx-2">/</span> {getResearchLine(publication.line)}</p>
         <h3 className={`mt-4 font-bold text-foreground leading-tight ${featured ? "text-3xl md:text-4xl" : "text-2xl"}`}>{publication.title}</h3>
-        <time dateTime={publication.date} className="block mt-3 text-sm text-muted-foreground">{formatPublicationDate(publication.date)}</time>
+        <time dateTime={publication.date} className="block mt-3 text-sm text-muted-foreground">{formatPublicationDate(publication.date, publication.dateLabel)}</time>
         <p className="mt-4 text-muted-foreground leading-relaxed line-clamp-3">{publication.description}</p>
         <Button asChild variant="link" className="mt-5 p-0 h-auto font-semibold text-primary">
           <Link to={`/investigacion/${publication.slug}`}>Ver publicación <ArrowRight aria-hidden="true" /></Link>
@@ -38,11 +38,11 @@ export function PublicationHero({ publication }: { publication: ResearchPublicat
         <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground">{publication.title}</h1>
         <p className="mt-5 text-lg text-foreground/80 leading-relaxed">{publication.subtitle}</p>
         <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-          <time dateTime={publication.date}>{formatPublicationDate(publication.date)}</time>
+          <time dateTime={publication.date}>{formatPublicationDate(publication.date, publication.dateLabel)}</time>
           <span>{publication.authors.map((author) => author.name).join(", ")}</span>
         </div>
         <Button asChild size="lg" className="mt-8 w-full sm:w-auto">
-          <a href={publication.pdfUrl} download><Download aria-hidden="true" /> Descargar publicación</a>
+          <a href={publication.pdfUrl} target="_blank" rel="noopener noreferrer" download={publication.pdfUrl.startsWith("/") ? true : undefined}><Download aria-hidden="true" /> Descargar publicación</a>
         </Button>
       </div>
       <div className="bg-background border border-border p-3 sm:p-5 max-w-lg lg:max-w-none mx-auto w-full">
@@ -58,9 +58,9 @@ export function KeyFindings({ findings }: { findings: ResearchPublication["findi
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <p className="text-xs font-bold text-accent uppercase tracking-widest mb-3">En breve</p>
       <h2 id="findings-heading" className="text-3xl font-bold text-foreground mb-9">Hallazgos principales</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-9">
+       <div className="grid md:grid-cols-2 gap-x-9">
         {findings.map((finding, index) => <div key={`${index}-${finding.statement}`} className="border-t border-primary/30 py-6">
-          {finding.value && <p className="text-4xl sm:text-5xl font-bold text-primary mb-4">{finding.value}</p>}
+           {finding.value && <p className="text-3xl sm:text-4xl font-bold text-primary mb-4 break-words">{finding.value}</p>}
           <p className="font-semibold text-foreground text-lg leading-snug">{finding.statement}</p>
           {finding.context && <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{finding.context}</p>}
         </div>)}
@@ -77,16 +77,6 @@ export function PublicationAuthors({ authors }: { authors: ResearchPublication["
       <p className="font-semibold text-foreground">{author.name}</p>
       {author.role && <p className="text-sm text-muted-foreground mt-1">{author.role}</p>}
     </div>)}</div>
-  </section>
-}
-
-export function PublicationCTA() {
-   return <section className="bg-primary-900 dark:bg-card py-12 sm:py-16" aria-labelledby="research-cta-heading">
-     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-      <div><p className="text-accent-brand font-semibold text-xs uppercase tracking-widest mb-4">Colombia EdTech</p>
-        <h2 id="research-cta-heading" className="max-w-2xl text-3xl sm:text-4xl font-bold leading-tight text-primary-foreground dark:text-foreground">Construyamos conocimiento para transformar la educación.</h2></div>
-       <div className="w-full sm:w-auto shrink-0 text-center sm:text-left"><Button variant="secondary" size="lg" disabled className="w-full sm:w-auto whitespace-normal h-auto min-h-12 py-3 text-center">Conoce nuestro grupo de investigación</Button><p className="mt-2 text-xs text-primary-foreground/70 dark:text-muted-foreground">Información disponible próximamente.</p></div>
-    </div>
   </section>
 }
 
@@ -109,6 +99,8 @@ export function PublicationShare({ title, url }: { title: string; url: string })
   </section>
 }
 
-export function formatPublicationDate(date: string) {
-  return new Intl.DateTimeFormat("es-CO", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`))
+export function formatPublicationDate(date: string, dateLabel?: string) {
+  if (dateLabel) return dateLabel
+  const format = new Intl.DateTimeFormat("es-CO", { year: "numeric", month: "long", ...(date.length === 10 ? { day: "numeric" } : {}), timeZone: "UTC" })
+  return format.format(new Date(`${date.length === 7 ? `${date}-01` : date}T12:00:00Z`))
 }

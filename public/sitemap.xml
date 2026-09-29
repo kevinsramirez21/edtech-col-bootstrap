@@ -29,4 +29,8 @@
     <loc>https://colombiaedtech.org/investigacion</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://colombiaedtech.org/investigacion/competencias-digitales-transformar-educacion-colombia</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>
