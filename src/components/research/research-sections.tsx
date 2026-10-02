@@ -87,6 +87,32 @@ export function PublicationAuthors({ authors }: { authors: ResearchPublication["
   </section>
 }
 
+export function PublicationAuthorProfile({ profile, name, role }: { profile: NonNullable<ResearchPublication["authorProfile"]>; name: string; role?: string }) {
+  return <section className="py-14 border-t border-border" aria-labelledby="author-profile-heading">
+    <div className="grid gap-8 md:grid-cols-[minmax(0,220px)_minmax(0,1fr)] md:gap-12 items-start">
+      <img
+        src={profile.photo}
+        alt={profile.photoAlt}
+        loading="lazy"
+        className="w-40 h-40 md:w-full md:h-auto md:aspect-square object-cover rounded-full"
+      />
+      <div className="min-w-0">
+        <h2 id="author-profile-heading" className="text-2xl font-bold text-foreground">Sobre la autora</h2>
+        <p className="mt-5 font-semibold text-foreground">{name}</p>
+        {role && <p className="text-sm text-muted-foreground mt-1">{role}</p>}
+        <p className="mt-4 text-muted-foreground leading-relaxed">{profile.bio}</p>
+        <p className="mt-6 text-xs font-bold uppercase tracking-widest text-accent">{profile.interestsTitle}</p>
+        <p className="mt-2 text-foreground/85 leading-relaxed">{profile.interests.join(" · ")}</p>
+        {profile.linkedIn && (
+          <Button asChild variant="outline" size="sm" className="mt-6">
+            <a href={profile.linkedIn} target="_blank" rel="noopener noreferrer">LinkedIn <ExternalLink aria-hidden="true" /></a>
+          </Button>
+        )}
+      </div>
+    </div>
+  </section>
+}
+
 export function PublicationShare({ url }: { url: string }) {
   const copyLink = async () => {
     try {
