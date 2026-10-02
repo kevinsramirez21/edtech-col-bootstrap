@@ -99,7 +99,7 @@ export function Navbar() {
                       <Button
                         variant="ghost"
                         className={cn(
-                          "h-10 px-4 text-sm font-semibold rounded-lg transition-all duration-300 group",
+                          "h-10 px-3 text-sm font-semibold rounded-lg transition-all duration-300 group",
                           "text-white hover:text-white/90 hover:bg-white/10"
                         )}
                       >
@@ -126,7 +126,7 @@ export function Navbar() {
                   <Link
                     to={item.href}
                     className={cn(
-                      "flex items-center h-10 px-4 text-sm font-semibold rounded-lg transition-all duration-300 group",
+                      "flex items-center h-10 px-3 text-sm font-semibold rounded-lg transition-all duration-300 group",
                       isActive(item.href)
                         ? "text-white bg-white/20 shadow-sm"
                         : "text-white hover:text-white/90 hover:bg-white/10"
