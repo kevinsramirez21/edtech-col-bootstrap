@@ -1,5 +1,7 @@
 /** Verified papers here power both the library and their landing pages. */
 import competenciasCover from "@/assets/research/competencias-digitales-cover.webp"
+import dianaMoraPhoto from "@/assets/research/diana-mora-foto.jpg.asset.json"
+
 export const researchLines = [
   { id: "stem", title: "STEM, datos y pedagogía" },
   { id: "ia", title: "Inteligencia artificial y uso ético" },
@@ -18,6 +20,14 @@ export interface ResearchPublication {
   date: string // ISO yyyy-mm or yyyy-mm-dd; never infer an unknown day
   dateLabel?: string
   authors: { name: string; role?: string }[]
+  authorProfile?: {
+    photo: string
+    photoAlt: string
+    bio: string
+    interestsTitle: string
+    interests: string[]
+    linkedIn?: string
+  }
   cover: string
   coverAlt: string
   coverAspect?: string // CSS aspect-ratio (e.g. "1484 / 1920") when the cover is not landscape 4/3
@@ -37,6 +47,14 @@ export const publications: ResearchPublication[] = [{
   date: "2026-08",
   dateLabel: "Agosto de 2026",
   authors: [{ name: "Diana Lizeth Mora", role: "Equipo de Investigación" }],
+  authorProfile: {
+    photo: dianaMoraPhoto.url,
+    photoAlt: "Fotografía de Diana Lizeth Mora, autora del white paper",
+    bio: "Psicóloga, Magíster en Innovación y especialista en Desarrollo Humano. Trabaja en la intersección entre innovación, aprendizaje y desarrollo de capacidades, con experiencia en diseño de soluciones para organizaciones y exploración de nuevas tendencias en educación y aprendizaje digital.",
+    interestsTitle: "Líneas de interés",
+    interests: ["innovación educativa", "nuevas formas de aprender", "habilidades para el futuro", "transformación organizacional"],
+    linkedIn: "https://linkedin.com/in/dianamora11",
+  },
   cover: competenciasCover,
   coverAlt: "Portada de Competencias Digitales para Transformar la Educación en Colombia, white paper WP-2026-01",
   coverAspect: "1484 / 1920",
