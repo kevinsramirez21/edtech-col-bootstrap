@@ -1,5 +1,7 @@
 /** Verified papers here power both the library and their landing pages. */
 import competenciasCover from "@/assets/research/competencias-digitales-cover.webp"
+import dianaMoraPhoto from "@/assets/research/diana-mora-foto.jpg.asset.json"
+
 export const researchLines = [
   { id: "stem", title: "STEM, datos y pedagogía" },
   { id: "ia", title: "Inteligencia artificial y uso ético" },
@@ -18,6 +20,14 @@ export interface ResearchPublication {
   date: string // ISO yyyy-mm or yyyy-mm-dd; never infer an unknown day
   dateLabel?: string
   authors: { name: string; role?: string }[]
+  authorProfile?: {
+    photo: string
+    photoAlt: string
+    bio: string
+    interestsTitle: string
+    interests: string[]
+    linkedIn?: string
+  }
   cover: string
   coverAlt: string
   coverAspect?: string // CSS aspect-ratio (e.g. "1484 / 1920") when the cover is not landscape 4/3
