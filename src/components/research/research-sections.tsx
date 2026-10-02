@@ -7,7 +7,14 @@ import { getResearchLine, type ResearchPublication } from "@/content/research/pu
 export function PublicationCard({ publication, featured = false }: { publication: ResearchPublication; featured?: boolean }) {
   return (
     <article className={`group border-b border-border py-7 md:py-9 ${featured ? "md:grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] md:gap-12 md:items-center" : ""}`}>
-      <Link to={`/investigacion/${publication.slug}`} className="block overflow-hidden aspect-[4/3] max-h-[420px]" aria-label={`Ver ${publication.title}`}>
+      <Link
+        to={`/investigacion/${publication.slug}`}
+        className={publication.coverAspect
+          ? "block overflow-hidden h-72 sm:h-96 lg:h-[440px] w-auto max-w-full"
+          : "block overflow-hidden aspect-[4/3] max-h-[420px]"}
+        style={publication.coverAspect ? { aspectRatio: publication.coverAspect } : undefined}
+        aria-label={`Ver ${publication.title}`}
+      >
         <img src={publication.cover} alt={publication.coverAlt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
       </Link>
       <div className="py-6 md:py-0 min-w-0">

@@ -20,6 +20,7 @@ export interface ResearchPublication {
   authors: { name: string; role?: string }[]
   cover: string
   coverAlt: string
+  coverAspect?: string // CSS aspect-ratio (e.g. "1484 / 1920") when the cover is not landscape 4/3
   socialImage?: string // Absolute HTTPS URL of the same cover, optimized for sharing
   pdfUrl: string
   summary: string[]
@@ -38,6 +39,7 @@ export const publications: ResearchPublication[] = [{
   authors: [{ name: "Diana Lizeth Mora", role: "Equipo de Investigación" }],
   cover: competenciasCover,
   coverAlt: "Portada de Competencias Digitales para Transformar la Educación en Colombia, white paper WP-2026-01",
+  coverAspect: "1484 / 1920",
   socialImage: "https://colombiaedtech.org/images/research/competencias-digitales-cover.webp",
   pdfUrl: "https://drive.google.com/file/d/19_Kne78pfnnVSU44u8NqJgL00qh0o3sB/view?usp=drivesdk",
   summary: [
