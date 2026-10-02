@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { ArrowRight, Download, Link2 } from "lucide-react"
+import { ArrowRight, Download, ExternalLink, Link2 } from "lucide-react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { getResearchLine, type ResearchPublication } from "@/content/research/publications"

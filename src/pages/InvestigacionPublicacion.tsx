@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import { ArrowLeft, Download, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { getPublication } from "@/content/research/publications"
-import { KeyFindings, PublicationAuthors, PublicationHero, PublicationShare } from "@/components/research/research-sections"
+import { KeyFindings, PublicationAuthorProfile, PublicationHero, PublicationShare } from "@/components/research/research-sections"
 
 export default function InvestigacionPublicacion() {
   const { slug } = useParams<{ slug: string }>()
@@ -66,7 +66,9 @@ export default function InvestigacionPublicacion() {
         <Button asChild size="lg"><a href={publication.pdfUrl} target="_blank" rel="noopener noreferrer" download={publication.pdfUrl.startsWith("/") ? true : undefined}><Download aria-hidden="true" /> Descargar publicación</a></Button>
         <Button asChild variant="outline" size="lg"><a href={publication.pdfUrl} target="_blank" rel="noopener noreferrer"><ExternalLink aria-hidden="true" /> Ver documento</a></Button>
       </div>
-      <PublicationAuthors authors={publication.authors} />
+      {publication.authorProfile
+        ? <PublicationAuthorProfile profile={publication.authorProfile} name={publication.authors[0]?.name ?? ""} role={publication.authors[0]?.role} />
+        : null}
       <PublicationShare url={url} />
     </div></section>
   </>
